@@ -48,4 +48,8 @@ public class Production extends Entity {
   public void addTechnique(String technique) {
     this.addProperty(CIDOC.P32_used_general_technique, technique);
   }
+
+  public void addTool(ManMade_Object tool) {
+    this.addProperty(CIDOC.P16_used_specific_object, tool);
+  }
 }

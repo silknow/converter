@@ -2,6 +2,7 @@ package org.silknow.converter.entities;
 
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.vocabulary.RDF;
+import org.apache.jena.vocabulary.RDFS;
 import org.silknow.converter.ontologies.CIDOC;
 
 public class ManMade_Object extends Entity {
@@ -30,6 +31,7 @@ public class ManMade_Object extends Entity {
 
 
   public void addClassification(String classification, String type, LegalBody museum) {
+    if (classification == null) return;
     Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)
             .addProperty(RDF.type, CIDOC.E17_Type_Assignment)
             .addProperty(CIDOC.P41_classified, this.asResource())
@@ -69,6 +71,25 @@ public class ManMade_Object extends Entity {
             .addProperty(RDF.type, CIDOC.E16_Measurement)
             .addProperty(CIDOC.P39_measured, this.asResource())
             .addProperty(CIDOC.P40_observed_dimension, dimension.asResource());
+  }
+
+  public void addTitle(String title) {
+    this.addProperty(RDFS.label, title)
+            .addProperty(CIDOC.P102_has_title, title);
+  }
+
+  public void addInfo(String section, String text, String lang) {
+    Resource sec = model.createResource(this.getUri() + "/section/" + section)
+            .addProperty(RDF.type, CIDOC.E53_Place)
+            .addProperty(RDFS.label, section)
+            .addProperty(CIDOC.P87_is_identified_by, section);
+
+    this.addProperty(CIDOC.P59_has_section, sec);
+
+    model.createResource(this.getUri() + "/section/" + section + "/info")
+            .addProperty(RDF.type, CIDOC.E73_Information_Object)
+            .addProperty(CIDOC.P129_is_about, sec)
+            .addProperty(CIDOC.P3_has_note, text, lang);
   }
 }
 

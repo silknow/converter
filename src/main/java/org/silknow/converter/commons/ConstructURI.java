@@ -51,6 +51,12 @@ public class ConstructURI {
         return "image";
       case "LegalBody":
         return "organization";
+      case "Transfer":
+      case "Move":
+      case "Acquisition":
+        return "event";
+      case "ConditionAssestment":
+        return "assestment";
       default:
         return className.toLowerCase();
     }

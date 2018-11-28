@@ -1,4 +1,4 @@
-package org.silknow.converter.commons;
+package org.silknow.converter.converters;
 
 import org.apache.jena.rdf.model.Model;
 import org.slf4j.Logger;
@@ -15,5 +15,9 @@ public abstract class Converter {
 
   protected boolean isJson(File file) {
     return file.getName().endsWith(".json");
+  }
+
+  protected boolean isExcel(File file) {
+    return file.getName().endsWith(".xls");
   }
 }

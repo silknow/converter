@@ -6,8 +6,9 @@ import org.apache.jena.vocabulary.DC;
 import org.apache.jena.vocabulary.RDFS;
 import org.apache.jena.vocabulary.XSD;
 import org.jetbrains.annotations.NotNull;
-import org.silknow.converter.commons.Converter;
-import org.silknow.converter.imatex.ImatexConverter;
+import org.silknow.converter.converters.Converter;
+import org.silknow.converter.converters.GarinConverter;
+import org.silknow.converter.converters.ImatexConverter;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.Time;
 import org.slf4j.Logger;
@@ -27,16 +28,17 @@ public class Main implements Runnable {
 
   private Logger logger;
 
-  enum Type {imatex}
+  enum Type {imatex, garin}
 
   //  @Parameters(index = "0", paramLabel = "TYPE", description = "Type of source data: ${COMPLETION-CANDIDATES}")
   // private Type type;
-  private final Type type = Type.imatex;
+  private final Type type = Type.garin;
 
 
   //  @Parameters(index = "1", paramLabel = "FOLDER", description = "Source folder to process")
 //  private File folder;
-  private final File folder = new File("../crawler/data/imatex/records/3345_en.json");
+//  private final File folder = new File("../crawler/data/imatex/records/3345_en.json");
+  private final File folder = new File("/Users/pasquale/Desktop/garin/T000053.xls");
 
   @Option(names = {"--log"}, description = "The log level. Default: ${DEFAULT-VALUE}", completionCandidates =
           LogLevels.class, defaultValue = "DEBUG")
@@ -72,6 +74,9 @@ public class Main implements Runnable {
     switch (type) {
       case imatex:
         converter = new ImatexConverter();
+        break;
+      case garin:
+        converter = new GarinConverter();
     }
 
     if (folder.isDirectory()) convertFolder(folder, converter);
@@ -80,6 +85,7 @@ public class Main implements Runnable {
 
   private void convertFile(File file, @NotNull Converter converter) {
     Model m = converter.convert(file);
+    if (m == null) return;
     String outName = changeExtension(file.getName(), ".ttl");
 
     try {

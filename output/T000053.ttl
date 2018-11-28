@@ -1,0 +1,112 @@
+@prefix ecrm:  <http://erlangen-crm.org/current/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time:  <http://www.w3.org/2006/time#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+
+<http://data.silknow.org/production/68521eac-372b-3f25-accb-c78f39d6be56/activity/1>
+        a                        ecrm:E7_Activity ;
+        ecrm:P14_carried_out_by  "Fabrica Garín" ;
+        ecrm:P2_has_type         "author" .
+
+<http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad>
+        a                         ecrm:E22_Man-Made_Object ;
+        rdfs:comment              "Urdimbre:        Trama:  28 pasadas          Rapport: 31 cm.         Telar: de lanzadera"@es , "Damasco de fondo raso en algodón azul, con dibujo Abundancia formado por una trama de rayón color crema."@es ;
+        ecrm:P1_is_identified_by  <http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad/id/T 000053> ;
+        ecrm:P3_has_note          "Urdimbre:        Trama:  28 pasadas          Rapport: 31 cm.         Telar: de lanzadera"@es , "Damasco de fondo raso en algodón azul, con dibujo Abundancia formado por una trama de rayón color crema."@es ;
+        ecrm:P43_has_dimension    <http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad/dimension> ;
+        ecrm:P59_has_section      <http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad/section/Reverso> ;
+        dc:identifier             "T 000053" .
+
+<http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad/section/Reverso>
+        a                          ecrm:E53_Place ;
+        rdfs:label                 "Reverso" ;
+        ecrm:P87_is_identified_by  "Reverso" .
+
+<http://data.silknow.org/assestment/0392a46f-9f67-3e78-9de3-1289d471e5ab/condition/21>
+        a                 ecrm:E3_Condition_State ;
+        rdfs:comment      "No"@es ;
+        ecrm:P2_has_type  "missing parts" ;
+        ecrm:P3_has_note  "No"@es .
+
+<http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad/dimension>
+        a                   ecrm:E54_Dimension ;
+        ecrm:P90_has_value  "62.5 x 62" ;
+        ecrm:P91_has_unit   "cm" .
+
+<http://data.silknow.org/production/68521eac-372b-3f25-accb-c78f39d6be56>
+        a                       ecrm:E12_Production ;
+        ecrm:P108_has_produced  <http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad> ;
+        ecrm:P126_employed      "Algodón" , "rayón" ;
+        ecrm:P4_has_time-span   <http://data.silknow.org/production/68521eac-372b-3f25-accb-c78f39d6be56/time/1> ;
+        ecrm:P9_consists_of     <http://data.silknow.org/production/68521eac-372b-3f25-accb-c78f39d6be56/activity/1> .
+
+<http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad/id_assignment/T 000053>
+        a                        ecrm:E15_Identifier_Assignment ;
+        ecrm:P14_carried_out_by  <http://data.silknow.org/organization/2614d709-11ee-3107-af15-9db1d8c98d9a> ;
+        ecrm:P37_assigned        <http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad/id/T 000053> .
+
+<http://data.silknow.org/assestment/0392a46f-9f67-3e78-9de3-1289d471e5ab/condition/11>
+        a                 ecrm:E3_Condition_State ;
+        rdfs:comment      "Perforaciones en el margén superior"@es ;
+        ecrm:P2_has_type  "deterioration" ;
+        ecrm:P3_has_note  "Perforaciones en el margén superior"@es .
+
+<http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad/dimension/measurement>
+        a                            ecrm:E16_Measurement ;
+        ecrm:P39_measured            <http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad> ;
+        ecrm:P40_observed_dimension  <http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad/dimension> .
+
+<http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad/section/Reverso/info>
+        a                   ecrm:E73_Information_Object ;
+        ecrm:P129_is_about  <http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad/section/Reverso> ;
+        ecrm:P3_has_note    "Etiqueta adhesiva \"MG. Valencia. 11\""@es .
+
+<http://data.silknow.org/assestment/0392a46f-9f67-3e78-9de3-1289d471e5ab/condition/01>
+        a                 ecrm:E3_Condition_State ;
+        rdfs:comment      "Buena"@es ;
+        ecrm:P2_has_type  "condition" ;
+        ecrm:P3_has_note  "Buena"@es .
+
+<http://data.silknow.org/place/dd761956-4657-3b62-ac92-0af4071be40b>
+        a                         ecrm:E53_Place ;
+        rdfs:label                "Depósito del chalet de La fábrica Garín" ;
+        ecrm:P1_is_identified_by  "Depósito del chalet de La fábrica Garín" .
+
+<http://data.silknow.org/place/a3b4e2a0-3706-300c-9d43-d79002eb1d2f>
+        a                         ecrm:E53_Place ;
+        rdfs:label                "Almacén tejidos" ;
+        ecrm:P1_is_identified_by  "Almacén tejidos" .
+
+<http://data.silknow.org/event/fd278628-faa0-340c-8512-91ffc05ba6f1>
+        a                    ecrm:E9_Move ;
+        ecrm:P25_moved       <http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad> ;
+        ecrm:P26_moved_to    <http://data.silknow.org/place/a3b4e2a0-3706-300c-9d43-d79002eb1d2f> ;
+        ecrm:P27_moved_from  <http://data.silknow.org/place/dd761956-4657-3b62-ac92-0af4071be40b> .
+
+<http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad/type_assignment/1>
+        a                        ecrm:E17_Type_Assignment ;
+        ecrm:P14_carried_out_by  <http://data.silknow.org/organization/2614d709-11ee-3107-af15-9db1d8c98d9a> ;
+        ecrm:P2_has_type         "domain" ;
+        ecrm:P41_classified      <http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad> ;
+        ecrm:P42_assigned        "Tejido" .
+
+<http://data.silknow.org/organization/2614d709-11ee-3107-af15-9db1d8c98d9a>
+        a                         ecrm:E40_Legal_Body ;
+        rdfs:label                "Ajuntament de Moncada." ;
+        ecrm:P1_is_identified_by  "Ajuntament de Moncada." .
+
+<http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad/id/T 000053>
+        a                 ecrm:E42_Identifier ;
+        rdfs:label        "T 000053" ;
+        ecrm:P2_has_type  "Register number" .
+
+<http://data.silknow.org/document/988d61fd-94bb-3c45-9213-1a980827ab3b>
+        a                   ecrm:E31_Document ;
+        ecrm:P70_documents  <http://data.silknow.org/object/5e1e4ec7-b1ae-3fcb-90e4-e35c45b9d0ad/id_assignment/T 000053> , <http://data.silknow.org/assestment/0392a46f-9f67-3e78-9de3-1289d471e5ab/condition/01> , <http://data.silknow.org/assestment/0392a46f-9f67-3e78-9de3-1289d471e5ab/condition/11> , <http://data.silknow.org/assestment/0392a46f-9f67-3e78-9de3-1289d471e5ab/condition/21> ;
+        dc:identifier       "T 000053" .
+
+<http://data.silknow.org/production/68521eac-372b-3f25-accb-c78f39d6be56/time/1>
+        a                          ecrm:E52_Time-Span ;
+        rdfs:label                 "1ª mitad siglo XX." ;
+        ecrm:P78_is_identified_by  "1ª mitad siglo XX." .

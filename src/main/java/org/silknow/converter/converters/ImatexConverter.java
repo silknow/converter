@@ -1,7 +1,6 @@
-package org.silknow.converter.imatex;
+package org.silknow.converter.converters;
 
 import org.apache.jena.rdf.model.Model;
-import org.silknow.converter.commons.Converter;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 
@@ -21,6 +20,8 @@ public class ImatexConverter extends Converter {
   @Override
   public Model convert(File file) {
     logger.debug("%%% FILE " + file.getName());
+    if (!this.canConvert(file))
+      throw new RuntimeException("Imatex converter require files in JSON format.");
 
     // Parse JSON
     logger.trace("parsing json");
@@ -62,15 +63,16 @@ public class ImatexConverter extends Converter {
 
     String cdt = s.getValue("ESTAT DE CONSERVACIÓ*");
     if (cdt != null) {
-      Condition condition = new Condition(id, IMATEX, cdt);
-      condition.assestedBy(museum);
-      condition.concerns(obj);
-      doc.document(condition);
+      ConditionAssestment conditionAssestment = new ConditionAssestment(id, IMATEX);
+      conditionAssestment.assestedBy(museum);
+      conditionAssestment.concerns(obj);
+      conditionAssestment.addCondition("condition", cdt, "ca");
+      conditionAssestment.getConditions().forEach(doc::document);
     }
 
     String rest = s.getValue("RESTAURACIÓ*");
     if (rest != null) {
-      Modification modification = new Modification(id, IMATEX, "restauració", rest);
+      Modification modification = new Modification(id, IMATEX, "restoration", rest);
       modification.of(obj);
       doc.getModel().add(modification.getModel());
     }
