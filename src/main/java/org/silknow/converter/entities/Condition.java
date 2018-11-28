@@ -12,10 +12,10 @@ public class Condition extends Entity {
     this.assestment = new ConditionAssestment(this.getUri() + "/assestment");
     this.assestment.add(this);
 
-    this.addNote(description);
+    this.addNote(description, "ca");
   }
 
-  public void assestedBy(String actor) {
+  public void assestedBy(LegalBody actor) {
     this.assestment.addProperty(CIDOC.P14_carried_out_by, actor);
     this.model.add(this.assestment.model);
   }

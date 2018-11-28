@@ -13,18 +13,21 @@ import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.ontologies.CIDOC;
 
 public abstract class Entity {
-  private String className;
+  protected String className;
   private String source;
 
   Model model;
   private String uri;
   private Resource resource;
   private String id;
+  private int activityCount;
 
   Entity() {
     // do nothing, enables customisation for child class
     this.model = ModelFactory.createDefaultModel();
     this.className = this.getClass().getSimpleName();
+
+    this.activityCount = 0;
   }
 
   Entity(String id, String source) {
@@ -79,10 +82,16 @@ public abstract class Entity {
   }
 
 
-  protected void addNote(String text) {
-    if (text == null || text.isBlank()) return;
-    text = text.trim();
-    this.addProperty(RDFS.comment, text).addProperty(CIDOC.P3_has_note, text);
+  public void addNote(String text) {
+    this.addNote(text, null);
+  }
+
+  public void addNote(String text, String lang) {
+    this.addProperty(RDFS.comment, text, lang).addProperty(CIDOC.P3_has_note, text, lang);
+  }
+
+  protected void addType(String type) {
+    this.addProperty(CIDOC.P2_has_type, type);
   }
 
   protected void setClass(OntClass _class) {
@@ -128,27 +137,22 @@ public abstract class Entity {
     this.addProperty(CIDOC.P4_has_time_span, timeSpan);
   }
 
-//  public void addActivity(Artist agent, String function) {
-//    if (agent == null) return;
-//
-//    String cacheId = agent.getFullName() + function;
-//    if (activitiesCache.contains(cacheId)) return;
-//
-//    Resource activity = model.createResource(this.uri + "/activity/" + ++activityCount)
-//            .addProperty(RDF.type, CIDOC.E7_Activity)
-//            .addProperty(MUS.U31_had_function, function)
-//            .addProperty(CIDOC.P14_carried_out_by, agent.asResource());
-//
-//    this.addProperty(CIDOC.P9_consists_of, activity);
-//    this.model.add(agent.getModel());
-//    activitiesCache.add(cacheId);
-//  }
+  public void addActivity(String agent, String function) {
+    if (agent == null) return;
+
+    Resource activity = model.createResource(this.uri + "/activity/" + ++activityCount)
+            .addProperty(RDF.type, CIDOC.E7_Activity)
+            .addProperty(CIDOC.P2_has_type, function)
+            .addProperty(CIDOC.P14_carried_out_by, agent);
+
+    this.addProperty(CIDOC.P9_consists_of, activity);
+  }
 
   protected void addSimpleIdentifier(String id) {
     this.addProperty(DC.identifier, id);
   }
 
-  public void addComplexIdentifier(String id, String type, String issuer, Document doc) {
+  public void addComplexIdentifier(String id, String type, LegalBody issuer, Document doc) {
     if (id == null) return;
 
     Resource identifier = model.createResource(this.uri + "/id/" + id)
@@ -159,10 +163,11 @@ public abstract class Entity {
     Resource assignment = model.createResource(this.uri + "/id_assignment/" + id)
             .addProperty(RDF.type, CIDOC.E15_Identifier_Assignment)
             .addProperty(CIDOC.P37_assigned, identifier)
-            .addProperty(CIDOC.P14_carried_out_by, issuer);
+            .addProperty(CIDOC.P14_carried_out_by, issuer.asResource());
 
     doc.addProperty(CIDOC.P70_documents, assignment);
     this.addProperty(CIDOC.P1_is_identified_by, identifier);
+    this.model.add(issuer.getModel());
   }
 
 }

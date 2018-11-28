@@ -22,7 +22,7 @@ public class Production extends Entity {
 
     TimeSpan ts = new TimeSpan();
     ts.addAppellation(timeAppellation);
-    if (timeUnconfirmed) ts.addNote("unconfirmed");
+    if (timeUnconfirmed) ts.addNote("unconfirmed", "en");
 
     ts.setUri(this.getUri() + "/time/" + ++tsCount);
     this.addTimeSpan(ts);
@@ -43,5 +43,9 @@ public class Production extends Entity {
       return;
 
     this.addProperty(CIDOC.P8_took_place_on_or_within, place);
+  }
+
+  public void addTechnique(String technique) {
+    this.addProperty(CIDOC.P32_used_general_technique, technique);
   }
 }

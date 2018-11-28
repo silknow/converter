@@ -23,7 +23,7 @@ public class CrawledJSONField {
 
   @NotNull
   String getValue() {
-    return value.trim();
+    return value.replaceFirst("-$", "").trim();
   }
 
   Stream<String> getMultiValue() {

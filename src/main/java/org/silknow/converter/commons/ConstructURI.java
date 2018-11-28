@@ -1,5 +1,6 @@
 package org.silknow.converter.commons;
 
+import net.sf.junidecode.Junidecode;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -15,6 +16,12 @@ public class ConstructURI {
   @NotNull
   public static String build(String db, String className, String identifier) {
     String seed = db + identifier + className;
+    return BASE + getCollectionName(className) + "/" + generateUUID(seed);
+  }
+
+  @NotNull
+  public static String build(String className, String name) {
+    String seed = norm(name) + className;
     return BASE + getCollectionName(className) + "/" + generateUUID(seed);
   }
 
@@ -42,9 +49,19 @@ public class ConstructURI {
         return "document";
       case "Image":
         return "image";
+      case "LegalBody":
+        return "organization";
       default:
         return className.toLowerCase();
     }
+  }
+
+  private static String norm(String input) {
+    // remove punctuation
+    String seed = input.replaceAll("[.,\\/#!$%\\^&\\*;:{}=\\-_`~()]", " ");
+    // ascii transliteration
+    seed = Junidecode.unidecode(seed);
+    return seed;
   }
 
 

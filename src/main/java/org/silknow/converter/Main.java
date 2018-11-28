@@ -4,10 +4,12 @@ package org.silknow.converter;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.vocabulary.DC;
 import org.apache.jena.vocabulary.RDFS;
+import org.apache.jena.vocabulary.XSD;
 import org.jetbrains.annotations.NotNull;
 import org.silknow.converter.commons.Converter;
 import org.silknow.converter.imatex.ImatexConverter;
 import org.silknow.converter.ontologies.CIDOC;
+import org.silknow.converter.ontologies.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import picocli.CommandLine;
@@ -34,7 +36,7 @@ public class Main implements Runnable {
 
   //  @Parameters(index = "1", paramLabel = "FOLDER", description = "Source folder to process")
 //  private File folder;
-  private final File folder = new File("../crawler/data/imatex/records/3008_en.json");
+  private final File folder = new File("../crawler/data/imatex/records/3345_en.json");
 
   @Option(names = {"--log"}, description = "The log level. Default: ${DEFAULT-VALUE}", completionCandidates =
           LogLevels.class, defaultValue = "DEBUG")
@@ -100,13 +102,13 @@ public class Main implements Runnable {
     m.setNsPrefix("ecrm", CIDOC.getURI());
     m.setNsPrefix("dc", DC.getURI());
     m.setNsPrefix("rdfs", RDFS.getURI());
-//    m.setNsPrefix("xsd", XSD.getURI());
+    m.setNsPrefix("xsd", XSD.getURI());
+    m.setNsPrefix("time", Time.getURI());
+//    m.setNsPrefix("schema", Schema.getURI());
 //    m.setNsPrefix("dcterms", DCTerms.getURI());
 //    m.setNsPrefix("owl", OWL.getURI());
 //    m.setNsPrefix("foaf", FOAF.getURI());
 //    m.setNsPrefix("prov", PROV.getURI());
-//    m.setNsPrefix("time", Time.getURI());
-//    m.setNsPrefix("schema", Schema.getURI());
 
 
     File out = Paths.get(outputFolder.getAbsolutePath(), filename).toFile();
