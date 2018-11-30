@@ -9,17 +9,18 @@ import org.apache.jena.vocabulary.DC;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
 import org.jetbrains.annotations.Contract;
+import org.silknow.converter.Main;
 import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.ontologies.CIDOC;
 
 public abstract class Entity {
-  protected String className;
-  private String source;
+  String className;
+  protected String source;
 
   Model model;
   private String uri;
-  private Resource resource;
-  private String id;
+  protected Resource resource;
+  protected String id;
   private int activityCount;
 
   Entity() {
@@ -30,10 +31,10 @@ public abstract class Entity {
     this.activityCount = 0;
   }
 
-  Entity(String id, String source) {
+  Entity(String id) {
     this();
     this.id = id;
-    this.source = source;
+    this.source = Main.source;
 
     /* create RDF resource */
     createResource();
@@ -44,13 +45,13 @@ public abstract class Entity {
   }
 
   @Contract(pure = true)
-  boolean hasUri() {
-    return this.uri != null;
+  boolean hasNullUri() {
+    return this.uri == null;
 
   }
 
-  protected String getUri() {
-    if (!hasUri()) this.uri = ConstructURI.build(this.source, this.className, this.id);
+  public String getUri() {
+    if (hasNullUri()) this.uri = ConstructURI.build(this.source, this.className, this.id);
     return this.uri;
   }
 
@@ -95,7 +96,7 @@ public abstract class Entity {
   }
 
   protected void setClass(OntClass _class) {
-    this.resource.addProperty(RDF.type, _class);
+    this.resource.removeAll(RDF.type).addProperty(RDF.type, _class);
   }
 
   public Entity addProperty(Property property, Entity entity) {
@@ -133,19 +134,26 @@ public abstract class Entity {
 
   public void addTimeSpan(TimeSpan timeSpan) {
     if (timeSpan == null) return;
-    if (!timeSpan.hasUri()) timeSpan.setUri(this.uri + "/time");
+    if (timeSpan.hasNullUri()) timeSpan.setUri(this.uri + "/time");
     this.addProperty(CIDOC.P4_has_time_span, timeSpan);
   }
 
-  public void addActivity(String agent, String function) {
-    if (agent == null) return;
+  public void addActivity(String actor, String function) {
+    if (actor == null) return;
+    this.addActivity(new Actor(actor), function);
+  }
+
+  public void addActivity(Actor actor, String function) {
+    if (actor == null) return;
 
     Resource activity = model.createResource(this.uri + "/activity/" + ++activityCount)
             .addProperty(RDF.type, CIDOC.E7_Activity)
-            .addProperty(CIDOC.P2_has_type, function)
-            .addProperty(CIDOC.P14_carried_out_by, agent);
+            .addProperty(CIDOC.P14_carried_out_by, actor.asResource());
+
+    if (function != null) activity.addProperty(CIDOC.P2_has_type, function);
 
     this.addProperty(CIDOC.P9_consists_of, activity);
+    this.model.add(actor.model);
   }
 
   protected void addSimpleIdentifier(String id) {
@@ -153,9 +161,13 @@ public abstract class Entity {
   }
 
   public void addComplexIdentifier(String id, String type, LegalBody issuer, Document doc) {
+    this.addComplexIdentifier(id, type, issuer, doc, null);
+  }
+
+  public void addComplexIdentifier(String id, String type, LegalBody issuer, Document doc, String replaceId) {
     if (id == null) return;
 
-    Resource identifier = model.createResource(this.uri + "/id/" + id)
+    Resource identifier = model.createResource(this.uri + "/id/" + id.replaceAll(" ", "_"))
             .addProperty(RDF.type, CIDOC.E42_Identifier)
             .addProperty(RDFS.label, id)
             .addProperty(CIDOC.P2_has_type, type);
@@ -165,9 +177,18 @@ public abstract class Entity {
             .addProperty(CIDOC.P37_assigned, identifier)
             .addProperty(CIDOC.P14_carried_out_by, issuer.asResource());
 
+    if (replaceId != null) {
+      Resource rIdentifier = model.createResource(this.uri + "/id/" + replaceId.replaceAll(" ", "_"))
+              .addProperty(RDF.type, CIDOC.E42_Identifier)
+              .addProperty(RDFS.label, replaceId)
+              .addProperty(CIDOC.P2_has_type, "old register number");
+      assignment.addProperty(CIDOC.P38_deassigned, rIdentifier);
+    }
+
     doc.addProperty(CIDOC.P70_documents, assignment);
     this.addProperty(CIDOC.P1_is_identified_by, identifier);
     this.model.add(issuer.getModel());
   }
+
 
 }

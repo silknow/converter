@@ -5,20 +5,23 @@ import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
 import org.silknow.converter.ontologies.CIDOC;
 
-public class ManMade_Object extends Entity {
-  private int typeAssignmentCount;
-  private Dimension dimension;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-  public ManMade_Object(String id, String source) {
-    super(id, source);
+public class ManMade_Object extends Entity {
+  private static final String DIMENSION_REGEX = "(\\d+(?:[,.]\\d)?) x (\\d+(?:[,.]\\d)?)";
+  private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX);
+
+  private int typeAssignmentCount;
+  private int imgCount;
+
+  public ManMade_Object(String id) {
+    super(id);
     this.setClass(CIDOC.E22_Man_Made_Object);
 
     this.addSimpleIdentifier(id);
     typeAssignmentCount = 0;
-  }
-
-  public Dimension getDimension() {
-    return dimension;
+    imgCount = 0;
   }
 
   public void addSubject(String subject) {
@@ -51,26 +54,50 @@ public class ManMade_Object extends Entity {
   }
 
   public ManMade_Object add(Image img) {
-    img.addProperty(CIDOC.P138_represents, this);
-    model.add(img.model);
+    if (img.hasNullUri()) img.setUri(this.getUri() + "/image/" + ++imgCount);
+    this.addProperty(CIDOC.P138i_has_representation, img);
+    return this;
+  }
+
+  public ManMade_Object add(Inscription ins) {
+    this.addProperty(CIDOC.P128_carries, ins);
+    return this;
+  }
+
+  public ManMade_Object add(Right right) {
+    this.addProperty(CIDOC.P104_is_subject_to, right);
     return this;
   }
 
   public void associate(String npa) {
     //    E22_Man Made Object P69 is associated with E39_Actor P1 is identified by E83_Actor Appellation
-    this.addProperty(CIDOC.P69_has_association_with, npa);
+    this.addProperty(CIDOC.P69_has_association_with, new Actor(npa));
   }
 
-  public void addMeasure(String value) {
-    String dimUri = this.getUri() + "/dimension";
-    this.dimension = new Dimension(dimUri, value, "cm");
+  public void addMeasure(String value) throws RuntimeException {
+    Matcher m = DIMENSION_PATTERN.matcher(value);
+    if (!m.find()) throw new RuntimeException("Dimension not parsed: " + value);
+    addMeasure(m.group(1), m.group(2));
+  }
 
-    this.addProperty(CIDOC.P43_has_dimension, dimension);
+  public void addMeasure(String width, String height) {
+    String dimUri = this.getUri() + "/dimension/";
 
-    model.createResource(dimUri + "/measurement")
+    width = width.replace(",", ".");
+    height = height.replace(",", ".");
+
+    Dimension w = new Dimension(dimUri + "w", width, "cm", "width");
+    this.addProperty(CIDOC.P43_has_dimension, w);
+    Dimension h = new Dimension(dimUri + "h", height, "cm", "height");
+    this.addProperty(CIDOC.P43_has_dimension, h);
+
+    model.createResource(dimUri + "measurement")
             .addProperty(RDF.type, CIDOC.E16_Measurement)
             .addProperty(CIDOC.P39_measured, this.asResource())
-            .addProperty(CIDOC.P40_observed_dimension, dimension.asResource());
+            .addProperty(CIDOC.P40_observed_dimension, w.asResource())
+            .addProperty(CIDOC.P40_observed_dimension, h.asResource());
+
+    this.model.add(w.model).add(h.model);
   }
 
   public void addTitle(String title) {
@@ -91,6 +118,7 @@ public class ManMade_Object extends Entity {
             .addProperty(CIDOC.P129_is_about, sec)
             .addProperty(CIDOC.P3_has_note, text, lang);
   }
+
 }
 
 

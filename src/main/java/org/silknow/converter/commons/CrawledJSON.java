@@ -15,28 +15,41 @@ import java.util.stream.Stream;
 public class CrawledJSON {
   private List<CrawledJSONField> fields;
   private List<CrawledJSONImages> images;
+  private String multiSeparator;
 
   public static CrawledJSON from(File file) throws FileNotFoundException {
     return new Gson().fromJson(new FileReader(file), CrawledJSON.class);
   }
 
-  public CrawledJSONField getField(String label) {
+  private CrawledJSONField getField(String label) {
     return fields.stream()
             .filter(f -> f.hasLabel(label))
             .filter(CrawledJSONField::isNotNull)
             .findFirst().orElse(null);
   }
 
-  public String getValue(String label) {
+  public String get(String label) {
     CrawledJSONField f = getField(label);
     if (f == null) return null;
     return f.getValue();
   }
 
-  public Stream<String> getMultiValue(String label) {
-    CrawledJSONField f = getField(label);
-    if (f == null) return Stream.empty();
-    return f.getMultiValue();
+  public Stream<String> getMulti(String label) {
+    return getMulti(label, this.multiSeparator);
   }
 
+  public Stream<String> getMulti(String label, String separator) {
+    CrawledJSONField f = getField(label);
+    if (f == null) return Stream.empty();
+    return f.getMultiValue(separator);
+  }
+
+
+  public void setMultiSeparator(String separator) {
+    this.multiSeparator = separator;
+  }
+
+  public Stream<CrawledJSONImages> getImages() {
+    return this.images.stream();
+  }
 }

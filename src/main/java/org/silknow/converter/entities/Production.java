@@ -6,8 +6,8 @@ public class Production extends Entity {
   private int tsCount;
   private boolean timeUnconfirmed;
 
-  public Production(String id, String source) {
-    super(id, source);
+  public Production(String id) {
+    super(id);
     this.setClass(CIDOC.E12_Production);
 
     tsCount = 0;
@@ -42,6 +42,10 @@ public class Production extends Entity {
       // TODO something?
       return;
 
+    this.addPlace(new Place(place));
+  }
+
+  public void addPlace(Place place) {
     this.addProperty(CIDOC.P8_took_place_on_or_within, place);
   }
 

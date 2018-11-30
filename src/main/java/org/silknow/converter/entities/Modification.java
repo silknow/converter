@@ -3,8 +3,8 @@ package org.silknow.converter.entities;
 import org.silknow.converter.ontologies.CIDOC;
 
 public class Modification extends Entity {
-  public Modification(String id, String source, String type, String description) {
-    super(id, source);
+  public Modification(String id, String type, String description) {
+    super(id);
     this.setClass(CIDOC.E11_Modification);
     this.addType(type);
     this.addNote(description);

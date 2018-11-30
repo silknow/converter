@@ -3,9 +3,8 @@ package org.silknow.converter.entities;
 import org.silknow.converter.ontologies.CIDOC;
 
 public class Move extends Entity {
-  public Move(String id, String source) {
-    super(id, source);
-
+  public Move(String id) {
+    super(id);
     this.setClass(CIDOC.E9_Move);
   }
 

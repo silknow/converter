@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class GarinConverter extends Converter {
-  private static final String GARIN = "imatex";
 
   @Override
   public boolean canConvert(File file) {
@@ -38,9 +37,9 @@ public class GarinConverter extends Converter {
     String ownerName = s.get("Propiedad");
     LegalBody owner = new LegalBody(ownerName);
 
-    Document doc = new Document(id, GARIN);
+    Document doc = new Document(id);
 
-    ManMade_Object obj = new ManMade_Object(id, GARIN);
+    ManMade_Object obj = new ManMade_Object(id);
     obj.addComplexIdentifier(id, "Register number", owner, doc);
     obj.addTitle(s.get("Denominacion principal"));
     obj.addClassification(s.get("Objecto"), "domain", owner);
@@ -49,7 +48,7 @@ public class GarinConverter extends Converter {
     obj.addNote(s.get("Descripción"), "es");
     obj.addNote(s.get("Descripción técnica"), "es");
 
-    ConditionAssestment conditionAssestment = new ConditionAssestment(id, GARIN);
+    ConditionAssestment conditionAssestment = new ConditionAssestment(id);
     conditionAssestment.assestedBy(owner);
     conditionAssestment.concerns(obj);
 
@@ -61,22 +60,22 @@ public class GarinConverter extends Converter {
 
     String rest = s.get("Restauraciones localizadas");
     if (rest != null && !rest.equalsIgnoreCase("no")) {
-      Modification modification = new Modification(id, GARIN, "restoration", rest);
+      Modification modification = new Modification(id, "restoration", rest);
       modification.of(obj);
       doc.getModel().add(modification.getModel());
     }
 
 
-    Move move = new Move(id, GARIN);
+    Move move = new Move(id);
     move.of(obj).from(s.get("Localización")).to(s.get("Ubicación"));
 
-    Production prod = new Production(id, GARIN);
+    Production prod = new Production(id);
     prod.add(obj);
     prod.addTechnique(s.get("Tecnica"));
     prod.addActivity(s.get("Autor de la obra"), "author");
     prod.addTimeAppellation(s.get("Época"));
     s.getMulti("Material").forEach(prod::addMaterial);
-    s.getMulti("Accessorios").map(x -> new ManMade_Object(x, GARIN)).forEach(prod::addTool);
+    s.getMulti("Accessorios").map(ManMade_Object::new).forEach(prod::addTool);
 
 
     for (String key : Arrays.asList("Anverso", "Reverso")) {

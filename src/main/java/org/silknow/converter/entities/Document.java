@@ -5,8 +5,8 @@ import org.silknow.converter.ontologies.CIDOC;
 
 public class Document extends Entity {
 
-  public Document(String id, String imatex) {
-    super(id, imatex);
+  public Document(String id) {
+    super(id);
 
     this.setClass(CIDOC.E31_Document);
     this.addSimpleIdentifier(id);
@@ -20,5 +20,9 @@ public class Document extends Entity {
   public Document document(Entity entity) {
     this.addProperty(CIDOC.P70_documents, entity);
     return this;
+  }
+
+  public void addEditor(Actor actor) {
+    this.addProperty(CIDOC.P105_right_held_by, actor);
   }
 }

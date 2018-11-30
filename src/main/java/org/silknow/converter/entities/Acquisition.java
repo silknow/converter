@@ -6,8 +6,8 @@ import java.text.ParseException;
 import java.util.Date;
 
 public class Acquisition extends Entity {
-  public Acquisition(String id, String source) {
-    super(id, source);
+  public Acquisition(String id) {
+    super(id);
     this.setClass(CIDOC.E8_Acquisition);
   }
 

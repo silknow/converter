@@ -9,7 +9,9 @@ import org.jetbrains.annotations.NotNull;
 import org.silknow.converter.converters.Converter;
 import org.silknow.converter.converters.GarinConverter;
 import org.silknow.converter.converters.ImatexConverter;
+import org.silknow.converter.converters.JocondeConverter;
 import org.silknow.converter.ontologies.CIDOC;
+import org.silknow.converter.ontologies.Schema;
 import org.silknow.converter.ontologies.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,23 +27,23 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Main implements Runnable {
+  public static String source;
 
-  private Logger logger;
-
-  enum Type {imatex, garin}
+  enum Type {imatex, garin, joconde}
 
   //  @Parameters(index = "0", paramLabel = "TYPE", description = "Type of source data: ${COMPLETION-CANDIDATES}")
   // private Type type;
-  private final Type type = Type.garin;
+  private final static Type type = Type.joconde;
 
 
   //  @Parameters(index = "1", paramLabel = "FOLDER", description = "Source folder to process")
 //  private File folder;
 //  private final File folder = new File("../crawler/data/imatex/records/3345_en.json");
-  private final File folder = new File("/Users/pasquale/Desktop/garin/T000053.xls");
+//  private final File folder = new File("/Users/pasquale/Desktop/garin/T000053.xls");
+  private final File folder = new File("../crawler/data/joconde/records/");
 
   @Option(names = {"--log"}, description = "The log level. Default: ${DEFAULT-VALUE}", completionCandidates =
-          LogLevels.class, defaultValue = "DEBUG")
+          LogLevels.class, defaultValue = "WARN")
   private String logLevel;
 
   @Option(names = {"-o", "--output"}, description = "Output folder. Default: an `out` folder siblings to the input directory")
@@ -54,7 +56,7 @@ public class Main implements Runnable {
   @Override
   public void run() {
     System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, this.logLevel);
-    this.logger = LoggerFactory.getLogger(getClass());
+    Logger logger = LoggerFactory.getLogger(getClass());
 
     if (!folder.exists())
       throw new IllegalArgumentException("The FOLDER specified in parameters does not exists.");
@@ -75,9 +77,14 @@ public class Main implements Runnable {
       case imatex:
         converter = new ImatexConverter();
         break;
+      case joconde:
+        converter = new JocondeConverter();
+        break;
       case garin:
         converter = new GarinConverter();
     }
+
+    source = type.toString();
 
     if (folder.isDirectory()) convertFolder(folder, converter);
     else if (folder.isFile()) convertFile(folder, converter);
@@ -110,7 +117,7 @@ public class Main implements Runnable {
     m.setNsPrefix("rdfs", RDFS.getURI());
     m.setNsPrefix("xsd", XSD.getURI());
     m.setNsPrefix("time", Time.getURI());
-//    m.setNsPrefix("schema", Schema.getURI());
+    m.setNsPrefix("schema", Schema.getURI());
 //    m.setNsPrefix("dcterms", DCTerms.getURI());
 //    m.setNsPrefix("owl", OWL.getURI());
 //    m.setNsPrefix("foaf", FOAF.getURI());

@@ -8,8 +8,8 @@ import java.util.List;
 public class ConditionAssestment extends Entity {
   List<Condition> conditions;
 
-  public ConditionAssestment(String id, String source) {
-    super(id, source);
+  public ConditionAssestment(String id) {
+    super(id);
     this.setClass(CIDOC.E14_Condition_Assessment);
     conditions = new ArrayList<>();
   }

@@ -44,6 +44,7 @@ public class ConstructURI {
   private static String getCollectionName(@NotNull String className) {
     switch (className) {
       case "ManMade_Object":
+      case "PropositionalObject":
         return "object";
       case "Document":
         return "document";

@@ -26,8 +26,8 @@ public class CrawledJSONField {
     return value.replaceFirst("-$", "").trim();
   }
 
-  Stream<String> getMultiValue() {
-    return Arrays.stream(value.split(" -"))
+  Stream<String> getMultiValue(String multiSeparator) {
+    return Arrays.stream(value.split(multiSeparator))
             .map(String::trim)
             .map(x -> x.replaceFirst("^/ +", ""))
             .filter(x -> !x.isBlank());

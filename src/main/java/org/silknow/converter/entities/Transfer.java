@@ -3,8 +3,8 @@ package org.silknow.converter.entities;
 import org.silknow.converter.ontologies.CIDOC;
 
 public class Transfer extends Entity {
-  public Transfer(String id, String source) {
-    super(id, source);
+  public Transfer(String id) {
+    super(id);
     this.setClass(CIDOC.E10_Transfer_of_Custody);
   }
 
