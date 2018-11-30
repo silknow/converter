@@ -1,0 +1,171 @@
+@prefix schema: <http://schema.org/> .
+@prefix ecrm:  <http://erlangen-crm.org/current/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time:  <http://www.w3.org/2006/time#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+
+<http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/id_assignment/Tg 364>
+        a                        ecrm:E15_Identifier_Assignment ;
+        ecrm:P14_carried_out_by  <http://data.silknow.org/organization/b8f833c9-5ce1-35c9-ad25-1ec84ff79479> ;
+        ecrm:P37_assigned        <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/id/Tg_364> .
+
+<http://data.silknow.org/organization/b8f833c9-5ce1-35c9-ad25-1ec84ff79479>
+        a                         ecrm:E40_Legal_Body ;
+        rdfs:label                "Joconde" ;
+        ecrm:P1_is_identified_by  "Joconde" .
+
+<http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/type_assignment/2>
+        a                    ecrm:E17_Type_Assignment ;
+        ecrm:P2_has_type     "denomination" ;
+        ecrm:P41_classified  <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754> ;
+        ecrm:P42_assigned    "ruban" .
+
+<http://data.silknow.org/person/78461ede-ea18-3d22-9671-b2ceb187aa40>
+        a                         ecrm:E21_Person ;
+        rdfs:label                "Gidon Marielle" ;
+        ecrm:P1_is_identified_by  "Gidon Marielle" .
+
+<http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754>
+        a                              ecrm:E22_Man-Made_Object ;
+        rdfs:comment                   "Ruban en soie, faille rayée jardinière multicolores" ;
+        rdfs:label                     "rayures" ;
+        ecrm:P102_has_title            "rayures" ;
+        ecrm:P138i_has_representation  <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/image/1> ;
+        ecrm:P1_is_identified_by       <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/id/95.71.364> , <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/id/Tg_364> ;
+        ecrm:P3_has_note               "Ruban en soie, faille rayée jardinière multicolores" ;
+        ecrm:P43_has_dimension         <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/dimension/w> , <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/dimension/h> ;
+        ecrm:P62_depicts               "ornementation (rayure)" ;
+        dc:identifier                  "95.71.364" .
+
+<http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/image/1>
+        a                  ecrm:E38_Image ;
+        schema:contentUrl  <http://www2.culture.gouv.fr/Wave/image/joconde/0595/m102389_0005276_p.jpg> .
+
+<http://data.silknow.org/production/4156c66a-507e-3bce-9bda-6e3520776728/time/2>
+        a                          ecrm:E52_Time-Span ;
+        rdfs:label                 "1er quart 20e siècle" ;
+        ecrm:P78_is_identified_by  "1er quart 20e siècle" .
+
+<http://data.silknow.org/object/1dc360d2-7172-331d-8324-2431a7d77701>
+        a                   ecrm:E89_Propositional_Object ;
+        ecrm:P129_is_about  <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754> ;
+        ecrm:P2_has_type    "museum record" .
+
+<http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/type_assignment/1>
+        a                    ecrm:E17_Type_Assignment ;
+        ecrm:P2_has_type     "domain" ;
+        ecrm:P41_classified  <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754> ;
+        ecrm:P42_assigned    "textile" .
+
+<http://data.silknow.org/production/4156c66a-507e-3bce-9bda-6e3520776728/activity/1>
+        a                        ecrm:E7_Activity ;
+        ecrm:P14_carried_out_by  <http://data.silknow.org/actor/721cd1c3-311d-3131-84b1-f8882ae1f62c> ;
+        ecrm:P2_has_type         "fabricant" .
+
+<http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/dimension/h>
+        a                   ecrm:E54_Dimension ;
+        ecrm:P2_has_type    "height" ;
+        ecrm:P90_has_value  "59"^^xsd:float ;
+        ecrm:P91_has_unit   "cm" .
+
+<http://data.silknow.org/organization/e655fae3-d6f0-3fc7-96d4-8aaf73f7769d>
+        a                         ecrm:E40_Legal_Body ;
+        rdfs:label                "Saint-Etienne ; musée d'Art et d'Industrie" ;
+        ecrm:P1_is_identified_by  "Saint-Etienne ; musée d'Art et d'Industrie" .
+
+<http://data.silknow.org/production/4156c66a-507e-3bce-9bda-6e3520776728/time/1>
+        a                          ecrm:E52_Time-Span ;
+        rdfs:label                 "2e moitié 19e siècle" ;
+        ecrm:P78_is_identified_by  "2e moitié 19e siècle" .
+
+<http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/id/95.71.364>
+        a                 ecrm:E42_Identifier ;
+        rdfs:label        "95.71.364" ;
+        ecrm:P2_has_type  "Register number" .
+
+<http://data.silknow.org/production/4156c66a-507e-3bce-9bda-6e3520776728>
+        a                       ecrm:E12_Production ;
+        ecrm:P108_has_produced  <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754> ;
+        ecrm:P126_employed      "soie" , "faille" ;
+        ecrm:P4_has_time-span   <http://data.silknow.org/production/4156c66a-507e-3bce-9bda-6e3520776728/time/1> , <http://data.silknow.org/production/4156c66a-507e-3bce-9bda-6e3520776728/time/2> ;
+        ecrm:P8_took_place_on_or_within
+                <http://data.silknow.org/place/18211bea-dcf6-39e7-b2bd-1476da2500d9> ;
+        ecrm:P9_consists_of     <http://data.silknow.org/production/4156c66a-507e-3bce-9bda-6e3520776728/activity/1> .
+
+<http://data.silknow.org/document/216af7eb-c4a2-3599-b091-46ab3ae74111>
+        a                        ecrm:E31_Document ;
+        ecrm:P105_right_held_by  <http://data.silknow.org/person/78461ede-ea18-3d22-9671-b2ceb187aa40> , <http://data.silknow.org/person/671afc13-d1de-3890-80dd-cc3e86bd6709> ;
+        ecrm:P70_documents       <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/id_assignment/95.71.364> , <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/id_assignment/Tg 364> ;
+        dc:identifier            "95.71.364" .
+
+<http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/right>
+        a                          ecrm:E30_Right ;
+        rdfs:comment               "propriété de la commune ; mode d'acquisition inconnu ; Saint-Etienne ; musée d'Art et d'Industrie"@fr ;
+        ecrm:P104i_applies_to      <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754> ;
+        ecrm:P3_has_note           "propriété de la commune ; mode d'acquisition inconnu ; Saint-Etienne ; musée d'Art et d'Industrie"@fr ;
+        ecrm:P75i_is_possessed_by  <http://data.silknow.org/organization/e655fae3-d6f0-3fc7-96d4-8aaf73f7769d> .
+
+<http://data.silknow.org/actor/721cd1c3-311d-3131-84b1-f8882ae1f62c>
+        a                         ecrm:E39_Actor ;
+        rdfs:label                "anonyme" ;
+        ecrm:P1_is_identified_by  "anonyme" .
+
+<http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/id/Tg_364>
+        a                 ecrm:E42_Identifier ;
+        rdfs:label        "Tg 364" ;
+        ecrm:P2_has_type  "n° d'étude" .
+
+<http://data.silknow.org/person/671afc13-d1de-3890-80dd-cc3e86bd6709>
+        a                         ecrm:E21_Person ;
+        rdfs:label                "Besson Sylvain" ;
+        ecrm:P1_is_identified_by  "Besson Sylvain" .
+
+<http://data.silknow.org/place/18211bea-dcf6-39e7-b2bd-1476da2500d9>
+        a                         ecrm:E53_Place ;
+        rdfs:label                "Saint-Etienne" ;
+        ecrm:P1_is_identified_by  "Saint-Etienne" .
+
+<http://data.silknow.org/object/1dc360d2-7172-331d-8324-2431a7d77701/right>
+        a                      ecrm:E30_Right ;
+        ecrm:P104i_applies_to  <http://data.silknow.org/object/1dc360d2-7172-331d-8324-2431a7d77701> .
+
+<http://data.silknow.org/event/cc5c96f9-e47b-3884-a922-0d1c1d121cd4>
+        a                             ecrm:E10_Transfer_of_Custody ;
+        ecrm:P29_custody_received_by  <http://data.silknow.org/organization/e655fae3-d6f0-3fc7-96d4-8aaf73f7769d> ;
+        ecrm:P30_transferred_custody_of
+                <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754> .
+
+<http://data.silknow.org/object/6061271d-0b8b-313b-82f3-97acf9bd9945>
+        a                   ecrm:E89_Propositional_Object ;
+        rdfs:comment        "Galon chapelier avec décor de rayures longitudinales multicolores, beige, rouge, bleu, noir, marron"@fr , "voir aussi : ruban  proche" ;
+        ecrm:P129_is_about  <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754> ;
+        ecrm:P2_has_type    "objet en rapport" ;
+        ecrm:P3_has_note    "Galon chapelier avec décor de rayures longitudinales multicolores, beige, rouge, bleu, noir, marron"@fr , "voir aussi : ruban  proche" ;
+        ecrm:P67_refers_to  <http://data.silknow.org/object/8b9316cb-9961-3093-b031-12864bf39f15> .
+
+<http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/dimension/w>
+        a                   ecrm:E54_Dimension ;
+        ecrm:P2_has_type    "width" ;
+        ecrm:P90_has_value  "2.9"^^xsd:float ;
+        ecrm:P91_has_unit   "cm" .
+
+<http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/id_assignment/95.71.364>
+        a                        ecrm:E15_Identifier_Assignment ;
+        ecrm:P14_carried_out_by  <http://data.silknow.org/organization/b8f833c9-5ce1-35c9-ad25-1ec84ff79479> ;
+        ecrm:P37_assigned        <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/id/95.71.364> ;
+        ecrm:P38_deassigned      <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/id/95-71-364_T> .
+
+<http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/dimension/measurement>
+        a                            ecrm:E16_Measurement ;
+        ecrm:P39_measured            <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754> ;
+        ecrm:P40_observed_dimension  <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/dimension/h> , <http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/dimension/w> .
+
+<http://data.silknow.org/object/34b5eaaa-85ec-3416-9382-b982373a5754/id/95-71-364_T>
+        a                 ecrm:E42_Identifier ;
+        rdfs:label        "95-71-364 T" ;
+        ecrm:P2_has_type  "old register number" .
+
+<http://data.silknow.org/object/8b9316cb-9961-3093-b031-12864bf39f15>
+        a              ecrm:E22_Man-Made_Object ;
+        dc:identifier  "95.71.356" .

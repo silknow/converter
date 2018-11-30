@@ -70,6 +70,7 @@ public class ManMade_Object extends Entity {
   }
 
   public void associate(String npa) {
+    if (npa == null) return;
     //    E22_Man Made Object P69 is associated with E39_Actor P1 is identified by E83_Actor Appellation
     this.addProperty(CIDOC.P69_has_association_with, new Actor(npa));
   }

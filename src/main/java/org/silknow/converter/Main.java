@@ -16,7 +16,9 @@ import org.silknow.converter.ontologies.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import picocli.CommandLine;
+import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
+import picocli.CommandLine.Parameters;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -26,21 +28,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
+@Command(mixinStandardHelpOptions = true)
 public class Main implements Runnable {
   public static String source;
 
   enum Type {imatex, garin, joconde}
 
-  //  @Parameters(index = "0", paramLabel = "TYPE", description = "Type of source data: ${COMPLETION-CANDIDATES}")
-  // private Type type;
-  private final static Type type = Type.joconde;
+  @Parameters(index = "0", paramLabel = "TYPE", description = "Type of source data: ${COMPLETION-CANDIDATES}")
+  private Type type;
 
-
-  //  @Parameters(index = "1", paramLabel = "FOLDER", description = "Source folder to process")
-//  private File folder;
+  @Parameters(index = "1", paramLabel = "FOLDER", description = "Source folder to process")
+  private File folder;
 //  private final File folder = new File("../crawler/data/imatex/records/3345_en.json");
 //  private final File folder = new File("/Users/pasquale/Desktop/garin/T000053.xls");
-  private final File folder = new File("../crawler/data/joconde/records/");
+//  private final File folder = new File("../crawler/data/joconde/records/");
 
   @Option(names = {"--log"}, description = "The log level. Default: ${DEFAULT-VALUE}", completionCandidates =
           LogLevels.class, defaultValue = "WARN")
@@ -110,7 +111,6 @@ public class Main implements Runnable {
             .forEach(x -> convertFile(x, converter));
   }
 
-
   private void writeTtl(@NotNull Model m, String filename) throws IOException {
     m.setNsPrefix("ecrm", CIDOC.getURI());
     m.setNsPrefix("dc", DC.getURI());
@@ -140,7 +140,7 @@ public class Main implements Runnable {
   }
 
   @NotNull
-  public static String changeExtension(@NotNull String f, String newExtension) {
+  private static String changeExtension(@NotNull String f, @SuppressWarnings("SameParameterValue") String newExtension) {
     int i = f.lastIndexOf('.');
     String name = f.substring(0, i);
     return name + newExtension;
