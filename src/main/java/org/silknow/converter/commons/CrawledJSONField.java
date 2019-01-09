@@ -1,5 +1,6 @@
 package org.silknow.converter.commons;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -18,7 +19,7 @@ public class CrawledJSONField {
   }
 
   private boolean isNull() {
-    return value == null || value.isBlank() || value.equals("-");
+    return value == null || StringUtils.isBlank(value) || value.equals("-");
   }
 
   @NotNull
@@ -30,6 +31,6 @@ public class CrawledJSONField {
     return Arrays.stream(value.split(multiSeparator))
             .map(String::trim)
             .map(x -> x.replaceFirst("^/ +", ""))
-            .filter(x -> !x.isBlank());
+            .filter(x -> !StringUtils.isBlank(x));
   }
 }

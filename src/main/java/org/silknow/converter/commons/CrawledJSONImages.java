@@ -1,5 +1,7 @@
 package org.silknow.converter.commons;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class CrawledJSONImages {
   private String id;
   private String url;
@@ -13,6 +15,6 @@ public class CrawledJSONImages {
   }
 
   public boolean hasId() {
-    return id != null && !id.isBlank();
+    return id != null && !StringUtils.isBlank(id);
   }
 }

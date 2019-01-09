@@ -199,13 +199,13 @@ public class JocondeConverter extends Converter {
       obj.getModel().add(bio.getModel());
     }
 
-    this.model.add(obj.getModel());
-    this.model.add(doc.getModel());
-    this.model.add(po.getModel());
-    this.model.add(right.getModel());
-    this.model.add(copyright.getModel());
-    this.model.add(prod.getModel());
-    this.model.add(transfer.getModel());
+    linkToRecord(obj);
+    linkToRecord(doc);
+    linkToRecord(po);
+    linkToRecord(right);
+    linkToRecord(copyright);
+    linkToRecord(prod);
+    linkToRecord(transfer);
     return this.model;
   }
 

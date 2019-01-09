@@ -1,5 +1,6 @@
 package org.silknow.converter.entities;
 
+import org.apache.commons.lang3.StringUtils;
 import org.silknow.converter.ontologies.CIDOC;
 
 import java.text.ParseException;
@@ -22,7 +23,7 @@ public class Acquisition extends Entity {
   }
 
   public void setDate(String date) {
-    if (date == null || date.isBlank()) return;
+    if (date == null || StringUtils.isBlank(date)) return;
 
     Date d;
     try {

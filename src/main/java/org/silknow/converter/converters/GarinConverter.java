@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class GarinConverter extends Converter {
-  private final String DATASET_NAME = "garin";
-
   @Override
   public boolean canConvert(File file) {
     return isExcel(file);
@@ -20,6 +18,8 @@ public class GarinConverter extends Converter {
     logger.debug("%%% FILE " + file.getName());
     if (!this.canConvert(file))
       throw new RuntimeException("Garin converter require files in XLS (Excel) format.");
+
+    this.DATASET_NAME = "garin";
 
     // Parse XLS
     logger.trace("parsing XLS");
@@ -85,10 +85,11 @@ public class GarinConverter extends Converter {
       obj.addInfo(key, section, "es");
     }
 
-    this.model.add(obj.getModel());
-    this.model.add(doc.getModel());
-    this.model.add(move.getModel());
-    this.model.add(prod.getModel());
+    linkToRecord(obj);
+    linkToRecord(doc);
+    linkToRecord(move);
+    linkToRecord(prod);
     return this.model;
   }
+
 }

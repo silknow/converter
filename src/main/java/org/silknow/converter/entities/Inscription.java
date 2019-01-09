@@ -20,7 +20,7 @@ public class Inscription extends Entity {
 
     for (int i = 0; i < parts.length; i++) {
       String part = parts[i].trim();
-      if (part.isBlank()) continue;
+      if (StringUtils.isBlank(part)) continue;
       if (i == 0) {
         Arrays.asList(part.split(","))
                 .forEach(x -> {

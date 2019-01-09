@@ -103,11 +103,11 @@ public class ImatexConverter extends Converter {
     transfer.of(obj).by(museum);
 
 
-    this.model.add(obj.getModel());
-    this.model.add(doc.getModel());
-    this.model.add(acquisition.getModel());
-    this.model.add(prod.getModel());
-    this.model.add(transfer.getModel());
+    linkToRecord(obj);
+    linkToRecord(doc);
+    linkToRecord(acquisition);
+    linkToRecord(prod);
+    linkToRecord(transfer);
     return this.model;
   }
 }

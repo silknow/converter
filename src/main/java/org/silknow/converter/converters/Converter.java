@@ -5,6 +5,7 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
+import org.silknow.converter.entities.Entity;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.CRMdig;
 import org.slf4j.Logger;
@@ -15,7 +16,7 @@ import java.io.File;
 public abstract class Converter {
   private static final String BASE_URI = "http://data.silknow.org/";
   protected final Model model = ModelFactory.createDefaultModel();
-  private String DATASET_NAME;
+  protected String DATASET_NAME;
 
 
   Logger logger = LoggerFactory.getLogger(getClass());
@@ -48,7 +49,8 @@ public abstract class Converter {
 
   protected void linkToRecord(Resource any) {
     if (this.record == null) {
-      this.record = model.createResource(BASE_URI + this.DATASET_NAME + "/" + id)
+      String recordUri = BASE_URI + this.DATASET_NAME + "/" + id.replaceAll("\\s", "_");
+      this.record = model.createResource(recordUri)
               .addProperty(RDF.type, CRMdig.D1_Digital_Object)
               .addProperty(RDFS.label, id)
               .addProperty(CIDOC.P2_has_type, "record");
@@ -56,4 +58,10 @@ public abstract class Converter {
     }
     this.record.addProperty(CIDOC.P129_is_about, any);
   }
+
+  protected void linkToRecord(Entity obj) {
+    this.linkToRecord(obj.asResource());
+    this.model.add(obj.getModel());
+  }
+
 }

@@ -1,6 +1,7 @@
 package org.silknow.converter.entities;
 
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.datatypes.xsd.XSDDatatype;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.rdf.model.*;
@@ -74,7 +75,7 @@ public abstract class Entity {
 //  }
 
   @Contract(pure = true)
-  Resource asResource() {
+  public Resource asResource() {
     return this.resource;
   }
 
@@ -113,12 +114,12 @@ public abstract class Entity {
   }
 
   public Entity addProperty(Property property, String literal) {
-    if (literal != null && !literal.isBlank()) this.resource.addProperty(property, literal.trim());
+    if (literal != null && !StringUtils.isBlank(literal)) this.resource.addProperty(property, literal.trim());
     return this;
   }
 
   public Entity addProperty(Property property, String literal, String lang) {
-    if (literal != null && !literal.isBlank()) this.resource.addProperty(property, literal.trim(), lang);
+    if (literal != null && !StringUtils.isBlank(literal)) this.resource.addProperty(property, literal.trim(), lang);
     return this;
   }
 
@@ -128,7 +129,8 @@ public abstract class Entity {
   }
 
   public Entity addProperty(Property property, String literal, XSDDatatype datatype) {
-    if (literal != null && !literal.isBlank()) this.resource.addProperty(property, literal.trim(), datatype);
+    if (literal != null && !StringUtils.isBlank(literal))
+      this.resource.addProperty(property, literal.trim(), datatype);
     return this;
   }
 
