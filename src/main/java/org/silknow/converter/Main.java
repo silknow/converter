@@ -11,6 +11,7 @@ import org.silknow.converter.converters.GarinConverter;
 import org.silknow.converter.converters.ImatexConverter;
 import org.silknow.converter.converters.JocondeConverter;
 import org.silknow.converter.ontologies.CIDOC;
+import org.silknow.converter.ontologies.CRMdig;
 import org.silknow.converter.ontologies.Schema;
 import org.silknow.converter.ontologies.Time;
 import org.slf4j.Logger;
@@ -113,6 +114,7 @@ public class Main implements Runnable {
 
   private void writeTtl(@NotNull Model m, String filename) throws IOException {
     m.setNsPrefix("ecrm", CIDOC.getURI());
+    m.setNsPrefix("crmdig", CRMdig.getURI());
     m.setNsPrefix("dc", DC.getURI());
     m.setNsPrefix("rdfs", RDFS.getURI());
     m.setNsPrefix("xsd", XSD.getURI());

@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class ImatexConverter extends Converter {
+  private final String DATASET_NAME = "imatex";
   private static final String DOC_BASE_URI = "http://imatex.cdmt.cat/_cat/fitxa_fitxa.aspx?num_id=";
 
   @Override
@@ -35,7 +36,7 @@ public class ImatexConverter extends Converter {
 
     // Create the objects of the graph
     logger.trace("creating objects");
-    String id = s.get("REGISTER NUMBER");
+    id = s.get("REGISTER NUMBER");
     String museumName = s.get("MUSEUM");
     LegalBody museum = new LegalBody(museumName);
 
@@ -102,11 +103,11 @@ public class ImatexConverter extends Converter {
     transfer.of(obj).by(museum);
 
 
-    Model m = obj.getModel();
-    m.add(doc.getModel());
-    m.add(acquisition.getModel());
-    m.add(prod.getModel());
-    m.add(transfer.getModel());
-    return m;
+    this.model.add(obj.getModel());
+    this.model.add(doc.getModel());
+    this.model.add(acquisition.getModel());
+    this.model.add(prod.getModel());
+    this.model.add(transfer.getModel());
+    return this.model;
   }
 }

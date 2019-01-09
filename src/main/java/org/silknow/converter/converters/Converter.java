@@ -1,13 +1,27 @@
 package org.silknow.converter.converters;
 
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.vocabulary.RDF;
+import org.apache.jena.vocabulary.RDFS;
+import org.silknow.converter.ontologies.CIDOC;
+import org.silknow.converter.ontologies.CRMdig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
 
 public abstract class Converter {
-  protected Logger logger = LoggerFactory.getLogger(getClass());
+  private static final String BASE_URI = "http://data.silknow.org/";
+  protected final Model model = ModelFactory.createDefaultModel();
+  private String DATASET_NAME;
+
+
+  Logger logger = LoggerFactory.getLogger(getClass());
+  protected String id; // record id
+  private Resource dataset;
+  private Resource record;
 
   public abstract boolean canConvert(File file);
 
@@ -19,5 +33,27 @@ public abstract class Converter {
 
   protected boolean isExcel(File file) {
     return file.getName().endsWith(".xls");
+  }
+
+  private void linkToDataset(Resource record) {
+    if (this.dataset == null) {
+      this.dataset = model.createResource(BASE_URI + this.DATASET_NAME)
+              .addProperty(RDF.type, CRMdig.D1_Digital_Object)
+              .addProperty(RDFS.label, this.DATASET_NAME)
+              .addProperty(CIDOC.P2_has_type, "dataset");
+    }
+    this.dataset.addProperty(CIDOC.P106_is_composed_of, record);
+  }
+
+
+  protected void linkToRecord(Resource any) {
+    if (this.record == null) {
+      this.record = model.createResource(BASE_URI + this.DATASET_NAME + "/" + id)
+              .addProperty(RDF.type, CRMdig.D1_Digital_Object)
+              .addProperty(RDFS.label, id)
+              .addProperty(CIDOC.P2_has_type, "record");
+      linkToDataset(record);
+    }
+    this.record.addProperty(CIDOC.P129_is_about, any);
   }
 }

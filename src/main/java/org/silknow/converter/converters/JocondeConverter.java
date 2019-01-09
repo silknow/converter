@@ -15,6 +15,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class JocondeConverter extends Converter {
+  private final String DATASET_NAME = "joconde";
+
   private static final LegalBody JOCONDE = new LegalBody("Joconde");
 
   private static final String DIMENSION_REGEX = "hauteur en cm (\\d+(?:\\.\\d+)?) ; largeur en cm (\\d+(?:\\.\\d+)?)";
@@ -44,7 +46,7 @@ public class JocondeConverter extends Converter {
 
     // Create the objects of the graph
     logger.trace("creating objects");
-    String id = file.getName().replace(".json", "");
+    id = file.getName().replace(".json", "");
 
     String museumName = s.get("Lieu de conservation");
     LegalBody museum = new LegalBody(museumName);
@@ -197,14 +199,14 @@ public class JocondeConverter extends Converter {
       obj.getModel().add(bio.getModel());
     }
 
-    Model m = obj.getModel();
-    m.add(doc.getModel());
-    m.add(po.getModel());
-    m.add(right.getModel());
-    m.add(copyright.getModel());
-    m.add(prod.getModel());
-    m.add(transfer.getModel());
-    return m;
+    this.model.add(obj.getModel());
+    this.model.add(doc.getModel());
+    this.model.add(po.getModel());
+    this.model.add(right.getModel());
+    this.model.add(copyright.getModel());
+    this.model.add(prod.getModel());
+    this.model.add(transfer.getModel());
+    return this.model;
   }
 
   @Contract("null -> null")

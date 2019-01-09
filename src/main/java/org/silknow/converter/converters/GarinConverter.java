@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class GarinConverter extends Converter {
+  private final String DATASET_NAME = "garin";
 
   @Override
   public boolean canConvert(File file) {
@@ -33,7 +34,7 @@ public class GarinConverter extends Converter {
 
     // Create the objects of the graph
     logger.trace("creating objects");
-    String id = s.get("Nº Inventario");
+    id = s.get("Nº Inventario");
     String ownerName = s.get("Propiedad");
     LegalBody owner = new LegalBody(ownerName);
 
@@ -84,11 +85,10 @@ public class GarinConverter extends Converter {
       obj.addInfo(key, section, "es");
     }
 
-    Model m = obj.getModel();
-    m.add(doc.getModel());
-    m.add(move.getModel());
-    m.add(prod.getModel());
-    return m;
-
+    this.model.add(obj.getModel());
+    this.model.add(doc.getModel());
+    this.model.add(move.getModel());
+    this.model.add(prod.getModel());
+    return this.model;
   }
 }

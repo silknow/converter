@@ -1,5 +1,6 @@
 package org.silknow.converter.converters;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -62,7 +63,7 @@ public class GarinRecord {
 
       Cell cell = cellIterator.next();
       String key = cell.toString();
-      if (key.isBlank()) continue;
+      if (StringUtils.isBlank(key)) continue;
 
       List<String> values = new ArrayList<>();
 
@@ -72,7 +73,7 @@ public class GarinRecord {
       }
 
       String value = values.stream()
-              .filter(x -> !x.isBlank())
+              .filter(x -> !StringUtils.isBlank(x))
               .findFirst().orElse(null);
 
       if (value == null) continue; // Main section
