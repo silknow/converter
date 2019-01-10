@@ -1,9 +1,12 @@
 package org.silknow.converter.entities;
 
+import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
+import org.doremus.string2vocabulary.VocabularyManager;
 import org.silknow.converter.ontologies.CIDOC;
+import org.silknow.converter.ontologies.CRMsci;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -33,13 +36,18 @@ public class ManMade_Object extends Entity {
   }
 
 
-  public void addClassification(String classification, String type, LegalBody museum) {
-    if (classification == null) return;
+  public Resource addClassification(String classification, String type, LegalBody museum) {
+    if (classification == null) return null;
+    RDFNode r = VocabularyManager.getVocabulary("thesaurus").findConcept(classification, false);
+    if (r == null) {
+      r = model.createLiteral(classification);
+    }
+
     Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)
             .addProperty(RDF.type, CIDOC.E17_Type_Assignment)
             .addProperty(CIDOC.P41_classified, this.asResource())
             .addProperty(CIDOC.P2_has_type, type)
-            .addProperty(CIDOC.P42_assigned, classification);
+            .addProperty(CIDOC.P42_assigned, r);
 
     if (museum != null) {
       assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
@@ -47,6 +55,7 @@ public class ManMade_Object extends Entity {
     }
 
     // this.addProperty(CIDOC.P2_has_type, classification);
+    return assignment;
   }
 
   public void addIntention(String intention) {
@@ -75,13 +84,13 @@ public class ManMade_Object extends Entity {
     this.addProperty(CIDOC.P69_has_association_with, new Actor(npa));
   }
 
-  public void addMeasure(String value) throws RuntimeException {
+  public Resource addMeasure(String value) throws RuntimeException {
     Matcher m = DIMENSION_PATTERN.matcher(value);
     if (!m.find()) throw new RuntimeException("Dimension not parsed: " + value);
-    addMeasure(m.group(1), m.group(2));
+    return addMeasure(m.group(1), m.group(2));
   }
 
-  public void addMeasure(String width, String height) {
+  public Resource addMeasure(String width, String height) {
     String dimUri = this.getUri() + "/dimension/";
 
     width = width.replace(",", ".");
@@ -92,13 +101,13 @@ public class ManMade_Object extends Entity {
     Dimension h = new Dimension(dimUri + "h", height, "cm", "height");
     this.addProperty(CIDOC.P43_has_dimension, h);
 
-    model.createResource(dimUri + "measurement")
+    this.model.add(w.model).add(h.model);
+
+    return model.createResource(dimUri + "measurement")
             .addProperty(RDF.type, CIDOC.E16_Measurement)
             .addProperty(CIDOC.P39_measured, this.asResource())
             .addProperty(CIDOC.P40_observed_dimension, w.asResource())
             .addProperty(CIDOC.P40_observed_dimension, h.asResource());
-
-    this.model.add(w.model).add(h.model);
   }
 
   public void addTitle(String title) {
@@ -106,7 +115,7 @@ public class ManMade_Object extends Entity {
             .addProperty(CIDOC.P102_has_title, title);
   }
 
-  public void addInfo(String section, String text, String lang) {
+  public Resource addInfo(String section, String text, String lang) {
     Resource sec = model.createResource(this.getUri() + "/section/" + section)
             .addProperty(RDF.type, CIDOC.E53_Place)
             .addProperty(RDFS.label, section)
@@ -114,9 +123,9 @@ public class ManMade_Object extends Entity {
 
     this.addProperty(CIDOC.P59_has_section, sec);
 
-    model.createResource(this.getUri() + "/section/" + section + "/info")
-            .addProperty(RDF.type, CIDOC.E73_Information_Object)
-            .addProperty(CIDOC.P129_is_about, sec)
+    return model.createResource(this.getUri() + "/section/" + section + "/info")
+            .addProperty(RDF.type, CRMsci.S4_Observation)
+            .addProperty(CRMsci.O8_observed, sec)
             .addProperty(CIDOC.P3_has_note, text, lang);
   }
 

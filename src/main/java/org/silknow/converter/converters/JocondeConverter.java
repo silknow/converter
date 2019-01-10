@@ -15,8 +15,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class JocondeConverter extends Converter {
-  private final String DATASET_NAME = "joconde";
-
   private static final LegalBody JOCONDE = new LegalBody("Joconde");
 
   private static final String DIMENSION_REGEX = "hauteur en cm (\\d+(?:\\.\\d+)?) ; largeur en cm (\\d+(?:\\.\\d+)?)";
@@ -32,6 +30,8 @@ public class JocondeConverter extends Converter {
     logger.debug("%%% FILE " + file.getName());
     if (!this.canConvert(file))
       throw new RuntimeException("Imatex converter require files in JSON format.");
+
+    this.DATASET_NAME = "joconde";
 
     // Parse JSON
     logger.trace("parsing json");

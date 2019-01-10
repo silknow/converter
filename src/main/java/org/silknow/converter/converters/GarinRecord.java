@@ -2,10 +2,7 @@ package org.silknow.converter.converters;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,9 +14,11 @@ public class GarinRecord {
   private static final String CONJUNCTION_ES = "(, ?| y )";
 
   private final Map<String, String> map;
+  private final List<byte[]> images;
 
   private GarinRecord() {
     this.map = new HashMap<>();
+    this.images = new ArrayList<>();
   }
 
   public String get(String key) {
@@ -31,6 +30,11 @@ public class GarinRecord {
     if (res == null) return Stream.empty();
     else return Arrays.stream(res.split(CONJUNCTION_ES));
   }
+
+  public List<byte[]> getImages() {
+    return this.images;
+  }
+
 
   private void add(String key, String value) {
     key = key.trim()
@@ -79,6 +83,15 @@ public class GarinRecord {
       if (value == null) continue; // Main section
 
       record.add(key, value);
+    }
+
+    // images
+    List lst = workbook.getAllPictures();
+    for (Iterator it = lst.iterator(); it.hasNext(); ) {
+      PictureData pict = (PictureData) it.next();
+      String ext = pict.suggestFileExtension();
+      if (ext.equals("jpeg"))
+        record.images.add(pict.getData());
     }
 
     workbook.close();

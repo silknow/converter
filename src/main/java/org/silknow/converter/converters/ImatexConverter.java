@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class ImatexConverter extends Converter {
-  private final String DATASET_NAME = "imatex";
   private static final String DOC_BASE_URI = "http://imatex.cdmt.cat/_cat/fitxa_fitxa.aspx?num_id=";
 
   @Override
@@ -22,6 +21,8 @@ public class ImatexConverter extends Converter {
     logger.debug("%%% FILE " + file.getName());
     if (!this.canConvert(file))
       throw new RuntimeException("Imatex converter require files in JSON format.");
+
+    this.DATASET_NAME = "imatex";
 
     // Parse JSON
     logger.trace("parsing json");

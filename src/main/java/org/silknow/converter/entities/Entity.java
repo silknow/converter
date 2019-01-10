@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Contract;
 import org.silknow.converter.Main;
 import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.ontologies.CIDOC;
+import org.silknow.converter.ontologies.CRMsci;
 
 public abstract class Entity {
   String className;
@@ -23,6 +24,7 @@ public abstract class Entity {
   protected Resource resource;
   protected String id;
   private int activityCount;
+  private int observationCount;
 
   Entity() {
     // do nothing, enables customisation for child class
@@ -30,6 +32,7 @@ public abstract class Entity {
     this.className = this.getClass().getSimpleName();
 
     this.activityCount = 0;
+    this.observationCount = 0;
   }
 
   Entity(String id) {
@@ -91,6 +94,19 @@ public abstract class Entity {
   public void addNote(String text, String lang) {
     this.addProperty(RDFS.comment, text, lang).addProperty(CIDOC.P3_has_note, text, lang);
   }
+
+  public Resource addObservation(String text, String lang, String type) {
+    if (StringUtils.isBlank(text)) return null;
+    text = text.trim();
+    this.addNote(text, lang);
+
+    return model.createResource(this.uri + "/observation/" + ++observationCount)
+            .addProperty(RDF.type, CRMsci.S4_Observation)
+            .addProperty(CRMsci.O8_observed, this.asResource())
+            .addProperty(CIDOC.P3_has_note, text, lang)
+            .addProperty(CIDOC.P2_has_type, type);
+  }
+
 
   protected void addType(String type) {
     this.addProperty(CIDOC.P2_has_type, type);

@@ -5,6 +5,7 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.vocabulary.DC;
 import org.apache.jena.vocabulary.RDFS;
 import org.apache.jena.vocabulary.XSD;
+import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.NotNull;
 import org.silknow.converter.converters.Converter;
 import org.silknow.converter.converters.GarinConverter;
@@ -24,6 +25,7 @@ import picocli.CommandLine.Parameters;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,7 +51,7 @@ public class Main implements Runnable {
   private String logLevel;
 
   @Option(names = {"-o", "--output"}, description = "Output folder. Default: an `out` folder siblings to the input directory")
-  private File outputFolder;
+  public static File outputFolder;
 
   public static void main(String[] args) {
     CommandLine.run(new Main(), args);
@@ -63,11 +65,25 @@ public class Main implements Runnable {
     if (!folder.exists())
       throw new IllegalArgumentException("The FOLDER specified in parameters does not exists.");
 
-    if (this.outputFolder == null)
+    ClassLoader classLoader = Converter.class.getClassLoader();
+    URL vocabularyFolder = classLoader.getResource("vocabulary");
+    URL p2fTable = classLoader.getResource("property2family.csv");
+    assert vocabularyFolder != null && p2fTable != null;
+    VocabularyManager.setVocabularyFolder(vocabularyFolder.getPath());
+    try {
+      VocabularyManager.init(p2fTable);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+
+    if (outputFolder == null)
       outputFolder = Paths.get(folder.getParentFile().getAbsolutePath(), "out").toFile();
 
     //noinspection ResultOfMethodCallIgnored
     outputFolder.mkdirs();
+    Paths.get(Main.outputFolder + "/img/").toFile().mkdirs();
+
     try {
       logger.info("Output folder: " + outputFolder.getCanonicalPath());
     } catch (IOException e) {

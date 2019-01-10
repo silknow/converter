@@ -1,10 +1,13 @@
 package org.silknow.converter.converters;
 
 import org.apache.jena.rdf.model.Model;
+import org.silknow.converter.Main;
 import org.silknow.converter.entities.*;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Arrays;
 
 public class GarinConverter extends Converter {
@@ -43,11 +46,11 @@ public class GarinConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(id);
     obj.addComplexIdentifier(id, "Register number", owner, doc);
     obj.addTitle(s.get("Denominacion principal"));
-    obj.addClassification(s.get("Objecto"), "domain", owner);
-    obj.addClassification(s.get("Tipologia"), "denomination", owner);
-    obj.addMeasure(s.get("Medidas"));
-    obj.addNote(s.get("Descripción"), "es");
-    obj.addNote(s.get("Descripción técnica"), "es");
+    linkToRecord(obj.addClassification(s.get("Objecto"), "domain", owner));
+    linkToRecord(obj.addClassification(s.get("Tipología"), "denomination", owner));
+    linkToRecord(obj.addMeasure(s.get("Medidas")));
+    linkToRecord(obj.addObservation(s.get("Descripción"), "es", "descripción"));
+    linkToRecord(obj.addObservation(s.get("Descripción técnica"), "es", "descripción técnica"));
 
     ConditionAssestment conditionAssestment = new ConditionAssestment(id);
     conditionAssestment.assestedBy(owner);
@@ -59,11 +62,14 @@ public class GarinConverter extends Converter {
     conditionAssestment.getConditions().forEach(doc::document);
 
 
+    Acquisition acquisition = new Acquisition(id);
+    acquisition.transfer(null, obj, owner);
+
     String rest = s.get("Restauraciones localizadas");
     if (rest != null && !rest.equalsIgnoreCase("no")) {
       Modification modification = new Modification(id, "restoration", rest);
       modification.of(obj);
-      doc.getModel().add(modification.getModel());
+      linkToRecord(modification);
     }
 
 
@@ -78,17 +84,37 @@ public class GarinConverter extends Converter {
     s.getMulti("Material").forEach(prod::addMaterial);
     s.getMulti("Accessorios").map(ManMade_Object::new).forEach(prod::addTool);
 
+    int imgCount = 0;
+    for (byte[] x : s.getImages()) {
+      Image img = new Image(id + imgCount++);
+      String imgName = id.replaceAll(" ", "_") + imgCount + ".jpg";
+
+      try {
+        OutputStream out = new FileOutputStream(Main.outputFolder + "/img/" + imgName);
+        out.write(x);
+        out.close();
+        img.setContentUrl(BASE_URI + "/static/img/garin/" + imgName);
+      } catch (IOException e) {
+        logger.error(e.getLocalizedMessage());
+      }
+
+      obj.add(img);
+      linkToRecord(img);
+    }
 
     for (String key : Arrays.asList("Anverso", "Reverso")) {
       String section = s.get(key);
       if (section == null || section.equalsIgnoreCase("no")) continue;
-      obj.addInfo(key, section, "es");
+      linkToRecord(obj.addInfo(key, section, "es"));
     }
 
     linkToRecord(obj);
     linkToRecord(doc);
     linkToRecord(move);
     linkToRecord(prod);
+    linkToRecord(owner);
+    linkToRecord(acquisition);
+    linkToRecord(conditionAssestment);
     return this.model;
   }
 

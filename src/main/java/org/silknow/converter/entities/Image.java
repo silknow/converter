@@ -1,6 +1,5 @@
 package org.silknow.converter.entities;
 
-import org.apache.jena.rdf.model.ResourceFactory;
 import org.jetbrains.annotations.NotNull;
 import org.silknow.converter.commons.CrawledJSONImages;
 import org.silknow.converter.ontologies.CIDOC;
@@ -20,12 +19,17 @@ public class Image extends Entity {
     this.setClass(CIDOC.E38_Image);
   }
 
+  public void setContentUrl(String url) {
+    this.addProperty(Schema.contentUrl, model.createResource(url));
+  }
+
   public static Image fromCrawledJSON(@NotNull CrawledJSONImages img) {
     Image image;
     if (img.hasId()) image = new Image(img.getId());
     else image = new Image();
 
-    image.addProperty(Schema.contentUrl, ResourceFactory.createResource(img.getUrl()));
+    image.setContentUrl(img.getUrl());
     return image;
   }
+
 }

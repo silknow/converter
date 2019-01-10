@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 
 public abstract class Converter {
-  private static final String BASE_URI = "http://data.silknow.org/";
+  protected static final String BASE_URI = "http://data.silknow.org/";
   protected final Model model = ModelFactory.createDefaultModel();
   protected String DATASET_NAME;
 
@@ -48,6 +48,7 @@ public abstract class Converter {
 
 
   protected void linkToRecord(Resource any) {
+    if (any == null) return;
     if (this.record == null) {
       String recordUri = BASE_URI + this.DATASET_NAME + "/" + id.replaceAll("\\s", "_");
       this.record = model.createResource(recordUri)
