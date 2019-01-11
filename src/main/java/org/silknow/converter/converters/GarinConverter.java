@@ -41,11 +41,9 @@ public class GarinConverter extends Converter {
     String ownerName = s.get("Propiedad");
     LegalBody owner = new LegalBody(ownerName);
 
-    Document doc = new Document(id);
-
     ManMade_Object obj = new ManMade_Object(id);
-    obj.addComplexIdentifier(id, "Register number", owner, doc);
     obj.addTitle(s.get("Denominacion principal"));
+    linkToRecord(obj.addComplexIdentifier(id, "Register number", owner));
     linkToRecord(obj.addClassification(s.get("Objecto"), "domain", owner));
     linkToRecord(obj.addClassification(s.get("Tipología"), "denomination", owner));
     linkToRecord(obj.addMeasure(s.get("Medidas")));
@@ -59,7 +57,6 @@ public class GarinConverter extends Converter {
     conditionAssestment.addCondition("condition", s.get("Condición"), "es");
     conditionAssestment.addCondition("deterioration", s.get("Deterioros"), "es");
     conditionAssestment.addCondition("missing parts", s.get("Partes que faltan"), "es");
-    conditionAssestment.getConditions().forEach(doc::document);
 
 
     Acquisition acquisition = new Acquisition(id);
@@ -109,7 +106,6 @@ public class GarinConverter extends Converter {
     }
 
     linkToRecord(obj);
-    linkToRecord(doc);
     linkToRecord(move);
     linkToRecord(prod);
     linkToRecord(owner);

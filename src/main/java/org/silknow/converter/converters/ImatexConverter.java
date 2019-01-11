@@ -45,7 +45,7 @@ public class ImatexConverter extends Converter {
     doc.setSource(DOC_BASE_URI + file.getName().replaceFirst(".json$", ""));
 
     ManMade_Object obj = new ManMade_Object(id);
-    obj.addComplexIdentifier(id, "Register number", museum, doc);
+    obj.addComplexIdentifier(id, "Register number", museum);
 
     Image img = new Image(s.get("ID FOTOGRAFIA"));
     obj.add(img);

@@ -9,6 +9,7 @@ import org.apache.jena.util.ResourceUtils;
 import org.apache.jena.vocabulary.DC;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
+import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.Contract;
 import org.silknow.converter.Main;
 import org.silknow.converter.commons.ConstructURI;
@@ -25,6 +26,7 @@ public abstract class Entity {
   protected String id;
   private int activityCount;
   private int observationCount;
+  private int typeAssignmentCount;
 
   Entity() {
     // do nothing, enables customisation for child class
@@ -33,6 +35,7 @@ public abstract class Entity {
 
     this.activityCount = 0;
     this.observationCount = 0;
+    this.typeAssignmentCount = 0;
   }
 
   Entity(String id) {
@@ -178,12 +181,12 @@ public abstract class Entity {
     this.addProperty(DC.identifier, id);
   }
 
-  public void addComplexIdentifier(String id, String type, LegalBody issuer, Document doc) {
-    this.addComplexIdentifier(id, type, issuer, doc, null);
+  public Resource addComplexIdentifier(String id, String type, LegalBody issuer) {
+    return this.addComplexIdentifier(id, type, issuer, null);
   }
 
-  public void addComplexIdentifier(String id, String type, LegalBody issuer, Document doc, String replaceId) {
-    if (id == null) return;
+  public Resource addComplexIdentifier(String id, String type, LegalBody issuer, String replaceId) {
+    if (id == null) return null;
 
     Resource identifier = model.createResource(this.uri + "/id/" + id.replaceAll(" ", "_"))
             .addProperty(RDF.type, CIDOC.E42_Identifier)
@@ -203,9 +206,38 @@ public abstract class Entity {
       assignment.addProperty(CIDOC.P38_deassigned, rIdentifier);
     }
 
-    doc.addProperty(CIDOC.P70_documents, assignment);
     this.addProperty(CIDOC.P1_is_identified_by, identifier);
     this.model.add(issuer.getModel());
+    return identifier;
+  }
+
+  public Resource addClassification(String classification, String type) {
+    return addClassification(classification, type, null);
+  }
+
+
+  public Resource addClassification(String classification, String type, LegalBody museum) {
+    if (classification == null) return null;
+    RDFNode r = VocabularyManager.getVocabulary("thesaurus").findConcept(classification, false);
+    if (r == null) {
+      r = model.createLiteral(classification);
+    }
+
+    Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)
+            .addProperty(RDF.type, CIDOC.E17_Type_Assignment)
+            .addProperty(CIDOC.P41_classified, this.asResource())
+            .addProperty(CIDOC.P42_assigned, r);
+
+    if (type != null)
+      assignment.addProperty(CIDOC.P2_has_type, type);
+
+    if (museum != null) {
+      assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
+      this.model.add(museum.getModel());
+    }
+
+    // this.addProperty(CIDOC.P2_has_type, classification);
+    return assignment;
   }
 
 

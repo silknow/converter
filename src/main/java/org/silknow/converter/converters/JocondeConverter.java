@@ -56,17 +56,18 @@ public class JocondeConverter extends Converter {
             .forEach(doc::addEditor);
 
     ManMade_Object obj = new ManMade_Object(id);
-//    obj.addComplexIdentifier(id, "Register number", museum, doc);
     obj.addTitle(s.get("Titre"));
-    obj.addClassification(s.get("Domaine"), "domain");
-    obj.addClassification(s.get("Dénomination"), "denomination");
-    obj.addNote(s.get("Description"));
+    linkToRecord(obj.addClassification(s.get("Domaine"), "domain"));
+    linkToRecord(obj.addClassification(s.get("Dénomination"), "denomination"));
+    linkToRecord(obj.addObservation(s.get("Description"), "fr", "description"));
     obj.addSubject(s.get("Sujet représenté"));
+
+    doc.document(obj);
 
     String dim = s.get("Dimensions");
     Matcher matcher = DIMENSION_PATTERN.matcher(dim);
     if (matcher.find()) {
-      obj.addMeasure(matcher.group(2), matcher.group(1));
+      linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
     }
 
     Production prod = new Production(id);
@@ -127,11 +128,22 @@ public class JocondeConverter extends Converter {
     for (int i = 0; i < inscrPrec.size(); i++) {
       String p = inscrPrec.get(i);
       String lang = null;
+      String type = null;
+      String note = null;
       if (inscr.size() > i) {
-        lang = french2lang(Utils.extractBrackets(inscr.get(i)).get(1));
+        note = inscr.get(i);
+        List<String> temp = Utils.extractBrackets(note);
+        lang = french2lang(temp.get(1));
+        type = temp.get(0);
       }
 
       Inscription ins = Inscription.fromJoconde(p, lang);
+      if (type != null) {
+        linkToRecord(ins.addClassification(type, null));
+      }
+      if (note != null) {
+        linkToRecord(ins.addObservation(note, "fr", "inscription"));
+      }
       obj.add(ins);
     }
 
@@ -170,18 +182,19 @@ public class JocondeConverter extends Converter {
 
     String oldId = ids.remove("ancien numéro");
 
-    obj.addComplexIdentifier(ids.remove("Register number"), "Register number", JOCONDE, doc, oldId);
-    ids.keySet().forEach(x -> obj.addComplexIdentifier(ids.get(x), x, JOCONDE, doc));
+    linkToRecord(obj.addComplexIdentifier(ids.remove("Register number"), "Register number", JOCONDE, oldId));
+    ids.keySet().forEach(x -> linkToRecord(obj.addComplexIdentifier(ids.get(x), x, JOCONDE)));
 
     Right copyphoto = new Right(obj.getUri() + "/image/right");
     copyphoto.addNote(s.get("Crédits photographiques"));
-    s.getMulti("Copyright notice", ", ")
+    s.getMulti("Crédits photographiques", ", ")
             .map(x -> x.replaceFirst("© ", ""))
             .map(Actor::new)
-            .forEach(copyright::ownedBy);
+            .forEach(copyphoto::ownedBy);
     s.getImages().map(Image::fromCrawledJSON)
             .peek(copyphoto::applyTo)
-            .forEach(obj::add);
+            .peek(obj::add)
+            .forEach(this::linkToRecord);
 
 
     if (s.get("Bibliographie") != null) {
@@ -189,14 +202,14 @@ public class JocondeConverter extends Converter {
       bio.setType("Bibliography");
       bio.isAbout(obj);
       bio.addNote(s.get("Bibliographie"));
-      obj.getModel().add(bio.getModel());
+      linkToRecord(bio);
     }
     if (s.get("Exposition") != null) {
       InformationObject bio = new InformationObject(id + "e");
       bio.setType("Exhibitions");
       bio.isAbout(obj);
       bio.addNote(s.get("Exposition"));
-      obj.getModel().add(bio.getModel());
+      linkToRecord(bio);
     }
 
     linkToRecord(obj);

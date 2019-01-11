@@ -1,10 +1,8 @@
 package org.silknow.converter.entities;
 
-import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
-import org.doremus.string2vocabulary.VocabularyManager;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.CRMsci;
 
@@ -15,7 +13,6 @@ public class ManMade_Object extends Entity {
   private static final String DIMENSION_REGEX = "(\\d+(?:[,.]\\d)?) x (\\d+(?:[,.]\\d)?)";
   private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX);
 
-  private int typeAssignmentCount;
   private int imgCount;
 
   public ManMade_Object(String id) {
@@ -23,7 +20,6 @@ public class ManMade_Object extends Entity {
     this.setClass(CIDOC.E22_Man_Made_Object);
 
     this.addSimpleIdentifier(id);
-    typeAssignmentCount = 0;
     imgCount = 0;
   }
 
@@ -31,32 +27,6 @@ public class ManMade_Object extends Entity {
     this.addProperty(CIDOC.P62_depicts, subject);
   }
 
-  public void addClassification(String classification, String type) {
-    addClassification(classification, type, null);
-  }
-
-
-  public Resource addClassification(String classification, String type, LegalBody museum) {
-    if (classification == null) return null;
-    RDFNode r = VocabularyManager.getVocabulary("thesaurus").findConcept(classification, false);
-    if (r == null) {
-      r = model.createLiteral(classification);
-    }
-
-    Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)
-            .addProperty(RDF.type, CIDOC.E17_Type_Assignment)
-            .addProperty(CIDOC.P41_classified, this.asResource())
-            .addProperty(CIDOC.P2_has_type, type)
-            .addProperty(CIDOC.P42_assigned, r);
-
-    if (museum != null) {
-      assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
-      this.model.add(museum.getModel());
-    }
-
-    // this.addProperty(CIDOC.P2_has_type, classification);
-    return assignment;
-  }
 
   public void addIntention(String intention) {
     this.addProperty(CIDOC.P103_was_intended_for, intention);

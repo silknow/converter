@@ -108,7 +108,8 @@ public class Main implements Runnable {
     else if (folder.isFile()) convertFile(folder, converter);
   }
 
-  private void convertFile(File file, @NotNull Converter converter) {
+  private void convertFile(@NotNull File file, @NotNull Converter converter) {
+    System.out.println(file.getName());
     Model m = converter.convert(file);
     if (m == null) return;
     String outName = changeExtension(file.getName(), ".ttl");
