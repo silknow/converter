@@ -167,18 +167,19 @@ public abstract class Entity {
   public void addActivity(Actor actor, String function) {
     if (actor == null) return;
 
-    Resource activity = model.createResource(this.uri + "/activity/" + ++activityCount)
-            .addProperty(RDF.type, CIDOC.E7_Activity)
-            .addProperty(CIDOC.P14_carried_out_by, actor.asResource());
+    Activity activity = new Activity(this.uri + "/activity/" + ++activityCount);
+    activity.addActor(actor);
 
     if (function != null) activity.addProperty(CIDOC.P2_has_type, function);
-
     this.addProperty(CIDOC.P9_consists_of, activity);
-    this.model.add(actor.model);
   }
 
   protected void addSimpleIdentifier(String id) {
     this.addProperty(DC.identifier, id);
+  }
+
+  public Resource addComplexIdentifier(String id, String type) {
+    return this.addComplexIdentifier(id, type, null, null);
   }
 
   public Resource addComplexIdentifier(String id, String type, LegalBody issuer) {
@@ -195,8 +196,11 @@ public abstract class Entity {
 
     Resource assignment = model.createResource(this.uri + "/id_assignment/" + id)
             .addProperty(RDF.type, CIDOC.E15_Identifier_Assignment)
-            .addProperty(CIDOC.P37_assigned, identifier)
-            .addProperty(CIDOC.P14_carried_out_by, issuer.asResource());
+            .addProperty(CIDOC.P37_assigned, identifier);
+    if (issuer != null) {
+      assignment.addProperty(CIDOC.P14_carried_out_by, issuer.asResource());
+      this.model.add(issuer.getModel());
+    }
 
     if (replaceId != null) {
       Resource rIdentifier = model.createResource(this.uri + "/id/" + replaceId.replaceAll(" ", "_"))
@@ -207,7 +211,6 @@ public abstract class Entity {
     }
 
     this.addProperty(CIDOC.P1_is_identified_by, identifier);
-    this.model.add(issuer.getModel());
     return identifier;
   }
 

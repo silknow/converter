@@ -3,12 +3,13 @@
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix time:  <http://www.w3.org/2006/time#> .
+@prefix crmdig: <http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/> .
 @prefix dc:    <http://purl.org/dc/elements/1.1/> .
 
 <http://data.silknow.org/document/5844415f-be9d-3239-bb0d-e044d45f2efb>
         a                        ecrm:E31_Document ;
         ecrm:P105_right_held_by  <http://data.silknow.org/person/78461ede-ea18-3d22-9671-b2ceb187aa40> , <http://data.silknow.org/person/671afc13-d1de-3890-80dd-cc3e86bd6709> ;
-        ecrm:P70_documents       <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/id_assignment/95.71.2> , <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/id_assignment/Tg 2> ;
+        ecrm:P70_documents       <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73> ;
         dc:identifier            "95.71.2" .
 
 <http://data.silknow.org/object/b5ac243b-979c-33be-8054-1bffea315f6e>
@@ -28,17 +29,13 @@
 
 <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73>
         a                              ecrm:E22_Man-Made_Object ;
-        rdfs:comment                   "Ruban en soie et or, taffetas broché noir et effets de fond (épis), bord façonné or" ;
+        rdfs:comment                   "Ruban en soie et or, taffetas broché noir et effets de fond (épis), bord façonné or"@fr ;
         rdfs:label                     "bouquet de fleurs" ;
         ecrm:P102_has_title            "bouquet de fleurs" ;
-        ecrm:P128_carries              [ a                 ecrm:E34_Inscription ;
-                                         rdfs:comment      "Aux 2 extrémités, traces du cachet cire rouge"@fr , "Ch R."@fr , "\"Charles Rebour\""@fr ;
-                                         ecrm:P2_has_type  "cachet" ;
-                                         ecrm:P3_has_note  "Aux 2 extrémités, traces du cachet cire rouge"@fr , "Ch R."@fr , "\"Charles Rebour\""@fr
-                                       ] ;
+        ecrm:P128_carries              _:b0 ;
         ecrm:P138i_has_representation  <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/image/1> ;
         ecrm:P1_is_identified_by       <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/id/95.71.2> , <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/id/Tg_2> ;
-        ecrm:P3_has_note               "Ruban en soie et or, taffetas broché noir et effets de fond (épis), bord façonné or" ;
+        ecrm:P3_has_note               "Ruban en soie et or, taffetas broché noir et effets de fond (épis), bord façonné or"@fr ;
         ecrm:P43_has_dimension         <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/dimension/h> , <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/dimension/w> ;
         ecrm:P62_depicts               "représentation végétale (bouquet, rose, épi, blé, muguet)" ;
         dc:identifier                  "95.71.2" .
@@ -66,6 +63,16 @@
         rdfs:label                 "2e moitié 19e siècle" ;
         ecrm:P78_is_identified_by  "2e moitié 19e siècle" .
 
+_:b0    a                 ecrm:E34_Inscription ;
+        rdfs:comment      "cachet (français)"@fr , "\"Charles Rebour\""@fr , "Aux 2 extrémités, traces du cachet cire rouge"@fr , "Ch R."@fr ;
+        ecrm:P2_has_type  "cachet" ;
+        ecrm:P3_has_note  "Ch R."@fr , "\"Charles Rebour\""@fr , "Aux 2 extrémités, traces du cachet cire rouge"@fr , "cachet (français)"@fr .
+
+<http://data.silknow.org/object/cd080561-b503-3e85-bff5-597aa50c49a8>
+        a                   ecrm:E89_Propositional_Object ;
+        ecrm:P129_is_about  <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73> ;
+        ecrm:P2_has_type    "museum record" .
+
 <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/right>
         a                          ecrm:E30_Right ;
         rdfs:comment               "propriété de la commune ; don ; Saint-Etienne ; musée d'Art et d'Industrie"@fr ;
@@ -73,20 +80,32 @@
         ecrm:P3_has_note           "propriété de la commune ; don ; Saint-Etienne ; musée d'Art et d'Industrie"@fr ;
         ecrm:P75i_is_possessed_by  <http://data.silknow.org/organization/e655fae3-d6f0-3fc7-96d4-8aaf73f7769d> .
 
-<http://data.silknow.org/object/cd080561-b503-3e85-bff5-597aa50c49a8>
-        a                   ecrm:E89_Propositional_Object ;
-        ecrm:P129_is_about  <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73> ;
-        ecrm:P2_has_type    "museum record" .
+<http://data.silknow.org/inscription/895bc1c3-c33d-3047-9cb6-4243f62b83ad/type_assignment/1>
+        a                    ecrm:E17_Type_Assignment ;
+        ecrm:P41_classified  _:b0 ;
+        ecrm:P42_assigned    "cachet" .
 
 <http://data.silknow.org/organization/e655fae3-d6f0-3fc7-96d4-8aaf73f7769d>
         a                         ecrm:E40_Legal_Body ;
         rdfs:label                "Saint-Etienne ; musée d'Art et d'Industrie" ;
         ecrm:P1_is_identified_by  "Saint-Etienne ; musée d'Art et d'Industrie" .
 
+<http://data.silknow.org/joconde/95.71.2>
+        a                   crmdig:D1_Digital_Object ;
+        rdfs:label          "95.71.2" ;
+        ecrm:P129_is_about  <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/type_assignment/2> , <http://data.silknow.org/event/aa50c1ce-a72b-35a3-a830-6f577c27c577> , <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/image/1> , <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/id/95.71.2> , <http://data.silknow.org/document/5844415f-be9d-3239-bb0d-e044d45f2efb> , <http://data.silknow.org/inscription/895bc1c3-c33d-3047-9cb6-4243f62b83ad/type_assignment/1> , <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/observation/1> , <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73> , <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/right> , <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/type_assignment/1> , <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/id/Tg_2> , <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/dimension/measurement> , <http://data.silknow.org/production/99d95b2e-262f-36cb-b8fe-71f8dbde1e89> , <http://data.silknow.org/inscription/895bc1c3-c33d-3047-9cb6-4243f62b83ad/observation/1> , <http://data.silknow.org/object/cd080561-b503-3e85-bff5-597aa50c49a8/right> , <http://data.silknow.org/object/8ac7abaa-8dd2-391c-a2db-b8933ab2adc8> ;
+        ecrm:P2_has_type    "record" .
+
 <http://data.silknow.org/production/99d95b2e-262f-36cb-b8fe-71f8dbde1e89/activity/1>
         a                        ecrm:E7_Activity ;
         ecrm:P14_carried_out_by  <http://data.silknow.org/actor/3a23ecce-3583-3085-9391-9a636579db78> ;
         ecrm:P2_has_type         "fabricant" .
+
+<http://data.silknow.org/joconde>
+        a                         crmdig:D1_Digital_Object ;
+        rdfs:label                "joconde" ;
+        ecrm:P106_is_composed_of  <http://data.silknow.org/joconde/95.71.2> ;
+        ecrm:P2_has_type          "dataset" .
 
 <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/id/Tg_2>
         a                 ecrm:E42_Identifier ;
@@ -105,6 +124,13 @@
         rdfs:label                "REBOUR Charles" ;
         ecrm:P1_is_identified_by  "REBOUR Charles" ;
         ecrm:P3_has_note          "REBOUR : ?, 1831 ; ?, 1897" .
+
+<http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/observation/1>
+        a                 <http://www.ics.forth.gr/isl/CRMsci/S4_Observation> ;
+        ecrm:P2_has_type  "description" ;
+        ecrm:P3_has_note  "Ruban en soie et or, taffetas broché noir et effets de fond (épis), bord façonné or"@fr ;
+        <http://www.ics.forth.gr/isl/CRMsci/O8_observed>
+                <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73> .
 
 <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/dimension/h>
         a                   ecrm:E54_Dimension ;
@@ -139,6 +165,13 @@
         rdfs:label        "95.71.2" ;
         ecrm:P2_has_type  "Register number" .
 
+<http://data.silknow.org/inscription/895bc1c3-c33d-3047-9cb6-4243f62b83ad/observation/1>
+        a                 <http://www.ics.forth.gr/isl/CRMsci/S4_Observation> ;
+        ecrm:P2_has_type  "inscription" ;
+        ecrm:P3_has_note  "cachet (français)"@fr ;
+        <http://www.ics.forth.gr/isl/CRMsci/O8_observed>
+                _:b0 .
+
 <http://data.silknow.org/person/671afc13-d1de-3890-80dd-cc3e86bd6709>
         a                         ecrm:E21_Person ;
         rdfs:label                "Besson Sylvain" ;
@@ -158,7 +191,7 @@
 <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/dimension/measurement>
         a                            ecrm:E16_Measurement ;
         ecrm:P39_measured            <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73> ;
-        ecrm:P40_observed_dimension  <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/dimension/h> , <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/dimension/w> .
+        ecrm:P40_observed_dimension  <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/dimension/w> , <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/dimension/h> .
 
 <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/id_assignment/95.71.2>
         a                        ecrm:E15_Identifier_Assignment ;

@@ -19,7 +19,7 @@ public class CrawledJSONField {
   }
 
   private boolean isNull() {
-    return value == null || StringUtils.isBlank(value) || value.equals("-");
+    return StringUtils.isBlank(value) || value.equals("-");
   }
 
   @NotNull

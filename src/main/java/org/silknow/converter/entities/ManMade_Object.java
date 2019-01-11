@@ -10,8 +10,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ManMade_Object extends Entity {
-  private static final String DIMENSION_REGEX = "(\\d+(?:[,.]\\d)?) x (\\d+(?:[,.]\\d)?)";
-  private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX);
+  private static final String DIMENSION_REGEX = "(\\d+(?:[,.]\\d)?) ?x ?(\\d+(?:[,.]\\d)?)";
+  private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX, Pattern.CASE_INSENSITIVE);
 
   private int imgCount;
 
@@ -48,13 +48,8 @@ public class ManMade_Object extends Entity {
     return this;
   }
 
-  public void associate(String npa) {
-    if (npa == null) return;
-    //    E22_Man Made Object P69 is associated with E39_Actor P1 is identified by E83_Actor Appellation
-    this.addProperty(CIDOC.P69_has_association_with, new Actor(npa));
-  }
-
   public Resource addMeasure(String value) throws RuntimeException {
+    if (value == null) return null;
     Matcher m = DIMENSION_PATTERN.matcher(value);
     if (!m.find()) throw new RuntimeException("Dimension not parsed: " + value);
     return addMeasure(m.group(1), m.group(2));

@@ -3,25 +3,32 @@
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix time:  <http://www.w3.org/2006/time#> .
+@prefix crmdig: <http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/> .
 @prefix dc:    <http://purl.org/dc/elements/1.1/> .
-
-<http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8/id_assignment/5456>
-        a                        ecrm:E15_Identifier_Assignment ;
-        ecrm:P14_carried_out_by  <http://data.silknow.org/organization/a69ae084-440e-3fe3-ae77-8a6d37b1ecbf> ;
-        ecrm:P37_assigned        <http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8/id/5456> .
 
 <http://data.silknow.org/organization/a69ae084-440e-3fe3-ae77-8a6d37b1ecbf>
         a                         ecrm:E40_Legal_Body ;
         rdfs:label                "Centre de Documentació i Museu Tèxtil - CDMT" ;
         ecrm:P1_is_identified_by  "Centre de Documentació i Museu Tèxtil - CDMT" .
 
-<http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8>
+<http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589>
         a                              ecrm:E22_Man-Made_Object ;
         ecrm:P138i_has_representation  <http://data.silknow.org/image/67de109c-b25e-36d3-be96-a847d7682723> ;
-        ecrm:P1_is_identified_by       <http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8/id/5456> ;
-        ecrm:P43_has_dimension         <http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8/dimension/h> , <http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8/dimension/w> ;
-        ecrm:P62_depicts               "plant motifs" , "floral patterns" ;
-        dc:identifier                  "5456" .
+        ecrm:P1_is_identified_by       <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/id/5456> ;
+        ecrm:P43_has_dimension         <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/dimension/w> , <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/dimension/h> ;
+        ecrm:P62_depicts               "floral patterns" , "plant motifs" ;
+        dc:identifier                  "3345_en" .
+
+<http://data.silknow.org/imatex/3345_en>
+        a                   crmdig:D1_Digital_Object ;
+        rdfs:label          "3345_en" ;
+        ecrm:P129_is_about  <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/dimension/measurement> , <http://data.silknow.org/production/7cb5fa67-e5a4-34f5-bd00-dc98237570a6> , <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/type_assignment/2> , <http://data.silknow.org/event/df99c2fc-bf15-3bf9-b5f7-147e9146d201> , <http://data.silknow.org/event/e9aa4a7d-3916-326f-85f2-bc8e4deedaeb> , <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/id/5456> , <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589> , <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/type_assignment/1> ;
+        ecrm:P2_has_type    "record" .
+
+<http://data.silknow.org/production/7cb5fa67-e5a4-34f5-bd00-dc98237570a6/time/1>
+        a                          ecrm:E52_Time-Span ;
+        rdfs:label                 "third quarter" ;
+        ecrm:P78_is_identified_by  "third quarter" .
 
 <http://data.silknow.org/place/c702e0e0-b9ec-34e5-bb4f-563b4f20d6e1>
         a                         ecrm:E53_Place ;
@@ -32,82 +39,80 @@
         a              ecrm:E38_Image ;
         dc:identifier  "05456.tif" .
 
-<http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8/dimension/h>
-        a                   ecrm:E54_Dimension ;
-        ecrm:P2_has_type    "height" ;
-        ecrm:P90_has_value  "35"^^xsd:float ;
-        ecrm:P91_has_unit   "cm" .
-
-<http://data.silknow.org/event/50117dd1-f25a-35f4-bc9d-3a39918babd6>
-        a                              ecrm:E8_Acquisition ;
-        ecrm:P22_transferred_title_to  <http://data.silknow.org/organization/a69ae084-440e-3fe3-ae77-8a6d37b1ecbf> ;
-        ecrm:P23_transferred_title_from
-                "Viñas, Ricard" ;
-        ecrm:P24_transferred_title_of  <http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8> ;
-        ecrm:P2_has_type               "purchase - Diputació de Barcelona" .
-
-<http://data.silknow.org/production/0f85f463-5676-3a8d-9773-e07caed1ccba/time/2>
-        a                          ecrm:E52_Time-Span ;
-        rdfs:label                 "17th century" ;
-        ecrm:P78_is_identified_by  "17th century" .
-
-<http://data.silknow.org/document/a6da1e9f-2476-3b3b-beac-593cd6ace7ed>
-        a                   ecrm:E31_Document ;
-        ecrm:P70_documents  <http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8/id_assignment/5456> , <http://data.silknow.org/production/0f85f463-5676-3a8d-9773-e07caed1ccba> ;
-        dc:identifier       "5456" ;
-        dc:source           "http://imatex.cdmt.cat/_cat/fitxa_fitxa.aspx?num_id=3345_en" .
-
-<http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8/dimension/measurement>
-        a                            ecrm:E16_Measurement ;
-        ecrm:P39_measured            <http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8> ;
-        ecrm:P40_observed_dimension  <http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8/dimension/h> , <http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8/dimension/w> .
-
-<http://data.silknow.org/production/0f85f463-5676-3a8d-9773-e07caed1ccba/time/1>
-        a                          ecrm:E52_Time-Span ;
-        rdfs:label                 "third quarter" ;
-        ecrm:P78_is_identified_by  "third quarter" .
-
-<http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8/type_assignment/2>
-        a                        ecrm:E17_Type_Assignment ;
-        ecrm:P14_carried_out_by  <http://data.silknow.org/organization/a69ae084-440e-3fe3-ae77-8a6d37b1ecbf> ;
-        ecrm:P2_has_type         "domain" ;
-        ecrm:P41_classified      <http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8> ;
-        ecrm:P42_assigned        "textile" .
-
-<http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8/type_assignment/1>
-        a                    ecrm:E17_Type_Assignment ;
-        ecrm:P2_has_type     "denomination" ;
-        ecrm:P41_classified  <http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8> ;
-        ecrm:P42_assigned    "textiles pieces" .
-
-<http://data.silknow.org/production/0f85f463-5676-3a8d-9773-e07caed1ccba>
-        a                       ecrm:E12_Production ;
-        ecrm:P108_has_produced  <http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8> ;
-        ecrm:P126_employed      "silk" ;
-        ecrm:P32_used_general_technique
-                "damask" , "trama llançada" , "patterned fabric" ;
-        ecrm:P4_has_time-span   <http://data.silknow.org/production/0f85f463-5676-3a8d-9773-e07caed1ccba/time/2> , <http://data.silknow.org/production/0f85f463-5676-3a8d-9773-e07caed1ccba/time/1> ;
-        ecrm:P8_took_place_on_or_within
-                <http://data.silknow.org/place/29892204-e5a6-36eb-a24f-c3d938cda73d> , <http://data.silknow.org/place/c702e0e0-b9ec-34e5-bb4f-563b4f20d6e1> .
-
-<http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8/dimension/w>
+<http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/dimension/w>
         a                   ecrm:E54_Dimension ;
         ecrm:P2_has_type    "width" ;
         ecrm:P90_has_value  "44.5"^^xsd:float ;
         ecrm:P91_has_unit   "cm" .
 
-<http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8/id/5456>
+<http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/id_assignment/5456>
+        a                  ecrm:E15_Identifier_Assignment ;
+        ecrm:P37_assigned  <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/id/5456> .
+
+<http://data.silknow.org/event/e9aa4a7d-3916-326f-85f2-bc8e4deedaeb>
+        a                              ecrm:E8_Acquisition ;
+        ecrm:P22_transferred_title_to  <http://data.silknow.org/organization/a69ae084-440e-3fe3-ae77-8a6d37b1ecbf> ;
+        ecrm:P23_transferred_title_from
+                "Viñas, Ricard" ;
+        ecrm:P24_transferred_title_of  <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589> ;
+        ecrm:P2_has_type               "purchase - Diputació de Barcelona" .
+
+<http://data.silknow.org/production/7cb5fa67-e5a4-34f5-bd00-dc98237570a6>
+        a                       ecrm:E12_Production ;
+        ecrm:P108_has_produced  <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589> ;
+        ecrm:P126_employed      "silk" ;
+        ecrm:P32_used_general_technique
+                "patterned fabric" , "damask" , "trama llançada" ;
+        ecrm:P4_has_time-span   <http://data.silknow.org/production/7cb5fa67-e5a4-34f5-bd00-dc98237570a6/time/1> , <http://data.silknow.org/production/7cb5fa67-e5a4-34f5-bd00-dc98237570a6/time/2> ;
+        ecrm:P8_took_place_on_or_within
+                <http://data.silknow.org/place/29892204-e5a6-36eb-a24f-c3d938cda73d> , <http://data.silknow.org/place/c702e0e0-b9ec-34e5-bb4f-563b4f20d6e1> .
+
+<http://data.silknow.org/event/df99c2fc-bf15-3bf9-b5f7-147e9146d201>
+        a                             ecrm:E10_Transfer_of_Custody ;
+        ecrm:P29_custody_received_by  <http://data.silknow.org/organization/a69ae084-440e-3fe3-ae77-8a6d37b1ecbf> ;
+        ecrm:P30_transferred_custody_of
+                <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589> .
+
+<http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/id/5456>
         a                 ecrm:E42_Identifier ;
         rdfs:label        "5456" ;
         ecrm:P2_has_type  "Register number" .
+
+<http://data.silknow.org/imatex>
+        a                         crmdig:D1_Digital_Object ;
+        rdfs:label                "imatex" ;
+        ecrm:P106_is_composed_of  <http://data.silknow.org/imatex/3345_en> ;
+        ecrm:P2_has_type          "dataset" .
+
+<http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/dimension/measurement>
+        a                            ecrm:E16_Measurement ;
+        ecrm:P39_measured            <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589> ;
+        ecrm:P40_observed_dimension  <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/dimension/w> , <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/dimension/h> .
+
+<http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/dimension/h>
+        a                   ecrm:E54_Dimension ;
+        ecrm:P2_has_type    "height" ;
+        ecrm:P90_has_value  "35"^^xsd:float ;
+        ecrm:P91_has_unit   "cm" .
+
+<http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/type_assignment/2>
+        a                    ecrm:E17_Type_Assignment ;
+        ecrm:P2_has_type     "domain" ;
+        ecrm:P41_classified  <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589> ;
+        ecrm:P42_assigned    "textile" .
 
 <http://data.silknow.org/place/29892204-e5a6-36eb-a24f-c3d938cda73d>
         a                         ecrm:E53_Place ;
         rdfs:label                "Spain" ;
         ecrm:P1_is_identified_by  "Spain" .
 
-<http://data.silknow.org/event/a44848d6-97c3-3d2c-9e3c-f651e9ea479b>
-        a                             ecrm:E10_Transfer_of_Custody ;
-        ecrm:P29_custody_received_by  <http://data.silknow.org/organization/a69ae084-440e-3fe3-ae77-8a6d37b1ecbf> ;
-        ecrm:P30_transferred_custody_of
-                <http://data.silknow.org/object/c14863c2-afcf-391c-b637-e0fc03b75cf8> .
+<http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589/type_assignment/1>
+        a                    ecrm:E17_Type_Assignment ;
+        ecrm:P2_has_type     "denomination" ;
+        ecrm:P41_classified  <http://data.silknow.org/object/4f5b8b19-d1f5-3310-9636-f165f6693589> ;
+        ecrm:P42_assigned    "textiles pieces" .
+
+<http://data.silknow.org/production/7cb5fa67-e5a4-34f5-bd00-dc98237570a6/time/2>
+        a                          ecrm:E52_Time-Span ;
+        rdfs:label                 "17th century" ;
+        ecrm:P78_is_identified_by  "17th century" .
