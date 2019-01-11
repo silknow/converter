@@ -63,11 +63,6 @@
         rdfs:label                 "2e moitié 19e siècle" ;
         ecrm:P78_is_identified_by  "2e moitié 19e siècle" .
 
-_:b0    a                 ecrm:E34_Inscription ;
-        rdfs:comment      "cachet (français)"@fr , "\"Charles Rebour\""@fr , "Aux 2 extrémités, traces du cachet cire rouge"@fr , "Ch R."@fr ;
-        ecrm:P2_has_type  "cachet" ;
-        ecrm:P3_has_note  "Ch R."@fr , "\"Charles Rebour\""@fr , "Aux 2 extrémités, traces du cachet cire rouge"@fr , "cachet (français)"@fr .
-
 <http://data.silknow.org/object/cd080561-b503-3e85-bff5-597aa50c49a8>
         a                   ecrm:E89_Propositional_Object ;
         ecrm:P129_is_about  <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73> ;
@@ -159,6 +154,11 @@ _:b0    a                 ecrm:E34_Inscription ;
 <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/image/1>
         a                  ecrm:E38_Image ;
         schema:contentUrl  <http://www2.culture.gouv.fr/Wave/image/joconde/0594/m102389_0005505_p.jpg> .
+
+_:b0    a                 ecrm:E34_Inscription ;
+        rdfs:comment      "Aux 2 extrémités, traces du cachet cire rouge"@fr , "cachet (français)"@fr , "Ch R."@fr , "\"Charles Rebour\""@fr ;
+        ecrm:P2_has_type  "cachet" ;
+        ecrm:P3_has_note  "\"Charles Rebour\""@fr , "Aux 2 extrémités, traces du cachet cire rouge"@fr , "Ch R."@fr , "cachet (français)"@fr .
 
 <http://data.silknow.org/object/0a135684-ac43-3888-8fbd-c79dd061de73/id/95.71.2>
         a                 ecrm:E42_Identifier ;

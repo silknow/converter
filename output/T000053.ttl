@@ -7,9 +7,10 @@
 @prefix dc:    <http://purl.org/dc/elements/1.1/> .
 
 <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/section/Reverso/info>
-        a                   ecrm:E73_Information_Object ;
-        ecrm:P129_is_about  <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/section/Reverso> ;
-        ecrm:P3_has_note    "Etiqueta adhesiva \"MG. Valencia. 11\""@es .
+        a                 <http://www.ics.forth.gr/isl/CRMsci/S4_Observation> ;
+        ecrm:P3_has_note  "Etiqueta adhesiva \"MG. Valencia. 11\""@es ;
+        <http://www.ics.forth.gr/isl/CRMsci/O8_observed>
+                <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/section/Reverso> .
 
 <http://data.silknow.org/garin>
         a                         crmdig:D1_Digital_Object ;
@@ -36,7 +37,9 @@
 <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/observation/2>
         a                 <http://www.ics.forth.gr/isl/CRMsci/S4_Observation> ;
         ecrm:P2_has_type  "descripción técnica" ;
-        ecrm:P3_has_note  "Urdimbre:        Trama:  28 pasadas          Rapport: 31 cm.         Telar: de lanzadera"@es .
+        ecrm:P3_has_note  "Urdimbre:        Trama:  28 pasadas          Rapport: 31 cm.         Telar: de lanzadera"@es ;
+        <http://www.ics.forth.gr/isl/CRMsci/O8_observed>
+                <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e> .
 
 <http://data.silknow.org/production/fba8237f-3e99-3816-8482-57998da19f83>
         a                       ecrm:E12_Production ;
@@ -53,7 +56,7 @@
 <http://data.silknow.org/garin/T_000053>
         a                   crmdig:D1_Digital_Object ;
         rdfs:label          "T 000053" ;
-        ecrm:P129_is_about  <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/dimension/measurement> , <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/type_assignment/1> , <http://data.silknow.org/event/3bf5b7c3-3e08-357a-a5fb-3e536a79d2c0> , <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/type_assignment/2> , <http://data.silknow.org/organization/2614d709-11ee-3107-af15-9db1d8c98d9a> , <http://data.silknow.org/document/1aa8b94a-5abf-3d94-b449-aa0bafc5a6d3> , <http://data.silknow.org/image/85ba0a63-f751-33bc-9e77-6d1fa5dcf510> , <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/observation/1> , <http://data.silknow.org/production/fba8237f-3e99-3816-8482-57998da19f83> , <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/observation/2> , <http://data.silknow.org/event/8eedf1c4-b545-30f2-9475-9cf33ab5f6f0> , <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e> , <http://data.silknow.org/assestment/0dcfb04b-e353-3451-a733-990cb10049d5> , <http://data.silknow.org/image/2b9b2e58-168f-3d62-9c19-f33078c3f7a5> ;
+        ecrm:P129_is_about  <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/dimension/measurement> , <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/section/Reverso/info> , <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/type_assignment/1> , <http://data.silknow.org/event/3bf5b7c3-3e08-357a-a5fb-3e536a79d2c0> , <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/type_assignment/2> , <http://data.silknow.org/organization/2614d709-11ee-3107-af15-9db1d8c98d9a> , <http://data.silknow.org/image/85ba0a63-f751-33bc-9e77-6d1fa5dcf510> , <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/id/T_000053> , <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/observation/1> , <http://data.silknow.org/production/fba8237f-3e99-3816-8482-57998da19f83> , <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/observation/2> , <http://data.silknow.org/event/8eedf1c4-b545-30f2-9475-9cf33ab5f6f0> , <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e> , <http://data.silknow.org/assestment/0dcfb04b-e353-3451-a733-990cb10049d5> , <http://data.silknow.org/image/2b9b2e58-168f-3d62-9c19-f33078c3f7a5> ;
         ecrm:P2_has_type    "record" .
 
 <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/dimension/measurement>
@@ -69,7 +72,9 @@
 <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/observation/1>
         a                 <http://www.ics.forth.gr/isl/CRMsci/S4_Observation> ;
         ecrm:P2_has_type  "descripción" ;
-        ecrm:P3_has_note  "Damasco de fondo raso en algodón azul, con dibujo Abundancia formado por una trama de rayón color crema."@es .
+        ecrm:P3_has_note  "Damasco de fondo raso en algodón azul, con dibujo Abundancia formado por una trama de rayón color crema."@es ;
+        <http://www.ics.forth.gr/isl/CRMsci/O8_observed>
+                <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e> .
 
 <http://data.silknow.org/event/8eedf1c4-b545-30f2-9475-9cf33ab5f6f0>
         a                    ecrm:E9_Move ;
@@ -106,10 +111,11 @@
         ecrm:P2_has_type  "deterioration" ;
         ecrm:P3_has_note  "Perforaciones en el margén superior"@es .
 
-<http://data.silknow.org/place/dd761956-4657-3b62-ac92-0af4071be40b>
-        a                         ecrm:E53_Place ;
-        rdfs:label                "Depósito del chalet de La fábrica Garín" ;
-        ecrm:P1_is_identified_by  "Depósito del chalet de La fábrica Garín" .
+<http://data.silknow.org/assestment/0dcfb04b-e353-3451-a733-990cb10049d5/condition/01>
+        a                 ecrm:E3_Condition_State ;
+        rdfs:comment      "Buena"@es ;
+        ecrm:P2_has_type  "condition" ;
+        ecrm:P3_has_note  "Buena"@es .
 
 <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/type_assignment/1>
         a                        ecrm:E17_Type_Assignment ;
@@ -124,16 +130,15 @@
         ecrm:P90_has_value  "62"^^xsd:float ;
         ecrm:P91_has_unit   "cm" .
 
+<http://data.silknow.org/place/dd761956-4657-3b62-ac92-0af4071be40b>
+        a                         ecrm:E53_Place ;
+        rdfs:label                "Depósito del chalet de La fábrica Garín" ;
+        ecrm:P1_is_identified_by  "Depósito del chalet de La fábrica Garín" .
+
 <http://data.silknow.org/place/a3b4e2a0-3706-300c-9d43-d79002eb1d2f>
         a                         ecrm:E53_Place ;
         rdfs:label                "Almacén tejidos" ;
         ecrm:P1_is_identified_by  "Almacén tejidos" .
-
-<http://data.silknow.org/assestment/0dcfb04b-e353-3451-a733-990cb10049d5/condition/01>
-        a                 ecrm:E3_Condition_State ;
-        rdfs:comment      "Buena"@es ;
-        ecrm:P2_has_type  "condition" ;
-        ecrm:P3_has_note  "Buena"@es .
 
 <http://data.silknow.org/production/fba8237f-3e99-3816-8482-57998da19f83/time/1>
         a                          ecrm:E52_Time-Span ;
@@ -154,11 +159,6 @@
         a                              ecrm:E8_Acquisition ;
         ecrm:P22_transferred_title_to  <http://data.silknow.org/organization/2614d709-11ee-3107-af15-9db1d8c98d9a> ;
         ecrm:P24_transferred_title_of  <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e> .
-
-<http://data.silknow.org/document/1aa8b94a-5abf-3d94-b449-aa0bafc5a6d3>
-        a                   ecrm:E31_Document ;
-        ecrm:P70_documents  <http://data.silknow.org/object/81ff09f6-e431-30d0-8321-1e845746991e/id_assignment/T 000053> , <http://data.silknow.org/assestment/0dcfb04b-e353-3451-a733-990cb10049d5/condition/01> , <http://data.silknow.org/assestment/0dcfb04b-e353-3451-a733-990cb10049d5/condition/11> , <http://data.silknow.org/assestment/0dcfb04b-e353-3451-a733-990cb10049d5/condition/21> ;
-        dc:identifier       "T 000053" .
 
 <http://data.silknow.org/image/85ba0a63-f751-33bc-9e77-6d1fa5dcf510>
         a                  ecrm:E38_Image ;

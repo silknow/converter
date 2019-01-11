@@ -3,132 +3,156 @@
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix time:  <http://www.w3.org/2006/time#> .
+@prefix crmdig: <http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/> .
 @prefix dc:    <http://purl.org/dc/elements/1.1/> .
-
-<http://data.silknow.org/assestment/58bc960d-8459-37b1-b9d0-023d97ae776b/condition/01>
-        a                 ecrm:E3_Condition_State ;
-        rdfs:comment      "restaurat"@ca ;
-        ecrm:P2_has_type  "condition" ;
-        ecrm:P3_has_note  "restaurat"@ca .
-
-<http://data.silknow.org/organization/a69ae084-440e-3fe3-ae77-8a6d37b1ecbf>
-        a                         ecrm:E40_Legal_Body ;
-        rdfs:label                "Centre de Documentació i Museu Tèxtil - CDMT" ;
-        ecrm:P1_is_identified_by  "Centre de Documentació i Museu Tèxtil - CDMT" .
 
 <http://data.silknow.org/place/34788e52-c904-311c-872e-c89af879a0d0>
         a                         ecrm:E53_Place ;
         rdfs:label                "Al-Andalus" ;
         ecrm:P1_is_identified_by  "Al-Andalus" .
 
-<http://data.silknow.org/production/64f14af6-00b1-3fba-897a-10079b1cc7b4/time/3>
-        a                          ecrm:E52_Time-Span ;
-        rdfs:label                 "to mid-twentieth century" ;
-        ecrm:P78_is_identified_by  "to mid-twentieth century" .
+<http://data.silknow.org/organization/a69ae084-440e-3fe3-ae77-8a6d37b1ecbf>
+        a                         ecrm:E40_Legal_Body ;
+        rdfs:label                "Centre de Documentació i Museu Tèxtil - CDMT" ;
+        ecrm:P1_is_identified_by  "Centre de Documentació i Museu Tèxtil - CDMT" .
 
-<http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08/id_assignment/2374>
-        a                        ecrm:E15_Identifier_Assignment ;
-        ecrm:P14_carried_out_by  <http://data.silknow.org/organization/a69ae084-440e-3fe3-ae77-8a6d37b1ecbf> ;
-        ecrm:P37_assigned        <http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08/id/2374> .
+<http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/observation/2>
+        a                 <http://www.ics.forth.gr/isl/CRMsci/S4_Observation> ;
+        ecrm:P2_has_type  "technical description" ;
+        ecrm:P3_has_note  "LAMPÀS (ó pseudo-lampàs) amb decoració per 4 trames llançades, fons en doble tela i decoració en tafetà\n. ORDIT\n- relació d’ordits: 2 ordits, en relacio: 4 fils d’ordit de fons / 1 fil d’ordit de lligadura \n- matèria: \n\tordit de fons: seda; color beix; fils simples; torsió Z\n\tordit de lligadura: seda; colo beix; fils simples; torsió Z\n- densitat: 40 fils ordit de fons / 10 fils ordit de lligadura\n- escalat: 1 fil d’ordit de fons\n\n. TRAMA\n- relació de trames:  5 trames, en relació: 1 trama de fons / 4 trames de decoració llançades \n- matèria:  \n\t1 trama de fons: seda; color blanc; STA\n\t3 trames de decoració llançades: seda; blau, verd i vermell; STA\n\t1 trama de decoració llançada: seda entorxada amb pell daurada (or de Xipre) en torsió Z \n- densitat: 34-36 passades/cm\n- escalat: 1 passada\n\n. RAPORT de disseny: 7,5 x 3,5 cm\n\n. TELER: de llaços, ordit passat a punta i retorn, 2 plegadors d’ordit"@ca ;
+        <http://www.ics.forth.gr/isl/CRMsci/O8_observed>
+                <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317> .
 
-<http://data.silknow.org/production/64f14af6-00b1-3fba-897a-10079b1cc7b4/time/2>
-        a                          ecrm:E52_Time-Span ;
-        rdfs:label                 "Almohad period" ;
-        ecrm:P78_is_identified_by  "Almohad period" .
-
-<http://data.silknow.org/modification/0c8e73aa-b231-37fa-853a-ed9aaf34adde>
-        a                      ecrm:E11_Modification ;
-        rdfs:comment           "Cerdà Durà, Elisabet - 2010 -  / Fundació Abegg Stiftung. 1992" ;
-        ecrm:P2_has_type       "restoration" ;
-        ecrm:P31_has_modified  <http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08> ;
-        ecrm:P3_has_note       "Cerdà Durà, Elisabet - 2010 -  / Fundació Abegg Stiftung. 1992" .
-
-<http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08/type_assignment/2>
-        a                        ecrm:E17_Type_Assignment ;
-        ecrm:P14_carried_out_by  <http://data.silknow.org/organization/a69ae084-440e-3fe3-ae77-8a6d37b1ecbf> ;
-        ecrm:P2_has_type         "domain" ;
-        ecrm:P41_classified      <http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08> ;
-        ecrm:P42_assigned        "textile" .
-
-<http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08/dimension/w>
-        a                   ecrm:E54_Dimension ;
-        ecrm:P2_has_type    "width" ;
-        ecrm:P90_has_value  "11.5"^^xsd:float ;
-        ecrm:P91_has_unit   "cm" .
-
-<http://data.silknow.org/production/64f14af6-00b1-3fba-897a-10079b1cc7b4>
-        a                       ecrm:E12_Production ;
-        ecrm:P108_has_produced  <http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08> ;
-        ecrm:P126_employed      "silk" , "cyprus gold" ;
-        ecrm:P32_used_general_technique
-                "double-cloth" , "patterned fabric" , "pseudo-lampàs" ;
-        ecrm:P4_has_time-span   <http://data.silknow.org/production/64f14af6-00b1-3fba-897a-10079b1cc7b4/time/4> , <http://data.silknow.org/production/64f14af6-00b1-3fba-897a-10079b1cc7b4/time/3> , <http://data.silknow.org/production/64f14af6-00b1-3fba-897a-10079b1cc7b4/time/2> , <http://data.silknow.org/production/64f14af6-00b1-3fba-897a-10079b1cc7b4/time/1> ;
-        ecrm:P8_took_place_on_or_within
-                <http://data.silknow.org/place/34788e52-c904-311c-872e-c89af879a0d0> .
-
-<http://data.silknow.org/production/64f14af6-00b1-3fba-897a-10079b1cc7b4/time/1>
-        a                          ecrm:E52_Time-Span ;
-        rdfs:label                 "període medieval" ;
-        ecrm:P78_is_identified_by  "període medieval" .
-
-<http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08>
-        a                              ecrm:E22_Man-Made_Object ;
-        rdfs:comment                   "LAMPÀS (ó pseudo-lampàs) amb decoració per 4 trames llançades, fons en doble tela i decoració en tafetà\n. ORDIT\n- relació d’ordits: 2 ordits, en relacio: 4 fils d’ordit de fons / 1 fil d’ordit de lligadura \n- matèria: \n\tordit de fons: seda; color beix; fils simples; torsió Z\n\tordit de lligadura: seda; colo beix; fils simples; torsió Z\n- densitat: 40 fils ordit de fons / 10 fils ordit de lligadura\n- escalat: 1 fil d’ordit de fons\n\n. TRAMA\n- relació de trames:  5 trames, en relació: 1 trama de fons / 4 trames de decoració llançades \n- matèria:  \n\t1 trama de fons: seda; color blanc; STA\n\t3 trames de decoració llançades: seda; blau, verd i vermell; STA\n\t1 trama de decoració llançada: seda entorxada amb pell daurada (or de Xipre) en torsió Z \n- densitat: 34-36 passades/cm\n- escalat: 1 passada\n\n. RAPORT de disseny: 7,5 x 3,5 cm\n\n. TELER: de llaços, ordit passat a punta i retorn, 2 plegadors d’ordit"@ca , "Fragment del Teixit de les Estrelles de la capa del tern de sant Valeri, directament relacionat amb el conjunt de fragments conservats amb el núm.reg. 3938.\n\nEs tracta un teixit de gran riquesa visual per l’ús que en ell s’ha fet del color i dels materials. Els colors blau, verd i vermell de les sedes s’han conservat amb gran intensitat i combina magníficament amb l’ús del fil d’or treballat en abundància. El disseny és una rígida estructura reticular amb dos motius diferents disposats a portell: fileres de flors de vuit pètals amb una estrella central alternen amb estrelles de vuit puntes de composició calidoscòpica. Tot el conjunt té un fort sentit geomètric com és habitual en els teixits del període almohade, moment al que pertany la peça.\n\nDe la indumentària del sant, composta per dues dalmàtiques, una casulla i una capa, el CDMT també conserva un altre fragment de la capa (núm.reg.3938) i diversos fragments del Teixit dels Lleons de la casulla (núm.reg.2979-1, 2979-2, 3976 i 3937). \n\nSegons els documents, sant Valeri va ser bisbe de Saragossa al segle IV i el seu tern va ser portat amb les seves relíquies a Roda d’Isàbena l’any 1279. Al segle XV va passar a la catedral de Lleida d’on va ser venut a principis del segle XX al col•leccionista Lluís Plandiura, qui  les va vendre a la Junta de Museus de Barcelona l’any 1932.\n\nEl tern de sant Valeri és un conjunt d’indumentària litúrgica de reconeguda importància i del que s’ha fet un exhaustiu estudi històric i tècnic . De la seva història es coneixen els nombrosos canvis, modificacions i mutilacions que al llarg del temps ha sofert i que expliquen la gran dispersió dels seus fragments. \n\nDes del punt de vista estilístic se’l pot relacionar amb el teixit de la creu del taüt d’Enrique I  en el panteó reial de Las Huelgas a Burgos (m.1217) i a nivell tècnic destaca l’interès de la peça per ser exemple de transició entre la tècnica de taqueté i la de lampàs ."@ca ;
-        ecrm:P103_was_intended_for     "liturgical garments" ;
-        ecrm:P138i_has_representation  <http://data.silknow.org/image/c06a0496-4650-359e-a2b9-9dbd1549d852> ;
-        ecrm:P1_is_identified_by       <http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08/id/2374> ;
-        ecrm:P3_has_note               "LAMPÀS (ó pseudo-lampàs) amb decoració per 4 trames llançades, fons en doble tela i decoració en tafetà\n. ORDIT\n- relació d’ordits: 2 ordits, en relacio: 4 fils d’ordit de fons / 1 fil d’ordit de lligadura \n- matèria: \n\tordit de fons: seda; color beix; fils simples; torsió Z\n\tordit de lligadura: seda; colo beix; fils simples; torsió Z\n- densitat: 40 fils ordit de fons / 10 fils ordit de lligadura\n- escalat: 1 fil d’ordit de fons\n\n. TRAMA\n- relació de trames:  5 trames, en relació: 1 trama de fons / 4 trames de decoració llançades \n- matèria:  \n\t1 trama de fons: seda; color blanc; STA\n\t3 trames de decoració llançades: seda; blau, verd i vermell; STA\n\t1 trama de decoració llançada: seda entorxada amb pell daurada (or de Xipre) en torsió Z \n- densitat: 34-36 passades/cm\n- escalat: 1 passada\n\n. RAPORT de disseny: 7,5 x 3,5 cm\n\n. TELER: de llaços, ordit passat a punta i retorn, 2 plegadors d’ordit"@ca , "Fragment del Teixit de les Estrelles de la capa del tern de sant Valeri, directament relacionat amb el conjunt de fragments conservats amb el núm.reg. 3938.\n\nEs tracta un teixit de gran riquesa visual per l’ús que en ell s’ha fet del color i dels materials. Els colors blau, verd i vermell de les sedes s’han conservat amb gran intensitat i combina magníficament amb l’ús del fil d’or treballat en abundància. El disseny és una rígida estructura reticular amb dos motius diferents disposats a portell: fileres de flors de vuit pètals amb una estrella central alternen amb estrelles de vuit puntes de composició calidoscòpica. Tot el conjunt té un fort sentit geomètric com és habitual en els teixits del període almohade, moment al que pertany la peça.\n\nDe la indumentària del sant, composta per dues dalmàtiques, una casulla i una capa, el CDMT també conserva un altre fragment de la capa (núm.reg.3938) i diversos fragments del Teixit dels Lleons de la casulla (núm.reg.2979-1, 2979-2, 3976 i 3937). \n\nSegons els documents, sant Valeri va ser bisbe de Saragossa al segle IV i el seu tern va ser portat amb les seves relíquies a Roda d’Isàbena l’any 1279. Al segle XV va passar a la catedral de Lleida d’on va ser venut a principis del segle XX al col•leccionista Lluís Plandiura, qui  les va vendre a la Junta de Museus de Barcelona l’any 1932.\n\nEl tern de sant Valeri és un conjunt d’indumentària litúrgica de reconeguda importància i del que s’ha fet un exhaustiu estudi històric i tècnic . De la seva història es coneixen els nombrosos canvis, modificacions i mutilacions que al llarg del temps ha sofert i que expliquen la gran dispersió dels seus fragments. \n\nDes del punt de vista estilístic se’l pot relacionar amb el teixit de la creu del taüt d’Enrique I  en el panteó reial de Las Huelgas a Burgos (m.1217) i a nivell tècnic destaca l’interès de la peça per ser exemple de transició entre la tècnica de taqueté i la de lampàs ."@ca ;
-        ecrm:P43_has_dimension         <http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08/dimension/w> , <http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08/dimension/h> ;
-        ecrm:P62_depicts               "stars" , "square distribution" , "geometrical pattern" ;
-        dc:identifier                  "2374" .
-
-<http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08/dimension/measurement>
+<http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/dimension/measurement>
         a                            ecrm:E16_Measurement ;
-        ecrm:P39_measured            <http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08> ;
-        ecrm:P40_observed_dimension  <http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08/dimension/h> , <http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08/dimension/w> .
+        ecrm:P39_measured            <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317> ;
+        ecrm:P40_observed_dimension  <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/dimension/w> , <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/dimension/h> .
 
-<http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08/type_assignment/1>
-        a                    ecrm:E17_Type_Assignment ;
-        ecrm:P2_has_type     "denomination" ;
-        ecrm:P41_classified  <http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08> ;
-        ecrm:P42_assigned    "textiles pieces" .
-
-<http://data.silknow.org/event/b679a94e-9fa8-3117-8a8b-4510134c2cfd>
-        a                              ecrm:E8_Acquisition ;
-        ecrm:P22_transferred_title_to  <http://data.silknow.org/organization/a69ae084-440e-3fe3-ae77-8a6d37b1ecbf> ;
-        ecrm:P23_transferred_title_from
-                "Biosca, Josep" ;
-        ecrm:P24_transferred_title_of  <http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08> ;
-        ecrm:P2_has_type               "donacions" .
-
-<http://data.silknow.org/document/9d568272-abe7-3db7-a3ea-cade32a22e30>
-        a                   ecrm:E31_Document ;
-        ecrm:P70_documents  <http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08/id_assignment/2374> , <http://data.silknow.org/assestment/58bc960d-8459-37b1-b9d0-023d97ae776b/condition/01> , <http://data.silknow.org/production/64f14af6-00b1-3fba-897a-10079b1cc7b4> ;
-        dc:identifier       "2374" ;
-        dc:source           "http://imatex.cdmt.cat/_cat/fitxa_fitxa.aspx?num_id=3008_en" .
-
-<http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08/id/2374>
-        a                 ecrm:E42_Identifier ;
-        rdfs:label        "2374" ;
-        ecrm:P2_has_type  "Register number" .
-
-<http://data.silknow.org/image/c06a0496-4650-359e-a2b9-9dbd1549d852>
-        a              ecrm:E38_Image ;
-        dc:identifier  "02374.tif" .
-
-<http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08/dimension/h>
+<http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/dimension/h>
         a                   ecrm:E54_Dimension ;
         ecrm:P2_has_type    "height" ;
         ecrm:P90_has_value  "16"^^xsd:float ;
         ecrm:P91_has_unit   "cm" .
 
-<http://data.silknow.org/production/64f14af6-00b1-3fba-897a-10079b1cc7b4/time/4>
+<http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/type_assignment/2>
+        a                    ecrm:E17_Type_Assignment ;
+        ecrm:P2_has_type     "domain" ;
+        ecrm:P41_classified  <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317> ;
+        ecrm:P42_assigned    "textile" .
+
+<http://data.silknow.org/production/41c3606c-eedf-3707-8ef4-17f82b57417d>
+        a                       ecrm:E12_Production ;
+        ecrm:P108_has_produced  <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317> ;
+        ecrm:P126_employed      "cyprus gold" , "silk" ;
+        ecrm:P32_used_general_technique
+                "patterned fabric" , "double-cloth" , "pseudo-lampàs" ;
+        ecrm:P4_has_time-span   <http://data.silknow.org/production/41c3606c-eedf-3707-8ef4-17f82b57417d/time/1> , <http://data.silknow.org/production/41c3606c-eedf-3707-8ef4-17f82b57417d/time/4> , <http://data.silknow.org/production/41c3606c-eedf-3707-8ef4-17f82b57417d/time/3> , <http://data.silknow.org/production/41c3606c-eedf-3707-8ef4-17f82b57417d/time/2> ;
+        ecrm:P8_took_place_on_or_within
+                <http://data.silknow.org/place/34788e52-c904-311c-872e-c89af879a0d0> .
+
+<http://data.silknow.org/modification/556a0f14-4fe0-3e30-8c27-21bc63dbab53>
+        a                      ecrm:E11_Modification ;
+        rdfs:comment           "Cerdà Durà, Elisabet - 2010 -  / Fundació Abegg Stiftung. 1992" ;
+        ecrm:P2_has_type       "restoration" ;
+        ecrm:P31_has_modified  <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317> ;
+        ecrm:P3_has_note       "Cerdà Durà, Elisabet - 2010 -  / Fundació Abegg Stiftung. 1992" .
+
+<http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317>
+        a                              ecrm:E22_Man-Made_Object ;
+        rdfs:comment                   "Fragment del Teixit de les Estrelles de la capa del tern de sant Valeri, directament relacionat amb el conjunt de fragments conservats amb el núm.reg. 3938.\n\nEs tracta un teixit de gran riquesa visual per l’ús que en ell s’ha fet del color i dels materials. Els colors blau, verd i vermell de les sedes s’han conservat amb gran intensitat i combina magníficament amb l’ús del fil d’or treballat en abundància. El disseny és una rígida estructura reticular amb dos motius diferents disposats a portell: fileres de flors de vuit pètals amb una estrella central alternen amb estrelles de vuit puntes de composició calidoscòpica. Tot el conjunt té un fort sentit geomètric com és habitual en els teixits del període almohade, moment al que pertany la peça.\n\nDe la indumentària del sant, composta per dues dalmàtiques, una casulla i una capa, el CDMT també conserva un altre fragment de la capa (núm.reg.3938) i diversos fragments del Teixit dels Lleons de la casulla (núm.reg.2979-1, 2979-2, 3976 i 3937). \n\nSegons els documents, sant Valeri va ser bisbe de Saragossa al segle IV i el seu tern va ser portat amb les seves relíquies a Roda d’Isàbena l’any 1279. Al segle XV va passar a la catedral de Lleida d’on va ser venut a principis del segle XX al col•leccionista Lluís Plandiura, qui  les va vendre a la Junta de Museus de Barcelona l’any 1932.\n\nEl tern de sant Valeri és un conjunt d’indumentària litúrgica de reconeguda importància i del que s’ha fet un exhaustiu estudi històric i tècnic . De la seva història es coneixen els nombrosos canvis, modificacions i mutilacions que al llarg del temps ha sofert i que expliquen la gran dispersió dels seus fragments. \n\nDes del punt de vista estilístic se’l pot relacionar amb el teixit de la creu del taüt d’Enrique I  en el panteó reial de Las Huelgas a Burgos (m.1217) i a nivell tècnic destaca l’interès de la peça per ser exemple de transició entre la tècnica de taqueté i la de lampàs ."@ca , "LAMPÀS (ó pseudo-lampàs) amb decoració per 4 trames llançades, fons en doble tela i decoració en tafetà\n. ORDIT\n- relació d’ordits: 2 ordits, en relacio: 4 fils d’ordit de fons / 1 fil d’ordit de lligadura \n- matèria: \n\tordit de fons: seda; color beix; fils simples; torsió Z\n\tordit de lligadura: seda; colo beix; fils simples; torsió Z\n- densitat: 40 fils ordit de fons / 10 fils ordit de lligadura\n- escalat: 1 fil d’ordit de fons\n\n. TRAMA\n- relació de trames:  5 trames, en relació: 1 trama de fons / 4 trames de decoració llançades \n- matèria:  \n\t1 trama de fons: seda; color blanc; STA\n\t3 trames de decoració llançades: seda; blau, verd i vermell; STA\n\t1 trama de decoració llançada: seda entorxada amb pell daurada (or de Xipre) en torsió Z \n- densitat: 34-36 passades/cm\n- escalat: 1 passada\n\n. RAPORT de disseny: 7,5 x 3,5 cm\n\n. TELER: de llaços, ordit passat a punta i retorn, 2 plegadors d’ordit"@ca ;
+        ecrm:P103_was_intended_for     "liturgical garments" ;
+        ecrm:P138i_has_representation  <http://data.silknow.org/image/c06a0496-4650-359e-a2b9-9dbd1549d852> ;
+        ecrm:P1_is_identified_by       <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/id/2374> ;
+        ecrm:P3_has_note               "Fragment del Teixit de les Estrelles de la capa del tern de sant Valeri, directament relacionat amb el conjunt de fragments conservats amb el núm.reg. 3938.\n\nEs tracta un teixit de gran riquesa visual per l’ús que en ell s’ha fet del color i dels materials. Els colors blau, verd i vermell de les sedes s’han conservat amb gran intensitat i combina magníficament amb l’ús del fil d’or treballat en abundància. El disseny és una rígida estructura reticular amb dos motius diferents disposats a portell: fileres de flors de vuit pètals amb una estrella central alternen amb estrelles de vuit puntes de composició calidoscòpica. Tot el conjunt té un fort sentit geomètric com és habitual en els teixits del període almohade, moment al que pertany la peça.\n\nDe la indumentària del sant, composta per dues dalmàtiques, una casulla i una capa, el CDMT també conserva un altre fragment de la capa (núm.reg.3938) i diversos fragments del Teixit dels Lleons de la casulla (núm.reg.2979-1, 2979-2, 3976 i 3937). \n\nSegons els documents, sant Valeri va ser bisbe de Saragossa al segle IV i el seu tern va ser portat amb les seves relíquies a Roda d’Isàbena l’any 1279. Al segle XV va passar a la catedral de Lleida d’on va ser venut a principis del segle XX al col•leccionista Lluís Plandiura, qui  les va vendre a la Junta de Museus de Barcelona l’any 1932.\n\nEl tern de sant Valeri és un conjunt d’indumentària litúrgica de reconeguda importància i del que s’ha fet un exhaustiu estudi històric i tècnic . De la seva història es coneixen els nombrosos canvis, modificacions i mutilacions que al llarg del temps ha sofert i que expliquen la gran dispersió dels seus fragments. \n\nDes del punt de vista estilístic se’l pot relacionar amb el teixit de la creu del taüt d’Enrique I  en el panteó reial de Las Huelgas a Burgos (m.1217) i a nivell tècnic destaca l’interès de la peça per ser exemple de transició entre la tècnica de taqueté i la de lampàs ."@ca , "LAMPÀS (ó pseudo-lampàs) amb decoració per 4 trames llançades, fons en doble tela i decoració en tafetà\n. ORDIT\n- relació d’ordits: 2 ordits, en relacio: 4 fils d’ordit de fons / 1 fil d’ordit de lligadura \n- matèria: \n\tordit de fons: seda; color beix; fils simples; torsió Z\n\tordit de lligadura: seda; colo beix; fils simples; torsió Z\n- densitat: 40 fils ordit de fons / 10 fils ordit de lligadura\n- escalat: 1 fil d’ordit de fons\n\n. TRAMA\n- relació de trames:  5 trames, en relació: 1 trama de fons / 4 trames de decoració llançades \n- matèria:  \n\t1 trama de fons: seda; color blanc; STA\n\t3 trames de decoració llançades: seda; blau, verd i vermell; STA\n\t1 trama de decoració llançada: seda entorxada amb pell daurada (or de Xipre) en torsió Z \n- densitat: 34-36 passades/cm\n- escalat: 1 passada\n\n. RAPORT de disseny: 7,5 x 3,5 cm\n\n. TELER: de llaços, ordit passat a punta i retorn, 2 plegadors d’ordit"@ca ;
+        ecrm:P43_has_dimension         <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/dimension/h> , <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/dimension/w> ;
+        ecrm:P62_depicts               "stars" , "square distribution" , "geometrical pattern" ;
+        dc:identifier                  "3008_en" .
+
+<http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/observation/1>
+        a                 <http://www.ics.forth.gr/isl/CRMsci/S4_Observation> ;
+        ecrm:P2_has_type  "description" ;
+        ecrm:P3_has_note  "Fragment del Teixit de les Estrelles de la capa del tern de sant Valeri, directament relacionat amb el conjunt de fragments conservats amb el núm.reg. 3938.\n\nEs tracta un teixit de gran riquesa visual per l’ús que en ell s’ha fet del color i dels materials. Els colors blau, verd i vermell de les sedes s’han conservat amb gran intensitat i combina magníficament amb l’ús del fil d’or treballat en abundància. El disseny és una rígida estructura reticular amb dos motius diferents disposats a portell: fileres de flors de vuit pètals amb una estrella central alternen amb estrelles de vuit puntes de composició calidoscòpica. Tot el conjunt té un fort sentit geomètric com és habitual en els teixits del període almohade, moment al que pertany la peça.\n\nDe la indumentària del sant, composta per dues dalmàtiques, una casulla i una capa, el CDMT també conserva un altre fragment de la capa (núm.reg.3938) i diversos fragments del Teixit dels Lleons de la casulla (núm.reg.2979-1, 2979-2, 3976 i 3937). \n\nSegons els documents, sant Valeri va ser bisbe de Saragossa al segle IV i el seu tern va ser portat amb les seves relíquies a Roda d’Isàbena l’any 1279. Al segle XV va passar a la catedral de Lleida d’on va ser venut a principis del segle XX al col•leccionista Lluís Plandiura, qui  les va vendre a la Junta de Museus de Barcelona l’any 1932.\n\nEl tern de sant Valeri és un conjunt d’indumentària litúrgica de reconeguda importància i del que s’ha fet un exhaustiu estudi històric i tècnic . De la seva història es coneixen els nombrosos canvis, modificacions i mutilacions que al llarg del temps ha sofert i que expliquen la gran dispersió dels seus fragments. \n\nDes del punt de vista estilístic se’l pot relacionar amb el teixit de la creu del taüt d’Enrique I  en el panteó reial de Las Huelgas a Burgos (m.1217) i a nivell tècnic destaca l’interès de la peça per ser exemple de transició entre la tècnica de taqueté i la de lampàs ."@ca ;
+        <http://www.ics.forth.gr/isl/CRMsci/O8_observed>
+                <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317> .
+
+<http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/type_assignment/1>
+        a                    ecrm:E17_Type_Assignment ;
+        ecrm:P2_has_type     "denomination" ;
+        ecrm:P41_classified  <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317> ;
+        ecrm:P42_assigned    "textiles pieces" .
+
+<http://data.silknow.org/assestment/446736a5-c80d-3a59-8055-a2b61c262375/condition/01>
+        a                 ecrm:E3_Condition_State ;
+        rdfs:comment      "restaurat"@ca ;
+        ecrm:P2_has_type  "condition" ;
+        ecrm:P3_has_note  "restaurat"@ca .
+
+<http://data.silknow.org/production/41c3606c-eedf-3707-8ef4-17f82b57417d/time/4>
         a                          ecrm:E52_Time-Span ;
         rdfs:label                 "13th century" ;
         ecrm:P78_is_identified_by  "13th century" .
 
-<http://data.silknow.org/event/98f87869-f7b5-3493-a6e5-83b6b6925c78>
+<http://data.silknow.org/event/257651af-3e9f-354c-a071-505cd126eeff>
+        a                              ecrm:E8_Acquisition ;
+        ecrm:P22_transferred_title_to  <http://data.silknow.org/organization/a69ae084-440e-3fe3-ae77-8a6d37b1ecbf> ;
+        ecrm:P23_transferred_title_from
+                "Biosca, Josep" ;
+        ecrm:P24_transferred_title_of  <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317> ;
+        ecrm:P2_has_type               "donacions" .
+
+<http://data.silknow.org/production/41c3606c-eedf-3707-8ef4-17f82b57417d/time/3>
+        a                          ecrm:E52_Time-Span ;
+        rdfs:label                 "to mid-twentieth century" ;
+        ecrm:P78_is_identified_by  "to mid-twentieth century" .
+
+<http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/dimension/w>
+        a                   ecrm:E54_Dimension ;
+        ecrm:P2_has_type    "width" ;
+        ecrm:P90_has_value  "11.5"^^xsd:float ;
+        ecrm:P91_has_unit   "cm" .
+
+<http://data.silknow.org/imatex/3008_en>
+        a                   crmdig:D1_Digital_Object ;
+        rdfs:label          "3008_en" ;
+        ecrm:P129_is_about  <http://data.silknow.org/event/257651af-3e9f-354c-a071-505cd126eeff> , <http://data.silknow.org/modification/556a0f14-4fe0-3e30-8c27-21bc63dbab53> , <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/observation/2> , <http://data.silknow.org/assestment/446736a5-c80d-3a59-8055-a2b61c262375> , <http://data.silknow.org/event/ca95f94e-0343-3188-8ee3-3d5490f3a480> , <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/id/2374> , <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/observation/1> , <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/type_assignment/2> , <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/dimension/measurement> , <http://data.silknow.org/production/41c3606c-eedf-3707-8ef4-17f82b57417d> , <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317> , <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/type_assignment/1> ;
+        ecrm:P2_has_type    "record" .
+
+<http://data.silknow.org/event/ca95f94e-0343-3188-8ee3-3d5490f3a480>
         a                             ecrm:E10_Transfer_of_Custody ;
         ecrm:P29_custody_received_by  <http://data.silknow.org/organization/a69ae084-440e-3fe3-ae77-8a6d37b1ecbf> ;
         ecrm:P30_transferred_custody_of
-                <http://data.silknow.org/object/da88d94e-1877-3d01-97a7-350c02d79c08> .
+                <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317> .
+
+<http://data.silknow.org/production/41c3606c-eedf-3707-8ef4-17f82b57417d/time/2>
+        a                          ecrm:E52_Time-Span ;
+        rdfs:label                 "Almohad period" ;
+        ecrm:P78_is_identified_by  "Almohad period" .
+
+<http://data.silknow.org/imatex>
+        a                         crmdig:D1_Digital_Object ;
+        rdfs:label                "imatex" ;
+        ecrm:P106_is_composed_of  <http://data.silknow.org/imatex/3008_en> ;
+        ecrm:P2_has_type          "dataset" .
+
+<http://data.silknow.org/assestment/446736a5-c80d-3a59-8055-a2b61c262375>
+        a                        ecrm:E14_Condition_Assessment ;
+        ecrm:P34_concerned       <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317> ;
+        ecrm:P35_has_identified  <http://data.silknow.org/assestment/446736a5-c80d-3a59-8055-a2b61c262375/condition/01> .
+
+<http://data.silknow.org/image/c06a0496-4650-359e-a2b9-9dbd1549d852>
+        a              ecrm:E38_Image ;
+        dc:identifier  "02374.tif" .
+
+<http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/id_assignment/2374>
+        a                  ecrm:E15_Identifier_Assignment ;
+        ecrm:P37_assigned  <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/id/2374> .
+
+<http://data.silknow.org/production/41c3606c-eedf-3707-8ef4-17f82b57417d/time/1>
+        a                          ecrm:E52_Time-Span ;
+        rdfs:label                 "període medieval" ;
+        ecrm:P78_is_identified_by  "període medieval" .
+
+<http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317/id/2374>
+        a                 ecrm:E42_Identifier ;
+        rdfs:label        "2374" ;
+        ecrm:P2_has_type  "Register number" .
