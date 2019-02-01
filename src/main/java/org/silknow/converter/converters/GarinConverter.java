@@ -19,6 +19,7 @@ public class GarinConverter extends Converter {
   @Override
   public Model convert(File file) {
     logger.debug("%%% FILE " + file.getName());
+
     if (!this.canConvert(file))
       throw new RuntimeException("Garin converter require files in XLS (Excel) format.");
 
@@ -35,20 +36,33 @@ public class GarinConverter extends Converter {
       return null;
     }
 
+
     // Create the objects of the graph
     logger.trace("creating objects");
     id = s.get("Nº Inventario");
+    if (id == null)
+      return null;
+
+
     String ownerName = s.get("Propiedad");
-    LegalBody owner = new LegalBody(ownerName);
+    LegalBody owner = null;
+    if (ownerName != null)
+      owner = new LegalBody(ownerName);
 
     ManMade_Object obj = new ManMade_Object(id);
     obj.addTitle(s.get("Denominacion principal"));
     linkToRecord(obj.addComplexIdentifier(id, "Register number", owner));
     linkToRecord(obj.addClassification(s.get("Objecto"), "domain", owner));
     linkToRecord(obj.addClassification(s.get("Tipología"), "denomination", owner));
-    linkToRecord(obj.addMeasure(s.get("Medidas")));
     linkToRecord(obj.addObservation(s.get("Descripción"), "es", "descripción"));
     linkToRecord(obj.addObservation(s.get("Descripción técnica"), "es", "descripción técnica"));
+
+    try {
+      linkToRecord(obj.addMeasure(s.get("Medidas")));
+    } catch (RuntimeException re) {
+      logger.error(re.getMessage());
+    }
+
 
     ConditionAssestment conditionAssestment = new ConditionAssestment(id);
     conditionAssestment.assestedBy(owner);

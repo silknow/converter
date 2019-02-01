@@ -34,6 +34,7 @@ dependencies {
             'org.jetbrains:annotations:13.0',
             'org.apache.jena:apache-jena-libs:3.1.0',
             'org.apache.poi:poi:3.17',
+            'org.geonames:geonames-ws-client:1.1.9',
             'javax.xml.bind:jaxb-api:2.3.0',
             'xml-apis:xml-apis:1.4.01',
             'com.github.DOREMUS-ANR:string2vocabulary:0.4'

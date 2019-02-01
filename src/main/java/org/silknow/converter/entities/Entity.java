@@ -221,7 +221,7 @@ public abstract class Entity {
 
   public Resource addClassification(String classification, String type, LegalBody museum) {
     if (classification == null) return null;
-    RDFNode r = VocabularyManager.getVocabulary("thesaurus").findConcept(classification, false);
+    RDFNode r = VocabularyManager.getVocabulary("att-thesaurus").findConcept(classification, false);
     if (r == null) {
       r = model.createLiteral(classification);
     }

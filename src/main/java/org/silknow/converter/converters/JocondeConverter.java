@@ -57,8 +57,10 @@ public class JocondeConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(id);
     obj.addTitle(s.get("Titre"));
-    linkToRecord(obj.addClassification(s.get("Domaine"), "domain"));
-    linkToRecord(obj.addClassification(s.get("Dénomination"), "denomination"));
+    s.getMulti("Domaine")
+            .forEach(x -> linkToRecord(obj.addClassification(x, "Domaine")));
+    s.getMulti("Dénomination")
+            .forEach(x -> linkToRecord(obj.addClassification(x, "denomination")));
     linkToRecord(obj.addObservation(s.get("Description"), "fr", "description"));
     obj.addSubject(s.get("Sujet représenté"));
 

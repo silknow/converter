@@ -38,7 +38,7 @@
         a                    ecrm:E17_Type_Assignment ;
         ecrm:P2_has_type     "domain" ;
         ecrm:P41_classified  <http://data.silknow.org/object/88e5fbc6-215e-368e-91ee-4ffc8dca2317> ;
-        ecrm:P42_assigned    "textile" .
+        ecrm:P42_assigned    <http://vocab.getty.edu/aat/300014063> .
 
 <http://data.silknow.org/production/41c3606c-eedf-3707-8ef4-17f82b57417d>
         a                       ecrm:E12_Production ;

@@ -7,6 +7,7 @@ import org.apache.jena.vocabulary.RDFS;
 import org.apache.jena.vocabulary.XSD;
 import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.NotNull;
+import org.silknow.converter.commons.GeoNames;
 import org.silknow.converter.converters.Converter;
 import org.silknow.converter.converters.GarinConverter;
 import org.silknow.converter.converters.ImatexConverter;
@@ -42,9 +43,6 @@ public class Main implements Runnable {
 
   @Parameters(index = "1", paramLabel = "FOLDER", description = "Source folder to process")
   private File folder;
-//  private final File folder = new File("../crawler/data/imatex/records/3345_en.json");
-//  private final File folder = new File("/Users/pasquale/Desktop/garin/T000053.xls");
-//  private final File folder = new File("../crawler/data/joconde/records/");
 
   @Option(names = {"--log"}, description = "The log level. Default: ${DEFAULT-VALUE}", completionCandidates =
           LogLevels.class, defaultValue = "WARN")
@@ -52,6 +50,10 @@ public class Main implements Runnable {
 
   @Option(names = {"-o", "--output"}, description = "Output folder. Default: an `out` folder siblings to the input directory")
   public static File outputFolder;
+
+  @Option(names = {"-g", "--geonames"}, required = true,
+          description = "Username for accessing Geonames. See http://www.geonames.org/login")
+  public static String geonamesUser;
 
   public static void main(String[] args) {
     CommandLine.run(new Main(), args);
@@ -76,9 +78,12 @@ public class Main implements Runnable {
       e.printStackTrace();
     }
 
-
     if (outputFolder == null)
       outputFolder = Paths.get(folder.getParentFile().getAbsolutePath(), "out").toFile();
+
+    GeoNames.setUser(geonamesUser);
+    GeoNames.setDestFolder(Paths.get(outputFolder.getPath(), "geonames").toFile());
+    GeoNames.loadCache();
 
     //noinspection ResultOfMethodCallIgnored
     outputFolder.mkdirs();
@@ -111,6 +116,7 @@ public class Main implements Runnable {
   private void convertFile(@NotNull File file, @NotNull Converter converter) {
     System.out.println(file.getName());
     Model m = converter.convert(file);
+    VocabularyManager.string2uri(m);
     if (m == null) return;
     String outName = changeExtension(file.getName(), ".ttl");
 
@@ -127,6 +133,12 @@ public class Main implements Runnable {
             .filter(converter::canConvert)
             .sorted()
             .forEach(x -> convertFile(x, converter));
+
+    Arrays.stream(files)
+            .filter(File::isDirectory)
+            .sorted()
+            .peek(x -> System.out.println("--- " + x.getName()))
+            .forEach(x -> convertFolder(x, converter));
   }
 
   private void writeTtl(@NotNull Model m, String filename) throws IOException {
@@ -144,6 +156,10 @@ public class Main implements Runnable {
 
 
     File out = Paths.get(outputFolder.getAbsolutePath(), filename).toFile();
+    if (out.exists()) {
+      System.out.println("DUPLICATE ID: " + filename.replace(".ttl", ""));
+      return;
+    }
     FileWriter fw = new FileWriter(out);
 
     // Write the output file

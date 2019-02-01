@@ -15,6 +15,7 @@ public class Production extends Entity {
   }
 
   public void addTimeAppellation(String timeAppellation) {
+    if (timeAppellation == null) return;
     if (timeAppellation.equals("... unconfirmed")) {
       timeUnconfirmed = true;
       return;
@@ -38,7 +39,7 @@ public class Production extends Entity {
   }
 
   public void addPlace(String place) {
-    if (place.equals("... unconfirmed"))
+    if (place.startsWith("... "))
       // TODO something?
       return;
 

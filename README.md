@@ -13,7 +13,7 @@ SILKNOW converter that harmonizes all museum metadata records into the common SI
 Positional arguments (required):    
 - `TYPE`. Type of source data: imatex, garin, joconde
 - `FOLDER`. Source folder to process. Also a single file is accepted.
-
+- `-g`, `--geonames`. Geonames username. You can take your at http://www.geonames.org/login.
 Optional parameters:
 
 - `--log`.   The log level, according [SLF4J nomenclature](https://www.slf4j.org/api/org/apache/commons/logging/Log.html). Default: `WARN`.
@@ -28,3 +28,4 @@ Examples:
     ./gradlew run --args="joconde ../crawler/data/joconde/records/95.71.2.json -o ./output"
     ./gradlew run --args="joconde ../crawler/data/joconde/records/95.71.364.json -o ./output"
     ./gradlew run --args="garin ../../Desktop/garin/T000053.xls -o ./output"
+  
