@@ -22,6 +22,7 @@ public class ImatexConverter extends Converter {
     if (!this.canConvert(file))
       throw new RuntimeException("Imatex converter require files in JSON format.");
 
+    String mainLang = file.getName().replace(".json", "").split("_")[1];
     this.DATASET_NAME = "imatex";
 
     // Parse JSON
@@ -70,7 +71,7 @@ public class ImatexConverter extends Converter {
     if (cdt != null) {
       ConditionAssestment conditionAssestment = new ConditionAssestment(id);
       conditionAssestment.concerns(obj);
-      conditionAssestment.addCondition("condition", cdt, "ca");
+      conditionAssestment.addCondition("condition", cdt, mainLang);
       linkToRecord(conditionAssestment);
     }
 
@@ -82,8 +83,8 @@ public class ImatexConverter extends Converter {
     }
 
     linkToRecord(obj.addMeasure(s.get("MEASUREMENT")));
-    linkToRecord(obj.addObservation(s.get("DESCRIPTION"), "ca", "description"));
-    linkToRecord(obj.addObservation(s.get("TECHNICAL DESCRIPTION"), "ca", "technical description"));
+    linkToRecord(obj.addObservation(s.get("DESCRIPTION"), mainLang, "description"));
+    linkToRecord(obj.addObservation(s.get("TECHNICAL DESCRIPTION"), mainLang, "technical description"));
 
     String acquisitionFrom = s.get("FONT INGRÉS*");
     String acquisitionType = s.get("FORMA INGRÉS*");

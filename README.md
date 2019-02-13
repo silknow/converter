@@ -27,5 +27,5 @@ Examples:
     ./gradlew run --args="imatex ../crawler/data/imatex/records/3008_en.json --log DEBUG -o ./output"
     ./gradlew run --args="joconde ../crawler/data/joconde/records/95.71.2.json -o ./output"
     ./gradlew run --args="joconde ../crawler/data/joconde/records/95.71.364.json -o ./output"
-    ./gradlew run --args="garin ../../Desktop/garin/T000053.xls -o ./output"
+    ./gradlew run --args="garin '../../Desktop/garin/Tejidos/Tejidos A/T000053.xls' -o ./output"
   

@@ -114,14 +114,20 @@ public class Main implements Runnable {
   }
 
   private void convertFile(@NotNull File file, @NotNull Converter converter) {
+    String outName = changeExtension(file.getName(), ".ttl");
+    File out = Paths.get(outputFolder.getAbsolutePath(), outName).toFile();
+    if (out.exists()) {
+      System.out.println("DUPLICATE ID: " + outName.replace(".ttl", ""));
+      return;
+    }
+
     System.out.println(file.getName());
     Model m = converter.convert(file);
     VocabularyManager.string2uri(m);
     if (m == null) return;
-    String outName = changeExtension(file.getName(), ".ttl");
 
     try {
-      writeTtl(m, outName);
+      writeTtl(m, out);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -141,7 +147,7 @@ public class Main implements Runnable {
             .forEach(x -> convertFolder(x, converter));
   }
 
-  private void writeTtl(@NotNull Model m, String filename) throws IOException {
+  private void writeTtl(@NotNull Model m, File out) throws IOException {
     m.setNsPrefix("ecrm", CIDOC.getURI());
     m.setNsPrefix("crmdig", CRMdig.getURI());
     m.setNsPrefix("dc", DC.getURI());
@@ -155,11 +161,6 @@ public class Main implements Runnable {
 //    m.setNsPrefix("prov", PROV.getURI());
 
 
-    File out = Paths.get(outputFolder.getAbsolutePath(), filename).toFile();
-    if (out.exists()) {
-      System.out.println("DUPLICATE ID: " + filename.replace(".ttl", ""));
-      return;
-    }
     FileWriter fw = new FileWriter(out);
 
     // Write the output file
