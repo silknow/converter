@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ManMade_Object extends Entity {
-  private static final String DIMENSION_REGEX = "(\\d+(?:[,.]\\d)?) *x *(\\d+(?:[,.]\\d)?)";
+  private static final String DIMENSION_REGEX = "(\\d+(?:[,.]\\d)?)(?: ?cm)? *x *(\\d+(?:[,.]\\d)?)(?: ?cm)?";
   private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX, Pattern.CASE_INSENSITIVE);
 
   private int imgCount;
