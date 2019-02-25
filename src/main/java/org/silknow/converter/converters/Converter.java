@@ -65,4 +65,7 @@ public abstract class Converter {
     this.model.add(obj.getModel());
   }
 
+  public void resetModel() {
+    model.removeAll();
+  }
 }

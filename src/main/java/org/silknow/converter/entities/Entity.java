@@ -95,6 +95,7 @@ public abstract class Entity {
   }
 
   public void addNote(String text, String lang) {
+    text = text.replaceAll("^- ", "").trim();
     this.addProperty(RDFS.comment, text, lang).addProperty(CIDOC.P3_has_note, text, lang);
   }
 
@@ -160,7 +161,7 @@ public abstract class Entity {
   }
 
   public void addActivity(String actor, String function) {
-    if (actor == null) return;
+    if (actor == null || actor.equalsIgnoreCase("unknown")) return;
     this.addActivity(new Actor(actor), function);
   }
 

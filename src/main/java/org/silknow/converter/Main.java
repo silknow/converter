@@ -12,10 +12,7 @@ import org.silknow.converter.converters.Converter;
 import org.silknow.converter.converters.GarinConverter;
 import org.silknow.converter.converters.ImatexConverter;
 import org.silknow.converter.converters.JocondeConverter;
-import org.silknow.converter.ontologies.CIDOC;
-import org.silknow.converter.ontologies.CRMdig;
-import org.silknow.converter.ontologies.Schema;
-import org.silknow.converter.ontologies.Time;
+import org.silknow.converter.ontologies.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import picocli.CommandLine;
@@ -122,6 +119,7 @@ public class Main implements Runnable {
     }
 
     System.out.println(file.getName());
+    converter.resetModel();
     Model m = converter.convert(file);
     VocabularyManager.string2uri(m);
     if (m == null) return;
@@ -150,6 +148,7 @@ public class Main implements Runnable {
   private void writeTtl(@NotNull Model m, File out) throws IOException {
     m.setNsPrefix("ecrm", CIDOC.getURI());
     m.setNsPrefix("crmdig", CRMdig.getURI());
+    m.setNsPrefix("crmsci", CRMsci.getURI());
     m.setNsPrefix("dc", DC.getURI());
     m.setNsPrefix("rdfs", RDFS.getURI());
     m.setNsPrefix("xsd", XSD.getURI());

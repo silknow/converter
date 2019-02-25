@@ -29,6 +29,8 @@ public class ManMade_Object extends Entity {
 
 
   public void addIntention(String intention) {
+    intention = intention.replaceAll("^\\..{3}", "").trim();
+    if (intention.equalsIgnoreCase("unconfirmed")) return;
     this.addProperty(CIDOC.P103_was_intended_for, intention);
   }
 
@@ -51,8 +53,13 @@ public class ManMade_Object extends Entity {
   public Resource addMeasure(String value) throws RuntimeException {
     if (value == null || value.equals("cm")) return null;
     Matcher m = DIMENSION_PATTERN.matcher(value);
-    if (!m.find()) {
-      throw new RuntimeException("Dimension not parsed: " + value);
+    try {
+      if (!m.find()) {
+        throw new RuntimeException("Dimension not parsed: " + value);
+      }
+    } catch (RuntimeException re) {
+      re.printStackTrace();
+      return null;
     }
     return addMeasure(m.group(1), m.group(2));
   }
