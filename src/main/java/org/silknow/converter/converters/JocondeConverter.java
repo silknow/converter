@@ -94,9 +94,7 @@ public class JocondeConverter extends Converter {
       String[] hierarchy = place.split(",");
 //      String country = hierarchy[0];
       String city = hierarchy[hierarchy.length - 1];
-
-      Place pl = new Place(city);
-      prod.addPlace(pl);
+      prod.addPlace(city);
     }
 
     String hist = null;

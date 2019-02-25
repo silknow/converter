@@ -4,11 +4,20 @@ import org.apache.jena.vocabulary.RDFS;
 import org.geonames.Toponym;
 import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.commons.GeoNames;
+import org.silknow.converter.commons.StopWordException;
 import org.silknow.converter.ontologies.CIDOC;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Place extends Entity {
-  public Place(String name) {
+  private static final List<String> STOPWORDS = Arrays.asList("desconocido", "unknown", "desconegut");
+
+  public Place(String name) throws StopWordException {
     super();
+
+    if (STOPWORDS.contains(name))
+      throw new StopWordException();
 
     Toponym tp = GeoNames.query(name);
     if (tp != null) {

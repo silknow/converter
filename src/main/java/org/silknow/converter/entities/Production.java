@@ -1,5 +1,8 @@
 package org.silknow.converter.entities;
 
+import org.apache.jena.rdf.model.Resource;
+import org.doremus.string2vocabulary.VocabularyManager;
+import org.silknow.converter.commons.StopWordException;
 import org.silknow.converter.ontologies.CIDOC;
 
 public class Production extends Entity {
@@ -43,7 +46,11 @@ public class Production extends Entity {
       // TODO something?
       return;
 
-    this.addPlace(new Place(place));
+    try {
+      this.addPlace(new Place(place));
+    } catch (StopWordException e) {
+      // no further action required
+    }
   }
 
   public void addPlace(Place place) {

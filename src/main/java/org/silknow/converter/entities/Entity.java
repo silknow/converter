@@ -95,6 +95,7 @@ public abstract class Entity {
   }
 
   public void addNote(String text, String lang) {
+    if (text == null) return;
     text = text.replaceAll("^- ", "").trim();
     this.addProperty(RDFS.comment, text, lang).addProperty(CIDOC.P3_has_note, text, lang);
   }

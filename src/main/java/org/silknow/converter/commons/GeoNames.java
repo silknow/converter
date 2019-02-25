@@ -13,6 +13,7 @@ import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.file.Paths;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -111,9 +112,9 @@ public class GeoNames {
   private static void saveCache() {
     Properties properties = new Properties();
 
-    for (Map.Entry<String, Integer> entry : cache.entrySet()) {
-      properties.put(entry.getKey(), entry.getValue() + "");
-    }
+    cache.entrySet().stream()
+            .sorted(Comparator.comparing(Map.Entry::getKey, Comparator.naturalOrder()))
+            .forEach(entry -> properties.put(entry.getKey(), entry.getValue() + ""));
 
     try {
       properties.store(new FileOutputStream("places.properties"), null);
