@@ -112,13 +112,13 @@ public class JocondeConverter extends Converter {
       po.setType(gen);
 
       assert hist != null;
+      po.addNote(hist);
       while (Utils.containsBrackets(hist)) {
         List<String> temp = Utils.extractBrackets(hist);
         hist = temp.get(0);
         String id_ = temp.get(1);
         ManMade_Object o = new ManMade_Object(id_);
         po.refersTo(o);
-        po.addNote(hist);
       }
     }
 

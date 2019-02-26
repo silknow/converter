@@ -121,7 +121,7 @@ public class Main implements Runnable {
     System.out.println(file.getName());
     converter.resetModel();
     Model m = converter.convert(file);
-    VocabularyManager.string2uri(m);
+//    VocabularyManager.string2uri(m);
     if (m == null) return;
 
     try {

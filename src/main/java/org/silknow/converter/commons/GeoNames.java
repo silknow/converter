@@ -13,7 +13,6 @@ import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.file.Paths;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -96,7 +95,6 @@ public class GeoNames {
     } catch (IOException e) {
       System.out.println("No 'places.properties' file found. I will create it.");
     }
-
   }
 
   private static void addToCache(String key, int value) {
@@ -110,11 +108,9 @@ public class GeoNames {
   }
 
   private static void saveCache() {
-    Properties properties = new Properties();
+    Properties properties = new SortedProperties();
 
-    cache.entrySet().stream()
-            .sorted(Comparator.comparing(Map.Entry::getKey, Comparator.naturalOrder()))
-            .forEach(entry -> properties.put(entry.getKey(), entry.getValue() + ""));
+    cache.keySet().forEach(key -> properties.put(key, cache.get(key) + ""));
 
     try {
       properties.store(new FileOutputStream("places.properties"), null);

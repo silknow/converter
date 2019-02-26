@@ -111,13 +111,6 @@ public class ImatexConverter extends Converter {
     prod.addActivity(s.get("MANUFACTURER"), "manufacturer");
     prod.addActivity(s.get("TAILOR/COUTURIER"), "tailor/couturier");
     prod.addActivity(s.get("AUTHOR"), "author");
-    try {
-      write(s.get("DESSIGNER"), "dessigner.txt");
-      write(s.get("AUTHOR"), "author.txt");
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-
 
     Transfer transfer = new Transfer(id);
     transfer.of(obj).by(museum);

@@ -38,7 +38,13 @@ public class Production extends Entity {
   }
 
   public void addMaterial(String material) {
-    this.addProperty(CIDOC.P126_employed, material);
+    Resource result = VocabularyManager.searchInCategory(material, null, "att", false);
+    if (result != null)
+      this.addProperty(CIDOC.P126_employed, result);
+    else {
+//      System.out.println("Material not found in vocabularies: " + material);
+      this.addProperty(CIDOC.P126_employed, material);
+    }
   }
 
   public void addPlace(String place) {

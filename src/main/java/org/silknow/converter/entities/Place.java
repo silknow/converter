@@ -16,6 +16,8 @@ public class Place extends Entity {
   public Place(String name) throws StopWordException {
     super();
 
+    name = name.trim();
+
     if (STOPWORDS.contains(name))
       throw new StopWordException();
 

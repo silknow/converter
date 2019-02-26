@@ -29,3 +29,9 @@ Examples:
     ./gradlew run --args="joconde ../crawler/data/joconde/records/95.71.364.json -o ./output"
     ./gradlew run --args="garin '../../Desktop/garin/Tejidos/Tejidos A/T000053.xls' -o ./output"
   
+  
+Full conversion:
+
+    ./gradlew run --args="imatex ../crawler/data/imatex/records/ -o ./output/imatex -g lisena"
+    ./gradlew run --args="joconde ../crawler/data/joconde/records/ -o ./output/joconde -g lisena"
+    ./gradlew run --args="garin '../../Desktop/garin/' -o ./output/garin -g lisena"
