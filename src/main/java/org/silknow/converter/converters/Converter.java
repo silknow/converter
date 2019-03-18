@@ -66,6 +66,7 @@ public abstract class Converter {
   }
 
   public void resetModel() {
+    this.record = null;
     model.removeAll();
   }
 }

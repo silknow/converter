@@ -28,7 +28,7 @@ Examples:
     ./gradlew run --args="joconde ../crawler/data/joconde/records/95.71.2.json -o ./output"
     ./gradlew run --args="joconde ../crawler/data/joconde/records/95.71.364.json -o ./output"
     ./gradlew run --args="garin '../../Desktop/garin/Tejidos/Tejidos A/T000053.xls' -o ./output"
-  
+    ./gradlew run --args="MET '../crawler/data/met-museum/records/08.48.46.json' -o ./output -g lisena"
   
 Full conversion:
 

@@ -12,6 +12,7 @@ import org.silknow.converter.converters.Converter;
 import org.silknow.converter.converters.GarinConverter;
 import org.silknow.converter.converters.ImatexConverter;
 import org.silknow.converter.converters.JocondeConverter;
+import org.silknow.converter.converters.METConverter;
 import org.silknow.converter.ontologies.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +34,7 @@ import java.util.Objects;
 public class Main implements Runnable {
   public static String source;
 
-  enum Type {imatex, garin, joconde}
+  enum Type {imatex, garin, joconde, MET}
 
   @Parameters(index = "0", paramLabel = "TYPE", description = "Type of source data: ${COMPLETION-CANDIDATES}")
   private Type type;
@@ -102,6 +103,9 @@ public class Main implements Runnable {
         break;
       case garin:
         converter = new GarinConverter();
+      case MET:
+        converter = new METConverter();
+
     }
 
     source = type.toString();
