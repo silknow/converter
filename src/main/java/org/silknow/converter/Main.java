@@ -13,6 +13,9 @@ import org.silknow.converter.converters.GarinConverter;
 import org.silknow.converter.converters.ImatexConverter;
 import org.silknow.converter.converters.JocondeConverter;
 import org.silknow.converter.converters.METConverter;
+import org.silknow.converter.converters.MFAConverter;
+import org.silknow.converter.converters.RISDConverter;
+import org.silknow.converter.converters.MADConverter;
 import org.silknow.converter.ontologies.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +37,7 @@ import java.util.Objects;
 public class Main implements Runnable {
   public static String source;
 
-  enum Type {imatex, garin, joconde, MET}
+  enum Type {imatex, garin, joconde, MET, MFA, RISD, MAD}
 
   @Parameters(index = "0", paramLabel = "TYPE", description = "Type of source data: ${COMPLETION-CANDIDATES}")
   private Type type;
@@ -103,8 +106,19 @@ public class Main implements Runnable {
         break;
       case garin:
         converter = new GarinConverter();
+        break;
       case MET:
         converter = new METConverter();
+        break;
+      case MFA:
+        converter = new MFAConverter();
+        break;
+      case RISD:
+        converter = new RISDConverter();
+        break;
+      case MAD:
+        converter = new MADConverter();
+
 
     }
 
