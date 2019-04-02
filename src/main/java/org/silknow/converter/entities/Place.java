@@ -21,6 +21,8 @@ public class Place extends Entity {
     if (STOPWORDS.contains(name))
       throw new StopWordException();
 
+    name = name.replaceAll("possibly", "");
+
     Toponym tp = GeoNames.query(name);
     if (tp != null) {
       GeoNames.downloadRdf(tp.getGeoNameId());

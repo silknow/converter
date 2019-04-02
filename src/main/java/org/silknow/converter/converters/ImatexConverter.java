@@ -5,7 +5,8 @@ import org.apache.jena.rdf.model.Model;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class ImatexConverter extends Converter {
 //  private static final String DOC_BASE_URI = "http://imatex.cdmt.cat/_cat/fitxa_fitxa.aspx?num_id=";
@@ -43,15 +44,15 @@ public class ImatexConverter extends Converter {
 
     String museumName = s.get("MUSEUM");
 
-    ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.get("REGISTER NUMBER");
+    ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Register number"));
 
     Image img = new Image(s.get("ID FOTOGRAFIA"));
     obj.add(img);
 
 
-    Production prod = new Production(id);
+    Production prod = new Production(regNum);
     prod.add(obj);
 
     s.getMulti("CRONOLOGIA*").forEach(prod::addTimeAppellation);
@@ -69,7 +70,7 @@ public class ImatexConverter extends Converter {
 
     String cdt = s.get("ESTAT DE CONSERVACIÓ*");
     if (cdt != null) {
-      ConditionAssestment conditionAssestment = new ConditionAssestment(id);
+      ConditionAssestment conditionAssestment = new ConditionAssestment(regNum);
       conditionAssestment.concerns(obj);
       conditionAssestment.addCondition("condition", cdt, mainLang);
       linkToRecord(conditionAssestment);
@@ -77,7 +78,7 @@ public class ImatexConverter extends Converter {
 
     String rest = s.get("RESTAURACIÓ*");
     if (rest != null) {
-      Modification modification = new Modification(id, "restoration", rest);
+      Modification modification = new Modification(regNum, "restoration", rest);
       modification.of(obj);
       linkToRecord(modification);
     }
@@ -93,7 +94,7 @@ public class ImatexConverter extends Converter {
     if (museumName != null)
       museum = new LegalBody(museumName);
 
-    Acquisition acquisition = new Acquisition(id);
+    Acquisition acquisition = new Acquisition(regNum);
     acquisition.transfer(acquisitionFrom, obj, museum);
     acquisition.setDate(acquisitionDate);
     acquisition.setType(acquisitionType);
@@ -102,7 +103,7 @@ public class ImatexConverter extends Converter {
     // This field cannot be systematically mapped this way. The relation depends on the record itself
     String npa = s.get("NOMS PROPIS ASSOCIATS");
     if (!StringUtils.isBlank(npa)) {
-      Activity activity = new Activity(id, "npa");
+      Activity activity = new Activity(regNum, "npa");
       activity.addActor(npa);
       linkToRecord(activity);
     }
@@ -112,11 +113,11 @@ public class ImatexConverter extends Converter {
     prod.addActivity(s.get("TAILOR/COUTURIER"), "tailor/couturier");
     prod.addActivity(s.get("AUTHOR"), "author");
 
-    Transfer transfer = new Transfer(id);
+    Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(museum);
 
     if (s.get("BIBLIOGRAPHY") != null) {
-      InformationObject bio = new InformationObject(id + "b");
+      InformationObject bio = new InformationObject(regNum + "b");
       bio.setType("Bibliography");
       bio.isAbout(obj);
       bio.addNote(s.get("BIBLIOGRAPHY"));
@@ -124,7 +125,7 @@ public class ImatexConverter extends Converter {
     }
 
     if (s.get("EXHIBITIONS") != null) {
-      InformationObject bio = new InformationObject(id + "e");
+      InformationObject bio = new InformationObject(regNum + "e");
       bio.setType("Exhibitions");
       bio.isAbout(obj);
       bio.addNote(s.get("EXHIBITIONS"));
@@ -132,7 +133,7 @@ public class ImatexConverter extends Converter {
     }
 
     if (s.get("OTHER ITEMS") != null) {
-      InformationObject bio = new InformationObject(id + "e");
+      InformationObject bio = new InformationObject(regNum + "e");
       bio.setType("Other");
       bio.isAbout(obj);
       bio.addNote(s.get("OTHER ITEMS"));
@@ -144,14 +145,5 @@ public class ImatexConverter extends Converter {
     linkToRecord(prod);
     linkToRecord(transfer);
     return this.model;
-  }
-
-  private void write(String text, String file) throws IOException {
-    if (StringUtils.isBlank(text)) return;
-    FileWriter fWriter = new FileWriter(file, true);
-    BufferedWriter bWriter = new BufferedWriter(fWriter);
-    bWriter.write("- " + text + "\n");
-    bWriter.close();
-    fWriter.close();
   }
 }
