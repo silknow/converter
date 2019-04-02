@@ -51,6 +51,7 @@ public class JocondeConverter extends Converter {
     String museumName = s.get("Lieu de conservation");
     LegalBody museum = new LegalBody(museumName);
 
+
     Document doc = new Document(id);
     s.getMulti("Rédacteur").map(Person::new)
             .forEach(doc::addEditor);

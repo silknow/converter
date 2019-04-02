@@ -53,8 +53,6 @@ public class METConverter extends Converter {
     s.getMulti("title").forEach(obj::addTitle);
 
 
-    Image img = new Image(s.get("image"));
-    obj.add(img);
 
 
     Production prod = new Production(id);

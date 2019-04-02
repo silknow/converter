@@ -8,6 +8,7 @@ import org.silknow.converter.entities.*;
 import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class MFAConverter extends Converter {
 
@@ -52,17 +53,27 @@ public class MFAConverter extends Converter {
     linkToRecord(obj.addComplexIdentifier(regNum, "accessionNumber"));
     s.getMulti("title").forEach(obj::addTitle);
 
-
-    //Image img = new Image(s.getImages());
-    //obj.add(img);
+    s.getImages().map(Image::fromCrawledJSON)
+            .peek(obj::add)
+            .forEach(this::linkToRecord);
 
 
     Production prod = new Production(id);
     prod.add(obj);
 
-    //TEASER s.getMulti("Date:").forEach(prod::addTimeAppellation);
+    String[] teas = s.get("teaser").split(" ");
+    if (teas.length > 1) {
+      prod.addPlace(teas[0]);
+      prod.addTimeAppellation(teas[1]);
+    }
+
+
+
+
+
+
+
     s.getMulti("mediumOrTechnique").forEach(prod::addMaterial);
-    //TEASER   s.getMulti("Culture:").forEach(prod::addPlace);
     //s.getMulti("TÈCNICA*").forEach(prod::addTechnique);
     s.getMulti("classifications")
             .map(x -> obj.addClassification(x, "classifications"))

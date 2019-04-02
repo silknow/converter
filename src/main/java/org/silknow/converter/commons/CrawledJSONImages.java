@@ -2,6 +2,8 @@ package org.silknow.converter.commons;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.List;
+
 public class CrawledJSONImages {
   private String id;
   private String url;

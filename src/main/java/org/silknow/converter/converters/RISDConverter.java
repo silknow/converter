@@ -53,8 +53,9 @@ public class RISDConverter extends Converter {
     s.getMulti("Title").forEach(obj::addTitle);
 
 
-    Image img = new Image(s.get("image"));
-    obj.add(img);
+    s.getImages().map(Image::fromCrawledJSON)
+            .peek(obj::add)
+            .forEach(this::linkToRecord);
 
 
     Production prod = new Production(id);

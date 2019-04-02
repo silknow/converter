@@ -38,7 +38,7 @@ public class MADConverter extends Converter {
       e.printStackTrace();
       return null;
     }
-    s.setMultiSeparator(" -");
+    //s.setMultiSeparator(" -");
 
     // Create the objects of the graph
     logger.trace("creating objects");
@@ -48,21 +48,22 @@ public class MADConverter extends Converter {
     //String museumName = s.get("MUSEUM");
 
     ManMade_Object obj = new ManMade_Object(id);
-    String regNum = s.get("Numéro d'inventaire:");
+    String regNum = s.getMulti("Numéro d'inventaire:").findFirst().orElse(null);
     linkToRecord(obj.addComplexIdentifier(regNum, "Numéro d'inventaire:"));
     s.getMulti("title").forEach(obj::addTitle);
 
 
-    Image img = new Image(s.get("image"));
-    obj.add(img);
-
+    s.getImages().map(Image::fromCrawledJSON)
+            .peek(obj::add)
+            .forEach(this::linkToRecord);
 
     Production prod = new Production(id);
     prod.add(obj);
 
     s.getMulti("Création:").forEach(prod::addTimeAppellation);
-    s.getMulti("Matières et techniques:").forEach(prod::addMaterial);
-    s.getMulti("Création:").forEach(prod::addPlace);
+
+    s.getMulti("Textile:").forEach(prod::addMaterial);
+    //s.getMulti("Création:").forEach(prod::addPlace);
     //s.getMulti("TÈCNICA*").forEach(prod::addTechnique);
     s.getMulti("Domaine")
             .map(x -> obj.addClassification(x, "Domaine"))
@@ -75,7 +76,7 @@ public class MADConverter extends Converter {
 
 
 
-    String dim = s.get("Mesures");
+    String dim = s.getMulti("Mesures").findFirst().orElse(null);
     if (dim != null) {
       Matcher matcher = DIMENSION_PATTERN.matcher(dim);
       if (matcher.find()) {
@@ -84,11 +85,11 @@ public class MADConverter extends Converter {
     }
 
 
-    linkToRecord(obj.addObservation(s.get("description"), "en", "description"));
+    linkToRecord(obj.addObservation(s.getMulti("description").findFirst().orElse(null), "en", "description"));
     //linkToRecord(obj.addObservation(s.get("TECHNICAL DESCRIPTION"), mainLang, "technical description"));
 
-    String acquisitionFrom = s.get("Credit Line:");
-    String acquisitionType = s.get("Acquisition/dépôt:");
+    String acquisitionFrom = s.getMulti("Credit Line:").findFirst().orElse(null);
+    String acquisitionType = s.getMulti("Acquisition/dépôt:").findFirst().orElse(null);
     //String acquisitionDate = s.get("YEAR ENTERED THE MUSEUM");
     LegalBody museum = null;
     //if (museumName != null)

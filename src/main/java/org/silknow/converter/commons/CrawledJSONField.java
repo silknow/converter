@@ -12,6 +12,9 @@ public class CrawledJSONField {
   private String value;
   private List<String> values;
 
+  public CrawledJSONField() {
+  }
+
   boolean hasLabel(String label) {
     return label.equalsIgnoreCase(this.label);
   }
@@ -21,6 +24,7 @@ public class CrawledJSONField {
   }
 
   private boolean isNull() {
+    if(values != null && !values.isEmpty()) return false;
     return StringUtils.isBlank(value) || value.equals("-");
   }
 
@@ -30,10 +34,11 @@ public class CrawledJSONField {
   }
 
   Stream<String> getMultiValue(String multiSeparator) {
-    if(values != null && !values.isEmpty()) return values.stream();
+    if(values != null && !values.isEmpty()) return values.stream().map(String::trim).filter(x -> !StringUtils.isBlank(x));
     return Arrays.stream(value.split(multiSeparator))
             .map(String::trim)
             .map(x -> x.replaceFirst("^/ +", ""))
             .filter(x -> !StringUtils.isBlank(x));
   }
+
 }
