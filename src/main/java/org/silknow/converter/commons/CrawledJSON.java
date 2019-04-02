@@ -40,7 +40,6 @@ public class CrawledJSON {
 
   public Stream<String> getMulti(String label, String separator) {
     CrawledJSONField f = getField(label);
-    System.out.println(f);
     if (f == null) return Stream.empty();
     return f.getMultiValue(separator);
   }
