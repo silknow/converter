@@ -16,6 +16,16 @@ public class CrawledJSON {
   private List<CrawledJSONField> fields;
   private List<CrawledJSONImages> images;
   private String multiSeparator;
+  private String id;
+  private String url;
+
+  public String getId() {
+    return id;
+  }
+
+  public String getUrl() {
+    return url;
+  }
 
   public static CrawledJSON from(File file) throws FileNotFoundException {
     return new Gson().fromJson(new FileReader(file), CrawledJSON.class);

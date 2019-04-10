@@ -17,6 +17,7 @@ import org.silknow.converter.converters.MFAConverter;
 import org.silknow.converter.converters.RISDConverter;
 import org.silknow.converter.converters.MADConverter;
 import org.silknow.converter.converters.CERConverter;
+import org.silknow.converter.converters.MTMADConverter;
 import org.silknow.converter.ontologies.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +39,7 @@ import java.util.Objects;
 public class Main implements Runnable {
   public static String source;
 
-  enum Type {imatex, garin, joconde, MET, MFA, RISD, MAD, CER}
+  enum Type {imatex, garin, joconde, MET, MFA, RISD, MAD, CER, MTMAD}
 
   @Parameters(index = "0", paramLabel = "TYPE", description = "Type of source data: ${COMPLETION-CANDIDATES}")
   private Type type;
@@ -122,6 +123,9 @@ public class Main implements Runnable {
         break;
       case CER:
         converter = new CERConverter();
+        break;
+      case MTMAD:
+        converter = new MTMADConverter();
 
 
     }
