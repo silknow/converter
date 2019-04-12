@@ -104,6 +104,14 @@ public class RISDConverter extends Converter {
     Transfer transfer = new Transfer(id);
     transfer.of(obj).by(museum);
 
+    if (s.get("publications") != null) {
+      InformationObject bio = new InformationObject(regNum + "b");
+      bio.setType("publications");
+      bio.isAbout(obj);
+      bio.addNote(s.get("publications"));
+      linkToRecord(bio);
+    }
+
 
     linkToRecord(obj);
     linkToRecord(acquisition);
