@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class MADConverter extends Converter {
 
-  private static final String DIMENSION_REGEX = "(\\d+(?:\\.\\d+)?) x (\\d+(?:\\.\\d+)?) cm";
+  private static final String DIMENSION_REGEX = "hauteur en cm : (\\d+?) largeur en cm : (\\d+?)";
   private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX);
 
   @Override
@@ -63,8 +63,8 @@ public class MADConverter extends Converter {
     s.getMulti("Création:").forEach(prod::addTimeAppellation);
 
     s.getMulti("Textile:").forEach(prod::addMaterial);
-    //s.getMulti("Création:").forEach(prod::addPlace);
-    //s.getMulti("TÈCNICA*").forEach(prod::addTechnique);
+    s.getMulti("Création:").forEach(prod::addPlace);
+    s.getMulti("Matières et techniques:").forEach(prod::addTechnique);
     s.getMulti("Domaine")
             .map(x -> obj.addClassification(x, "Domaine"))
             .forEach(this::linkToRecord);
@@ -75,9 +75,10 @@ public class MADConverter extends Converter {
     //s.getMulti("DESTÍ DÚS*").forEach(obj::addIntention);
 
 
-
-    String dim = s.getMulti("Mesures").findFirst().orElse(null);
+    String dim = s.getMulti("Mesures:").findFirst().orElse(null);
     if (dim != null) {
+      dim = dim.replace('\n', ' ');
+      dim = dim.replace("(en cm)", "en cm");
       Matcher matcher = DIMENSION_PATTERN.matcher(dim);
       if (matcher.find()) {
         linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));

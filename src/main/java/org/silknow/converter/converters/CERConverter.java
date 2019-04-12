@@ -84,7 +84,12 @@ public class CERConverter extends Converter {
       }
     }
 
-
+    Right copyphoto = new Right(obj.getUri() + "/image/right");
+    copyphoto.addNote(s.get("Photographie:"));
+    s.getMulti("Photographie:", ", ")
+            .map(x -> x.replaceFirst("© ", ""))
+            .map(Actor::new)
+            .forEach(copyphoto::ownedBy);
 
     linkToRecord(obj.addObservation(s.get("Descripción"), "es", "Descripción"));
     linkToRecord(obj.addObservation(s.get("Objeto/Documento"), "es", "Objeto/Documento"));
@@ -94,23 +99,31 @@ public class CERConverter extends Converter {
     //String acquisitionType = s.get("provenance");
     //String acquisitionDate = s.get("YEAR ENTERED THE MUSEUM");
     LegalBody museum = null;
-    //if (museumName != null)
-      //museum = new LegalBody(museumName);
+    if (museumName != null)
+      museum = new LegalBody(museumName);
 
-    //Acquisition acquisition = new Acquisition(id);
-    //acquisition.transfer(acquisitionFrom, obj, museum);
+    Acquisition acquisition = new Acquisition(regNum);
     //acquisition.setDate(acquisitionDate);
     //acquisition.setType(acquisitionType);
 
 
-    //Transfer transfer = new Transfer(id);
-    //transfer.of(obj).by(museum);
+
+    Transfer transfer = new Transfer(regNum);
+    transfer.of(obj).by(museum);
+
+    if (s.get("Bibliografía") != null) {
+      InformationObject bio = new InformationObject(regNum + "b");
+      bio.setType("Bibliografía");
+      bio.isAbout(obj);
+      bio.addNote(s.get("Bibliografía"));
+      linkToRecord(bio);
+    }
 
 
     linkToRecord(obj);
-    //linkToRecord(acquisition);
+    linkToRecord(acquisition);
     linkToRecord(prod);
-    //linkToRecord(transfer);
+    linkToRecord(transfer);
     return this.model;
   }
 
