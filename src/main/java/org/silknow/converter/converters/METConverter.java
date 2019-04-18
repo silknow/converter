@@ -52,7 +52,16 @@ public class METConverter extends Converter {
     linkToRecord(obj.addComplexIdentifier(regNum, "Accession Number:"));
     s.getMulti("title").forEach(obj::addTitle);
 
+    Image img = new Image(s.get("image"));
+    obj.add(img);
 
+
+    Image rimg = new Image(s.get("regularImage"));
+    obj.add(rimg);
+
+
+    Image limg = new Image(s.get("largeImage"));
+    obj.add(limg);
 
 
     Production prod = new Production(id);
@@ -60,7 +69,7 @@ public class METConverter extends Converter {
 
     s.getMulti("Date:").forEach(prod::addTimeAppellation);
     s.getMulti("Medium:").forEach(prod::addMaterial);
-    s.getMulti("Culture:").forEach(prod::addPlace);
+    s.getMulti("Object Type / Material").forEach(prod::addPlace);
     //s.getMulti("TÈCNICA*").forEach(prod::addTechnique);
     s.getMulti("Classification:")
             .map(x -> obj.addClassification(x, "Classification"))

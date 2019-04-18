@@ -38,7 +38,7 @@ public class RISDConverter extends Converter {
       e.printStackTrace();
       return null;
     }
-    s.setMultiSeparator(" -");
+    s.setMultiSeparator(" ///");
 
     // Create the objects of the graph
     logger.trace("creating objects");
@@ -60,9 +60,11 @@ public class RISDConverter extends Converter {
 
     Production prod = new Production(id);
     prod.add(obj);
+    prod.addActivity(s.getMulti("Maker").findFirst().orElse(null), "Maker");
 
     s.getMulti("Year").forEach(prod::addTimeAppellation);
     s.getMulti("Materials").forEach(prod::addMaterial);
+    s.getMulti("Medium").forEach(prod::addMaterial);
     s.getMulti("Culture").forEach(prod::addPlace);
     s.getMulti("Techniques").forEach(prod::addTechnique);
     s.getMulti("Type")

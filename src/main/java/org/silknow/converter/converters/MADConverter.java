@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class MADConverter extends Converter {
 
-  private static final String DIMENSION_REGEX = "hauteur en cm : (\\d+?) largeur en cm : (\\d+?)";
+  private static final String DIMENSION_REGEX = "hauteur en cm : (\\d+?) largeur en cm : (\\d+?) ";
   private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX);
 
   @Override
