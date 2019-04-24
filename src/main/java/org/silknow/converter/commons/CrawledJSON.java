@@ -15,6 +15,9 @@ import java.util.stream.Stream;
 public class CrawledJSON {
   private List<CrawledJSONField> fields;
   private List<CrawledJSONImages> images;
+  private List<CrawledJSONPublications> publications;
+  private List<CrawledJSONExhibitions> exhibitions;
+
   private String multiSeparator;
   private String id;
   private String url;
@@ -60,4 +63,6 @@ public class CrawledJSON {
   }
 
   public Stream<CrawledJSONImages> getImages() { return this.images.stream(); }
+  public Stream<CrawledJSONExhibitions> getExhibitions() { return this.exhibitions.stream(); }
+  public Stream<CrawledJSONPublications> getPublications() { return this.publications.stream(); }
 }

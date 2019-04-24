@@ -72,7 +72,6 @@ public class MFAConverter extends Converter {
 
 
 
-
     s.getMulti("mediumOrTechnique").forEach(prod::addMaterial);
     //s.getMulti("TÈCNICA*").forEach(prod::addTechnique);
     s.getMulti("classifications")

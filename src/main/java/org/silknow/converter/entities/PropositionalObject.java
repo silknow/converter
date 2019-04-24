@@ -1,10 +1,19 @@
 package org.silknow.converter.entities;
 
+import org.jetbrains.annotations.NotNull;
+import org.silknow.converter.commons.CrawledJSONImages;
+import org.silknow.converter.commons.CrawledJSONPublications;
 import org.silknow.converter.ontologies.CIDOC;
+import org.silknow.converter.ontologies.Schema;
 
 public class PropositionalObject extends Entity {
   public PropositionalObject(String id) {
     super(id);
+    this.setClass(CIDOC.E89_Propositional_Object);
+  }
+
+  public PropositionalObject() {
+    super();
     this.setClass(CIDOC.E89_Propositional_Object);
   }
 
@@ -22,4 +31,7 @@ public class PropositionalObject extends Entity {
     this.addProperty(CIDOC.P67_refers_to, object);
     return this;
   }
+
+
+
 }
