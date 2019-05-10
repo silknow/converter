@@ -35,6 +35,7 @@ public class InformationObject extends PropositionalObject {
         publication.setType("Publication");
         publication.addNote(pub.getTitle());
         publication.addNote(pub.getSubtitle());
+
         return publication;
     }
 

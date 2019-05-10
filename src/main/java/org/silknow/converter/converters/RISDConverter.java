@@ -5,6 +5,7 @@ import org.apache.jena.rdf.model.Model;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.commons.CrawledJSONPublications;
 import org.silknow.converter.entities.*;
+import org.silknow.converter.ontologies.CIDOC;
 
 import java.io.*;
 import java.util.regex.Matcher;
@@ -108,9 +109,16 @@ public class RISDConverter extends Converter {
     transfer.of(obj).by(museum);
 
     s.getExhibitions().map(InformationObject::fromCrawledJSON)
-            .forEach(this::linkToRecord);
+            .forEach(pub -> {
+              pub.addProperty(CIDOC.P129_is_about, obj);
+              this.linkToRecord(pub);
+            });
+
     s.getPublications().map(InformationObject::fromCrawledJSON)
-            .forEach(this::linkToRecord);
+            .forEach(pub -> {
+              pub.addProperty(CIDOC.P129_is_about, obj);
+              this.linkToRecord(pub);
+            });
 
     linkToRecord(obj);
     linkToRecord(acquisition);

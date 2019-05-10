@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CrawledJSONField {
@@ -34,7 +35,7 @@ public class CrawledJSONField {
   }
 
   Stream<String> getMultiValue(String multiSeparator) {
-    if(values != null && !values.isEmpty()) return values.stream().map(String::trim).filter(x -> !StringUtils.isBlank(x));
+    if(values != null && !values.isEmpty()) return values.stream().filter(x-> !x.replace('\u00A0',' ').trim().isEmpty());
     return Arrays.stream(value.split(multiSeparator))
             .map(String::trim)
             .map(x -> x.replaceFirst("^/ +", ""))

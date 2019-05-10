@@ -22,7 +22,7 @@ public abstract class Converter {
   Logger logger = LoggerFactory.getLogger(getClass());
   protected String id; // record id
   private Resource dataset;
-  private Resource record;
+  protected Resource record;
 
   public abstract boolean canConvert(File file);
 
