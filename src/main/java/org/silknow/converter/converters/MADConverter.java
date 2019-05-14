@@ -105,6 +105,11 @@ public class MADConverter extends Converter {
     Transfer transfer = new Transfer(id);
     transfer.of(obj).by(museum);
 
+    Collection collection = new Collection(id);
+    collection.of(obj);
+    collection.addAppellation(s.getMulti("Département").findFirst().orElse(null));
+
+    //linkToRecord(collection);
 
     linkToRecord(obj);
     linkToRecord(acquisition);

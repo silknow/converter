@@ -8,6 +8,7 @@ import org.silknow.converter.entities.*;
 import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class METConverter extends Converter {
 
@@ -38,7 +39,7 @@ public class METConverter extends Converter {
       e.printStackTrace();
       return null;
     }
-    s.setMultiSeparator(" -");
+    //s.setMultiSeparator(" -");
 
     // Create the objects of the graph
     logger.trace("creating objects");
@@ -66,6 +67,8 @@ public class METConverter extends Converter {
 
     Production prod = new Production(id);
     prod.add(obj);
+
+
 
     s.getMulti("Date:").forEach(prod::addTimeAppellation);
     s.getMulti("Medium:").forEach(prod::addMaterial);
@@ -111,6 +114,12 @@ public class METConverter extends Converter {
     transfer.of(obj).by(museum);
 
 
+    Collection collection = new Collection(id);
+    collection.of(obj);
+    collection.addAppellation(s.getMulti("Department").findFirst().orElse(null));
+
+
+    linkToRecord(collection);
     linkToRecord(obj);
     linkToRecord(acquisition);
     linkToRecord(prod);

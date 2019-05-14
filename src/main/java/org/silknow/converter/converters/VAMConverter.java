@@ -38,7 +38,7 @@ public class VAMConverter extends Converter {
       e.printStackTrace();
       return null;
     }
-    s.setMultiSeparator(" -");
+    //s.setMultiSeparator(" -");
 
     // Create the objects of the graph
     logger.trace("creating objects");
@@ -104,6 +104,13 @@ public class VAMConverter extends Converter {
 
     Move move = new Move(id);
     move.of(obj).from(s.getMulti("location").findFirst().orElse(null)).to(s.getMulti("location").findFirst().orElse(null));
+
+    Collection collection = new Collection(id);
+    collection.of(obj);
+    collection.addAppellation(s.getMulti("collections").findFirst().orElse(null));
+
+    linkToRecord(collection);
+
 
     linkToRecord(obj);
     linkToRecord(acquisition);

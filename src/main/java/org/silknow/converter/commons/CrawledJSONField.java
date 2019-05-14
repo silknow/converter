@@ -13,6 +13,7 @@ public class CrawledJSONField {
   private String value;
   private List<String> values;
 
+
   public CrawledJSONField() {
   }
 
@@ -41,5 +42,13 @@ public class CrawledJSONField {
             .map(x -> x.replaceFirst("^/ +", ""))
             .filter(x -> !StringUtils.isBlank(x));
   }
+
+  Stream<String> getMultiValue() {
+    if(values != null && !values.isEmpty())
+      return values.stream().filter(x-> !x.replace('\u00A0',' ').trim().isEmpty());
+
+    return null;
+  }
+
 
 }

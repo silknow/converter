@@ -39,7 +39,7 @@ public class MTMADConverter extends Converter {
       e.printStackTrace();
       return null;
     }
-    s.setMultiSeparator(" -");
+    //s.setMultiSeparator(" -");
 
     // Create the objects of the graph
     logger.trace("creating objects");

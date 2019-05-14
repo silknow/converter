@@ -39,7 +39,7 @@ public class MFAConverter extends Converter {
       e.printStackTrace();
       return null;
     }
-    s.setMultiSeparator(" -");
+    //s.setMultiSeparator(" -");
 
     // Create the objects of the graph
     logger.trace("creating objects");
@@ -113,7 +113,11 @@ public class MFAConverter extends Converter {
     Transfer transfer = new Transfer(id);
     transfer.of(obj).by(museum);
 
+    Collection collection = new Collection(id);
+    collection.of(obj);
+    collection.addAppellation(s.getMulti("Collections").findFirst().orElse(null));
 
+    linkToRecord(collection);
     linkToRecord(obj);
     linkToRecord(acquisition);
     linkToRecord(prod);
