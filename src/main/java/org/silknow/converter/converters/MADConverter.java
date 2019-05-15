@@ -26,7 +26,6 @@ public class MADConverter extends Converter {
     if (!this.canConvert(file))
       throw new RuntimeException("MADconverter require files in JSON format.");
 
-    //String mainLang = file.getName().replace(".json", "");
     this.DATASET_NAME = "MAD";
 
     // Parse JSON
@@ -38,14 +37,12 @@ public class MADConverter extends Converter {
       e.printStackTrace();
       return null;
     }
-    //s.setMultiSeparator(" -");
 
     // Create the objects of the graph
     logger.trace("creating objects");
 
     id = file.getName().replace(".json", "");
 
-    //String museumName = s.get("MUSEUM");
 
     ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.getMulti("Numéro d'inventaire:").findFirst().orElse(null);
@@ -71,8 +68,7 @@ public class MADConverter extends Converter {
     s.getMulti("Appellation")
             .map(x -> obj.addClassification(x, "Appellation"))
             .forEach(this::linkToRecord);
-    //s.getMulti("DECORACIÓ*").forEach(obj::addSubject);
-    //s.getMulti("DESTÍ DÚS*").forEach(obj::addIntention);
+
 
 
     String dim = s.getMulti("Mesures:").findFirst().orElse(null);
@@ -91,14 +87,11 @@ public class MADConverter extends Converter {
 
     String acquisitionFrom = s.getMulti("Credit Line:").findFirst().orElse(null);
     String acquisitionType = s.getMulti("Acquisition/dépôt:").findFirst().orElse(null);
-    //String acquisitionDate = s.get("YEAR ENTERED THE MUSEUM");
     LegalBody museum = null;
-    //if (museumName != null)
-      //museum = new LegalBody(museumName);
+
 
     Acquisition acquisition = new Acquisition(id);
     acquisition.transfer(acquisitionFrom, obj, museum);
-    //acquisition.setDate(acquisitionDate);
     acquisition.setType(acquisitionType);
 
 
@@ -109,7 +102,6 @@ public class MADConverter extends Converter {
     collection.of(obj);
     collection.addAppellation(s.getMulti("Département").findFirst().orElse(null));
 
-    //linkToRecord(collection);
 
     linkToRecord(obj);
     linkToRecord(acquisition);

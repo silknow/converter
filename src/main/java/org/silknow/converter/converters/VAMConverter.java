@@ -86,17 +86,12 @@ public class VAMConverter extends Converter {
     linkToRecord(obj.addObservation(s.get("physical_description"), "en", "physical_description"));
     linkToRecord(obj.addObservation(s.get("descriptive_line"), "en", "descriptive_line"));
 
-    //String acquisitionFrom = s.get("Credit Line:");
-    //String acquisitionType = s.get("provenance");
-    //String acquisitionDate = s.get("YEAR ENTERED THE MUSEUM");
+
     LegalBody museum = null;
-    //if (museumName != null)
-      //museum = new LegalBody(museumName);
+
 
     Acquisition acquisition = new Acquisition(id);
-   // acquisition.transfer(acquisitionFrom, obj, museum);
-    //acquisition.setDate(acquisitionDate);
-    //acquisition.setType(acquisitionType);
+
 
 
     Transfer transfer = new Transfer(id);

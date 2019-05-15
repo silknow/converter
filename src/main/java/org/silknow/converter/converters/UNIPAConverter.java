@@ -72,8 +72,7 @@ public class UNIPAConverter extends Converter {
     s.getMulti("Appellation")
             .map(x -> obj.addClassification(x, "Appellation"))
             .forEach(this::linkToRecord);
-    //s.getMulti("DECORACIÓ*").forEach(obj::addSubject);
-    //s.getMulti("DESTÍ DÚS*").forEach(obj::addIntention);
+
 
     linkToRecord(obj.addMeasure(s.get("Altezza del tessuto")));
     String dim = s.getMulti("Dimensioni").findFirst().orElse(null);
@@ -96,17 +95,12 @@ public class UNIPAConverter extends Converter {
     linkToRecord(obj.addObservation(s.getMulti("Notizie storico critiche").findFirst().orElse(null), "it", "Notizie storico critiche"));
 
 
-    //String acquisitionFrom = s.getMulti("Credit Line:").findFirst().orElse(null);
-    //String acquisitionType = s.getMulti("Acquisition/dépôt:").findFirst().orElse(null);
-    //String acquisitionDate = s.get("YEAR ENTERED THE MUSEUM");
+
     LegalBody museum = null;
     if (museumName != null)
       museum = new LegalBody(museumName);
 
-    //Acquisition acquisition = new Acquisition(id);
-    //acquisition.transfer(acquisitionFrom, obj, museum);
-    //acquisition.setDate(acquisitionDate);
-    //acquisition.setType(acquisitionType);
+
 
 
     Transfer transfer = new Transfer(id);
@@ -130,7 +124,6 @@ public class UNIPAConverter extends Converter {
     }
 
     linkToRecord(obj);
-    //linkToRecord(acquisition);
     linkToRecord(prod);
     linkToRecord(transfer);
     return this.model;

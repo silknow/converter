@@ -66,11 +66,6 @@ public class CERConverter extends Converter {
     s.getMulti("Clasificación Genérica")
             .map(x -> obj.addClassification(x, "Clasificación Genérica"))
             .forEach(this::linkToRecord);
-    //s.getMulti("DENOMINACIÓ*")
-      //      .map(x -> obj.addClassification(x, "domain"))
-        //    .forEach(this::linkToRecord);
-    //s.getMulti("DECORACIÓ*").forEach(obj::addSubject);
-    //s.getMulti("DESTÍ DÚS*").forEach(obj::addIntention);
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
@@ -95,16 +90,13 @@ public class CERConverter extends Converter {
     linkToRecord(obj.addObservation(s.get("Objeto/Documento"), "es", "Objeto/Documento"));
     linkToRecord(obj.addObservation(s.get("Clasificación Razonada"), "es", "Clasificación Razonada"));
 
-    //String acquisitionFrom = s.get("Credit Line:");
-    //String acquisitionType = s.get("provenance");
-    //String acquisitionDate = s.get("YEAR ENTERED THE MUSEUM");
+
     LegalBody museum = null;
     if (museumName != null)
       museum = new LegalBody(museumName);
 
     Acquisition acquisition = new Acquisition(regNum);
-    //acquisition.setDate(acquisitionDate);
-    //acquisition.setType(acquisitionType);
+
 
 
 

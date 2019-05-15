@@ -72,11 +72,7 @@ public class RISDConverter extends Converter {
     s.getMulti("Type")
             .map(x -> obj.addClassification(x, "Type"))
             .forEach(this::linkToRecord);
-    //s.getMulti("DENOMINACIÓ*")
-      //      .map(x -> obj.addClassification(x, "domain"))
-        //    .forEach(this::linkToRecord);
-    //s.getMulti("DECORACIÓ*").forEach(obj::addSubject);
-    //s.getMulti("DESTÍ DÚS*").forEach(obj::addIntention);
+
 
 
 
@@ -90,19 +86,17 @@ public class RISDConverter extends Converter {
 
 
     linkToRecord(obj.addObservation(s.get("description"), "en", "description"));
-    //linkToRecord(obj.addObservation(s.get("TECHNICAL DESCRIPTION"), mainLang, "technical description"));
+
 
     String acquisitionFrom = s.get("Credit");
-    //String acquisitionType = s.get("provenance");
-    //String acquisitionDate = s.get("YEAR ENTERED THE MUSEUM");
+
     LegalBody museum = null;
-    //if (museumName != null)
-      //museum = new LegalBody(museumName);
+
+
 
     Acquisition acquisition = new Acquisition(id);
     acquisition.transfer(acquisitionFrom, obj, museum);
-    //acquisition.setDate(acquisitionDate);
-    //acquisition.setType(acquisitionType);
+
 
 
     Transfer transfer = new Transfer(id);

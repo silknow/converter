@@ -39,7 +39,6 @@ public class METConverter extends Converter {
       e.printStackTrace();
       return null;
     }
-    //s.setMultiSeparator(" -");
 
     // Create the objects of the graph
     logger.trace("creating objects");
@@ -73,15 +72,9 @@ public class METConverter extends Converter {
     s.getMulti("Date:").forEach(prod::addTimeAppellation);
     s.getMulti("Medium:").forEach(prod::addMaterial);
     s.getMulti("Object Type / Material").forEach(prod::addPlace);
-    //s.getMulti("TÈCNICA*").forEach(prod::addTechnique);
     s.getMulti("Classification:")
             .map(x -> obj.addClassification(x, "Classification"))
             .forEach(this::linkToRecord);
-    //s.getMulti("DENOMINACIÓ*")
-      //      .map(x -> obj.addClassification(x, "domain"))
-        //    .forEach(this::linkToRecord);
-    //s.getMulti("DECORACIÓ*").forEach(obj::addSubject);
-    //s.getMulti("DESTÍ DÚS*").forEach(obj::addIntention);
 
 
 
@@ -95,18 +88,14 @@ public class METConverter extends Converter {
 
 
     linkToRecord(obj.addObservation(s.get("description"), "en", "description"));
-    //linkToRecord(obj.addObservation(s.get("TECHNICAL DESCRIPTION"), mainLang, "technical description"));
 
     String acquisitionFrom = s.get("Credit Line:");
     String acquisitionType = s.get("provenance");
-    //String acquisitionDate = s.get("YEAR ENTERED THE MUSEUM");
     LegalBody museum = null;
-    //if (museumName != null)
-      //museum = new LegalBody(museumName);
+
 
     Acquisition acquisition = new Acquisition(id);
     acquisition.transfer(acquisitionFrom, obj, museum);
-    //acquisition.setDate(acquisitionDate);
     acquisition.setType(acquisitionType);
 
 
