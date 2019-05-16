@@ -50,8 +50,7 @@ public class CERConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.get("Inventario");
     linkToRecord(obj.addComplexIdentifier(regNum, "Inventario"));
-    s.getMulti("Título").forEach(obj::addTitle);
-
+    obj.addTitle(s.getMulti("Título").findFirst().orElse(null));
 
 
 

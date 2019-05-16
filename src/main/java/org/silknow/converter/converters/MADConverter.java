@@ -47,8 +47,7 @@ public class MADConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.getMulti("Numéro d'inventaire:").findFirst().orElse(null);
     linkToRecord(obj.addComplexIdentifier(regNum, "Numéro d'inventaire:"));
-    s.getMulti("title").forEach(obj::addTitle);
-
+    obj.addTitle(s.getMulti("title").findFirst().orElse(null));
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)

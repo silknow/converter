@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 public class MTMADConverter extends Converter {
 
-  private static final String DIMENSION_REGEX = "H. (\\d+(?:\\,\\d+)?) cm, l. (\\d+(?:\\,\\d+)?) cm (oeuvre)";
+  private static final String DIMENSION_REGEX = "H. (\\d+(?:[,.]\\d+)?) cm , l. (\\d+(?:[,.]\\d+)?) cm";
   private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX);
 
   @Override
@@ -51,8 +51,7 @@ public class MTMADConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.getId();
     linkToRecord(obj.addComplexIdentifier(regNum, id));
-    s.getMulti("title").forEach(obj::addTitle);
-
+    obj.addTitle(s.getMulti("title").findFirst().orElse(null));
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
@@ -62,7 +61,21 @@ public class MTMADConverter extends Converter {
     prod.add(obj);
 
     String[] details = s.getMulti("details").toArray(String[]::new);
-    linkToRecord(obj.addObservation(details[0], "en", "short description"));
+    for(int i = 0; i < details.length; i++)
+    {
+      if (details[i].startsWith("H")) {
+        String dim = details[i];
+        if (dim != null) {
+          Matcher matcher = DIMENSION_PATTERN.matcher(dim);
+          if (matcher.find()) {
+            linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
+          }
+        }
+      }
+
+
+    }
+    linkToRecord(obj.addObservation(details[0], "fr", "short description"));
 
 
 
@@ -90,14 +103,14 @@ public class MTMADConverter extends Converter {
     Transfer transfer = new Transfer(id);
     transfer.of(obj).by(museum);
 
-    obj.addSubject(s.get("Iconografia"));
+    obj.addSubject(s.getMulti("Iconografia").findFirst().orElse(null));
 
 
     if (s.get("Bibliographie :") != null) {
       InformationObject bio = new InformationObject(regNum + "b");
       bio.setType("Bibliographie");
       bio.isAbout(obj);
-      bio.addNote(s.get("Bibliographie"));
+      bio.addNote(s.getMulti("Bibliographie").findFirst().orElse(null));
       linkToRecord(bio);
     }
 
@@ -105,7 +118,7 @@ public class MTMADConverter extends Converter {
       InformationObject bio = new InformationObject(regNum + "e");
       bio.setType("Exhibitions");
       bio.isAbout(obj);
-      bio.addNote(s.get("Exposition"));
+      bio.addNote(s.getMulti("Exposition").findFirst().orElse(null));
       linkToRecord(bio);
     }
 

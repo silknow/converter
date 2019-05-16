@@ -50,7 +50,7 @@ public class METConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.get("Accession Number:");
     linkToRecord(obj.addComplexIdentifier(regNum, "Accession Number:"));
-    s.getMulti("title").forEach(obj::addTitle);
+    obj.addTitle(s.getMulti("title").findFirst().orElse(null));
 
     Image img = new Image(s.get("image"));
     obj.add(img);

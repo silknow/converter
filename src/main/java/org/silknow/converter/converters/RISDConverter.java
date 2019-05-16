@@ -52,8 +52,7 @@ public class RISDConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.get("Object Number");
     linkToRecord(obj.addComplexIdentifier(regNum, "Object Number"));
-    s.getMulti("Title").forEach(obj::addTitle);
-
+    obj.addTitle(s.getMulti("Title").findFirst().orElse(null));
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)

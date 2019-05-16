@@ -52,11 +52,15 @@ public class CrawledJSON {
     return getMulti(label, this.multiSeparator);
   }
 
+
   public Stream<String> getMulti(String label, String separator) {
     CrawledJSONField f = getField(label);
     if (f == null) return Stream.empty();
-    return f.getMultiValue(separator);
+    if (separator != null) return f.getMultiValue(separator);
+    return f.getMultiValue();
   }
+
+
 
 
   public void setMultiSeparator(String separator) {

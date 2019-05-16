@@ -47,7 +47,10 @@ public class CrawledJSONField {
     if(values != null && !values.isEmpty())
       return values.stream().filter(x-> !x.replace('\u00A0',' ').trim().isEmpty());
 
-    return null;
+    return Arrays.stream(new String[] { value })
+            .map(String::trim)
+            .map(x -> x.replaceFirst("^/ +", ""))
+            .filter(x -> !StringUtils.isBlank(x));
   }
 
 

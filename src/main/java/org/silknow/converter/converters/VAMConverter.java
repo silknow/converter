@@ -50,8 +50,7 @@ public class VAMConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.get("museum_number");
     linkToRecord(obj.addComplexIdentifier(regNum, "museum_number"));
-    s.getMulti("object").forEach(obj::addTitle);
-
+    obj.addTitle(s.getMulti("object").findFirst().orElse(null));
 
 
 
