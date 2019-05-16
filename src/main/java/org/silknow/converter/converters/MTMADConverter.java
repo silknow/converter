@@ -63,7 +63,7 @@ public class MTMADConverter extends Converter {
     String[] details = s.getMulti("details").toArray(String[]::new);
     for(int i = 0; i < details.length; i++)
     {
-      if (details[i].startsWith("H")) {
+      if (details[i].startsWith("H.")) {
         String dim = details[i];
         if (dim != null) {
           Matcher matcher = DIMENSION_PATTERN.matcher(dim);
@@ -71,9 +71,15 @@ public class MTMADConverter extends Converter {
             linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
           }
         }
+
       }
-
-
+      if (details[i].startsWith("©")) {
+        InformationObject bio = new InformationObject(regNum + "i");
+        bio.setType("Forme de la citation de la notice");
+        bio.isAbout(obj);
+        bio.addNote(details[i]);
+        linkToRecord(bio);
+      }
     }
     linkToRecord(obj.addObservation(details[0], "fr", "short description"));
 
