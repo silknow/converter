@@ -46,7 +46,7 @@ public class MFAConverter extends Converter {
 
     id = file.getName().replace(".json", "");
 
-    //String museumName = s.get("MUSEUM");
+    String museumName = "MFA Boston";
 
     ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.get("accessionNumber");
@@ -61,7 +61,7 @@ public class MFAConverter extends Converter {
     Production prod = new Production(id);
     prod.add(obj);
 
-    String[] teas = s.get("teaser").split(" ");
+    String[] teas = s.get("teaser").split("(?=[0-9])", 2);
     if (teas.length > 1) {
       prod.addPlace(teas[0]);
       prod.addTimeAppellation(teas[1]);
@@ -90,22 +90,28 @@ public class MFAConverter extends Converter {
 
     linkToRecord(obj.addObservation(s.get("description"), "en", "description"));
 
-    String acquisitionFrom = s.get("creditLine");
-    String acquisitionType = s.get("provenance");
+
+
+
     LegalBody museum = null;
+    if (museumName != null)
+      museum = new LegalBody(museumName);
 
 
     Acquisition acquisition = new Acquisition(id);
-    acquisition.transfer(acquisitionFrom, obj, museum);
-    acquisition.setType(acquisitionType);
 
+    String[] acquisitionFrom = s.get("creditLine").split("(?<=Gift)", 2);
+    if (acquisitionFrom.length > 1) {
+      acquisition.setType(acquisitionFrom[0]);
+      acquisition.transfer(acquisitionFrom[1].split("of", 2)[1], obj, museum);
+    }
 
     Transfer transfer = new Transfer(id);
     transfer.of(obj).by(museum);
 
     Collection collection = new Collection(id);
     collection.of(obj);
-    collection.addAppellation(s.getMulti("Collections").findFirst().orElse(null));
+    collection.addAppellation(s.getMulti("collections").findFirst().orElse(null));
 
     linkToRecord(collection);
     linkToRecord(obj);
