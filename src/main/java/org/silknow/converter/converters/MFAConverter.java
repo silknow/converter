@@ -103,7 +103,7 @@ public class MFAConverter extends Converter {
     String[] acquisitionFrom = s.get("creditLine").split("(?<=Gift)", 2);
     if (acquisitionFrom.length > 1) {
       acquisition.setType(acquisitionFrom[0]);
-      acquisition.transfer(acquisitionFrom[1].split("of", 2)[1], obj, museum);
+      acquisition.transfer(acquisitionFrom[1], obj, museum);
     }
 
     Transfer transfer = new Transfer(id);
