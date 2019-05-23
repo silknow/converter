@@ -104,6 +104,9 @@ public class VAMConverter extends Converter {
 
     linkToRecord(collection);
 
+    s.getImages().map(Image::fromCrawledJSON)
+            .peek(obj::add)
+            .forEach(this::linkToRecord);
 
     linkToRecord(obj);
     linkToRecord(acquisition);
