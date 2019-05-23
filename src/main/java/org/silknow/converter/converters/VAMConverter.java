@@ -68,7 +68,6 @@ public class VAMConverter extends Converter {
     //s.getMulti("DENOMINACIÓ*")
       //      .map(x -> obj.addClassification(x, "domain"))
         //    .forEach(this::linkToRecord);
-    //s.getMulti("DECORACIÓ*").forEach(obj::addSubject);
     //s.getMulti("DESTÍ DÚS*").forEach(obj::addIntention);
 
 

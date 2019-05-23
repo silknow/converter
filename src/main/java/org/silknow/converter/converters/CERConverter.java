@@ -57,6 +57,7 @@ public class CERConverter extends Converter {
     Production prod = new Production(id);
     prod.add(obj);
 
+    s.getMulti("Iconografia").forEach(obj::addSubject);
     s.getMulti("Datación").forEach(prod::addTimeAppellation);
     s.getMulti("Contexto Cultural/Estilo").forEach(prod::addTimeAppellation);
     s.getMulti("Materia/Soporte").forEach(prod::addMaterial);
