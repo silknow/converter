@@ -48,8 +48,9 @@ public class ImatexConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Register number"));
 
-    Image img = new Image(s.get("ID FOTOGRAFIA"));
-    obj.add(img);
+    s.getImages().map(Image::fromCrawledJSON)
+            .peek(obj::add)
+            .forEach(this::linkToRecord);
 
 
     Production prod = new Production(regNum);
