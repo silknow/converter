@@ -52,15 +52,18 @@ public class METConverter extends Converter {
     linkToRecord(obj.addComplexIdentifier(regNum, "Accession Number:"));
     obj.addTitle(s.getMulti("title").findFirst().orElse(null));
 
-    Image img = new Image(s.get("image"));
-    obj.add(img);
+    //Image img = new Image();
+    //img.setContentUrl(s.get("image"));
+    //obj.add(img);
 
 
-    Image rimg = new Image(s.get("regularImage"));
-    obj.add(rimg);
+    //Image rimg = new Image();
+    //rimg.setContentUrl(s.get("regularImage"));
+    //obj.add(rimg);
 
 
-    Image limg = new Image(s.get("largeImage"));
+    Image limg = new Image();
+    limg.setContentUrl(s.get("largeImage"));
     obj.add(limg);
 
 
