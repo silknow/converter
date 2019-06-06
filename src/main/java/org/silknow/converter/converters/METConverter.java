@@ -74,7 +74,8 @@ public class METConverter extends Converter {
 
     s.getMulti("Date:").forEach(prod::addTimeAppellation);
     s.getMulti("Medium:").forEach(prod::addMaterial);
-    s.getMulti("Object Type / Material").forEach(prod::addPlace);
+    s.getMulti("Object Type / Material").forEach(prod::addMaterial);
+    s.getMulti("Culture:").forEach(prod::addPlace);
     s.getMulti("Classification:")
             .map(x -> obj.addClassification(x, "Classification"))
             .forEach(this::linkToRecord);
