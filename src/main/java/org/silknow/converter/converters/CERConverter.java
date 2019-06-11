@@ -61,7 +61,7 @@ public class CERConverter extends Converter {
     s.getMulti("Datación").forEach(prod::addTimeAppellation);
     s.getMulti("Contexto Cultural/Estilo").forEach(prod::addTimeAppellation);
     s.getMulti("Materia/Soporte").forEach(prod::addMaterial);
-    s.getMulti("Culture:").forEach(prod::addPlace);
+    s.getMulti("Lugar de Producción/Ceca").forEach(prod::addPlace);
     s.getMulti("Técnica").forEach(prod::addTechnique);
     s.getMulti("Clasificación Genérica")
             .map(x -> obj.addClassification(x, "Clasificación Genérica"))
