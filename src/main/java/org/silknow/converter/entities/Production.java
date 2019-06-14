@@ -64,7 +64,13 @@ public class Production extends Entity {
   }
 
   public void addTechnique(String technique) {
-    this.addProperty(CIDOC.P32_used_general_technique, technique);
+    Resource result = VocabularyManager.searchInCategory(technique, null, "att", false);
+    if (result != null)
+      this.addProperty(CIDOC.P32_used_general_technique, result);
+    else {
+//      System.out.println("Material not found in vocabularies: " + technique);
+      this.addProperty(CIDOC.P32_used_general_technique, technique);
+    }
   }
 
   public void addTool(ManMade_Object tool) {
