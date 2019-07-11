@@ -89,7 +89,8 @@ public class GarinConverter extends Converter {
 
     Production prod = new Production(id);
     prod.add(obj);
-    prod.addTechnique(s.get("Tecnica"));
+    //prod.addTechnique(s.get("Tecnica"));
+    s.getMulti("Technica").forEach(prod::addTechnique);
     prod.addActivity(s.get("Autor de la obra"), "author");
     prod.addTimeAppellation(s.get("Época"));
     s.getMulti("Material").forEach(prod::addMaterial);
@@ -104,7 +105,7 @@ public class GarinConverter extends Converter {
         OutputStream out = new FileOutputStream(Main.outputFolder + "/img/" + imgName);
         out.write(x);
         out.close();
-        img.setContentUrl(BASE_URI + "/static/img/garin/" + imgName);
+        img.setContentUrl("http://silknow.org/silknow/media/garin/" + imgName);
       } catch (IOException e) {
         logger.error(e.getLocalizedMessage());
       }
