@@ -3,11 +3,13 @@ package org.silknow.converter.converters;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.rdf.model.Model;
 import org.silknow.converter.commons.CrawledJSON;
+import org.silknow.converter.commons.GeoNames;
 import org.silknow.converter.entities.*;
 
 import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class METConverter extends Converter {
@@ -71,15 +73,32 @@ public class METConverter extends Converter {
     prod.add(obj);
 
 
-
     s.getMulti("Date:").forEach(prod::addTimeAppellation);
     s.getMulti("Medium:").forEach(prod::addMaterial);
     s.getMulti("Object Type / Material").forEach(prod::addMaterial);
-    s.getMulti("Culture:").forEach(prod::addPlace);
+    for (String x : s.getMulti("Culture:").collect(Collectors.toList())) {
+      // TODO set as probable?
+      x = x.replace("probably", "")
+              .replace("(?)", "")
+              .replace("?", "");
+
+      // extract content in parentesys
+      x = x.replaceAll("\\((.+)\\)", ", $1");
+
+      String[] parts = x.split(",");
+      // Starting from the end (more specific)
+      // I put the first thing that I find on Geonames
+      for (int i = parts.length - 1; i >= 0; i--) {
+        String part = parts[i].trim();
+        if (i > 0 && GeoNames.query(part) == null)
+          continue;
+        prod.addPlace(part);
+        break;
+      }
+    }
     s.getMulti("Classification:")
             .map(x -> obj.addClassification(x, "Classification"))
             .forEach(this::linkToRecord);
-
 
 
     String dim = s.get("Dimensions:");
