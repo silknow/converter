@@ -32,4 +32,8 @@ public class Image extends Entity {
     return image;
   }
 
+  public String getContentUrl() {
+    return this.resource.getProperty(Schema.contentUrl).getObject().toString();
+  }
+
 }
