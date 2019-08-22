@@ -129,10 +129,13 @@ public abstract class Entity {
     return this;
   }
 
+
+
   public Entity addProperty(Property property, Resource resource) {
     if (resource != null) this.resource.addProperty(property, resource);
     return this;
   }
+
 
   public Entity addProperty(Property property, String literal) {
     if (literal != null && !StringUtils.isBlank(literal)) this.resource.addProperty(property, literal.trim());

@@ -83,6 +83,8 @@ public class VAMConverter extends Converter {
 
     linkToRecord(obj.addObservation(s.get("physical_description"), "en", "physical_description"));
     linkToRecord(obj.addObservation(s.get("descriptive_line"), "en", "descriptive_line"));
+    linkToRecord(obj.addObservation(s.get("public_access_description"), "en", "summary"));
+
 
 
     LegalBody museum = null;

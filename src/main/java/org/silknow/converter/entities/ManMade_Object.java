@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
 public class ManMade_Object extends Entity {
   private static final String DIMENSION_REGEX = "(\\d+(?:[,.]\\d)?)(?: ?cm)? *x *(\\d+(?:[,.]\\d)?)(?: ?cm)?";
   private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX, Pattern.CASE_INSENSITIVE);
-
   private int imgCount;
 
   public ManMade_Object(String id) {
@@ -37,8 +36,11 @@ public class ManMade_Object extends Entity {
   public ManMade_Object add(Image img) {
     if (img.hasNullUri()) img.setUri(this.getUri() + "/image/" + ++imgCount);
     this.addProperty(CIDOC.P138i_has_representation, img);
+
     return this;
   }
+
+
 
   public ManMade_Object add(Inscription ins) {
     this.addProperty(CIDOC.P128_carries, ins);

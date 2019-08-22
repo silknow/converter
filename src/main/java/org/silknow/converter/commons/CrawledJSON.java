@@ -5,7 +5,9 @@ import com.google.gson.Gson;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+
 import java.util.List;
+
 import java.util.stream.Stream;
 
 /*
@@ -18,6 +20,8 @@ public class CrawledJSON {
   private List<CrawledJSONPublications> publications;
   private List<CrawledJSONExhibitions> exhibitions;
 
+
+
   private String multiSeparator;
   private String id;
   private String url;
@@ -29,6 +33,7 @@ public class CrawledJSON {
   public String getUrl() {
     return url;
   }
+
 
   public static CrawledJSON from(File file) throws FileNotFoundException {
     return new Gson().fromJson(new FileReader(file), CrawledJSON.class);
