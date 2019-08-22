@@ -192,10 +192,15 @@ public class JocondeConverter extends Converter {
             .map(x -> x.replaceFirst("© ", ""))
             .map(Actor::new)
             .forEach(copyphoto::ownedBy);
+
+
     s.getImages().map(Image::fromCrawledJSON)
             .peek(copyphoto::applyTo)
             .peek(obj::add)
-            .forEach(this::linkToRecord);
+            .forEach(image -> {
+              image.setContentUrl("http://silknow.org/silknow/media/joconde/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
+              this.linkToRecord(image);
+            });
 
 
     if (s.get("Bibliographie") != null) {

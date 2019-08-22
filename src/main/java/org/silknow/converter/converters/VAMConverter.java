@@ -108,7 +108,10 @@ public class VAMConverter extends Converter {
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
-            .forEach(this::linkToRecord);
+            .forEach(image -> {
+              image.setContentUrl("http://silknow.org/silknow/media/vam/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
+              this.linkToRecord(image);
+            });
 
     linkToRecord(obj);
     linkToRecord(acquisition);

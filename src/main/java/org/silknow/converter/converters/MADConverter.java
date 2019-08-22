@@ -51,7 +51,10 @@ public class MADConverter extends Converter {
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
-            .forEach(this::linkToRecord);
+            .forEach(image -> {
+              image.setContentUrl("http://silknow.org/silknow/media/les-arts-decoratifs/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
+              this.linkToRecord(image);
+            });
 
     Production prod = new Production(id);
     prod.add(obj);
