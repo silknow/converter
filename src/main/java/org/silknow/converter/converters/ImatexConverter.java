@@ -44,7 +44,18 @@ public class ImatexConverter extends Converter {
 
     String museumName = s.get("MUSEUM");
 
-    String regNum = s.get("REGISTER NUMBER");
+    String regNumField = null;
+    switch (mainLang) {
+      case "en":
+        regNumField = "REGISTER NUMBER";
+        break;
+      case "ca":
+        regNumField = "NUM. REGISTRE";
+        break;
+      case "es":
+        regNumField = "NÚM.REGISTRO";
+    }
+    String regNum = s.get(regNumField);
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Register number"));
 
@@ -52,12 +63,8 @@ public class ImatexConverter extends Converter {
             .peek(obj::add)
             .forEach(image -> {
               image.setContentUrl("http://silknow.org/silknow/media/imatex/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
-               this.linkToRecord(image);
-                    });
-
-
-
-
+              this.linkToRecord(image);
+            });
 
 
     Production prod = new Production(regNum);
