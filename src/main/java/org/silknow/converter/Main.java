@@ -8,18 +8,7 @@ import org.apache.jena.vocabulary.XSD;
 import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.NotNull;
 import org.silknow.converter.commons.GeoNames;
-import org.silknow.converter.converters.Converter;
-import org.silknow.converter.converters.GarinConverter;
-import org.silknow.converter.converters.ImatexConverter;
-import org.silknow.converter.converters.JocondeConverter;
-import org.silknow.converter.converters.METConverter;
-import org.silknow.converter.converters.MFAConverter;
-import org.silknow.converter.converters.RISDConverter;
-import org.silknow.converter.converters.MADConverter;
-import org.silknow.converter.converters.CERConverter;
-import org.silknow.converter.converters.MTMADConverter;
-import org.silknow.converter.converters.VAMConverter;
-import org.silknow.converter.converters.UNIPAConverter;
+import org.silknow.converter.converters.*;
 import org.silknow.converter.ontologies.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,6 +48,10 @@ public class Main implements Runnable {
   @Option(names = {"-g", "--geonames"}, required = true,
           description = "Username for accessing Geonames. See http://www.geonames.org/login")
   public static String geonamesUser;
+
+  @Option(names = {"--replace"},
+          description = "Replace the content of the destination folder")
+  public static boolean replace;
 
   public static void main(String[] args) {
     CommandLine.run(new Main(), args);
@@ -146,7 +139,7 @@ public class Main implements Runnable {
   private void convertFile(@NotNull File file, @NotNull Converter converter) {
     String outName = changeExtension(file.getName(), ".ttl");
     File out = Paths.get(outputFolder.getAbsolutePath(), outName).toFile();
-    if (out.exists()) {
+    if (out.exists() && !replace) {
       System.out.println("DUPLICATE ID: " + outName.replace(".ttl", ""));
       return;
     }
