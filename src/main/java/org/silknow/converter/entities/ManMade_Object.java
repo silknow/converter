@@ -22,8 +22,8 @@ public class ManMade_Object extends Entity {
     imgCount = 0;
   }
 
-  public void addSubject(String subject) {
-    this.addProperty(CIDOC.P62_depicts, subject);
+  public void addSubject(String subject, String lang) {
+    this.addProperty(CIDOC.P62_depicts, subject, lang);
   }
 
 

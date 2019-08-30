@@ -23,6 +23,7 @@ public class GarinConverter extends Converter {
     if (!this.canConvert(file))
       throw new RuntimeException("Garin converter require files in XLS (Excel) format.");
 
+    String mainLang = "es";
     this.DATASET_NAME = "garin";
 
     // Parse XLS
@@ -52,10 +53,10 @@ public class GarinConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(id);
     obj.addTitle(s.get("Denominacion principal"));
     linkToRecord(obj.addComplexIdentifier(id, "Register number", owner));
-    linkToRecord(obj.addClassification(s.get("Objecto"), "domain", owner));
-    linkToRecord(obj.addClassification(s.get("Tipología"), "denomination", owner));
-    linkToRecord(obj.addObservation(s.get("Descripción"), "es", "descripción"));
-    linkToRecord(obj.addObservation(s.get("Descripción técnica"), "es", "descripción técnica"));
+    linkToRecord(obj.addClassification(s.get("Objecto"), "domain", mainLang, owner));
+    linkToRecord(obj.addClassification(s.get("Tipología"), "denomination",mainLang, owner));
+    linkToRecord(obj.addObservation(s.get("Descripción"), mainLang, "descripción"));
+    linkToRecord(obj.addObservation(s.get("Descripción técnica"), mainLang, "descripción técnica"));
 
     try {
       linkToRecord(obj.addMeasure(s.get("Medidas")));
@@ -68,9 +69,9 @@ public class GarinConverter extends Converter {
     conditionAssestment.assestedBy(owner);
     conditionAssestment.concerns(obj);
 
-    conditionAssestment.addCondition("condition", s.get("Condición"), "es");
-    conditionAssestment.addCondition("deterioration", s.get("Deterioros"), "es");
-    conditionAssestment.addCondition("missing parts", s.get("Partes que faltan"), "es");
+    conditionAssestment.addCondition("condition", s.get("Condición"), mainLang);
+    conditionAssestment.addCondition("deterioration", s.get("Deterioros"), mainLang);
+    conditionAssestment.addCondition("missing parts", s.get("Partes que faltan"), mainLang);
 
 
     Acquisition acquisition = new Acquisition(id);
@@ -89,11 +90,10 @@ public class GarinConverter extends Converter {
 
     Production prod = new Production(id);
     prod.add(obj);
-    //prod.addTechnique(s.get("Tecnica"));
-    s.getMulti("Technica").forEach(prod::addTechnique);
+    s.getMulti("Technica").forEach(technique -> prod.addTechnique(technique, mainLang));
     prod.addActivity(s.get("Autor de la obra"), "author");
     prod.addTimeAppellation(s.get("Época"));
-    s.getMulti("Material").forEach(prod::addMaterial);
+    s.getMulti("Material").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("Accessorios").map(ManMade_Object::new).forEach(prod::addTool);
 
     int imgCount = 0;

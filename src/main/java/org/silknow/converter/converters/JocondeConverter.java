@@ -29,8 +29,9 @@ public class JocondeConverter extends Converter {
   public Model convert(File file) {
     logger.debug("%%% FILE " + file.getName());
     if (!this.canConvert(file))
-      throw new RuntimeException("Imatex converter require files in JSON format.");
+      throw new RuntimeException("Joconde converter require files in JSON format.");
 
+    String mainLang = "fr";
     this.DATASET_NAME = "joconde";
 
     // Parse JSON
@@ -59,11 +60,11 @@ public class JocondeConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(id);
     obj.addTitle(s.get("Titre"));
     s.getMulti("Domaine")
-            .forEach(x -> linkToRecord(obj.addClassification(x, "Domaine")));
+            .forEach(x -> linkToRecord(obj.addClassification(x, "Domaine", mainLang)));
     s.getMulti("Dénomination")
-            .forEach(x -> linkToRecord(obj.addClassification(x, "denomination")));
-    linkToRecord(obj.addObservation(s.get("Description"), "fr", "description"));
-    obj.addSubject(s.get("Sujet représenté"));
+            .forEach(x -> linkToRecord(obj.addClassification(x, "denomination", mainLang)));
+    linkToRecord(obj.addObservation(s.get("Description"), mainLang, "description"));
+    obj.addSubject(s.get("Sujet représenté"),mainLang);
 
     doc.document(obj);
 
@@ -87,7 +88,7 @@ public class JocondeConverter extends Converter {
 
     // TODO decide what is material and what technique
     Arrays.asList(s.get("Matériaux/techniques").split(", ?"))
-            .forEach(prod::addMaterial);
+            .forEach(material -> prod.addMaterial(material, mainLang));
 
     String place = s.get("Lieu création / utilisation");
     if (place != null) {
@@ -106,11 +107,11 @@ public class JocondeConverter extends Converter {
 
     PropositionalObject po = new PropositionalObject(id);
     po.isAbout(obj);
-    po.addNote(s.get("Précision sujet représenté"), "fr");
+    po.addNote(s.get("Précision sujet représenté"), mainLang);
 
     String gen = s.get("Genèse");
     if ("objet en rapport".equalsIgnoreCase(gen)) {
-      po.setType(gen);
+      po.setType(gen, mainLang);
 
       assert hist != null;
       po.addNote(hist);
@@ -140,10 +141,10 @@ public class JocondeConverter extends Converter {
 
       Inscription ins = Inscription.fromJoconde(p, lang);
       if (type != null) {
-        linkToRecord(ins.addClassification(type, null));
+        linkToRecord(ins.addClassification(type, mainLang, null));
       }
       if (note != null) {
-        linkToRecord(ins.addObservation(note, "fr", "inscription"));
+        linkToRecord(ins.addObservation(note, mainLang, "inscription"));
       }
       obj.add(ins);
     }
@@ -154,11 +155,11 @@ public class JocondeConverter extends Converter {
     String sj = s.get("Statut juridique");
     Right right = new Right(obj.getUri() + "/right");
     if (sj.contains(museumName)) right.ownedBy(museum);
-    right.addNote(sj, "fr");
+    right.addNote(sj, mainLang);
     right.applyTo(obj);
 
     PropositionalObject record = new PropositionalObject(id + "r");
-    record.setType("museum record");
+    record.setType("museum record", mainLang);
     record.isAbout(obj);
     Right copyright = new Right(record.getUri() + "/right");
     copyright.applyTo(record);
@@ -205,14 +206,14 @@ public class JocondeConverter extends Converter {
 
     if (s.get("Bibliographie") != null) {
       InformationObject bio = new InformationObject(id + "b");
-      bio.setType("Bibliography");
+      bio.setType("Bibliographie", mainLang);
       bio.isAbout(obj);
       bio.addNote(s.get("Bibliographie"));
       linkToRecord(bio);
     }
     if (s.get("Exposition") != null) {
       InformationObject bio = new InformationObject(id + "e");
-      bio.setType("Exhibitions");
+      bio.setType("Exposition", mainLang);
       bio.isAbout(obj);
       bio.addNote(s.get("Exposition"));
       linkToRecord(bio);

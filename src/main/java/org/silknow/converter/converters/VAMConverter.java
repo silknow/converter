@@ -26,7 +26,7 @@ public class VAMConverter extends Converter {
     if (!this.canConvert(file))
       throw new RuntimeException("VAMconverter require files in JSON format.");
 
-    //String mainLang = file.getName().replace(".json", "");
+    String mainLang = "en";
     this.DATASET_NAME = "VAM";
 
     // Parse JSON
@@ -59,11 +59,11 @@ public class VAMConverter extends Converter {
     prod.addActivity(s.get("artist"), "artist");
 
     s.getMulti("date_text").forEach(prod::addTimeAppellation);
-    s.getMulti("materials_techniques").forEach(prod::addMaterial);
+    s.getMulti("materials_techniques").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("place").forEach(prod::addPlace);
     //s.getMulti("TÈCNICA*").forEach(prod::addTechnique);
     s.getMulti("categories")
-            .map(x -> obj.addClassification(x, "Categories"))
+            .map(x -> obj.addClassification(x, "Categories", mainLang))
             .forEach(this::linkToRecord);
     //s.getMulti("DENOMINACIÓ*")
       //      .map(x -> obj.addClassification(x, "domain"))

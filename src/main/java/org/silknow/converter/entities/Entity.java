@@ -219,12 +219,12 @@ public abstract class Entity {
     return identifier;
   }
 
-  public Resource addClassification(String classification, String type) {
-    return addClassification(classification, type, null);
+  public Resource addClassification(String classification, String type, String lang) {
+    return addClassification(classification, type, lang, null);
   }
 
 
-  public Resource addClassification(String classification, String type, LegalBody museum) {
+  public Resource addClassification(String classification, String type, String lang, LegalBody museum) {
     if (classification == null) return null;
     RDFNode r = VocabularyManager.getVocabulary("att-thesaurus").findConcept(classification, false);
     if (r == null) {
@@ -237,7 +237,7 @@ public abstract class Entity {
             .addProperty(CIDOC.P42_assigned, r);
 
     if (type != null)
-      assignment.addProperty(CIDOC.P2_has_type, type);
+      assignment.addProperty(CIDOC.P2_has_type, type, lang);
 
     if (museum != null) {
       assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());

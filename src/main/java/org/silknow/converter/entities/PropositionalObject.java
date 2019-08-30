@@ -22,6 +22,11 @@ public class PropositionalObject extends Entity {
     return this;
   }
 
+  public PropositionalObject setType(String type, String lang) {
+    this.addProperty(CIDOC.P2_has_type, type, lang);
+    return this;
+  }
+
   public PropositionalObject setType(String type) {
     this.addProperty(CIDOC.P2_has_type, type);
     return this;

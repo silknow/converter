@@ -24,8 +24,9 @@ public class MADConverter extends Converter {
   public Model convert(File file) {
     logger.debug("%%% FILE " + file.getName());
     if (!this.canConvert(file))
-      throw new RuntimeException("MADconverter require files in JSON format.");
+      throw new RuntimeException("MAD converter require files in JSON format.");
 
+    String mainLang = "fr";
     this.DATASET_NAME = "MAD";
 
     // Parse JSON
@@ -61,14 +62,14 @@ public class MADConverter extends Converter {
 
     s.getMulti("Création:").forEach(prod::addTimeAppellation);
 
-    s.getMulti("Textile:").forEach(prod::addMaterial);
+    s.getMulti("Textile:").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("Création:").forEach(prod::addPlace);
-    s.getMulti("Matières et techniques:").forEach(prod::addTechnique);
+    s.getMulti("Matières et techniques:").forEach(technique -> prod.addTechnique(technique, mainLang));
     s.getMulti("Domaine")
-            .map(x -> obj.addClassification(x, "Domaine"))
+            .map(x -> obj.addClassification(x, "Domaine", mainLang))
             .forEach(this::linkToRecord);
     s.getMulti("Appellation")
-            .map(x -> obj.addClassification(x, "Appellation"))
+            .map(x -> obj.addClassification(x, "Appellation", mainLang))
             .forEach(this::linkToRecord);
 
 

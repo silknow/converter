@@ -26,7 +26,7 @@ public class UNIPAConverter extends Converter {
     if (!this.canConvert(file))
       throw new RuntimeException("UNIPAconverter require files in JSON format.");
 
-    //String mainLang = file.getName().replace(".json", "");
+    String mainLang = "it";
     this.DATASET_NAME = "UNIPA";
 
     // Parse JSON
@@ -62,15 +62,15 @@ public class UNIPAConverter extends Converter {
 
     s.getMulti("Time chronology").forEach(prod::addTimeAppellation);
 
-    s.getMulti("Textile:").forEach(prod::addMaterial);
+    s.getMulti("Textile:").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("Geography").forEach(prod::addPlace);
     s.getMulti("Region production").forEach(prod::addPlace);
-    s.getMulti("Technic").forEach(prod::addTechnique);
+    s.getMulti("Technic").forEach(technique -> prod.addTechnique(technique, mainLang));
     s.getMulti("Domaine")
-            .map(x -> obj.addClassification(x, "Domaine"))
+            .map(x -> obj.addClassification(x, "Domaine", mainLang))
             .forEach(this::linkToRecord);
     s.getMulti("Appellation")
-            .map(x -> obj.addClassification(x, "Appellation"))
+            .map(x -> obj.addClassification(x, "Appellation", mainLang))
             .forEach(this::linkToRecord);
 
 
@@ -117,9 +117,9 @@ public class UNIPAConverter extends Converter {
 
     if (s.get("Language") != null) {
       InformationObject bio = new InformationObject(regNum + "l");
-      bio.setType("Language");
+      bio.setType("Language", mainLang);
       bio.isAbout(obj);
-      bio.addNote(s.get("Language"));
+      bio.addNote(s.get("Language"),mainLang);
       linkToRecord(bio);
     }
 

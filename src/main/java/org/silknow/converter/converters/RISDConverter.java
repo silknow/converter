@@ -28,7 +28,7 @@ public class RISDConverter extends Converter {
     if (!this.canConvert(file))
       throw new RuntimeException("RISDconverter require files in JSON format.");
 
-    //String mainLang = file.getName().replace(".json", "");
+    String mainLang = "en";
     this.DATASET_NAME = "RISD";
 
     // Parse JSON
@@ -67,12 +67,12 @@ public class RISDConverter extends Converter {
     prod.addActivity(s.getMulti("Maker").findFirst().orElse(null), "Maker");
 
     s.getMulti("Year").forEach(prod::addTimeAppellation);
-    s.getMulti("Materials").forEach(prod::addMaterial);
-    s.getMulti("Medium").forEach(prod::addMaterial);
+    s.getMulti("Materials").forEach(material -> prod.addMaterial(material, mainLang));
+    s.getMulti("Medium").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("Culture").forEach(prod::addPlace);
-    s.getMulti("Techniques").forEach(prod::addTechnique);
+    s.getMulti("Techniques").forEach(technique -> prod.addTechnique(technique, mainLang));
     s.getMulti("Type")
-            .map(x -> obj.addClassification(x, "Type"))
+            .map(x -> obj.addClassification(x, "Type", mainLang))
             .forEach(this::linkToRecord);
 
 
@@ -87,7 +87,7 @@ public class RISDConverter extends Converter {
     }
 
 
-    linkToRecord(obj.addObservation(s.get("description"), "en", "description"));
+    linkToRecord(obj.addObservation(s.get("description"), mainLang, "description"));
 
 
     String acquisitionFrom = s.get("Credit");

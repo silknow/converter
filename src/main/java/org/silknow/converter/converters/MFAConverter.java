@@ -27,7 +27,7 @@ public class MFAConverter extends Converter {
     if (!this.canConvert(file))
       throw new RuntimeException("MFAConverter require files in JSON format.");
 
-    //String mainLang = file.getName().replace(".json", "");
+    String mainLang = "en";
     this.DATASET_NAME = "MFA";
 
     // Parse JSON
@@ -75,9 +75,9 @@ public class MFAConverter extends Converter {
 
 
 
-    s.getMulti("mediumOrTechnique").forEach(prod::addMaterial);
+    s.getMulti("mediumOrTechnique").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("classifications")
-            .map(x -> obj.addClassification(x, "classifications"))
+            .map(x -> obj.addClassification(x, "classifications", mainLang))
             .forEach(this::linkToRecord);
 
 
@@ -91,7 +91,7 @@ public class MFAConverter extends Converter {
     }
 
 
-    linkToRecord(obj.addObservation(s.get("description"), "en", "description"));
+    linkToRecord(obj.addObservation(s.get("description"), mainLang, "description"));
 
 
 

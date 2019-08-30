@@ -28,9 +28,9 @@ public class METConverter extends Converter {
   public Model convert(File file) {
     logger.debug("%%% FILE " + file.getName());
     if (!this.canConvert(file))
-      throw new RuntimeException("METconverter require files in JSON format.");
+      throw new RuntimeException("MET converter requires files in JSON format.");
 
-    //String mainLang = file.getName().replace(".json", "");
+    String mainLang = "en";
     this.DATASET_NAME = "MET";
 
     // Parse JSON
@@ -83,8 +83,8 @@ public class METConverter extends Converter {
 
 
     s.getMulti("Date:").forEach(prod::addTimeAppellation);
-    s.getMulti("Medium:").forEach(prod::addMaterial);
-    s.getMulti("Object Type / Material").forEach(prod::addMaterial);
+    s.getMulti("Medium:").forEach(material -> prod.addMaterial(material, mainLang));
+    s.getMulti("Object Type / Material").forEach(material -> prod.addMaterial(material, mainLang));
     for (String x : s.getMulti("Culture:").collect(Collectors.toList())) {
       // TODO set as probable?
       x = x.replace("probably", "")
@@ -106,7 +106,7 @@ public class METConverter extends Converter {
       }
     }
     s.getMulti("Classification:")
-            .map(x -> obj.addClassification(x, "Classification"))
+            .map(x -> obj.addClassification(x, "Classification", mainLang))
             .forEach(this::linkToRecord);
 
 

@@ -27,7 +27,7 @@ public class MTMADConverter extends Converter {
     if (!this.canConvert(file))
       throw new RuntimeException("MTMADconverter require files in JSON format.");
 
-    //String mainLang = file.getName().replace(".json", "");
+    String mainLang = "fr";
     this.DATASET_NAME = "MTMAD";
 
     // Parse JSON
@@ -55,7 +55,10 @@ public class MTMADConverter extends Converter {
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
-            .forEach(this::linkToRecord);
+            .forEach(image -> {
+              image.setContentUrl("http://silknow.org/silknow/media/mtmad" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
+              this.linkToRecord(image);
+            });
 
     Production prod = new Production(id);
     prod.add(obj);
@@ -75,7 +78,7 @@ public class MTMADConverter extends Converter {
       }
       if (details[i].startsWith("©")) {
         InformationObject bio = new InformationObject(regNum + "i");
-        bio.setType("Forme de la citation de la notice");
+        bio.setType("Forme de la citation de la notice", mainLang);
         bio.isAbout(obj);
         bio.addNote(details[i]);
         linkToRecord(bio);
@@ -95,7 +98,7 @@ public class MTMADConverter extends Converter {
     }
 
 
-    linkToRecord(obj.addObservation(s.getMulti("description").findFirst().orElse(null), "en", "description"));
+    linkToRecord(obj.addObservation(s.getMulti("description").findFirst().orElse(null), mainLang, "description"));
 
     String acquisitionFrom = s.getMulti("Credit Line:").findFirst().orElse(null);
     String acquisitionType = s.getMulti("Acquisition/dépôt:").findFirst().orElse(null);
@@ -109,22 +112,24 @@ public class MTMADConverter extends Converter {
     Transfer transfer = new Transfer(id);
     transfer.of(obj).by(museum);
 
-    obj.addSubject(s.getMulti("Iconografia").findFirst().orElse(null));
+    //obj.addSubject(s.getMulti("Iconografia").findFirst().orElse(null));
 
 
     if (s.get("Bibliographie :") != null) {
       InformationObject bio = new InformationObject(regNum + "b");
-      bio.setType("Bibliographie");
+      bio.setType("Bibliographie", mainLang);
       bio.isAbout(obj);
-      bio.addNote(s.getMulti("Bibliographie").findFirst().orElse(null));
+      //bio.addNote(s.getMulti("Bibliographie").findFirst().orElse(null));
+      bio.addNote(s.get("Bibliographie"),mainLang);
+      //s.getMulti("Bibliographie").forEach(note -> bio.addNote(note, mainLang));
       linkToRecord(bio);
     }
 
     if (s.get("Exposition :") != null) {
       InformationObject bio = new InformationObject(regNum + "e");
-      bio.setType("Exhibitions");
+      bio.setType("Exposition", mainLang);
       bio.isAbout(obj);
-      bio.addNote(s.getMulti("Exposition").findFirst().orElse(null));
+      bio.addNote(s.get("Exposition"),mainLang);
       linkToRecord(bio);
     }
 

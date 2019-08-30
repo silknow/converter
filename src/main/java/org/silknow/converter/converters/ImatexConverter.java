@@ -71,16 +71,16 @@ public class ImatexConverter extends Converter {
     prod.add(obj);
 
     s.getMulti("CRONOLOGIA*").forEach(prod::addTimeAppellation);
-    s.getMulti("MATÈRIES*").forEach(prod::addMaterial);
+    s.getMulti("MATÈRIES*").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("ORIGEN*").forEach(prod::addPlace);
-    s.getMulti("TÈCNICA*").forEach(prod::addTechnique);
+    s.getMulti("TÈCNICA*").forEach(technique -> prod.addTechnique(technique, mainLang));
     s.getMulti("CLASSIFICACIÓ GENÈRICA*")
-            .map(x -> obj.addClassification(x, "denomination"))
+            .map(x -> obj.addClassification(x, "denomination", mainLang))
             .forEach(this::linkToRecord);
     s.getMulti("DENOMINACIÓ*")
-            .map(x -> obj.addClassification(x, "domain"))
+            .map(x -> obj.addClassification(x, "domain", mainLang))
             .forEach(this::linkToRecord);
-    s.getMulti("DECORACIÓ*").forEach(obj::addSubject);
+    s.getMulti("DECORACIÓ*").forEach(subject -> obj.addSubject(subject, mainLang));
     s.getMulti("DESTÍ DÚS*").forEach(obj::addIntention);
 
     String cdt = s.get("ESTAT DE CONSERVACIÓ*");
@@ -133,25 +133,25 @@ public class ImatexConverter extends Converter {
 
     if (s.get("BIBLIOGRAPHY") != null) {
       InformationObject bio = new InformationObject(regNum + "b");
-      bio.setType("Bibliography");
+      bio.setType("Bibliography", mainLang);
       bio.isAbout(obj);
-      bio.addNote(s.get("BIBLIOGRAPHY"));
+      bio.addNote(s.get("BIBLIOGRAPHY"), mainLang);
       linkToRecord(bio);
     }
 
     if (s.get("EXHIBITIONS") != null) {
       InformationObject bio = new InformationObject(regNum + "e");
-      bio.setType("Exhibitions");
+      bio.setType("Exhibitions", mainLang);
       bio.isAbout(obj);
-      bio.addNote(s.get("EXHIBITIONS"));
+      bio.addNote(s.get("EXHIBITIONS"), mainLang);
       linkToRecord(bio);
     }
 
     if (s.get("OTHER ITEMS") != null) {
       InformationObject bio = new InformationObject(regNum + "e");
-      bio.setType("Other");
+      bio.setType("Other items", mainLang);
       bio.isAbout(obj);
-      bio.addNote(s.get("OTHER ITEMS"));
+      bio.addNote(s.get("OTHER ITEMS"),mainLang);
       linkToRecord(bio);
     }
 

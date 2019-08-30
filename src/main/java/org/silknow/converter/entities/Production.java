@@ -37,13 +37,13 @@ public class Production extends Entity {
     return this;
   }
 
-  public void addMaterial(String material) {
+  public void addMaterial(String material, String lang) {
     Resource result = VocabularyManager.searchInCategory(material, null, "att", false);
     if (result != null)
       this.addProperty(CIDOC.P126_employed, result);
     else {
 //      System.out.println("Material not found in vocabularies: " + material);
-      this.addProperty(CIDOC.P126_employed, material);
+      this.addProperty(CIDOC.P126_employed, material, lang);
     }
   }
 
@@ -63,13 +63,13 @@ public class Production extends Entity {
     this.addProperty(CIDOC.P8_took_place_on_or_within, place);
   }
 
-  public void addTechnique(String technique) {
+  public void addTechnique(String technique, String lang) {
     Resource result = VocabularyManager.searchInCategory(technique, null, "att", false);
     if (result != null)
       this.addProperty(CIDOC.P32_used_general_technique, result);
     else {
 //      System.out.println("Material not found in vocabularies: " + technique);
-      this.addProperty(CIDOC.P32_used_general_technique, technique);
+      this.addProperty(CIDOC.P32_used_general_technique, technique, lang);
     }
   }
 

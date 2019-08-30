@@ -1,7 +1,7 @@
-package org.silknow.converter.converters;
+//package org.silknow.converter.converters;
 
-import org.silknow.converter.commons.CrawledJSON;
+//import org.silknow.converter.commons.CrawledJSON;
 
-public class METCrawledJSON extends CrawledJSON {
+//public class METCrawledJSON extends CrawledJSON {
 
-}
+//}

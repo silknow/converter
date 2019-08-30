@@ -26,7 +26,7 @@ public class CERConverter extends Converter {
     if (!this.canConvert(file))
       throw new RuntimeException("CERConverter require files in JSON format.");
 
-    //String mainLang = file.getName().replace(".json", "");
+    String mainLang = "es";
     this.DATASET_NAME = "CER";
 
     // Parse JSON
@@ -57,19 +57,22 @@ public class CERConverter extends Converter {
     Production prod = new Production(id);
     prod.add(obj);
 
-    s.getMulti("Iconografia").forEach(obj::addSubject);
+    s.getMulti("Iconografia").forEach(subject -> obj.addSubject(subject, mainLang));
     s.getMulti("Datación").forEach(prod::addTimeAppellation);
     s.getMulti("Contexto Cultural/Estilo").forEach(prod::addTimeAppellation);
-    s.getMulti("Materia/Soporte").forEach(prod::addMaterial);
+    s.getMulti("Materia/Soporte").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("Lugar de Producción/Ceca").forEach(prod::addPlace);
-    s.getMulti("Técnica").forEach(prod::addTechnique);
+    s.getMulti("Técnica").forEach(technique -> prod.addTechnique(technique, mainLang));
     s.getMulti("Clasificación Genérica")
-            .map(x -> obj.addClassification(x, "Clasificación Genérica"))
+            .map(x -> obj.addClassification(x, "Clasificación Genérica", mainLang))
             .forEach(this::linkToRecord);
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
-            .forEach(this::linkToRecord);
+            .forEach(image -> {
+              image.setContentUrl("http://silknow.org/silknow/media/ceres-mcu/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
+              this.linkToRecord(image);
+            });
 
     String dim = s.getMulti("Dimensiones").findFirst().orElse(null);
     if (dim != null) {
@@ -86,9 +89,9 @@ public class CERConverter extends Converter {
             .map(Actor::new)
             .forEach(copyphoto::ownedBy);
 
-    linkToRecord(obj.addObservation(s.get("Descripción"), "es", "Descripción"));
-    linkToRecord(obj.addObservation(s.get("Objeto/Documento"), "es", "Objeto/Documento"));
-    linkToRecord(obj.addObservation(s.get("Clasificación Razonada"), "es", "Clasificación Razonada"));
+    linkToRecord(obj.addObservation(s.get("Descripción"), mainLang, "Descripción"));
+    linkToRecord(obj.addObservation(s.get("Objeto/Documento"), mainLang, "Objeto/Documento"));
+    linkToRecord(obj.addObservation(s.get("Clasificación Razonada"), mainLang, "Clasificación Razonada"));
 
 
     LegalBody museum = null;
@@ -105,9 +108,9 @@ public class CERConverter extends Converter {
 
     if (s.get("Bibliografía") != null) {
       InformationObject bio = new InformationObject(regNum + "b");
-      bio.setType("Bibliografía");
+      bio.setType("Bibliografía", mainLang);
       bio.isAbout(obj);
-      bio.addNote(s.get("Bibliografía"));
+      bio.addNote(s.get("Bibliografía"), mainLang);
       linkToRecord(bio);
     }
 
