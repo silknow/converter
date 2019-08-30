@@ -26,7 +26,7 @@ public class RISDConverter extends Converter {
   public Model convert(File file) {
     logger.debug("%%% FILE " + file.getName());
     if (!this.canConvert(file))
-      throw new RuntimeException("RISDconverter require files in JSON format.");
+      throw new RuntimeException("RISD converter require files in JSON format.");
 
     String mainLang = "en";
     this.DATASET_NAME = "RISD";

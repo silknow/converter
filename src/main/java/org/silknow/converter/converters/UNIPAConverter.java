@@ -67,32 +67,23 @@ public class UNIPAConverter extends Converter {
     s.getMulti("Region production").forEach(prod::addPlace);
     s.getMulti("Technic").forEach(technique -> prod.addTechnique(technique, mainLang));
     s.getMulti("Domaine")
-            .map(x -> obj.addClassification(x, "Domaine", mainLang))
+            .map(x -> obj.addClassification(x, "Domain", "en"))
             .forEach(this::linkToRecord);
     s.getMulti("Appellation")
-            .map(x -> obj.addClassification(x, "Appellation", mainLang))
+            .map(x -> obj.addClassification(x, "Appellation", "en"))
             .forEach(this::linkToRecord);
 
 
-    linkToRecord(obj.addMeasure(s.get("Altezza del tessuto")));
-    String dim = s.getMulti("Dimensioni").findFirst().orElse(null);
-    if (dim != null) {
-      dim = dim.replace('\n', ' ');
-      dim = dim.replace("(en cm)", "en cm");
-      Matcher matcher = DIMENSION_PATTERN.matcher(dim);
-      if (matcher.find()) {
-        linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
-      }
-    }
+    linkToRecord(obj.addMeasure(s.get("Dimensions")));
 
 
     linkToRecord(obj.addObservation(s.getMulti("Description").findFirst().orElse(null), "it", "Description"));
     linkToRecord(obj.addObservation(s.getMulti("Rapporto di disegno").findFirst().orElse(null), "it", "Rapporto di disegno"));
-    linkToRecord(obj.addObservation(s.getMulti("Ordito").findFirst().orElse(null), "it", "Ordito"));
-    linkToRecord(obj.addObservation(s.getMulti("Trama").findFirst().orElse(null), "it", "Trama"));
-    linkToRecord(obj.addObservation(s.getMulti("Costruzione").findFirst().orElse(null), "it", "Costruzione"));
-    linkToRecord(obj.addObservation(s.getMulti("Descrizione del disegno").findFirst().orElse(null), "it", "Descrizione del disegno"));
-    linkToRecord(obj.addObservation(s.getMulti("Notizie storico critiche").findFirst().orElse(null), "it", "Notizie storico critiche"));
+    linkToRecord(obj.addObservation(s.getMulti("Warp").findFirst().orElse(null), "it", "Warp"));
+    linkToRecord(obj.addObservation(s.getMulti("Weft").findFirst().orElse(null), "it", "Weft"));
+    linkToRecord(obj.addObservation(s.getMulti("Costruction").findFirst().orElse(null), "it", "Costruction"));
+    linkToRecord(obj.addObservation(s.getMulti("Description of the pattern").findFirst().orElse(null), "it", "Description of the pattern"));
+    linkToRecord(obj.addObservation(s.getMulti("Historical Critical Information").findFirst().orElse(null), "it", "Historical Critical Information"));
 
 
 

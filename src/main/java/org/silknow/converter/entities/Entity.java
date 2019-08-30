@@ -219,8 +219,8 @@ public abstract class Entity {
     return identifier;
   }
 
-  public Resource addClassification(String classification, String type, String lang) {
-    return addClassification(classification, type, lang, null);
+  public Resource addClassification(String classification,String lang, String type) {
+    return addClassification(classification, type, lang,null);
   }
 
 

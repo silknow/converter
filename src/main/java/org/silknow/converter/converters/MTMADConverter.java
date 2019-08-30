@@ -25,7 +25,7 @@ public class MTMADConverter extends Converter {
   public Model convert(File file) {
     logger.debug("%%% FILE " + file.getName());
     if (!this.canConvert(file))
-      throw new RuntimeException("MTMADconverter require files in JSON format.");
+      throw new RuntimeException("MTMAD converter require files in JSON format.");
 
     String mainLang = "fr";
     this.DATASET_NAME = "MTMAD";
@@ -87,26 +87,15 @@ public class MTMADConverter extends Converter {
     linkToRecord(obj.addObservation(details[0], "fr", "short description"));
 
 
-
-
-    String dim = s.getMulti("Mesures").findFirst().orElse(null);
-    if (dim != null) {
-      Matcher matcher = DIMENSION_PATTERN.matcher(dim);
-      if (matcher.find()) {
-        linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
-      }
-    }
-
-
     linkToRecord(obj.addObservation(s.getMulti("description").findFirst().orElse(null), mainLang, "description"));
 
-    String acquisitionFrom = s.getMulti("Credit Line:").findFirst().orElse(null);
-    String acquisitionType = s.getMulti("Acquisition/dépôt:").findFirst().orElse(null);
+    //String acquisitionFrom = s.getMulti("Credit Line:").findFirst().orElse(null);
+    //String acquisitionType = s.getMulti("Acquisition/dépôt:").findFirst().orElse(null);
     LegalBody museum = null;
 
     Acquisition acquisition = new Acquisition(id);
-    acquisition.transfer(acquisitionFrom, obj, museum);
-    acquisition.setType(acquisitionType);
+    //acquisition.transfer(acquisitionFrom, obj, museum);
+    //acquisition.setType(acquisitionType);
 
 
     Transfer transfer = new Transfer(id);

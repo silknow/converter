@@ -85,16 +85,16 @@ public class MADConverter extends Converter {
     }
 
 
-    linkToRecord(obj.addObservation(s.getMulti("description").findFirst().orElse(null), "en", "description"));
+    //linkToRecord(obj.addObservation(s.getMulti("description").findFirst().orElse(null), mainLang, "description"));
     //linkToRecord(obj.addObservation(s.get("TECHNICAL DESCRIPTION"), mainLang, "technical description"));
 
-    String acquisitionFrom = s.getMulti("Credit Line:").findFirst().orElse(null);
+    //String acquisitionFrom = s.getMulti("Credit Line:").findFirst().orElse(null);
     String acquisitionType = s.getMulti("Acquisition/dépôt:").findFirst().orElse(null);
     LegalBody museum = null;
 
 
     Acquisition acquisition = new Acquisition(id);
-    acquisition.transfer(acquisitionFrom, obj, museum);
+    //acquisition.transfer(acquisitionFrom, obj, museum);
     acquisition.setType(acquisitionType);
 
 

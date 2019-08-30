@@ -75,10 +75,10 @@ public class ImatexConverter extends Converter {
     s.getMulti("ORIGEN*").forEach(prod::addPlace);
     s.getMulti("TÈCNICA*").forEach(technique -> prod.addTechnique(technique, mainLang));
     s.getMulti("CLASSIFICACIÓ GENÈRICA*")
-            .map(x -> obj.addClassification(x, "denomination", mainLang))
+            .map(x -> obj.addClassification(x, "Denomination", "en"))
             .forEach(this::linkToRecord);
     s.getMulti("DENOMINACIÓ*")
-            .map(x -> obj.addClassification(x, "domain", mainLang))
+            .map(x -> obj.addClassification(x, "Domain", "en"))
             .forEach(this::linkToRecord);
     s.getMulti("DECORACIÓ*").forEach(subject -> obj.addSubject(subject, mainLang));
     s.getMulti("DESTÍ DÚS*").forEach(obj::addIntention);
