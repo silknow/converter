@@ -45,8 +45,8 @@ public class MADConverter extends Converter {
     id = file.getName().replace(".json", "");
 
 
-    ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.getMulti("Numéro d'inventaire:").findFirst().orElse(null);
+    ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Numéro d'inventaire:"));
     obj.addTitle(s.getMulti("title").findFirst().orElse(null));
 
@@ -57,7 +57,7 @@ public class MADConverter extends Converter {
               this.linkToRecord(image);
             });
 
-    Production prod = new Production(id);
+    Production prod = new Production(regNum);
     prod.add(obj);
 
     s.getMulti("Création:").forEach(prod::addTimeAppellation);
@@ -93,15 +93,15 @@ public class MADConverter extends Converter {
     LegalBody museum = null;
 
 
-    Acquisition acquisition = new Acquisition(id);
+    Acquisition acquisition = new Acquisition(regNum);
     //acquisition.transfer(acquisitionFrom, obj, museum);
     acquisition.setType(acquisitionType);
 
 
-    Transfer transfer = new Transfer(id);
+    Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(museum);
 
-    Collection collection = new Collection(id);
+    Collection collection = new Collection(regNum);
     collection.of(obj);
     collection.addAppellation(s.getMulti("Département").findFirst().orElse(null));
 

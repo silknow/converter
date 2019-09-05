@@ -48,9 +48,9 @@ public class MTMADConverter extends Converter {
 
     //String museumName = s.get("MUSEUM");
 
-    ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.getId();
-    linkToRecord(obj.addComplexIdentifier(regNum, id));
+    ManMade_Object obj = new ManMade_Object(regNum);
+    linkToRecord(obj.addComplexIdentifier(regNum, "recordId"));
     obj.addTitle(s.getMulti("title").findFirst().orElse(null));
 
     s.getImages().map(Image::fromCrawledJSON)
@@ -60,7 +60,7 @@ public class MTMADConverter extends Converter {
               this.linkToRecord(image);
             });
 
-    Production prod = new Production(id);
+    Production prod = new Production(regNum);
     prod.add(obj);
 
     String[] details = s.getMulti("details").toArray(String[]::new);
@@ -93,12 +93,12 @@ public class MTMADConverter extends Converter {
     //String acquisitionType = s.getMulti("Acquisition/dépôt:").findFirst().orElse(null);
     LegalBody museum = null;
 
-    Acquisition acquisition = new Acquisition(id);
+    Acquisition acquisition = new Acquisition(regNum);
     //acquisition.transfer(acquisitionFrom, obj, museum);
     //acquisition.setType(acquisitionType);
 
 
-    Transfer transfer = new Transfer(id);
+    Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(museum);
 
     //obj.addSubject(s.getMulti("Iconografia").findFirst().orElse(null));

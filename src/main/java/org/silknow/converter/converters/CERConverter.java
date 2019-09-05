@@ -47,14 +47,14 @@ public class CERConverter extends Converter {
 
     String museumName = s.get("Museo");
 
-    ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.get("Inventario");
+    ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Inventario"));
     obj.addTitle(s.getMulti("Título").findFirst().orElse(null));
 
 
 
-    Production prod = new Production(id);
+    Production prod = new Production(regNum);
     prod.add(obj);
 
     s.getMulti("Iconografia").forEach(subject -> obj.addSubject(subject, mainLang));

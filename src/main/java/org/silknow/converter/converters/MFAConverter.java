@@ -48,8 +48,8 @@ public class MFAConverter extends Converter {
 
     String museumName = "MFA Boston";
 
-    ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.get("accessionNumber");
+    ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "accessionNumber"));
     s.getMulti("title").forEach(obj::addTitle);
 
@@ -58,10 +58,10 @@ public class MFAConverter extends Converter {
             .forEach(image -> {
               image.setContentUrl("http://silknow.org/silknow/media/mfa-boston/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
               this.linkToRecord(image);
-            });;
+            });
 
 
-    Production prod = new Production(id);
+    Production prod = new Production(regNum);
     prod.add(obj);
 
     String[] teas = s.get("teaser").split("(?=[0-9])", 2);
@@ -101,7 +101,7 @@ public class MFAConverter extends Converter {
       museum = new LegalBody(museumName);
 
 
-    Acquisition acquisition = new Acquisition(id);
+    Acquisition acquisition = new Acquisition(regNum);
 
     String[] acquisitionFrom = s.get("creditLine").split("(?<=Gift)", 2);
     if (acquisitionFrom.length > 1) {
@@ -109,10 +109,10 @@ public class MFAConverter extends Converter {
       acquisition.transfer(acquisitionFrom[1], obj, museum);
     }
 
-    Transfer transfer = new Transfer(id);
+    Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(museum);
 
-    Collection collection = new Collection(id);
+    Collection collection = new Collection(regNum);
     collection.of(obj);
     collection.addAppellation(s.getMulti("collections").findFirst().orElse(null));
 

@@ -50,8 +50,8 @@ public class METConverter extends Converter {
 
     //String museumName = s.get("MUSEUM");
 
-    ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.get("Accession Number:");
+    ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Accession Number:"));
     obj.addTitle(s.getMulti("title").findFirst().orElse(null));
 
@@ -78,7 +78,7 @@ public class METConverter extends Converter {
 
 
 
-    Production prod = new Production(id);
+    Production prod = new Production(regNum);
     prod.add(obj);
 
 
@@ -126,16 +126,16 @@ public class METConverter extends Converter {
     LegalBody museum = null;
 
 
-    Acquisition acquisition = new Acquisition(id);
+    Acquisition acquisition = new Acquisition(regNum);
     acquisition.transfer(acquisitionFrom, obj, museum);
     acquisition.setType(acquisitionType);
 
 
-    Transfer transfer = new Transfer(id);
+    Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(museum);
 
 
-    Collection collection = new Collection(id);
+    Collection collection = new Collection(regNum);
     collection.of(obj);
     collection.addAppellation(s.getMulti("Department").findFirst().orElse(null));
 

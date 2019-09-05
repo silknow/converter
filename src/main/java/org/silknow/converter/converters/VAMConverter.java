@@ -47,14 +47,15 @@ public class VAMConverter extends Converter {
 
     //String museumName = s.get("MUSEUM");
 
-    ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.get("museum_number");
+    ManMade_Object obj = new ManMade_Object(regNum);
+
     linkToRecord(obj.addComplexIdentifier(regNum, "museum_number"));
     obj.addTitle(s.getMulti("object").findFirst().orElse(null));
 
 
 
-    Production prod = new Production(id);
+    Production prod = new Production(regNum);
     prod.add(obj);
     prod.addActivity(s.get("artist"), "artist");
 
@@ -90,17 +91,17 @@ public class VAMConverter extends Converter {
     LegalBody museum = null;
 
 
-    Acquisition acquisition = new Acquisition(id);
+    Acquisition acquisition = new Acquisition(regNum);
 
 
 
-    Transfer transfer = new Transfer(id);
+    Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(museum);
 
-    Move move = new Move(id);
+    Move move = new Move(regNum);
     move.of(obj).from(s.getMulti("location").findFirst().orElse(null)).to(s.getMulti("location").findFirst().orElse(null));
 
-    Collection collection = new Collection(id);
+    Collection collection = new Collection(regNum);
     collection.of(obj);
     collection.addAppellation(s.getMulti("collections").findFirst().orElse(null));
 

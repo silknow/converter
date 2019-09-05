@@ -49,8 +49,8 @@ public class RISDConverter extends Converter {
 
     //String museumName = s.get("MUSEUM");
 
-    ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.get("Object Number");
+    ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Object Number"));
     obj.addTitle(s.getMulti("Title").findFirst().orElse(null));
 
@@ -62,7 +62,7 @@ public class RISDConverter extends Converter {
             });
 
 
-    Production prod = new Production(id);
+    Production prod = new Production(regNum);
     prod.add(obj);
     prod.addActivity(s.getMulti("Maker").findFirst().orElse(null), "Maker");
 
@@ -96,12 +96,12 @@ public class RISDConverter extends Converter {
 
 
 
-    Acquisition acquisition = new Acquisition(id);
+    Acquisition acquisition = new Acquisition(regNum);
     acquisition.transfer(acquisitionFrom, obj, museum);
 
 
 
-    Transfer transfer = new Transfer(id);
+    Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(museum);
 
     s.getExhibitions().map(InformationObject::fromCrawledJSON)
