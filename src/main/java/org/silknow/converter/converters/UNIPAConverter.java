@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class UNIPAConverter extends Converter {
 
-  private static final String DIMENSION_REGEX = "hauteur en cm : (\\d+?) largeur en cm : (\\d+?)";
+  private static final String DIMENSION_REGEX = "cm (\\d+(?:\\.\\d+)?) x (\\d+(?:\\.\\d+)?)";
   private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX);
 
   @Override
@@ -24,7 +24,7 @@ public class UNIPAConverter extends Converter {
   public Model convert(File file) {
     logger.debug("%%% FILE " + file.getName());
     if (!this.canConvert(file))
-      throw new RuntimeException("UNIPAconverter require files in JSON format.");
+      throw new RuntimeException("UNIPA converter require files in JSON format.");
 
     String mainLang = "it";
     this.DATASET_NAME = "UNIPA";
@@ -74,8 +74,13 @@ public class UNIPAConverter extends Converter {
             .forEach(this::linkToRecord);
 
 
-    linkToRecord(obj.addMeasure(s.get("Dimensions")));
-
+    String dim = s.getMulti("Dimensions").findFirst().orElse(null);
+    if (dim != null) {
+      Matcher matcher = DIMENSION_PATTERN.matcher(dim);
+      if (matcher.find()) {
+        linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
+      }
+    }
 
     linkToRecord(obj.addObservation(s.getMulti("Description").findFirst().orElse(null), "it", "Description"));
     linkToRecord(obj.addObservation(s.getMulti("Rapporto di disegno").findFirst().orElse(null), "it", "Rapporto di disegno"));
