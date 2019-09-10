@@ -3393,8 +3393,7 @@ Accedido 20 de noviembre de 2018 http://www.rae.es/"""@es ;
     skos:prefLabel "Brocaded"@en,
         "Espolinado"@es,
         "Espoliné"@fr ;
-    skos:related <http://data.silknow.org/vocabulary/104>,
-        <http://data.silknow.org/vocabulary/471> ;
+    skos:related <http://data.silknow.org/vocabulary/471> ;
     skos:topConceptOf silknow:silk-thesaurus .
 
 <http://data.silknow.org/vocabulary/193> a skos:Concept ;
@@ -4379,8 +4378,7 @@ Del árabe aljombra, esterilla. Tejido de lana u otras materias textiles, y de v
     skos:inScheme silknow:silk-thesaurus ;
     skos:prefLabel "Treadle"@en,
         "Cárcola"@es ;
-    skos:related <http://data.silknow.org/vocabulary/116>,
-        <http://data.silknow.org/vocabulary/447> ;
+    skos:related <http://data.silknow.org/vocabulary/447> ;
     skos:topConceptOf silknow:silk-thesaurus .
 
 <http://data.silknow.org/vocabulary/65> a skos:Concept ;
@@ -6685,7 +6683,6 @@ de Catalunya: Servei de llengües i terminologia de la UPC, s. f."""@es ;
         "Crêpe"@fr,
         "Crespone"@it ;
     skos:related <http://data.silknow.org/vocabulary/155>,
-        <http://data.silknow.org/vocabulary/160>,
         <http://data.silknow.org/vocabulary/445> ;
     skos:topConceptOf silknow:silk-thesaurus .
 
@@ -7855,7 +7852,6 @@ In generale, per un tessuto che deve essere definito nervato, devono essere indi
         <http://data.silknow.org/vocabulary/142>,
         <http://data.silknow.org/vocabulary/149>,
         <http://data.silknow.org/vocabulary/158>,
-        <http://data.silknow.org/vocabulary/160>,
         <http://data.silknow.org/vocabulary/163>,
         <http://data.silknow.org/vocabulary/174>,
         <http://data.silknow.org/vocabulary/186>,
