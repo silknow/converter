@@ -84,7 +84,14 @@ public class METConverter extends Converter {
 
     s.getMulti("Date:").forEach(prod::addTimeAppellation);
     s.getMulti("Medium:").forEach(material -> prod.addMaterial(material, mainLang));
-    s.getMulti("Object Type / Material").forEach(material -> prod.addMaterial(material, mainLang));
+
+
+    //  y = y.replaceAll("*\\\\(.+?\\\\)", " ");
+
+
+    s.getMulti("Object Type / Material").forEach(material -> prod.addMaterial(material.replaceAll(" *\\(.+?\\)", ""), mainLang));
+
+
     for (String x : s.getMulti("Culture:").collect(Collectors.toList())) {
       // TODO set as probable?
       x = x.replace("probably", "")

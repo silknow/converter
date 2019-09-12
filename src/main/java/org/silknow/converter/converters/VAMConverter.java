@@ -60,7 +60,12 @@ public class VAMConverter extends Converter {
     prod.addActivity(s.get("artist"), "artist");
 
     s.getMulti("date_text").forEach(prod::addTimeAppellation);
-    s.getMulti("materials_techniques").forEach(material -> prod.addMaterial(material, mainLang));
+    s.getMulti("materials_techniques").forEach(materials -> {
+      String[] mats = materials.split(";");
+      for (int i = 0; i < mats.length; i++) {
+        prod.addMaterial(mats[i], mainLang);
+      }
+    });
     s.getMulti("place").forEach(prod::addPlace);
     //s.getMulti("TÈCNICA*").forEach(prod::addTechnique);
     s.getMulti("categories")
