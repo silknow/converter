@@ -66,6 +66,10 @@ public class VAMConverter extends Converter {
         prod.addMaterial(mats[i], mainLang);
       }
     });
+    s.getMulti("materials").forEach(material -> prod.addMaterial(material, mainLang));
+    s.getMulti("techniques").forEach(technique -> prod.addTechnique(technique, mainLang));
+
+
     s.getMulti("place").forEach(prod::addPlace);
     //s.getMulti("TÈCNICA*").forEach(prod::addTechnique);
     s.getMulti("categories")
