@@ -90,7 +90,7 @@ public class GarinConverter extends Converter {
 
     Production prod = new Production(id);
     prod.add(obj);
-    s.getMulti("Technica").forEach(technique -> prod.addTechnique(technique, mainLang));
+    s.getMulti("Técnica").forEach(technique -> prod.addTechnique(technique, mainLang));
     prod.addActivity(s.get("Autor de la obra"), "author");
     prod.addTimeAppellation(s.get("Época"));
     s.getMulti("Material").forEach(material -> prod.addMaterial(material, mainLang));
