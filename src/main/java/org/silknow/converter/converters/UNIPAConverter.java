@@ -62,7 +62,6 @@ public class UNIPAConverter extends Converter {
 
     s.getMulti("Time chronology").forEach(prod::addTimeAppellation);
 
-    s.getMulti("Textile:").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("Geography").forEach(prod::addPlace);
     s.getMulti("Region production").forEach(prod::addPlace);
     s.getMulti("Technic").forEach(technique -> prod.addTechnique(technique, mainLang));
@@ -81,15 +80,17 @@ public class UNIPAConverter extends Converter {
         linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
       }
     }
-
+    linkToRecord(obj.addObservation(s.getMulti("Width").findFirst().orElse(null), "it", "Width"));
     linkToRecord(obj.addObservation(s.getMulti("Description").findFirst().orElse(null), "it", "Description"));
-    linkToRecord(obj.addObservation(s.getMulti("Rapporto di disegno").findFirst().orElse(null), "it", "Rapporto di disegno"));
+    linkToRecord(obj.addObservation(s.getMulti("Pattern ratio").findFirst().orElse(null), "it", "Pattern ratio"));
     linkToRecord(obj.addObservation(s.getMulti("Warp").findFirst().orElse(null), "it", "Warp"));
     linkToRecord(obj.addObservation(s.getMulti("Weft").findFirst().orElse(null), "it", "Weft"));
-    linkToRecord(obj.addObservation(s.getMulti("Costruction").findFirst().orElse(null), "it", "Costruction"));
+    linkToRecord(obj.addObservation(s.getMulti("Costruction").findFirst().orElse(null), "it", "Construction"));
     linkToRecord(obj.addObservation(s.getMulti("Description of the pattern").findFirst().orElse(null), "it", "Description of the pattern"));
     linkToRecord(obj.addObservation(s.getMulti("Historical Critical Information").findFirst().orElse(null), "it", "Historical Critical Information"));
 
+
+    prod.addActivity(s.getMulti("Autors").findFirst().orElse(null), "Artist");
 
 
     LegalBody museum = null;
@@ -102,7 +103,7 @@ public class UNIPAConverter extends Converter {
     Transfer transfer = new Transfer(id);
     transfer.of(obj).by(museum);
 
-    String cdt = s.get("Stato di conservazione");
+    String cdt = s.get("Preservation state");
     if (cdt != null) {
       ConditionAssestment conditionAssestment = new ConditionAssestment(regNum);
       conditionAssestment.concerns(obj);
