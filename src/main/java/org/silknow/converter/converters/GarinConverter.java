@@ -53,10 +53,10 @@ public class GarinConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(id);
     obj.addTitle(s.get("Denominacion principal"));
     linkToRecord(obj.addComplexIdentifier(id, "Register number", owner));
-    linkToRecord(obj.addClassification(s.get("Objecto"), "Domain", mainLang, owner));
+    linkToRecord(obj.addClassification(s.get("Objecto"), "Domain", "en", owner));
     linkToRecord(obj.addClassification(s.get("Tipología"), "Denomination",mainLang, owner));
-    linkToRecord(obj.addObservation(s.get("Descripción"), mainLang, "descripción"));
-    linkToRecord(obj.addObservation(s.get("Descripción técnica"), mainLang, "descripción técnica"));
+    linkToRecord(obj.addObservation(s.get("Descripción"), mainLang, "Descripción"));
+    linkToRecord(obj.addObservation(s.get("Descripción técnica"), mainLang, "Descripción técnica"));
 
     try {
       linkToRecord(obj.addMeasure(s.get("Medidas")));
@@ -69,9 +69,9 @@ public class GarinConverter extends Converter {
     conditionAssestment.assestedBy(owner);
     conditionAssestment.concerns(obj);
 
-    conditionAssestment.addCondition("condition", s.get("Condición"), mainLang);
-    conditionAssestment.addCondition("deterioration", s.get("Deterioros"), mainLang);
-    conditionAssestment.addCondition("missing parts", s.get("Partes que faltan"), mainLang);
+    conditionAssestment.addCondition("Condition", s.get("Condición"), mainLang);
+    conditionAssestment.addCondition("Deterioration", s.get("Deterioros"), mainLang);
+    conditionAssestment.addCondition("Missing parts", s.get("Partes que faltan"), mainLang);
 
 
     Acquisition acquisition = new Acquisition(id);

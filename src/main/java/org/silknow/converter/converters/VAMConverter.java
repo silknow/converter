@@ -94,6 +94,7 @@ public class VAMConverter extends Converter {
     linkToRecord(obj.addObservation(s.get("physical_description"), mainLang, "physical_description"));
     linkToRecord(obj.addObservation(s.get("descriptive_line"), mainLang, "descriptive_line"));
     linkToRecord(obj.addObservation(s.get("public_access_description"), mainLang, "summary"));
+    linkToRecord(obj.addObservation(s.get("label"), mainLang, "Labels and date"));
 
 
 
@@ -101,7 +102,7 @@ public class VAMConverter extends Converter {
 
 
     Acquisition acquisition = new Acquisition(regNum);
-
+    acquisition.addNote(s.get("history_note"),mainLang);
 
 
     Transfer transfer = new Transfer(regNum);
@@ -122,6 +123,14 @@ public class VAMConverter extends Converter {
               image.setContentUrl("http://silknow.org/silknow/media/vam/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
               this.linkToRecord(image);
             });
+
+    if (s.get("bibliography") != null) {
+      InformationObject bio = new InformationObject(regNum + "b");
+      bio.setType("Bibliography", mainLang);
+      bio.isAbout(obj);
+      bio.addNote(s.get("Bibliography"),mainLang);
+      linkToRecord(bio);
+    }
 
     linkToRecord(obj);
     linkToRecord(acquisition);

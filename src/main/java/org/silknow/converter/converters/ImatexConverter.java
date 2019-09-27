@@ -123,10 +123,10 @@ public class ImatexConverter extends Converter {
       linkToRecord(activity);
     }
 
-    prod.addActivity(s.get("DESSIGNER"), "dessigner");
-    prod.addActivity(s.get("MANUFACTURER"), "manufacturer");
-    prod.addActivity(s.get("TAILOR/COUTURIER"), "tailor/couturier");
-    prod.addActivity(s.get("AUTHOR"), "author");
+    prod.addActivity(s.get("DESSIGNER"), "Dessigner");
+    prod.addActivity(s.get("MANUFACTURER"), "Manufacturer");
+    prod.addActivity(s.get("TAILOR/COUTURIER"), "Tailor/Couturier");
+    prod.addActivity(s.get("AUTHOR"), "Author");
 
     Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(museum);
