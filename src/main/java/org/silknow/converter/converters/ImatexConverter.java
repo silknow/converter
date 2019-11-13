@@ -85,10 +85,10 @@ public class ImatexConverter extends Converter {
 
     String cdt = s.get("ESTAT DE CONSERVACIÓ*");
     if (cdt != null) {
-      ConditionAssestment conditionAssestment = new ConditionAssestment(regNum);
-      conditionAssestment.concerns(obj);
-      conditionAssestment.addCondition("condition", cdt, mainLang);
-      linkToRecord(conditionAssestment);
+      ConditionAssessment conditionAssessment = new ConditionAssessment(regNum);
+      conditionAssessment.concerns(obj);
+      conditionAssessment.addCondition("condition", cdt, mainLang);
+      linkToRecord(conditionAssessment);
     }
 
     String rest = s.get("RESTAURACIÓ*");

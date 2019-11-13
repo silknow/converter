@@ -56,8 +56,8 @@ public class ConstructURI {
       case "Move":
       case "Acquisition":
         return "event";
-      case "ConditionAssestment":
-        return "assestment";
+      case "ConditionAssessment":
+        return "assessment";
       default:
         return className.toLowerCase();
     }

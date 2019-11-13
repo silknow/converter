@@ -65,13 +65,13 @@ public class GarinConverter extends Converter {
     }
 
 
-    ConditionAssestment conditionAssestment = new ConditionAssestment(id);
-    conditionAssestment.assestedBy(owner);
-    conditionAssestment.concerns(obj);
+    ConditionAssessment conditionAssessment = new ConditionAssessment(id);
+    conditionAssessment.assestedBy(owner);
+    conditionAssessment.concerns(obj);
 
-    conditionAssestment.addCondition("Condition", s.get("Condición"), mainLang);
-    conditionAssestment.addCondition("Deterioration", s.get("Deterioros"), mainLang);
-    conditionAssestment.addCondition("Missing parts", s.get("Partes que faltan"), mainLang);
+    conditionAssessment.addCondition("Condition", s.get("Condición"), mainLang);
+    conditionAssessment.addCondition("Deterioration", s.get("Deterioros"), mainLang);
+    conditionAssessment.addCondition("Missing parts", s.get("Partes que faltan"), mainLang);
 
 
     Acquisition acquisition = new Acquisition(id);
@@ -125,7 +125,7 @@ public class GarinConverter extends Converter {
     linkToRecord(prod);
     linkToRecord(owner);
     linkToRecord(acquisition);
-    linkToRecord(conditionAssestment);
+    linkToRecord(conditionAssessment);
     return this.model;
   }
 

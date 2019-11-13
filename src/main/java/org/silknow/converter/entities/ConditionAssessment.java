@@ -5,10 +5,10 @@ import org.silknow.converter.ontologies.CIDOC;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConditionAssestment extends Entity {
+public class ConditionAssessment extends Entity {
   List<Condition> conditions;
 
-  public ConditionAssestment(String id) {
+  public ConditionAssessment(String id) {
     super(id);
     this.setClass(CIDOC.E14_Condition_Assessment);
     conditions = new ArrayList<>();

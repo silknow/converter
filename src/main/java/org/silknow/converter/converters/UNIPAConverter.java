@@ -105,10 +105,10 @@ public class UNIPAConverter extends Converter {
 
     String cdt = s.get("Preservation state");
     if (cdt != null) {
-      ConditionAssestment conditionAssestment = new ConditionAssestment(regNum);
-      conditionAssestment.concerns(obj);
-      conditionAssestment.addCondition("Condition", cdt, "it");
-      linkToRecord(conditionAssestment);
+      ConditionAssessment conditionAssessment = new ConditionAssessment(regNum);
+      conditionAssessment.concerns(obj);
+      conditionAssessment.addCondition("Condition", cdt, "it");
+      linkToRecord(conditionAssessment);
     }
 
 
