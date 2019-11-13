@@ -54,6 +54,9 @@ public class UNIPAConverter extends Converter {
 
 
     s.getImages().map(Image::fromCrawledJSON)
+            .peek(img -> {
+              img.setContentUrl("http://silknow.org/media/unipa/" + img.getId()+".jpg");
+            })
             .peek(obj::add)
             .forEach(this::linkToRecord);
 
@@ -116,7 +119,7 @@ public class UNIPAConverter extends Converter {
       InformationObject bio = new InformationObject(regNum + "l");
       bio.setType("Language", mainLang);
       bio.isAbout(obj);
-      bio.addNote(s.get("Language"),mainLang);
+      bio.addNote(s.get("Language"), mainLang);
       linkToRecord(bio);
     }
 

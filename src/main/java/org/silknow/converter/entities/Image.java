@@ -20,6 +20,7 @@ public class Image extends Entity {
   }
 
   public void setContentUrl(String url) {
+    this.resource.removeAll(Schema.contentUrl);
     this.addProperty(Schema.contentUrl, model.createResource(url));
   }
 
