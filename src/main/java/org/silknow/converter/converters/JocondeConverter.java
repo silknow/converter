@@ -49,26 +49,26 @@ public class JocondeConverter extends Converter {
     logger.trace("creating objects");
     id = file.getName().replace(".json", "");
 
-    String museumName = s.get("Lieu de conservation");
+    String museumName = s.get("LOCA");
     LegalBody museum = new LegalBody(museumName);
 
 
     Document doc = new Document(id);
-    s.getMulti("Rédacteur").map(Person::new)
+    s.getMulti("REDA").map(Person::new)
             .forEach(doc::addEditor);
 
     ManMade_Object obj = new ManMade_Object(id);
     obj.addTitle(s.get("Titre"));
-    s.getMulti("Domaine")
+    s.getMulti("DOMN")
             .forEach(x -> linkToRecord(obj.addClassification(x, "Domaine", "fr")));
-    s.getMulti("Dénomination")
+    s.getMulti("DENO")
             .forEach(x -> linkToRecord(obj.addClassification(x, "Dénomination", "fr")));
-    linkToRecord(obj.addObservation(s.get("Description"), mainLang, "Description"));
-    obj.addSubject(s.get("Sujet représenté"),mainLang);
+    linkToRecord(obj.addObservation(s.get("DESC"), mainLang, "Description"));
+    obj.addSubject(s.get("REPR"),mainLang);
 
     doc.document(obj);
 
-    String dim = s.get("Dimensions");
+    String dim = s.get("DIMS");
     Matcher matcher = DIMENSION_PATTERN.matcher(dim);
     if (matcher.find()) {
       linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
@@ -76,21 +76,21 @@ public class JocondeConverter extends Converter {
 
     Production prod = new Production(id);
     prod.add(obj);
-    s.getMulti("Période création/exécution").forEach(prod::addTimeAppellation);
+    s.getMulti("PERI").forEach(prod::addTimeAppellation);
 
-    String author = s.get("Auteur/exécutant");
+    String author = s.get("AUTR");
     List<String> parts = Utils.extractBrackets(author);
     author = parts.get(0);
     String role = parts.get(1);
     Actor actor = new Actor(author);
-    actor.addNote(s.get("Précision auteur/exécutant"));
+    actor.addNote(s.get("PAUT"));
     prod.addActivity(actor, role);
 
     // TODO decide what is material and what technique
-    Arrays.asList(s.get("Matériaux/techniques").split(", ?"))
+    Arrays.asList(s.get("TECH").split(", ?"))
             .forEach(material -> prod.addMaterial(material, mainLang));
 
-    String place = s.get("Lieu création / utilisation");
+    String place = s.get("LIEUX");
     if (place != null) {
       place = Utils.extractBrackets(place).get(0);
       String[] hierarchy = place.split(",");
@@ -100,16 +100,16 @@ public class JocondeConverter extends Converter {
     }
 
     String hist = null;
-    for (String h : s.getMulti("Historique").collect(Collectors.toList())) {
+    for (String h : s.getMulti("HIST").collect(Collectors.toList())) {
       if (h.startsWith("voir aussi :")) hist = h;
       else obj.addNote(h.replaceAll("(^\\(|\\)$)", ""));
     }
 
     PropositionalObject po = new PropositionalObject(id);
     po.isAbout(obj);
-    po.addNote(s.get("Précision sujet représenté"), mainLang);
+    po.addNote(s.get("PREP"), mainLang);
 
-    String gen = s.get("Genèse");
+    String gen = s.get("GENE");
     if ("objet en rapport".equalsIgnoreCase(gen)) {
       po.setType(gen, mainLang);
 
@@ -124,7 +124,7 @@ public class JocondeConverter extends Converter {
       }
     }
 
-    List<String> inscr = s.getMulti("Inscriptions").collect(Collectors.toList());
+    List<String> inscr = s.getMulti("INSC").collect(Collectors.toList());
     List<String> inscrPrec = s.getMulti("Précision inscriptions").collect(Collectors.toList());
 
     for (int i = 0; i < inscrPrec.size(); i++) {
@@ -144,7 +144,7 @@ public class JocondeConverter extends Converter {
         linkToRecord(ins.addClassification(type, mainLang, null));
       }
       if (note != null) {
-        linkToRecord(ins.addObservation(note, mainLang, "inscription"));
+        linkToRecord(ins.addObservation(note, mainLang, "Inscription"));
       }
       obj.add(ins);
     }
@@ -163,15 +163,15 @@ public class JocondeConverter extends Converter {
     record.isAbout(obj);
     Right copyright = new Right(record.getUri() + "/right");
     copyright.applyTo(record);
-    copyright.addNote(s.get("Copyright notice"));
-    s.getMulti("Copyright notice", ", ")
+    copyright.addNote(s.get("COPY"));
+    s.getMulti("COPY", ", ")
             .map(x -> x.replaceFirst("© ", ""))
             .map(LegalBody::new)
             .forEach(copyright::ownedBy);
 
 
     Map<String, String> ids = new HashMap<>();
-    s.getMulti("Numéro d'inventaire")
+    s.getMulti("INV")
             .map(Utils::extractBrackets)
             .map(ArrayList::new)
             .peek(x -> {
@@ -188,8 +188,8 @@ public class JocondeConverter extends Converter {
     ids.keySet().forEach(x -> linkToRecord(obj.addComplexIdentifier(ids.get(x), x, JOCONDE)));
 
     Right copyphoto = new Right(obj.getUri() + "/image/right");
-    copyphoto.addNote(s.get("Crédits photographiques"));
-    s.getMulti("Crédits photographiques", ", ")
+    copyphoto.addNote(s.get("PHOT"));
+    s.getMulti("PHOT", ", ")
             .map(x -> x.replaceFirst("© ", ""))
             .map(Actor::new)
             .forEach(copyphoto::ownedBy);
@@ -204,18 +204,18 @@ public class JocondeConverter extends Converter {
             });
 
 
-    if (s.get("Bibliographie") != null) {
+    if (s.get("BIBL") != null) {
       InformationObject bio = new InformationObject(id + "b");
       bio.setType("Bibliographie", mainLang);
       bio.isAbout(obj);
-      bio.addNote(s.get("Bibliographie"));
+      bio.addNote(s.get("BIBL"));
       linkToRecord(bio);
     }
-    if (s.get("Exposition") != null) {
+    if (s.get("EXPO") != null) {
       InformationObject bio = new InformationObject(id + "e");
       bio.setType("Exposition", mainLang);
       bio.isAbout(obj);
-      bio.addNote(s.get("Exposition"));
+      bio.addNote(s.get("EXPO"));
       linkToRecord(bio);
     }
 
