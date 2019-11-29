@@ -72,12 +72,11 @@ public class CERConverter extends Converter {
             .map(x -> obj.addClassification(x, "Clasificación Genérica", mainLang))
             .forEach(this::linkToRecord);
 
-    //s.getImages().map(Image::fromCrawledJSON)
-      //      .peek(obj::add)
-        //    .forEach(image -> {
-          //      image.setContentUrl("http://silknow.org/silknow/media/ceres-mcu/" + image.getUri());
-           //   this.linkToRecord(image);
-           // });
+    s.getImages().map(Image::CERfromCrawledJSON)
+            .peek(obj::add)
+            .forEach(image -> {
+              this.linkToRecord(image);
+            });
 
 
               String dim = s.getMulti("Dimensiones").findFirst().orElse(null);

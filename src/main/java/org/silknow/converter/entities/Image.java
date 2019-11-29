@@ -24,16 +24,34 @@ public class Image extends Entity {
     this.addProperty(Schema.contentUrl, model.createResource(url));
   }
 
+  public void setCERUrl(String url) {
+    this.addProperty(Schema.contentUrl, model.createResource(url));
+  }
+
   public static Image fromCrawledJSON(@NotNull CrawledJSONImages img) {
     Image image;
     if (img.hasId()) image = new Image(img.getId());
     else image = new Image();
 
+
     image.setContentUrl(img.getUrl());
-    if (img.hasFilename())
-      image.setContentUrl("http://silknow.org/silknow/media/ceres-mcu/" + img.getlocalFilename());
     return image;
   }
+
+  public static Image CERfromCrawledJSON(@NotNull CrawledJSONImages img) {
+    Image image;
+    if (img.hasId()) image = new Image(img.getId());
+    else image = new Image();
+
+
+    image.setContentUrl(img.getUrl());
+    image.setCERUrl("http://silknow.org/silknow/media/ceres-mcu/" + img.getlocalFilename());
+
+    return image;
+  }
+
+
+
 
   public String getContentUrl() {
     return this.resource.getProperty(Schema.contentUrl).getObject().toString();
