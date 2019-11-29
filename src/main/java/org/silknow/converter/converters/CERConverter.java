@@ -2,12 +2,17 @@ package org.silknow.converter.converters;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.rdf.model.Model;
+import org.jetbrains.annotations.NotNull;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 
 import java.io.*;
+import java.net.URISyntaxException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import java.net.URI;
+import java.nio.file.Paths;
 
 public class CERConverter extends Converter {
 
@@ -67,14 +72,15 @@ public class CERConverter extends Converter {
             .map(x -> obj.addClassification(x, "Clasificación Genérica", mainLang))
             .forEach(this::linkToRecord);
 
-    s.getImages().map(Image::fromCrawledJSON)
-            .peek(obj::add)
-            .forEach(image -> {
-              image.setContentUrl("http://silknow.org/silknow/media/ceres-mcu/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
-              this.linkToRecord(image);
-            });
+    //s.getImages().map(Image::fromCrawledJSON)
+      //      .peek(obj::add)
+        //    .forEach(image -> {
+          //      image.setContentUrl("http://silknow.org/silknow/media/ceres-mcu/" + image.getUri());
+           //   this.linkToRecord(image);
+           // });
 
-    String dim = s.getMulti("Dimensiones").findFirst().orElse(null);
+
+              String dim = s.getMulti("Dimensiones").findFirst().orElse(null);
     if (dim != null) {
       Matcher matcher = DIMENSION_PATTERN.matcher(dim);
       if (matcher.find()) {

@@ -24,4 +24,5 @@ public class Schema {
   public static final Property startTime = property("startTime");
   public static final Property contentUrl = property("contentUrl");
 
+
 }

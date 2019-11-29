@@ -30,11 +30,15 @@ public class Image extends Entity {
     else image = new Image();
 
     image.setContentUrl(img.getUrl());
+    if (img.hasFilename())
+      image.setContentUrl("http://silknow.org/silknow/media/ceres-mcu/" + img.getlocalFilename());
     return image;
   }
 
   public String getContentUrl() {
     return this.resource.getProperty(Schema.contentUrl).getObject().toString();
   }
+
+
 
 }
