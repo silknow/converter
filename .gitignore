@@ -31,4 +31,4 @@ hs_err_pid*
 !gradle-wrapper.jar
 
 .DS_Store
-!output/dump/*.tar.gz
+!output/*.tar.gz
