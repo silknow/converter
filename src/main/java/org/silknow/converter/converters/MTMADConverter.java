@@ -6,7 +6,6 @@ import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -53,12 +52,9 @@ public class MTMADConverter extends Converter {
     linkToRecord(obj.addComplexIdentifier(regNum, "recordId"));
     obj.addTitle(s.getMulti("title").findFirst().orElse(null));
 
-    s.getImages().map(Image::fromCrawledJSON)
+    s.getImages().map(Image::MTMADfromCrawledJSON)
             .peek(obj::add)
-            .forEach(image -> {
-              image.setContentUrl("http://silknow.org/silknow/media/mtmad" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
-              this.linkToRecord(image);
-            });
+            .forEach(this::linkToRecord);
 
     Production prod = new Production(regNum);
     prod.add(obj);

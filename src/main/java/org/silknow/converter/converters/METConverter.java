@@ -73,7 +73,12 @@ public class METConverter extends Converter {
    // obj.add(limg);
 
 
-
+    s.getImages().map(Image::fromCrawledJSON)
+            .peek(obj::add)
+            .forEach(image -> {
+              image.setContentUrl("http://silknow.org/silknow/media/met-museum/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
+              this.linkToRecord(image);
+            });
 
 
 
@@ -129,7 +134,7 @@ public class METConverter extends Converter {
     linkToRecord(obj.addObservation(s.get("description"), "en", "description"));
 
     String acquisitionFrom = s.get("Credit Line:");
-    String acquisitionType = s.get("provenance");
+    String acquisitionType = s.get("Provenance");
     LegalBody museum = null;
 
 

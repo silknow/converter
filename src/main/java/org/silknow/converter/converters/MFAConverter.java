@@ -8,7 +8,6 @@ import org.silknow.converter.entities.*;
 import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 
 public class MFAConverter extends Converter {
 
@@ -48,10 +47,10 @@ public class MFAConverter extends Converter {
 
     String museumName = "MFA Boston";
 
-    String regNum = s.get("Accession Number");
+    String regNum = s.get("accessionNumber");
     ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addComplexIdentifier(regNum, "Accession Number"));
-    s.getMulti("titleField").forEach(obj::addTitle);
+    linkToRecord(obj.addComplexIdentifier(regNum, "accessionNumber"));
+    s.getMulti("title").forEach(obj::addTitle);
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
@@ -75,14 +74,14 @@ public class MFAConverter extends Converter {
 
 
 
-    s.getMulti("Medium/Technique").forEach(material -> prod.addMaterial(material, mainLang));
-    s.getMulti("Classifications")
+    s.getMulti("mediumOrTechniques").forEach(material -> prod.addMaterial(material, mainLang));
+    s.getMulti("classifications")
             .map(x -> obj.addClassification(x, "Classifications", mainLang))
             .forEach(this::linkToRecord);
 
 
 
-    String dim = s.get("Dimensions");
+    String dim = s.get("dimensions");
     if (dim != null) {
       Matcher matcher = DIMENSION_PATTERN.matcher(dim);
       if (matcher.find()) {
@@ -91,7 +90,7 @@ public class MFAConverter extends Converter {
     }
 
 
-    linkToRecord(obj.addObservation(s.get("descriptionField"), mainLang, "descriptionField"));
+    linkToRecord(obj.addObservation(s.get("description"), mainLang, "Description"));
 
 
 
@@ -103,7 +102,7 @@ public class MFAConverter extends Converter {
 
     Acquisition acquisition = new Acquisition(regNum);
 
-    String[] acquisitionFrom = s.get("Credit Line").split("(?<=Gift)", 2);
+    String[] acquisitionFrom = s.get("creditLine").split("(?<=Gift)", 2);
     if (acquisitionFrom.length > 1) {
       acquisition.setType(acquisitionFrom[0]);
       acquisition.transfer(acquisitionFrom[1], obj, museum);
@@ -114,7 +113,7 @@ public class MFAConverter extends Converter {
 
     Collection collection = new Collection(regNum);
     collection.of(obj);
-    collection.addAppellation(s.getMulti("Collections").findFirst().orElse(null));
+    collection.addAppellation(s.getMulti("collections").findFirst().orElse(null));
 
     linkToRecord(collection);
     linkToRecord(obj);

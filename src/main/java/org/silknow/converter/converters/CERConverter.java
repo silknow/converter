@@ -2,17 +2,12 @@ package org.silknow.converter.converters;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.rdf.model.Model;
-import org.jetbrains.annotations.NotNull;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 
 import java.io.*;
-import java.net.URISyntaxException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import java.net.URI;
-import java.nio.file.Paths;
 
 public class CERConverter extends Converter {
 
@@ -74,9 +69,7 @@ public class CERConverter extends Converter {
 
     s.getImages().map(Image::CERfromCrawledJSON)
             .peek(obj::add)
-            .forEach(image -> {
-              this.linkToRecord(image);
-            });
+            .forEach(this::linkToRecord);
 
 
               String dim = s.getMulti("Dimensiones").findFirst().orElse(null);

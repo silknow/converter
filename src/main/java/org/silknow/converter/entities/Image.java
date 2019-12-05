@@ -24,7 +24,7 @@ public class Image extends Entity {
     this.addProperty(Schema.contentUrl, model.createResource(url));
   }
 
-  public void setCERUrl(String url) {
+  public void setCERorMTMADUrl(String url) {
     this.addProperty(Schema.contentUrl, model.createResource(url));
   }
 
@@ -45,12 +45,24 @@ public class Image extends Entity {
 
 
     image.setContentUrl(img.getUrl());
-    image.setCERUrl("http://silknow.org/silknow/media/ceres-mcu/" + img.getlocalFilename());
+    image.setCERorMTMADUrl("http://silknow.org/silknow/media/ceres-mcu/" + img.getlocalFilename());
 
     return image;
   }
 
 
+
+  public static Image MTMADfromCrawledJSON(@NotNull CrawledJSONImages img) {
+    Image image;
+    if (img.hasId()) image = new Image(img.getId());
+    else image = new Image();
+
+
+    image.setContentUrl(img.getUrl());
+    image.setCERorMTMADUrl("http://silknow.org/silknow/media/mtmad/" + img.getlocalFilename());
+
+    return image;
+  }
 
 
   public String getContentUrl() {

@@ -3,11 +3,12 @@ package org.silknow.converter.converters;
 import org.apache.jena.rdf.model.Model;
 import org.silknow.converter.entities.*;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.util.Arrays;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
