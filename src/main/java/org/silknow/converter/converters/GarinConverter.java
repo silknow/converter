@@ -1,14 +1,18 @@
 package org.silknow.converter.converters;
 
 import org.apache.jena.rdf.model.Model;
-import org.silknow.converter.Main;
 import org.silknow.converter.entities.*;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.util.Arrays;
+import java.nio.file.Path;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class GarinConverter extends Converter {
   @Override
@@ -40,7 +44,9 @@ public class GarinConverter extends Converter {
 
     // Create the objects of the graph
     logger.trace("creating objects");
-    id = s.get("Nº Inventario");
+    if (!file.getName().contains(" "))
+       id = file.getName().replace(".xls","");
+    else id = null;
     if (id == null)
       return null;
 
@@ -96,23 +102,68 @@ public class GarinConverter extends Converter {
     s.getMulti("Material").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("Accessorios").map(ManMade_Object::new).forEach(prod::addTool);
 
-    int imgCount = 0;
-    for (byte[] x : s.getImages()) {
-      Image img = new Image(id + imgCount++);
-      String imgName = id.replaceAll(" ", "_") + imgCount + ".jpg";
 
-      try {
-        OutputStream out = new FileOutputStream(Main.outputFolder + "/img/" + imgName);
-        out.write(x);
-        out.close();
-        img.setContentUrl("http://silknow.org/silknow/media/garin/" + imgName);
-      } catch (IOException e) {
-        logger.error(e.getLocalizedMessage());
-      }
 
-      obj.add(img);
-      linkToRecord(img);
-    }
+
+
+   try {
+       Path configFilePath = FileSystems.getDefault().getPath(file.getParent());
+       Stream<Path> fileWithName = Files.walk(configFilePath);
+       List<String> filenamelist;
+       {
+
+           filenamelist = fileWithName
+                   .filter(f -> f.getFileName().toString().startsWith(id.replaceAll("[. ]", "")+" ") || f.getFileName().toString().startsWith(id.replaceAll("[. ]", "")+"."))
+                   .filter(f -> !f.toString().endsWith("xls"))
+                   .map(Path::getFileName)
+                   .map(Path::toString)
+                   .map(x -> x.replace(".jpg",""))
+                   .collect(Collectors.toList());
+           System.out.println(filenamelist);
+
+       }
+
+       Set<String> fileset = new LinkedHashSet<>();
+       for (String str : filenamelist) {
+           String value = str;
+           // Iterate as long as you can't add the value indicating that we have
+           // already the value in the set
+           for (int i = 1; !fileset.add(value); i++) {
+               value = str + i;
+           }
+       }
+
+       for (String name : fileset) {
+           System.out.println(name);
+
+           //todo ANV REV then ...
+
+           Image img = new Image();
+           img.setContentUrl("http://silknow.org/silknow/media/garin/" + name.toString().replace(" ", "_") + ".jpg");
+           obj.add(img);
+       }
+   } catch (IOException e) {
+     logger.error(e.getLocalizedMessage());
+   }
+
+
+    //int imgCount = 0;
+    //for (byte[] x : s.getImages()) {
+      //Image img = new Image(id + imgCount++);
+      //String imgName = id.replaceAll(" ", "_") + imgCount + ".jpg";
+
+      //try {
+        //OutputStream out = new FileOutputStream(Main.outputFolder + "/img/" + imgName);
+        //out.write(x);
+        //out.close();
+        //img.setContentUrl("http://silknow.org/silknow/media/garin/" + imgName);
+      //} catch (IOException e) {
+        //logger.error(e.getLocalizedMessage());
+      //}
+
+      //obj.add(img);
+      //linkToRecord(img);
+    //}
 
     for (String key : Arrays.asList("Anverso", "Reverso")) {
       String section = s.get(key);

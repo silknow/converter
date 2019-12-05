@@ -59,12 +59,16 @@ public class ImatexConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Register number"));
 
+
+
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
             .forEach(image -> {
               image.setContentUrl("http://silknow.org/silknow/media/imatex/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
               this.linkToRecord(image);
             });
+
+
 
 
     Production prod = new Production(regNum);
