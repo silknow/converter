@@ -80,10 +80,10 @@ public class MTMADConverter extends Converter {
         linkToRecord(bio);
       }
     }
-    linkToRecord(obj.addObservation(details[0], "fr", "short description"));
+    //linkToRecord(obj.addObservation(details[0], "Short description","en"));
 
 
-    linkToRecord(obj.addObservation(s.getMulti("description").findFirst().orElse(null), mainLang, "description"));
+    linkToRecord(obj.addObservation(s.getMulti("Description").findFirst().orElse(null), "Description", mainLang));
 
     //String acquisitionFrom = s.getMulti("Credit Line:").findFirst().orElse(null);
     //String acquisitionType = s.getMulti("Acquisition/dépôt:").findFirst().orElse(null);

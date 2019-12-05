@@ -63,7 +63,7 @@ public class JocondeConverter extends Converter {
             .forEach(x -> linkToRecord(obj.addClassification(x, "Domaine", "fr")));
     s.getMulti("DENO")
             .forEach(x -> linkToRecord(obj.addClassification(x, "Dénomination", "fr")));
-    linkToRecord(obj.addObservation(s.get("DESC"), mainLang, "Description"));
+    linkToRecord(obj.addObservation(s.get("DESC"), "Description", mainLang));
     obj.addSubject(s.get("REPR"),mainLang);
 
     doc.document(obj);
@@ -141,10 +141,10 @@ public class JocondeConverter extends Converter {
 
       Inscription ins = Inscription.fromJoconde(p, lang);
       if (type != null) {
-        linkToRecord(ins.addClassification(type, mainLang, null));
+        linkToRecord(ins.addClassification(type,  null, mainLang));
       }
       if (note != null) {
-        linkToRecord(ins.addObservation(note, mainLang, "Inscription"));
+        linkToRecord(ins.addObservation(note,  "Inscription", "fr"));
       }
       obj.add(ins);
     }

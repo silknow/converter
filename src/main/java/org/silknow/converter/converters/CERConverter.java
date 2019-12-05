@@ -87,9 +87,9 @@ public class CERConverter extends Converter {
             .map(Actor::new)
             .forEach(copyphoto::ownedBy);
 
-    linkToRecord(obj.addObservation(s.get("Descripción"), mainLang, "Descripción"));
-    linkToRecord(obj.addObservation(s.get("Objeto/Documento"), mainLang, "Objeto/Documento"));
-    linkToRecord(obj.addObservation(s.get("Clasificación Razonada"), mainLang, "Clasificación Razonada"));
+    linkToRecord(obj.addObservation(s.get("Descripción"), "Descripción", mainLang));
+    linkToRecord(obj.addObservation(s.get("Objeto/Documento"), "Objeto/Documento", mainLang));
+    linkToRecord(obj.addObservation(s.get("Clasificación Razonada"),"Clasificación Razonada", mainLang));
 
 
     LegalBody museum = null;

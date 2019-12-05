@@ -91,10 +91,10 @@ public class VAMConverter extends Converter {
     }
 
 
-    linkToRecord(obj.addObservation(s.get("physical_description"), mainLang, "physical_description"));
-    linkToRecord(obj.addObservation(s.get("descriptive_line"), mainLang, "descriptive_line"));
-    linkToRecord(obj.addObservation(s.get("public_access_description"), mainLang, "summary"));
-    linkToRecord(obj.addObservation(s.get("label"), mainLang, "Labels and date"));
+    linkToRecord(obj.addObservation(s.get("physical_description"), "Physical description", mainLang));
+    linkToRecord(obj.addObservation(s.get("descriptive_line"), "Descriptive line", mainLang));
+    linkToRecord(obj.addObservation(s.get("public_access_description"), "Summary", mainLang));
+    linkToRecord(obj.addObservation(s.get("label"), "Labels and date", mainLang));
 
 
 

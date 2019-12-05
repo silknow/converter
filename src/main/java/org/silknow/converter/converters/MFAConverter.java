@@ -90,7 +90,7 @@ public class MFAConverter extends Converter {
     }
 
 
-    linkToRecord(obj.addObservation(s.get("description"), mainLang, "Description"));
+    linkToRecord(obj.addObservation(s.get("description"), "Description", mainLang));
 
 
 

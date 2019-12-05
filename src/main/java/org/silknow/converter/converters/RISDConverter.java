@@ -3,7 +3,6 @@ package org.silknow.converter.converters;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.rdf.model.Model;
 import org.silknow.converter.commons.CrawledJSON;
-import org.silknow.converter.commons.CrawledJSONPublications;
 import org.silknow.converter.entities.*;
 import org.silknow.converter.ontologies.CIDOC;
 
@@ -87,7 +86,7 @@ public class RISDConverter extends Converter {
     }
 
 
-    linkToRecord(obj.addObservation(s.get("description"), mainLang, "description"));
+    linkToRecord(obj.addObservation(s.get("description"), "Description", mainLang));
 
 
     String acquisitionFrom = s.get("Credit");

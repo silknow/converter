@@ -131,7 +131,7 @@ public class METConverter extends Converter {
     }
 
 
-    linkToRecord(obj.addObservation(s.get("description"), "en", "description"));
+    linkToRecord(obj.addObservation(s.get("description"), "Description", "en"));
 
     String acquisitionFrom = s.get("Credit Line:");
     String acquisitionType = s.get("Provenance");

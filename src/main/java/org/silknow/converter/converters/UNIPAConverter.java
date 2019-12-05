@@ -83,14 +83,14 @@ public class UNIPAConverter extends Converter {
         linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
       }
     }
-    linkToRecord(obj.addObservation(s.getMulti("Width").findFirst().orElse(null), "it", "Width"));
-    linkToRecord(obj.addObservation(s.getMulti("Description").findFirst().orElse(null), "it", "Description"));
-    linkToRecord(obj.addObservation(s.getMulti("Pattern ratio").findFirst().orElse(null), "it", "Pattern ratio"));
-    linkToRecord(obj.addObservation(s.getMulti("Warp").findFirst().orElse(null), "it", "Warp"));
-    linkToRecord(obj.addObservation(s.getMulti("Weft").findFirst().orElse(null), "it", "Weft"));
-    linkToRecord(obj.addObservation(s.getMulti("Costruction").findFirst().orElse(null), "it", "Construction"));
-    linkToRecord(obj.addObservation(s.getMulti("Description of the pattern").findFirst().orElse(null), "it", "Description of the pattern"));
-    linkToRecord(obj.addObservation(s.getMulti("Historical Critical Information").findFirst().orElse(null), "it", "Historical Critical Information"));
+    linkToRecord(obj.addObservation(s.getMulti("Width").findFirst().orElse(null), "Width", "it"));
+    linkToRecord(obj.addObservation(s.getMulti("Description").findFirst().orElse(null), "Description", "it"));
+    linkToRecord(obj.addObservation(s.getMulti("Pattern ratio").findFirst().orElse(null),  "Pattern ratio", "it"));
+    linkToRecord(obj.addObservation(s.getMulti("Warp").findFirst().orElse(null), "Warp", "it"));
+    linkToRecord(obj.addObservation(s.getMulti("Weft").findFirst().orElse(null), "Weft", "it"));
+    linkToRecord(obj.addObservation(s.getMulti("Costruction").findFirst().orElse(null),  "Construction", "it"));
+    linkToRecord(obj.addObservation(s.getMulti("Description of the pattern").findFirst().orElse(null),  "Description of the pattern", "it"));
+    linkToRecord(obj.addObservation(s.getMulti("Historical Critical Information").findFirst().orElse(null), "Historical Critical Information", "it"));
 
 
     prod.addActivity(s.getMulti("Autors").findFirst().orElse(null), "Artist");

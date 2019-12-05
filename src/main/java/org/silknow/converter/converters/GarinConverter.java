@@ -61,9 +61,9 @@ public class GarinConverter extends Converter {
     obj.addTitle(s.get("Denominacion principal"));
     linkToRecord(obj.addComplexIdentifier(id, "Register number", owner));
     linkToRecord(obj.addClassification(s.get("Objecto"), "Domain", "en", owner));
-    linkToRecord(obj.addClassification(s.get("Tipología"), "Denomination",mainLang, owner));
-    linkToRecord(obj.addObservation(s.get("Descripción"), mainLang, "Descripción"));
-    linkToRecord(obj.addObservation(s.get("Descripción técnica"), mainLang, "Descripción técnica"));
+    linkToRecord(obj.addClassification(s.get("Tipología"), "Denomination", "en", owner));
+    linkToRecord(obj.addObservation(s.get("Descripción"),  "Descripción", mainLang));
+    linkToRecord(obj.addObservation(s.get("Descripción técnica"), "Descripción técnica" , mainLang));
 
     try {
       linkToRecord(obj.addMeasure(s.get("Medidas")));

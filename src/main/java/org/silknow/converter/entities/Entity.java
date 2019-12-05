@@ -100,7 +100,7 @@ public abstract class Entity {
     this.addProperty(RDFS.comment, text, lang).addProperty(CIDOC.P3_has_note, text, lang);
   }
 
-  public Resource addObservation(String text, String lang, String type) {
+  public Resource addObservation(String text, String type, String lang) {
     if (StringUtils.isBlank(text)) return null;
     text = text.trim();
     this.addNote(text, lang);
@@ -219,7 +219,7 @@ public abstract class Entity {
     return identifier;
   }
 
-  public Resource addClassification(String classification,String lang, String type) {
+  public Resource addClassification(String classification, String type, String lang) {
     return addClassification(classification, type, lang,null);
   }
 
