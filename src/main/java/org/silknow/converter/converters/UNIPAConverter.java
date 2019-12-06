@@ -55,7 +55,7 @@ public class UNIPAConverter extends Converter {
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(img -> {
-              img.setContentUrl(("http://silknow.org/silknow/media/unipa/" + img.getId() + ".jpg").replaceAll("\\s+", "_"));
+              img.setContentUrl(("http://silknow.org/silknow/media/unipa/" + img.getId()).replaceAll("\\s+", "_"));
             })
             .peek(obj::add)
             .forEach(this::linkToRecord);

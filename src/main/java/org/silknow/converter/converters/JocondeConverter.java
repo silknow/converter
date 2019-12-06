@@ -87,8 +87,8 @@ public class JocondeConverter extends Converter {
     prod.addActivity(actor, role);
 
     // TODO decide what is material and what technique
-    Arrays.asList(s.get("TECH").split(", ?"))
-            .forEach(material -> prod.addMaterial(material, mainLang));
+    // TODO needs to be rewritten to splut up values
+    s.getMulti("TECH").forEach(material -> prod.addMaterial(material, mainLang));
 
     String place = s.get("LIEUX");
     if (place != null) {

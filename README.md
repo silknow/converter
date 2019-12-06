@@ -36,7 +36,7 @@ Full conversion:
 
     ./gradlew run --args="imatex ../crawler/data/imatex/records/ -o ./output/imatex -g <GEONAMES_USER>"
     ./gradlew run --args="joconde ../crawler/data/joconde/records/ -o ./output/joconde -g <GEONAMES_USER>"
-    ./gradlew run --args="garin '../../Desktop/garin/' -o ./output/garin -g <GEONAMES_USER>"
+    ./gradlew run --args="garin '../crawler/data/garin' -o ./output/garin -g <GEONAMES_USER>"
     ./gradlew run --args="VAM '../crawler/data/vam' -o ./output/VAM -g <GEONAMES_USER>"
     ./gradlew run --args="MFA '../crawler/data/mfa-boston' -o ./output/MFA -g <GEONAMES_USER>"
     ./gradlew run --args="MAD '../crawler/data/les-arts-decoratifs' -o ./output/MAD -g <GEONAMES_USER>"
