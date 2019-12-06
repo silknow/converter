@@ -107,9 +107,9 @@ public class JocondeConverter extends Converter {
 
     PropositionalObject po = new PropositionalObject(id);
     po.isAbout(obj);
-    po.addNote(s.get("PREP"), mainLang);
+    po.addNote(s.getMulti("PREP").findFirst().orElse(null), mainLang);
 
-    String gen = s.get("GENE");
+    String gen = s.getMulti("GENE").findFirst().orElse(null);
     if ("objet en rapport".equalsIgnoreCase(gen)) {
       po.setType(gen, mainLang);
 
@@ -152,7 +152,7 @@ public class JocondeConverter extends Converter {
     Transfer transfer = new Transfer(id);
     transfer.of(obj).by(museum);
 
-    String sj = s.get("Statut juridique");
+    String sj = s.getMulti("STAT").findFirst().orElse(null);
     Right right = new Right(obj.getUri() + "/right");
     if (sj.contains(museumName)) right.ownedBy(museum);
     right.addNote(sj, mainLang);
