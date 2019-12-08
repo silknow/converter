@@ -33,16 +33,16 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 ## B. Time
 
 1. **[en]** Which items were produced during the 16th century?
-[query](./5.rq) - [results]
+[query](./5.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj+%3Ftime%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprod+.%0D%0A+++++%3Fprod+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A+%0D%0A%0D%0A%0D%0A%3Fprod+ecrm%3AP4_has_time-span+%3Ft+.%0D%0A%3Ft+ecrm%3AP78_is_identified_by+%3Ftime.%0D%0A%0D%0A%0D%0AFILTER+contains%28str%28%3Ftime%29%2C+%2216%22%29%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
 
 1. **[en]** What kinds of fabrics / weaving techniques / designs were most frequent in 18th-century France? Please give me a list of the top 5 (or 10, 15…) occurrences in a particular field.
-[query](./6.rq) - [results]()
+[query](./6.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+count%28distinct+%3Fobj%29+as+%3Fcount++%3Fmaterial%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A+%0D%0A%7B+%3Fprd+ecrm%3AP126_employed+%3Fx%0D%0A+++++++%7B+SELECT+%3Fx+SAMPLE%28%3Flab%29+as+%3Fmaterial%0D%0A+++++++++WHERE+%7B+%3Fx+skos%3AprefLabel+%3Flab+.+%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fx%29%29+%7D%0D%0A+++++++UNION%0D%0A+++++++%7B+%3Fprd+ecrm%3AP126_employed+%3Fmaterial+.%0D%0A+++++++FILTER+%28isIRI%28%3Fmaterial%29+%3D+false%29%0D%0A++++++%7D%0D%0A%0D%0A%7B+%3Fprd+ecrm%3AP8_took_place_on_or_within+%3Fl%0D%0A+++++%7B+SELECT+%3Fl+SAMPLE%28%3Floc%29+as+%3Fplace%0D%0A++++++++++WHERE+%7B+%3Fl+geonames%3AcountryCode+%3Floc%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fl%29%29%0D%0A+++++++++++%3Fl+geonames%3AcountryCode+%22FR%22+%7D%0D%0A%0D%0A%3Fprd+ecrm%3AP4_has_time-span+%3Ft+.%0D%0A%3Ft+ecrm%3AP78_is_identified_by+%3Ftime.%0D%0A%0D%0A%0D%0AFILTER+contains%28str%28%3Ftime%29%2C+%2218%22%29%0D%0A%7D%0D%0AGROUP+BY+%3Fmaterial%0D%0AORDER+BY+DESC+%28%3Fcount%29&format=text%2Fhtml&timeout=0&debug=on)
 
 1. **[en]** Which items have been produced in 1815?
-[query](./7.rq) - [results]
+[query](./7.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj+%3Ftime%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprod+.%0D%0A+++++%3Fprod+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A+%0D%0A%0D%0A%0D%0A%3Fprod+ecrm%3AP4_has_time-span+%3Ft+.%0D%0A%3Ft+ecrm%3AP78_is_identified_by+%3Ftime.%0D%0A%0D%0A%0D%0AFILTER+%28str%28%3Ftime%29%3D%221815%22%29%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
 
 1. **[en]** What are the most common decorative motifs in the Hispanic Middle Ages?
-[query](./8.rq) - [results]
+[query](./8.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fdepiction+count%28distinct+%3Fobj%29+as+%3Fcount+%3Ftime%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprod+.%0D%0A+++++%3Fprod+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A+%0D%0A+++++%3Fobj+ecrm%3AP62_depicts+%3Fdepiction+.%0D%0A+++++FILTER%28lang%28%3Fdepiction%29+%3D+%22en%22%29%0D%0A%0D%0A%7B+%3Fprod+ecrm%3AP8_took_place_on_or_within+%3Fl%0D%0A+++++%7B+SELECT+%3Fl+SAMPLE%28%3Floc%29+as+%3Fplace%0D%0A++++++++++WHERE+%7B+%3Fl+geonames%3AcountryCode+%3Floc%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fl%29%29%0D%0A+++++++++++%3Fl+geonames%3AcountryCode+%22ES%22+%7D%0D%0A%0D%0A%3Fprod+ecrm%3AP4_has_time-span+%3Ft+.%0D%0A%3Ft+ecrm%3AP78_is_identified_by+%3Ftime.%0D%0A%0D%0A%0D%0AFILTER+contains%28str%28%3Ftime%29%2C+%22med%22%29%0D%0A%7D%0D%0AGROUP+BY+%3Fdepiction+%3Ftime%0D%0AORDER+BY+DESC+%28%3Fcount%29&format=text%2Fhtml&timeout=0&debug=on)
 
 
 <!-- END Time -->
