@@ -52,13 +52,13 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 ## C. Materials
 
 1. **[en]** Which items were produced with silk and silver?  
-[query](./9.rq) - [results]()
+[query](./9.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A+%0D%0A%0D%0A%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F628%3E+.+%7D%0D%0A++++++++UNION%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F368%3E+.%7D%0D%0A+%0D%0A+++++++%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
 
-1. **[en]** Give me the objects that involve at most silk, silver and wool
-[query](./10.rq) - [results]()
+1. **[en]** Give me the objects that involve at most silk, silver and wool (Note: there is non with these three)
+[query](./10.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=%0D%0ASELECT+distinct+%3Fobj%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A+%0D%0A%0D%0A%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F628%3E%2C+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F368%3E%2C+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F644%3E++.%7D++++++%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
 
-1. **[en]** Give me the objects that involve silk, silver and wool, except those that involve gold.
-[query](./11.rq) - [results]()
+1. **[en]** Give me the objects that involve silk, silver and wool, except those that involve gold. (Note: See the question above)
+[query](./11.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A+%0D%0A%0D%0A%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F628%3E%2C+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F368%3E%2C+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F644%3E++.%7D%0D%0A+%3Fprd+ecrm%3AP126_employed+%3Fmore+.%0D%0A%0D%0AFILTER+%28contains%28str%28%3Fmore%29%2C+str%28%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F627%3E%29%29+%21%3D+true%29+++++%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
 
 
 <!-- END Material -->
@@ -68,7 +68,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 ## D. Artists
 
 1. **[en]** Give me all the information you have on Philippe de la Salle!  
-[query](./12.rq) - [results](http://data.doremus.org/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3Fartist+SAMPLE%28%3FartistName%29+as+%3Fname+COUNT%28DISTINCT+%3Frec%29+as+%3Frecording_num%0D%0AWHERE+%7B%0D%0A+%3Frec++a+efrbroo%3AF29_Recording_Event+%3B%0D%0A+++++++ecrm%3AP9_consists_of+%2F+ecrm%3AP14_carried_out_by+%3Chttp%3A%2F%2Fdata.doremus.org%2Forganization%2FRadio_France%3E+%3B%0D%0A+++++++efrbroo%3AR20_recorded+%3Fperformance+.%0D%0A%0D%0A+%3Fperformance+ecrm%3AP9_consists_of*+%2F+ecrm%3AP14_carried_out_by+%3Fartist+.%0D%0A%0D%0A+%3Fartist+foaf%3Aname+%3FartistName%0D%0A%7D+GROUP+BY+%3Fartist%0D%0AHAVING+%28COUNT%28DISTINCT+%3Frec%29+%3E+10%29%0D%0ALIMIT+100&should-sponge=&format=text%2Fhtml&timeout=0&debug=on)
+[query](./12.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=select+%3Fs1+as+%3Fc1%2C+%28+bif%3Asearch_excerpt+%28+bif%3Avector+%28+%27PHILIPPE%27%2C+%27SALLE%27%2C+%27LA%27%2C+%27DE%27+%29+%2C+%3Fo1+%29+%29+as+%3Fc2%2C+%3Fsc%2C+%3Frank%2C+%3Fg+where%0D%0A++%7B%0D%0A++++%7B%0D%0A++++++%7B%0D%0A++++++++select+%3Fs1%2C+%28+%3Fsc+*+3e-1+%29+as+%3Fsc%2C+%3Fo1%2C+%28+sql%3Arnk_scale+%28+%3CLONG%3A%3AIRI_RANK%3E+%28+%3Fs1+%29+%29+%29+as+%3Frank%2C+%3Fg+where%0D%0A++++++++%7B%0D%0A++++++++++quad+map+virtrdf%3ADefaultQuadMap%0D%0A++++++++++%7B%0D%0A++++++++++++graph+%3Fg%0D%0A++++++++++++%7B%0D%0A++++++++++++++%3Fs1+%3Fs1textp+%3Fo1+.%0D%0A++++++++++++++%3Fo1+bif%3Acontains+%27+%28+PHILIPPE+AND+SALLE+AND+LA+AND+DE+%29+%27+option+%28+score+%3Fsc+%29+.%0D%0A++++++++++++++%0D%0A++++++++++++%7D%0D%0A+++++++++++%7D%0D%0A+++++++++%7D%0D%0A+++++++order+by+desc+%28+%3Fsc+*+3e-1+%2B+sql%3Arnk_scale+%28+%3CLONG%3A%3AIRI_RANK%3E+%28+%3Fs1+%29+%29+%29+limit+20+offset+0%0D%0A++++++%7D%0D%0A+++++%7D%0D%0A+++%7D&format=text%2Fhtml&timeout=0&debug=on)
 
 <!-- END Artists -->
 
