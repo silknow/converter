@@ -1,0 +1,15 @@
+SELECT distinct ?obj
+WHERE {
+
+     ?dig a crmdig:D1_Digital_Object .
+     ?dig  ecrm:P129_is_about ?prd .
+     ?prd ecrm:P108_has_produced ?obj .
+ 
+
+
+        {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/628> . }
+        UNION
+        {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/368> .}
+ 
+       
+}
