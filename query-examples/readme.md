@@ -11,7 +11,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <a name="location"/>
 
-## A. LOCATION
+## A. Location
 
 
 1. **[en]** Which items were produced in Spain?   
