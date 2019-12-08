@@ -5,16 +5,15 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 ## Table of Contents
 * [A. Location](#location)
 * [B. Time](#time)
-* [C. Artists](#artists)
-* [D. Materials](#materials)
-* [E. Recordings](#recordings)
-* [F. Publications](#publications)
+* [C. Materials](#materials)
+* [D. Artists](#artists)
+* [F. Type of items and location](#Typeofitemsandlocation)
 
 <a name="location"/>
 
 ## A. LOCATION
 
-1. **[en]** WWhich items were produced in Spain?   
+1.**[en]** WWhich items were produced in Spain?   
 [query](./1.rq) - [results](http://data.doremus.org/sparql?default-graph-uri=&query=PREFIX+mus%3A+%3Chttp%3A%2F%2Fdata.doremus.org%2Fontology%23%3E%0D%0APREFIX+ecrm%3A+%3Chttp%3A%2F%2Ferlangen-crm.org%2Fcurrent%2F%3E%0D%0APREFIX+efrbroo%3A+%3Chttp%3A%2F%2Ferlangen-crm.org%2Fefrbroo%2F%3E%0D%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E%0D%0A%0D%0A%23+%5Ben%5D+Which+works+have+been+composed+by+Mozart%3F%0D%0A%23+%5Bfr%5D+Quelles+oeuvres+ont+%C3%A9t%C3%A9+compos%C3%A9es+par+Mozart+%3F%0D%0A%0D%0ASELECT+DISTINCT+%3Fexpression+SAMPLE%28%3Ftitle%29+as+%3Ftitle%0D%0AWHERE+%7B%0D%0A++%3Fexpression+a+efrbroo%3AF22_Self-Contained_Expression+%3B%0D%0A++++++++++rdfs%3Alabel+%3Ftitle+.%0D%0A++%3FexpCreation+efrbroo%3AR17_created+%3Fexpression+%3B%0D%0A++++++++++ecrm%3AP9_consists_of+%2F+ecrm%3AP14_carried_out_by+%3Fcomposer+.%0D%0A++%3Fcomposer+foaf%3Aname+%22Wolfgang+Amadeus+Mozart%22%0D%0A%7D+ORDER+BY+%3Ftitle%0D%0A&format=text%2Fhtml&timeout=0&debug=on)
 
 1. **[en]** Give me all the items that are preserved in the Musée des Tissus de Lyon  
@@ -29,7 +28,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 ## B. Time
 
-1. **[en]** Which items were produced during the 16th century?
+1.**[en]** Which items were produced during the 16th century?
   [query](./4.rq) - [results]
 
 1. **[en]** What kinds of fabrics / weaving techniques / designs were most frequent in 18th-century France? Please give me a list of the top 5 (or 10, 15…) occurrences in a particular field.
@@ -39,7 +38,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 1. **[en]** Which items have been produced in 1815?
 [query](./6.rq) - [results]
 
-1. **[en]**What are the most common decorative motifs in the Hispanic Middle Ages?
+1. **[en]** What are the most common decorative motifs in the Hispanic Middle Ages?
 [query](./7.rq) - [results]
 
 
@@ -58,39 +57,15 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 1. **[en]** Give me the objects that involve silk, silver and wool, except those that involve gold.
 [query](./10.rq) - [results](http://data.doremus.org/sparql?default-graph-uri=&query=PREFIX+mus%3A+%3Chttp%3A%2F%2Fdata.doremus.org%2Fontology%23%3E%0D%0APREFIX+ecrm%3A+%3Chttp%3A%2F%2Ferlangen-crm.org%2Fcurrent%2F%3E%0D%0APREFIX+efrbroo%3A+%3Chttp%3A%2F%2Ferlangen-crm.org%2Fefrbroo%2F%3E%0D%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E%0D%0A%0D%0A%23+%5Ben%5D+Give+me+all+the+performances+in+which+a+composer+directs+one+of+his+works%0D%0A%23+%5Bfr%5D+Donne-moi+tous+les+performance+dans+lesquels+un+compositeur+dirige+une+de+ses+oeuvres%0D%0A%0D%0ASELECT+DISTINCT+%3Fexpression%2C+SAMPLE%28%3Ftitle%29+as+%3Ftitle%2C+%3Fname%2C+%3Fperformance%0D%0AWHERE+%7B%0D%0A++%3Fexpression+a+efrbroo%3AF22_Self-Contained_Expression+%3B%0D%0A++++++++++rdfs%3Alabel+%3Ftitle+.%0D%0A++%3FexpCreation+efrbroo%3AR17_created+%3Fexpression+%3B%0D%0A++++++++++ecrm%3AP9_consists_of+%2F+ecrm%3AP14_carried_out_by+%3Fcomposer+.%0D%0A++%3Fcomposer+foaf%3Aname+%3Fname+.%0D%0A++%3Fperformance+efrbroo%3AR66_included_performed_version_of+%3Fexpression+%3B%0D%0A++++++++++ecrm%3AP9_consists_of+%3Factivity.%0D%0A++%3Factivity+ecrm%3AP14_carried_out_by+%3Fcomposer+%3B+%0D%0A+++++mus%3AU31_had_function%0D%0A++++++++++%3Chttp%3A%2F%2Fdata.doremus.org%2Fvocabulary%2Ffunction%2Fchief_conductor%3E+.%0D%0A%7D%0D%0A&should-sponge=&format=text%2Fhtml&timeout=0&debug=on)
 
-1. **[en]** Give me the list of concerts of the Orchestre National de France in which the conductor is also instrumental soloist (in the same concert)  
-**[fr]** Donne-moi la liste des concerts de l'Orchestre National de France dans lesquels le chef d'orchestre est également soliste instrumental (dans le même concert)  
-[query](./17.rq) - [results](http://data.doremus.org/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3Fconcert+%3Fconductor%0D%0AWHERE+%7B%0D%0A++%3Fconcert+ecrm%3AP9_consists_of*+%3FactivityDir+%3B%0D%0A++++++ecrm%3AP9_consists_of*+%3FactivityMus+%3B%0D%0A++++++ecrm%3AP9_consists_of+%2F+ecrm%3AP9_consists_of*+%2F+ecrm%3AP14_carried_out_by+%3Chttp%3A%2F%2Fdata.doremus.org%2Fartist%2F59b8bd1b-3108-38c4-bc5c-48b7f25ec22e%3E+.%0D%0A%0D%0A++%3FactivityDir+ecrm%3AP14_carried_out_by+%3Fconductor+%3B%0D%0A++++mus%3AU31_had_function+%2F+skos%3Abroader*+%3Chttp%3A%2F%2Fdata.doremus.org%2Fvocabulary%2Ffunction%2Fconductor%3E+.%0D%0A%0D%0A++%3FactivityMus+ecrm%3AP14_carried_out_by+%3Fconductor+%3B%0D%0A++++mus%3AU1_used_medium_of_performance+%3Fmop+%3B%0D%0A++++mus%3AU32_had_responsibility+%3Chttp%3A%2F%2Fdata.doremus.org%2Fvocabulary%2Fresponsibility%2Fsoloist%3E+.%0D%0A%0D%0A%7D+LIMIT+100%0D%0A&should-sponge=&format=text%2Fhtml&timeout=0&debug=on) (empty, no data about it)
 
-1. **[en]** Give me the list of concerts given at the Philharmonie de Paris in which the orchestra is directed by the solo violin  
-**[fr]** Donne-moi la liste des concerts donnés à la Philharmonie de Paris dans lesquels l’orchestre est dirigé par le violon solo  
-[query](./18.rq) - [results](http://data.doremus.org/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3Fconcert+%3Fconductor+%3Fnote%0D%0AWHERE+%7B%0D%0A++%3Fconcert+ecrm%3AP9_consists_of+%2F+ecrm%3AP9_consists_of*+%3FactivityDir+%3B%0D%0A++++++ecrm%3AP9_consists_of+%2F+ecrm%3AP9_consists_of*+%3FactivityMus+%3B%0D%0A++++++ecrm%3AP7_took_place_at+%3Chttp%3A%2F%2Fdata.doremus.org%2Fplace%2Fbd21be9c-3f2b-3aa3-a460-114d579eabe6%3E+.%0D%0A%0D%0A++%3FactivityDir+ecrm%3AP14_carried_out_by+%3Fconductor+%3B%0D%0A++++mus%3AU31_had_function+%3Chttp%3A%2F%2Fdata.doremus.org%2Fvocabulary%2Ffunction%2Fchief_conductor%3E+.%0D%0A%0D%0A++%3FactivityMus+ecrm%3AP14_carried_out_by+%3Fconductor+%3B%0D%0A++++mus%3AU1_used_medium_of_performance+%2F+skos%3AexactMatch*+%3Chttp%3A%2F%2Fwww.mimo-db.eu%2FInstrumentsKeywords%2F3573%3E+.%0D%0A%0D%0A++OPTIONAL+%7B+%3Fconcert+mus%3AU205_has_cast_detail+%3Fnote+%7D%0D%0A%7D+LIMIT+100%0D%0A&should-sponge=&format=text%2Fhtml&timeout=0&debug=on)
+<!-- END Material -->
 
-1. **[en]** Give me the list of concerts performed at the Abbaye aux Dames de Saintes outside the festival period of Saintes  
-**[fr]** Donne-moi la liste des concerts performe à l’Abbaye aux Dames de Saintes hors période du festival de Saintes  
-[query (partial)](./37.rq) - [results](http://data.doremus.org/sparql?default-graph-uri=&query=PREFIX+mus%3A+%3Chttp%3A%2F%2Fdata.doremus.org%2Fontology%23%3E%0D%0ASELECT+DISTINCT+%3Fconcert+%3Flabel+%3Fin_festival%0D%0AWHERE+%7B%0D%0A++%3Fconcert+a+efrbroo%3AF31_Performance%3B%0D%0A++++++rdfs%3Alabel+%3Flabel%3B%0D%0A++++++ecrm%3AP7_took_place_at+%3Chttp%3A%2F%2Fsws.geonames.org%2F11185639%2F%3E+.%0D%0A%0D%0A++OPTIONAL+%7B+%0D%0A++++++%3Fconcert+rdfs%3Acomment+%3Fcomment+.%0D%0A++++++FILTER+%28bif%3Acontains%28%3Fcomment%2C+%27%22dans+le+cadre+du+Festival+de+Saintes%22%27%29%29%0D%0A++++++BIND%28%22true%22+AS+%3Fin_festival%29%0D%0A++%7D%0D%0A%7D+LIMIT+100%0D%0A&should-sponge=&format=text%2Fhtml&timeout=0&debug=on)
+<a name="artists"/>
 
+## D. Artists
 
-1. **[en]** Give me the list of the works that were created where they were composed  
-**[fr]** Donne moi la liste des oeuvres qui ont été créées là où elles ont été composées  
-[query](./26.rq) - [results](http://data.doremus.org/sparql?default-graph-uri=&query=PREFIX+mus%3A+%3Chttp%3A%2F%2Fdata.doremus.org%2Fontology%23%3E%0D%0APREFIX+ecrm%3A+%3Chttp%3A%2F%2Ferlangen-crm.org%2Fcurrent%2F%3E%0D%0APREFIX+efrbroo%3A+%3Chttp%3A%2F%2Ferlangen-crm.org%2Fefrbroo%2F%3E%0D%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E%0D%0ASELECT+DISTINCT+%3Fexpression%2C+SAMPLE%28%3Ftitle%29+as+%3Ftitle%2C+%3Fplace+%0D%0AWHERE+%7B%0D%0A++%3Fexpression+a+efrbroo%3AF22_Self-Contained_Expression+%3B%0D%0A++++++++++rdfs%3Alabel+%3Ftitle+.%0D%0A++%3FexpCreation+efrbroo%3AR17_created+%3Fexpression+%3B%0D%0A++++++++++ecrm%3AP7_took_place_at+%3Fplace+.%0D%0A++%3Fwork+efrbroo%3AR9_is_realised_in+%3Fexpression%3B%0D%0A++++++++mus%3AU5_had_premiere+%2F+ecrm%3AP7_took_place_at+%3Fplace+.%0D%0A%7D%0D%0ALIMIT+500%0D%0A&format=text%2Fhtml&timeout=0&debug=on) (empty, no data about it)
-
-1. **[en]** Give me all the works for which the title of the Performed Expression is different from the title of the work  
-**[fr]** Donne-moi toutes les oeuvres pour lesquelles le titre de l’Expression Performée est différent du titre de l’oeuvre  
-[query](./32.rq) - [results](http://data.doremus.org/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3Fperformance%2C+SAMPLE%28%3FperfTitle%29+AS+%3FperfTitle%2C+SAMPLE%28%3FexpTitle%29+AS+%3FexpTitle%2C+%3Fexpression%0D%0AWHERE+%7B%0D%0A++%3Fperformance+a+mus%3AM43_Performed_Expression+%3B%0D%0A++++mus%3AU54_is_performed_expression_of+%3Fexpression+%3B%0D%0A++++rdfs%3Alabel+%3FperfTitle+.%0D%0A%0D%0A++%3Fexpression+a+efrbroo%3AF22_Self-Contained_Expression+%3B%0D%0A++++rdfs%3Alabel+%3FexpTitle+.%0D%0A%0D%0A++FILTER+NOT+EXISTS+%7B%0D%0A++++%3Fperformance+mus%3AU54_is_performed_expression_of+%2F+rdfs%3Alabel+%3FperfTitle+.%0D%0A++%7D%0D%0A%7D+LIMIT+100%0D%0A%0D%0A&should-sponge=&format=text%2Fhtml&timeout=0&debug=on)
-
-1. **[en]** Give me all the works interpreted on at least one mop different from the casting of the work  
-**[fr]** Donne-moi toutes les oeuvres interprétées sur au moins un mop différent du casting de l’oeuvre  
-[query](./30.rq) - [results](http://data.doremus.org/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3Fexpression%2C+%3Fperformance%2C+%3Fmop%2C+group_concat%28DISTINCT+%3FmopWork%2C+%22%2C+%22%29+AS+%3FmopWork%0D%0AWHERE+%7B%0D%0A++%3Fperformance+a+mus%3AM42_Performed_Expression_Creation+%3B%0D%0A++++efrbroo%3AR17_created+%2F+mus%3AU54_is_performed_expression_of+%3Fexpression+%3B%0D%0A++++ecrm%3AP9_consists_of+%2F+mus%3AU1_used_medium_of_performance+%3Fmop+.%0D%0A%0D%0A++%3Fexpression+a+efrbroo%3AF22_Self-Contained_Expression+%3B%0D%0A++++++++mus%3AU13_has_casting+%2F+mus%3AU23_has_casting_detail+%2F+mus%3AU2_foresees_use_of_medium_of_performance+%3FmopWork+.%0D%0A%0D%0A++FILTER+NOT+EXISTS+%7B%0D%0A++++%3Fexpression+mus%3AU13_has_casting+%2F+mus%3AU23_has_casting_detail+%2F+mus%3AU2_foresees_use_of_medium_of_performance+%2F+skos%3AexactMatch*+%3Fmop+.%0D%0A++%7D%0D%0A%7D+LIMIT+300%0D%0A&format=text%2Fhtml&timeout=0&debug=on)
-<!-- END Performances -->
-
-<a name="recordings"/>
-
-## E. Recordings
-
-1. **[en]** Give me the artists that have been recorded more than 10 times by Radio France  
-**[fr]** donne-moi les artistes qui ont été enregistrés plus de 10 fois par Radio France  
-[query](./38.rq) - [results](http://data.doremus.org/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3Fartist+SAMPLE%28%3FartistName%29+as+%3Fname+COUNT%28DISTINCT+%3Frec%29+as+%3Frecording_num%0D%0AWHERE+%7B%0D%0A+%3Frec++a+efrbroo%3AF29_Recording_Event+%3B%0D%0A+++++++ecrm%3AP9_consists_of+%2F+ecrm%3AP14_carried_out_by+%3Chttp%3A%2F%2Fdata.doremus.org%2Forganization%2FRadio_France%3E+%3B%0D%0A+++++++efrbroo%3AR20_recorded+%3Fperformance+.%0D%0A%0D%0A+%3Fperformance+ecrm%3AP9_consists_of*+%2F+ecrm%3AP14_carried_out_by+%3Fartist+.%0D%0A%0D%0A+%3Fartist+foaf%3Aname+%3FartistName%0D%0A%7D+GROUP+BY+%3Fartist%0D%0AHAVING+%28COUNT%28DISTINCT+%3Frec%29+%3E+10%29%0D%0ALIMIT+100&should-sponge=&format=text%2Fhtml&timeout=0&debug=on)
+1.**[en]** Give me all the information you have on Philippe de la Salle!  
+[query](./11.rq) - [results](http://data.doremus.org/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3Fartist+SAMPLE%28%3FartistName%29+as+%3Fname+COUNT%28DISTINCT+%3Frec%29+as+%3Frecording_num%0D%0AWHERE+%7B%0D%0A+%3Frec++a+efrbroo%3AF29_Recording_Event+%3B%0D%0A+++++++ecrm%3AP9_consists_of+%2F+ecrm%3AP14_carried_out_by+%3Chttp%3A%2F%2Fdata.doremus.org%2Forganization%2FRadio_France%3E+%3B%0D%0A+++++++efrbroo%3AR20_recorded+%3Fperformance+.%0D%0A%0D%0A+%3Fperformance+ecrm%3AP9_consists_of*+%2F+ecrm%3AP14_carried_out_by+%3Fartist+.%0D%0A%0D%0A+%3Fartist+foaf%3Aname+%3FartistName%0D%0A%7D+GROUP+BY+%3Fartist%0D%0AHAVING+%28COUNT%28DISTINCT+%3Frec%29+%3E+10%29%0D%0ALIMIT+100&should-sponge=&format=text%2Fhtml&timeout=0&debug=on)
 
 1. **[en]** Give me the list of the choristers of the Collegium Vocale who participated in at least three radio recordings of the choir in 2012  
 **[fr]** Donne-moi la liste des choristes du Collegium Vocale ayant participé à au moins trois enregistrements radio du choeur en 2012  
@@ -125,9 +100,9 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <!-- END Recordings -->
 
-<a name="publications"/>
+<a name="typeofitemsandlocation"/>
 
-## F. Publications
+## E. Types of items and location
 
 1. **[en]** Among concerts and CDs, which works are often played after < other work > ?  
 **[fr]** Dans les concerts et les cd, quelles oeuvres sont souvent jouées après < telle autre oeuvre > ?  
@@ -150,4 +125,4 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 **[fr]** Donne moi tous les enregistrements d’airs d’opéra dont la bibliothèque ne dispose d’aucune partition  
 [query](./51.rq) - [results](http://data.doremus.org/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3Ft+%3Fwork%0D%0AWHERE+%7B%0D%0A++%3Ft+mus%3AU51_is_partial_or_full_recording_of+%2F+mus%3AU54_is_performed_expression_of+%3Fwork.%0D%0A++%3Fwork+mus%3AU12_has_genre+%3Chttp%3A%2F%2Fdata.doremus.org%2Fvocabulary%2Fiaml%2Fgenre%2Fop%3E+.%0D%0A%0D%0A++%3Fscore+ecrm%3AP2_has_type+%22score%22.%0D%0A++%0D%0A++FILTER%0D%0A++++NOT+EXISTS+%7B%3Fscore+ecrm%3AP128_carries+%3Fwork+%7D%0D%0A%7D+LIMIT+100%0D%0A&should-sponge=&format=text%2Fhtml&timeout=0&debug=on)
 
-<!-- END Publications -->
+<!-- END Types of items and location -->
