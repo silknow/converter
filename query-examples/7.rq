@@ -1,0 +1,15 @@
+SELECT distinct ?obj ?time
+WHERE {
+
+     ?dig a crmdig:D1_Digital_Object .
+     ?dig  ecrm:P129_is_about ?prod .
+     ?prod ecrm:P108_has_produced ?obj .
+ 
+
+
+?prod ecrm:P4_has_time-span ?t .
+?t ecrm:P78_is_identified_by ?time.
+
+
+FILTER (str(?time)="1815")
+}

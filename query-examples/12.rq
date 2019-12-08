@@ -1,0 +1,20 @@
+select ?s1 as ?c1, ( bif:search_excerpt ( bif:vector ( 'PHILIPPE', 'SALLE', 'LA', 'DE' ) , ?o1 ) ) as ?c2, ?sc, ?rank, ?g where
+  {
+    {
+      {
+        select ?s1, ( ?sc * 3e-1 ) as ?sc, ?o1, ( sql:rnk_scale ( <LONG::IRI_RANK> ( ?s1 ) ) ) as ?rank, ?g where
+        {
+          quad map virtrdf:DefaultQuadMap
+          {
+            graph ?g
+            {
+              ?s1 ?s1textp ?o1 .
+              ?o1 bif:contains ' ( PHILIPPE AND SALLE AND LA AND DE ) ' option ( score ?sc ) .
+              
+            }
+           }
+         }
+       order by desc ( ?sc * 3e-1 + sql:rnk_scale ( <LONG::IRI_RANK> ( ?s1 ) ) ) limit 20 offset 0
+      }
+     }
+   }
