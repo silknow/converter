@@ -92,8 +92,10 @@ public class GarinConverter extends Converter {
     }
 
 
+
+
     Move move = new Move(id);
-    move.of(obj).from(s.get("Localización")).to(s.get("Ubicación"));
+    move.of(obj).from("chalet garin").to(s.get("Ubicación"));
 
     Production prod = new Production(id);
     prod.add(obj);
