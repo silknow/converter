@@ -105,17 +105,17 @@ public class MTMADConverter extends Converter {
       bio.setType("Bibliographie", mainLang);
       bio.isAbout(obj);
       //bio.addNote(s.getMulti("Bibliographie").findFirst().orElse(null));
-      bio.addNote(s.get("Bibliographie"),mainLang);
+      bio.addNote(s.get("Bibliographie :"),mainLang);
       //s.getMulti("Bibliographie").forEach(note -> bio.addNote(note, mainLang));
       linkToRecord(bio);
     }
 
     if (s.get("Exposition :") != null) {
-      InformationObject bio = new InformationObject(regNum + "e");
-      bio.setType("Exposition", mainLang);
-      bio.isAbout(obj);
-      bio.addNote(s.get("Exposition"),mainLang);
-      linkToRecord(bio);
+      InformationObject exp = new InformationObject(regNum + "e");
+      exp.setType("Exposition", mainLang);
+      exp.isAbout(obj);
+      exp.addNote(s.get("Exposition :"),mainLang);
+      linkToRecord(exp);
     }
 
 
