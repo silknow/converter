@@ -104,7 +104,7 @@ public class GarinConverter extends Converter {
     prod.addTimeAppellation(s.get("Época"));
     s.getMulti("Material").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("Accessorios").map(ManMade_Object::new).forEach(prod::addTool);
-
+    prod.addPlace("chalet garin");
 
 
 
