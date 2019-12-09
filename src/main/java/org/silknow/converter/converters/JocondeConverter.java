@@ -9,7 +9,10 @@ import org.silknow.converter.entities.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -87,8 +90,14 @@ public class JocondeConverter extends Converter {
     prod.addActivity(actor, role);
 
     // TODO decide what is material and what technique
-    // TODO needs to be rewritten to splut up values
-    s.getMulti("TECH").forEach(material -> prod.addMaterial(material, mainLang));
+    // TODO needs to be rewritten to split up values
+    String[] arr =  s.getMulti("TECH").toArray(String[]::new);
+     for (String a1 : arr){
+       for (String a2 : a1.split(",")){
+       prod.addMaterial(a2, mainLang);
+     }}
+
+
 
     String place = s.get("LIEUX");
     if (place != null) {

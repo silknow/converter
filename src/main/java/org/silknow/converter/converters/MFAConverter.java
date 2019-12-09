@@ -74,7 +74,7 @@ public class MFAConverter extends Converter {
 
 
 
-    s.getMulti("mediumOrTechniques").forEach(material -> prod.addMaterial(material, mainLang));
+    s.getMulti("mediumOrTechnique").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("classifications")
             .map(x -> obj.addClassification(x, "Classifications", mainLang))
             .forEach(this::linkToRecord);
