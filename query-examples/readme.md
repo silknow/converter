@@ -147,12 +147,165 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <!-- END Artists -->
 
+
+<a name="artistsandtime"/>
+
+## E. Artists and time
+
+1. **[en]** Give me all the items designed by François Bouchez in the 18th century  
+
+1. **[en]** Give me all the items created by Philippe de la Salle in the last 5 years of his life.  
+
+1. **[en]** Give me a list of designers from a Valencia during the 19th century  
+
+
+<!-- END Artists and time -->
+
+<a name="artistsandlocation"/>
+
+## E. Artists and location
+
+1. **[en]** Give me all the designers who were born in England 
+
+1. **[en]** Give me all the designers who were trained in Italy 
+
+1. **[en]** Give me all the designers who were trained in Italy and in France  
+
+
+<!-- END Artists and location -->
+
+<a name="style"/>
+
+## E. Style
+
+1. **[en]** Who is the Revel style name after?
+
+1. **[en]** Give me all the items that have been influenced by oriental fashion. 
+
+1. **[en]** Give me all the items with flowers on them.  
+
+1. **[en]** Give me all the items with hearts and flowers on them
+
+1. **[en]** Give me all the items with purple 
+
+1. **[en]** Who was the introducer of the realistic style in textiles? 
+
+1. **[en]** Give me examples of textile designs that appear in paintings.
+
+
+
+<!-- END style -->
+
+<a name="typeofitems"/>
+
+## E. Type of items
+
+1. **[en]** Give me all the scarves
+
+1. **[en]** Give me all the dresses that have been worn with a petticoat 
+
+1. **[en]** Give examples of textiles that conserve both the fabric and the mise-en-carte  
+
+1. **[en]** When do the first mise-en-carte appeared?
+
+
+<!-- END Type of items -->
+
+<a name="typeofitemsandmaterials"/>
+
+## E. Type of items and materials
+
+1. **[en]** Give me all the ribbons with cotton
+
+1. **[en]** Give me all the dresses with silk, cotton and gold
+
+
+<!-- END Type of items and materials -->
+
+<a name="typeofitemsmaterialsandstyle"/>
+
+## E. Type of items, materials and style
+
+1. **[en]** Give me all the scarves with cotton and with hearts on them
+
+1. **[en]** Give me examples of imitations or revivals of textiles during the 18th century
+
+
+<!-- END Type of items, materials and style -->
+
+
 <a name="typeofitemsandlocation"/>
 
 ## E. Types of items and location
+
+1. **[en]** Give me the religious clothing produced in Spain 
 
 1. **[en]** What textiles belonged to the collector Mariano Fortuny? 
 [query](./13.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj+%3Factor+%3Ftex%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object.%0D%0A+++++%3Fdig+ecrm%3AP129_is_about+%3Fobj+.%0D%0A%0D%0A+++++%3Fact+a+ecrm%3AE39_Actor+.%0D%0A+++++%3Fact+ecrm%3AP1_is_identified_by+%3Factor+.%0D%0A%0D%0A+++++%3Fdig+ecrm%3AP129_is_about+%3Fas+.%0D%0A+++++%3Fas+ecrm%3AP42_assigned+%3Ftex+.%0D%0A%0D%0AFILTER+%28contains%28str%28%3Factor%29%2C+%22Mariano%22%29+%7C%7C+contains%28str%28%3Factor%29%2C+%22Fortuny%22%29+%26%26+contains%28str%28%3Ftex%29%2C+%22text%22%29%29+%0D%0A+++++%0D%0A%7D%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&debug=on) 
 
 
 <!-- END Types of items and location -->
+
+<a name="typeofitemsandtime"/>
+
+## E. Type of items and time
+
+1. **[en]** Give me all the dresses produced during the Victorian era
+
+<!-- END Type of items and time -->
+
+<a name="typeofitemstimeandlocation"/>
+
+## E. Type of items, time and location
+
+1. **[en]** Give me all the clothes produced in Spain during the Renaissance.
+
+1. **[en]** Give me all the scarves that have been produced in England between 1800 and 1850.
+
+<!-- END Type of items, time and location -->
+
+<a name="typeofitemstimelocationandmaterial"/>
+
+## E. Type of items, time, location and material
+
+1. **[en]** Give me all the ribbon involving silver  and produced in Italy during the Renaissance
+
+1. **[en]** Give me those ornamental motifs from classical antiquity that appear in fabrics, mises-en-carte and designs ... Organized by chronology, location, place of origin ... 
+
+<!-- END Type of items, time, location and material -->
+
+<a name="questionsinspanish"/>
+
+## O. Questions in Spanish
+
+1. **[es]** ¿Cuáles son los motivos decorativos más habituales en la Edad Media hispánica?
+
+1. **[es]** ¿Qué tejidos valencianos hay en las colecciones reales españolas?
+
+1. **[es]** ¿Qué tejidos españoles hay en diferentes museos y colecciones?
+
+1. **[es]** Dame ejemplos de piezas en los que se conserva tejido y puesta en carta.
+
+1. **[es]** Dime todos los tejidos que pertenecieron al coleccionista Mariano Fortuny (provenance)
+
+1. **[es]** Dime motivos ornamentales de la antigüedad clásica que aparecen en tejidos, puestas en carta, diseños… Organizados por cronología, ubicación, lugar de origen...
+
+1. **[es]** ¿Quién fue el introductor del estilo realista en tejidos?
+
+1. **[es]** ¿Quién (persona, institución…) es el principal productor francés de tejidos en el XVII?
+
+1. **[es]** ¿Cuándo aparecen los espolinados?
+
+1. **[es]** ¿Cuándo aparecieron las primeras puestas en carta sobre papel milimetrado impreso?
+
+1. **[es]** ¿Qué impresores o grabadores produjeron papel milimetrado para puestas en carta?
+
+1. **[es]** Dame una lista de talleres o fábricas textiles de una ciudad.
+
+1. **[es]** Dime una lista de diseñadores de una ciudad o región durante un periodo.
+
+1. **[es]** Dame ejemplos de diseños textiles que aparecen en pinturas.
+
+1. **[es]** Dame ejemplos de imitaciones, revivals, copias, falsificaciones, … (copias de modelos antiguos hechas mucho tiempo después)
+
+<!-- END questions in Spanish -->
