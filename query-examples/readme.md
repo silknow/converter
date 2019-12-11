@@ -241,8 +241,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 1. **[en]** Give me the religious clothing produced in Spain 
 
-1. **[en]** What textiles belonged to the collector Mariano Fortuny? 
-[query](./13.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj+%3Factor+%3Ftex%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object.%0D%0A+++++%3Fdig+ecrm%3AP129_is_about+%3Fobj+.%0D%0A%0D%0A+++++%3Fact+a+ecrm%3AE39_Actor+.%0D%0A+++++%3Fact+ecrm%3AP1_is_identified_by+%3Factor+.%0D%0A%0D%0A+++++%3Fdig+ecrm%3AP129_is_about+%3Fas+.%0D%0A+++++%3Fas+ecrm%3AP42_assigned+%3Ftex+.%0D%0A%0D%0AFILTER+%28contains%28str%28%3Factor%29%2C+%22Mariano%22%29+%7C%7C+contains%28str%28%3Factor%29%2C+%22Fortuny%22%29+%26%26+contains%28str%28%3Ftex%29%2C+%22text%22%29%29+%0D%0A+++++%0D%0A%7D%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&debug=on) 
+1. **[en]** What textiles belonged to the collector Mariano Fortuny? [query](./13.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj+%3Factor+%3Ftex%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object.%0D%0A+++++%3Fdig+ecrm%3AP129_is_about+%3Fobj+.%0D%0A%0D%0A+++++%3Fact+a+ecrm%3AE39_Actor+.%0D%0A+++++%3Fact+ecrm%3AP1_is_identified_by+%3Factor+.%0D%0A%0D%0A+++++%3Fdig+ecrm%3AP129_is_about+%3Fas+.%0D%0A+++++%3Fas+ecrm%3AP42_assigned+%3Ftex+.%0D%0A%0D%0AFILTER+%28contains%28str%28%3Factor%29%2C+%22Mariano%22%29+%7C%7C+contains%28str%28%3Factor%29%2C+%22Fortuny%22%29+%26%26+contains%28str%28%3Ftex%29%2C+%22text%22%29%29+%0D%0A+++++%0D%0A%7D%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&debug=on) 
 
 
 <!-- END Types of items and location -->
