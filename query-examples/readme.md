@@ -29,7 +29,6 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 ## A. Location
 
-
 1. **[en]** Which items were produced in Spain?   
 [query](./1.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=%0D%0ASELECT+distinct++%3Fobj+%3Fname%0D%0AWHERE+%7B%0D%0A++++++%3Fs+a+ecrm%3AE12_Production+.%0D%0A++++++%3Fs+ecrm%3AP108_has_produced+%3Fobj.%0D%0A+++optional+%7B+++%3Fobj+ecrm%3AP3_has_note+%3Fname+.+%7D%0D%0A%0D%0A+%7B+%3Fs+ecrm%3AP8_took_place_on_or_within+%3Fl%0D%0A+++++%7B+SELECT+%3Fl+SAMPLE%28%3Floc%29+as+%3Fplace%0D%0A++++++++++WHERE+%7B+%3Fl+geonames%3AcountryCode+%3Floc%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fl%29%29%0D%0A+++++++++++%3Fl+geonames%3AcountryCode+%22ES%22++%7D%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
 
@@ -46,7 +45,6 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 [query](./3.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobject%0D%0AWHERE+%7B%0D%0AGRAPH+%3Chttp%3A%2F%2Fdata.silknow.org%2Fmtmad%3E%7B%0D%0A+%0D%0A+++++++++%3Fobject+a+ecrm%3AE22_Man-Made_Object+.+%0D%0A%7D%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
 
 1. **[en]** What Valencian fabrics are located in the Spanish royal collections?
-
 
 1. **[en]** In which museums and collections around the world are Spanish textiles?
 [query](./4.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj+%3Fcollection%0D%0AWHERE+%7B+GRAPH+%3Fcollection+%7B%0D%0A++++++%3Fs+a+ecrm%3AE12_Production+.%0D%0A++++++%3Fs+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A%0D%0A+%7B+%3Fs+ecrm%3AP8_took_place_on_or_within+%3Fl%0D%0A+++++%7B+SELECT+%3Fl+SAMPLE%28%3Floc%29+as+%3Fplace%0D%0A++++++++++WHERE+%7B+%3Fl+geonames%3AcountryCode+%3Floc%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fl%29%29%0D%0A+++++++++++%3Fl+geonames%3AcountryCode+%22ES%22+%7D%0D%0A%7D%7D&format=text%2Fhtml&timeout=0&debug=on)
