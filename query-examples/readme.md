@@ -103,6 +103,17 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 1. **[en]** Which items were produced with silk and silver?  
 [query](./9.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A+%0D%0A%0D%0A%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F628%3E+.+%7D%0D%0A++++++++UNION%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F368%3E+.%7D%0D%0A+%0D%0A+++++++%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
 
+1. **[en]** When does the "a pizzo" design become popular?
+
+1. **[en]** When does the "bizarre" design become popular?
+
+1. **[en]** What is the Blonda?
+
+1. **[en]** What is the Buratto?
+
+1. **[en]** Where does the name of the Batista fabric come from?
+
+
 1. **[en]** Give me the objects that involve at most silk, silver and wool (Note: there is non with these three)
 [query](./10.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=%0D%0ASELECT+distinct+%3Fobj%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A+%0D%0A%0D%0A%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F628%3E%2C+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F368%3E%2C+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F644%3E++.%7D++++++%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
 
@@ -116,8 +127,23 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 ## D. Artists
 
+1. **[en]** Which items have been created by Philippe de la Salle ?  
+
 1. **[en]** Give me all the information you have on Philippe de la Salle!  
 [query](./12.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=select+%3Fs1+as+%3Fc1%2C+%28+bif%3Asearch_excerpt+%28+bif%3Avector+%28+%27PHILIPPE%27%2C+%27SALLE%27%2C+%27LA%27%2C+%27DE%27+%29+%2C+%3Fo1+%29+%29+as+%3Fc2%2C+%3Fsc%2C+%3Frank%2C+%3Fg+where%0D%0A++%7B%0D%0A++++%7B%0D%0A++++++%7B%0D%0A++++++++select+%3Fs1%2C+%28+%3Fsc+*+3e-1+%29+as+%3Fsc%2C+%3Fo1%2C+%28+sql%3Arnk_scale+%28+%3CLONG%3A%3AIRI_RANK%3E+%28+%3Fs1+%29+%29+%29+as+%3Frank%2C+%3Fg+where%0D%0A++++++++%7B%0D%0A++++++++++quad+map+virtrdf%3ADefaultQuadMap%0D%0A++++++++++%7B%0D%0A++++++++++++graph+%3Fg%0D%0A++++++++++++%7B%0D%0A++++++++++++++%3Fs1+%3Fs1textp+%3Fo1+.%0D%0A++++++++++++++%3Fo1+bif%3Acontains+%27+%28+PHILIPPE+AND+SALLE+AND+LA+AND+DE+%29+%27+option+%28+score+%3Fsc+%29+.%0D%0A++++++++++++++%0D%0A++++++++++++%7D%0D%0A+++++++++++%7D%0D%0A+++++++++%7D%0D%0A+++++++order+by+desc+%28+%3Fsc+*+3e-1+%2B+sql%3Arnk_scale+%28+%3CLONG%3A%3AIRI_RANK%3E+%28+%3Fs1+%29+%29+%29+limit+20+offset+0%0D%0A++++++%7D%0D%0A+++++%7D%0D%0A+++%7D&format=text%2Fhtml&timeout=0&debug=on)
+
+1. **[en]** Give me all the items inspired by a work of Giambologna  
+
+1. **[en]** Give me all the items designed by François Boucher  
+
+1. **[en]** Give me all the items designed by Italian artists  
+
+1. **[en]** Are there items designed by French artists in the 17th century?  
+
+1. **[en]** Give all the items for which the designer has been influenced by Philippe de la Salle  
+
+1. **[en]** Who were the printers or engravers that produced graph paper for making mise-en-cartes?  
+
 
 <!-- END Artists -->
 
