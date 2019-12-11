@@ -162,7 +162,6 @@ public class Main implements Runnable {
     Arrays.stream(files)
             .filter(converter::canConvert)
             .sorted()
-            .parallel()
             .forEach(x -> convertFile(x, converter));
 
     Arrays.stream(files)
