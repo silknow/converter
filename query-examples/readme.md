@@ -11,13 +11,14 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 * [F. Artists and time](#artistsandtime)
 * [G. Artists and location](#artistsandlocation)
 * [H. Style](#style)
-* [I. Type of items and materials](#typeofitemsandmaterials)
-* [J. Type of items, materials and style](#typeofitemsmaterialsandstyle)
-* [K. Type of items and location](#typeofitemsandlocation)
-* [L. Type of items and time](#typeofitemsandtime)
-* [M. Type of items, time and location](#typeofitemstimeandlocation)
-* [N. Type of items, time, location and material](#typeofitemstimelocationandmaterial)
-* [O. Questions in Spanish](#questionsinspanish)
+* [I. Type of items](#typeofitems)
+* [J. Type of items and materials](#typeofitemsandmaterials)
+* [K. Type of items, materials and style](#typeofitemsmaterialsandstyle)
+* [L. Type of items and location](#typeofitemsandlocation)
+* [M. Type of items and time](#typeofitemsandtime)
+* [N. Type of items, time and location](#typeofitemstimeandlocation)
+* [O. Type of items, time, location and material](#typeofitemstimelocationandmaterial)
+* [P. Questions in Spanish](#questionsinspanish)
 
 
 
