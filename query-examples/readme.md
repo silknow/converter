@@ -1,4 +1,4 @@
-This folder contains query examples illustrating SILKNOW data available in the [SILKNOW SPARQL Endpoint](http://data.silknow.org/data).
+This folder contains query examples illustrating SILKNOW data available in the [SILKNOW SPARQL Endpoint](http://data.silknow.org/sparql).
 
 Some queries have only a _partial_ answer or no answer at all since the modeling and the publication of data is still a work in progress.
 
