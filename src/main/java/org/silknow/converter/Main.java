@@ -160,9 +160,9 @@ public class Main implements Runnable {
   private void convertFolder(@NotNull File folder, @NotNull Converter converter) {
     File[] files = Objects.requireNonNull(folder.listFiles());
     Arrays.stream(files)
-            .parallel()
             .filter(converter::canConvert)
             .sorted()
+            .parallel()
             .forEach(x -> convertFile(x, converter));
 
     Arrays.stream(files)
