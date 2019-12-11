@@ -1,21 +1,42 @@
-This folder contains query examples illustrating SILKNOW data available in the [SILKNOW SPARQL Endpoint](http://data.silknow.org/data).
+This folder contains query examples illustrating SILKNOW data available in the [SILKNOW SPARQL Endpoint](http://data.silknow.org/sparql).
 
 Some queries have only a _partial_ answer or no answer at all since the modeling and the publication of data is still a work in progress.
 
 ## Table of Contents
 * [A. Location](#location)
 * [B. Time](#time)
-* [C. Materials](#materials)
-* [D. Artists](#artists)
-* [F. Type of items and location](#typeofitemsandlocation)
+* [C. Time and location](#timeandlocation)
+* [D. Materials](#materials)
+* [E. Artists](#artists)
+* [F. Artists and time](#artistsandtime)
+* [G. Artists and location](#artistsandlocation)
+* [H. Style](#style)
+* [I. Type of items](#typeofitems)
+* [J. Type of items and materials](#typeofitemsandmaterials)
+* [K. Type of items, materials and style](#typeofitemsmaterialsandstyle)
+* [L. Type of items and location](#typeofitemsandlocation)
+* [M. Type of items and time](#typeofitemsandtime)
+* [N. Type of items, time and location](#typeofitemstimeandlocation)
+* [O. Type of items, time, location and material](#typeofitemstimelocationandmaterial)
+* [P. Questions in Spanish](#questionsinspanish)
+
+
+
+
+
 
 <a name="location"/>
 
 ## A. Location
 
-
 1. **[en]** Which items were produced in Spain?   
 [query](./1.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=%0D%0ASELECT+distinct++%3Fobj+%3Fname%0D%0AWHERE+%7B%0D%0A++++++%3Fs+a+ecrm%3AE12_Production+.%0D%0A++++++%3Fs+ecrm%3AP108_has_produced+%3Fobj.%0D%0A+++optional+%7B+++%3Fobj+ecrm%3AP3_has_note+%3Fname+.+%7D%0D%0A%0D%0A+%7B+%3Fs+ecrm%3AP8_took_place_on_or_within+%3Fl%0D%0A+++++%7B+SELECT+%3Fl+SAMPLE%28%3Floc%29+as+%3Fplace%0D%0A++++++++++WHERE+%7B+%3Fl+geonames%3AcountryCode+%3Floc%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fl%29%29%0D%0A+++++++++++%3Fl+geonames%3AcountryCode+%22ES%22++%7D%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
+
+1. **[en]** Where were Mudejar-style fabrics produced?
+
+1. **[en]** Where was the production center called Tiraz?
+
+1. **[en]** What was la Fabrique Lyonnaise ?
 
 1. **[en]** Which items have been produced in Italy and are now preserved in France? (Note: "Moves" not well documented)   
 [query](./2.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Ffrom+%3Fto+%3Fobj%0D%0AWHERE+%7B%0D%0A++++++%3Fs+a+ecrm%3AE9_Move+.%0D%0A++++++Optional+%7B%3Fs+ecrm%3AP25_moved+%3Fobj+.%7D%0D%0A+%0D%0A%0D%0A+%7B+%3Fs+ecrm%3AP27_moved_from+%3Fl%0D%0A+++++%7B+SELECT+%3Fl+SAMPLE%28%3Floc%29+as+%3Ffrom%0D%0A++++++++++WHERE+%7B+%3Fl+geonames%3AcountryCode+%3Floc%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fl%29%29%0D%0A+++++++++++%3Fl+geonames%3AcountryCode+%22IT%22%0D%0A+++++++++++%7D%0D%0A%0D%0A%7B+%3Ff+ecrm%3AP26_moved_to+%3Fx%0D%0A+++++%7B+SELECT+%3Fx+SAMPLE%28%3Floc2%29+as+%3Fto%0D%0A++++++++++WHERE+%7B+%3Fx+geonames%3AcountryCode+%3Floc2%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fx%29%29%0D%0A+++++++++++%3Fx+geonames%3AcountryCode+%22FR%22%0D%0A+++++++++++%7D%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
@@ -23,8 +44,13 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 1. **[en]** Give me all the items that are preserved in the Musée des Tissus de Lyon  
 [query](./3.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobject%0D%0AWHERE+%7B%0D%0AGRAPH+%3Chttp%3A%2F%2Fdata.silknow.org%2Fmtmad%3E%7B%0D%0A+%0D%0A+++++++++%3Fobject+a+ecrm%3AE22_Man-Made_Object+.+%0D%0A%7D%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
 
+1. **[en]** What Valencian fabrics are located in the Spanish royal collections?
+
 1. **[en]** In which museums and collections around the world are Spanish textiles?
 [query](./4.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj+%3Fcollection%0D%0AWHERE+%7B+GRAPH+%3Fcollection+%7B%0D%0A++++++%3Fs+a+ecrm%3AE12_Production+.%0D%0A++++++%3Fs+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A%0D%0A+%7B+%3Fs+ecrm%3AP8_took_place_on_or_within+%3Fl%0D%0A+++++%7B+SELECT+%3Fl+SAMPLE%28%3Floc%29+as+%3Fplace%0D%0A++++++++++WHERE+%7B+%3Fl+geonames%3AcountryCode+%3Floc%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fl%29%29%0D%0A+++++++++++%3Fl+geonames%3AcountryCode+%22ES%22+%7D%0D%0A%7D%7D&format=text%2Fhtml&timeout=0&debug=on)
+
+1. **[en]** Give me a list of textile factories in a Florence 
+
 
 <!-- END Location -->
 
@@ -34,6 +60,10 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 1. **[en]** Which items were produced during the 16th century?
 [query](./5.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj+%3Ftime%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprod+.%0D%0A+++++%3Fprod+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A+%0D%0A%0D%0A%0D%0A%3Fprod+ecrm%3AP4_has_time-span+%3Ft+.%0D%0A%3Ft+ecrm%3AP78_is_identified_by+%3Ftime.%0D%0A%0D%0A%0D%0AFILTER+contains%28str%28%3Ftime%29%2C+%2216%22%29%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
+
+1. **[en]** What are the common decorative elements in 16th century fabrics?
+
+1. **[en]** Which fabric became popular in Italy in the fifteenth century?
 
 1. **[en]** What kinds of fabrics / weaving techniques / designs were most frequent in 18th-century France? Please give me a list of the top 5 (or 10, 15…) occurrences in a particular field.
 [query](./6.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+count%28distinct+%3Fobj%29+as+%3Fcount++%3Fmaterial%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A+%0D%0A%7B+%3Fprd+ecrm%3AP126_employed+%3Fx%0D%0A+++++++%7B+SELECT+%3Fx+SAMPLE%28%3Flab%29+as+%3Fmaterial%0D%0A+++++++++WHERE+%7B+%3Fx+skos%3AprefLabel+%3Flab+.+%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fx%29%29+%7D%0D%0A+++++++UNION%0D%0A+++++++%7B+%3Fprd+ecrm%3AP126_employed+%3Fmaterial+.%0D%0A+++++++FILTER+%28isIRI%28%3Fmaterial%29+%3D+false%29%0D%0A++++++%7D%0D%0A%0D%0A%7B+%3Fprd+ecrm%3AP8_took_place_on_or_within+%3Fl%0D%0A+++++%7B+SELECT+%3Fl+SAMPLE%28%3Floc%29+as+%3Fplace%0D%0A++++++++++WHERE+%7B+%3Fl+geonames%3AcountryCode+%3Floc%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fl%29%29%0D%0A+++++++++++%3Fl+geonames%3AcountryCode+%22FR%22+%7D%0D%0A%0D%0A%3Fprd+ecrm%3AP4_has_time-span+%3Ft+.%0D%0A%3Ft+ecrm%3AP78_is_identified_by+%3Ftime.%0D%0A%0D%0A%0D%0AFILTER+contains%28str%28%3Ftime%29%2C+%2218%22%29%0D%0A%7D%0D%0AGROUP+BY+%3Fmaterial%0D%0AORDER+BY+DESC+%28%3Fcount%29&format=text%2Fhtml&timeout=0&debug=on)
@@ -47,12 +77,41 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <!-- END Time -->
 
+
+<a name="timeandlocation"/>
+
+## C. Time and location
+
+1. **[en]** Which items were produced in France during the 18th century?
+
+1. **[en]** Give me all the items that have been produced after 1750 in France.
+
+1. **[en]** Give me all the items that are preserved in the Musée des Tissus de Lyon, and that have been produced between 1650 and 1750.
+
+
+1. **[en]** Who (person, institution ...) was the main textile French producer during the XVII?
+
+
+<!-- END Timeandlocation -->
+
+
 <a name="materials"/>
 
-## C. Materials
+## D. Materials
 
 1. **[en]** Which items were produced with silk and silver?  
 [query](./9.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A+%0D%0A%0D%0A%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F628%3E+.+%7D%0D%0A++++++++UNION%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F368%3E+.%7D%0D%0A+%0D%0A+++++++%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
+
+1. **[en]** When does the "a pizzo" design become popular?
+
+1. **[en]** When does the "bizarre" design become popular?
+
+1. **[en]** What is the Blonda?
+
+1. **[en]** What is the Buratto?
+
+1. **[en]** Where does the name of the Batista fabric come from?
+
 
 1. **[en]** Give me the objects that involve at most silk, silver and wool (Note: there is non with these three)
 [query](./10.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=%0D%0ASELECT+distinct+%3Fobj%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A+%0D%0A%0D%0A%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F628%3E%2C+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F368%3E%2C+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F644%3E++.%7D++++++%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
@@ -65,19 +124,185 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <a name="artists"/>
 
-## D. Artists
+## E. Artists
+
+1. **[en]** Which items have been created by Philippe de la Salle ?  
 
 1. **[en]** Give me all the information you have on Philippe de la Salle!  
 [query](./12.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=select+%3Fs1+as+%3Fc1%2C+%28+bif%3Asearch_excerpt+%28+bif%3Avector+%28+%27PHILIPPE%27%2C+%27SALLE%27%2C+%27LA%27%2C+%27DE%27+%29+%2C+%3Fo1+%29+%29+as+%3Fc2%2C+%3Fsc%2C+%3Frank%2C+%3Fg+where%0D%0A++%7B%0D%0A++++%7B%0D%0A++++++%7B%0D%0A++++++++select+%3Fs1%2C+%28+%3Fsc+*+3e-1+%29+as+%3Fsc%2C+%3Fo1%2C+%28+sql%3Arnk_scale+%28+%3CLONG%3A%3AIRI_RANK%3E+%28+%3Fs1+%29+%29+%29+as+%3Frank%2C+%3Fg+where%0D%0A++++++++%7B%0D%0A++++++++++quad+map+virtrdf%3ADefaultQuadMap%0D%0A++++++++++%7B%0D%0A++++++++++++graph+%3Fg%0D%0A++++++++++++%7B%0D%0A++++++++++++++%3Fs1+%3Fs1textp+%3Fo1+.%0D%0A++++++++++++++%3Fo1+bif%3Acontains+%27+%28+PHILIPPE+AND+SALLE+AND+LA+AND+DE+%29+%27+option+%28+score+%3Fsc+%29+.%0D%0A++++++++++++++%0D%0A++++++++++++%7D%0D%0A+++++++++++%7D%0D%0A+++++++++%7D%0D%0A+++++++order+by+desc+%28+%3Fsc+*+3e-1+%2B+sql%3Arnk_scale+%28+%3CLONG%3A%3AIRI_RANK%3E+%28+%3Fs1+%29+%29+%29+limit+20+offset+0%0D%0A++++++%7D%0D%0A+++++%7D%0D%0A+++%7D&format=text%2Fhtml&timeout=0&debug=on)
 
+1. **[en]** Give me all the items inspired by a work of Giambologna  
+
+1. **[en]** Give me all the items designed by François Boucher  
+
+1. **[en]** Give me all the items designed by Italian artists  
+
+1. **[en]** Are there items designed by French artists in the 17th century?  
+
+1. **[en]** Give all the items for which the designer has been influenced by Philippe de la Salle  
+
+1. **[en]** Who were the printers or engravers that produced graph paper for making mise-en-cartes?  
+
+
 <!-- END Artists -->
+
+
+<a name="artistsandtime"/>
+
+## F. Artists and time
+
+1. **[en]** Give me all the items designed by François Bouchez in the 18th century  
+
+1. **[en]** Give me all the items created by Philippe de la Salle in the last 5 years of his life.  
+
+1. **[en]** Give me a list of designers from a Valencia during the 19th century  
+
+
+<!-- END Artists and time -->
+
+<a name="artistsandlocation"/>
+
+## G. Artists and location
+
+1. **[en]** Give me all the designers who were born in England 
+
+1. **[en]** Give me all the designers who were trained in Italy 
+
+1. **[en]** Give me all the designers who were trained in Italy and in France  
+
+
+<!-- END Artists and location -->
+
+<a name="style"/>
+
+## H. Style
+
+1. **[en]** Who is the Revel style name after?
+
+1. **[en]** Give me all the items that have been influenced by oriental fashion. 
+
+1. **[en]** Give me all the items with flowers on them.  
+
+1. **[en]** Give me all the items with hearts and flowers on them
+
+1. **[en]** Give me all the items with purple 
+
+1. **[en]** Who was the introducer of the realistic style in textiles? 
+
+1. **[en]** Give me examples of textile designs that appear in paintings.
+
+
+
+<!-- END style -->
+
+<a name="typeofitems"/>
+
+## I. Type of items
+
+1. **[en]** Give me all the scarves
+
+1. **[en]** Give me all the dresses that have been worn with a petticoat 
+
+1. **[en]** Give examples of textiles that conserve both the fabric and the mise-en-carte  
+
+1. **[en]** When do the first mise-en-carte appeared?
+
+
+<!-- END Type of items -->
+
+<a name="typeofitemsandmaterials"/>
+
+## J. Type of items and materials
+
+1. **[en]** Give me all the ribbons with cotton
+
+1. **[en]** Give me all the dresses with silk, cotton and gold
+
+
+<!-- END Type of items and materials -->
+
+<a name="typeofitemsmaterialsandstyle"/>
+
+## K. Type of items, materials and style
+
+1. **[en]** Give me all the scarves with cotton and with hearts on them
+
+1. **[en]** Give me examples of imitations or revivals of textiles during the 18th century
+
+
+<!-- END Type of items, materials and style -->
+
 
 <a name="typeofitemsandlocation"/>
 
-## E. Types of items and location
+## L. Types of items and location
 
-1. **[en]** What textiles belonged to the collector Mariano Fortuny? 
-[query](./13.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj+%3Factor+%3Ftex%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object.%0D%0A+++++%3Fdig+ecrm%3AP129_is_about+%3Fobj+.%0D%0A%0D%0A+++++%3Fact+a+ecrm%3AE39_Actor+.%0D%0A+++++%3Fact+ecrm%3AP1_is_identified_by+%3Factor+.%0D%0A%0D%0A+++++%3Fdig+ecrm%3AP129_is_about+%3Fas+.%0D%0A+++++%3Fas+ecrm%3AP42_assigned+%3Ftex+.%0D%0A%0D%0AFILTER+%28contains%28str%28%3Factor%29%2C+%22Mariano%22%29+%7C%7C+contains%28str%28%3Factor%29%2C+%22Fortuny%22%29+%26%26+contains%28str%28%3Ftex%29%2C+%22text%22%29%29+%0D%0A+++++%0D%0A%7D%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&debug=on) 
+1. **[en]** Give me the religious clothing produced in Spain 
 
+1. **[en]** What textiles belonged to the collector Mariano Fortuny? [query](./13.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj+%3Factor+%3Ftex%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object.%0D%0A+++++%3Fdig+ecrm%3AP129_is_about+%3Fobj+.%0D%0A%0D%0A+++++%3Fact+a+ecrm%3AE39_Actor+.%0D%0A+++++%3Fact+ecrm%3AP1_is_identified_by+%3Factor+.%0D%0A%0D%0A+++++%3Fdig+ecrm%3AP129_is_about+%3Fas+.%0D%0A+++++%3Fas+ecrm%3AP42_assigned+%3Ftex+.%0D%0A%0D%0AFILTER+%28contains%28str%28%3Factor%29%2C+%22Mariano%22%29+%7C%7C+contains%28str%28%3Factor%29%2C+%22Fortuny%22%29+%26%26+contains%28str%28%3Ftex%29%2C+%22text%22%29%29+%0D%0A+++++%0D%0A%7D%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&debug=on) 
 
 <!-- END Types of items and location -->
+
+<a name="typeofitemsandtime"/>
+
+## M. Type of items and time
+
+1. **[en]** Give me all the dresses produced during the Victorian era
+
+<!-- END Type of items and time -->
+
+<a name="typeofitemstimeandlocation"/>
+
+## N. Type of items, time and location
+
+1. **[en]** Give me all the clothes produced in Spain during the Renaissance.
+
+1. **[en]** Give me all the scarves that have been produced in England between 1800 and 1850.
+
+<!-- END Type of items, time and location -->
+
+<a name="typeofitemstimelocationandmaterial"/>
+
+## O. Type of items, time, location and material
+
+1. **[en]** Give me all the ribbon involving silver  and produced in Italy during the Renaissance
+
+1. **[en]** Give me those ornamental motifs from classical antiquity that appear in fabrics, mises-en-carte and designs ... Organized by chronology, location, place of origin ... 
+
+<!-- END Type of items, time, location and material -->
+
+<a name="questionsinspanish"/>
+
+## P. Questions in Spanish
+
+1. **[es]** ¿Cuáles son los motivos decorativos más habituales en la Edad Media hispánica?
+
+1. **[es]** ¿Qué tejidos valencianos hay en las colecciones reales españolas?
+
+1. **[es]** ¿Qué tejidos españoles hay en diferentes museos y colecciones?
+
+1. **[es]** Dame ejemplos de piezas en los que se conserva tejido y puesta en carta.
+
+1. **[es]** Dime todos los tejidos que pertenecieron al coleccionista Mariano Fortuny (provenance)
+
+1. **[es]** Dime motivos ornamentales de la antigüedad clásica que aparecen en tejidos, puestas en carta, diseños… Organizados por cronología, ubicación, lugar de origen...
+
+1. **[es]** ¿Quién fue el introductor del estilo realista en tejidos?
+
+1. **[es]** ¿Quién (persona, institución…) es el principal productor francés de tejidos en el XVII?
+
+1. **[es]** ¿Cuándo aparecen los espolinados?
+
+1. **[es]** ¿Cuándo aparecieron las primeras puestas en carta sobre papel milimetrado impreso?
+
+1. **[es]** ¿Qué impresores o grabadores produjeron papel milimetrado para puestas en carta?
+
+1. **[es]** Dame una lista de talleres o fábricas textiles de una ciudad.
+
+1. **[es]** Dime una lista de diseñadores de una ciudad o región durante un periodo.
+
+1. **[es]** Dame ejemplos de diseños textiles que aparecen en pinturas.
+
+1. **[es]** Dame ejemplos de imitaciones, revivals, copias, falsificaciones, … (copias de modelos antiguos hechas mucho tiempo después)
+
+<!-- END questions in Spanish -->
