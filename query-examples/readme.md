@@ -6,9 +6,23 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 * [A. Location](#location)
 * [B. Time](#time)
 * [C. Time and location](#timeandlocation)
-* [C. Materials](#materials)
-* [D. Artists](#artists)
-* [F. Type of items and location](#typeofitemsandlocation)
+* [D. Materials](#materials)
+* [E. Artists](#artists)
+* [F. Artists and time](#artistsandtime)
+* [G. Artists and location](#artistsandlocation)
+* [H. Style](#style)
+* [I. Type of items and materials](#typeofitemsandmaterials)
+* [J. Type of items, materials and style](#typeofitemsmaterialsandstyle)
+* [K. Type of items and location](#typeofitemsandlocation)
+* [L. Type of items and time](#typeofitemsandtime)
+* [M. Type of items, time and location](#typeofitemstimeandlocation)
+* [N. Type of items, time, location and material](#typeofitemstimelocationandmaterial)
+* [O. Questions in Spanish](#questionsinspanish)
+
+
+
+
+
 
 <a name="location"/>
 
