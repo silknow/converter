@@ -125,7 +125,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <a name="artists"/>
 
-## D. Artists
+## E. Artists
 
 1. **[en]** Which items have been created by Philippe de la Salle ?  
 
@@ -150,7 +150,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <a name="artistsandtime"/>
 
-## E. Artists and time
+## F. Artists and time
 
 1. **[en]** Give me all the items designed by François Bouchez in the 18th century  
 
@@ -163,7 +163,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <a name="artistsandlocation"/>
 
-## E. Artists and location
+## G. Artists and location
 
 1. **[en]** Give me all the designers who were born in England 
 
@@ -176,7 +176,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <a name="style"/>
 
-## E. Style
+## H. Style
 
 1. **[en]** Who is the Revel style name after?
 
@@ -198,7 +198,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <a name="typeofitems"/>
 
-## E. Type of items
+## I. Type of items
 
 1. **[en]** Give me all the scarves
 
@@ -213,7 +213,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <a name="typeofitemsandmaterials"/>
 
-## E. Type of items and materials
+## J. Type of items and materials
 
 1. **[en]** Give me all the ribbons with cotton
 
@@ -224,7 +224,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <a name="typeofitemsmaterialsandstyle"/>
 
-## E. Type of items, materials and style
+## K. Type of items, materials and style
 
 1. **[en]** Give me all the scarves with cotton and with hearts on them
 
@@ -236,7 +236,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <a name="typeofitemsandlocation"/>
 
-## E. Types of items and location
+## L. Types of items and location
 
 1. **[en]** Give me the religious clothing produced in Spain 
 
@@ -248,7 +248,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <a name="typeofitemsandtime"/>
 
-## E. Type of items and time
+## M. Type of items and time
 
 1. **[en]** Give me all the dresses produced during the Victorian era
 
@@ -256,7 +256,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <a name="typeofitemstimeandlocation"/>
 
-## E. Type of items, time and location
+## N. Type of items, time and location
 
 1. **[en]** Give me all the clothes produced in Spain during the Renaissance.
 
@@ -266,7 +266,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <a name="typeofitemstimelocationandmaterial"/>
 
-## E. Type of items, time, location and material
+## O. Type of items, time, location and material
 
 1. **[en]** Give me all the ribbon involving silver  and produced in Italy during the Renaissance
 
@@ -276,7 +276,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 <a name="questionsinspanish"/>
 
-## O. Questions in Spanish
+## P. Questions in Spanish
 
 1. **[es]** ¿Cuáles son los motivos decorativos más habituales en la Edad Media hispánica?
 
