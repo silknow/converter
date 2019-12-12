@@ -41,6 +41,9 @@ public class Place extends Entity {
     // if it is a Demonym, I convert it to a place
     name = Place.fromDemonym(name);
 
+    // final trim before searching
+    name = name.trim();
+
     Toponym tp = GeoNames.query(name);
     if (tp != null) {
       GeoNames.downloadRdf(tp.getGeoNameId());
