@@ -38,29 +38,19 @@ public class Image extends Entity {
     return image;
   }
 
+  // TODO generalise the following 2 methods (or delete for in-converter solution, see MET converted)
   public static Image CERfromCrawledJSON(@NotNull CrawledJSONImages img) {
-    Image image;
-    if (img.hasId()) image = new Image(img.getId());
-    else image = new Image();
+    Image image = fromCrawledJSON(img);
 
-
-    image.setContentUrl(img.getUrl());
     image.setCERorMTMADUrl("http://silknow.org/silknow/media/ceres-mcu/" + img.getlocalFilename());
-
     return image;
   }
 
 
-
   public static Image MTMADfromCrawledJSON(@NotNull CrawledJSONImages img) {
-    Image image;
-    if (img.hasId()) image = new Image(img.getId());
-    else image = new Image();
+    Image image = fromCrawledJSON(img);
 
-
-    image.setContentUrl(img.getUrl());
-    image.setCERorMTMADUrl("http://silknow.org/silknow/media/mtmad/" + img.getlocalFilename());
-
+    image.setCERorMTMADUrl("http://silknow.org/silknow/media/ceres-mcu/" + img.getlocalFilename());
     return image;
   }
 
@@ -68,7 +58,6 @@ public class Image extends Entity {
   public String getContentUrl() {
     return this.resource.getProperty(Schema.contentUrl).getObject().toString();
   }
-
 
 
 }

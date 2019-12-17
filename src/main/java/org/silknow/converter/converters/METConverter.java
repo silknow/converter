@@ -55,32 +55,32 @@ public class METConverter extends Converter {
     linkToRecord(obj.addComplexIdentifier(regNum, "Accession Number:"));
     obj.addTitle(s.getMulti("title").findFirst().orElse(null));
 
-   // Image img = new Image();
-   // img.setContentUrl(s.get("image"));
-   // img.setContentUrl("http://silknow.org/silknow/media/met-museum/" + s.get("image").substring(s.get("image").lastIndexOf('/') + 1));
-   // obj.add(img);
+    // Image img = new Image();
+    // img.setContentUrl(s.get("image"));
+    // img.setContentUrl("http://silknow.org/silknow/media/met-museum/" + s.get("image").substring(s.get("image").lastIndexOf('/') + 1));
+    // obj.add(img);
 
 
-   // Image rimg = new Image();
-   // rimg.setContentUrl(s.get("regularImage"));
-   // rimg.setContentUrl("http://silknow.org/silknow/media/met-museum/" + s.get("regularImage").substring(s.get("regularImage").lastIndexOf('/') + 1));
-   // obj.add(rimg);
+    // Image rimg = new Image();
+    // rimg.setContentUrl(s.get("regularImage"));
+    // rimg.setContentUrl("http://silknow.org/silknow/media/met-museum/" + s.get("regularImage").substring(s.get("regularImage").lastIndexOf('/') + 1));
+    // obj.add(rimg);
 
 
-   // Image limg = new Image();
-   // limg.setContentUrl(s.get("largeImage"));
-   // limg.setContentUrl("http://silknow.org/silknow/media/met-museum/" + s.get("largeImage").substring(s.get("largeImage").lastIndexOf('/') + 1));
-   // obj.add(limg);
+    // Image limg = new Image();
+    // limg.setContentUrl(s.get("largeImage"));
+    // limg.setContentUrl("http://silknow.org/silknow/media/met-museum/" + s.get("largeImage").substring(s.get("largeImage").lastIndexOf('/') + 1));
+    // obj.add(limg);
 
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
             .forEach(image -> {
-              image.setContentUrl("http://silknow.org/silknow/media/met-museum/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
+              String filename = image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1);
+              if (filename.isEmpty()) return; // workaround for issue #38
+              image.setContentUrl("http://silknow.org/silknow/media/met-museum/" + filename);
               this.linkToRecord(image);
             });
-
-
 
 
     Production prod = new Production(regNum);

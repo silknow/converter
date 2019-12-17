@@ -53,7 +53,6 @@ public class CERConverter extends Converter {
     obj.addTitle(s.getMulti("Título").findFirst().orElse(null));
 
 
-
     Production prod = new Production(regNum);
     prod.add(obj);
 
@@ -71,8 +70,7 @@ public class CERConverter extends Converter {
             .peek(obj::add)
             .forEach(this::linkToRecord);
 
-
-              String dim = s.getMulti("Dimensiones").findFirst().orElse(null);
+    String dim = s.getMulti("Dimensiones").findFirst().orElse(null);
     if (dim != null) {
       Matcher matcher = DIMENSION_PATTERN.matcher(dim);
       if (matcher.find()) {
@@ -89,7 +87,7 @@ public class CERConverter extends Converter {
 
     linkToRecord(obj.addObservation(s.get("Descripción"), "Descripción", mainLang));
     linkToRecord(obj.addObservation(s.get("Objeto/Documento"), "Objeto/Documento", mainLang));
-    linkToRecord(obj.addObservation(s.get("Clasificación Razonada"),"Clasificación Razonada", mainLang));
+    linkToRecord(obj.addObservation(s.get("Clasificación Razonada"), "Clasificación Razonada", mainLang));
 
 
     LegalBody museum = null;
@@ -97,8 +95,6 @@ public class CERConverter extends Converter {
       museum = new LegalBody(museumName);
 
     Acquisition acquisition = new Acquisition(regNum);
-
-
 
 
     Transfer transfer = new Transfer(regNum);
