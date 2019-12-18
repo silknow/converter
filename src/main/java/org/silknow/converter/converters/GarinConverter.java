@@ -2,20 +2,33 @@ package org.silknow.converter.converters;
 
 import org.apache.jena.rdf.model.Model;
 import org.silknow.converter.entities.*;
+import org.silknow.converter.ontologies.CIDOC;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class GarinConverter extends Converter {
+  private final static String MEDIA_BASE = "http://silknow.org/silknow/media/garin/";
+  private final static Pattern ANV_REV = Pattern.compile("(ANV|REV|DET)");
+  public static final Map<String, String> ANV_REV_TABLE;
+
+  static {
+    Hashtable<String, String> tmp = new Hashtable<>();
+    tmp.put("ANV", "anverso");
+    tmp.put("REV", "reverso");
+    tmp.put("DET", "detail");
+    ANV_REV_TABLE = Collections.unmodifiableMap(tmp);
+  }
+
+
   @Override
   public boolean canConvert(File file) {
     return isExcel(file);
@@ -46,7 +59,7 @@ public class GarinConverter extends Converter {
     // Create the objects of the graph
     logger.trace("creating objects");
     if (!file.getName().contains(" "))
-       id = file.getName().replace(".xls","");
+      id = file.getName().replace(".xls", "");
     else id = null;
     if (id == null)
       return null;
@@ -65,8 +78,8 @@ public class GarinConverter extends Converter {
     linkToRecord(obj.addComplexIdentifier(id, "Register number", owner));
     linkToRecord(obj.addClassification(s.get("Objecto"), "Domain", "en", GARIN));
     linkToRecord(obj.addClassification(s.get("Tipología"), "Denomination", "en", owner));
-    linkToRecord(obj.addObservation(s.get("Descripción"),  "Descripción", mainLang));
-    linkToRecord(obj.addObservation(s.get("Descripción técnica"), "Descripción técnica" , mainLang));
+    linkToRecord(obj.addObservation(s.get("Descripción"), "Descripción", mainLang));
+    linkToRecord(obj.addObservation(s.get("Descripción técnica"), "Descripción técnica", mainLang));
 
     try {
       linkToRecord(obj.addMeasure(s.get("Medidas")));
@@ -95,8 +108,6 @@ public class GarinConverter extends Converter {
     }
 
 
-
-
     Move move = new Move(id);
     move.of(obj).from("chalet garin").to(s.get("Ubicación"));
 
@@ -110,66 +121,33 @@ public class GarinConverter extends Converter {
     prod.addPlace("chalet garin");
 
 
+    try {
+      Path configFilePath = FileSystems.getDefault().getPath(file.getParent());
+      Stream<Path> fileWithName = Files.walk(configFilePath);
 
+      List<String> filenamelist = fileWithName
+              .filter(f -> f.getFileName().toString().matches("^" + id.replaceAll("[. ]", "") + "[ .].+$"))
+              .filter(f -> !f.toString().endsWith("xls"))
+              .map(Path::getFileName)
+              .map(Path::toString)
+              .map(x -> x.replaceAll(" +", "_")) // singe/double space to single underscore
+              .map(x -> x.replaceAll("(?i)\\.jpg$", ".jpg")) // replace uppercase .JPG
+              .collect(Collectors.toList());
 
-   try {
-       Path configFilePath = FileSystems.getDefault().getPath(file.getParent());
-       Stream<Path> fileWithName = Files.walk(configFilePath);
-       List<String> filenamelist;
-       {
+      for (String name : filenamelist) {
+        Matcher matcher = ANV_REV.matcher(name); // search for anverso/reverso
 
-           filenamelist = fileWithName
-                   .filter(f -> f.getFileName().toString().startsWith(id.replaceAll("[. ]", "")+" ") || f.getFileName().toString().startsWith(id.replaceAll("[. ]", "")+"."))
-                   .filter(f -> !f.toString().endsWith("xls"))
-                   .map(Path::getFileName)
-                   .map(Path::toString)
-                   .map(x -> x.replace(".jpg",""))
-                   .collect(Collectors.toList());
-           System.out.println(filenamelist);
+        Image img = new Image();
+        img.setContentUrl(MEDIA_BASE + name);
 
-       }
+        if (matcher.find())
+          img.addProperty(CIDOC.P2_has_type, ANV_REV_TABLE.get(matcher.group(1)));
 
-       Set<String> fileset = new LinkedHashSet<>();
-       for (String str : filenamelist) {
-           String value = str;
-           // Iterate as long as you can't add the value indicating that we have
-           // already the value in the set
-           for (int i = 1; !fileset.add(value); i++) {
-               value = str + i;
-           }
-       }
-
-       for (String name : fileset) {
-           System.out.println(name);
-
-           //todo ANV REV then ...
-
-           Image img = new Image();
-           img.setContentUrl("http://silknow.org/silknow/media/garin/" + name.toString().replace(" ", "_") + ".jpg");
-           obj.add(img);
-       }
-   } catch (IOException e) {
-     logger.error(e.getLocalizedMessage());
-   }
-
-
-    //int imgCount = 0;
-    //for (byte[] x : s.getImages()) {
-      //Image img = new Image(id + imgCount++);
-      //String imgName = id.replaceAll(" ", "_") + imgCount + ".jpg";
-
-      //try {
-        //OutputStream out = new FileOutputStream(Main.outputFolder + "/img/" + imgName);
-        //out.write(x);
-        //out.close();
-        //img.setContentUrl("http://silknow.org/silknow/media/garin/" + imgName);
-      //} catch (IOException e) {
-        //logger.error(e.getLocalizedMessage());
-      //}
-
-      //obj.add(img);
-      //linkToRecord(img);
-    //}
+        obj.add(img);
+      }
+    } catch (IOException e) {
+      logger.error(e.getLocalizedMessage());
+    }
 
     for (String key : Arrays.asList("Anverso", "Reverso")) {
       String section = s.get(key);
@@ -180,7 +158,7 @@ public class GarinConverter extends Converter {
     linkToRecord(obj);
     linkToRecord(move);
     linkToRecord(prod);
-    linkToRecord(owner);
+    if (owner != null) linkToRecord(owner);
     linkToRecord(acquisition);
     linkToRecord(conditionAssessment);
     return this.model;
