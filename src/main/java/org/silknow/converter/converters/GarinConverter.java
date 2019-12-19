@@ -22,8 +22,8 @@ public class GarinConverter extends Converter {
 
   static {
     Hashtable<String, String> tmp = new Hashtable<>();
-    tmp.put("ANV", "anverso");
-    tmp.put("REV", "reverso");
+    tmp.put("ANV", "recto"); // anverso
+    tmp.put("REV", "verso"); // reverso
     tmp.put("DET", "detail");
     ANV_REV_TABLE = Collections.unmodifiableMap(tmp);
   }
