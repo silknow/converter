@@ -90,7 +90,6 @@ public class CERConverter extends Converter {
     linkToRecord(obj.addObservation(s.get("Objeto/Documento"), "Objeto/Documento", mainLang));
     linkToRecord(obj.addObservation(s.get("Clasificación Razonada"), "Clasificación Razonada", mainLang));
 
-
     LegalBody museum = null;
     if (museumName != null)
       museum = new LegalBody(museumName);

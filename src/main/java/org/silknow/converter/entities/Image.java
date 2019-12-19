@@ -1,6 +1,7 @@
 package org.silknow.converter.entities;
 
 import org.jetbrains.annotations.NotNull;
+import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.commons.CrawledJSONImages;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.Schema;
@@ -20,6 +21,12 @@ public class Image extends Entity {
     super();
     this.resource = model.createResource();
     this.setClass(CIDOC.E38_Image);
+  }
+
+  public void generateUri(String id, int imgCount) {
+    // this method is called if the img has no identifier and need one uri
+    String seed = id + "$$$" + imgCount; // the $$$ is there for avoiding collision of different-sized seeds
+    this.setUri(ConstructURI.build(this.source, "Image", seed));
   }
 
   public void setContentUrl(String url) {

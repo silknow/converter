@@ -63,7 +63,7 @@ public abstract class Entity {
   }
 
   protected void setUri(String uri) {
-    if (this.uri != null && uri.equals(this.uri)) return;
+    if (uri.equals(this.uri)) return;
 
     this.uri = uri;
 

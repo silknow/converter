@@ -34,7 +34,7 @@ public class ManMade_Object extends Entity {
   }
 
   public ManMade_Object add(Image img) {
-    if (img.hasNullUri()) img.setUri(this.getUri() + "/image/" + ++imgCount);
+    if (img.hasNullUri()) img.generateUri(this.id, ++imgCount);
     this.addProperty(CIDOC.P138i_has_representation, img);
 
     return this;

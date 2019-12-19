@@ -209,8 +209,8 @@ public class JocondeConverter extends Converter {
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(copyphoto::applyTo)
-            .peek(obj::add)
             .peek(image -> image.addInternalUrl("joconde"))
+            .peek(obj::add)
             .forEach(this::linkToRecord);
 
 
