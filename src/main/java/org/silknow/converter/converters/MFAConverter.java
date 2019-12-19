@@ -54,11 +54,8 @@ public class MFAConverter extends Converter {
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
-            .forEach(image -> {
-              image.setContentUrl("http://silknow.org/silknow/media/mfa-boston/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
-              this.linkToRecord(image);
-            });
-
+            .peek(image -> image.addInternalUrl("mfa-boston"))
+            .forEach(this::linkToRecord);
 
     Production prod = new Production(regNum);
     prod.add(obj);
@@ -69,17 +66,10 @@ public class MFAConverter extends Converter {
       prod.addTimeAppellation(teas[1]);
     }
 
-
-
-
-
-
     s.getMulti("mediumOrTechnique").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("classifications")
             .map(x -> obj.addClassification(x, "Classifications", mainLang))
             .forEach(this::linkToRecord);
-
-
 
     String dim = s.get("dimensions");
     if (dim != null) {
@@ -93,11 +83,9 @@ public class MFAConverter extends Converter {
     linkToRecord(obj.addObservation(s.get("description"), "Description", mainLang));
 
 
-
-
-    LegalBody museum = null;
-    if (museumName != null)
-      museum = new LegalBody(museumName);
+    LegalBody museum = null; // FIXME ?
+//    if (museumName != null)
+//      museum = new LegalBody(museumName);
 
 
     Acquisition acquisition = new Acquisition(regNum);

@@ -52,61 +52,44 @@ public class MTMADConverter extends Converter {
     linkToRecord(obj.addComplexIdentifier(regNum, "recordId"));
     obj.addTitle(s.getMulti("title").findFirst().orElse(null));
 
-    s.getImages().map(Image::MTMADfromCrawledJSON)
+    s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
+            .peek(image -> image.addInternalUrl("mtmad"))
             .forEach(this::linkToRecord);
 
     Production prod = new Production(regNum);
     prod.add(obj);
 
     String[] details = s.getMulti("details").toArray(String[]::new);
-    for(int i = 0; i < details.length; i++)
-    {
-      if (details[i].startsWith("H.")) {
-        String dim = details[i];
-        if (dim != null) {
-          Matcher matcher = DIMENSION_PATTERN.matcher(dim);
-          if (matcher.find()) {
-            linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
-          }
-        }
-
+    for (String detail : details) {
+      if (detail.startsWith("H.")) {
+        Matcher matcher = DIMENSION_PATTERN.matcher(detail);
+        if (matcher.find())
+          linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
       }
-      if (details[i].startsWith("©")) {
+      if (detail.startsWith("©")) {
         InformationObject bio = new InformationObject(regNum + "i");
         bio.setType("Forme de la citation de la notice", mainLang);
         bio.isAbout(obj);
-        bio.addNote(details[i]);
+        bio.addNote(detail);
         linkToRecord(bio);
       }
     }
-    //linkToRecord(obj.addObservation(details[0], "Short description","en"));
-
-
     linkToRecord(obj.addObservation(s.getMulti("Description").findFirst().orElse(null), "Description", mainLang));
 
-    //String acquisitionFrom = s.getMulti("Credit Line:").findFirst().orElse(null);
-    //String acquisitionType = s.getMulti("Acquisition/dépôt:").findFirst().orElse(null);
     LegalBody museum = null;
 
     Acquisition acquisition = new Acquisition(regNum);
-    //acquisition.transfer(acquisitionFrom, obj, museum);
-    //acquisition.setType(acquisitionType);
 
 
     Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(museum);
 
-    //obj.addSubject(s.getMulti("Iconografia").findFirst().orElse(null));
-
-
     if (s.get("Bibliographie :") != null) {
       InformationObject bio = new InformationObject(regNum + "b");
       bio.setType("Bibliographie", mainLang);
       bio.isAbout(obj);
-      //bio.addNote(s.getMulti("Bibliographie").findFirst().orElse(null));
-      bio.addNote(s.get("Bibliographie :"),mainLang);
-      //s.getMulti("Bibliographie").forEach(note -> bio.addNote(note, mainLang));
+      bio.addNote(s.get("Bibliographie :"), mainLang);
       linkToRecord(bio);
     }
 
@@ -114,7 +97,7 @@ public class MTMADConverter extends Converter {
       InformationObject exp = new InformationObject(regNum + "e");
       exp.setType("Exposition", mainLang);
       exp.isAbout(obj);
-      exp.addNote(s.get("Exposition :"),mainLang);
+      exp.addNote(s.get("Exposition :"), mainLang);
       linkToRecord(exp);
     }
 

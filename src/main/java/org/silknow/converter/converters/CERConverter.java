@@ -66,8 +66,9 @@ public class CERConverter extends Converter {
             .map(x -> obj.addClassification(x, "Clasificación Genérica", mainLang))
             .forEach(this::linkToRecord);
 
-    s.getImages().map(Image::CERfromCrawledJSON)
+    s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
+            .peek(image -> image.addInternalUrl("ceres-mcu"))
             .forEach(this::linkToRecord);
 
     String dim = s.getMulti("Dimensiones").findFirst().orElse(null);

@@ -60,15 +60,10 @@ public class ImatexConverter extends Converter {
     linkToRecord(obj.addComplexIdentifier(regNum, "Register number"));
 
 
-
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
-            .forEach(image -> {
-              image.setContentUrl("http://silknow.org/silknow/media/imatex/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
-              this.linkToRecord(image);
-            });
-
-
+            .peek(image -> image.addInternalUrl("imatex"))
+            .forEach(this::linkToRecord);
 
 
     Production prod = new Production(regNum);
@@ -155,7 +150,7 @@ public class ImatexConverter extends Converter {
       InformationObject bio = new InformationObject(regNum + "e");
       bio.setType("Other items", mainLang);
       bio.isAbout(obj);
-      bio.addNote(s.get("OTHER ITEMS"),mainLang);
+      bio.addNote(s.get("OTHER ITEMS"), mainLang);
       linkToRecord(bio);
     }
 

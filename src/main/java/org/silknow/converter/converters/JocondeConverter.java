@@ -67,7 +67,7 @@ public class JocondeConverter extends Converter {
     s.getMulti("DENO")
             .forEach(x -> linkToRecord(obj.addClassification(x, "Dénomination", "fr")));
     linkToRecord(obj.addObservation(s.get("DESC"), "Description", mainLang));
-    obj.addSubject(s.get("REPR"),mainLang);
+    obj.addSubject(s.get("REPR"), mainLang);
 
     doc.document(obj);
 
@@ -91,12 +91,12 @@ public class JocondeConverter extends Converter {
 
     // TODO decide what is material and what technique
     // TODO needs to be rewritten to split up values
-    String[] arr =  s.getMulti("TECH").toArray(String[]::new);
-     for (String a1 : arr){
-       for (String a2 : a1.split(",")){
-       prod.addMaterial(a2, mainLang);
-     }}
-
+    String[] arr = s.getMulti("TECH").toArray(String[]::new);
+    for (String a1 : arr) {
+      for (String a2 : a1.split(",")) {
+        prod.addMaterial(a2, mainLang);
+      }
+    }
 
 
     String place = s.get("LIEUX");
@@ -150,10 +150,10 @@ public class JocondeConverter extends Converter {
 
       Inscription ins = Inscription.fromJoconde(p, lang);
       if (type != null) {
-        linkToRecord(ins.addClassification(type,  null, mainLang));
+        linkToRecord(ins.addClassification(type, null, mainLang));
       }
       if (note != null) {
-        linkToRecord(ins.addObservation(note,  "Inscription", "fr"));
+        linkToRecord(ins.addObservation(note, "Inscription", "fr"));
       }
       obj.add(ins);
     }
@@ -162,10 +162,13 @@ public class JocondeConverter extends Converter {
     transfer.of(obj).by(museum);
 
     String sj = s.getMulti("STAT").findFirst().orElse(null);
-    Right right = new Right(obj.getUri() + "/right");
-    if (sj.contains(museumName)) right.ownedBy(museum);
-    right.addNote(sj, mainLang);
-    right.applyTo(obj);
+    if (sj != null) {
+      Right right = new Right(obj.getUri() + "/right");
+      if (sj.contains(museumName)) right.ownedBy(museum);
+      right.addNote(sj, mainLang);
+      right.applyTo(obj);
+      linkToRecord(right);
+    }
 
     PropositionalObject record = new PropositionalObject(id + "r");
     record.setType("museum record", mainLang);
@@ -207,10 +210,8 @@ public class JocondeConverter extends Converter {
     s.getImages().map(Image::fromCrawledJSON)
             .peek(copyphoto::applyTo)
             .peek(obj::add)
-            .forEach(image -> {
-              image.setContentUrl("http://silknow.org/silknow/media/joconde/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
-              this.linkToRecord(image);
-            });
+            .peek(image -> image.addInternalUrl("joconde"))
+            .forEach(this::linkToRecord);
 
 
     if (s.get("BIBL") != null) {
@@ -231,7 +232,6 @@ public class JocondeConverter extends Converter {
     linkToRecord(obj);
     linkToRecord(doc);
     linkToRecord(po);
-    linkToRecord(right);
     linkToRecord(copyright);
     linkToRecord(prod);
     linkToRecord(transfer);

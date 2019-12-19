@@ -62,32 +62,21 @@ public class VAMConverter extends Converter {
     s.getMulti("date_text").forEach(prod::addTimeAppellation);
     s.getMulti("materials_techniques").forEach(materials -> {
       String[] mats = materials.split(";");
-      for (int i = 0; i < mats.length; i++) {
-        prod.addMaterial(mats[i], mainLang);
-      }
+      for (String mat : mats) prod.addMaterial(mat, mainLang);
     });
     s.getMulti("materials").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("techniques").forEach(technique -> prod.addTechnique(technique, mainLang));
 
 
     s.getMulti("place").forEach(prod::addPlace);
-    //s.getMulti("TÈCNICA*").forEach(prod::addTechnique);
     s.getMulti("categories")
             .map(x -> obj.addClassification(x, "Categories", mainLang))
             .forEach(this::linkToRecord);
-    //s.getMulti("DENOMINACIÓ*")
-      //      .map(x -> obj.addClassification(x, "domain"))
-        //    .forEach(this::linkToRecord);
-    //s.getMulti("DESTÍ DÚS*").forEach(obj::addIntention);
-
-
 
     String dim = s.get("dimensions");
     if (dim != null) {
       Matcher matcher = DIMENSION_PATTERN.matcher(dim);
-      if (matcher.find()) {
-        linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
-      }
+      if (matcher.find()) linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
     }
 
 
@@ -98,7 +87,7 @@ public class VAMConverter extends Converter {
 
 
 
-    LegalBody museum = null;
+    LegalBody museum = null; // FIXME ?
 
 
     Acquisition acquisition = new Acquisition(regNum);
@@ -119,10 +108,8 @@ public class VAMConverter extends Converter {
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
-            .forEach(image -> {
-              image.setContentUrl("http://silknow.org/silknow/media/vam/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
-              this.linkToRecord(image);
-            });
+            .peek(image -> image.addInternalUrl("vam"))
+            .forEach(this::linkToRecord);
 
     if (s.get("bibliography") != null) {
       InformationObject bio = new InformationObject(regNum + "b");

@@ -55,11 +55,8 @@ public class RISDConverter extends Converter {
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
-            .forEach(image -> {
-              image.setContentUrl("http://silknow.org/silknow/media/risd-museum/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
-              this.linkToRecord(image);
-            });
-
+            .peek(image -> image.addInternalUrl("risd-museum"))
+            .forEach(this::linkToRecord);
 
     Production prod = new Production(regNum);
     prod.add(obj);
@@ -75,8 +72,6 @@ public class RISDConverter extends Converter {
             .forEach(this::linkToRecord);
 
 
-
-
     String dim = s.get("Dimensions");
     if (dim != null) {
       Matcher matcher = DIMENSION_PATTERN.matcher(dim);
@@ -88,17 +83,11 @@ public class RISDConverter extends Converter {
 
     linkToRecord(obj.addObservation(s.get("description"), "Description", mainLang));
 
-
     String acquisitionFrom = s.get("Credit");
-
     LegalBody museum = null;
-
-
 
     Acquisition acquisition = new Acquisition(regNum);
     acquisition.transfer(acquisitionFrom, obj, museum);
-
-
 
     Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(museum);

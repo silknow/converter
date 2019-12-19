@@ -52,10 +52,8 @@ public class MADConverter extends Converter {
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
-            .forEach(image -> {
-              image.setContentUrl("http://silknow.org/silknow/media/les-arts-decoratifs/" + image.getContentUrl().substring(image.getContentUrl().lastIndexOf('/') + 1));
-              this.linkToRecord(image);
-            });
+            .peek(image -> image.addInternalUrl("les-arts-decoratifs"))
+            .forEach(this::linkToRecord);
 
     Production prod = new Production(regNum);
     prod.add(obj);
@@ -71,7 +69,6 @@ public class MADConverter extends Converter {
     s.getMulti("Appellation")
             .map(x -> obj.addClassification(x, "Appellation", mainLang))
             .forEach(this::linkToRecord);
-
 
 
     String dim = s.getMulti("Mesures:").findFirst().orElse(null);

@@ -54,11 +54,10 @@ public class UNIPAConverter extends Converter {
 
 
     s.getImages().map(Image::fromCrawledJSON)
-            .peek(img -> {
-              img.setContentUrl(("http://silknow.org/silknow/media/unipa/" + img.getId()).replaceAll("\\s+", "_"));
-            })
             .peek(obj::add)
+            .peek(image -> image.addInternalUrl("unipa"))
             .forEach(this::linkToRecord);
+
 
     Production prod = new Production(id);
     prod.add(obj);
@@ -85,11 +84,11 @@ public class UNIPAConverter extends Converter {
     }
     linkToRecord(obj.addObservation(s.getMulti("Width").findFirst().orElse(null), "Width", "it"));
     linkToRecord(obj.addObservation(s.getMulti("Description").findFirst().orElse(null), "Description", "it"));
-    linkToRecord(obj.addObservation(s.getMulti("Pattern ratio").findFirst().orElse(null),  "Pattern ratio", "it"));
+    linkToRecord(obj.addObservation(s.getMulti("Pattern ratio").findFirst().orElse(null), "Pattern ratio", "it"));
     linkToRecord(obj.addObservation(s.getMulti("Warp").findFirst().orElse(null), "Warp", "it"));
     linkToRecord(obj.addObservation(s.getMulti("Weft").findFirst().orElse(null), "Weft", "it"));
-    linkToRecord(obj.addObservation(s.getMulti("Costruction").findFirst().orElse(null),  "Construction", "it"));
-    linkToRecord(obj.addObservation(s.getMulti("Description of the pattern").findFirst().orElse(null),  "Description of the pattern", "it"));
+    linkToRecord(obj.addObservation(s.getMulti("Costruction").findFirst().orElse(null), "Construction", "it"));
+    linkToRecord(obj.addObservation(s.getMulti("Description of the pattern").findFirst().orElse(null), "Description of the pattern", "it"));
     linkToRecord(obj.addObservation(s.getMulti("Historical Critical Information").findFirst().orElse(null), "Historical Critical Information", "it"));
 
 
@@ -99,8 +98,6 @@ public class UNIPAConverter extends Converter {
     LegalBody museum = null;
     if (museumName != null)
       museum = new LegalBody(museumName);
-
-
 
 
     Transfer transfer = new Transfer(id);
