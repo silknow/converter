@@ -67,6 +67,12 @@ public class UNIPAConverter extends Converter {
     s.getMulti("Geography").forEach(prod::addPlace);
     s.getMulti("Region production").forEach(prod::addPlace);
     s.getMulti("Technic").forEach(technique -> prod.addTechnique(technique, mainLang));
+    s.getMulti("Construction").forEach(technique -> prod.addTechnique(technique, mainLang));
+
+    s.getMulti("Warp").forEach(material -> prod.addMaterial(material, mainLang));
+    s.getMulti("Weft").forEach(material -> prod.addMaterial(material, mainLang));
+
+
     s.getMulti("Domaine")
             .map(x -> obj.addClassification(x, "Domain", "en"))
             .forEach(this::linkToRecord);
@@ -87,7 +93,7 @@ public class UNIPAConverter extends Converter {
     linkToRecord(obj.addObservation(s.getMulti("Pattern ratio").findFirst().orElse(null), "Pattern ratio", "it"));
     linkToRecord(obj.addObservation(s.getMulti("Warp").findFirst().orElse(null), "Warp", "it"));
     linkToRecord(obj.addObservation(s.getMulti("Weft").findFirst().orElse(null), "Weft", "it"));
-    linkToRecord(obj.addObservation(s.getMulti("Costruction").findFirst().orElse(null), "Construction", "it"));
+    linkToRecord(obj.addObservation(s.getMulti("Construction").findFirst().orElse(null), "Construction", "it"));
     linkToRecord(obj.addObservation(s.getMulti("Description of the pattern").findFirst().orElse(null), "Description of the pattern", "it"));
     linkToRecord(obj.addObservation(s.getMulti("Historical Critical Information").findFirst().orElse(null), "Historical Critical Information", "it"));
 
