@@ -18,18 +18,28 @@ public class Production extends Entity {
   }
 
   public void addTimeAppellation(String timeAppellation) {
+
     if (timeAppellation == null) return;
-    if (timeAppellation.equals("... unconfirmed")) {
+    if (timeAppellation.equals("... unconfirmed") | timeAppellation.equals("... sin confirmar") | timeAppellation.equals("... sense confirmar") ) {
       timeUnconfirmed = true;
       return;
     }
 
-    TimeSpan ts = new TimeSpan();
-    ts.addAppellation(timeAppellation);
-    if (timeUnconfirmed) ts.addNote("unconfirmed", "en");
+    timeAppellation = timeAppellation.replaceAll("\\s+", " ");
+    Resource result = VocabularyManager.searchInCategory(timeAppellation, null, "periodo", false);
+    if (result != null) {
+      System.out.println(result.getURI());
+      this.addProperty(CIDOC.P4_has_time_span, result); }
+    else {
 
-    ts.setUri(this.getUri() + "/time/" + ++tsCount);
-    this.addTimeSpan(ts);
+
+      TimeSpan ts = new TimeSpan();
+      ts.addAppellation(timeAppellation);
+      if (timeUnconfirmed) ts.addNote("unconfirmed", "en");
+
+      ts.setUri(this.getUri() + "/time/" + ++tsCount);
+      this.addTimeSpan(ts);
+    }
   }
 
   public Production add(ManMade_Object obj) {
