@@ -47,10 +47,10 @@ public class MFAConverter extends Converter {
 
     String museumName = "MFA Boston";
 
-    String regNum = s.get("accessionNumber");
+    String regNum = s.get("Accession Number");
     ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addComplexIdentifier(regNum, "accessionNumber"));
-    s.getMulti("title").forEach(obj::addTitle);
+    linkToRecord(obj.addComplexIdentifier(regNum, "Accession Number"));
+    s.getMulti("titleField").forEach(obj::addTitle);
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
@@ -60,18 +60,22 @@ public class MFAConverter extends Converter {
     Production prod = new Production(regNum);
     prod.add(obj);
 
-    String[] teas = s.get("teaser").split("(?=[0-9])", 2);
-    if (teas.length > 1) {
-      prod.addPlace(teas[0]);
-      prod.addTimeAppellation(teas[1]);
-    }
+    s.getMulti("displayDateField").forEach(prod::addTimeAppellation);
+    s.getMulti("cultureField").forEach(prod::addPlace);
 
-    s.getMulti("mediumOrTechnique").forEach(material -> prod.addMaterial(material, mainLang));
-    s.getMulti("classifications")
+
+    //String[] teas = s.get("teaser").split("(?=[0-9])", 2);
+    //if (teas.length > 1) {
+    //  prod.addPlace(teas[0]);
+    //  prod.addTimeAppellation(teas[1]);
+    //}
+
+    s.getMulti("Medium/Technique").forEach(material -> prod.addMaterial(material, mainLang));
+    s.getMulti("Classifications")
             .map(x -> obj.addClassification(x, "Classifications", mainLang))
             .forEach(this::linkToRecord);
 
-    String dim = s.get("dimensions");
+    String dim = s.get("Dimensions");
     if (dim != null) {
       Matcher matcher = DIMENSION_PATTERN.matcher(dim);
       if (matcher.find()) {
@@ -80,7 +84,7 @@ public class MFAConverter extends Converter {
     }
 
 
-    linkToRecord(obj.addObservation(s.get("description"), "Description", mainLang));
+    linkToRecord(obj.addObservation(s.get("Description"), "Description", mainLang));
 
 
     LegalBody museum = null; // FIXME ?
@@ -90,7 +94,7 @@ public class MFAConverter extends Converter {
 
     Acquisition acquisition = new Acquisition(regNum);
 
-    String[] acquisitionFrom = s.get("creditLine").split("(?<=Gift)", 2);
+    String[] acquisitionFrom = s.get("Provenance").split("(?<=Gift)", 2);
     if (acquisitionFrom.length > 1) {
       acquisition.setType(acquisitionFrom[0]);
       acquisition.transfer(acquisitionFrom[1], obj, museum);
@@ -101,7 +105,7 @@ public class MFAConverter extends Converter {
 
     Collection collection = new Collection(regNum);
     collection.of(obj);
-    collection.addAppellation(s.getMulti("collections").findFirst().orElse(null));
+    collection.addAppellation(s.getMulti("Collections").findFirst().orElse(null));
 
     linkToRecord(collection);
     linkToRecord(obj);
