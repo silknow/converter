@@ -94,10 +94,12 @@ public class MFAConverter extends Converter {
 
     Acquisition acquisition = new Acquisition(regNum);
 
-    String[] acquisitionFrom = s.get("Provenance").split("(?<=Gift)", 2);
-    if (acquisitionFrom.length > 1) {
-      acquisition.setType(acquisitionFrom[0]);
-      acquisition.transfer(acquisitionFrom[1], obj, museum);
+    if (s.get("Provenance") != null) {
+      String[] acquisitionFrom = s.get("Provenance").split("(?<=Gift)", 2);
+      if (acquisitionFrom.length > 1) {
+        acquisition.setType(acquisitionFrom[0]);
+        acquisition.transfer(acquisitionFrom[1], obj, museum);
+      }
     }
 
     Transfer transfer = new Transfer(regNum);
