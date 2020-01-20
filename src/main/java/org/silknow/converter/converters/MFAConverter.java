@@ -54,6 +54,7 @@ public class MFAConverter extends Converter {
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
+            .peek(img-> img.setLocalFilename(img.getId() + ".jpg"))
             .peek(image -> image.addInternalUrl("mfa-boston"))
             .forEach(this::linkToRecord);
 

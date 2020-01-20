@@ -9,16 +9,19 @@ import org.silknow.converter.ontologies.Schema;
 public class Image extends Entity {
   private final static String MEDIA_BASE = "http://silknow.org/silknow/media/";
   private CrawledJSONImages sourceImg;
+  private String localFilename;
 
   public Image(String id) {
     super(id);
 
+    this.localFilename = null;
     this.setClass(CIDOC.E38_Image);
     this.addSimpleIdentifier(id);
   }
 
   public Image() {
     super();
+    this.localFilename = null;
     this.resource = model.createResource();
     this.setClass(CIDOC.E38_Image);
   }
@@ -30,15 +33,18 @@ public class Image extends Entity {
   }
 
   public void setContentUrl(String url) {
+    if (url == null || url.isEmpty()) return;
     this.resource.removeAll(Schema.contentUrl);
     this.addProperty(Schema.contentUrl, model.createResource(url));
   }
 
   public void addInternalUrl(String dataset) {
-    String filename =null;
-    if (this.sourceImg != null)
+    String filename = null;
+    if (this.localFilename != null)
+      filename = this.localFilename;
+    else if (this.sourceImg != null)
       filename = this.sourceImg.getlocalFilename();
-    if(filename == null)
+    if (filename == null)
       filename = this.getContentUrl().substring(this.getContentUrl().lastIndexOf('/') + 1);
 
     if (filename.trim().isEmpty()) return; // workaround for issue #38
@@ -62,4 +68,7 @@ public class Image extends Entity {
     return this.resource.getProperty(Schema.contentUrl).getObject().toString();
   }
 
+  public void setLocalFilename(String name) {
+    this.localFilename = name;
+  }
 }
