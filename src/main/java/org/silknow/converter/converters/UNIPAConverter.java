@@ -67,11 +67,8 @@ public class UNIPAConverter extends Converter {
 
     s.getMulti("Geography").forEach(prod::addPlace);
     s.getMulti("Region production").forEach(prod::addPlace);
-    s.getMulti("Technic").forEach(technique -> prod.addTechnique(technique, mainLang));
+    s.getMulti("Technique").forEach(technique -> prod.addTechnique(technique, mainLang));
     s.getMulti("Construction").forEach(technique -> prod.addTechnique(technique, mainLang));
-
-    s.getMulti("Warp").forEach(material -> prod.addMaterial(material, mainLang));
-    s.getMulti("Weft").forEach(material -> prod.addMaterial(material, mainLang));
 
 
     s.getMulti("Domaine")
