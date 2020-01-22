@@ -26,7 +26,7 @@ public class Production extends Entity {
     }
 
     timeAppellation = timeAppellation.replaceAll("\\s+", " ");
-    Resource result = VocabularyManager.searchInCategory(timeAppellation, null, "periodo", false);
+    Resource result = VocabularyManager.searchInCategory(timeAppellation, null, "dates", false);
     if (result != null) {
       System.out.println(result.getURI());
       this.addProperty(CIDOC.P4_has_time_span, result); }
@@ -48,7 +48,7 @@ public class Production extends Entity {
   }
 
   public void addMaterial(String material, String lang) {
-    Resource result = VocabularyManager.searchInCategory(material, null, "att", false);
+    Resource result = VocabularyManager.searchInCategory(material, null, "aat", false);
     if (result != null)
       this.addProperty(CIDOC.P126_employed, result);
     else {
@@ -74,7 +74,7 @@ public class Production extends Entity {
   }
 
   public void addTechnique(String technique, String lang) {
-    Resource result = VocabularyManager.searchInCategory(technique, null, "att", false);
+    Resource result = VocabularyManager.searchInCategory(technique, null, "aat", false);
     if (result != null)
       this.addProperty(CIDOC.P32_used_general_technique, result);
     else {
