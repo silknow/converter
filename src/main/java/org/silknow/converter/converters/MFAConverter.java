@@ -93,14 +93,17 @@ public class MFAConverter extends Converter {
 //      museum = new LegalBody(museumName);
 
 
-    Acquisition acquisition = new Acquisition(regNum);
+
 
     if (s.get("Provenance") != null) {
-      String[] acquisitionFrom = s.get("Provenance").split("(?<=Gift)", 2);
-      if (acquisitionFrom.length > 1) {
-        acquisition.setType(acquisitionFrom[0]);
-        acquisition.transfer(acquisitionFrom[1], obj, museum);
-      }
+      Acquisition acquisition = new Acquisition(regNum);
+      String acquisitionFrom = s.get("Provenance");
+      linkToRecord(acquisition);
+     //         .split("(?<=Gift)", 2);
+     // if (acquisitionFrom.length > 1) {
+     //   acquisition.setType(acquisitionFrom[0]);
+     //   acquisition.transfer(acquisitionFrom[1], obj, museum);
+     // }
     }
 
     Transfer transfer = new Transfer(regNum);
@@ -112,7 +115,7 @@ public class MFAConverter extends Converter {
 
     linkToRecord(collection);
     linkToRecord(obj);
-    linkToRecord(acquisition);
+
     linkToRecord(prod);
     linkToRecord(transfer);
     return this.model;
