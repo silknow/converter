@@ -23,6 +23,8 @@ public class Schema {
   public static final Property deathDate = property("deathDate");
   public static final Property startTime = property("startTime");
   public static final Property contentUrl = property("contentUrl");
+  public static final Property error = property("error");
+
 
 
 }

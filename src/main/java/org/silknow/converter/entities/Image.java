@@ -10,6 +10,7 @@ public class Image extends Entity {
   private final static String MEDIA_BASE = "http://silknow.org/silknow/media/";
   private CrawledJSONImages sourceImg;
   private String localFilename;
+  private boolean hasError;
 
   public Image(String id) {
     super(id);
@@ -38,20 +39,30 @@ public class Image extends Entity {
     this.addProperty(Schema.contentUrl, model.createResource(url));
   }
 
+  public void setHasError(Boolean hasError) {
+    this.hasError = hasError;
+    if (hasError == false) return;
+    this.addProperty(Schema.error, model.createResource("dead"));
+  }
+
   public void addInternalUrl(String dataset) {
-    String filename = null;
-    if (this.localFilename != null)
-      filename = this.localFilename;
-    else if (this.sourceImg != null)
-      filename = this.sourceImg.getlocalFilename();
-    if (filename == null)
-      filename = this.getContentUrl().substring(this.getContentUrl().lastIndexOf('/') + 1);
+    if (this.hasError == false) {
+      String filename = null;
+      if (this.localFilename != null)
+        filename = this.localFilename;
+      else if (this.sourceImg != null)
+        filename = this.sourceImg.getlocalFilename();
+      if (filename == null)
+        filename = this.getContentUrl().substring(this.getContentUrl().lastIndexOf('/') + 1);
 
-    if (filename.trim().isEmpty()) return; // workaround for issue #38
+      if (filename.trim().isEmpty()) return; // workaround for issue #38
 
-    filename = filename.replaceAll("\\s+", "_");
-    String internalUrl = MEDIA_BASE + dataset + "/" + filename;
-    this.addProperty(Schema.contentUrl, model.createResource(internalUrl));
+      filename = filename.replaceAll("\\s+", "_");
+      String internalUrl = MEDIA_BASE + dataset + "/" + filename;
+
+      this.addProperty(Schema.contentUrl, model.createResource(internalUrl));
+    }
+
   }
 
   public static Image fromCrawledJSON(@NotNull CrawledJSONImages img) {
@@ -61,12 +72,18 @@ public class Image extends Entity {
 
     image.sourceImg = img;
     image.setContentUrl(img.getUrl());
+    image.setHasError(img.gethasError());
     return image;
   }
 
   public String getContentUrl() {
     return this.resource.getProperty(Schema.contentUrl).getObject().toString();
   }
+
+  public boolean hasError() {
+    return hasError;
+  }
+
 
   public void setLocalFilename(String name) {
     this.localFilename = name;
