@@ -111,7 +111,7 @@ public class ImatexConverter extends Converter {
     Acquisition acquisition = new Acquisition(regNum);
     acquisition.transfer(acquisitionFrom, obj, museum);
     acquisition.setDate(acquisitionDate);
-    acquisition.setType(acquisitionType);
+    //acquisition.setType(acquisitionType);
 
     // From the mapping:
     // This field cannot be systematically mapped this way. The relation depends on the record itself

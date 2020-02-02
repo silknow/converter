@@ -106,13 +106,13 @@ public class METConverter extends Converter {
     linkToRecord(obj.addObservation(s.get("description"), "Description", "en"));
 
     String acquisitionFrom = s.get("Credit Line:");
-    String acquisitionType = s.get("Provenance");
+    //String acquisitionType = s.get("Provenance");
     LegalBody museum = null; // FIXME ?
 
 
     Acquisition acquisition = new Acquisition(regNum);
     acquisition.transfer(acquisitionFrom, obj, museum);
-    acquisition.setType(acquisitionType);
+    //acquisition.setType(acquisitionType);
 
 
     Transfer transfer = new Transfer(regNum);

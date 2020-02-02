@@ -49,7 +49,7 @@ public class UNIPAConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.getId();
-    linkToRecord(obj.addComplexIdentifier(regNum, id));
+    linkToRecord(obj.addComplexIdentifier(regNum, "RegNum"));
     //s.getMulti("title").forEach(obj::addTitle);
 
 
