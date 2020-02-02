@@ -189,7 +189,7 @@ aat_rev:5004060874 prov:used aat:300404507 .
 aat:300404512 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	rdfs:label "eighteenth century (dates CE)"@en , "century, eighteenth (dates CE)"@en , "18th century (dates CE)"@en , "18th-century (dates CE)"@en, "siglo dieciocho"@es,	"diciottesimo secolo"@it,
 				"dix-huitième siècle"@fr, "siglo, dieciocho"@es,	"secolo, diciottesimo"@it,	"siècle, dix-huitième"@fr,
-				"siglo XVIII"@es,	"XVIII secolo"@it,	"18ème siècle"@fr
+				"siglo XVIII"@es,	"XVIII secolo"@it,	"18ème siècle"@fr,
 				"siglo 18"@es,	"XVIII-secolo"@it,	"18ème-siècle"@fr ;
 	rdfs:seeAlso <http://www.getty.edu/vow/AATFullDisplay?find=&logic=AND&note=&subjectid=300404512> ;
 	dct:created "2016-03-16T08:43:20"^^xsd:dateTime ;
