@@ -187,7 +187,10 @@ aat_rev:5004060878 prov:used aat:300404507 .
 aat_rev:5004060874 prov:used aat:300404507 .
 
 aat:300404512 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
-	rdfs:label "eighteenth century (dates CE)"@en , "century, eighteenth (dates CE)"@en , "18th century (dates CE)"@en , "18th-century (dates CE)"@en ;
+	rdfs:label "eighteenth century (dates CE)"@en , "century, eighteenth (dates CE)"@en , "18th century (dates CE)"@en , "18th-century (dates CE)"@en, "siglo dieciocho"@es,	"diciottesimo secolo"@it,
+				"dix-huitième siècle"@fr, "siglo, dieciocho"@es,	"secolo, diciottesimo"@it,	"siècle, dix-huitième"@fr,
+				"siglo XVIII"@es,	"XVIII secolo"@it,	"18ème siècle"@fr
+				"siglo 18"@es,	"XVIII-secolo"@it,	"18ème-siècle"@fr ;
 	rdfs:seeAlso <http://www.getty.edu/vow/AATFullDisplay?find=&logic=AND&note=&subjectid=300404512> ;
 	dct:created "2016-03-16T08:43:20"^^xsd:dateTime ;
 	dct:modified "2016-03-16T08:44:24"^^xsd:dateTime ;
@@ -202,9 +205,11 @@ aat:300404512 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	gvp:displayOrder "1"^^xsd:positiveInteger ;
 	skos:exactMatch aat:300404512 , <http://id.loc.gov/authorities/subjects/sh85041401> ;
 	skosxl:prefLabel aat_term:1000644175-en ;
-	skos:prefLabel "eighteenth century (dates CE)"@en ;
+	skos:prefLabel "eighteenth century (dates CE)"@en, "siglo dieciocho"@es,	"diciottesimo secolo"@it,	"dix-huitième siècle"@fr ;
 	skosxl:altLabel aat_term:1000644176-en , aat_term:1000644177-en , aat_term:1000644178-en ;
-	skos:altLabel "century, eighteenth (dates CE)"@en , "18th century (dates CE)"@en , "18th-century (dates CE)"@en ;
+	skos:altLabel "century, eighteenth (dates CE)"@en , "18th century (dates CE)"@en , "18th-century (dates CE)"@en, "siglo, dieciocho"@es,	"secolo, diciottesimo"@it,	"siècle, dix-huitième"@fr,
+					"siglo XVIII"@es,	"XVIII secolo"@it,	"18ème siècle"@fr,
+					"siglo 18"@es,	"XVIII-secolo"@it,	"18ème-siècle"@fr ;
 	gvp:broaderGeneric aat:300404464 ;
 	gvp:broaderPreferred aat:300404464 ;
 	gvp:broaderNonConcept aat:300404464 ;
@@ -8840,7 +8845,9 @@ aat_rev:5004060770 prov:used aat:300404503 .
 aat_rev:5004060765 prov:used aat:300404503 .
 
 aat:300404465 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
-	rdfs:label "fifteenth century (dates CE)"@en , "century, fifteenth (dates CE)"@en , "15th century (dates CE)"@en , "15th-century (dates CE)"@en ;
+	rdfs:label "fifteenth century (dates CE)"@en , "century, fifteenth (dates CE)"@en , "15th century (dates CE)"@en , "15th-century (dates CE)"@en , "siglo quince"@es, "siglo, quince"@es, "siglo XV"@es, "siglo 15" @es,
+				"quindicesimo secolo"@it, "secolo, quindicesimo"@it, "XV secolo"@it, "XV-secolo"@it,
+				"quinzième siècle"@fr, "siècle, quinzième"@fr, "15ème siècle"@fr, "15ème-siècle"@fr ;
 	rdfs:seeAlso <http://www.getty.edu/vow/AATFullDisplay?find=&logic=AND&note=&subjectid=300404465> ;
 	dct:created "2016-03-15T09:05:32"^^xsd:dateTime ;
 	dct:modified "2016-03-15T09:05:32"^^xsd:dateTime , "2016-03-15T12:16:33"^^xsd:dateTime , "2016-03-15T15:50:08"^^xsd:dateTime , "2016-03-15T09:31:07"^^xsd:dateTime , "2016-03-15T12:19:15"^^xsd:dateTime , "2016-03-15T15:46:43"^^xsd:dateTime , "2016-03-15T15:51:20"^^xsd:dateTime ;
@@ -8855,9 +8862,10 @@ aat:300404465 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	gvp:displayOrder "48"^^xsd:positiveInteger ;
 	skos:exactMatch aat:300404465 , <http://id.loc.gov/authorities/subjects/sh85048142> ;
 	skosxl:prefLabel aat_term:1000644017-en ;
-	skos:prefLabel "fifteenth century (dates CE)"@en ;
+	skos:prefLabel "fifteenth century (dates CE)"@en , "siglo quince"@es , "quindicesimo secolo"@it , "quinzième siècle"@fr ;
 	skosxl:altLabel aat_term:1000644018-en , aat_term:1000644013-en , aat_term:1000644016-en ;
-	skos:altLabel "century, fifteenth (dates CE)"@en , "15th century (dates CE)"@en , "15th-century (dates CE)"@en ;
+	skos:altLabel "century, fifteenth (dates CE)"@en , "15th century (dates CE)"@en , "15th-century (dates CE)"@en, "siglo, quince"@es, "siglo XV"@es, "siglo 15" @es, "secolo, quindicesimo"@it, "XV secolo"@it, "XV-secolo"@it,
+                   "siècle, quinzième"@fr, "15ème siècle"@fr, "15ème-siècle"@fr;
 	gvp:broaderGeneric aat:300404464 ;
 	gvp:broaderPreferred aat:300404464 ;
 	gvp:broaderNonConcept aat:300404464 ;
@@ -9284,7 +9292,11 @@ aat_rev:5004060641 prov:used aat:300404496 .
 aat_rev:5004060702 prov:used aat:300404496 .
 
 aat:300404513 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
-	rdfs:label "nineteenth century (dates CE)"@en , "century, nineteenth (dates CE)"@en , "19th century (dates CE)"@en , "19th-century (dates CE)"@en ;
+	rdfs:label "nineteenth century (dates CE)"@en , "century, nineteenth (dates CE)"@en , "19th century (dates CE)"@en , "19th-century (dates CE)"@en, "siglo diecinueve"@es,
+				"diciannovesimo secolo"@it,	"dix-neuvième siècle"@fr,
+				"siglo, diecinueve"@es,	"secolo, diciannovesimo"@it,	"siècle, dix-neuvième"@fr,
+				"siglo XIX"@es,	"XIX secolo"@it,	"19ème siècle"@fr,
+				"siglo 19"@es,	"XIX-secolo"@it,	"19ème-siècle"@fr ;
 	rdfs:seeAlso <http://www.getty.edu/vow/AATFullDisplay?find=&logic=AND&note=&subjectid=300404513> ;
 	dct:created "2016-03-16T08:44:38"^^xsd:dateTime ;
 	dct:modified "2016-03-16T08:49:02"^^xsd:dateTime ;
@@ -9299,9 +9311,11 @@ aat:300404513 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	gvp:displayOrder "56"^^xsd:positiveInteger ;
 	skos:exactMatch aat:300404513 , <http://id.loc.gov/authorities/subjects/sh85091984> ;
 	skosxl:prefLabel aat_term:1000644179-en ;
-	skos:prefLabel "nineteenth century (dates CE)"@en ;
+	skos:prefLabel "nineteenth century (dates CE)"@en, "siglo diecinueve"@es,	"diciannovesimo secolo"@it,	"dix-neuvième siècle"@fr ;
 	skosxl:altLabel aat_term:1000644180-en , aat_term:1000644181-en , aat_term:1000644182-en ;
-	skos:altLabel "century, nineteenth (dates CE)"@en , "19th century (dates CE)"@en , "19th-century (dates CE)"@en ;
+	skos:altLabel "century, nineteenth (dates CE)"@en , "19th century (dates CE)"@en , "19th-century (dates CE)"@en, "siglo, diecinueve"@es,	"secolo, diciannovesimo"@it,	"siècle, dix-neuvième"@fr,
+				"siglo XIX"@es,	"XIX secolo"@it,	"19ème siècle"@fr,
+				"siglo 19"@es,	"XIX-secolo"@it,	"19ème-siècle"@fr ;
 	gvp:broaderGeneric aat:300404464 ;
 	gvp:broaderPreferred aat:300404464 ;
 	gvp:broaderNonConcept aat:300404464 ;
@@ -9452,7 +9466,11 @@ aat_rev:5004060608 prov:used aat:300404494 .
 aat_rev:5004060703 prov:used aat:300404494 .
 
 aat:300404511 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
-	rdfs:label "seventeenth century (dates CE)"@en , "century, seventeenth (dates CE)"@en , "17th century (dates CE)"@en , "17th-century (dates CE)"@en ;
+	rdfs:label "seventeenth century (dates CE)"@en , "century, seventeenth (dates CE)"@en , "17th century (dates CE)"@en , "17th-century (dates CE)"@en, "siglo diecisiete"@es,
+				"diciassettesimo secolo"@it,	"dix-septième siècle"@fr,
+				"siglo, diecisiete"@es,	"secolo, diciassette"@it,	"siècle, dix-septième"@fr,
+				"siglo XVII"@es,	"XVII secolo"@it,	"17ème siècle"@fr,
+				"siglo 17"@es,	"XVII-secolo"@it,	"17ème-siècle"@fr ;
 	rdfs:seeAlso <http://www.getty.edu/vow/AATFullDisplay?find=&logic=AND&note=&subjectid=300404511> ;
 	dct:created "2016-03-16T08:42:10"^^xsd:dateTime ;
 	dct:modified "2016-03-16T08:43:12"^^xsd:dateTime ;
@@ -9467,9 +9485,10 @@ aat:300404511 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	gvp:displayOrder "59"^^xsd:positiveInteger ;
 	skos:exactMatch aat:300404511 , <http://id.loc.gov/authorities/subjects/sh85120427> ;
 	skosxl:prefLabel aat_term:1000644171-en ;
-	skos:prefLabel "seventeenth century (dates CE)"@en ;
+	skos:prefLabel "seventeenth century (dates CE)"@en, "siglo diecisiete"@es, "diciassettesimo secolo"@it,	"dix-septième siècle"@fr ;
 	skosxl:altLabel aat_term:1000644172-en , aat_term:1000644173-en , aat_term:1000644174-en ;
-	skos:altLabel "century, seventeenth (dates CE)"@en , "17th century (dates CE)"@en , "17th-century (dates CE)"@en ;
+	skos:altLabel "century, seventeenth (dates CE)"@en , "17th century (dates CE)"@en , "17th-century (dates CE)"@en, "siglo, diecisiete"@es,	"secolo, diciassette"@it,	"siècle, dix-septième"@fr,
+					"siglo XVII"@es,	"XVII secolo"@it,	"17ème siècle"@fr, "siglo 17"@es,	"XVII-secolo"@it,	"17ème-siècle"@fr ;
 	gvp:broaderGeneric aat:300404464 ;
 	gvp:broaderPreferred aat:300404464 ;
 	gvp:broaderNonConcept aat:300404464 ;
@@ -9573,7 +9592,10 @@ aat_rev:5004060699 prov:used aat:300404499 .
 aat_rev:5004060694 prov:used aat:300404499 .
 
 aat:300404510 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
-	rdfs:label "sixteenth century (dates CE)"@en , "century, sixteenth (dates CE)"@en , "16th century (dates CE)"@en , "16th-century (dates CE)"@en ;
+	rdfs:label "sixteenth century (dates CE)"@en , "century, sixteenth (dates CE)"@en , "16th century (dates CE)"@en , "16th-century (dates CE)"@en, "siglo dieciséis"@es,	"sedicesimo secolo"@it,	"seizième siècle"@fr,
+				"siglo, dieciséis"@es,	"secolo, sedicesimo"@it,	"siècle, seizième"@fr,
+				"siglo XVI"@es,	"XVI secolo"@it,	"16ème siècle"@fr,
+				"siglo 16"@es,	"XVI-secolo"@it,	"16ème-siècle"@fr ;
 	rdfs:seeAlso <http://www.getty.edu/vow/AATFullDisplay?find=&logic=AND&note=&subjectid=300404510> ;
 	dct:created "2016-03-16T08:40:55"^^xsd:dateTime ;
 	dct:modified "2016-03-16T08:42:00"^^xsd:dateTime , "2016-03-16T08:41:59"^^xsd:dateTime ;
@@ -9588,9 +9610,11 @@ aat:300404510 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	gvp:displayOrder "61"^^xsd:positiveInteger ;
 	skos:exactMatch aat:300404510 , <http://id.loc.gov/authorities/subjects/sh85123070> ;
 	skosxl:prefLabel aat_term:1000644167-en ;
-	skos:prefLabel "sixteenth century (dates CE)"@en ;
+	skos:prefLabel "sixteenth century (dates CE)"@en ,"siglo dieciséis"@es,	"sedicesimo secolo"@it,	"seizième siècle"@fr ;
 	skosxl:altLabel aat_term:1000644168-en , aat_term:1000644169-en , aat_term:1000644170-en ;
-	skos:altLabel "century, sixteenth (dates CE)"@en , "16th century (dates CE)"@en , "16th-century (dates CE)"@en ;
+	skos:altLabel "century, sixteenth (dates CE)"@en , "16th century (dates CE)"@en , "16th-century (dates CE)"@en, "siglo, dieciséis"@es,	"secolo, sedicesimo"@it,	"siècle, seizième"@fr,
+					"siglo XVI"@es,	"XVI secolo"@it,	"16ème siècle"@fr,
+					"siglo 16"@es,	"XVI-secolo"@it,	"16ème-siècle"@fr  ;
 	gvp:broaderGeneric aat:300404464 ;
 	gvp:broaderPreferred aat:300404464 ;
 	gvp:broaderNonConcept aat:300404464 ;
@@ -9911,7 +9935,12 @@ aat_rev:5004060786 prov:used aat:300404504 .
 aat_rev:5004060781 prov:used aat:300404504 .
 
 aat:300404514 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
-	rdfs:label "twentieth century (dates CE)"@en , "century, twentieth (dates CE)"@en , "20th century (dates CE)"@en , "20th-century (dates CE)"@en , "1900s"@en ;
+	rdfs:label "twentieth century (dates CE)"@en , "century, twentieth (dates CE)"@en , "20th century (dates CE)"@en , "20th-century (dates CE)"@en , "1900s"@en, "siglo veinte"@es,	"ventesimo secolo"@it,
+				"vingtième siècle"@fr, "siglo, veinte"@es,	"secolo, ventesimo"@it,	"siècle, vingtième"@fr,
+				"siglo XX"@es,	"XX secolo"@it,	"20ème siècle"@fr,
+				"siglo 20"@es,	"XX-secolo"@it,	"20ème-siècle"@fr,
+				"años 1900"@es,	"il 900"@it,	"Années 1900"@fr ;
+
 	rdfs:seeAlso <http://www.getty.edu/vow/AATFullDisplay?find=&logic=AND&note=&subjectid=300404514> ;
 	dct:created "2016-03-16T08:49:16"^^xsd:dateTime ;
 	dct:modified "2016-03-16T08:51:09"^^xsd:dateTime , "2016-03-16T08:51:10"^^xsd:dateTime ;
@@ -9926,9 +9955,11 @@ aat:300404514 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	gvp:displayOrder "67"^^xsd:positiveInteger ;
 	skos:exactMatch aat:300404514 , <http://id.loc.gov/authorities/subjects/sh85139020> ;
 	skosxl:prefLabel aat_term:1000644183-en ;
-	skos:prefLabel "twentieth century (dates CE)"@en ;
+	skos:prefLabel "twentieth century (dates CE)"@en, "siglo veinte"@es,	"ventesimo secolo"@it,	"vingtième siècle"@fr ;
 	skosxl:altLabel aat_term:1000644184-en , aat_term:1000644185-en , aat_term:1000644186-en , aat_term:1000644187-en ;
-	skos:altLabel "century, twentieth (dates CE)"@en , "20th century (dates CE)"@en , "20th-century (dates CE)"@en , "1900s"@en ;
+	skos:altLabel "century, twentieth (dates CE)"@en , "20th century (dates CE)"@en , "20th-century (dates CE)"@en , "1900s"@en, "siglo, veinte"@es,	"secolo, ventesimo"@it,	"siècle, vingtième"@fr,
+				"siglo XX"@es,	"XX secolo"@it, "20ème siècle"@fr, "siglo 20"@es,	"XX-secolo"@it,	"20ème-siècle"@fr,
+                "años 1900"@es,	"il 900"@it,	"Années 1900"@fr ;
 	gvp:broaderGeneric aat:300404464 ;
 	gvp:broaderPreferred aat:300404464 ;
 	gvp:broaderNonConcept aat:300404464 ;
