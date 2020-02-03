@@ -23,7 +23,7 @@ public class ImatexConverter extends Converter {
     if (!this.canConvert(file))
       throw new RuntimeException("Imatex converter require files in JSON format.");
 
-    String mainLang = file.getName().replace(".json", "").split("_")[1];
+    String mainLang = file.getName().replace(".json", "").split("-")[1];
     this.DATASET_NAME = "imatex";
 
     // Parse JSON
@@ -40,7 +40,8 @@ public class ImatexConverter extends Converter {
     // Create the objects of the graph
     logger.trace("creating objects");
 
-    id = file.getName().replace(".json", "");
+    //id = file.getName().replace(".json", "");
+
 
     String museumName = s.get("MUSEUM");
 
@@ -55,7 +56,9 @@ public class ImatexConverter extends Converter {
       case "es":
         regNumField = "NÚM.REGISTRO";
     }
+
     String regNum = s.get(regNumField);
+    id = regNum;
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Register number"));
 
