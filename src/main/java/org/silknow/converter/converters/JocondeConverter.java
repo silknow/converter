@@ -67,7 +67,8 @@ public class JocondeConverter extends Converter {
     s.getMulti("DENO")
             .forEach(x -> linkToRecord(obj.addClassification(x, "Dénomination", "fr")));
     linkToRecord(obj.addObservation(s.get("DESC"), "Description", mainLang));
-    obj.addSubject(s.get("REPR"), mainLang);
+    s.getMulti("REPR").forEach(subject -> obj.addSubject(subject, mainLang));
+
 
     doc.document(obj);
 
@@ -81,7 +82,7 @@ public class JocondeConverter extends Converter {
     prod.add(obj);
     s.getMulti("PERI").forEach(prod::addTimeAppellation);
 
-    String author = s.get("AUTR");
+    String author = s.getMulti("AUTR").findFirst().orElse(null);
     List<String> parts = Utils.extractBrackets(author);
     author = parts.get(0);
     String role = parts.get(1);
@@ -99,7 +100,7 @@ public class JocondeConverter extends Converter {
     }
 
 
-    String place = s.get("LIEUX");
+    String place = s.getMulti("LIEUX").findFirst().orElse(null);
     if (place != null) {
       place = Utils.extractBrackets(place).get(0);
       String[] hierarchy = place.split(",");
