@@ -39,11 +39,11 @@ public class Image extends Entity {
     this.addProperty(Schema.contentUrl, model.createResource(url));
   }
 
-  public void setHasError(Boolean hasError) {
-    this.hasError = hasError;
-    if (hasError == false) return;
-    this.addProperty(Schema.error, model.createResource("dead"));
-  }
+  //public void setHasError(Boolean hasError) {
+    //this.hasError = hasError;
+    //if (hasError == false) return;
+    //this.addProperty(Schema.error, model.createResource("dead"));
+  //}
 
   public void addInternalUrl(String dataset) {
     if (this.hasError == false) {
@@ -72,7 +72,7 @@ public class Image extends Entity {
 
     image.sourceImg = img;
     image.setContentUrl(img.getUrl());
-    image.setHasError(img.gethasError());
+    //image.setHasError(img.gethasError());
     return image;
   }
 
