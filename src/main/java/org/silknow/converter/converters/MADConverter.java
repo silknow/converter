@@ -58,7 +58,7 @@ public class MADConverter extends Converter {
     Production prod = new Production(regNum);
     prod.add(obj);
 
-    s.getMulti("Création:").forEach(prod::addTimeAppellation);
+    //s.getMulti("Création:").forEach(prod::addTimeAppellation);
 
     s.getMulti("Textile:").forEach(material -> prod.addMaterial(material, mainLang));
     //s.getMulti("Création:").forEach(prod::addPlace);
