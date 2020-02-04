@@ -58,7 +58,16 @@ public class ImatexConverter extends Converter {
     }
 
     String regNum = s.get(regNumField);
-    id = regNum;
+    if (regNum == null)
+      regNum = s.get("REGISTER NUMBER");
+    if (regNum == null)
+      regNum = s.get("NUM. REGISTRE");
+    if (regNum == null)
+      regNum = s.get("NÚM.REGISTRO");
+    if (regNum != null)
+     id = regNum;
+
+
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Register number"));
 
