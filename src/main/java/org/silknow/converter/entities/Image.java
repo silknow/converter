@@ -39,11 +39,10 @@ public class Image extends Entity {
     this.addProperty(Schema.contentUrl, model.createResource(url));
   }
 
-  //public void setHasError(Boolean hasError) {
-    //this.hasError = hasError;
-    //if (hasError == false) return;
-    //this.addProperty(Schema.error, model.createResource("dead"));
-  //}
+  public void setHasError(Boolean hasError) {
+    this.hasError = hasError;
+    if (hasError == false) return;
+  }
 
   public void addInternalUrl(String dataset) {
     if (this.hasError == false) {
