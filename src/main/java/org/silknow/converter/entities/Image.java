@@ -71,7 +71,7 @@ public class Image extends Entity {
 
     image.sourceImg = img;
     image.setContentUrl(img.getUrl());
-    //image.setHasError(img.gethasError());
+    image.setHasError(img.gethasError());
     return image;
   }
 
