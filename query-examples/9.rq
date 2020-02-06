@@ -1,5 +1,5 @@
-SELECT distinct ?obj
-WHERE {
+SELECT distinct ?obj ?g
+WHERE { graph ?g {
 
      ?dig a crmdig:D1_Digital_Object .
      ?dig  ecrm:P129_is_about ?prd .
@@ -12,4 +12,4 @@ WHERE {
         {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/368> .}
  
        
-}
+}}
