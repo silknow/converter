@@ -1,0 +1,31 @@
+SELECT distinct  ?title ?assignment ?description ?material ?collection  ?object
+WHERE { graph ?collection {
+
+     ?dig a crmdig:D1_Digital_Object .
+      
+     ?dig  ecrm:P129_is_about ?prd .
+     ?prd ecrm:P108_has_produced ?object .
+ 
+     optional {?object ecrm:P102_has_title ?title }
+     optional {?object ecrm:P3_has_note ?description }
+
+        ?prd ecrm:P126_employed ?material  .
+
+
+        {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/617> .}
+        
+        ?type a ecrm:E17_Type_Assignment .
+
+
+
+        {?object ecrm:P102_has_title ?title .FILTER contains(str(?title), "ribbon")}
+         UNION
+        {?type ecrm:P42_assigned <http://vocab.getty.edu/aat/300014668> }
+         UNION
+        {?type ecrm:P42_assigned ?assignment .FILTER contains(str(?assignment), "ribbon")}
+
+     
+        
+        
+
+}}
