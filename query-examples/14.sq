@@ -1,0 +1,24 @@
+
+SELECT distinct  ?title ?description ?material ?collection  ?object
+WHERE { graph ?collection {
+
+     ?dig a crmdig:D1_Digital_Object .
+     ?dig  ecrm:P129_is_about ?prd .
+     ?prd ecrm:P108_has_produced ?object .
+ 
+     optional {?object ecrm:P102_has_title ?title }
+     optional {?object ecrm:P3_has_note ?description }
+
+        ?prd ecrm:P126_employed ?material  .
+        MINUS {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/627> .}
+
+
+        {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/628> .}
+        UNION
+        {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/368> .}
+        UNION
+        {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/644> .}
+       
+        
+
+}}
