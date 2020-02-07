@@ -1,8 +1,10 @@
-SELECT distinct  ?title ?collection ?object ?place
+SELECT distinct  ?title ?description ?collection ?object ?place
 WHERE { graph ?collection {
       ?s a ecrm:E12_Production .
       ?s ecrm:P108_has_produced ?object.
-   optional {   ?obj ecrm:P3_has_note ?title . }
+    
+ optional {?object ecrm:P102_has_title ?title }
+     optional {?object ecrm:P3_has_note ?description }
 
  { ?s ecrm:P8_took_place_on_or_within ?location
      { SELECT ?location SAMPLE(?loc) as ?place
