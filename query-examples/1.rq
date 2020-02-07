@@ -1,4 +1,4 @@
-SELECT distinct  ?title ?collection ?object ?location
+SELECT distinct  ?title ?collection ?object ?place
 WHERE { graph ?collection {
       ?s a ecrm:E12_Production .
       ?s ecrm:P108_has_produced ?object.
@@ -11,4 +11,5 @@ WHERE { graph ?collection {
            ?location geonames:countryCode "ES"  }
 
 
-}}
+}
+}
