@@ -1,14 +1,21 @@
-SELECT distinct ?title  ?depiction count(distinct ?object) as ?count ?time
+SELECT distinct count(distinct ?obj) as ?count ?depiction
 WHERE {
 
      ?dig a crmdig:D1_Digital_Object .
      ?dig  ecrm:P129_is_about ?prod .
      ?prod ecrm:P108_has_produced ?object .
-     
-      optional {?object ecrm:P102_has_title ?title }
       
      ?obj ecrm:P62_depicts ?depiction .
 
+
+
+
+     ?prod ecrm:P4_has_time-span ?t .
+     ?t ecrm:P78_is_identified_by ?time.
+
+
+
+FILTER contains(str(?time), "med")
 
 { ?prod ecrm:P8_took_place_on_or_within ?l
      { SELECT ?l SAMPLE(?loc) as ?place
@@ -16,11 +23,5 @@ WHERE {
        } . FILTER(isIRI(?l))
            ?l geonames:countryCode "ES" }
 
-?prod ecrm:P4_has_time-span ?t .
-?t ecrm:P78_is_identified_by ?time.
-
-
-FILTER contains(str(?time), "med")
-}
-GROUP BY ?depiction ?time  ?title 
-ORDER BY DESC (?count)
+}}
+ORDER BY DESC (?count) 
