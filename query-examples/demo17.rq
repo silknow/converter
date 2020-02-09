@@ -1,14 +1,12 @@
 New example
 
 
-SELECT distinct count(distinct ?material) as ?count ?material ?object ?time
+SELECT distinct count(distinct ?prd) as ?count ?material
 WHERE {
 
      ?dig a crmdig:D1_Digital_Object .
      ?dig  ecrm:P129_is_about ?prod .
      ?prod ecrm:P108_has_produced ?object .
-     
-      optional {?object ecrm:P102_has_title ?title }
       
       ?prd ecrm:P126_employed ?material  . 
 
@@ -29,5 +27,5 @@ FILTER contains(str(?time), "med")
            ?l geonames:countryCode "ES" }
 
 }
-GROUP BY ?material ?object ?time 
+GROUP BY ?material
 ORDER BY DESC (?count)
