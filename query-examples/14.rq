@@ -1,5 +1,4 @@
-
-SELECT distinct  ?title ?description ?material ?collection  ?object
+SELECT distinct  ?title ?description ?collection  ?object (group_concat(?material;separator="|") as ?materials)
 WHERE { graph ?collection {
 
      ?dig a crmdig:D1_Digital_Object .
@@ -10,15 +9,13 @@ WHERE { graph ?collection {
      optional {?object ecrm:P3_has_note ?description }
 
         ?prd ecrm:P126_employed ?material  .
-        MINUS {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/627> .}
+        MINUS {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/628> .}
 
 
-        {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/628> .}
-        UNION
-        {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/368> .}
-        UNION
         {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/644> .}
+        UNION
+        {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/627> .}
        
         
-
 }}
+GROUP BY ?object ?title ?collection ?description
