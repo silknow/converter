@@ -1,15 +1,13 @@
-New example
+Most common decorative Motifs during Spanish Medieval Times
 
-
-SELECT distinct count(distinct ?prd) as ?count ?material
+SELECT distinct count(distinct ?prod) as ?count ?depiction
 WHERE {
 
      ?dig a crmdig:D1_Digital_Object .
      ?dig  ecrm:P129_is_about ?prod .
      ?prod ecrm:P108_has_produced ?object .
       
-      ?prd ecrm:P126_employed ?material  . 
-
+     ?object ecrm:P62_depicts ?depiction .
 
 
 
@@ -27,5 +25,5 @@ FILTER contains(str(?time), "med")
            ?l geonames:countryCode "ES" }
 
 }
-GROUP BY ?material
+GROUP BY ?depiction
 ORDER BY DESC (?count)
