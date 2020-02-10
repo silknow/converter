@@ -1,5 +1,5 @@
 SELECT distinct  ?title ?assignment ?description ?material ?collection  ?object
-WHERE { graph ?collection {
+WHERE {
 
      ?dig a crmdig:D1_Digital_Object .
       
@@ -33,11 +33,11 @@ WHERE { graph ?collection {
         {?type ecrm:P42_assigned ?assignment .FILTER contains(str(?assignment), "ribbon")}
 
      
-?prod ecrm:P4_has_time-span ?t .
+?prd ecrm:P4_has_time-span ?t .
 ?t ecrm:P78_is_identified_by ?time.
 
 
 FILTER contains(str(?time), "renaissance")        
         
 
-}}
+}
