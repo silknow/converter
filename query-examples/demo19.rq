@@ -42,5 +42,5 @@ FILTER (contains(str(?time), "18") || contains(str(?time), "1700s") || contains(
         
 
 }
-GROUP BY ?collection ?object  ?title ?location ?time
+GROUP BY ?collection ?object  ?title ?time
 
