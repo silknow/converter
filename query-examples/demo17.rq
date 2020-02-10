@@ -1,6 +1,6 @@
 All Chasubles OR items made of Damasco or both from 17th century Italy
 
-SELECT  ?title ?description ?object
+SELECT  ?title ?object
 WHERE { 
 
      ?dig a crmdig:D1_Digital_Object .
