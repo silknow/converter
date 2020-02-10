@@ -29,4 +29,4 @@ WHERE { graph ?collection {
 
      
 }}
-GROUP BY ?object ?collection ?title
+GROUP BY  ?collection ?title ?object
