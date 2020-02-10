@@ -1,3 +1,5 @@
+All Chasubles from 17th century Italy, made of Damasco.
+
 SELECT  ?title ?description ?object
 WHERE { 
 
