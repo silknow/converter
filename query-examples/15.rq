@@ -1,4 +1,4 @@
-SELECT distinct  ?title ?assignment ?description ?material ?collection  ?object
+SELECT distinct  ?title ?assignment ?description group_concat(distinct ?material;separator="|") as ?materials ?collection  ?object
 WHERE { graph ?collection {
 
      ?dig a crmdig:D1_Digital_Object .
