@@ -2,7 +2,7 @@ All objects with Cotton from Italy (18th century).
 
 
  
-ELECT distinct  ?title  group_concat(distinct ?material;separator="|") as ?materials ?collection ?object ?location ?time
+SELECT distinct  ?title  group_concat(distinct ?material;separator="|") as ?materials ?collection ?object ?location ?time
 WHERE { graph ?collection {
 
      ?dig a crmdig:D1_Digital_Object . }
@@ -38,8 +38,9 @@ WHERE { graph ?collection {
 ?t ecrm:P78_is_identified_by ?time.
 
 
-FILTER contains(str(?time), "18th")
+FILTER (contains(str(?time), "18") || contains(str(?time), "1700s") || contains(str(?time), "segle 18") || contains(str(?time), "1750s"))
         
 
 }
 GROUP BY ?collection ?object  ?title ?location ?time
+
