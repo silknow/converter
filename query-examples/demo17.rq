@@ -1,4 +1,4 @@
-All Chasubles from 17th century Italy, made of Damasco.
+All Chasubles OR items made of Damasco or both from 17th century Italy
 
 SELECT  ?title ?description ?object
 WHERE { 
