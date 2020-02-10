@@ -19,8 +19,14 @@ WHERE {
            ?l geonames:countryCode "IT"  }
 
         {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/488> .}
-        ?prd ecrm:P126_employed ?material  .
-
+     { ?prd ecrm:P126_employed ?x
+       { SELECT ?x SAMPLE(?lab) as ?material
+         WHERE { ?x skos:prefLabel ?lab . FILTER (lang(?lab) = "en")}
+       } . FILTER(isIRI(?x)) }
+     UNION
+     { ?prd ecrm:P126_employed ?material .
+       FILTER (isIRI(?material) = false)
+      }
      
 
 
