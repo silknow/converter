@@ -1,5 +1,5 @@
 
-SELECT distinct  ?title ?description group_concat(distinct ?material;separator="|") as ?materials ?collection  ?object
+SELECT distinct  ?title group_concat(distinct ?material;separator="|") as ?materials ?collection  ?object
 WHERE { graph ?collection {
 
      ?dig a crmdig:D1_Digital_Object .
@@ -38,4 +38,4 @@ FILTER contains(str(?time), "17")
 
      
 }}
-GROUP BY ?object ?collection ?description  ?title
+GROUP BY ?collection ?object  ?title
