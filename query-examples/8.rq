@@ -1,17 +1,16 @@
-SELECT distinct count(distinct ?obj) as ?count ?depiction
+SELECT distinct count(distinct ?prod) as ?count ?depiction
 WHERE {
 
      ?dig a crmdig:D1_Digital_Object .
      ?dig  ecrm:P129_is_about ?prod .
      ?prod ecrm:P108_has_produced ?object .
       
-     ?obj ecrm:P62_depicts ?depiction .
+     ?object ecrm:P62_depicts ?depiction .
 
 
 
-
-     ?prod ecrm:P4_has_time-span ?t .
-     ?t ecrm:P78_is_identified_by ?time.
+?prod ecrm:P4_has_time-span ?t .
+?t ecrm:P78_is_identified_by ?time.
 
 
 
@@ -23,5 +22,6 @@ FILTER contains(str(?time), "med")
        } . FILTER(isIRI(?l))
            ?l geonames:countryCode "ES" }
 
-}}
-ORDER BY DESC (?count) 
+}
+GROUP BY ?depiction
+ORDER BY DESC (?count)
