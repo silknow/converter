@@ -19,6 +19,12 @@ WHERE {
      optional   {?object ecrm:P3_has_note ?description .}
 
      optional   {?object ecrm:P102_has_title ?title . }
+     
+    optional { ?prd ecrm:P4_has_time-span ?t . }
+optional {?t ecrm:P78_is_identified_by ?time. }
+
+
+   FILTER contains(str(?time), "17" || contains(str(?time), "XVII"))
 
 
 
