@@ -1,8 +1,8 @@
 All objects with Cotton from Italy (18th century). 
 
 
-
-SELECT distinct  ?title  group_concat(distinct ?material;separator="|") as ?materials ?collection ?object 
+ 
+ELECT distinct  ?title  group_concat(distinct ?material;separator="|") as ?materials ?collection ?object ?location ?time
 WHERE { graph ?collection {
 
      ?dig a crmdig:D1_Digital_Object . }
@@ -18,6 +18,9 @@ WHERE { graph ?collection {
           WHERE { ?l geonames:countryCode ?loc}
        } . FILTER(isIRI(?l))
            ?l geonames:countryCode "IT"  }
+ ?prd ecrm:P8_took_place_on_or_within ?x .
+  ?x ecrm:P1_is_identified_by ?location
+
 
         {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/488> .}
      { ?prd ecrm:P126_employed ?x
@@ -35,8 +38,8 @@ WHERE { graph ?collection {
 ?t ecrm:P78_is_identified_by ?time.
 
 
-FILTER contains(str(?time), "18")
+FILTER contains(str(?time), "18th")
         
 
 }
-GROUP BY ?collection ?object  ?title 
+GROUP BY ?collection ?object  ?title ?location ?time
