@@ -214,7 +214,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 ## J. Type of items and materials
 
-1. **[en]** Give me all the ribbons with cotton
+1. **[en]** Give me all the ribbons with cotton [query](./15.rq)  [result](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct++%3Ftitle+%3Fassignment+%3Fdescription+%3Fmaterial+%3Fcollection++%3Fobject%0D%0AWHERE+%7B+graph+%3Fcollection+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A++++++%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A+%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP3_has_note+%3Fdescription+%7D%0D%0A%0D%0A++++++++%3Fprd+ecrm%3AP126_employed+%3Fmaterial++.%0D%0A%0D%0A%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F617%3E+.%7D%0D%0A++++++++%0D%0A++++++++%3Ftype+a+ecrm%3AE17_Type_Assignment+.%0D%0A%0D%0A%0D%0A%0D%0A++++++++%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+.FILTER+contains%28str%28%3Ftitle%29%2C+%22ribbon%22%29%7D%0D%0A+++++++++UNION%0D%0A++++++++%7B%3Ftype+ecrm%3AP42_assigned+%3Chttp%3A%2F%2Fvocab.getty.edu%2Faat%2F300014668%3E+%7D%0D%0A+++++++++UNION%0D%0A++++++++%7B%3Ftype+ecrm%3AP42_assigned+%3Fassignment+.FILTER+contains%28str%28%3Fassignment%29%2C+%22ribbon%22%29%7D%0D%0A%0D%0A+++++%0D%0A++++++++%0D%0A++++++++%0D%0A%0D%0A%7D%7D&format=text%2Fhtml&timeout=0&debug=on)
 
 1. **[en]** Give me all the dresses with silk, cotton and gold
 
@@ -255,7 +255,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 ## N. Type of items, time and location
 
-1. **[en]** Give me all the clothes produced in Spain during the Renaissance.
+1. **[en]** Give me all the clothes produced in Spain during the Renaissance. 
 
 1. **[en]** Give me all the scarves that have been produced in England between 1800 and 1850.
 
@@ -265,7 +265,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 ## O. Type of items, time, location and material
 
-1. **[en]** Give me all the ribbon involving silver  and produced in Italy during the Renaissance
+1. **[en]** Give me all the ribbon involving silver and produced in Italy during the Renaissance . [query](./16.rq) - [results]( http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct++%3Ftitle+%3Fassignment+%3Fdescription+%3Fmaterial+%3Fcollection++%3Fobject%0D%0AWHERE+%7B+graph+%3Fcollection+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A++++++%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fdig+ecrm%3AP129_is_about+%3Ftype+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A+%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP3_has_note+%3Fdescription+%7D%0D%0A%0D%0A%7B+%3Fs+ecrm%3AP8_took_place_on_or_within+%3Fl%0D%0A+++++%7B+SELECT+%3Fl+SAMPLE%28%3Floc%29+as+%3Fplace%0D%0A++++++++++WHERE+%7B+%3Fl+geonames%3AcountryCode+%3Floc%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fl%29%29%0D%0A+++++++++++%3Fl+geonames%3AcountryCode+%22IT%22++%7D%0D%0A%0D%0A%0D%0A++++++++%3Fprd+ecrm%3AP126_employed+%3Fmaterial++.%0D%0A%0D%0A%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F628%3E+.%7D%0D%0A++++++++%0D%0A++++++++optional+%7B+%3Ftype+a+ecrm%3AE17_Type_Assignment+.+%7D%0D%0A%0D%0A%0D%0A%0D%0A++++++++%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+.FILTER+contains%28str%28%3Ftitle%29%2C+%22ribbon%22%29%7D%0D%0A+++++++++UNION%0D%0A++++++++%7B%3Ftype+ecrm%3AP42_assigned+%3Chttp%3A%2F%2Fvocab.getty.edu%2Faat%2F300014668%3E+%7D%0D%0A+++++++++UNION%0D%0A++++++++%7B%3Ftype+ecrm%3AP42_assigned+%3Fassignment+.FILTER+contains%28str%28%3Fassignment%29%2C+%22ribbon%22%29%7D%0D%0A%0D%0A+++++%0D%0A%3Fprod+ecrm%3AP4_has_time-span+%3Ft+.%0D%0A%3Ft+ecrm%3AP78_is_identified_by+%3Ftime.%0D%0A%0D%0A%0D%0AFILTER+contains%28str%28%3Ftime%29%2C+%22renaissance%22%29++++++++%0D%0A++++++++%0D%0A%0D%0A%7D%7D&format=text%2Fhtml&timeout=0&debug=on )
 
 1. **[en]** Give me those ornamental motifs from classical antiquity that appear in fabrics, mises-en-carte and designs ... Organized by chronology, location, place of origin ... 
 
