@@ -16,9 +16,9 @@ WHERE {
        } . FILTER(isIRI(?l))
            ?l geonames:countryCode "IT"  }
 
-        {?object ecrm:P3_has_note ?description .}
+     optional   {?object ecrm:P3_has_note ?description .}
 
-        {?object ecrm:P102_has_title ?title . }
+     optional   {?object ecrm:P102_has_title ?title . }
 
 
 
