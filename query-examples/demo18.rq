@@ -1,3 +1,5 @@
+All dresses with cotton.
+
 
 SELECT distinct  ?title group_concat(distinct ?material;separator="|") as ?materials ?collection  ?object
 WHERE { graph ?collection {
@@ -18,7 +20,6 @@ WHERE { graph ?collection {
 
 
         {?object ecrm:P102_has_title ?title .FILTER contains(str(?title), "dress")}
-
 
      
 }}
