@@ -1,3 +1,6 @@
+All objects with Cotton from Italy (18th century). 
+
+
 SELECT distinct  ?title  group_concat(distinct ?material;separator="|") as ?materials ?object
 WHERE {
 
