@@ -25,8 +25,8 @@ The `<group>` is taken from this table
 | E8_Acquisition | event | 32309 |
 | E10_Transfer_of_Custody | event | 31418 |
 | E78_Collection | collection | 18827 |
-| E3_Condition_State |  | 3219 |
 | E73_Information_Object | informationobject | 3331 |
+| E3_Condition_State |  | 3219 |
 | E9_Move |  | 3101 |
 | E53_Place | http://sws.geonames.org/{id of place}/ | 2481 |
 | E39_Actor | actor | 824 |
@@ -60,11 +60,11 @@ The `<suffix>` is taken from this table:
 | Class | Suffix | Count
 | --- | --- | --- |
 | E17_Type_Assignment | /object/{uri of main entity}/type_assignment/{progressive int} | 53379 |
-| S4_Observation | /object/{uri of main entity}/observation/{progressive int} | 32641 |
-| E16_Measurement | /object/{uri of main entity}/dimension/measurement | 22400 |
 | E42_Identifier | /object/{uri of main entity}/id/{id} | 35263 |
 | E15_Identifier_Assignment | /object/{uri of main entity}/id_assignment/{id from E42} | 34889 |
+| S4_Observation | /object/{uri of main entity}/observation/{progressive int} | 32641 |
 | E52_Time-Span | /production/{uri of main entity}/time/{progressive int} | 32295 |
+| E16_Measurement | /object/{uri of main entity}/dimension/measurement | 22400 |
 | E7_Activity | /production/{uri of main entity}/activity/{progressive int}  | 5220 |
   
   ## Tertiary entities
