@@ -16,34 +16,34 @@ http://data.silknow.org/<group>/<uuid>
 
 The `<group>` is taken from this table 
 
-| Class | group |
-| --- | --- |
-| E38_Image | image |
-| E17_Type_Assignment | object |
-| E54_Dimension | object |
-| E42_Identifier | object |
-| E15_Identifier_Assignment | object |
-| E22_Man-Made_Object | object |
-| D1_Digital_Object | - |
-| E12_Production | production |
-| S4_Observation |  |
-| E8_Acquisition |  |
-| E10_Transfer_of_Custody |  |
-| E16_Measurement |  |
-| E52_Time-Span |  |
-| E78_Collection |  |
-| E3_Condition_State |  |
-| E7_Activity |  |
-| E73_Information_Object |  |
-| E9_Move |  |
-| E53_Place |  |
-| E39_Actor |  |
-| E11_Modification |  |
-| E89_Propositional_Object |  |
-| E30_Right |  |
-| E31_Document |  |
-| E40_Legal_Body |  |
-| E21_Person |  |
+| Class | Group | Count
+| --- | --- | --- |
+| E38_Image | image | 64811 |
+| E17_Type_Assignment | object | 53379 |
+| E54_Dimension | object | 44800 |
+| E42_Identifier | object | 35263 |
+| E15_Identifier_Assignment | object | 34889 |
+| E22_Man-Made_Object | object | 34653 |
+| D1_Digital_Object | - | 34595 |
+| E12_Production | production | 34519 | 
+| S4_Observation |  | 32641 |
+| E8_Acquisition |  | 32309 |
+| E10_Transfer_of_Custody |  | 31418 |
+| E16_Measurement |  | 22400 |
+| E52_Time-Span |  | 32295 |
+| E78_Collection |  | 18827 |
+| E3_Condition_State |  | 3219 |
+| E7_Activity |  | 5220 |
+| E73_Information_Object |  | 3331 |
+| E9_Move |  | 3101 |
+| E53_Place |  | 2481 |
+| E39_Actor |  | 824 |
+| E11_Modification |  | 753 |
+| E89_Propositional_Object |  | 752 |
+| E30_Right |  | 752 |
+| E31_Document |  | 376 
+| E40_Legal_Body |  | 33
+| E21_Person |  | 2
 
 ## Secondary entities
 
