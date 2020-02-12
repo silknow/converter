@@ -56,15 +56,15 @@ Pattern if multiple instance per main entity are possible:
 
 The `<suffix>` is taken from this table:
 
-| Class | Suffix | Count
-| --- | --- | --- |
-| E17_Type_Assignment | /object/{uri of main entity}/type_assignment/{progressive int} | 53379 |
-| E54_Dimension | /object/{uri of main entity}/dimension/{w or h} | 44800 |
-| E42_Identifier | /object/{uri of main entity}/id/{id} | 35263 |
-| E15_Identifier_Assignment | /object/{uri of main entity}/id_assignment/{id from E42} | 34889 |
-| S4_Observation | /object/{uri of main entity}/observation/{progressive int} | 32641 |
-| E52_Time-Span | /production/{uri of main entity}/time/{progressive int} | 32295 |
-| E16_Measurement | /object/{uri of main entity}/dimension/measurement | 22400 |
-| E3_Condition_State | /object/{uri of main entity}/assessment/{progressive int} | 9421 |
-| E7_Activity | /production/{uri of main entity}/activity/{progressive int}  | 5220 |
-| E30_Right | /object/{uri of main entity}/right/ | 752 |
+| Class | Group | Suffix | Count
+| --- | --- | --- | --- |
+| E17_Type_Assignment | object | type_assignment/{progressive int} | 53379 |
+| E54_Dimension | object | dimension/{w or h} | 44800 |
+| E42_Identifier | object | id/{id} | 35263 |
+| E15_Identifier_Assignment | object | id_assignment/{id from E42} | 34889 |
+| S4_Observation | object | observation/{progressive int} | 32641 |
+| E52_Time-Span | production | time/{progressive int} | 32295 |
+| E16_Measurement | object | dimension/measurement | 22400 |
+| E3_Condition_State | object | assessment/{progressive int} | 9421 |
+| E7_Activity | production | activity/{progressive int}  | 5220 |
+| E30_Right | object | right | 752 |
