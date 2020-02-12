@@ -28,7 +28,7 @@ The `<group>` is taken from this table
 | E73_Information_Object | informationobject | 3331 |
 | E14_Condition_Assessment | assessment | 3219 |
 | E9_Move | event | 3101 |
-| E53_Place | http://sws.geonames.org/{id of place}/ | 2481 |
+| E53_Place |  place OR http://sws.geonames.org/ {id of place} | 2481 |
 | E39_Actor | actor | 824 |
 | E11_Modification | modification | 753 |
 | E89_Propositional_Object | object | 752 |
