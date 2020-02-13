@@ -1,3 +1,5 @@
+All dresses with cotton.
+
 
 SELECT distinct  ?title group_concat(distinct ?material;separator="|") as ?materials ?collection  ?object
 WHERE { graph ?collection {
@@ -10,8 +12,14 @@ WHERE { graph ?collection {
      optional {?object ecrm:P102_has_title ?title }
 
 
-        ?prd ecrm:P126_employed ?material  .
-
+     { ?prd ecrm:P126_employed ?x
+       { SELECT ?x SAMPLE(?lab) as ?material
+         WHERE { ?x skos:prefLabel ?lab . FILTER (lang(?lab) = "en")}
+       } . FILTER(isIRI(?x)) }
+     UNION
+     { ?prd ecrm:P126_employed ?material .
+       FILTER (isIRI(?material) = false)
+      }
 
         {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/617> .}
         
@@ -19,7 +27,6 @@ WHERE { graph ?collection {
 
         {?object ecrm:P102_has_title ?title .FILTER contains(str(?title), "dress")}
 
-
      
 }}
-GROUP BY ?object ?collection ?title
+GROUP BY  ?collection ?title ?object

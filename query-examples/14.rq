@@ -1,5 +1,4 @@
-
-SELECT distinct  ?title ?assignment ?description group_concat(distinct ?material;separator="|") as ?materials ?collection  ?object
+SELECT distinct  ?title group_concat(distinct ?material;separator="|") as ?materials ?time ?collection  ?object
 WHERE { graph ?collection {
 
      ?dig a crmdig:D1_Digital_Object .
@@ -13,18 +12,28 @@ WHERE { graph ?collection {
         ?prd ecrm:P126_employed ?material  .
 
 
-        {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/617> .}
-        
-        ?type a ecrm:E17_Type_Assignment .
+
+     MINUS {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/627> .}
 
 
+        {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/644> .}
+        UNION
+        {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/628> .}
+     
+         { ?prd ecrm:P126_employed ?x
+       { SELECT ?x SAMPLE(?lab) as ?material
+         WHERE { ?x skos:prefLabel ?lab . FILTER (lang(?lab) = "en")}
+       } . FILTER(isIRI(?x)) }
+     UNION
+     { ?prd ecrm:P126_employed ?material .
+       FILTER (isIRI(?material) = false)
+      }
 
-        {?object ecrm:P102_has_title ?title .FILTER contains(str(?title), "ribbon")}
-         UNION
-        {?type ecrm:P42_assigned <http://vocab.getty.edu/aat/300014668> }
-         UNION
-        {?type ecrm:P42_assigned ?assignment .FILTER contains(str(?assignment), "ribbon")}
+?prd ecrm:P4_has_time-span ?t .
+?t ecrm:P78_is_identified_by ?time.
 
+
+FILTER (contains(str(?time), "17th") || contains(str(?time), "1600s") || contains(str(?time), "segle 17") || contains(str(?time), "1650s"))
      
 }}
-GROUP BY ?object ?collection ?description ?assignment ?title
+GROUP BY ?collection ?object  ?title ?time
