@@ -24,7 +24,7 @@ public class Production extends Entity {
       timeUnconfirmed = true;
       return;
     }
-
+    timeAppellation = timeAppellation.replaceAll("(made)", "");
     timeAppellation = timeAppellation.replaceAll("\\s+", " ");
     Resource result = VocabularyManager.searchInCategory(timeAppellation, null, "dates", false);
     if (result != null) {
