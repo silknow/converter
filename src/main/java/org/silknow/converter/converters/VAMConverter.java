@@ -43,11 +43,13 @@ public class VAMConverter extends Converter {
     // Create the objects of the graph
     logger.trace("creating objects");
 
-    id = file.getName().replace(".json", "");
+    //id = file.getName().replace(".json", "");
 
     //String museumName = s.get("MUSEUM");
 
     String regNum = s.get("museum_number");
+    id = regNum;
+
     ManMade_Object obj = new ManMade_Object(regNum);
 
     linkToRecord(obj.addComplexIdentifier(regNum, "museum_number"));

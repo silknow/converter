@@ -42,10 +42,12 @@ public class MADConverter extends Converter {
     // Create the objects of the graph
     logger.trace("creating objects");
 
-    id = file.getName().replace(".json", "");
+    //id = file.getName().replace(".json", "");
 
 
     String regNum = s.getMulti("Numéro d'inventaire:").findFirst().orElse(null);
+    id = regNum;
+
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Numéro d'inventaire:"));
     obj.addTitle(s.getMulti("title").findFirst().orElse(null));

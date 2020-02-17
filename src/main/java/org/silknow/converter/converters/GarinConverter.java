@@ -58,12 +58,14 @@ public class GarinConverter extends Converter {
 
     // Create the objects of the graph
     logger.trace("creating objects");
-    if (!file.getName().contains(" "))
-      id = file.getName().replace(".xls", "");
-    else id = null;
-    if (id == null)
-      return null;
 
+   // if (!file.getName().contains(" "))
+   //   id = file.getName().replace(".xls", "");
+   // else id = null;
+   // if (id == null)
+   //   return null;
+    String regNum = s.get("Nº Inventario");
+    id = regNum;
 
     String ownerName = s.get("Propiedad");
     LegalBody owner = null;
@@ -71,7 +73,6 @@ public class GarinConverter extends Converter {
       owner = new LegalBody(ownerName);
 
     LegalBody GARIN = new LegalBody("GARIN");
-
 
     ManMade_Object obj = new ManMade_Object(id);
     obj.addTitle(s.get("Denominacion principal"));

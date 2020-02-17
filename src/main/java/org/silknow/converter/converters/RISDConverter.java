@@ -44,11 +44,13 @@ public class RISDConverter extends Converter {
     // Create the objects of the graph
     logger.trace("creating objects");
 
-    id = file.getName().replace(".json", "");
+    //id = file.getName().replace(".json", "");
 
     //String museumName = s.get("MUSEUM");
 
     String regNum = s.get("Object Number");
+    id = regNum;
+
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Object Number"));
     obj.addTitle(s.getMulti("Title").findFirst().orElse(null));

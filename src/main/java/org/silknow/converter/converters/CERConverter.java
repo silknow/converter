@@ -43,11 +43,12 @@ public class CERConverter extends Converter {
     // Create the objects of the graph
     logger.trace("creating objects");
 
-    id = file.getName().replace(".json", "");
+    //id = file.getName().replace(".json", "");
 
     String museumName = s.get("Museo");
 
     String regNum = s.get("Inventario");
+    id = regNum;
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Inventario"));
     obj.addTitle(s.getMulti("Título").findFirst().orElse(null));

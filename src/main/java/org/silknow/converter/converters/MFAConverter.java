@@ -43,11 +43,12 @@ public class MFAConverter extends Converter {
     // Create the objects of the graph
     logger.trace("creating objects");
 
-    id = file.getName().replace(".json", "");
-
+    //id = file.getName().replace(".json", "");
     String museumName = "MFA Boston";
 
     String regNum = s.get("Accession Number");
+    id = regNum;
+
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Accession Number"));
     s.getMulti("titleField").forEach(obj::addTitle);
