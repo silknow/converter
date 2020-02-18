@@ -1,0 +1,52 @@
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/type/author> a E55_Type;
+    rdfs:label "author"@en  .
+
+<http://data.silknow.org/type/artist> a E55_Type;
+        rdfs:label "artist"@en  .
+
+<http://data.silknow.org/type/bibliography> a E55_Type;
+        rdfs:label "bibliography"@en ,
+        	       "Bibliografía"@es ,
+                   "Bibliographie"@fr  .
+
+<http://data.silknow.org/type/description> a E55_Type;
+        rdfs:label "description"@en ,
+        	       "Descripción"@es ,
+                   "Description"@fr .
+
+<http://data.silknow.org/type/width> a E55_Type;
+        rdfs:label "width"@en .
+
+<http://data.silknow.org/type/height> a E55_Type;
+        rdfs:label "height"@en .
+
+<http://data.silknow.org/type/domain> a E55_Type;
+        rdfs:label "Domain"@en ,
+        		"Domaine"@fr .
+
+<http://data.silknow.org/type/register_number> a E55_Type;
+        rdfs:label "Register number"@en,
+        		   "Numéro d'inventaire"@fr,
+        		   "recordId"@en,
+        		   "Object Number"@en .
+
+<http://data.silknow.org/type/denomination> a E55_Type;
+        rdfs:label "Denomination"@en,
+                   "Dénomination"@fr .
+
+<http://data.silknow.org/type/technical_description> a E55_Type ;
+        rdfs:label "Technical description"@en,
+        	       "Descripción técnica"@es.
+
+
+
+
