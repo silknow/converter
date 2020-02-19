@@ -9,7 +9,6 @@ import org.apache.jena.util.ResourceUtils;
 import org.apache.jena.vocabulary.DC;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
-import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.Contract;
 import org.silknow.converter.Main;
 import org.silknow.converter.commons.ConstructURI;
@@ -27,6 +26,7 @@ public abstract class Entity {
   private int activityCount;
   private int observationCount;
   private int typeAssignmentCount;
+  private Literal r;
 
   Entity() {
     // do nothing, enables customisation for child class
@@ -226,10 +226,10 @@ public abstract class Entity {
 
   public Resource addClassification(String classification, String type, String lang, LegalBody museum) {
     if (classification == null) return null;
-    RDFNode r = VocabularyManager.searchInCategory(classification, null, "aat", false);
-    if (r == null) {
+    //RDFNode r = VocabularyManager.searchInCategory(classification, null, "aat", false);
+    //if (r == null) {
       r = model.createLiteral(classification);
-    }
+    //}
 
     Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)
             .addProperty(RDF.type, CIDOC.E17_Type_Assignment)
