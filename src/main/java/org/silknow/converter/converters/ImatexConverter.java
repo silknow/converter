@@ -40,7 +40,12 @@ public class ImatexConverter extends Converter {
     // Create the objects of the graph
     logger.trace("creating objects");
 
-    //filename = file.getName();
+    String fullfilename = file.getName();
+    fullfilename = fullfilename.replace("_en", "");
+    fullfilename = fullfilename.replace("_es", "");
+    fullfilename = fullfilename.replace("_ca", "");
+
+    filename = fullfilename;
 
 
     String museumName = s.get("MUSEUM");

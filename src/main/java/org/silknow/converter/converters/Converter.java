@@ -52,12 +52,13 @@ public abstract class Converter {
     if (any == null) return;
     if (this.record == null) {
       String recordUri = BASE_URI + this.DATASET_NAME + "/" + id.replaceAll("\\s", "_");
+      if (filename != null) {
       String label = "ID: "+id+" , Filename: "+filename;
       this.record = model.createResource(recordUri)
               .addProperty(RDF.type, CRMdig.D1_Digital_Object)
               .addProperty(RDFS.label, label)
               .addProperty(CIDOC.P2_has_type, "Record");
-      linkToDataset(record);
+      linkToDataset(record);}
     }
     this.record.addProperty(CIDOC.P129_is_about, any);
   }
