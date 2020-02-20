@@ -50,7 +50,7 @@ public class JocondeConverter extends Converter {
 
     // Create the objects of the graph
     logger.trace("creating objects");
-    //id = file.getName().replace(".json", "");
+    filename = file.getName();
 
     String regNum = s.get("INV").split(" ")[0];
     id = regNum;

@@ -46,7 +46,7 @@ public class METConverter extends Converter {
     // Create the objects of the graph
     logger.trace("creating objects");
 
-    //id = file.getName().replace(".json", "");
+    filename = file.getName();
 
     //String museumName = s.get("MUSEUM");
 

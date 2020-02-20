@@ -59,11 +59,11 @@ public class GarinConverter extends Converter {
     // Create the objects of the graph
     logger.trace("creating objects");
 
-   // if (!file.getName().contains(" "))
-   //   id = file.getName().replace(".xls", "");
-   // else id = null;
-   // if (id == null)
-   //   return null;
+    if (!file.getName().contains(" "))
+      filename = file.getName();
+    else filename = null;
+    if (filename == null)
+      return null;
     String regNum = s.get("Nº Inventario");
     id = regNum;
 

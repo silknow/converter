@@ -21,6 +21,7 @@ public abstract class Converter {
 
   Logger logger = LoggerFactory.getLogger(getClass());
   protected String id; // record id
+  protected String filename;
   private Resource dataset;
   protected Resource record;
 
@@ -41,7 +42,7 @@ public abstract class Converter {
       this.dataset = model.createResource(BASE_URI + this.DATASET_NAME)
               .addProperty(RDF.type, CRMdig.D1_Digital_Object)
               .addProperty(RDFS.label, this.DATASET_NAME)
-              .addProperty(CIDOC.P2_has_type, "dataset");
+              .addProperty(CIDOC.P2_has_type, "Dataset");
     }
     this.dataset.addProperty(CIDOC.P106_is_composed_of, record);
   }
@@ -51,10 +52,11 @@ public abstract class Converter {
     if (any == null) return;
     if (this.record == null) {
       String recordUri = BASE_URI + this.DATASET_NAME + "/" + id.replaceAll("\\s", "_");
+      String label = "ID: "+id+" , Filename: "+filename;
       this.record = model.createResource(recordUri)
               .addProperty(RDF.type, CRMdig.D1_Digital_Object)
-              .addProperty(RDFS.label, id)
-              .addProperty(CIDOC.P2_has_type, "record");
+              .addProperty(RDFS.label, label)
+              .addProperty(CIDOC.P2_has_type, "Record");
       linkToDataset(record);
     }
     this.record.addProperty(CIDOC.P129_is_about, any);

@@ -43,6 +43,7 @@ public class UNIPAConverter extends Converter {
     // Create the objects of the graph
     logger.trace("creating objects");
 
+    filename = file.getName();
     id = file.getName().replace(".json", "");
 
     String museumName = s.get("Museum");

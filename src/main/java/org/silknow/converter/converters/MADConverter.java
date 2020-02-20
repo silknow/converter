@@ -42,7 +42,7 @@ public class MADConverter extends Converter {
     // Create the objects of the graph
     logger.trace("creating objects");
 
-    //id = file.getName().replace(".json", "");
+    filename = file.getName();
 
 
     String regNum = s.getMulti("Numéro d'inventaire:").findFirst().orElse(null);
