@@ -29,7 +29,7 @@ public class Image extends Entity {
 
   public void generateUri(String id, int imgCount) {
     // this method is called if the img has no identifier and need one uri
-    String seed = id + "$$$" + imgCount; // the $$$ is there for avoiding collision of different-sized seeds
+    String seed = id + "$$$" + imgCount + this.localFilename; // the $$$ is there for avoiding collision of different-sized seeds
     this.setUri(ConstructURI.build(this.source, "Image", seed));
   }
 
