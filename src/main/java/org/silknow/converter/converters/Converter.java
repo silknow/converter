@@ -3,6 +3,7 @@ package org.silknow.converter.converters;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.vocabulary.DCTerms;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
 import org.silknow.converter.entities.Entity;
@@ -44,6 +45,8 @@ public abstract class Converter {
               .addProperty(RDFS.label, this.DATASET_NAME)
               .addProperty(CIDOC.P2_has_type, "Dataset");
     }
+
+
     this.dataset.addProperty(CIDOC.P106_is_composed_of, record);
   }
 
@@ -57,6 +60,7 @@ public abstract class Converter {
       this.record = model.createResource(recordUri)
               .addProperty(RDF.type, CRMdig.D1_Digital_Object)
               .addProperty(RDFS.label, label)
+              .addProperty(DCTerms.publisher, BASE_URI + "/organization/" + this.DATASET_NAME)
               .addProperty(CIDOC.P2_has_type, "Record");
       linkToDataset(record);}
     }
