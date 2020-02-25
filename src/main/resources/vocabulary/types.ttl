@@ -7,45 +7,66 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.silknow.org/type/author> a E55_Type;
-    rdfs:label "author"@en  .
+<http://data.silknow.org/type/author> a skos:concept, ecrm:E55_Type;
+    rdfs:label "author"@en ;
+    skos:topConceptOf <http://data.silknow.org/type/>.
 
-<http://data.silknow.org/type/artist> a E55_Type;
-        rdfs:label "artist"@en  .
+<http://data.silknow.org/type/artist> a skos:concept, ecrm:E55_Type;
+        rdfs:label "artist"@en  ;
+        skos:topConceptOf <http://data.silknow.org/type/>.
 
-<http://data.silknow.org/type/bibliography> a E55_Type;
+<http://data.silknow.org/type/bibliography> a skos:concept, ecrm:E55_Type;
         rdfs:label "bibliography"@en ,
         	       "Bibliografía"@es ,
-                   "Bibliographie"@fr  .
+                   "Bibliographie"@fr  ;
+        skos:topConceptOf <http://data.silknow.org/type/>.
 
-<http://data.silknow.org/type/description> a E55_Type;
+<http://data.silknow.org/type/description> a skos:concept, ecrm:E55_Type;
         rdfs:label "description"@en ,
         	       "Descripción"@es ,
-                   "Description"@fr .
+                   "Description"@fr ;
+        skos:topConceptOf <http://data.silknow.org/type/>.
 
-<http://data.silknow.org/type/width> a E55_Type;
-        rdfs:label "width"@en .
+<http://data.silknow.org/type/width> a skos:concept, ecrm:E55_Type ;
+        rdfs:label "width"@en ;
+        skos:topConceptOf <http://data.silknow.org/type/>.
 
-<http://data.silknow.org/type/height> a E55_Type;
-        rdfs:label "height"@en .
+<http://data.silknow.org/type/height> a skos:concept, ecrm:E55_Type;
+        rdfs:label "height"@en ;
+        skos:topConceptOf <http://data.silknow.org/type/>.
 
-<http://data.silknow.org/type/domain> a E55_Type;
-        rdfs:label "Domain"@en ,
-        		"Domaine"@fr .
+<http://data.silknow.org/type/domain> a skos:concept, ecrm:E55_Type;
+        rdfs:label "Domain"@en , "Domaine"@fr ;
+        skos:topConceptOf <http://data.silknow.org/type/>.
 
-<http://data.silknow.org/type/register_number> a E55_Type;
+<http://data.silknow.org/type/register_number> a skos:concept, ecrm:E55_Type;
         rdfs:label "Register number"@en,
         		   "Numéro d'inventaire"@fr,
         		   "recordId"@en,
-        		   "Object Number"@en .
+        		   "Object Number"@en ;
+        skos:topConceptOf <http://data.silknow.org/type/>.
 
-<http://data.silknow.org/type/denomination> a E55_Type;
+<http://data.silknow.org/type/denomination> a skos:concept, ecrm:E55_Type;
         rdfs:label "Denomination"@en,
-                   "Dénomination"@fr .
+                   "Dénomination"@fr ;
+        skos:topConceptOf <http://data.silknow.org/type/>.
 
-<http://data.silknow.org/type/technical_description> a E55_Type ;
+<http://data.silknow.org/type/technical_description> a skos:concept, ecrm:E55_Type ;
         rdfs:label "Technical description"@en,
-        	       "Descripción técnica"@es.
+        	       "Descripción técnica"@es ;
+        skos:topConceptOf <http://data.silknow.org/type/>.
+
+<http://data.silknow.org/type/> a skos:ConceptScheme ;
+        skos:hasTopConcept <http://data.silknow.org/type/technical_description>,
+                                 <http://data.silknow.org/type/denomination>,
+                                 <http://data.silknow.org/type/register_number>,
+                                 <http://data.silknow.org/type/domain>,
+                                 <http://data.silknow.org/type/height>,
+                                 <http://data.silknow.org/type/width>,
+                                 <http://data.silknow.org/type/description>,
+                                 <http://data.silknow.org/type/bibliography>,
+                                 <http://data.silknow.org/type/artist>,
+                                 <http://data.silknow.org/type/author>.
 
 
 
