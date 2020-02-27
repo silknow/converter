@@ -27,7 +27,7 @@ public class Production extends Entity {
     timeAppellation = timeAppellation.replaceAll("\\s+", " ");
     Resource result = VocabularyManager.searchInCategory(timeAppellation, null, "dates", false);
     if (result != null) {
-      System.out.println(result.getURI());
+      //System.out.println(result.getURI());
       this.addProperty(CIDOC.P4_has_time_span, result); }
     else {
 

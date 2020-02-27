@@ -49,7 +49,11 @@ public class RISDConverter extends Converter {
     //String museumName = s.get("MUSEUM");
 
     String regNum = s.get("Object Number");
-    id = regNum;
+    if (regNum != null)
+      id = regNum;
+    if (regNum == null)
+      id = filename+"_local_filename_id";
+
 
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Object Number"));

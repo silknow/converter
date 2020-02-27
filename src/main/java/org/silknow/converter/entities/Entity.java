@@ -9,6 +9,7 @@ import org.apache.jena.util.ResourceUtils;
 import org.apache.jena.vocabulary.DC;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
+import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.Contract;
 import org.silknow.converter.Main;
 import org.silknow.converter.commons.ConstructURI;
@@ -227,9 +228,10 @@ public abstract class Entity {
   public Resource addClassification(String classification, String type, String lang, LegalBody museum) {
     if (classification == null) return null;
     //RDFNode r = VocabularyManager.searchInCategory(classification, null, "aat", false);
-    //if (r == null) {
+    if (r == null) {
       r = model.createLiteral(classification);
-    //}
+    }
+
 
     Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)
             .addProperty(RDF.type, CIDOC.E17_Type_Assignment)
@@ -237,7 +239,13 @@ public abstract class Entity {
             .addProperty(CIDOC.P42_assigned, r);
 
     if (type != null)
+    {
+      RDFNode t = VocabularyManager.searchInCategory(classification, null, "types", false);
+      if (t != null) {
+        assignment.addProperty(CIDOC.P2_has_type, t);
+      }
       assignment.addProperty(CIDOC.P2_has_type, type, lang);
+    }
 
     if (museum != null) {
       assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
