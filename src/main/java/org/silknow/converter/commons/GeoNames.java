@@ -32,7 +32,7 @@ public class GeoNames {
   }
 
   public static String toURI(int id) {
-    return "http://sws.geonames.org/" + id + "/";
+    return "https://sws.geonames.org/" + id + "/";
   }
 
   public static void downloadRdf(int id) {
