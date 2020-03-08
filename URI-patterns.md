@@ -71,12 +71,13 @@ The `<suffix>` is taken from this table:
 
 ## Image UUID and seed generation
 
-Java code:
-```
-String seed = id + "$$$" + imgCount + this.localFilename; 
-this.setUri(ConstructURI.build(this.source, "Image", seed));
-```
+The uuid is computed deterministically starting from a seed string.
 
-The seed consists of the Image ID the string "$$$" the image count and the filename of each image.
-The "$$$" string is to avoid collision of differently sized seeds. The Image ID, the image count and the filename provide three different unique identifiers.
-Based on this seed the UUID gets then created.
+* The seed is normally composed by
+* source (e.g. 'unipa', 'met', ...)
+* class (e.g. 'E22_Man-Made_Object', 'D1_Digital_Object', ...)
+* the id of the current object (normally it is unique in a file)
+
+There are some exceptions to this rule, in order to allow automatic cross-source alignment:
+* For Places and Actors, we use the label instead of the id
+* For the Images we use a concatenation of id + "$$$" + imgCount + this.localFilename
