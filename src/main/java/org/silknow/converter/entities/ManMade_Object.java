@@ -3,6 +3,7 @@ package org.silknow.converter.entities;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
+import org.doremus.string2vocabulary.VocabularyManager;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.CRMsci;
 
@@ -22,9 +23,17 @@ public class ManMade_Object extends Entity {
     imgCount = 0;
   }
 
+
+
   public void addSubject(String subject, String lang) {
-    this.addProperty(CIDOC.P62_depicts, subject, lang);
+  Resource result = VocabularyManager.searchInCategory(subject, null, "aat", false);
+    if (result != null)
+            this.addProperty(CIDOC.P62_depicts, result);
+    else {
+      this.addProperty(CIDOC.P62_depicts, subject, lang);
   }
+}
+
 
 
   public void addIntention(String intention) {
