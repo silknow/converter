@@ -56,7 +56,7 @@ public class Image extends Entity {
 
       if (filename.trim().isEmpty()) return; // workaround for issue #38
 
-      filename = filename.replaceAll("\\s+", "_");
+      filename = filename.replaceAll(" ", "%20");
       String internalUrl = MEDIA_BASE + dataset + "/" + filename;
 
       this.addProperty(Schema.contentUrl, model.createResource(internalUrl));
