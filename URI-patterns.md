@@ -80,4 +80,4 @@ The uuid is computed deterministically starting from a seed string.
 
 There are some exceptions to this rule, in order to allow automatic cross-source alignment:
 * For Places and Actors, we use the label instead of the id
-* For the Images we use a concatenation of id + "$$$" + imgCount + this.localFilename
+* For the Images we use a concatenation of id (internal ID of record) + "$$$" + imgCount (How many images does the object have) + this.localFilename
