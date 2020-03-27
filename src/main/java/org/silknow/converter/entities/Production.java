@@ -58,7 +58,7 @@ public class Production extends Entity {
             || collection.contains("metals") || collection.contains("mixed_fibre") || collection.contains("other_material") || collection.contains("paper")
                 || collection.contains("silver_thread") || collection.contains("synthtetic_fibres") || collection.contains("vegetal_fibres")
                 || collection.contains("300264091")) {
-          System.out.println(collection);
+          //System.out.println(collection);
           this.addProperty(CIDOC.P126_employed, result);
           break;
 
@@ -69,7 +69,7 @@ public class Production extends Entity {
                 || collection.contains("patterned_fabric") || collection.contains("printed_fabric") || collection.contains("rippled_effect")
                 || collection.contains("satin") || collection.contains("tabby") || collection.contains("twill")
                 || collection.contains("velvet") || collection.contains("300264090")) {
-          System.out.println(collection);
+          //System.out.println(collection);
           this.addProperty(CIDOC.P32_used_general_technique, result);
           break;
         }
@@ -111,7 +111,7 @@ public class Production extends Entity {
                 || collection.contains("metals") || collection.contains("mixed_fibre") || collection.contains("other_material") || collection.contains("paper")
                 || collection.contains("silver_thread") || collection.contains("synthtetic_fibres") || collection.contains("vegetal_fibres")
                 || collection.contains("300264091")) {
-          System.out.println(collection);
+          //System.out.println(collection);
           this.addProperty(CIDOC.P126_employed, result);
           break;
 
@@ -122,7 +122,7 @@ public class Production extends Entity {
                 || collection.contains("patterned_fabric") || collection.contains("printed_fabric") || collection.contains("rippled_effect")
                 || collection.contains("satin") || collection.contains("tabby") || collection.contains("twill")
                 || collection.contains("velvet")  || collection.contains("300264090") ) {
-          System.out.println(collection);
+          //System.out.println(collection);
           this.addProperty(CIDOC.P32_used_general_technique, result);
           break;
         }

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.github.DOREMUS-ANR</groupId>
+  <artifactId>string2vocabulary</artifactId>
+  <version>0.5.1</version>
+  <name>DOREMUS-ANR/string2vocabulary</name>
+  <description>Substitute literals in RDF graphs with URIs from SKOS vocabularies</description>
+  <url>https://github.com/DOREMUS-ANR/string2vocabulary</url>
+  <inceptionYear>2017</inceptionYear>
+  <licenses>
+    <license>
+      <name>Apache License 2.0</name>
+      <url>https://api.github.com/licenses/apache-2.0</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>DOREMUS-ANR</id>
+      <name>DOREMUS ANR Project</name>
+      <email>doremus@googlegroups.com</email>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git://github.com/DOREMUS-ANR/string2vocabulary.git</connection>
+    <developerConnection>scm:git://github.com/DOREMUS-ANR/string2vocabulary.git</developerConnection>
+    <url>git://github.com/DOREMUS-ANR/string2vocabulary.git</url>
+  </scm>
+  <dependencies>
+    <dependency>
+      <groupId>xml-apis</groupId>
+      <artifactId>xml-apis</artifactId>
+      <version>1.4.01</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.jena</groupId>
+      <artifactId>apache-jena-libs</artifactId>
+      <version>3.6.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.moparisthebest</groupId>
+      <artifactId>junidecode</artifactId>
+      <version>0.1.1</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>edu.stanford.nlp</groupId>
+      <artifactId>stanford-corenlp</artifactId>
+      <version>3.6.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>edu.stanford.nlp</groupId>
+      <artifactId>stanford-corenlp</artifactId>
+      <version>3.6.0</version>
+      <classifier>models</classifier>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

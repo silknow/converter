@@ -144,7 +144,7 @@ public class Main implements Runnable {
       return;
     }
 
-    System.out.println(file.getName());
+    //System.out.println(file.getName());
     converter.resetModel();
     Model m = converter.convert(file);
 //    VocabularyManager.string2uri(m);

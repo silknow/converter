@@ -192,7 +192,7 @@ aat:300404512 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 				"siglo XVIII"@es,	"XVIII secolo"@it,	"18ème siècle"@fr,
 				"siglo 18"@es,	"XVIII-secolo"@it,	"18ème-siècle"@fr, "segle divuit"@ca,
 				"segle, dicuit"@ca, "segle XVIII"@ca, "segle XVIII"@ca, "anys 1700"@ca,
-				"1700s"@en,	"años 1700"@es,	"il 700"@it;
+				"1700s"@en,	"años 1700"@es,	"il 700"@it, "segle 18"@ca;
 	rdfs:seeAlso <http://www.getty.edu/vow/AATFullDisplay?find=&logic=AND&note=&subjectid=300404512> ;
 	dct:created "2016-03-16T08:43:20"^^xsd:dateTime ;
 	dct:modified "2016-03-16T08:44:24"^^xsd:dateTime ;
@@ -212,7 +212,7 @@ aat:300404512 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	skos:altLabel "century, eighteenth (dates CE)"@en , "18th century (dates CE)"@en , "18th-century (dates CE)"@en, "siglo, dieciocho"@es,	"secolo, diciottesimo"@it,	"siècle, dix-huitième"@fr,
 					"siglo XVIII"@es,	"XVIII secolo"@it,	"18ème siècle"@fr,
 					"siglo 18"@es,	"XVIII-secolo"@it,	"18ème-siècle"@fr, "segle, dicuit"@ca, "segle XVIII"@ca, "segle XVIII"@ca, "anys 1700"@ca, "años 1700"@es,
-                    "il 700"@it,	"Années 1700"@fr ;
+                    "il 700"@it,	"Années 1700"@fr, "segle 18"@ca ;
 	gvp:broaderGeneric aat:300404464 ;
 	gvp:broaderPreferred aat:300404464 ;
 	gvp:broaderNonConcept aat:300404464 ;
@@ -9301,7 +9301,7 @@ aat:300404513 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 				"siglo, diecinueve"@es,	"secolo, diciannovesimo"@it,	"siècle, dix-neuvième"@fr,
 				"siglo XIX"@es,	"XIX secolo"@it,	"19ème siècle"@fr,
 				"siglo 19"@es,	"XIX-secolo"@it,	"19ème-siècle"@fr,
-				"segle dinou"@ca, "segle, dinou"@ca, "segle XIX"@ca, "segle XIX"@ca, "anys 1800"@ca, "1800s"@en,"años 1800"@es,	"il 800"@it,	"Années 1800"@fr;
+				"segle dinou"@ca, "segle, dinou"@ca, "segle XIX"@ca, "segle XIX"@ca, "anys 1800"@ca, "1800s"@en,"años 1800"@es,	"il 800"@it,	"Années 1800"@fr, "segle 19"@ca;
 	rdfs:seeAlso <http://www.getty.edu/vow/AATFullDisplay?find=&logic=AND&note=&subjectid=300404513> ;
 	dct:created "2016-03-16T08:44:38"^^xsd:dateTime ;
 	dct:modified "2016-03-16T08:49:02"^^xsd:dateTime ;
@@ -9321,7 +9321,7 @@ aat:300404513 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	skos:altLabel "century, nineteenth (dates CE)"@en , "19th century (dates CE)"@en , "19th-century (dates CE)"@en, "siglo, diecinueve"@es,	"secolo, diciannovesimo"@it,	"siècle, dix-neuvième"@fr,
 				"siglo XIX"@es,	"XIX secolo"@it,	"19ème siècle"@fr,
 				"siglo 19"@es,	"XIX-secolo"@it,	"19ème-siècle"@fr, "segle, dinou"@ca,
-		"segle XIX"@ca, "segle XIX"@ca, "anys 1800"@ca, "1800s"@en,	"años 1800"@es,	"il 800"@it,	"Années 1800"@fr ;
+		"segle XIX"@ca, "segle XIX"@ca, "anys 1800"@ca, "1800s"@en,	"años 1800"@es,	"il 800"@it,	"Années 1800"@fr, "segle 19"@ca ;
 	gvp:broaderGeneric aat:300404464 ;
 	gvp:broaderPreferred aat:300404464 ;
 	gvp:broaderNonConcept aat:300404464 ;
@@ -9478,7 +9478,7 @@ aat:300404511 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 				"siglo XVII"@es,	"XVII secolo"@it,	"17ème siècle"@fr,
 				"siglo 17"@es,	"XVII-secolo"@it,	"17ème-siècle"@fr,
 				"segle disset"@ca, "segles, disset"@ca, "segle XVII"@ca, "segle XVII"@ca, "anys 1600"@ca,
-				"1600s"@en,	"años 1600"@es,	"il 600"@it,	"Années 1600"@fr;
+				"1600s"@en,	"años 1600"@es,	"il 600"@it,	"Années 1600"@fr, "segle 17"@ca;
 	rdfs:seeAlso <http://www.getty.edu/vow/AATFullDisplay?find=&logic=AND&note=&subjectid=300404511> ;
 	dct:created "2016-03-16T08:42:10"^^xsd:dateTime ;
 	dct:modified "2016-03-16T08:43:12"^^xsd:dateTime ;
@@ -9497,7 +9497,7 @@ aat:300404511 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	skosxl:altLabel aat_term:1000644172-en , aat_term:1000644173-en , aat_term:1000644174-en ;
 	skos:altLabel "century, seventeenth (dates CE)"@en , "17th century (dates CE)"@en , "17th-century (dates CE)"@en, "siglo, diecisiete"@es,	"secolo, diciassette"@it,	"siècle, dix-septième"@fr,
 					"siglo XVII"@es,	"XVII secolo"@it,	"17ème siècle"@fr, "siglo 17"@es,	"XVII-secolo"@it,	"17ème-siècle"@fr,
-                    "1600s"@en,	"años 1600"@es,	"il 600"@it,	"Années 1600"@fr,	"anys 1600"@ca, "segles, disset"@ca, "segle XVII"@ca, "segle XVII"@ca;
+                    "1600s"@en,	"años 1600"@es,	"il 600"@it,	"Années 1600"@fr,	"anys 1600"@ca, "segles, disset"@ca, "segle XVII"@ca, "segle XVII"@ca, , "segle 17"@ca;
 	gvp:broaderGeneric aat:300404464 ;
 	gvp:broaderPreferred aat:300404464 ;
 	gvp:broaderNonConcept aat:300404464 ;
