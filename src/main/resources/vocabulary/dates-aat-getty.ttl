@@ -9497,7 +9497,7 @@ aat:300404511 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	skosxl:altLabel aat_term:1000644172-en , aat_term:1000644173-en , aat_term:1000644174-en ;
 	skos:altLabel "century, seventeenth (dates CE)"@en , "17th century (dates CE)"@en , "17th-century (dates CE)"@en, "siglo, diecisiete"@es,	"secolo, diciassette"@it,	"siècle, dix-septième"@fr,
 					"siglo XVII"@es,	"XVII secolo"@it,	"17ème siècle"@fr, "siglo 17"@es,	"XVII-secolo"@it,	"17ème-siècle"@fr,
-                    "1600s"@en,	"años 1600"@es,	"il 600"@it,	"Années 1600"@fr,	"anys 1600"@ca, "segles, disset"@ca, "segle XVII"@ca, "segle XVII"@ca, , "segle 17"@ca;
+                    "1600s"@en,	"años 1600"@es,	"il 600"@it,	"Années 1600"@fr,	"anys 1600"@ca, "segles, disset"@ca, "segle XVII"@ca, "segle XVII"@ca, "segle 17"@ca;
 	gvp:broaderGeneric aat:300404464 ;
 	gvp:broaderPreferred aat:300404464 ;
 	gvp:broaderNonConcept aat:300404464 ;
