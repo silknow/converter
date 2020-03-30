@@ -122,20 +122,20 @@ public class JocondeConverter extends Converter {
     po.isAbout(obj);
     po.addNote(s.getMulti("PREP").findFirst().orElse(null), mainLang);
 
-    String gen = s.getMulti("GENE").findFirst().orElse(null);
-    if ("objet en rapport".equalsIgnoreCase(gen)) {
-      po.setType(gen, mainLang);
+    //String gen = s.getMulti("GENE").findFirst().orElse(null);
+    //if ("objet en rapport".equalsIgnoreCase(gen)) {
+      //po.setType(gen, mainLang);
 
-      assert hist != null;
-      po.addNote(hist);
-      while (Utils.containsBrackets(hist)) {
-        List<String> temp = Utils.extractBrackets(hist);
-        hist = temp.get(0);
-        String id_ = temp.get(1);
-        ManMade_Object o = new ManMade_Object(id_);
-        po.refersTo(o);
-      }
-    }
+      //assert hist != null;
+      //po.addNote(hist);
+      //while (Utils.containsBrackets(hist)) {
+        //List<String> temp = Utils.extractBrackets(hist);
+        //hist = temp.get(0);
+        //String id_ = temp.get(1);
+        //ManMade_Object o = new ManMade_Object(id_);
+        //po.refersTo(o);
+      //}
+    //}
 
     List<String> inscr = s.getMulti("INSC").collect(Collectors.toList());
     List<String> inscrPrec = s.getMulti("Précision inscriptions").collect(Collectors.toList());
