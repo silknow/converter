@@ -69,14 +69,18 @@ The `<suffix>` is taken from this table:
 | E7_Activity | production | activity/{progressive int}  | 5220 |
 | E30_Right | object | right | 752 |
 
-## Image UUID and seed generation
+## UUID and seed generation
 
 The uuid is computed deterministically starting from a seed string.
 
-* The seed is normally composed by
+The seed is usually generated  based on:
+
 * source (e.g. 'unipa', 'met', ...)
 * class (e.g. 'E22_Man-Made_Object', 'D1_Digital_Object', ...)
 * the id of the current object (normally it is unique in a file)
+* Hash function: SHA-1
+
+
 
 There are some exceptions to this rule, in order to allow automatic cross-source alignment:
 * For Places and Actors, we use the label instead of the id
