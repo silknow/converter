@@ -41,9 +41,9 @@ public class ImatexConverter extends Converter {
     logger.trace("creating objects");
 
     String fullfilename = file.getName();
-    fullfilename = fullfilename.replace("_en", "");
-    fullfilename = fullfilename.replace("_es", "");
-    fullfilename = fullfilename.replace("_ca", "");
+    fullfilename = fullfilename.replace("-en", "");
+    fullfilename = fullfilename.replace("-es", "");
+    fullfilename = fullfilename.replace("-ca", "");
 
     filename = fullfilename;
 
@@ -62,14 +62,15 @@ public class ImatexConverter extends Converter {
         regNumField = "NÚM.REGISTRO";
     }
 
-    String regNum = s.get(regNumField);
-    if (regNum == null)
-      regNum = s.get("REGISTER NUMBER");
-    if (regNum == null)
-      regNum = s.get("NUM. REGISTRE");
-    if (regNum == null)
-      regNum = s.get("NÚM.REGISTRO");
-    if (regNum != null)
+    //String regNum = s.get(regNumField);
+    //if (regNum == null)
+      //regNum = s.get("REGISTER NUMBER");
+    //if (regNum == null)
+      //regNum = s.get("NUM. REGISTRE");
+    //if (regNum == null)
+      //regNum = s.get("NÚM.REGISTRO");
+    //if (regNum != null)
+    String regNum = s.getId();
      id = regNum;
 
 
