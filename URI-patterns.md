@@ -71,7 +71,8 @@ The `<suffix>` is taken from this table:
 
 ## UUID and seed generation
 
-The uuid is computed deterministically starting from a seed string.
+The UUID is computed deterministically starting from a seed string.
+A real UUID taken from an example above looks like this: d4ec41ba-a4d3-3ebb-ba07-8567f1add9cb
 
 The seed is usually generated  based on:
 
@@ -80,8 +81,11 @@ The seed is usually generated  based on:
 * the id of the current object (normally it is unique in a file)
 * Hash function: SHA-1
 
-
-
 There are some exceptions to this rule, in order to allow automatic cross-source alignment:
-* For Places and Actors, we use the label instead of the id
-* For the Images we use a concatenation of id (internal ID of record) + "$$$" + imgCount (How many images does the object have) + this.localFilename
+* For Places and Actors, we use the label ('Rome' e.g.) instead of the id plus the class, but not the source.
+* For the Images we use a concatenation of id (internal ID of museum record) + "$$$" + imgCount (How many images does the object have) + this.localFilename
+
+Examples:
+* For most classes: [source]+[class]+[record_internal_id]
+* For Place (E53) and Actors (E39): [class]+[label]
+* For Images (E38): [record_internal_id] + "$$$" + [img_count_of_record] + [local_filename]
