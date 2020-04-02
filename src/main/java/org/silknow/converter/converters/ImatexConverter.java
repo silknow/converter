@@ -120,7 +120,7 @@ public class ImatexConverter extends Converter {
     linkToRecord(obj.addObservation(s.get("TECHNICAL DESCRIPTION"), "Technical description", mainLang));
 
     String acquisitionFrom = s.get("FONT INGRÉS*");
-    String acquisitionType = s.get("FORMA INGRÉS*");
+    //String acquisitionType = s.get("FORMA INGRÉS*");
     String acquisitionDate = s.get("YEAR ENTERED THE MUSEUM");
     LegalBody museum = null;
     if (museumName != null)

@@ -88,23 +88,18 @@ public class MFAConverter extends Converter {
     linkToRecord(obj.addObservation(s.get("Description"), "Description", mainLang));
 
 
-    LegalBody museum = null; // FIXME ?
-//    if (museumName != null)
-//      museum = new LegalBody(museumName);
 
+    LegalBody museum = null; // FIXME?
 
 
 
     if (s.get("Provenance") != null) {
       Acquisition acquisition = new Acquisition(regNum);
       String acquisitionFrom = s.get("Provenance");
+      acquisition.transfer(acquisitionFrom, obj, museum);
       linkToRecord(acquisition);
-     //         .split("(?<=Gift)", 2);
-     // if (acquisitionFrom.length > 1) {
-     //   acquisition.setType(acquisitionFrom[0]);
-     //   acquisition.transfer(acquisitionFrom[1], obj, museum);
-     // }
     }
+
 
     Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(museum);
