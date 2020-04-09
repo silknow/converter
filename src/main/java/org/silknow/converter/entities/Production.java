@@ -61,13 +61,14 @@ public class Production extends Entity {
           collection = collection_level1.getURI();  }
         else {
           collection = collection_level2.getURI(); }
-        if (collection.contains("techniques") || collection.contains("300264090")) {
+        if (collection.contains("materials") || collection.contains("300264091")) {
+          this.addProperty(CIDOC.P126_employed, result);
+        }
+        else if (collection.contains("techniques") || collection.contains("300264090")) {
           this.addProperty(CIDOC.P32_used_general_technique, result);
 
         }
-        if (collection.contains("materials") || collection.contains("300264091")) {
-          this.addProperty(CIDOC.P126_employed, result);
-        } else {
+         else {
           result = null;
         }
       }
@@ -111,9 +112,10 @@ public class Production extends Entity {
               this.addProperty(CIDOC.P32_used_general_technique, result);
 
             }
-            if (collection.contains("materials") || collection.contains("300264091")) {
+            else if (collection.contains("materials") || collection.contains("300264091")) {
               this.addProperty(CIDOC.P126_employed, result);
-            } else {
+            }
+            else {
               result = null;
             }
           }
