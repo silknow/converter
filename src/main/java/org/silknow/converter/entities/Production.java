@@ -52,35 +52,28 @@ public class Production extends Entity {
     Resource result = VocabularyManager.searchInCategory(material, null, "aat", false);
     if (result != null) {
       ResIterator resIterator = result.getModel().listResourcesWithProperty(SKOS.member, result);
-      while (resIterator.hasNext()) {
-        String collection = resIterator.next().getURI();
-        if (collection.contains("animal_fibres") || collection.contains("gold_thread") || collection.contains("metal_thread")
-            || collection.contains("metals") || collection.contains("mixed_fibre") || collection.contains("other_material") || collection.contains("paper")
-                || collection.contains("silver_thread") || collection.contains("synthtetic_fibres") || collection.contains("vegetal_fibres")
-                || collection.contains("300264091")) {
-          //System.out.println(collection);
-          this.addProperty(CIDOC.P126_employed, result);
-          break;
+      if (resIterator.hasNext()) {
+        Resource collection_level2 = resIterator.next();
+        ResIterator resIterator2 = result.getModel().listResourcesWithProperty(SKOS.member, collection_level2);
+        String collection;
+        if (resIterator2.hasNext()) {
+          Resource collection_level1 = resIterator2.next();
+          collection = collection_level1.getURI();  }
+        else {
+          collection = collection_level2.getURI(); }
+        if (collection.contains("techniques") || collection.contains("300264090")) {
+          this.addProperty(CIDOC.P32_used_general_technique, result);
 
         }
-        if (collection.contains("brocatelle") || collection.contains("cannele") || collection.contains("damask")
-                || collection.contains("damasse") || collection.contains("effect") || collection.contains("embroidery") || collection.contains("gauze")
-                || collection.contains("lampas") || collection.contains("metal_effect") || collection.contains("other_technique")
-                || collection.contains("patterned_fabric") || collection.contains("printed_fabric") || collection.contains("rippled_effect")
-                || collection.contains("satin") || collection.contains("tabby") || collection.contains("twill")
-                || collection.contains("velvet") || collection.contains("300264090")) {
-          //System.out.println(collection);
-          this.addProperty(CIDOC.P32_used_general_technique, result);
-          break;
-        }
-        else {
+        if (collection.contains("materials") || collection.contains("300264091")) {
+          this.addProperty(CIDOC.P126_employed, result);
+        } else {
           result = null;
-          break;
         }
       }
-    };
-     if (result == null) {
-//      System.out.println("Material not found in vocabularies: " + material);
+    }
+    if (result == null) {
+      //System.out.println("Material not found in vocabularies: " + technique);
       this.addProperty(CIDOC.P126_employed, material, lang);
     }
   }
@@ -105,35 +98,28 @@ public class Production extends Entity {
     Resource result = VocabularyManager.searchInCategory(technique, null, "aat", false);
     if (result != null) {
       ResIterator resIterator = result.getModel().listResourcesWithProperty(SKOS.member, result);
-      while (resIterator.hasNext()) {
-        String collection = resIterator.next().getURI();
-        if (collection.contains("animal_fibres") || collection.contains("gold_thread") || collection.contains("metal_thread")
-                || collection.contains("metals") || collection.contains("mixed_fibre") || collection.contains("other_material") || collection.contains("paper")
-                || collection.contains("silver_thread") || collection.contains("synthtetic_fibres") || collection.contains("vegetal_fibres")
-                || collection.contains("300264091")) {
-          //System.out.println(collection);
-          this.addProperty(CIDOC.P126_employed, result);
-          break;
+      if (resIterator.hasNext()) {
+        Resource collection_level2 = resIterator.next();
+        ResIterator resIterator2 = result.getModel().listResourcesWithProperty(SKOS.member, collection_level2);
+        String collection;
+        if (resIterator2.hasNext()) {
+          Resource collection_level1 = resIterator2.next();
+          collection = collection_level1.getURI();  }
+          else {
+            collection = collection_level2.getURI(); }
+            if (collection.contains("techniques") || collection.contains("300264090")) {
+              this.addProperty(CIDOC.P32_used_general_technique, result);
 
+            }
+            if (collection.contains("materials") || collection.contains("300264091")) {
+              this.addProperty(CIDOC.P126_employed, result);
+            } else {
+              result = null;
+            }
+          }
         }
-        if (collection.contains("brocatelle") || collection.contains("cannele") || collection.contains("damask")
-                || collection.contains("damasse") || collection.contains("effect") || collection.contains("embroidery") || collection.contains("gauze")
-                || collection.contains("lampas") || collection.contains("metal_effect") || collection.contains("other_technique")
-                || collection.contains("patterned_fabric") || collection.contains("printed_fabric") || collection.contains("rippled_effect")
-                || collection.contains("satin") || collection.contains("tabby") || collection.contains("twill")
-                || collection.contains("velvet")  || collection.contains("300264090") ) {
-          //System.out.println(collection);
-          this.addProperty(CIDOC.P32_used_general_technique, result);
-          break;
-        }
-        else {
-          result = null;
-          break;
-        }
-      }
-    };
     if (result == null) {
-//      System.out.println("Material not found in vocabularies: " + technique);
+         //System.out.println("Technique not found in vocabularies: " + material);
       this.addProperty(CIDOC.P32_used_general_technique, technique, lang);
     }
   }
