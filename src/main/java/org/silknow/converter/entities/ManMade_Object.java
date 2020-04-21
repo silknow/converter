@@ -1,8 +1,11 @@
 package org.silknow.converter.entities;
 
+import org.apache.jena.rdf.model.ResIterator;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
+import org.doremus.string2vocabulary.VocabularyManager;
+import org.apache.jena.vocabulary.SKOS;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.CRMsci;
 
@@ -24,14 +27,40 @@ public class ManMade_Object extends Entity {
 
 
 
+
   public void addSubject(String subject, String lang) {
-  //Resource result = VocabularyManager.searchInCategory(subject, null, "aat", false);
-    //if (result != null)
-            //this.addProperty(CIDOC.P62_depicts, result);
-    //else {
+    Resource result = VocabularyManager.searchInCategory(subject, null, "aat", false);
+    if (result != null) {
+      ResIterator resIterator = result.getModel().listResourcesWithProperty(SKOS.member, result);
+      if (resIterator.hasNext()) {
+        Resource collection_level2 = resIterator.next();
+        ResIterator resIterator2 = result.getModel().listResourcesWithProperty(SKOS.member, collection_level2);
+        String collection;
+        if (resIterator2.hasNext()) {
+          Resource collection_level1 = resIterator2.next();
+          collection = collection_level1.getURI();  }
+        else {
+          collection = collection_level2.getURI(); }
+        if (collection.contains("depiction") || collection.contains("300264087")) {
+          this.addProperty(CIDOC.P62_depicts, result);
+        }
+
+        else {
+          result = null;
+        }
+      }
+    }
+    if (result == null) {
+      //System.out.println("Depiction not found in vocabularies: " + subject;
       this.addProperty(CIDOC.P62_depicts, subject, lang);
-  //}
-}
+    }
+  }
+
+
+
+
+
+
 
 
 

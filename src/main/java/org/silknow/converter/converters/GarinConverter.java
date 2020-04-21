@@ -65,9 +65,10 @@ public class GarinConverter extends Converter {
     if (filename == null)
       return null;
     String regNum = s.get("Nº Inventario");
+    if (regNum == null)
+      regNum = filename+" filenameID";
     id = regNum;
-    if (id == null)
-      id = filename+" filenameID";
+
 
     String ownerName = s.get("Propiedad");
     LegalBody owner = null;
