@@ -18,23 +18,25 @@ The `<group>` is taken from this table
 
 | Class | Group | Count
 | --- | --- | --- |
-| E38_Image | image | 64811 |
-| E22_Man-Made_Object | object | 34653 |
-| D1_Digital_Object | - | 34595 |
-| E12_Production | production | 34519 | 
-| E8_Acquisition | event | 32309 |
-| E10_Transfer_of_Custody | event | 31418 |
+| E38_Image | image | 64716 |
+| E22_Man-Made_Object | object | 35154 |
+| D1_Digital_Object | - | 35166 |
+| E12_Production | production | 345154 | 
+| E8_Acquisition | event | 32945 |
+| E10_Transfer_of_Custody | event | 32095 |
 | E78_Collection | collection | 18827 |
 | E73_Information_Object | informationobject | 3331 |
-| E14_Condition_Assessment | assessment | 3219 |
-| E9_Move | event | 3101 |
-| E53_Place |  place OR http://sws.geonames.org/ {id of place} | 2481 |
+| E14_Condition_Assessment | assessment | 3180 |
+| E9_Move | event | 3059 |
+| E53_Place |  place OR http://sws.geonames.org/ {id of place} | 2466 |
 | E39_Actor | actor | 824 |
-| E11_Modification | modification | 753 |
-| E89_Propositional_Object | object | 752 |
-| E31_Document | document | 376 
+| E11_Modification | modification | 751 |
+| E89_Propositional_Object | object | 750 |
+| E31_Document | document | 375 
 | E40_Legal_Body | organization | 33
 | E21_Person | person | 2
+
+Numbers taken from this query [query](https://data.silknow.org/sparql?default-graph-uri=&query=SELECT+count%28%3Fs%29+as+%3Fcount+%3Ft%0D%0AWHERE+%7B+graph+%3Fg+%7B+%0D%0A++++++%3Fs+a+%3Ft%0D%0A%0D%0A%0D%0AFILTER+%28contains%28str%28%3Fg%29%2C+%22mad%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22mtmad%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22joconde%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22imatex%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22unipa%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22risd%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22vam%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22met%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22cer%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22garin%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22mfa%22%29%29%0D%0A%0D%0A%7D%7D%0D%0A%0D%0AGROUP+BY+%3Ft+%0D%0AORDER+BY+DESC+%28%3Fcount%29&format=text%2Fhtml&timeout=0&debug=on)
 
 ## Secondary entities
 
@@ -58,16 +60,19 @@ The `<suffix>` is taken from this table:
 
 | Class | Group | Suffix | Count
 | --- | --- | --- | --- |
-| E17_Type_Assignment | object | type_assignment/{progressive int} | 53379 |
-| E54_Dimension | object | dimension/{w or h} | 44800 |
-| E42_Identifier | object | id/{id} | 35263 |
-| E15_Identifier_Assignment | object | id_assignment/{id from E42} | 34889 |
-| S4_Observation | object | observation/{progressive int} | 32641 |
-| E52_Time-Span | production | time/{progressive int} | 32295 |
-| E16_Measurement | object | dimension/measurement | 22400 |
-| E3_Condition_State | object | assessment/{progressive int} | 9421 |
-| E7_Activity | production | activity/{progressive int}  | 5220 |
-| E30_Right | object | right | 752 |
+| E17_Type_Assignment | object | type_assignment/{progressive int} | 54650 |
+| E54_Dimension | object | dimension/{w or h} | 45562 |
+| E42_Identifier | object | id/{id} | 35900 |
+| E15_Identifier_Assignment | object | id_assignment/{id from E42} | 35526 |
+| S4_Observation | object | observation/{progressive int} | 32789 |
+| E52_Time-Span | production | time/{progressive int} | 25415 |
+| E16_Measurement | object | dimension/measurement | 22781 |
+| E3_Condition_State | object | assessment/{progressive int} | 9298 |
+| E7_Activity | production | activity/{progressive int}  | 5245 |
+| E30_Right | object | right | 750 |
+
+Numbers taken from this [query](https://data.silknow.org/sparql?default-graph-uri=&query=SELECT+count%28%3Fs%29+as+%3Fcount+%3Ft%0D%0AWHERE+%7B+graph+%3Fg+%7B+%0D%0A++++++%3Fs+a+%3Ft%0D%0A%0D%0A%0D%0AFILTER+%28contains%28str%28%3Fg%29%2C+%22mad%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22mtmad%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22joconde%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22imatex%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22unipa%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22risd%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22vam%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22met%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22cer%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22garin%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22mfa%22%29%29%0D%0A%0D%0A%7D%7D%0D%0A%0D%0AGROUP+BY+%3Ft+%0D%0AORDER+BY+DESC+%28%3Fcount%29&format=text%2Fhtml&timeout=0&debug=on)
+
 
 ## UUID and seed generation
 
