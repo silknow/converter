@@ -19,8 +19,8 @@ The `<group>` is taken from this table
 | Class | Group | Count
 | --- | --- | --- |
 | E38_Image | image | 64716 |
-| E22_Man-Made_Object | object | 35154 |
 | D1_Digital_Object | - | 35166 |
+| E22_Man-Made_Object | object | 35154 |
 | E12_Production | production | 345154 | 
 | E8_Acquisition | event | 32945 |
 | E10_Transfer_of_Custody | event | 32095 |
@@ -63,8 +63,8 @@ The `<suffix>` is taken from this table:
 | E17_Type_Assignment | object | type_assignment/{progressive int} | 54650 |
 | E54_Dimension | object | dimension/{w or h} | 45562 |
 | E42_Identifier | object | id/{id} | 35900 |
-| E15_Identifier_Assignment | object | id_assignment/{id from E42} | 35526 |
 | S4_Observation | object | observation/{progressive int} | 32789 |
+| E15_Identifier_Assignment | object | id_assignment/{id from E42} | 35526 |
 | E52_Time-Span | production | time/{progressive int} | 25415 |
 | E16_Measurement | object | dimension/measurement | 22781 |
 | E3_Condition_State | object | assessment/{progressive int} | 9298 |
