@@ -104,7 +104,7 @@ public class MFAConverter extends Converter {
     Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(museum);
 
-    Collection collection = new Collection(regNum);
+    Collection collection = new Collection(DATASET_NAME, regNum);
     collection.of(obj);
     collection.addAppellation(s.getMulti("Collections").findFirst().orElse(null));
 

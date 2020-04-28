@@ -1,13 +1,13 @@
 package org.silknow.converter.entities;
 
 import org.apache.jena.vocabulary.RDFS;
+import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.ontologies.CIDOC;
 
-import java.util.stream.Stream;
-
 public class Collection extends Entity {
-  public Collection(String id) {
+  public Collection(String dataset, String id) {
     super(id);
+    this.setUri(ConstructURI.build(dataset, this.className, id));
     this.setClass(CIDOC.E78_Collection);
   }
 

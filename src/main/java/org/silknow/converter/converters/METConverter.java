@@ -121,12 +121,15 @@ public class METConverter extends Converter {
     transfer.of(obj).by(museum);
 
 
-    Collection collection = new Collection(regNum);
-    collection.of(obj);
-    collection.addAppellation(s.getMulti("Department").findFirst().orElse(null));
+    String Appellation = s.getMulti("Department").findFirst().orElse(null);
+    if (Appellation != null) {
 
+      Collection collection = new Collection(DATASET_NAME, regNum);
+      collection.of(obj);
+      collection.addAppellation(Appellation.replaceAll(" *\\(.+?\\)", ""));
+      linkToRecord(collection);
+    }
 
-    linkToRecord(collection);
     linkToRecord(obj);
     linkToRecord(acquisition);
     linkToRecord(prod);
