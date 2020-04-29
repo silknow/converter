@@ -100,9 +100,16 @@ public class MADConverter extends Converter {
     Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(museum);
 
-    Collection collection = new Collection("MAD", regNum, s.getMulti("Département").findFirst().orElse(null));
-    collection.of(obj);
-    collection.addAppellation(s.getMulti("Département").findFirst().orElse(null));
+    String appellation = s.getMulti("Département").findFirst().orElse(null);
+    if (appellation != null) {
+
+      Collection collection = new Collection(regNum, appellation.replaceAll(" *\\(.+?\\)", ""));
+      collection.of(obj);
+      collection.addAppellation(appellation.replaceAll(" *\\(.+?\\)", ""));
+      linkToRecord(collection);
+    }
+
+
 
 
     linkToRecord(obj);
