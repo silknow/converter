@@ -124,7 +124,7 @@ public class METConverter extends Converter {
     String Appellation = s.getMulti("Department").findFirst().orElse(null);
     if (Appellation != null) {
 
-      Collection collection = new Collection(DATASET_NAME, regNum);
+      Collection collection = new Collection(this.DATASET_NAME, regNum);
       collection.of(obj);
       collection.addAppellation(Appellation.replaceAll(" *\\(.+?\\)", ""));
       linkToRecord(collection);
