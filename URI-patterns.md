@@ -93,4 +93,5 @@ There are some exceptions to this rule, in order to allow automatic cross-source
 Examples:
 * For most classes: [source]+[class]+[record_internal_id]
 * For Place (E53) and Actors (E39): [class]+[label]
+* For Collections  (E78): [source]+[class]+[label]
 * For Images (E38): [record_internal_id] + "$$$" + [img_count_of_record] + [local_filename]
