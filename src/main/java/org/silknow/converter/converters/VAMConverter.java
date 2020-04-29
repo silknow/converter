@@ -102,7 +102,7 @@ public class VAMConverter extends Converter {
     Move move = new Move(regNum);
     move.of(obj).from(s.getMulti("location").findFirst().orElse(null)).to(s.getMulti("location").findFirst().orElse(null));
 
-    Collection collection = new Collection("VAM", regNum);
+    Collection collection = new Collection("VAM", regNum, s.getMulti("collections").findFirst().orElse(null));
     collection.of(obj);
     collection.addAppellation(s.getMulti("collections").findFirst().orElse(null));
 

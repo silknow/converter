@@ -5,9 +5,9 @@ import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.ontologies.CIDOC;
 
 public class Collection extends Entity {
-  public Collection(String dataset, String id) {
+  public Collection(String dataset, String id, String label) {
     super(id);
-    this.setUri(ConstructURI.build(dataset, this.className, id));
+    this.setUri(ConstructURI.build(dataset, this.className, label));
     this.setClass(CIDOC.E78_Collection);
   }
 
