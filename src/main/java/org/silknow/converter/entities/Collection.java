@@ -7,7 +7,7 @@ import org.silknow.converter.ontologies.CIDOC;
 public class Collection extends Entity {
   public Collection(String dataset, String id, String label) {
     super(id);
-    this.setUri(ConstructURI.build(dataset, this.className, label));
+    this.setUri(ConstructURI.build(dataset, this.className, label.trim()));
     this.setClass(CIDOC.E78_Collection);
   }
 
