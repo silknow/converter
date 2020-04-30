@@ -48,11 +48,13 @@ public class Place extends Entity {
     if (tp != null) {
       GeoNames.downloadRdf(tp.getGeoNameId());
       this.setUri(GeoNames.toURI(tp.getGeoNameId()));
-    } else
+      this.addProperty(RDFS.label, tp.getName());
+    } else {
       this.setUri(ConstructURI.build(this.className, name));
+      this.addProperty(RDFS.label, name).addProperty(CIDOC.P1_is_identified_by, name);
+    }
 
     this.setClass(CIDOC.E53_Place);
-    this.addProperty(RDFS.label, name).addProperty(CIDOC.P1_is_identified_by, name);
   }
 
   public static String fromDemonym(String demonym) {
