@@ -33,10 +33,23 @@ public class Place extends Entity {
     if (name.matches("^\\d.+")) // a place cannot start with a number
       throw new StopWordException();
 
-    name = name.replaceAll("possibly", "");
+    name = name.replaceAll("(?i)possibly", "");
+    name = name.replaceAll("\\?", "");
     name = name.replaceAll("\\((embroider(ed|y|ing)|used|made|published|designed|printed|\\d+)\\)", "");
     name = name.replaceAll("\\((collected|sewing|worn|manufactured|(hand )?weaving|woven|quilted|paint(ing|ed))\\)", "");
     name = name.replaceAll("\\((retailed|joinery)\\)", "");
+
+    // Geonames is not good with continents
+    String continent = null;
+    if (name.contains("Europa") && name.length() > 6) {
+      continent = "EU";
+      name = name.replaceAll("\\(?Europa\\)?", "").trim();
+    } else if (name.contains("Asia)")) {
+      continent = "AS";
+      name = name.replaceAll("\\(?Asia\\)", "").trim();
+    }
+
+    name = name.trim().replaceAll(",$", "");
 
     // if it is a Demonym, I convert it to a place
     name = Place.fromDemonym(name);
@@ -44,7 +57,7 @@ public class Place extends Entity {
     // final trim before searching
     name = name.trim();
 
-    Toponym tp = GeoNames.query(name);
+    Toponym tp = GeoNames.query(name, null, continent);
     if (tp != null) {
       GeoNames.downloadRdf(tp.getGeoNameId());
       this.setUri(GeoNames.toURI(tp.getGeoNameId()));

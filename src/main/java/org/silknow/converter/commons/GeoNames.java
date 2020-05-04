@@ -50,10 +50,11 @@ public class GeoNames {
   }
 
   public static Toponym query(String label) {
-    return query(label, null);
+    return query(label, null, null);
   }
 
-  public static Toponym query(String label, String featureCode) {
+  public static Toponym query(String label, String featureCode, String continent) {
+    label = label.trim();
     Toponym tp = null;
 
     if (cache.containsKey(label)) {
@@ -69,6 +70,7 @@ public class GeoNames {
     searchCriteria.setName(label);
     searchCriteria.setMaxRows(1);
     if (featureCode != null) searchCriteria.setFeatureCode(featureCode);
+    if (continent != null) searchCriteria.setContinentCode(continent);
 
     try {
       ToponymSearchResult searchResult = WebService.search(searchCriteria);

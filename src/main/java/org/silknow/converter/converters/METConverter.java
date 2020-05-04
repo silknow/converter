@@ -77,14 +77,14 @@ public class METConverter extends Converter {
               .replace("(?)", "")
               .replace("?", "");
 
-      // extract content in parentesys
+      // extract content in parentheses
       x = x.replaceAll("\\((.+)\\)", ", $1");
 
       String[] parts = x.split(",");
       // Starting from the end (more specific)
       // I put the first thing that I find on GeoNames
       for (int i = parts.length - 1; i >= 0; i--) {
-        String part = parts[i].trim();
+        String part = Place.fromDemonym(parts[i].trim());
         if (i > 0 && GeoNames.query(part) == null)
           continue;
         prod.addPlace(part);
