@@ -44,10 +44,10 @@ public class Place extends Entity {
     String continent = null;
     if (name.contains("Europa") && name.length() > 6) {
       continent = "EU";
-      name = name.replaceAll("\\(?Europa\\)?", "").trim();
+      name = name.replaceAll("Europa", "").trim();
     } else if (name.contains("Asia)")) {
       continent = "AS";
-      name = name.replaceAll("\\(?Asia\\)", "").trim();
+      name = name.replaceAll("Asia", "").trim();
     }
 
     name = name.trim().replaceAll(",$", "");
