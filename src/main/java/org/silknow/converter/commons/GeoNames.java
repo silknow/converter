@@ -23,6 +23,7 @@ public class GeoNames {
   public static String destFolder;
 
   public static void setDestFolder(File folder) {
+    //noinspection ResultOfMethodCallIgnored
     folder.mkdirs();
     destFolder = folder.getPath();
   }
@@ -55,6 +56,7 @@ public class GeoNames {
 
   public static Toponym query(String label, String featureCode, String continent) {
     label = label.trim();
+    if (label.isEmpty()) return null;
     Toponym tp = null;
 
     if (cache.containsKey(label)) {

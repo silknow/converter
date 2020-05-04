@@ -33,7 +33,8 @@ public class Place extends Entity {
     if (name.matches("^\\d.+")) // a place cannot start with a number
       throw new StopWordException();
 
-    name = name.replaceAll("(?i)possibly", "");
+    name = name.replaceAll("(?i)(possi|proba)bly", "");
+    name = name.replaceAll("(?i)posiblemente", "");
     name = name.replaceAll("\\?", "");
     name = name.replaceAll("\\((embroider(ed|y|ing)|used|made|published|designed|printed|\\d+)\\)", "");
     name = name.replaceAll("\\((collected|sewing|worn|manufactured|(hand )?weaving|woven|quilted|paint(ing|ed))\\)", "");
@@ -50,6 +51,10 @@ public class Place extends Entity {
     }
 
     name = name.trim().replaceAll(",$", "");
+    name = name.replaceAll("\\( ?\\)", "")
+            .replaceAll("\\[ ?]", "")
+            .replaceAll("^\\[", "").replaceAll("]$", "")
+            .trim();
 
     // if it is a Demonym, I convert it to a place
     name = Place.fromDemonym(name);
