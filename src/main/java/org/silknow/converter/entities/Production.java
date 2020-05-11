@@ -49,7 +49,7 @@ public class Production extends Entity {
   }
 
   public void addMaterial(String material, String lang) {
-    Resource result = VocabularyManager.searchInCategory(material, null, "aat", false);
+    Resource result = VocabularyManager.searchInCategory(material, null, "thesaurus", false);
     if (result != null) {
       ResIterator resIterator = result.getModel().listResourcesWithProperty(SKOS.member, result);
       if (resIterator.hasNext()) {
@@ -96,7 +96,7 @@ public class Production extends Entity {
   }
 
   public void addTechnique(String technique, String lang) {
-    Resource result = VocabularyManager.searchInCategory(technique, null, "aat", false);
+    Resource result = VocabularyManager.searchInCategory(technique, null, "thesaurus", false);
     if (result != null) {
       ResIterator resIterator = result.getModel().listResourcesWithProperty(SKOS.member, result);
       if (resIterator.hasNext()) {
