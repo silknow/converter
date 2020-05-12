@@ -1,0 +1,41 @@
+prefix crmdig: <http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/>
+prefix crmsci: <http://www.ics.forth.gr/isl/CRMsci/>
+
+SELECT DISTINCT ?id ?obj  ?place ?material ?timespan ?description
+WHERE {
+  GRAPH <http://data.silknow.org/met> {
+     ?dig a crmdig:D1_Digital_Object . }
+  ?dig  ecrm:P129_is_about ?obs .
+
+  OPTIONAL {
+     ?obs a crmsci:S4_Observation .
+     ?obs ecrm:P3_has_note ?description ;
+          ecrm:P2_has_type "description" . }
+
+  ?dig ecrm:P129_is_about ?obj .
+  ?dig ecrm:P129_is_about ?prd .
+  OPTIONAL { ?prd  ecrm:P4_has_time-span / ecrm:P78_is_identified_by ?timespan . }
+
+  OPTIONAL {
+       { ?prd ecrm:P8_took_place_on_or_within ?x
+       { SELECT ?x SAMPLE(?lab) as ?place
+         WHERE { ?x geonames:countryCode ?lab . }
+       } . FILTER(isIRI(?x)) }
+       UNION
+       { ?prd ecrm:P8_took_place_on_or_within ?pla .
+         ?pla ecrm:P1_is_identified_by ?place .
+       FILTER (contains(str(?pla), "geonames") != true)}}
+
+   ?obj dc:identifier ?id;
+        a ecrm:E22_Man-Made_Object .
+
+  OPTIONAL {
+       { ?prd ecrm:P126_employed ?x
+       { SELECT ?x SAMPLE(?lab) as ?material
+         WHERE { ?x skos:prefLabel ?lab . FILTER (lang(?lab) = "en")}
+       } . FILTER(isIRI(?x)) }
+       UNION
+       { ?prd ecrm:P126_employed ?material .
+       FILTER (isIRI(?material) = false)
+       FILTER (lang(?material) = "en")}}
+}
