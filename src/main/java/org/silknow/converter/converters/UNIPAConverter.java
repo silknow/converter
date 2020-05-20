@@ -69,7 +69,6 @@ public class UNIPAConverter extends Converter {
     s.getMulti("Geography").forEach(prod::addPlace);
     s.getMulti("Region production").forEach(prod::addPlace);
     s.getMulti("Technique").forEach(technique -> prod.addTechnique(technique, mainLang));
-    s.getMulti("Construction").forEach(technique -> prod.addTechnique(technique, mainLang));
 
 
     s.getMulti("Domaine")
@@ -95,6 +94,7 @@ public class UNIPAConverter extends Converter {
     linkToRecord(obj.addObservation(s.getMulti("Construction").findFirst().orElse(null), "Construction", "it"));
     linkToRecord(obj.addObservation(s.getMulti("Description of the pattern").findFirst().orElse(null), "Description of the pattern", "it"));
     linkToRecord(obj.addObservation(s.getMulti("Historical Critical Information").findFirst().orElse(null), "Historical Critical Information", "it"));
+    linkToRecord(obj.addObservation(s.getMulti("Pattern unit").findFirst().orElse(null), "Pattern unit", "it"));
 
 
     prod.addActivity(s.getMulti("Autors").findFirst().orElse(null), "Artist");
