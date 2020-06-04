@@ -108,7 +108,7 @@ public class UNIPAConverter extends Converter {
     Transfer transfer = new Transfer(id);
     transfer.of(obj).by(museum);
 
-    String cdt = s.get("Preservation state");
+    String cdt = s.get("State of preservation");
     if (cdt != null) {
       ConditionAssessment conditionAssessment = new ConditionAssessment(regNum);
       conditionAssessment.concerns(obj);
