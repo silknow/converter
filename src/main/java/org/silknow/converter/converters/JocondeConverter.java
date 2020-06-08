@@ -52,7 +52,8 @@ public class JocondeConverter extends Converter {
     logger.trace("creating objects");
     filename = file.getName();
 
-    String regNum = s.get("INV").split(" ")[0];
+    //String regNum = s.get("INV").split(" ")[0];
+    String regNum = s.getId();
     id = regNum;
 
     String museumName = s.get("LOCA");
