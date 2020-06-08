@@ -29,7 +29,7 @@ public class ManMade_Object extends Entity {
 
 
   public void addSubject(String subject, String lang) {
-    Resource result = VocabularyManager.searchInCategory(subject, null, "aat", false);
+    Resource result = VocabularyManager.searchInCategory(subject, null, "thesaurus", false);
     if (result != null) {
       ResIterator resIterator = result.getModel().listResourcesWithProperty(SKOS.member, result);
       if (resIterator.hasNext()) {
