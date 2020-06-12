@@ -56,6 +56,9 @@ public class CERConverter extends Converter {
 
     Production prod = new Production(regNum);
     prod.add(obj);
+    prod.addActivity(s.getMulti("Autor").findFirst().orElse(null), s.getMulti("Uso/función").findFirst().orElse(null));
+
+
 
     s.getMulti("Iconografia").forEach(subject -> obj.addSubject(subject, mainLang));
     s.getMulti("Datación").forEach(prod::addTimeAppellation);
@@ -66,6 +69,7 @@ public class CERConverter extends Converter {
     s.getMulti("Clasificación Genérica")
             .map(x -> obj.addClassification(x, "Clasificación Genérica", mainLang))
             .forEach(this::linkToRecord);
+
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(obj::add)
@@ -109,6 +113,11 @@ public class CERConverter extends Converter {
       linkToRecord(bio);
     }
 
+    Collection collection = new Collection(regNum, s.getMulti("Tipo de Colección").findFirst().orElse(null));
+    collection.of(obj);
+    collection.addAppellation(s.getMulti("Tipo de Colección").findFirst().orElse(null));
+
+    linkToRecord(collection);
 
     linkToRecord(obj);
     linkToRecord(acquisition);
