@@ -60,6 +60,7 @@ public class VAMConverter extends Converter {
     Production prod = new Production(regNum);
     prod.add(obj);
     prod.addActivity(s.get("artist"), "artist");
+    prod.addNote(s.get("production_note"));
 
     s.getMulti("date_text").forEach(prod::addTimeAppellation);
     s.getMulti("materials_techniques").forEach(materials -> {
@@ -83,9 +84,12 @@ public class VAMConverter extends Converter {
 
 
     linkToRecord(obj.addObservation(s.get("physical_description"), "Physical description", mainLang));
-    linkToRecord(obj.addObservation(s.get("descriptive_line"), "Descriptive line", mainLang));
+    linkToRecord(obj.addObservation(s.get("production_type"), "Production Type", mainLang));
+    linkToRecord(obj.addObservation(s.get("descriptive_line"), "Descriptive Line", mainLang));
     linkToRecord(obj.addObservation(s.get("public_access_description"), "Summary", mainLang));
     linkToRecord(obj.addObservation(s.get("label"), "Labels and date", mainLang));
+    linkToRecord(obj.addObservation(s.get("historical_context_note"), "Historical Context Note", mainLang));
+
 
 
 

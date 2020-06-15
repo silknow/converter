@@ -227,10 +227,10 @@ public abstract class Entity {
 
   public Resource addClassification(String classification, String type, String lang, LegalBody museum) {
     if (classification == null) return null;
-    //RDFNode r = VocabularyManager.searchInCategory(classification, null, "aat", false);
-
+    //RDFNode r = VocabularyManager.searchInCategory(classification, null, "assigned", false);
+    //if (r == null) {
       r = model.createLiteral(classification);
-
+    //}
 
 
     Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)

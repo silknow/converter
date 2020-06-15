@@ -63,10 +63,10 @@ public class CERConverter extends Converter {
     s.getMulti("Iconografia").forEach(subject -> obj.addSubject(subject, mainLang));
     s.getMulti("Datación").forEach(prod::addTimeAppellation);
     s.getMulti("Contexto Cultural/Estilo").forEach(prod::addTimeAppellation);
-    s.getMulti("Materia/Soporte").forEach(material -> prod.addMaterial(material, mainLang));
+    s.getMulti("Materia/Soporte","   ").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("Lugar de Producción/Ceca").forEach(prod::addPlace);
-    s.getMulti("Técnica").forEach(technique -> prod.addTechnique(technique, mainLang));
-    s.getMulti("Clasificación Genérica")
+    s.getMulti("Técnica","   ").forEach(technique -> prod.addTechnique(technique, mainLang));
+    s.getMulti("Clasificación Genérica", ";")
             .map(x -> obj.addClassification(x, "Clasificación Genérica", mainLang))
             .forEach(this::linkToRecord);
 
@@ -113,11 +113,12 @@ public class CERConverter extends Converter {
       linkToRecord(bio);
     }
 
-    Collection collection = new Collection(regNum, s.getMulti("Tipo de Colección").findFirst().orElse(null));
-    collection.of(obj);
-    collection.addAppellation(s.getMulti("Tipo de Colección").findFirst().orElse(null));
-
-    linkToRecord(collection);
+    if (s.getMulti("Tipo de Colección").findFirst().orElse(null) != null) {
+      Collection collection = new Collection(regNum, s.getMulti("Tipo de Colección").findFirst().orElse(null));
+      collection.of(obj);
+      collection.addAppellation(s.getMulti("Tipo de Colección").findFirst().orElse(null));
+      linkToRecord(collection);
+    }
 
     linkToRecord(obj);
     linkToRecord(acquisition);
