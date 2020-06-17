@@ -14,26 +14,16 @@
     "Textiles-Woven"@en ,
     "textiles"@en ,
     "Textile"@en ,
-    "Textiles-Embroidered and Woven"@en ,
-    "tejidos"@es ,
-    "tejido"@es ,
-    "Tejido"@es ,
-    "Tejidos"@es ,
-    "Tejidos: confección"@es ;
+    "Textiles-Embroidered and Woven"@en ;
 
     skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/embroidery> a skos:Concept, ecrm:E55_assigned;
         rdfs:label "Embroidery"@en ,
-                                                "Textiles-Embroidered"@en ,
-        "Embroideries"@en ,
-        "Needlework accesories"@en ,
-        "Needlework accessories"@en ,
-        "textiles; bordados a la aguja: labores"@es ,
-        "Textiles; Bordados a la aguja"@es ,
-        "Complementos; Bordados; Tejidos: confección"@es ,
-        "Bordados a la aguja; Textiles"@es ,
-        "Tejidos: confección"@es ;
+                   "Textiles-Embroidered"@en ,
+                    "Embroideries"@en ,
+                    "Needlework accesories"@en ,
+                    "Needlework accessories"@en ;
 
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
@@ -51,110 +41,188 @@
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/lace> a skos:Concept, ecrm:E55_assigned ;
-        rdfs:label "Lace"@en,
+        rdfs:label "Lace"@en ,
                    "Textiles-Laces"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/drawings> a skos:Concept, ecrm:E55_assigned;
-        rdfs:label "Drawings"@en,
-                   "Paintings"@en ;
+        rdfs:label "Drawings"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/costume> a skos:Concept, ecrm:E55_assigned;
         rdfs:label "Costume"@en ,
                    "Costumes"@en ,
                    "Clothing"@en ,
-                   "women's clothes"@en ,
-                   "formal wear"@en ,
-                   "children's clothes"@en ,
-                   "Informal wear"@en ,
-                   "regional dress"@en ,
-                    "men's clothes"@en ,
-                    "Day wear"@en ,
-                    "Evening wear"@en ,
-                    "Fancy-dress"@en ,
                     "Textiles-Costumes"@en  ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/textiles_velvets> a skos:Concept, ecrm:E55_assigned;
-        rdfs:label "Textiles-Velvets"@en;
+        rdfs:label "Textiles-Velvets"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
+<http://data.silknow.org/assigned/paintings> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Paintings"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/ecclesiastical_textiles> a skos:Concept, ecrm:E55_assigned;
-        rdfs:label "Ecclesiastical textiles"@en,
-        		   "Textiles-Ecclesiastical"@en;
+        rdfs:label "Ecclesiastical textiles"@en ,
+        		   "Textiles-Ecclesiastical"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
-<http://data.silknow.org/assigned/costume_accesories> a skos:Concept, ecrm:E55_assigned;
-        rdfs:label "Costume accesories"@en,
-                   "Dénomination"@fr ;
+<http://data.silknow.org/assigned/fans> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Fans"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/textiles-trimmings> a skos:Concept, ecrm:E55_assigned ;
-        rdfs:label "Textiles-trimmings"@en,
-        	       "Descripción técnica"@es ;
+        rdfs:label "Textiles-trimmings"@en ,
+        	       "Textiles-Trimmings-Passementerie"@en ,
+                   "Textiles-Upholstery"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/textiles_printed> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "Textiles-printed"@en ,
+                   "Textiles – Printed – Combination"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/textiles_printed_block> a skos:Concept, ecrm:E55_assigned ;
-        rdfs:label "Textiles – Printed – Block"@en,
-                   "Descripción técnica"@es ;
+        rdfs:label "Textiles – Printed – Block"@en ,
+                   "Textiles – Printed – Plate"@en ,
+                   "Textiles – Printed – Roller"@en ,
+                   "Textiles – Printed – Silk screen"@en   ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/textiles_sample_books> a skos:Concept, ecrm:E55_assigned ;
-        rdfs:label "Textiles-Sample Books"@en,
-                   "Descripción técnica"@es ;
+        rdfs:label "Textiles-Sample Books"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/textiles_painted> a skos:Concept, ecrm:E55_assigned ;
-        rdfs:label "Textiles-Painted"@en,
-                   "Descripción técnica"@es ;
+        rdfs:label "Textiles-Painted"@en ,
+                   "Textiles-Painted and Dyed"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/underwear> a skos:Concept, ecrm:E55_assigned ;
-        rdfs:label "Underwear"@en,
-                   "Descripción técnica"@es ;
+        rdfs:label "Underwear"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/floor_coverings> a skos:Concept, ecrm:E55_assigned ;
-        rdfs:label "Floor coverings"@en,
-                   "Descripción técnica"@es ;
+        rdfs:label "Floor coverings"@en ,
+                   "Textiles-Rugs"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 
 <http://data.silknow.org/assigned/textiles_methods_and_materials> a skos:Concept, ecrm:E55_assigned ;
-        rdfs:label "Textiles-Methods and Materials"@en,
-                   "Descripción técnica"@es ;
+        rdfs:label "Textiles-Methods and Materials"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 
 <http://data.silknow.org/assigned/nightwear> a skos:Concept, ecrm:E55_assigned ;
-        rdfs:label "Nightwear"@en,
-                   "Descripción técnica"@es ;
+        rdfs:label "Nightwear"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 
 <http://data.silknow.org/assigned/childrens_clothes> a skos:Concept, ecrm:E55_assigned ;
-        rdfs:label "Childrens' clothes"@en,
-                   "Descripción técnica"@es ;
+        rdfs:label "Childrens' clothes"@en ,
+                   "children's clothes"@es ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 
 <http://data.silknow.org/assigned/bookbinding> a skos:Concept, ecrm:E55_assigned ;
-        rdfs:label "Bookbinding"@en,
-                   "Descripción técnica"@es ;
+        rdfs:label "Bookbinding"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 
 <http://data.silknow.org/assigned/stage_costumes> a skos:Concept, ecrm:E55_assigned ;
-        rdfs:label "Stage costumes"@en,
-                   "Descripción técnica"@es ;
+        rdfs:label "Stage costumes"@en ,
+                   "Theatre costume"@en ,
+                   "Theatre costumes"en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 
 <http://data.silknow.org/assigned/designs> a skos:Concept, ecrm:E55_assigned ;
-        rdfs:label "Designs"@en,
-                   "Descripción técnica"@es ;
+        rdfs:label "Designs"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/pattern_books> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "Pattern Books"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/womens_clothes> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "women's clothes"@en ,
+                   "Fancy-dress"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/formal_wear> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "formal wear"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/informal_wear> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "Informal wear"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/regional_dress> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "regional dress"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/mens_clothes> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "men's clothes"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/day_wear> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "Day wear"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/evening_wear> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "Evening wear"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/costume_accesories> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "Costume accesories"@en ,
+                    "Accessories"@en ,
+                    "Textiles-Costumes-Accessories"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/personal_accesories> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "Personal accesories"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/cravate> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "cravate"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/hats_and_headwear> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "Hats & headwear"@en ,
+                    "Hats & Headwear"@en ,
+                    "Hats and Headware"@en ,
+                    "Hats and Headwear"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/parasols_and_umbrellas> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "Parasols & Umbrellas"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/footwear> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "Footwear"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/household_objects> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "Household objects"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/textiles_resist> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "Textiles – Resist"@en ,
+                   "Textiles – Resist - Combination "@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/hood> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "hood"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/allegory> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "allegory"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/textiles_painted_and_embroidered> a skos:Concept, ecrm:E55_assigned ;
+        rdfs:label "Textiles-Painted and Embroidered"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 
@@ -166,10 +234,12 @@
                            <http://data.silknow.org/assigned/lace>,
                            <http://data.silknow.org/assigned/drawings>,
                            <http://data.silknow.org/assigned/costume>,
-                           <http://data.silknow.org/assigned/textiles_velvets>
+                           <http://data.silknow.org/assigned/textiles_velvets>,
+                           <http://data.silknow.org/assigned/paintings>,
                            <http://data.silknow.org/assigned/ecclesiastical_textiles>,
-                           <http://data.silknow.org/assigned/costume_accesories>,
+                           <http://data.silknow.org/assigned/fans>,
                            <http://data.silknow.org/assigned/textiles-trimmings>,
+                           <http://data.silknow.org/assigned/textiles_printed>,
                            <http://data.silknow.org/assigned/textiles_printed_block>,
                            <http://data.silknow.org/assigned/textiles_sample-books>,
                            <http://data.silknow.org/assigned/textiles_painted>,
@@ -180,7 +250,26 @@
                            <http://data.silknow.org/assigned/childrens_clothes>,
                            <http://data.silknow.org/assigned/bookbinding>,
                            <http://data.silknow.org/assigned/stage_costumes>,
-                           <http://data.silknow.org/assigned/designs>.
+                           <http://data.silknow.org/assigned/designs>,
+                            <http://data.silknow.org/assigned/pattern_books>,
+                            <http://data.silknow.org/assigned/womens_clothes>,
+                            <http://data.silknow.org/assigned/formal_wear>,
+                            <http://data.silknow.org/assigned/informal_wear>,
+                            <http://data.silknow.org/assigned/regional_dress>,
+                            <http://data.silknow.org/assigned/mens_clothes>,
+                            <http://data.silknow.org/assigned/day_wear>,
+                            <http://data.silknow.org/assigned/evening_wear>,
+                            <http://data.silknow.org/assigned/costume_accesories>,
+                            <http://data.silknow.org/assigned/personal_accesories>,
+                            <http://data.silknow.org/assigned/cravate>,
+                            <http://data.silknow.org/assigned/hats_and_headwear>,
+                            <http://data.silknow.org/assigned/parasols_and_umbrellas>,
+                            <http://data.silknow.org/assigned/footwear>,
+                            <http://data.silknow.org/assigned/household_objects>, 
+                            <http://data.silknow.org/assigned/textiles_resist>,
+                            <http://data.silknow.org/assigned/hood>,
+                            <http://data.silknow.org/assigned/allegory>,
+                            <http://data.silknow.org/assigned/textiles_painted_and_embroidered>.
 
 
 
