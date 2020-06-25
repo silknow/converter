@@ -63,10 +63,22 @@
 <http://data.silknow.org/assigned/paintings> a skos:Concept, ecrm:E55_assigned;
         rdfs:label "Paintings"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/espolin> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "espolín"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/patron> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Patrón"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.     
 
 <http://data.silknow.org/assigned/ecclesiastical_textiles> a skos:Concept, ecrm:E55_assigned;
         rdfs:label "Ecclesiastical textiles"@en ,
         		   "Textiles-Ecclesiastical"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/ornamentos_religiosos> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Ornamentos religiosos"@es ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/fans> a skos:Concept, ecrm:E55_assigned;
@@ -78,6 +90,7 @@
         	       "Textiles-Trimmings-Passementerie"@en ,
                    "Textiles-Upholstery"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
+
 
 <http://data.silknow.org/assigned/textiles_printed> a skos:Concept, ecrm:E55_assigned ;
         rdfs:label "Textiles-printed"@en ,
@@ -136,15 +149,44 @@
                    "Theatre costume"@en ,
                    "Theatre costumes"en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/dibujo_para_posterior_calco_marcas_punzon> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "dibujo para posterior calco (marcas punzón)"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 
 <http://data.silknow.org/assigned/designs> a skos:Concept, ecrm:E55_assigned ;
         rdfs:label "Designs"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
-
+        
+<http://data.silknow.org/assigned/grafito_sobre_papel> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "grafito sobre papel"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/fondo_liso> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Fondo liso"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
 <http://data.silknow.org/assigned/pattern_books> a skos:Concept, ecrm:E55_assigned ;
         rdfs:label "Pattern Books"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/realce_brocatel> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Realce, brocatel"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+ <http://data.silknow.org/assigned/espolin_y_realce> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Espolín y realce"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/dibujo_policromo> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "dibujo policromo"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/Dibujo monocromo> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Dibujo monocromo"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+       
 
 <http://data.silknow.org/assigned/womens_clothes> a skos:Concept, ecrm:E55_assigned ;
         rdfs:label "women's clothes"@en ,
@@ -188,6 +230,22 @@
 <http://data.silknow.org/assigned/cravate> a skos:Concept, ecrm:E55_assigned ;
         rdfs:label "cravate"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/dibujo_monocromo_para_posterior_calco_marcas_de_punzon> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "dibujo monocromo para posterior calco (marcas de punzón)"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/dibujo_policromo_para_posterior_calco_marcas_de_punzon> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "dibujo policromo para posterior calco (marcas de punzón)"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/dibujo_policromo_parcialmente_para_posterior_calco_marcas_de_punzon> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "dibujo policromo, parcialmente para posterior calco (marcas de punzón)"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/boceto_con_motivo_floral_para_posterior_calco_marcas_de_punzon> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Boceto con motivo floral para posterior calco (marcas de punzón)"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/hats_and_headwear> a skos:Concept, ecrm:E55_assigned ;
         rdfs:label "Hats & headwear"@en ,
@@ -195,7 +253,7 @@
                     "Hats and Headware"@en ,
                     "Hats and Headwear"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
-
+        
 <http://data.silknow.org/assigned/parasols_and_umbrellas> a skos:Concept, ecrm:E55_assigned ;
         rdfs:label "Parasols & Umbrellas"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
@@ -203,14 +261,50 @@
 <http://data.silknow.org/assigned/footwear> a skos:Concept, ecrm:E55_assigned ;
         rdfs:label "Footwear"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/accesorios_de_indumentaria_cueros_artisticos> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Accesorios de indumentaria; Cueros artísticos"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/household_objects> a skos:Concept, ecrm:E55_assigned ;
         rdfs:label "Household objects"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/impresion_y_grafito_sobre_papel> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "impresión y grafito sobre papel"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/manton> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "mantón"@es ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/textiles_resist> a skos:Concept, ecrm:E55_assigned ;
         rdfs:label "Textiles – Resist"@en ,
                    "Textiles – Resist - Combination "@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/fondo> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "fondo"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/muestra_de_galon> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "muestra de galón"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/tejido_mecanico> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "tejido mecánico"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/indumentaria_popular> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Indumentaria Popular"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/kesa> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "kesa"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/tapiceria_a_modo_de_damasco> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Tapicería a modo de Damasco"@es ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 <http://data.silknow.org/assigned/hood> a skos:Concept, ecrm:E55_assigned ;
@@ -223,6 +317,74 @@
 
 <http://data.silknow.org/assigned/textiles_painted_and_embroidered> a skos:Concept, ecrm:E55_assigned ;
         rdfs:label "Textiles-Painted and Embroidered"@en ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+
+<http://data.silknow.org/assigned/decoracion_tejidos> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Decoración (tejidos)"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/objetos_de_uso_religioso> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Objetos de uso religioso"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/muestra_de_tela> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "muestra de tela "@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/mobiliario_de_ajuar> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "mobiliario de ajuar"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/prendas_de_busto> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Prendas de busto"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/ajuar_de_mesa> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "ajuar de mesa"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/lampas> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "lampas"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/objetos_e_imagenes_devocionales> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "objetos e imágenes devocionales "@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/pasamaneria> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Pasamanería"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/indumentaria_festiva> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Indumentaria festiva"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/Espolin_y_lampas> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Espolín y lampas"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/indumentaria_complementos> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Indumentaria Complementos"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/capillo> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "capillo"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/indumentaria_civil_historica> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Indumentaria civil (histórica)"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/encaje> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "encaje"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/textiles_domesticos> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "textiles domésticos"@es ;
+        skos:topConceptOf <http://data.silknow.org/assigned/>.
+        
+<http://data.silknow.org/assigned/complementos_de_busto> a skos:Concept, ecrm:E55_assigned;
+        rdfs:label "Complementos de busto"@es ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
 
