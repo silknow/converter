@@ -359,7 +359,7 @@
         rdfs:label "Indumentaria festiva"@es ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
         
-<http://data.silknow.org/assigned/Espolin_y_lampas> a skos:Concept, ecrm:E55_assigned;
+<http://data.silknow.org/assigned/espolin_y_lampas> a skos:Concept, ecrm:E55_assigned;
         rdfs:label "Espolín y lampas"@es ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
         
@@ -398,6 +398,10 @@
                            <http://data.silknow.org/assigned/costume>,
                            <http://data.silknow.org/assigned/textiles_velvets>,
                            <http://data.silknow.org/assigned/paintings>,
+                           <http://data.silknow.org/assigned/espolin>,
+                           <http://data.silknow.org/assigned/patron>,
+                           <http://data.silknow.org/assigned/ecclesiastical_textiles>,
+                           <http://data.silknow.org/assigned/ornamentos_religiosos>,
                            <http://data.silknow.org/assigned/ecclesiastical_textiles>,
                            <http://data.silknow.org/assigned/fans>,
                            <http://data.silknow.org/assigned/textiles-trimmings>,
@@ -412,8 +416,15 @@
                            <http://data.silknow.org/assigned/childrens_clothes>,
                            <http://data.silknow.org/assigned/bookbinding>,
                            <http://data.silknow.org/assigned/stage_costumes>,
+                           <http://data.silknow.org/assigned/dibujo_para_posterior_calco_marcas_punzon>,
                            <http://data.silknow.org/assigned/designs>,
+                            <http://data.silknow.org/assigned/grafito_sobre_papel>,
+                            <http://data.silknow.org/assigned/fondo_liso>,
                             <http://data.silknow.org/assigned/pattern_books>,
+                            <http://data.silknow.org/assigned/realce_brocatel>,
+                            <http://data.silknow.org/assigned/espolin_y_realce>,
+                            <http://data.silknow.org/assigned/dibujo_policromo>,
+                            <http://data.silknow.org/assigned/Dibujo monocromo>,
                             <http://data.silknow.org/assigned/womens_clothes>,
                             <http://data.silknow.org/assigned/formal_wear>,
                             <http://data.silknow.org/assigned/informal_wear>,
@@ -424,14 +435,44 @@
                             <http://data.silknow.org/assigned/costume_accesories>,
                             <http://data.silknow.org/assigned/personal_accesories>,
                             <http://data.silknow.org/assigned/cravate>,
+                            <http://data.silknow.org/assigned/dibujo_monocromo_para_posterior_calco_marcas_de_punzon>,
+                            <http://data.silknow.org/assigned/dibujo_policromo_para_posterior_calco_marcas_de_punzon>,
+                            <http://data.silknow.org/assigned/dibujo_policromo_parcialmente_para_posterior_calco_marcas_de_punzon>,
+                            <http://data.silknow.org/assigned/boceto_con_motivo_floral_para_posterior_calco_marcas_de_punzon>,
                             <http://data.silknow.org/assigned/hats_and_headwear>,
                             <http://data.silknow.org/assigned/parasols_and_umbrellas>,
                             <http://data.silknow.org/assigned/footwear>,
-                            <http://data.silknow.org/assigned/household_objects>, 
+                            <http://data.silknow.org/assigned/accesorios_de_indumentaria_cueros_artisticos>,
+                            <http://data.silknow.org/assigned/household_objects>,
+                            <http://data.silknow.org/assigned/impresion_y_grafito_sobre_papel>,
+                            <http://data.silknow.org/assigned/manton>,  
                             <http://data.silknow.org/assigned/textiles_resist>,
+                            <http://data.silknow.org/assigned/fondo>,
+                            <http://data.silknow.org/assigned/muestra_de_galon>,
+                            <http://data.silknow.org/assigned/tejido_mecanico>,
+                            <http://data.silknow.org/assigned/indumentaria_popular>,
+                            <http://data.silknow.org/assigned/kesa>,
+                            <http://data.silknow.org/assigned/tapiceria_a_modo_de_damasco>,
                             <http://data.silknow.org/assigned/hood>,
                             <http://data.silknow.org/assigned/allegory>,
-                            <http://data.silknow.org/assigned/textiles_painted_and_embroidered>.
+                            <http://data.silknow.org/assigned/textiles_painted_and_embroidered>,
+                            <http://data.silknow.org/assigned/decoracion_tejidos>,
+                            <http://data.silknow.org/assigned/objetos_de_uso_religioso>,
+                            <http://data.silknow.org/assigned/muestra_de_tela>,
+                            <http://data.silknow.org/assigned/mobiliario_de_ajuar>,
+                            <http://data.silknow.org/assigned/prendas_de_busto>,
+                            <http://data.silknow.org/assigned/ajuar_de_mesa>,
+                            <http://data.silknow.org/assigned/lampas>,
+                            <http://data.silknow.org/assigned/objetos_e_imagenes_devocionales>,
+                            <http://data.silknow.org/assigned/pasamaneria>,
+                            <http://data.silknow.org/assigned/indumentaria_festiva>,
+                            <http://data.silknow.org/assigned/espolin_y_lampas>,
+                            <http://data.silknow.org/assigned/indumentaria_complementos>,
+                                <http://data.silknow.org/assigned/capillo>,
+                               <http://data.silknow.org/assigned/indumentaria_civil_historica>,
+                            <http://data.silknow.org/assigned/encaje>,
+                            <http://data.silknow.org/assigned/textiles_domesticos>,
+                            <http://data.silknow.org/assigned/complementos_de_busto>.
 
 
 
