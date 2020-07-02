@@ -14,7 +14,15 @@
     "Textiles-Woven"@en ,
     "textiles"@en ,
     "Textile"@en ,
-    "Textiles-Embroidered and Woven"@en ;
+    "Textiles-Embroidered and Woven"@en,
+    "tejido"@es,
+    "Tejido"@es,
+    "Tejidos"@es,
+    "Artes decorativas o suntuarias; Textiles. Confección"@es,
+    "Tejidos: confección"@es,
+    "peces tèxtils"@ca,
+    "teixits"@ca,
+    "teixit artístic"@ca ;
 
     skos:topConceptOf <http://data.silknow.org/assigned/>.
 
@@ -23,7 +31,14 @@
                    "Textiles-Embroidered"@en ,
                     "Embroideries"@en ,
                     "Needlework accesories"@en ,
-                    "Needlework accessories"@en ;
+                    "Needlework accessories"@en,
+                    "Bordados a la aguja"@es,
+                    "Bordados"@es,
+                    "Bordados a la aguja"@es,
+                    "bordados"@es,
+                    "Bordado"@es,
+                    "Labores"@es,
+                    "Bordados de aplicación"@es ;
 
         skos:topConceptOf <http://data.silknow.org/assigned/>.
 
@@ -147,7 +162,7 @@
 <http://data.silknow.org/assigned/stage_costumes> a skos:Concept, ecrm:E55_assigned ;
         rdfs:label "Stage costumes"@en ,
                    "Theatre costume"@en ,
-                   "Theatre costumes"en ;
+                   "Theatre costumes"@en ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
         
 <http://data.silknow.org/assigned/dibujo_para_posterior_calco_marcas_punzon> a skos:Concept, ecrm:E55_assigned;
@@ -183,7 +198,7 @@
         rdfs:label "dibujo policromo"@es ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
         
-<http://data.silknow.org/assigned/Dibujo monocromo> a skos:Concept, ecrm:E55_assigned;
+<http://data.silknow.org/assigned/dibujo_monocromo> a skos:Concept, ecrm:E55_assigned;
         rdfs:label "Dibujo monocromo"@es ;
         skos:topConceptOf <http://data.silknow.org/assigned/>.
        
@@ -424,7 +439,7 @@
                             <http://data.silknow.org/assigned/realce_brocatel>,
                             <http://data.silknow.org/assigned/espolin_y_realce>,
                             <http://data.silknow.org/assigned/dibujo_policromo>,
-                            <http://data.silknow.org/assigned/Dibujo monocromo>,
+                            <http://data.silknow.org/assigned/dibujo_monocromo>,
                             <http://data.silknow.org/assigned/womens_clothes>,
                             <http://data.silknow.org/assigned/formal_wear>,
                             <http://data.silknow.org/assigned/informal_wear>,
