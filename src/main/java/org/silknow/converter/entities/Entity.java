@@ -229,6 +229,7 @@ public abstract class Entity {
     if (classification == null) return null;
     RDFNode r = VocabularyManager.searchInCategory(classification, null, "assigned", false);
     if (r == null) {
+      System.out.println("Classification not found in vocabularies: " + classification);
       r = model.createLiteral(classification);
     }
 
@@ -240,7 +241,7 @@ public abstract class Entity {
 
     if (type != null)
     {
-      RDFNode t = VocabularyManager.searchInCategory(classification, null, "types", false);
+      RDFNode t = VocabularyManager.searchInCategory(type, null, "types", false);
       if (t != null) {
         assignment.addProperty(CIDOC.P2_has_type, t);
       }
