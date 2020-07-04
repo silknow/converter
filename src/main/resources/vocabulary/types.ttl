@@ -8,51 +8,51 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.silknow.org/type/author> a skos:Concept;
-    rdfs:label "author"@en ;
+    skos:prefLabel "author"@en ;
     skos:topConceptOf <http://data.silknow.org/type/>.
 
 <http://data.silknow.org/type/artist> a skos:Concept;
-        rdfs:label "artist"@en  ;
+        skos:prefLabel "artist"@en  ;
         skos:topConceptOf <http://data.silknow.org/type/>.
 
 <http://data.silknow.org/type/bibliography> a skos:Concept;
-        rdfs:label "bibliography"@en ,
+        skos:prefLabel "bibliography"@en ,
         	       "Bibliografía"@es ,
                    "Bibliographie"@fr  ;
         skos:topConceptOf <http://data.silknow.org/type/>.
 
 <http://data.silknow.org/type/description> a skos:Concept;
-        rdfs:label "description"@en ,
+        skos:prefLabel "description"@en ,
         	       "Descripción"@es ,
                    "Description"@fr ;
         skos:topConceptOf <http://data.silknow.org/type/>.
 
 <http://data.silknow.org/type/width> a skos:Concept ;
-        rdfs:label "width"@en ;
+        skos:prefLabel "width"@en ;
         skos:topConceptOf <http://data.silknow.org/type/>.
 
 <http://data.silknow.org/type/height> a skos:Concept;
-        rdfs:label "height"@en ;
+        skos:prefLabel "height"@en ;
         skos:topConceptOf <http://data.silknow.org/type/>.
 
 <http://data.silknow.org/type/domain> a skos:Concept;
-        rdfs:label "Domain"@en , "Domaine"@fr ;
+        skos:prefLabel "Domain"@en , "Domaine"@fr ;
         skos:topConceptOf <http://data.silknow.org/type/>.
 
 <http://data.silknow.org/type/register_number> a skos:Concept;
-        rdfs:label "Register number"@en,
+        skos:prefLabel "Register number"@en,
         		   "Numéro d'inventaire"@fr,
         		   "recordId"@en,
         		   "Object Number"@en ;
         skos:topConceptOf <http://data.silknow.org/type/>.
 
 <http://data.silknow.org/type/denomination> a skos:Concept;
-        rdfs:label "Denomination"@en,
+        skos:prefLabel "Denomination"@en,
                    "Dénomination"@fr ;
         skos:topConceptOf <http://data.silknow.org/type/>.
 
 <http://data.silknow.org/type/technical_description> a skos:Concept ;
-        rdfs:label "Technical description"@en,
+        skos:prefLabel "Technical description"@en,
         	       "Descripción técnica"@es ;
         skos:topConceptOf <http://data.silknow.org/type/>.
 
