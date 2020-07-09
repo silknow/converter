@@ -139,7 +139,7 @@ public class JocondeConverter extends Converter {
     //}
 
     List<String> inscr = s.getMulti("INSC").collect(Collectors.toList());
-    List<String> inscrPrec = s.getMulti("Précision inscriptions").collect(Collectors.toList());
+    List<String> inscrPrec = s.getMulti("PINS").collect(Collectors.toList());
 
     for (int i = 0; i < inscrPrec.size(); i++) {
       String p = inscrPrec.get(i);

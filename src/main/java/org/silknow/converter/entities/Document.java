@@ -25,4 +25,5 @@ public class Document extends Entity {
   public void addEditor(Actor actor) {
     this.addProperty(CIDOC.P105_right_held_by, actor);
   }
+
 }

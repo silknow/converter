@@ -66,8 +66,12 @@ public class UNIPAConverter extends Converter {
 
     s.getMulti("Time chronology").forEach(prod::addTimeAppellation);
 
-    s.getMulti("Geography").forEach(prod::addPlace);
-    s.getMulti("Region production").forEach(prod::addPlace);
+
+    if (s.get("Region production").equals("ignoto")) {
+    prod.addPlace(s.get("Geography"));}
+    if (!s.get("Region production").equals("ignoto")) {
+    prod.addPlace(s.get("Geography")); }
+
     s.getMulti("Technique").forEach(technique -> prod.addTechnique(technique, mainLang));
 
 
@@ -77,7 +81,10 @@ public class UNIPAConverter extends Converter {
     s.getMulti("Appellation")
             .map(x -> obj.addClassification(x, "Appellation", "en"))
             .forEach(this::linkToRecord);
-
+    s.getMulti("Description")
+            .map(x -> obj.addClassification(x, "Description", "en"))
+            .forEach(this::linkToRecord);
+    
 
     String dim = s.getMulti("Dimensions").findFirst().orElse(null);
     if (dim != null) {
@@ -87,7 +94,6 @@ public class UNIPAConverter extends Converter {
       }
     }
     linkToRecord(obj.addObservation(s.getMulti("Width").findFirst().orElse(null), "Width", "it"));
-    linkToRecord(obj.addObservation(s.getMulti("Description").findFirst().orElse(null), "Description", "it"));
     linkToRecord(obj.addObservation(s.getMulti("Pattern ratio").findFirst().orElse(null), "Pattern ratio", "it"));
     linkToRecord(obj.addObservation(s.getMulti("Warp").findFirst().orElse(null), "Warp", "it"));
     linkToRecord(obj.addObservation(s.getMulti("Weft").findFirst().orElse(null), "Weft", "it"));
@@ -98,6 +104,14 @@ public class UNIPAConverter extends Converter {
 
 
     prod.addActivity(s.getMulti("Autors").findFirst().orElse(null), "Artist");
+
+
+    Document doc = new Document(id);
+    s.getMulti("Author of the technical analysis").map(Person::new)
+            .forEach(doc::addEditor);
+    s.getMulti("Author of the Historical Critical Information").map(Person::new)
+            .forEach(doc::addEditor);
+    doc.document(obj);
 
 
     LegalBody museum = null;
@@ -119,7 +133,7 @@ public class UNIPAConverter extends Converter {
 
     if (s.get("Language") != null) {
       InformationObject bio = new InformationObject(regNum + "l");
-      bio.setType("Language", mainLang);
+      bio.setType("Language", "en");
       bio.isAbout(obj);
       bio.addNote(s.get("Language"), mainLang);
       linkToRecord(bio);
@@ -128,6 +142,8 @@ public class UNIPAConverter extends Converter {
     linkToRecord(obj);
     linkToRecord(prod);
     linkToRecord(transfer);
+    linkToRecord(doc);
+
     return this.model;
   }
 

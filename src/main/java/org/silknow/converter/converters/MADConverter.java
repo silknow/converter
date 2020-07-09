@@ -100,7 +100,7 @@ public class MADConverter extends Converter {
     Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(museum);
 
-    String appellation = s.getMulti("Département").findFirst().orElse(null);
+    String appellation = s.getMulti("field-skpublishedin").findFirst().orElse(null);
     if (appellation != null) {
 
       Collection collection = new Collection(regNum, appellation.replaceAll(" *\\(.+?\\)", ""));
