@@ -79,7 +79,7 @@ public class Production extends Entity {
     }
   }
 
-  /*
+
   public void addPlace(String place) {
     if (place.startsWith("... "))
       // TODO something?
@@ -91,9 +91,9 @@ public class Production extends Entity {
       // no further action required
     }
   }
-*/
-  //public void addPlace(Place place) {
-  public void addPlace(String place) {
+
+  public void addPlace(Place place) {
+  //public void addPlace(String place) {
     this.addProperty(CIDOC.P8_took_place_on_or_within, place);
   }
 
