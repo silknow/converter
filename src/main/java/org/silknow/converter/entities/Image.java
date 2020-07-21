@@ -29,9 +29,8 @@ public class Image extends Entity {
 
   public void generateUri(String id, int imgCount) {
     // this method is called if the img has no identifier and need one uri
-    //String seed = id + "$$$" + imgCount + this.localFilename; // the $$$ is there for avoiding collision of different-sized seeds
-
-    String seed = MEDIA_BASE + this.localFilename;
+    String seed = id + "$$$" + imgCount + this.localFilename; // the $$$ is there for avoiding collision of different-sized seeds
+    //String seed = MEDIA_BASE + this.localFilename;
     this.setUri(ConstructURI.build(this.source, "Image", seed));
   }
 
@@ -62,6 +61,8 @@ public class Image extends Entity {
       String internalUrl = MEDIA_BASE + dataset + "/" + filename;
 
       this.addProperty(Schema.contentUrl, model.createResource(internalUrl));
+      String seed = internalUrl;
+      this.setUri(ConstructURI.build(this.source, "Image", seed));
     }
 
   }
