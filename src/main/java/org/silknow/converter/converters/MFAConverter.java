@@ -54,8 +54,8 @@ public class MFAConverter extends Converter {
     s.getMulti("titleField").forEach(obj::addTitle);
 
     s.getImages().map(Image::fromCrawledJSON)
-            .peek(obj::add)
             .peek(image -> image.addInternalUrl("mfa-boston"))
+            .peek(obj::add)
             .forEach(this::linkToRecord);
 
     Production prod = new Production(regNum);

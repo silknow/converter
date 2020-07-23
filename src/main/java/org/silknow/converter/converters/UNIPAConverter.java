@@ -55,9 +55,9 @@ public class UNIPAConverter extends Converter {
 
 
     s.getImages().map(Image::fromCrawledJSON)
-            .peek(obj::add)
             .peek(img-> img.setLocalFilename(img.getId()))
             .peek(image -> image.addInternalUrl("unipa"))
+            .peek(obj::add)
             .forEach(this::linkToRecord);
 
 

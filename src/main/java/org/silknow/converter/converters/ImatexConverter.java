@@ -79,8 +79,8 @@ public class ImatexConverter extends Converter {
 
 
     s.getImages().map(Image::fromCrawledJSON)
-            .peek(obj::add)
             .peek(image -> image.addInternalUrl("imatex"))
+            .peek(obj::add)
             .forEach(this::linkToRecord);
 
 

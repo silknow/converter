@@ -72,8 +72,8 @@ public class CERConverter extends Converter {
 
 
     s.getImages().map(Image::fromCrawledJSON)
-            .peek(obj::add)
             .peek(image -> image.addInternalUrl("ceres-mcu"))
+            .peek(obj::add)
             .forEach(this::linkToRecord);
 
     String dim = s.getMulti("Dimensiones").findFirst().orElse(null);

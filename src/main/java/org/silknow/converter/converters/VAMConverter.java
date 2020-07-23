@@ -113,8 +113,8 @@ public class VAMConverter extends Converter {
     linkToRecord(collection);
 
     s.getImages().map(Image::fromCrawledJSON)
-            .peek(obj::add)
             .peek(image -> image.addInternalUrl("vam"))
+            .peek(obj::add)
             .forEach(this::linkToRecord);
 
     if (s.get("bibliography") != null) {

@@ -60,8 +60,8 @@ public class RISDConverter extends Converter {
     obj.addTitle(s.getMulti("Title").findFirst().orElse(null));
 
     s.getImages().map(Image::fromCrawledJSON)
-            .peek(obj::add)
             .peek(image -> image.addInternalUrl("risd-museum"))
+            .peek(obj::add)
             .forEach(this::linkToRecord);
 
     Production prod = new Production(regNum);
