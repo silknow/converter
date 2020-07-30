@@ -81,7 +81,6 @@ public class GarinConverter extends Converter {
     obj.addTitle(s.get("Denominacion principal"));
     linkToRecord(obj.addComplexIdentifier(id, "Register number", owner));
     linkToRecord(obj.addClassification(s.get("Objecto"), "Domain", "en", GARIN));
-    linkToRecord(obj.addClassification(s.get("Tipología"), "Denomination", "en", owner));
     linkToRecord(obj.addObservation(s.get("Descripción"), "Descripción", mainLang));
     linkToRecord(obj.addObservation(s.get("Descripción técnica"), "Descripción técnica", mainLang));
 
@@ -117,11 +116,12 @@ public class GarinConverter extends Converter {
 
     Production prod = new Production(id);
     prod.add(obj);
-    s.getMulti("Técnica").forEach(technique -> prod.addTechnique(technique, mainLang));
+    s.getMulti("Técnica").forEach(used_object -> prod.addUsedObject(used_object, mainLang));
+    s.getMulti("Tipología").forEach(technique -> prod.addTechnique(technique, mainLang));
     prod.addActivity(s.get("Autor de la obra"), "author");
     prod.addTimeAppellation(s.get("Época"));
     s.getMulti("Material").forEach(material -> prod.addMaterial(material, mainLang));
-    s.getMulti("Accessorios").map(ManMade_Object::new).forEach(prod::addTool);
+    //s.getMulti("Accessorios").map(ManMade_Object::new).forEach(prod::addTool);
     prod.addPlace("chalet garin");
 
 

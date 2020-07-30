@@ -131,4 +131,9 @@ public class Production extends Entity {
   public void addTool(ManMade_Object tool) {
     this.addProperty(CIDOC.P16_used_specific_object, tool);
   }
+
+  public void addUsedObject(String used_object, String lang) {
+    this.addProperty(CIDOC.P125_used_object_of_type, used_object, lang);
+  }
+
 }
