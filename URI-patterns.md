@@ -18,12 +18,12 @@ The `<group>` is taken from this table
 
 | Class | Group | Count
 | --- | --- | --- |
-| E38_Image | image | 64716 |
-| D1_Digital_Object | - | 35166 |
-| E22_Man-Made_Object | object | 35154 |
-| E12_Production | production | 345154 | 
+| E38_Image | image | 65050 |
+| D1_Digital_Object | - | 35137 |
+| E22_Man-Made_Object | object | 35126 |
+| E12_Production | production | 35126 | 
 | E8_Acquisition | event | 32945 |
-| E10_Transfer_of_Custody | event | 32095 |
+| E10_Transfer_of_Custody | event | 32067 |
 | E78_Collection | collection | 18827 |
 | E73_Information_Object | informationobject | 3331 |
 | E14_Condition_Assessment | assessment | 3180 |
@@ -60,11 +60,11 @@ The `<suffix>` is taken from this table:
 
 | Class | Group | Suffix | Count
 | --- | --- | --- | --- |
-| E17_Type_Assignment | object | type_assignment/{progressive int} | 54650 |
-| E54_Dimension | object | dimension/{w or h} | 45562 |
-| E42_Identifier | object | id/{id} | 35900 |
-| S4_Observation | object | observation/{progressive int} | 32789 |
-| E15_Identifier_Assignment | object | id_assignment/{id from E42} | 35526 |
+| E17_Type_Assignment | object | type_assignment/{progressive int} | 52685 |
+| E54_Dimension | object | dimension/{w or h} | 45522 |
+| E42_Identifier | object | id/{id} | 35872 |
+| S4_Observation | object | observation/{progressive int} | 34138 |
+| E15_Identifier_Assignment | object | id_assignment/{id from E42} | 35498 |
 | E52_Time-Span | production | time/{progressive int} | 25415 |
 | E16_Measurement | object | dimension/measurement | 22781 |
 | E3_Condition_State | object | assessment/{progressive int} | 9298 |
