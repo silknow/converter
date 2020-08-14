@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 
 public abstract class Converter {
-  protected static final String BASE_URI = "httpa://data.silknow.org/";
+  protected static final String BASE_URI = "http://data.silknow.org/graph/";
   protected final Model model = ModelFactory.createDefaultModel();
   protected String DATASET_NAME;
 
