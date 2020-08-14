@@ -7,7 +7,7 @@ import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.Schema;
 
 public class Image extends Entity {
-  private final static String MEDIA_BASE = "http://silknow.org/silknow/media/";
+  private final static String MEDIA_BASE = "https://silknow.org/silknow/media/";
   private CrawledJSONImages sourceImg;
   private String localFilename;
   private boolean hasError;

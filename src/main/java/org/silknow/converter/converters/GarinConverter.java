@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class GarinConverter extends Converter {
-  private final static String MEDIA_BASE = "http://silknow.org/silknow/media/garin/";
+  private final static String MEDIA_BASE = "https://silknow.org/silknow/media/garin/";
   private final static Pattern ANV_REV = Pattern.compile("(ANV|REV|DET)");
   public static final Map<String, String> ANV_REV_TABLE;
 
