@@ -126,9 +126,12 @@ public class GarinConverter extends Converter {
 
 
     try {
-      Path configFilePath = FileSystems.getDefault().getPath(file.getParent()).getParent();
+      Path configFilePath = FileSystems.getDefault().getPath(file.getParent()).getParent().getParent();
       Stream<Path> fileWithName = Files.walk(configFilePath, Integer.MAX_VALUE);
-      //System.out.println(fileWithName.count());
+
+      //long count = fileWithName.count();
+      //System.out.println(Integer.MAX_VALUE + "..." + count);
+
       List<String> filenamelist = fileWithName
               .filter(f -> f.getFileName().toString().matches("^" + id.replaceAll("[. ]", "") + "[ .].+$"))
               .filter(f -> !f.toString().endsWith("xls"))
@@ -138,7 +141,7 @@ public class GarinConverter extends Converter {
               .map(x -> x.replaceAll("(?i)\\.jpg$", ".jpg")) // replace uppercase .JPG
               .collect(Collectors.toList());
        //System.out.println(id.replaceAll("[. ]", ""));
-       //System.out.println(filenamelist);
+
       for (String name : filenamelist) {
         Matcher matcher = ANV_REV.matcher(name); // search for anverso/reverso
 

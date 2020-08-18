@@ -229,7 +229,7 @@ public abstract class Entity {
     if (classification == null) return null;
     RDFNode r = VocabularyManager.searchInCategory(classification, null, "assigned", false);
     if (r == null) {
-      System.out.println("Classification not found in vocabularies: " + classification);
+      //System.out.println("Classification not found in vocabularies: " + classification);
       r = model.createLiteral(classification);
     }
 
