@@ -51,7 +51,6 @@ public class VAMConverter extends Converter {
     id = regNum;
 
     ManMade_Object obj = new ManMade_Object(regNum);
-
     linkToRecord(obj.addComplexIdentifier(regNum, "museum_number"));
     obj.addTitle(s.getMulti("object").findFirst().orElse(null));
 
@@ -116,6 +115,10 @@ public class VAMConverter extends Converter {
             .peek(image -> image.addInternalUrl("vam"))
             .peek(obj::add)
             .forEach(this::linkToRecord);
+    
+    if (s.getImages().toArray().length == 0) {
+      System.out.println(file.getPath());
+    }
 
     if (s.get("bibliography") != null) {
       InformationObject bio = new InformationObject(regNum + "b");

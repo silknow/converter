@@ -64,10 +64,18 @@ public class GarinConverter extends Converter {
     else filename = null;
     if (filename == null)
       return null;
-    String regNum = s.get("Nº Inventario");
-    if (regNum == null)
-      regNum = filename+" filenameID";
-    id = regNum;
+
+    if (s.get("Nº Inventario").isEmpty()  != true ) {
+      String[] path = file.getAbsolutePath().split("/");
+      String regNum = (path[path.length - 3] + "_" + path[path.length - 2] + "_" + s.get("Nº Inventario")).replaceAll(" +", "_");
+      id = regNum;
+
+    }
+
+    else {
+      String regNum = filename+" filenameID";
+      id = regNum;
+    }
 
 
     String ownerName = s.get("Propiedad");
@@ -133,14 +141,18 @@ public class GarinConverter extends Converter {
       //System.out.println(Integer.MAX_VALUE + "..." + count);
 
       List<String> filenamelist = fileWithName
-              .filter(f -> f.getFileName().toString().matches("^" + id.replaceAll("[. ]", "") + "[ .].+$"))
+              .filter(f -> f.getFileName().toString().matches("^" + s.get("Nº Inventario").replaceAll("[. ]", "") + "[ .].+$"))
               .filter(f -> !f.toString().endsWith("xls"))
               .map(Path::getFileName)
               .map(Path::toString)
               .map(x -> x.replaceAll(" +", "_")) // singe/double space to single underscore
               .map(x -> x.replaceAll("(?i)\\.jpg$", ".jpg")) // replace uppercase .JPG
               .collect(Collectors.toList());
-       //System.out.println(id.replaceAll("[. ]", ""));
+
+      //if (filenamelist.isEmpty()) {
+        //System.out.println(s.get("Nº Inventario").replaceAll("[. ]", ""));
+      //}
+
 
       for (String name : filenamelist) {
         Matcher matcher = ANV_REV.matcher(name); // search for anverso/reverso
