@@ -31,7 +31,7 @@ public class METConverter extends Converter {
       throw new RuntimeException("MET converter requires files in JSON format.");
 
     String mainLang = "en";
-    this.DATASET_NAME = "MET";
+    this.DATASET_NAME = "met";
 
     // Parse JSON
     logger.trace("parsing json");

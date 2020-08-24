@@ -28,7 +28,7 @@ public class RISDConverter extends Converter {
       throw new RuntimeException("RISD converter require files in JSON format.");
 
     String mainLang = "en";
-    this.DATASET_NAME = "RISD";
+    this.DATASET_NAME = "risd";
 
     // Parse JSON
     logger.trace("parsing json");

@@ -27,7 +27,7 @@ public class VAMConverter extends Converter {
       throw new RuntimeException("VAMconverter require files in JSON format.");
 
     String mainLang = "en";
-    this.DATASET_NAME = "VAM";
+    this.DATASET_NAME = "vam";
 
     // Parse JSON
     logger.trace("parsing json");

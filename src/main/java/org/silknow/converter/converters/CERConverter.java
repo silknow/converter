@@ -27,7 +27,7 @@ public class CERConverter extends Converter {
       throw new RuntimeException("CERConverter require files in JSON format.");
 
     String mainLang = "es";
-    this.DATASET_NAME = "CER";
+    this.DATASET_NAME = "cer";
 
     // Parse JSON
     logger.trace("parsing json");

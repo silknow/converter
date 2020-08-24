@@ -27,7 +27,7 @@ public class MFAConverter extends Converter {
       throw new RuntimeException("MFAConverter require files in JSON format.");
 
     String mainLang = "en";
-    this.DATASET_NAME = "MFA";
+    this.DATASET_NAME = "mfa";
 
     // Parse JSON
     logger.trace("parsing json");

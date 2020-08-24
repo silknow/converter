@@ -27,7 +27,7 @@ public class MTMADConverter extends Converter {
       throw new RuntimeException("MTMAD converter require files in JSON format.");
 
     String mainLang = "fr";
-    this.DATASET_NAME = "MTMAD";
+    this.DATASET_NAME = "mtmad";
 
     // Parse JSON
     logger.trace("parsing json");

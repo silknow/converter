@@ -27,7 +27,7 @@ public class UNIPAConverter extends Converter {
       throw new RuntimeException("UNIPA converter require files in JSON format.");
 
     String mainLang = "it";
-    this.DATASET_NAME = "UNIPA";
+    this.DATASET_NAME = "unipa";
 
     // Parse JSON
     logger.trace("parsing json");

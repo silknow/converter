@@ -27,7 +27,7 @@ public class MADConverter extends Converter {
       throw new RuntimeException("MAD converter require files in JSON format.");
 
     String mainLang = "fr";
-    this.DATASET_NAME = "MAD";
+    this.DATASET_NAME = "mad";
 
     // Parse JSON
     logger.trace("parsing json");
