@@ -55,8 +55,8 @@ public class RISDConverter extends Converter {
       id = filename+"_local_filename_id";
 
 
-    ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addComplexIdentifier(regNum, "Object Number"));
+    ManMade_Object obj = new ManMade_Object(id);
+    linkToRecord(obj.addComplexIdentifier(id, "Object Number"));
     obj.addTitle(s.getMulti("Title").findFirst().orElse(null));
 
     s.getImages().map(Image::fromCrawledJSON)
