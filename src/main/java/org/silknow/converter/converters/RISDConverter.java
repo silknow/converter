@@ -64,7 +64,7 @@ public class RISDConverter extends Converter {
             .peek(obj::add)
             .forEach(this::linkToRecord);
 
-    Production prod = new Production(regNum);
+    Production prod = new Production(id);
     prod.add(obj);
     prod.addActivity(s.getMulti("Maker").findFirst().orElse(null), "Maker");
 
@@ -92,10 +92,10 @@ public class RISDConverter extends Converter {
     String acquisitionFrom = s.get("Credit");
     LegalBody museum = null;
 
-    Acquisition acquisition = new Acquisition(regNum);
+    Acquisition acquisition = new Acquisition(id);
     acquisition.transfer(acquisitionFrom, obj, museum);
 
-    Transfer transfer = new Transfer(regNum);
+    Transfer transfer = new Transfer(id);
     transfer.of(obj).by(museum);
 
     s.getExhibitions().map(InformationObject::fromCrawledJSON)
