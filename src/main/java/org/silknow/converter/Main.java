@@ -148,7 +148,9 @@ public class Main implements Runnable {
     converter.resetModel();
     Model m = converter.convert(file);
 //    VocabularyManager.string2uri(m);
-    if (m == null) return;
+    if (m == null)
+    { System.out.println("Conversion failed:" + file.getName());
+    return; }
 
     try {
       writeTtl(m, out);

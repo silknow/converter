@@ -44,7 +44,10 @@ public class Image extends Entity {
 
   public void setHasError(Boolean hasError) {
     this.hasError = hasError;
-    if (hasError == false) return;
+    if (hasError == false)
+    return;
+    if (hasError)
+      System.out.println("Local image could not be retrieved:" + this.localFilename);
   }
 
   public void addInternalUrl(String dataset) {

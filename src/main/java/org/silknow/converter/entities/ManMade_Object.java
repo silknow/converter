@@ -9,6 +9,7 @@ import org.apache.jena.vocabulary.SKOS;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.CRMsci;
 
+import javax.swing.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -89,6 +90,7 @@ public class ManMade_Object extends Entity {
     return this;
   }
 
+
   public Resource addMeasure(String value) throws RuntimeException {
     if (value == null || value.equals("cm")) return null;
     Matcher m = DIMENSION_PATTERN.matcher(value);
@@ -97,7 +99,7 @@ public class ManMade_Object extends Entity {
         throw new RuntimeException("Dimension not parsed: " + value);
       }
     } catch (RuntimeException re) {
-      re.printStackTrace();
+      //re.printStackTrace();
       return null;
     }
     return addMeasure(m.group(1), m.group(2));
