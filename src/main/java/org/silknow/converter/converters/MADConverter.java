@@ -94,7 +94,7 @@ public class MADConverter extends Converter {
 
     Acquisition acquisition = new Acquisition(regNum);
     //acquisition.transfer(acquisitionFrom, obj, museum);
-    acquisition.setType(acquisitionType);
+    //acquisition.setType(acquisitionType);
 
 
     Transfer transfer = new Transfer(regNum);
