@@ -71,8 +71,10 @@ public class METConverter extends Converter {
     s.getMulti("Object Type / Material").forEach(material -> prod.addMaterial(material.replaceAll(" *\\(.+?\\)", ""), mainLang));
 
 
-    for (String x : s.getMulti("Culture:").collect(Collectors.toList())) {
-      // TODO set as probable?
+    s.getMulti("Culture:").forEach(prod::addPlace);
+
+    // TODO make these rules general!
+   /* for (String x : s.getMulti("Culture:").collect(Collectors.toList())) {
       x = x.replace("probably", "")
               .replace("(?)", "")
               .replace("?", "");
@@ -90,7 +92,7 @@ public class METConverter extends Converter {
         prod.addPlace(part);
         break;
       }
-    }
+    }*/
     s.getMulti("Classification:")
             .map(x -> obj.addClassification(x, "Classification", mainLang))
             .forEach(this::linkToRecord);
