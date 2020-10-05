@@ -70,7 +70,7 @@ public class UNIPAConverter extends Converter {
     if (s.get("Region production").equals("ignoto")) {
     prod.addPlace(s.get("Geography"));}
     if (!s.get("Region production").equals("ignoto")) {
-    prod.addPlace(s.get("Geography")); }
+    prod.addPlace(s.get("Region production")); }
 
     s.getMulti("Technique").forEach(technique -> prod.addTechnique(technique, mainLang));
 
