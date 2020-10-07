@@ -57,7 +57,11 @@ public class RISDConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(id);
     linkToRecord(obj.addComplexIdentifier(id, "Object Number"));
-    obj.addTitle(s.getMulti("Title").findFirst().orElse(null));
+    //obj.addTitle(s.getMulti("Title").findFirst().orElse(null));
+    s.getMulti("Title")
+            .map(x -> obj.addClassification(x, "Title", mainLang))
+            .forEach(this::linkToRecord);
+
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(image -> image.addInternalUrl("risd-museum"))

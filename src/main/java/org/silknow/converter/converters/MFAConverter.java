@@ -51,7 +51,12 @@ public class MFAConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Accession Number"));
-    s.getMulti("titleField").forEach(obj::addTitle);
+    //s.getMulti("titleField").forEach(obj::addTitle);
+    s.getMulti("titleField")
+            .map(x -> obj.addClassification(x, "Title", mainLang))
+            .forEach(this::linkToRecord);
+
+
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(image -> image.addInternalUrl("mfa-boston"))

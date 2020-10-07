@@ -51,7 +51,11 @@ public class CERConverter extends Converter {
     id = regNum;
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Inventario"));
-    obj.addTitle(s.getMulti("Título").findFirst().orElse(null));
+    //obj.addTitle(s.getMulti("Título").findFirst().orElse(null));
+    s.getMulti("Título")
+            .map(x -> obj.addClassification(x, "Título", mainLang))
+            .forEach(this::linkToRecord);
+
 
 
     Production prod = new Production(regNum);
@@ -62,7 +66,10 @@ public class CERConverter extends Converter {
 
     s.getMulti("Iconografia").forEach(subject -> obj.addSubject(subject, mainLang));
     s.getMulti("Datación").forEach(prod::addTimeAppellation);
-    s.getMulti("Contexto Cultural/Estilo").forEach(prod::addTimeAppellation);
+    //s.getMulti("Contexto Cultural/Estilo").forEach(prod::addTimeAppellation);
+    linkToRecord(obj.addObservation(s.get("Contexto Cultural/Estilo"), "Contexto Cultural/Estilo", mainLang));
+
+
     s.getMulti("Materia/Soporte","   ").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("Lugar de Producción/Ceca").forEach(prod::addPlace);
     s.getMulti("Técnica","   ").forEach(technique -> prod.addTechnique(technique, mainLang));
@@ -92,7 +99,11 @@ public class CERConverter extends Converter {
             .forEach(copyphoto::ownedBy);
 
     linkToRecord(obj.addObservation(s.get("Descripción"), "Descripción", mainLang));
-    linkToRecord(obj.addObservation(s.get("Objeto/Documento"), "Objeto/Documento", mainLang));
+    //linkToRecord(obj.addObservation(s.get("Objeto/Documento"), "Objeto/Documento", mainLang));
+    s.getMulti("Objeto/Documento")
+            .map(x -> obj.addClassification(x, "Objeto/Documento", mainLang))
+            .forEach(this::linkToRecord);
+
     linkToRecord(obj.addObservation(s.get("Clasificación Razonada"), "Clasificación Razonada", mainLang));
 
     LegalBody museum = null;

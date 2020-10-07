@@ -55,7 +55,11 @@ public class METConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Accession Number:"));
-    obj.addTitle(s.getMulti("title").findFirst().orElse(null));
+    //obj.addTitle(s.getMulti("title").findFirst().orElse(null));
+    s.getMulti("title")
+            .map(x -> obj.addClassification(x, "Categories", mainLang))
+            .forEach(this::linkToRecord);
+
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(image -> image.addInternalUrl("met-museum"))
@@ -68,8 +72,11 @@ public class METConverter extends Converter {
     s.getMulti("Date:").forEach(prod::addTimeAppellation);
     s.getMulti("Medium:").forEach(material -> prod.addMaterial(material, mainLang));
 
-    s.getMulti("Object Type / Material").forEach(material -> prod.addMaterial(material.replaceAll(" *\\(.+?\\)", ""), mainLang));
+    //s.getMulti("Object Type / Material").forEach(material -> prod.addMaterial(material.replaceAll(" *\\(.+?\\)", ""), mainLang));
 
+    s.getMulti("Object Type / Material")
+            .map(x -> obj.addClassification(x, "Object Type / Material", mainLang))
+            .forEach(this::linkToRecord);
 
     s.getMulti("Culture:").forEach(prod::addPlace);
 
