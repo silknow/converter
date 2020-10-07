@@ -65,17 +65,17 @@ public class GarinConverter extends Converter {
     if (filename == null)
       return null;
 
-    if (s.get("Nº Inventario").isEmpty()  != true ) {
+    //if (s.get("Nº Inventario").isEmpty()  != true ) {
       String[] path = file.getAbsolutePath().split("/");
       String regNum = (path[path.length - 3] + "_" + path[path.length - 2] + "_" + s.get("Nº Inventario")).replaceAll(" +", "_");
       id = regNum;
 
-    }
+    //}
 
-    else {
-      String regNum = filename+" filenameID";
-      id = regNum;
-    }
+    //else {
+      //String regNum = filename+" filenameID";
+      //id = regNum;
+    //}
 
 
     String ownerName = s.get("Propiedad");
@@ -141,7 +141,7 @@ public class GarinConverter extends Converter {
       //System.out.println(Integer.MAX_VALUE + "..." + count);
 
       List<String> filenamelist = fileWithName
-              .filter(f -> f.getFileName().toString().matches("^" + s.get("Nº Inventario").replaceAll("[. ]", "") + "[ .].+$"))
+              .filter(f -> f.getFileName().toString().matches("^" + id.replaceAll("[. ]", "") + "[ .].+$"))
               .filter(f -> !f.toString().endsWith("xls"))
               .map(Path::getFileName)
               .map(Path::toString)
