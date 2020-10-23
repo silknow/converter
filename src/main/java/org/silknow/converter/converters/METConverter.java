@@ -74,9 +74,10 @@ public class METConverter extends Converter {
 
     //s.getMulti("Object Type / Material").forEach(material -> prod.addMaterial(material.replaceAll(" *\\(.+?\\)", ""), mainLang));
 
-    s.getMulti("Object Type / Material")
-            .map(x -> obj.addClassification(x, "Object Type / Material", mainLang))
-            .forEach(this::linkToRecord);
+    s.getMulti("Object Type / Material").forEach(x -> obj.addClassification(x.replaceAll(" *\\(.+?\\)", ""), "Object Type / Material",  mainLang));
+
+
+
 
     s.getMulti("Culture:").forEach(prod::addPlace);
 
@@ -100,9 +101,9 @@ public class METConverter extends Converter {
         break;
       }
     }*/
-    s.getMulti("Classification:")
-            .map(x -> obj.addClassification(x, "Classification", mainLang))
-            .forEach(this::linkToRecord);
+
+
+    s.getMulti("Classification:").forEach(x -> obj.addClassification(x.replaceAll(" *\\(.+?\\)", ""), "Classification:",  mainLang));
 
 
     String dim = s.get("Dimensions:");
