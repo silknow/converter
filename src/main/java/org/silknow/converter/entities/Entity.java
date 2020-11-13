@@ -241,7 +241,7 @@ public abstract class Entity {
 
     if (type != null)
     {
-      RDFNode t = VocabularyManager.searchInCategory(type, null, "types", false);
+      RDFNode t = VocabularyManager.searchInCategory(type, null, "has_type_P2", false);
       if (t != null) {
         assignment.addProperty(CIDOC.P2_has_type, t);
       }
