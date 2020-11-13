@@ -9,7 +9,7 @@ WHERE { graph ?collection {
      
       
  optional {?object ecrm:P102_has_title ?title }
-     optional {?object ecrm:P3_has_note ?description }
+     optional {?object rdfs:comment ?description }
 
         {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/628> . }
         UNION
