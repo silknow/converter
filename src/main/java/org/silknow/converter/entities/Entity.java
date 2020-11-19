@@ -242,10 +242,12 @@ public abstract class Entity {
     if (type != null)
     {
       RDFNode t = VocabularyManager.searchInCategory(type, null, "has_type_P2", false);
-      if (t != null) {
-        assignment.addProperty(CIDOC.P2_has_type, t);
+      if (t == null) {
+        System.out.println("has_type_P2 not found in vocabularies: " + type);
+        t = model.createLiteral(type);
       }
-      assignment.addProperty(CIDOC.P2_has_type, type, lang);
+
+      assignment.addProperty(CIDOC.P2_has_type, t);
     }
 
     if (museum != null) {

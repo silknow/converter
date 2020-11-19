@@ -103,7 +103,7 @@ public class METConverter extends Converter {
     }
 
 
-    s.getMulti("Classification:").forEach(x -> obj.addClassification(x.replaceAll(" *\\(.+?\\)", ""), "Classification:",  mainLang));
+    s.getMulti("Classification:").forEach(x -> obj.addClassification(x.replaceAll(" *\\(.+?\\)", ""), "Classification",  mainLang));
 
 
     String dim = s.get("Dimensions:");

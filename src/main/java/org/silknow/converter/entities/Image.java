@@ -46,7 +46,7 @@ public class Image extends Entity {
     this.hasError = hasError;
     if (hasError == false)
     return;
-    if (hasError)
+    if (hasError & this.localFilename != null)
       System.out.println("Local image could not be retrieved:" + this.localFilename);
   }
 

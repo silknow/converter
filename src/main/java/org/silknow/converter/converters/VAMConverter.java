@@ -54,9 +54,12 @@ public class VAMConverter extends Converter {
     linkToRecord(obj.addComplexIdentifier(regNum, "museum_number"));
     //obj.addTitle(s.getMulti("object").findFirst().orElse(null));
 
-    s.getMulti("object")
-            .map(x -> obj.addClassification(x, "Object", mainLang))
-            .forEach(this::linkToRecord);
+    //s.getMulti("object")
+      //      .map(x -> obj.addClassification(x, "Object", mainLang))
+        //    .forEach(this::linkToRecord);
+
+    s.getMulti("object").forEach(x -> obj.addClassification(x, "Object",  mainLang));
+
 
     Production prod = new Production(regNum);
     prod.add(obj);

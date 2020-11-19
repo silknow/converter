@@ -65,9 +65,12 @@ public class MADConverter extends Converter {
     //s.getMulti("Textile:").forEach(material -> prod.addMaterial(material, mainLang));
     //s.getMulti("Création:").forEach(prod::addPlace);
     s.getMulti("Matières et techniques:").forEach(material -> prod.addMaterial(material, mainLang));
+    //s.getMulti("Domaine")
+      //      .map(x -> obj.addClassification(x, "Domaine", mainLang))
+        //    .forEach(this::linkToRecord);
     s.getMulti("Domaine")
-            .map(x -> obj.addClassification(x, "Domaine", mainLang))
-            .forEach(this::linkToRecord);
+            .forEach(x -> linkToRecord(obj.addClassification(x, "Domaine", "fr")));
+
     s.getMulti("Appellation")
             .map(x -> obj.addClassification(x, "Appellation", mainLang))
             .forEach(this::linkToRecord);
