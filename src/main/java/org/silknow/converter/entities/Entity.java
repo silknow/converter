@@ -227,7 +227,7 @@ public abstract class Entity {
 
   public Resource addClassification(String classification, String type, String lang, LegalBody museum) {
     if (classification == null) return null;
-    RDFNode r = VocabularyManager.searchInCategory(classification, null, "assigned_P42", false);
+    RDFNode r = VocabularyManager.searchInCategory(classification, null, "categories", false);
     if (r == null) {
       //System.out.println("Classification not found in vocabularies: " + classification);
       r = model.createLiteral(classification);
