@@ -45,7 +45,7 @@ df['technique_category'] = df['technique_category'].replace('0', np.nan)
 df['material_category'] = df['material_category'].replace('0', np.nan)
 
 
-df = df.groupby(['obj'], as_index=False)['museum','deeplink','img','place_uri','place_country_code','text','time_uri','time_label','material_group','technique_group', 'technique_category','material_category','depict_group'].agg(lambda x: list(set(x)))
+df = df.groupby(['obj'], as_index=False)['museum','deeplink','img','place_uri','place_country_code','text','time_uri','time_label','material_group','technique_group', 'technique_category','material_category','depict_group','type_a_group'].agg(lambda x: list(set(x)))
 
 '''
 df['technique_category'] = df['technique_category'].astype(str).str.replace("nan,", "")
@@ -64,7 +64,7 @@ df['material_group'] = df['material_group'].astype(str).str.replace(", 'http://d
 df['material_group'] = df['material_group'].astype(str).str.replace(", 'http://data.silknow.org/vocabulary/facet/animal_fibre',", ",")
 
 
-df = df.reindex(columns=['obj','museum','text','img','deeplink','place_uri','place_country_code','time_uri','time_label','technique_group','technique_category','material_group','material_category','depict_group'])
+df = df.reindex(columns=['obj','museum','text','img','deeplink','place_uri','place_country_code','time_uri','time_label','technique_group','technique_category','material_group','material_category','depict_group','type_a_group'])
 df = df.sort_values(by=['museum'])
 
 #this line removes the category columns
