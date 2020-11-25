@@ -3,7 +3,7 @@ SPARQL query and post-processing script for the Joint Text Image module.
 
 
 ## Requirements
-- Python with Pandas and Numpy
+- Python (3) with Pandas and Numpy
 
 ## How to use
 1. Run the sparql query on data.silknow.org/sparql and set CSV as output format. Save the file as "total.csv".
