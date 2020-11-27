@@ -9,6 +9,7 @@ import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
 import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.NotNull;
+import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.Time;
 
@@ -68,6 +69,7 @@ public class TimeSpan extends Entity {
     super();
 
     tsCount = 0;
+    this.setUri(ConstructURI.build(this.source, this.className, this.id));
     this.setUri(this.getUri() + ++tsCount);
 
 
