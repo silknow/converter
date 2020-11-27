@@ -9,6 +9,7 @@
     ./gradlew run --args="MET '../crawler/data/met-museum' -o ./output/met -g tschleider"
     ./gradlew run --args="RISD '../crawler/data/risd-museum' -o ./output/risd -g tschleider"
     ./gradlew run --args="UNIPA '../crawler/data/unipa' -o ./output/unipa -g tschleider"
+    ./gradlew run --args="UNIPA '../crawler/data/unipa_new' -o ./output/unipa -g tschleider"
     ./gradlew run --args="CER '../crawler/data/ceres-mcu' -o ./output/cer -g tschleider"
     ./gradlew run --args="MTMAD '../crawler/data/mtmad' -o ./output/mtmad -g tschleider"
 

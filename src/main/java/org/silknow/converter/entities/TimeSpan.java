@@ -89,7 +89,6 @@ public class TimeSpan extends Entity {
     date = date.replace("about ", "");
     date = date.replaceAll("\\((.+)\\)", "");
     date = date.trim();
-    Resource result = VocabularyManager.searchInCategory(date, null, "dates", false);
     */
 
 
@@ -120,6 +119,10 @@ public class TimeSpan extends Entity {
     this.addProperty(RDFS.label, date)
             .addProperty(CIDOC.P78_is_identified_by, date);
 
+    Resource result = VocabularyManager.searchInCategory(date, null, "dates", false);
+    if (result != null) {
+      this.addProperty(CIDOC.P78_is_identified_by, result);
+    }
 
     if (this.startYear != null) {
     startType = XSDDateType.XSDgYear;
