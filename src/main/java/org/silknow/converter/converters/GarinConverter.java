@@ -119,8 +119,8 @@ public class GarinConverter extends Converter {
     }
 
 
-    Move move = new Move(id);
-    move.of(obj).from("chalet garin").to(s.get("Ubicación"));
+    Transfer transfer = new Transfer(id);
+    transfer.of(obj).by("chalet garin");
 
     Production prod = new Production(id);
     prod.add(obj);
@@ -130,7 +130,8 @@ public class GarinConverter extends Converter {
     prod.addTimeAppellation(s.get("Época"));
     s.getMulti("Material").forEach(material -> prod.addMaterial(material, mainLang));
     //s.getMulti("Accessorios").map(ManMade_Object::new).forEach(prod::addTool);
-    prod.addPlace("chalet garin");
+    prod.addPlace("valencia");
+
 
 
     try {
@@ -140,8 +141,9 @@ public class GarinConverter extends Converter {
       //long count = fileWithName.count();
       //System.out.println(Integer.MAX_VALUE + "..." + count);
 
+      if (s.get("Nº Inventario") != null) {
       List<String> filenamelist = fileWithName
-              .filter(f -> f.getFileName().toString().matches("^" + id.replaceAll("[. ]", "") + "[ .].+$"))
+              .filter(f -> f.getFileName().toString().matches("^" + s.get("Nº Inventario").replaceAll("[. ]", "") + "[ .].+$"))
               .filter(f -> !f.toString().endsWith("xls"))
               .map(Path::getFileName)
               .map(Path::toString)
@@ -164,7 +166,7 @@ public class GarinConverter extends Converter {
           img.addProperty(CIDOC.P2_has_type, ANV_REV_TABLE.get(matcher.group(1)));
 
         obj.add(img);
-      }
+      }}
     } catch (IOException e) {
       logger.error(e.getLocalizedMessage());
     }
@@ -176,7 +178,7 @@ public class GarinConverter extends Converter {
     }
 
     linkToRecord(obj);
-    linkToRecord(move);
+    linkToRecord(transfer);
     linkToRecord(prod);
     if (owner != null) linkToRecord(owner);
     linkToRecord(acquisition);

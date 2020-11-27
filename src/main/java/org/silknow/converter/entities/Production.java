@@ -27,6 +27,19 @@ public class Production extends Entity {
       return;
     }
     timeAppellation = timeAppellation.replaceAll("\\s+", " ");
+    timeAppellation = timeAppellation.replace("?", "");
+    timeAppellation = timeAppellation.replace("ca.", "");
+    timeAppellation = timeAppellation.replace("circa", "");
+    timeAppellation = timeAppellation.replace("early", "");
+    timeAppellation = timeAppellation.replace("late", "");
+    timeAppellation = timeAppellation.replace("mid-", "");
+    timeAppellation = timeAppellation.replace("Finales ", "");
+    timeAppellation = timeAppellation.replace("Primer tercio del ", "");
+    timeAppellation = timeAppellation.replace("Principios ", "");
+    timeAppellation = timeAppellation.replace("Primer tercio ", "");
+    timeAppellation = timeAppellation.replace("about ", "");
+    timeAppellation = timeAppellation.replaceAll("\\((.+)\\)", "");
+    timeAppellation = timeAppellation.trim();
     Resource result = VocabularyManager.searchInCategory(timeAppellation, null, "dates", false);
     if (result != null) {
       //System.out.println(result.getURI());
@@ -34,8 +47,8 @@ public class Production extends Entity {
     else {
 
 
-      TimeSpan ts = new TimeSpan();
-      ts.addAppellation(timeAppellation);
+      TimeSpan ts = new TimeSpan(timeAppellation);
+      //ts.addAppellation(timeAppellation);
       if (timeUnconfirmed) ts.addNote("unconfirmed", "en");
 
       ts.setUri(this.getUri() + "/time/" + ++tsCount);

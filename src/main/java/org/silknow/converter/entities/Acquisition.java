@@ -33,7 +33,7 @@ public class Acquisition extends Entity {
       return;
     }
 
-    TimeSpan ts = new TimeSpan(d);
+    //TimeSpan ts = new TimeSpan(d);
 
   }
 }

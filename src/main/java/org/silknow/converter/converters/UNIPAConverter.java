@@ -14,6 +14,9 @@ public class UNIPAConverter extends Converter {
   private static final String DIMENSION_REGEX = "cm (\\d+(?:\\.\\d+)?) x (\\d+(?:\\.\\d+)?)";
   private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX);
 
+  private static final String DIMENSION_REGEX2 = "(\\d+(?:\\.\\d+)?)x(\\d+(?:\\.\\d+)?)";
+  private static final Pattern DIMENSION_PATTERN2 = Pattern.compile(DIMENSION_REGEX2);
+
   @Override
   public boolean canConvert(File file) {
     return isJson(file);
@@ -54,25 +57,39 @@ public class UNIPAConverter extends Converter {
     //s.getMulti("title").forEach(obj::addTitle);
 
 
-    s.getImages().map(Image::fromCrawledJSON)
-            .peek(img-> img.setLocalFilename(img.getId()))
-            .peek(image -> image.addInternalUrl("unipa"))
-            .peek(obj::add)
-            .forEach(this::linkToRecord);
 
 
+
+
+    if (s.get("Region production") == null) {
+      s.getImages().map(Image::fromCrawledJSON)
+              .peek(image -> image.addInternalUrl("unipa"))
+              .peek(obj::add)
+              .forEach(this::linkToRecord);
+    }
     Production prod = new Production(id);
     prod.add(obj);
 
     s.getMulti("Time chronology").forEach(prod::addTimeAppellation);
 
-
+    if (s.get("Region production") != null) {
     if (s.get("Region production").equals("ignoto")) {
     prod.addPlace(s.get("Geography"));}
     if (!s.get("Region production").equals("ignoto")) {
     prod.addPlace(s.get("Region production")); }
 
+      s.getImages().map(Image::fromCrawledJSON)
+              .peek(img-> img.setLocalFilename(img.getId()))
+              .peek(image -> image.addInternalUrl("unipa"))
+              .peek(obj::add)
+              .forEach(this::linkToRecord);
+
+    }
+
     s.getMulti("Technique").forEach(technique -> prod.addTechnique(technique, mainLang));
+
+
+
 
 
     s.getMulti("Domaine")
@@ -122,6 +139,35 @@ public class UNIPAConverter extends Converter {
     Transfer transfer = new Transfer(id);
     transfer.of(obj).by(museum);
 
+    ////////////////additional mappings for new records
+    s.getMulti("name")
+            .map(x -> obj.addClassification(x, "name", "en"))
+            .forEach(this::linkToRecord);
+
+    s.getMulti("technique_description").forEach(technique -> prod.addTechnique(technique, mainLang));
+    if (s.get("storage_location") != null) {
+      transfer.of(obj).by(s.get("storage_location"));
+    }
+
+    s.getMulti("date").forEach(prod::addTimeAppellation);
+    String dim2 = s.getMulti("dimensions").findFirst().orElse(null);
+    if (dim2 != null) {
+      Matcher matcher = DIMENSION_PATTERN2.matcher(dim2);
+      if (matcher.find()) {
+        linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
+      }
+    }
+
+    if (s.get("manufacturing") != null) {
+      String manufacturing = s.getMulti("manufacturing").findFirst().orElse(null);
+      Actor actor = new Actor(manufacturing);
+      prod.addActivity(actor, "Manufacturing");
+      String stock_number = s.get("stock_number");
+      linkToRecord(obj.addObservation(s.getMulti("note").findFirst().orElse(null), "note", "it"));
+    }
+
+    /////////////////////
+
     String cdt = s.get("State of preservation");
     if (cdt != null) {
       ConditionAssessment conditionAssessment = new ConditionAssessment(regNum);
@@ -139,10 +185,28 @@ public class UNIPAConverter extends Converter {
       linkToRecord(bio);
     }
 
+    if (s.get("bibliography") != null) {
+      InformationObject bio = new InformationObject(regNum + "l");
+      bio.setType("bibliography", "en");
+      bio.isAbout(obj);
+      bio.addNote(s.get("bibliography"), mainLang);
+      linkToRecord(bio);
+    }
+
     linkToRecord(obj);
     linkToRecord(prod);
     linkToRecord(transfer);
     linkToRecord(doc);
+
+
+
+
+
+
+
+
+
+
 
     return this.model;
   }

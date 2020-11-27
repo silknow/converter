@@ -133,7 +133,7 @@ public class ImatexConverter extends Converter {
 
     Acquisition acquisition = new Acquisition(regNum);
     acquisition.transfer(acquisitionFrom, obj, museum);
-    acquisition.setDate(acquisitionDate);
+    //acquisition.setDate(acquisitionDate);
     //acquisition.setType(acquisitionType);
 
     // From the mapping:
