@@ -43,8 +43,9 @@ public class Production extends Entity {
     Resource result = VocabularyManager.searchInCategory(timeAppellation, null, "dates", false);
     if (result != null) {
       //System.out.println(result.getURI());
-      this.addProperty(CIDOC.P4_has_time_span, result); }
-    else {
+      this.addProperty(CIDOC.P4_has_time_span, result);
+
+    }
 
 
       TimeSpan ts = new TimeSpan(timeAppellation);
@@ -53,7 +54,7 @@ public class Production extends Entity {
 
       this.addTimeSpan(ts);
     }
-  }
+
 
   public Production add(ManMade_Object obj) {
     this.addProperty(CIDOC.P108_has_produced, obj);

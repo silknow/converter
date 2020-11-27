@@ -7,6 +7,7 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.ResourceUtils;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
+import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.NotNull;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.Time;
@@ -16,10 +17,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.lang.Integer.parseInt;
 import static org.apache.jena.vocabulary.XSD.gYear;
 import static org.apache.jena.vocabulary.XSD.time;
 import static org.silknow.converter.ontologies.Time.hasBeginning;
@@ -34,6 +38,8 @@ public class TimeSpan extends Entity {
   private static final Pattern SPAN_PATTERN = Pattern.compile(YEAR_SPAN);
   private int tsCount;
 
+
+
   public static final DateFormat ISO_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
   static final DateFormat SLASH_LITTLE_ENDIAN = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -45,7 +51,8 @@ public class TimeSpan extends Entity {
   private XSDDatatype startType, endType;
   private String label;
   private boolean endRequired = true;
-
+  private int startCentury;
+  private int endCentury;
 
 
 
@@ -61,11 +68,29 @@ public class TimeSpan extends Entity {
     super();
 
     tsCount = 0;
-    this.setUri(this.getUri() + "/time/" + ++tsCount);
+    this.setUri(this.getUri() + ++tsCount);
 
 
     createResource();
     this.setClass(CIDOC.E52_Time_Span);
+
+    /*
+    date = date.replaceAll("\\s+", " ");
+    date = date.replace("?", "");
+    date = date.replace("ca.", "");
+    date = date.replace("circa", "");
+    date = date.replace("early", "");
+    date = date.replace("late", "");
+    date = date.replace("mid-", "");
+    date = date.replace("Finales ", "");
+    date = date.replace("Primer tercio del ", "");
+    date = date.replace("Principios ", "");
+    date = date.replace("Primer tercio ", "");
+    date = date.replace("about ", "");
+    date = date.replaceAll("\\((.+)\\)", "");
+    date = date.trim();
+    Resource result = VocabularyManager.searchInCategory(date, null, "dates", false);
+    */
 
 
     if (date == null) return;
@@ -95,18 +120,35 @@ public class TimeSpan extends Entity {
     this.addProperty(RDFS.label, date)
             .addProperty(CIDOC.P78_is_identified_by, date);
 
+
+    if (this.startYear != null) {
     startType = XSDDateType.XSDgYear;
     startDate = startYear;
+    startCentury = ((parseInt(startYear) + 99) / 100);
 
-    endType = XSDDateType.XSDgYear;
-    endDate = endYear;
+      endType = XSDDateType.XSDgYear;
+      endDate = endYear;
+      endCentury = ((parseInt(endYear) + 99) / 100);
+
+      Map<String, String> map = new HashMap<>();
+      map.put("15", "http://vocab.getty.edu/aat/300404465");
+      map.put("16", "http://vocab.getty.edu/aat/300404510");
+      map.put("17", "http://vocab.getty.edu/aat/300404511");
+      map.put("18", "http://vocab.getty.edu/aat/300404512");
+      map.put("19", "http://vocab.getty.edu/aat/300404513");
+      map.put("20", "http://vocab.getty.edu/aat/300404514");
+
+      map.forEach((k,v) -> {
+        if (parseInt(k) == startCentury) {
+          this.addProperty(CIDOC.P78_is_identified_by, v);
+        }
+        if (parseInt(k) == endCentury) {
+          this.addProperty(CIDOC.P78_is_identified_by, v);
+        }});
+
+        ;
 
 
-
-    if (this.startTime != null) {
-      startType = XSDDatatype.XSDdateTime;
-      startDate += "T" + this.startTime;
-    }
 
     Resource startInstant = makeInstant(startDate, startType);
     Resource endInstant = makeInstant(endDate, endType);
@@ -121,16 +163,22 @@ public class TimeSpan extends Entity {
       this.resource.addProperty(Time.hasEnd, endInstant);
     }
 
-    private Resource makeInstant (String date, XSDDatatype type){
-      if (!date.matches(UCT_DATE_REGEX)) return null;
 
-
-      if (this.startYear != null) {
-        this.addProperty(RDF.type, Time.Instant)
-                .addProperty(Time.inXSDDate, this.model.createTypedLiteral(date, type));
       }
     }
+
+
+
+
+  private Resource makeInstant(String date, XSDDatatype type) {
+    if (!date.matches(UCT_DATE_REGEX)) return null;
+
+    return this.model.createResource()
+            .addProperty(RDF.type, Time.Instant)
+            .addProperty(Time.inXSDDate, this.model.createTypedLiteral(date, type));
   }
+
+
   public void addAppellation(String timeAppellation) {
     this.addProperty(RDFS.label, timeAppellation)
             .addProperty(CIDOC.P78_is_identified_by, timeAppellation);
