@@ -1,8 +1,10 @@
 package org.silknow.converter.entities;
 
 import org.apache.jena.datatypes.xsd.XSDDatatype;
+import org.apache.jena.datatypes.xsd.impl.XSDDateType;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.util.ResourceUtils;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
 import org.jetbrains.annotations.NotNull;
@@ -12,10 +14,16 @@ import org.silknow.converter.ontologies.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Date;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static org.apache.jena.vocabulary.XSD.gYear;
+import static org.apache.jena.vocabulary.XSD.time;
+import static org.silknow.converter.ontologies.Time.hasBeginning;
+import static org.silknow.converter.ontologies.Time.inXSDDate;
 
 public class TimeSpan extends Entity {
   private static final TimeZone UCT = TimeZone.getTimeZone("UTC");
@@ -24,13 +32,21 @@ public class TimeSpan extends Entity {
   private static final String SINGLE_YEAR = "\\d{4}";
   private static final String YEAR_SPAN = "(\\d{4})[-–=](\\d{4})";
   private static final Pattern SPAN_PATTERN = Pattern.compile(YEAR_SPAN);
-
+  private int tsCount;
 
   public static final DateFormat ISO_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
   static final DateFormat SLASH_LITTLE_ENDIAN = new SimpleDateFormat("dd/MM/yyyy");
 
-  private String start_year;
-  private String end_year;
+
+  private String startYear, startMonth, startDay;
+  private String endYear, endMonth, endDay;
+  private String startDate, endDate;
+  private String startTime;
+  private XSDDatatype startType, endType;
+  private String label;
+  private boolean endRequired = true;
+
+
 
 
   public TimeSpan() {
@@ -44,6 +60,10 @@ public class TimeSpan extends Entity {
   public TimeSpan(String date) {
     super();
 
+    tsCount = 0;
+    this.setUri(this.getUri() + "/time/" + ++tsCount);
+
+
     createResource();
     this.setClass(CIDOC.E52_Time_Span);
 
@@ -54,34 +74,63 @@ public class TimeSpan extends Entity {
     //String text = ISO_DATE_FORMAT.format(date).substring(0, 10);
     //Literal literal = model.createTypedLiteral(text, XSDDatatype.XSDdate);
     //Resource instant = model.createResource().addProperty(RDF.type, Time.Instant)
-            //.addProperty(Time.inXSDDate, literal);
+    //.addProperty(Time.inXSDDate, literal);
 
 
     if (date.matches(SINGLE_YEAR)) {
-      this.start_year = date;
-      this.end_year = date;
+      this.startYear = date;
+      this.endYear = date;
     }
 
 
     if
-      (date.matches(YEAR_SPAN)) {
+    (date.matches(YEAR_SPAN)) {
       Matcher matcher = SPAN_PATTERN.matcher(date);
       if (matcher.find())
-        this.start_year = matcher.group(1);
-        this.end_year = matcher.group(2);
+        this.startYear = matcher.group(1);
+      this.endYear = matcher.group(2);
     }
-
 
 
     this.addProperty(RDFS.label, date)
-        .addProperty(CIDOC.P78_is_identified_by, date);
+            .addProperty(CIDOC.P78_is_identified_by, date);
 
-    if (this.start_year != null) {
-        this.addProperty(CIDOC.P79_beginning_is_qualified_by, this.start_year)
-              .addProperty(CIDOC.P80_end_is_qualified_by, this.end_year);
-    }
+    startType = XSDDateType.XSDgYear;
+    startDate = startYear;
+
+    endType = XSDDateType.XSDgYear;
+    endDate = endYear;
+
+
+
+    if (this.startTime != null) {
+      startType = XSDDatatype.XSDdateTime;
+      startDate += "T" + this.startTime;
     }
 
+    Resource startInstant = makeInstant(startDate, startType);
+    Resource endInstant = makeInstant(endDate, endType);
+
+
+    if (startInstant != null) {
+      startInstant = ResourceUtils.renameResource(startInstant, this.getUri() + "/start");
+      this.resource.addProperty(Time.hasBeginning, startInstant);
+    }
+    if (endInstant != null) {
+      endInstant = ResourceUtils.renameResource(endInstant, this.getUri() + "/end");
+      this.resource.addProperty(Time.hasEnd, endInstant);
+    }
+
+    private Resource makeInstant (String date, XSDDatatype type){
+      if (!date.matches(UCT_DATE_REGEX)) return null;
+
+
+      if (this.startYear != null) {
+        this.addProperty(RDF.type, Time.Instant)
+                .addProperty(Time.inXSDDate, this.model.createTypedLiteral(date, type));
+      }
+    }
+  }
   public void addAppellation(String timeAppellation) {
     this.addProperty(RDFS.label, timeAppellation)
             .addProperty(CIDOC.P78_is_identified_by, timeAppellation);

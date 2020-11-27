@@ -245,9 +245,11 @@ public abstract class Entity {
       //if (t == null) {
         //System.out.println("has_type_P2 not found in vocabularies: " + type);
      // t = model.createLiteral(type);
-      //}
 
+    //}
+    if (type != null) {
       assignment.addProperty(CIDOC.P2_has_type, type);
+    }
     //}
 
     if (museum != null) {

@@ -51,7 +51,6 @@ public class Production extends Entity {
       //ts.addAppellation(timeAppellation);
       if (timeUnconfirmed) ts.addNote("unconfirmed", "en");
 
-      ts.setUri(this.getUri() + "/time/" + ++tsCount);
       this.addTimeSpan(ts);
     }
   }
