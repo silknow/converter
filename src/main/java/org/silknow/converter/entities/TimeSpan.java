@@ -11,6 +11,7 @@ import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.NotNull;
 import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.ontologies.CIDOC;
+import org.silknow.converter.ontologies.Schema;
 import org.silknow.converter.ontologies.Time;
 
 import java.text.DateFormat;
@@ -69,12 +70,13 @@ public class TimeSpan extends Entity {
     super();
 
     tsCount = 0;
-    this.setUri(ConstructURI.build(this.source, this.className, this.id));
-    this.setUri(this.getUri() + ++tsCount);
-
-
     createResource();
+    //this.setUri(this.getUri() + ++tsCount);
     this.setClass(CIDOC.E52_Time_Span);
+    String seed = id + "$$$" + tsCount + date;
+    this.setUri(ConstructURI.build(this.source, this.className, seed));
+
+
 
     /*
     date = date.replaceAll("\\s+", " ");
