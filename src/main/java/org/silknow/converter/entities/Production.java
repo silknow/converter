@@ -39,6 +39,7 @@ public class Production extends Entity {
     timeAppellation = timeAppellation.replace("Primer tercio ", "");
     timeAppellation = timeAppellation.replace("about ", "");
     timeAppellation = timeAppellation.replaceAll("\\((.+)\\)", "");
+    timeAppellation = timeAppellation.replaceAll("\\([.+]\\)", "");
     timeAppellation = timeAppellation.trim();
     Resource result = VocabularyManager.searchInCategory(timeAppellation, null, "dates", false);
     if (result != null) {

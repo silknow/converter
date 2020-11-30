@@ -123,10 +123,10 @@ public class TimeSpan extends Entity {
     this.addProperty(RDFS.label, date)
             .addProperty(CIDOC.P78_is_identified_by, date);
 
-    Resource result = VocabularyManager.searchInCategory(date, null, "dates", false);
-    if (result != null) {
-      this.addProperty(CIDOC.P78_is_identified_by, result);
-    }
+    //Resource result = VocabularyManager.searchInCategory(date, null, "dates", false);
+    //if (result != null) {
+      //this.addProperty(CIDOC.P78_is_identified_by, result);
+    //}
 
     if (this.startYear != null) {
     startType = XSDDateType.XSDgYear;
@@ -137,6 +137,8 @@ public class TimeSpan extends Entity {
       endDate = endYear;
       endCentury = ((parseInt(endYear) + 99) / 100);
 
+
+      /*
       Map<String, String> map = new HashMap<>();
       map.put("15", "http://vocab.getty.edu/aat/300404465");
       map.put("16", "http://vocab.getty.edu/aat/300404510");
@@ -154,7 +156,7 @@ public class TimeSpan extends Entity {
         }});
 
         ;
-
+         */
 
 
     Resource startInstant = makeInstant(startDate, startType);
