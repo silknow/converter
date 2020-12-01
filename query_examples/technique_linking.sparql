@@ -1,0 +1,62 @@
+SELECT ?graph (SAMPLE(?nbFacet) AS ?nbFacet) (SAMPLE(?nbMultipleValues) AS ?nbMultipleValues) (SAMPLE(?nbTotalTechniques) AS ?nbTotalTechniques) (SAMPLE(?nbLinkedTechniques) AS ?nbLinkedTechniques) (SAMPLE(?nbPercentLinkedTechniques) AS ?nbPercentLinkedTechniques)
+WHERE {
+ # One column with the count of objects with at least one link to a concept with a Group/facet
+ {
+   SELECT ?graph (COUNT(DISTINCT ?obj4) AS ?nbFacet)
+   WHERE {
+     GRAPH ?graph { ?dig4 a crmdig:D1_Digital_Object . }
+     ?dig4 ecrm:P129_is_about ?obj4 .
+     ?dig4 ecrm:P129_is_about ?prd4 .
+     ?obj4 a ecrm:E22_Man-Made_Object .
+     ?prd4 ecrm:P32_used_general_technique ?member4 .
+     ?material4 skos:member ?member4 .
+     FILTER(STRSTARTS(STR(?material4), "http://data.silknow.org/vocabulary/facet/"))
+   }
+   GROUP BY ?graph
+ }
+ UNION # Count how many objects have more than one value for the property (for example two materials)
+ {
+   SELECT ?graph (COUNT(DISTINCT ?obj5) AS ?nbMultipleValues)
+   WHERE {
+     SELECT ?graph ?obj5
+     WHERE {
+       GRAPH ?graph { ?dig5 a crmdig:D1_Digital_Object . }
+       ?dig5 ecrm:P129_is_about ?obj5 .
+       ?dig5 ecrm:P129_is_about ?prd5 .
+       ?obj5 a ecrm:E22_Man-Made_Object .
+       ?prd5 ecrm:P32_used_general_technique ?mat5 .
+     }
+     GROUP BY ?graph ?obj5
+     HAVING(COUNT(DISTINCT ?mat5) > 1)
+   }
+   GROUP BY ?graph
+ }
+ UNION # Measure how many percent of ALL values per dataset are linked
+ {
+   SELECT ?graph ?nbTotalTechniques ?nbLinkedTechniques (IF(?nbTotalTechniques > 0, xsd:float(?nbLinkedTechniques) / xsd:float(?nbTotalTechniques) * 100, 0) AS ?nbPercentLinkedTechniques)
+   WHERE {
+     SELECT ?graph (COUNT(?material) AS ?nbTotalTechniques) (COUNT(?material2) AS ?nbLinkedTechniques)
+     WHERE {
+       {
+         GRAPH ?graph { ?dig a crmdig:D1_Digital_Object . }
+         ?dig ecrm:P129_is_about ?obj .
+         ?dig ecrm:P129_is_about ?prd .
+         ?obj a ecrm:E22_Man-Made_Object .
+         ?prd ecrm:P32_used_general_technique ?material .
+       }
+       UNION
+       {
+         GRAPH ?graph { ?dig2 a crmdig:D1_Digital_Object . }
+         ?dig2 ecrm:P129_is_about ?obj2 .
+         ?dig2 ecrm:P129_is_about ?prd2 .
+         ?obj2 a ecrm:E22_Man-Made_Object .
+         ?prd2 ecrm:P32_used_general_technique ?material2 .
+         FILTER(ISIRI(?material2))
+       }
+     }
+   }
+ }
+}
+
+
+

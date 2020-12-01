@@ -1,0 +1,42 @@
+PREFIX crmdig: <http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/> 
+PREFIX crmsci: <http://www.ics.forth.gr/isl/CRMsci/>
+SELECT ?graph ?nbTotal ?nbLinked (?nbTotal - ?nbLinked - ?nbEmpty AS ?nbNonLinked) ?nbEmpty
+WHERE {
+ SELECT ?graph (COUNT(DISTINCT ?obj) AS ?nbTotal) (COUNT(DISTINCT ?obj2) AS ?nbLinked) (COUNT(DISTINCT ?obj3) AS ?nbEmpty)
+ WHERE {
+   {
+     GRAPH ?graph { ?dig a crmdig:D1_Digital_Object . }
+     ?dig ecrm:P129_is_about ?obj .
+     ?dig ecrm:P129_is_about ?prd .
+     ?obj a ecrm:E22_Man-Made_Object .
+   }
+   UNION
+   {
+     GRAPH ?graph { ?dig2 a crmdig:D1_Digital_Object . }
+     ?dig2 ecrm:P129_is_about ?obj2 .
+     ?dig2 ecrm:P129_is_about ?prd2 .
+     ?obj2 a ecrm:E22_Man-Made_Object .
+     ?prd2 ecrm:P126_employed ?material2 .
+     FILTER(ISIRI(?material2))
+   }
+   UNION
+   {
+     {
+       SELECT ?graph ?obj3 (SAMPLE(?material3) AS ?mat3)
+       WHERE {
+         GRAPH ?graph { ?dig3 a crmdig:D1_Digital_Object . }
+         ?dig3 ecrm:P129_is_about ?obs3 .
+         ?dig3 ecrm:P129_is_about ?obj3 .
+         ?dig3 ecrm:P129_is_about ?prd3 .
+         OPTIONAL { ?prd3 ecrm:P126_employed ?material3 . }
+         ?obj3 a ecrm:E22_Man-Made_Object .
+       }
+       GROUP BY ?obj3 ?graph
+     }
+     FILTER(!BOUND(?mat3))
+   }
+ }
+ GROUP BY ?graph
+}
+
+

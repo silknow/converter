@@ -1,0 +1,18 @@
+SELECT distinct ?material count(distinct ?s) as ?count ?x
+WHERE {
+      ?s a ecrm:E12_Production .
+ 
+ 
+       { ?s ecrm:P126_employed ?x
+       { SELECT ?x ?lab as ?material
+         WHERE { ?x skos:prefLabel ?lab . FILTER (lang(?lab) = "en")}
+       } . FILTER(isIRI(?x)) }
+
+
+
+}
+GROUP BY ?material ?x
+ORDER BY DESC (?count)
+
+
+

@@ -1,0 +1,12 @@
+SELECT distinct ?label count(distinct ?s) as ?count ?g
+WHERE { graph ?g {
+      ?s a ecrm:E12_Production .
+ 
+ 
+       { ?s ecrm:P8_took_place_on_or_within ?pla .
+         ?pla ecrm:P87_is_identified_by ?label .
+FILTER (contains(str(?pla), "geonames") != true) }
+
+}}
+GROUP BY ?label ?g
+ORDER BY DESC (?count)
