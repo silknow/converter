@@ -14,8 +14,8 @@ public class Acquisition extends Entity {
 
   public void transfer(String from, ManMade_Object of, LegalBody to) {
     this.addProperty(CIDOC.P23_transferred_title_from, from)
-            .addProperty(CIDOC.P24_transferred_title_of, of)
-            .addProperty(CIDOC.P22_transferred_title_to, to);
+      .addProperty(CIDOC.P24_transferred_title_of, of)
+      .addProperty(CIDOC.P22_transferred_title_to, to);
   }
 
   public void setType(String type) {
@@ -23,7 +23,7 @@ public class Acquisition extends Entity {
   }
 
   public void setDate(String date) {
-    if (date == null || StringUtils.isBlank(date)) return;
+    if (StringUtils.isBlank(date)) return;
 
     Date d;
     try {
@@ -33,7 +33,7 @@ public class Acquisition extends Entity {
       return;
     }
 
-    //TimeSpan ts = new TimeSpan(d);
-
+    TimeSpan ts = new TimeSpan(d);
+    this.addTimeSpan(ts);
   }
 }
