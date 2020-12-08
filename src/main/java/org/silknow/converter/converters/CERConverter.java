@@ -51,7 +51,7 @@ public class CERConverter extends Converter {
     id = regNum;
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Inventario"));
-    //obj.addTitle(s.getMulti("Título").findFirst().orElse(null));
+    obj.addTitle(s.getMulti("Título").findFirst().orElse(null));
     s.getMulti("Título")
             .map(x -> obj.addClassification(x, "Título", mainLang))
             .forEach(this::linkToRecord);

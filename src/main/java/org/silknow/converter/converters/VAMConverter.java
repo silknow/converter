@@ -52,13 +52,13 @@ public class VAMConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "museum_number"));
-    //obj.addTitle(s.getMulti("object").findFirst().orElse(null));
+    obj.addTitle(s.getMulti("object").findFirst().orElse(null));
 
     //s.getMulti("object")
       //      .map(x -> obj.addClassification(x, "Object", mainLang))
         //    .forEach(this::linkToRecord);
 
-    s.getMulti("object").forEach(x -> obj.addClassification(x, "Object",  mainLang));
+    s.getMulti("object").forEach(x -> obj.addClassification(x, "object",  mainLang));
 
 
     Production prod = new Production(regNum);
@@ -77,7 +77,7 @@ public class VAMConverter extends Converter {
 
     s.getMulti("place").forEach(prod::addPlace);
     s.getMulti("categories")
-            .map(x -> obj.addClassification(x, "Categories", mainLang))
+            .map(x -> obj.addClassification(x, "categories", mainLang))
             .forEach(this::linkToRecord);
 
     String dim = s.get("dimensions");
@@ -108,7 +108,7 @@ public class VAMConverter extends Converter {
     transfer.of(obj).by(museum);
 
     Move move = new Move(regNum);
-    move.of(obj).from(s.getMulti("location").findFirst().orElse(null)).to(s.getMulti("location").findFirst().orElse(null));
+    //move.of(obj).from(s.getMulti("location").findFirst().orElse(null)).to(s.getMulti("location").findFirst().orElse(null));
 
     Collection collection = new Collection(regNum, s.getMulti("collections").findFirst().orElse(null));
     collection.of(obj);
@@ -121,9 +121,9 @@ public class VAMConverter extends Converter {
             .peek(obj::add)
             .forEach(this::linkToRecord);
     
-    if (s.getImages().toArray().length == 0) {
-      System.out.println(file.getPath());
-    }
+    //if (s.getImages().toArray().length == 0) {
+      //System.out.println(file.getPath());
+    //}
 
     if (s.get("bibliography") != null) {
       InformationObject bio = new InformationObject(regNum + "b");

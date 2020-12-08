@@ -57,7 +57,7 @@ public class METConverter extends Converter {
     linkToRecord(obj.addComplexIdentifier(regNum, "Accession Number:"));
     //obj.addTitle(s.getMulti("title").findFirst().orElse(null));
     s.getMulti("title")
-            .map(x -> obj.addClassification(x, "Categories", mainLang))
+            .map(x -> obj.addClassification(x, "Title", mainLang))
             .forEach(this::linkToRecord);
 
 

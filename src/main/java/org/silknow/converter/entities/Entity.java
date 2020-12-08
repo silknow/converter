@@ -239,18 +239,17 @@ public abstract class Entity {
             .addProperty(CIDOC.P41_classified, this.asResource())
             .addProperty(CIDOC.P42_assigned, r);
 
-    //if (type != null)
-    //{
-      //RDFNode t = VocabularyManager.searchInCategory(type, null, "has_type_P2", false);
+    if (type != null)
+    {
+      assignment.addProperty(CIDOC.P2_has_type, type);
+      RDFNode t = VocabularyManager.searchInCategory(type, null, "has_type_P2", false);
       //if (t == null) {
         //System.out.println("has_type_P2 not found in vocabularies: " + type);
-     // t = model.createLiteral(type);
-
-    //}
-    if (type != null) {
-      assignment.addProperty(CIDOC.P2_has_type, type);
+      //t = model.createLiteral(type);
+      if (t != null) {
+        assignment.addProperty(CIDOC.P2_has_type, t);
+      }
     }
-    //}
 
     if (museum != null) {
       assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());

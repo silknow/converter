@@ -70,6 +70,8 @@ public class MADConverter extends Converter {
         //    .forEach(this::linkToRecord);
     s.getMulti("Domaine")
             .forEach(x -> linkToRecord(obj.addClassification(x, "Domaine", "fr")));
+    s.getMulti("Textile:")
+      .forEach(x -> linkToRecord(obj.addClassification(x, "Textile", "fr")));
 
     s.getMulti("Appellation")
             .map(x -> obj.addClassification(x, "Appellation", mainLang))
