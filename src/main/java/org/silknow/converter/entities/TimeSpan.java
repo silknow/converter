@@ -40,6 +40,8 @@ public class TimeSpan extends Entity {
 
   static {
     Map<Integer, Resource> map = new HashMap<>();
+    map.put(13, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404505"));
+    map.put(14, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404506"));
     map.put(15, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404465"));
     map.put(16, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404510"));
     map.put(17, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404511"));
@@ -100,11 +102,12 @@ public class TimeSpan extends Entity {
       if (matcher.find()) {
         String startCentury = matcher.group(1);
         String endCentury = matcher.group(2);
+        int startCent = parseInt(startCentury);
         int endCent = parseInt(endCentury);
 
         // maybe add a note that this is a century?
-        this.startYear = startCentury + "01";
-        this.endYear = (endCent + 1) + "00";
+        this.startYear = (startCent - 1) + "01";
+        this.endYear = endCent + "00";
 
         startType = XSDDateType.XSDgYear;
         endType = XSDDateType.XSDgYear;
@@ -151,12 +154,12 @@ public class TimeSpan extends Entity {
     if (startInstant != null) {
       startInstant = ResourceUtils.renameResource(startInstant, this.getUri() + "/start");
       this.resource.addProperty(Time.hasBeginning, startInstant);
-      //this.resource.addProperty(CIDOC.P86_falls_within, getCenturyURI(startYear));
+      this.resource.addProperty(CIDOC.P86_falls_within, getCenturyURI(startYear));
     }
     if (endInstant != null) {
       endInstant = ResourceUtils.renameResource(endInstant, this.getUri() + "/end");
       this.resource.addProperty(Time.hasEnd, endInstant);
-      //this.resource.addProperty(CIDOC.P86_falls_within, getCenturyURI(endYear));
+      this.resource.addProperty(CIDOC.P86_falls_within, getCenturyURI(endYear));
     }
     // WARNING: in cases like 1691-1721, the TS is linked both to 17th and 18th century
     // (even if formally not 100% correct)
@@ -176,7 +179,7 @@ public class TimeSpan extends Entity {
   }
 
 
-  private Resource getCenturyURI(String year) {
+  private static Resource getCenturyURI(String year) {
     int x = (parseInt(year) + 99) / 100;
     return CENTURY_URI_MAP.get(x);
   }
