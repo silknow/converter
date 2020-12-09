@@ -23,7 +23,7 @@ public class Acquisition extends Entity {
   }
 
   public void setDate(String date) {
-    if (date == null || StringUtils.isBlank(date)) return;
+    if (StringUtils.isBlank(date)) return;
 
     Date d;
     try {
@@ -33,7 +33,7 @@ public class Acquisition extends Entity {
       return;
     }
 
-    //TimeSpan ts = new TimeSpan(d);
-
+    TimeSpan ts = new TimeSpan(d);
+    this.addTimeSpan(ts);
   }
 }
