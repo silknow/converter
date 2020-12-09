@@ -26,7 +26,7 @@ public class TimeSpan extends Entity {
   private static final TimeZone UCT = TimeZone.getTimeZone("UTC");
   private static final String UCT_DATE_REGEX = "\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[1-2]\\d|3[0-1]))?)?(?:T" +
     "(?:[0-1]\\d|2[0-3]):[0-5]\\d:[0-5]\\dZ?)?";
-  private static final String SINGLE_YEAR = "\\d{4}s";
+  private static final String SINGLE_YEAR = "\\d{4}s?";
   private static final String YEAR_SPAN = "(\\d{4}s?)\\s*(?:[-–=]|to)\\s*(\\d{2,4}s?)";
   private static final Pattern SPAN_PATTERN = Pattern.compile(YEAR_SPAN);
   private static final String CENTURY_SPAN = "(\\d{1,2})th(?: century)?\\s*(?:[-–=/]|to|or)\\s*(\\d{1,2})th century";
@@ -40,6 +40,11 @@ public class TimeSpan extends Entity {
 
   static {
     Map<Integer, Resource> map = new HashMap<>();
+
+    map.put(9, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404501"));
+    map.put(10, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404502"));
+    map.put(11, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404503"));
+    map.put(12, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404504"));
     map.put(13, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404505"));
     map.put(14, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404506"));
     map.put(15, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404465"));
