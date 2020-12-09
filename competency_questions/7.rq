@@ -1,15 +1,15 @@
-SELECT distinct ?obj ?time
-WHERE {
-
-     ?dig a crmdig:D1_Digital_Object .
-     ?dig  ecrm:P129_is_about ?prod .
-     ?prod ecrm:P108_has_produced ?obj .
+SELECT distinct ?time ?title ?description ?collection ?object ?start ?end
+WHERE { graph ?collection{
+     ?prod ecrm:P108_has_produced ?object .
  
+     optional {?object ecrm:P102_has_title ?title }
+     optional {?object ecrm:P3_has_note ?description }
 
+     ?prod ecrm:P4_has_time-span ?ts .
+     ?ts rdfs:label ?time.
 
-?prod ecrm:P4_has_time-span ?t .
-?t ecrm:P78_is_identified_by ?time.
-
-
-FILTER (str(?time)="1815")
-}
+     ?ts time:hasEnd / time:inXSDDate ?end ;
+                time:hasBeginning / time:inXSDDate ?start .
+     
+     FILTER ( ?start <= "1815"^^xsd:gYear AND ?end >= "1815"^^xsd:gYear  )
+}} ORDER BY (abs(year(?start) - 1815))
