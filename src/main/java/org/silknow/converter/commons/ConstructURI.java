@@ -25,6 +25,11 @@ public class ConstructURI {
     return BASE + getCollectionName(className) + "/" + generateUUID(seed);
   }
 
+  @NotNull
+  public static String transparent(String className, String name) {
+    return BASE + getCollectionName(className) + "/" + norm(name, "_");
+  }
+
   private static String generateUUID(@NotNull String seed) {
     // source: https://gist.github.com/giusepperizzo/630d32cc473069497ac1
     try {
@@ -63,9 +68,15 @@ public class ConstructURI {
     }
   }
 
-  private static String norm(String input) {
+  @NotNull
+  private static String norm(@NotNull String input) {
+    return norm(input, " ");
+  }
+
+  @NotNull
+  private static String norm(@NotNull String input, @NotNull String replacement) {
     // remove punctuation
-    String seed = input.replaceAll("[.,\\/#!$%\\^&\\*;:{}=\\-_`~()]", " ");
+    String seed = input.replaceAll("[.,/#!$%^&*;:{}=\\-_`~()]", replacement);
     // ascii transliteration
     seed = Junidecode.unidecode(seed);
     return seed;
