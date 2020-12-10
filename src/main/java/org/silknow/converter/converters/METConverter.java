@@ -55,7 +55,7 @@ public class METConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Accession Number:"));
-    obj.addTitle(s.getMulti("title").findFirst().orElse(null));
+    //obj.addTitle(s.getMulti("title").findFirst().orElse(null));
     s.getMulti("title")
             .map(x -> obj.addClassification(x, "Title", mainLang))
             .forEach(this::linkToRecord);

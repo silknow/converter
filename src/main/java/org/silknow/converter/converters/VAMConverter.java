@@ -52,7 +52,7 @@ public class VAMConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "museum_number"));
-    obj.addTitle(s.getMulti("object").findFirst().orElse(null));
+    //obj.addTitle(s.getMulti("object").findFirst().orElse(null));
 
     //s.getMulti("object")
       //      .map(x -> obj.addClassification(x, "Object", mainLang))

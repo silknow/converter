@@ -50,7 +50,7 @@ public class MADConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Numéro d'inventaire:"));
-    obj.addTitle(s.getMulti("title").findFirst().orElse(null));
+    //obj.addTitle(s.getMulti("title").findFirst().orElse(null));
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(image -> image.addInternalUrl("les-arts-decoratifs"))

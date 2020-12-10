@@ -159,12 +159,12 @@ public class TimeSpan extends Entity {
     if (startInstant != null) {
       startInstant = ResourceUtils.renameResource(startInstant, this.getUri() + "/start");
       this.resource.addProperty(Time.hasBeginning, startInstant);
-      this.resource.addProperty(CIDOC.P86_falls_within, getCenturyURI(startYear));
+      //this.resource.addProperty(CIDOC.P86_falls_within, getCenturyURI(startYear));
     }
     if (endInstant != null) {
       endInstant = ResourceUtils.renameResource(endInstant, this.getUri() + "/end");
       this.resource.addProperty(Time.hasEnd, endInstant);
-      this.resource.addProperty(CIDOC.P86_falls_within, getCenturyURI(endYear));
+      //this.resource.addProperty(CIDOC.P86_falls_within, getCenturyURI(endYear));
     }
     // WARNING: in cases like 1691-1721, the TS is linked both to 17th and 18th century
     // (even if formally not 100% correct)
