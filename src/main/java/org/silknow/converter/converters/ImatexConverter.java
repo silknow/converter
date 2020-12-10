@@ -83,9 +83,12 @@ public class ImatexConverter extends Converter {
     linkToRecord(obj.addComplexIdentifier(regNum, "Register number"));
 
     final List<String> terms = new ArrayList<String>();
-    terms.add((s.getMulti("CLASSIFICACIÓ GENÈRICA*").findFirst().orElse(null)));
-    terms.add((s.getMulti("CRONOLOGIA*").filter(x -> !Arrays.asList("... unconfirmed", "... sin confirmar", "... sense confirmar").contains(x)).findFirst().orElse(null)));
-    terms.add((s.getMulti("ORIGEN*").filter(x -> !Arrays.asList("... unconfirmed", "... sin confirmar ", "... sense confirmar").contains(x)).findFirst().orElse(null)));
+    //terms.add((s.getMulti("CLASSIFICACIÓ GENÈRICA*").findFirst().orElse(null)));
+    //terms.add((s.getMulti("CRONOLOGIA*").filter(x -> !Arrays.asList("... unconfirmed", "... sin confirmar", "... sense confirmar").contains(x)).findFirst().orElse(null)));
+    //terms.add((s.getMulti("ORIGEN*").filter(x -> !Arrays.asList("... unconfirmed", "... sin confirmar ", "... sense confirmar").contains(x)).findFirst().orElse(null)));
+    terms.add((s.get("CLASSIFICACIÓ GENÈRICA*")));
+    terms.add((s.get("CRONOLOGIA*")));
+    terms.add((s.get("ORIGEN*")));
     final String constrlabel = terms
       .stream()
       .filter(Objects::nonNull)
