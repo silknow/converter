@@ -53,11 +53,6 @@ public class Production extends Entity {
     timeAppellation = timeAppellation.replaceAll("(?i)fine", "");
     timeAppellation = timeAppellation.replaceAll("(?i)mid-?", "");
     timeAppellation = timeAppellation.replaceAll("(?i)Finales ", "");
-    timeAppellation = timeAppellation.replaceAll("(?i)(first|second|third|fourth|last) (quarter|half),? (of the)?", "");
-    timeAppellation = timeAppellation.replaceAll("(?i)((prim|second|terz|ultim)[oa] )?(quarto|metà) (del)?", "");
-    timeAppellation = timeAppellation.replaceAll("(?i)(primera?|segund[oa]|tercer|último) (cuarto|mitad) (del)?", "");
-    timeAppellation = timeAppellation.replaceAll("(?i)(1er|[234]e) (quart|moitié)", "");
-    timeAppellation = timeAppellation.replaceAll("(?i)primer tercio (del )?", "");
     timeAppellation = timeAppellation.replaceAll("(?i)(princip|inic)ios ", "");
     timeAppellation = timeAppellation.replaceAll("\\.$", ""); // trailing dots
     timeAppellation = timeAppellation.trim();
