@@ -48,27 +48,14 @@ public class Production extends Entity {
     timeAppellation = timeAppellation.replaceAll(" A.?D.?", "");
     timeAppellation = timeAppellation.replaceAll("dC\\.?$", "");
     timeAppellation = timeAppellation.replaceAll(CIRCA_REGEX, "");
-    timeAppellation = timeAppellation.replaceAll("(?i)early", "");
-    timeAppellation = timeAppellation.replaceAll("(?i)late", "");
-    timeAppellation = timeAppellation.replaceAll("(?i)fine", "");
-    timeAppellation = timeAppellation.replaceAll("(?i)mid-?", "");
-    timeAppellation = timeAppellation.replaceAll("(?i)Finales ", "");
-    timeAppellation = timeAppellation.replaceAll("(?i)(princip|inic)ios ", "");
     timeAppellation = timeAppellation.replaceAll("\\.$", ""); // trailing dots
     timeAppellation = timeAppellation.trim();
     if (timeAppellation.isEmpty()) return;
 
-    Resource result = VocabularyManager.searchInCategory(timeAppellation, null, "dates", false);
-    if (result != null) {
-      //System.out.println(result.getURI());
-      this.addProperty(CIDOC.P4_has_time_span, result);
-      return;
-    }
-
     TimeSpan ts = new TimeSpan(timeAppellation);
-    //ts.addAppellation(timeAppellation);
-    if (timeUnconfirmed) ts.addNote("unconfirmed", "en");
-    if (timeApproximate) ts.addNote("approximate", "en");
+    // centralising the ts definition, those values are incorrect
+    // if (timeUnconfirmed) ts.addNote("unconfirmed", "en");
+    // if (timeApproximate) ts.addNote("approximate", "en");
 
     this.addTimeSpan(ts);
   }

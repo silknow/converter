@@ -26,7 +26,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -54,6 +53,15 @@ public class TimeSpan extends Entity {
   private static final Pattern CENTURY_PART_FR_PATTERN = Pattern.compile(CENTURY_PART_FR);
   private static final Pattern[] CENTURY_PART_PATTERNS = {CENTURY_PART_EN_PATTERN, CENTURY_PART_ES_PATTERN, CENTURY_PART_IT_PATTERN, CENTURY_PART_FR_PATTERN};
 
+  private static final String EARLY_REGEX = "(?i)(early|(?:princip|inic)ios)";
+  private static final String LATE_REGEX = "(?i)(late|fin(?:e|ales))";
+  private static final String MID_REGEX = "(?i)mid-?";
+  private static final Pattern EARLY_PATTERN = Pattern.compile(EARLY_REGEX);
+  private static final Pattern LATE_PATTERN = Pattern.compile(LATE_REGEX);
+  private static final Pattern MID_PATTERN = Pattern.compile(MID_REGEX);
+  private static final Pattern[] MODIFIER_PATTERNS = {EARLY_PATTERN, LATE_PATTERN, MID_PATTERN};
+
+
   public static final DateFormat ISO_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
   static final DateFormat SLASH_LITTLE_ENDIAN = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -79,12 +87,14 @@ public class TimeSpan extends Entity {
 
   public static final Model centralModel = ModelFactory.createDefaultModel();
 
+  private Resource century;
   private String startYear, startMonth, startDay;
   private String endYear, endMonth, endDay;
   private String startDate, endDate;
   private String startTime;
   private XSDDatatype startType, endType;
   private String label;
+  private boolean fromVocabulary;
 
   public TimeSpan() {
     super();
@@ -92,21 +102,25 @@ public class TimeSpan extends Entity {
     this.model = centralModel;
     createResource();
     this.setClass(CIDOC.E52_Time_Span);
+    this.fromVocabulary = false;
   }
 
   public TimeSpan(String date) {
     super();
-
-    this.model = centralModel;
-    createResource();
-    this.setClass(CIDOC.E52_Time_Span);
-
     if (StringUtils.isBlank(date)) return;
+
+    this.fromVocabulary = false;
+    this.century = null;
+    this.model = centralModel;
 
     // Parsing the date
     parseDate(date);
+    if (this.fromVocabulary)
+      return;
 
     // Creating the RDF resource
+    createResource();
+    this.setClass(CIDOC.E52_Time_Span);
 
     this.addProperty(RDFS.label, date)
       .addProperty(CIDOC.P78_is_identified_by, date);
@@ -118,28 +132,18 @@ public class TimeSpan extends Entity {
 
     if (this.startYear == null) return;
 
-    // TODO possibly add some notes
-    if (this.startYear.endsWith("s")) // start decade
-      this.startYear = this.startYear.replace("s", "");
-    if (this.endYear.endsWith("s"))  // end decade
-      this.endYear = this.endYear.substring(0, 3) + "9";
-
-    System.out.println(date);
-    System.out.println(startYear);
-    System.out.println(endYear);
-
     Resource startInstant = makeInstant(startDate, startType);
     Resource endInstant = makeInstant(endDate, endType);
 
     if (startInstant != null) {
       startInstant = ResourceUtils.renameResource(startInstant, this.getUri() + "/start");
-      this.resource.addProperty(Time.hasBeginning, startInstant);
-      this.resource.addProperty(CIDOC.P86_falls_within, getCenturyURI(startYear));
+      this.addProperty(Time.hasBeginning, startInstant);
+      this.addProperty(CIDOC.P86_falls_within, getCenturyURI(startYear));
     }
     if (endInstant != null) {
       endInstant = ResourceUtils.renameResource(endInstant, this.getUri() + "/end");
-      this.resource.addProperty(Time.hasEnd, endInstant);
-      this.resource.addProperty(CIDOC.P86_falls_within, getCenturyURI(endYear));
+      this.addProperty(Time.hasEnd, endInstant);
+      this.addProperty(CIDOC.P86_falls_within, getCenturyURI(endYear));
     }
     // WARNING: in cases like 1691-1721, the TS is linked both to 17th and 18th century
     // (even if formally not 100% correct)
@@ -147,6 +151,9 @@ public class TimeSpan extends Entity {
 
   public TimeSpan(Date date) {
     this();
+    this.model = centralModel;
+    this.fromVocabulary = false;
+
     ISO_DATE_FORMAT.setTimeZone(UCT);
 
     String text = ISO_DATE_FORMAT.format(date).substring(0, 10);
@@ -159,24 +166,47 @@ public class TimeSpan extends Entity {
   }
 
   private void parseDate(@NotNull String date) {
+    // preliminary parsing
+    int modifier = 0; // 0 = NONE, 1 = EARLY, 2 = LATE, 3 = MID
+    for (int i = 0; i < MODIFIER_PATTERNS.length; i++) {
+      Matcher matcher = MODIFIER_PATTERNS[i].matcher(date);
+      if (matcher.find()) {
+        System.out.println(matcher.group());
+        date = date.replace(matcher.group(), "").trim();
+        modifier = i + 1;
+        break;
+      }
+    }
+
+    // cases: 18th century, secolo XVI
+    century = VocabularyManager.searchInCategory(date, null, "dates", false);
+    if (century != null && modifier == 0) {
+      this.setUri(century.getURI());
+      this.fromVocabulary = true;
+      return;
+    }
+
     // cases: 1871, 1920s
     if (date.matches(SINGLE_YEAR)) {
-      startYear = date;
-      endYear = date;
+      startYear = decade2year(date, false, modifier);
+      endYear = decade2year(date, true, modifier);
       startType = XSDDateType.XSDgYear;
       endType = XSDDateType.XSDgYear;
+      startDate = startYear;
+      endDate = endYear;
       return;
     }
     // cases: 1741–1754,  1960s to 1970s, ...
     if (date.matches(YEAR_SPAN)) {
       Matcher matcher = SPAN_PATTERN.matcher(date);
       if (matcher.find()) {
-        this.startYear = matcher.group(1);
+        this.startYear = decade2year(matcher.group(1), false, modifier);
         this.endYear = matcher.group(2);
 
         if (this.endYear.length() < 2) {
           this.endYear = this.startYear.substring(0, 2) + this.endYear;
         }
+        this.endYear = decade2year(this.endYear, true, modifier);
 
         startType = XSDDateType.XSDgYear;
         endType = XSDDateType.XSDgYear;
@@ -207,51 +237,71 @@ public class TimeSpan extends Entity {
       return;
     }
 
+    // case 'early 18th century'
+    double it = -1;
+    double span = -1;
+    // modifier: 0 = NONE, 1 = EARLY, 2 = LATE, 3 = MID
+    switch (modifier) {
+      case 1:
+        it = 1;
+        span = 25;
+        break;
+      case 2:
+        it = 4;
+        span = 25;
+        break;
+      case 3:
+        it = 1.5;
+        span = 50;
+    }
+
     // case '1st half of the 18th century'
     for (Pattern pat : CENTURY_PART_PATTERNS) {
       Matcher matcher = pat.matcher(date);
-      if (matcher.find()) {
-        String itString = matcher.group(1);
-        String partString = matcher.group(2);
-        String centuryString = matcher.group(3);
+      if (!matcher.find()) continue;
+      String itString = matcher.group(1);
+      String partString = matcher.group(2);
+      String centuryString = matcher.group(3);
 
-        Resource century = VocabularyManager.searchInCategory(centuryString, null, "dates", false);
-        if (century == null) { // this is a part, but of what?
-          System.out.println("Century not found: " + centuryString);
-          return;
-        }
-        int cent = CENTURY_URI_MAP.inverseBidiMap().get(century) - 1;
-
-        int it = ordinalToInt(itString);
-        if (it == 0) {
-          System.out.println("Error in parsing: " + date);
-          return;
-        }
-        double span = 50; // half century
-        if (partString.equals("tercio")) {
-          span = 33.3;
-          if (it == -1) it = 3;
-        }
-        if (partString.matches("[qc]uart(o|er)?")) {
-          span = 25;
-          if (it == -1) it = 4;
-        }
-        if (it == -1) it = 2;
-
-        int end = (int) Math.round(cent * 100 + span * it);
-        it--;
-        int start = (int) Math.round(cent * 100 + span * it + 1);
-
-        startYear = Integer.toString(start);
-        endYear = Integer.toString(end);
-
-        startType = XSDDateType.XSDgYear;
-        endType = XSDDateType.XSDgYear;
-        startDate = startYear;
-        endDate = endYear;
-
+      century = VocabularyManager.searchInCategory(centuryString, null, "dates", false);
+      if (century == null) { // this is a part, but of what?
+        System.out.println("Century not found: " + centuryString);
         return;
       }
+
+      it = ordinalToInt(itString);
+      if (it == 0) {
+        System.out.println("Error in parsing: " + date);
+        return;
+      }
+      span = 50; // half century
+      if (partString.equals("tercio")) {
+        span = 33.3;
+        if (it == -1) it = 3;
+      }
+      if (partString.matches("[qc]uart(o|er)?")) {
+        span = 25;
+        if (it == -1) it = 4;
+      }
+      if (it == -1) it = 2;
+    }
+
+    if (century != null && span > 0 && it > 0) {
+      int cent = CENTURY_URI_MAP.inverseBidiMap().get(century) - 1;
+
+      int end = (int) Math.round(cent * 100 + span * it);
+      it--;
+      int start = (int) Math.round(cent * 100 + span * it + 1);
+
+      startYear = Integer.toString(start);
+      endYear = Integer.toString(end);
+
+      startType = XSDDateType.XSDgYear;
+      endType = XSDDateType.XSDgYear;
+      startDate = startYear;
+      endDate = endYear;
+
+      return;
     }
 
     // case 31/07/1816
@@ -268,6 +318,28 @@ public class TimeSpan extends Entity {
     } catch (ParseException e) {
       // nothing to do
     }
+  }
+
+  @NotNull
+  private static String decade2year(@NotNull String decade, boolean end, int modifier) {
+    // modifier: 0 = NONE, 1 = EARLY, 2 = LATE, 3 = MID
+    if (decade.endsWith("s")) {
+      if (end) { // end decade
+        String endDigit = "9";
+        if (modifier == 1) endDigit = "4";
+        if (modifier == 3) endDigit = "8";
+        return decade.substring(0, 3) + endDigit;
+      }
+      // start decade
+      if (modifier == 2)
+        return decade.replace("0s", "5");
+      if (modifier == 3)
+        return decade.replace("0s", "2");
+      return decade.replace("s", "");
+    }
+
+    // choice: mid-years (e.g. mid-1983) are not handle with month-precision
+    return decade;
   }
 
   /**

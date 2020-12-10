@@ -33,6 +33,7 @@ public abstract class Entity {
     // do nothing, enables customisation for child class
     this.model = ModelFactory.createDefaultModel();
     this.className = this.getClass().getSimpleName();
+    this.resource = null;
 
     this.activityCount = 0;
     this.observationCount = 0;
