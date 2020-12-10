@@ -59,7 +59,7 @@ public class MADConverter extends Converter {
 
     final List<String> terms = new ArrayList<String>();
     terms.add((s.getMulti("Textile:").findFirst().orElse(null)));
-    terms.add((s.getMulti("Création:").findFirst().orElse(null)));
+    terms.add((s.getMulti("Création:").map( Object::toString ).collect( Collectors.joining(", "))));
     final String constrlabel = terms
       .stream()
       .filter(Objects::nonNull)
