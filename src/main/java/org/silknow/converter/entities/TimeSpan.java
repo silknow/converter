@@ -16,12 +16,9 @@ import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.silknow.converter.commons.ConstructURI;
-import org.silknow.converter.converters.Converter;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.Time;
 
-import java.io.IOException;
-import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -375,7 +372,7 @@ public class TimeSpan extends Entity {
   }
 
   @Nullable
-  private Resource makeInstant(String date, XSDDatatype type) {
+  private Resource makeInstant(@NotNull String date, XSDDatatype type) {
     if (!date.matches(UCT_DATE_REGEX)) return null;
 
     return this.model.createResource()

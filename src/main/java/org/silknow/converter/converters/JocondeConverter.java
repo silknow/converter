@@ -65,7 +65,7 @@ public class JocondeConverter extends Converter {
             .forEach(doc::addEditor);
 
     ManMade_Object obj = new ManMade_Object(id);
-    obj.addTitle(s.get("Titre"));
+    obj.addTitle(s.get("TITR"));
     s.getMulti("DOMN")
             .forEach(x -> linkToRecord(obj.addClassification(x, "Domaine", "fr")));
     s.getMulti("DENO")
