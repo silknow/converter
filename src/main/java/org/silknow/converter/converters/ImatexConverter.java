@@ -7,6 +7,11 @@ import org.silknow.converter.entities.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class ImatexConverter extends Converter {
 //  private static final String DOC_BASE_URI = "http://imatex.cdmt.cat/_cat/fitxa_fitxa.aspx?num_id=";
@@ -76,6 +81,17 @@ public class ImatexConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Register number"));
+
+    final List<String> terms = new ArrayList<String>();
+    terms.add((s.getMulti("CLASSIFICACIÓ GENÈRICA*").findFirst().orElse(null)));
+    terms.add((s.getMulti("CRONOLOGIA*").filter(x -> !Arrays.asList("... unconfirmed", "... sin confirmar", "... sense confirmar").contains(x)).findFirst().orElse(null)));
+    terms.add((s.getMulti("ORIGEN*").filter(x -> !Arrays.asList("... unconfirmed", "... sin confirmar ", "... sense confirmar").contains(x)).findFirst().orElse(null)));
+    final String constrlabel = terms
+      .stream()
+      .filter(Objects::nonNull)
+      .collect(Collectors.joining(", "));
+    obj.addConstructedTitle(constrlabel);
+
 
 
     s.getImages().map(Image::fromCrawledJSON)

@@ -6,8 +6,12 @@ import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class UNIPAConverter extends Converter {
 
@@ -57,6 +61,24 @@ public class UNIPAConverter extends Converter {
     //s.getMulti("title").forEach(obj::addTitle);
 
 
+
+    final List<String> terms = new ArrayList<String>();
+    terms.add((s.getMulti("Description").findFirst().orElse(null)));
+    terms.add((s.getMulti("Time chronology").findFirst().orElse(null)));
+    terms.add((s.getMulti("date").findFirst().orElse(null)));
+    if (s.get("Region production") != null) {
+      if (s.get("Region production").equals("ignoto")) {
+        terms.add(s.get("Geography"));
+      }
+      if (!s.get("Region production").equals("ignoto")) {
+        terms.add(s.get("Region production"));
+      }
+    }
+    final String constrlabel = terms
+      .stream()
+      .filter(Objects::nonNull)
+      .collect(Collectors.joining(", "));
+    obj.addConstructedTitle(constrlabel);
 
 
 

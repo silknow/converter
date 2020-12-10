@@ -130,6 +130,10 @@ public class ManMade_Object extends Entity {
             .addProperty(CIDOC.P102_has_title, title);
   }
 
+  public void addConstructedTitle(String title) {
+    this.addProperty(RDFS.label, title);
+  }
+
   public Resource addInfo(String section, String text, String lang) {
     Resource sec = model.createResource(this.getUri() + "/section/" + section)
             .addProperty(RDF.type, CIDOC.E53_Place)

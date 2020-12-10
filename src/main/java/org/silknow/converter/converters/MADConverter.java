@@ -6,8 +6,12 @@ import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class MADConverter extends Converter {
 
@@ -51,6 +55,17 @@ public class MADConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Numéro d'inventaire:"));
     //obj.addTitle(s.getMulti("title").findFirst().orElse(null));
+
+
+    final List<String> terms = new ArrayList<String>();
+    terms.add((s.getMulti("Textile:").findFirst().orElse(null)));
+    terms.add((s.getMulti("Création:").findFirst().orElse(null)));
+    final String constrlabel = terms
+      .stream()
+      .filter(Objects::nonNull)
+      .collect(Collectors.joining(", "));
+    obj.addConstructedTitle(constrlabel);
+
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(image -> image.addInternalUrl("les-arts-decoratifs"))

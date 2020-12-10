@@ -7,8 +7,12 @@ import org.silknow.converter.entities.*;
 import org.silknow.converter.ontologies.CIDOC;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class RISDConverter extends Converter {
 
@@ -57,7 +61,25 @@ public class RISDConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(id);
     linkToRecord(obj.addComplexIdentifier(id, "Object Number"));
-    obj.addTitle(s.getMulti("Title").findFirst().orElse(null));
+    //obj.addTitle(s.getMulti("Title").findFirst().orElse(null));
+
+    final List<String> terms = new ArrayList<String>();
+    terms.add((s.getMulti("Title").findFirst().orElse(null)));
+    terms.add((s.getMulti("Year").findFirst().orElse(null)));
+    terms.add((s.getMulti("Culture").findFirst().orElse(null)));
+    final String constrlabel = terms
+      .stream()
+      .filter(Objects::nonNull)
+      .collect(Collectors.joining(", "));
+    obj.addConstructedTitle(constrlabel);
+
+
+
+
+
+
+
+
     s.getMulti("Title")
             .map(x -> obj.addClassification(x, "Title", mainLang))
             .forEach(this::linkToRecord);

@@ -9,6 +9,9 @@ import org.silknow.converter.entities.*;
 
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -59,6 +62,17 @@ public class METConverter extends Converter {
     s.getMulti("title")
             .map(x -> obj.addClassification(x, "Title", mainLang))
             .forEach(this::linkToRecord);
+
+
+    final List<String> terms = new ArrayList<String>();
+    terms.add((s.getMulti("title").findFirst().orElse(null)));
+    terms.add((s.getMulti("Date:").findFirst().orElse(null)));
+    terms.add((s.getMulti("Culture:").findFirst().orElse(null)));
+    final String constrlabel = terms
+      .stream()
+      .filter(Objects::nonNull)
+      .collect(Collectors.joining(", "));
+    obj.addConstructedTitle(constrlabel);
 
 
     s.getImages().map(Image::fromCrawledJSON)

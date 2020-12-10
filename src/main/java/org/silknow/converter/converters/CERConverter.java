@@ -6,8 +6,12 @@ import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class CERConverter extends Converter {
 
@@ -52,6 +56,23 @@ public class CERConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Inventario"));
     obj.addTitle(s.getMulti("Título").findFirst().orElse(null));
+
+
+    if ((!s.getMulti("Título").findAny().isPresent())) {
+
+      final List<String> terms = new ArrayList<String>();
+      terms.add((s.getMulti("Objeto/Documento").findFirst().orElse(null)));
+      terms.add((s.getMulti("Datación").findFirst().orElse(null)));
+      terms.add((s.getMulti("Lugar de Producción/Ceca").findFirst().orElse(null)));
+      final String constrlabel = terms
+        .stream()
+        .filter(Objects::nonNull)
+        .collect(Collectors.joining(", "));
+      obj.addConstructedTitle(constrlabel);
+    }
+
+
+
     //s.getMulti("Título")
       //      .map(x -> obj.addClassification(x, "Título", mainLang))
         //    .forEach(this::linkToRecord);
@@ -130,6 +151,8 @@ public class CERConverter extends Converter {
       collection.addAppellation(s.getMulti("Tipo de Colección").findFirst().orElse(null));
       linkToRecord(collection);
     }
+
+
 
     linkToRecord(obj);
     linkToRecord(acquisition);

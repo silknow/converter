@@ -9,10 +9,7 @@ import org.silknow.converter.entities.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -66,6 +63,24 @@ public class JocondeConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(id);
     obj.addTitle(s.get("TITR"));
+
+
+
+    if ((!s.getMulti("TITR").findAny().isPresent())) {
+      //System.out.println("title gets constructed");
+
+      final List<String> terms = new ArrayList<String>();
+      terms.add((s.getMulti("DENO").findFirst().orElse(null)));
+      terms.add((s.getMulti("PERI").findFirst().orElse(null)));
+      terms.add((s.getMulti("LIEUX").findFirst().orElse(null)));
+      final String constrlabel = terms
+        .stream()
+        .filter(Objects::nonNull)
+        .collect(Collectors.joining(", "));
+      obj.addConstructedTitle(constrlabel);
+    }
+
+
     s.getMulti("DOMN")
             .forEach(x -> linkToRecord(obj.addClassification(x, "Domaine", "fr")));
     s.getMulti("DENO")
