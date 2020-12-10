@@ -9,6 +9,7 @@ import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.NotNull;
 import org.silknow.converter.commons.GeoNames;
 import org.silknow.converter.converters.*;
+import org.silknow.converter.entities.TimeSpan;
 import org.silknow.converter.ontologies.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,18 +40,18 @@ public class Main implements Runnable {
   private File folder;
 
   @Option(names = {"--log"}, description = "The log level. Default: ${DEFAULT-VALUE}", completionCandidates =
-          LogLevels.class, defaultValue = "WARN")
+    LogLevels.class, defaultValue = "WARN")
   private String logLevel;
 
   @Option(names = {"-o", "--output"}, description = "Output folder. Default: an `out` folder siblings to the input directory")
   public static File outputFolder;
 
   @Option(names = {"-g", "--geonames"}, required = true,
-          description = "Username for accessing Geonames. See http://www.geonames.org/login")
+    description = "Username for accessing Geonames. See http://www.geonames.org/login")
   public static String geonamesUser;
 
   @Option(names = {"--replace"},
-          description = "Replace the content of the destination folder")
+    description = "Replace the content of the destination folder")
   public static boolean replace;
 
   public static void main(String[] args) {
@@ -127,13 +128,19 @@ public class Main implements Runnable {
         break;
       case UNIPA:
         converter = new UNIPAConverter();
-
     }
 
     source = type.toString();
 
     if (folder.isDirectory()) convertFolder(folder, converter);
     else if (folder.isFile()) convertFile(folder, converter);
+
+    File timestampOut = Paths.get(outputFolder.getAbsolutePath(), "timestamps.ttl").toFile();
+    try {
+      writeTtl(TimeSpan.centralModel, timestampOut);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   private void convertFile(@NotNull File file, @NotNull Converter converter) {
@@ -147,10 +154,10 @@ public class Main implements Runnable {
     System.out.println(file.getName());
     converter.resetModel();
     Model m = converter.convert(file);
-//    VocabularyManager.string2uri(m);
-    if (m == null)
-    { System.out.println("Conversion failed:" + file.getName());
-    return; }
+    if (m == null) {
+      System.out.println("Conversion failed:" + file.getName());
+      return;
+    }
 
     try {
       writeTtl(m, out);
@@ -162,18 +169,18 @@ public class Main implements Runnable {
   private void convertFolder(@NotNull File folder, @NotNull Converter converter) {
     File[] files = Objects.requireNonNull(folder.listFiles());
     Arrays.stream(files)
-            .filter(converter::canConvert)
-            .sorted()
-            .forEach(x -> convertFile(x, converter));
+      .filter(converter::canConvert)
+      .sorted()
+      .forEach(x -> convertFile(x, converter));
 
     Arrays.stream(files)
-            .filter(File::isDirectory)
-            .sorted()
-            .peek(x -> System.out.println("--- " + x.getName()))
-            .forEach(x -> convertFolder(x, converter));
+      .filter(File::isDirectory)
+      .sorted()
+      .peek(x -> System.out.println("--- " + x.getName()))
+      .forEach(x -> convertFolder(x, converter));
   }
 
-  private void writeTtl(@NotNull Model m, File out) throws IOException {
+  private static void writeTtl(@NotNull Model m, File out) throws IOException {
     m.setNsPrefix("ecrm", CIDOC.getURI());
     m.setNsPrefix("crmdig", CRMdig.getURI());
     m.setNsPrefix("crmsci", CRMsci.getURI());

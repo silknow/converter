@@ -162,7 +162,8 @@ public abstract class Entity {
   public void addTimeSpan(TimeSpan timeSpan) {
     if (timeSpan == null) return;
     if (timeSpan.hasNullUri()) timeSpan.setUri(this.uri + "/time");
-    this.addProperty(CIDOC.P4_has_time_span, timeSpan);
+    this.addProperty(CIDOC.P4_has_time_span, timeSpan.asResource());
+    // note: the model is not added here, but saved in a separate file called timespans.ttl
   }
 
   public void addActivity(String actor, String function) {

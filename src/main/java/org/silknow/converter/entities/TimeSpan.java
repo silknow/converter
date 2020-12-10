@@ -1,13 +1,17 @@
 package org.silknow.converter.entities;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.datatypes.xsd.XSDDatatype;
 import org.apache.jena.datatypes.xsd.impl.XSDDateType;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
 import org.apache.jena.util.ResourceUtils;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.Time;
@@ -20,6 +24,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static java.lang.Integer.parseInt;
+import static org.silknow.converter.Main.outputFolder;
 
 public class TimeSpan extends Entity {
 
@@ -31,7 +36,6 @@ public class TimeSpan extends Entity {
   private static final Pattern SPAN_PATTERN = Pattern.compile(YEAR_SPAN);
   private static final String CENTURY_SPAN = "(\\d{1,2})th(?: century)?\\s*(?:[-–=/]|to|or)\\s*(\\d{1,2})th century";
   private static final Pattern CENTURY_SPAN_PATTERN = Pattern.compile(CENTURY_SPAN);
-
 
   public static final DateFormat ISO_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
   static final DateFormat SLASH_LITTLE_ENDIAN = new SimpleDateFormat("dd/MM/yyyy");
@@ -56,6 +60,7 @@ public class TimeSpan extends Entity {
     CENTURY_URI_MAP = Collections.unmodifiableMap(map);
   }
 
+  public static final Model centralModel = ModelFactory.createDefaultModel();
 
   private String startYear, startMonth, startDay;
   private String endYear, endMonth, endDay;
@@ -67,6 +72,7 @@ public class TimeSpan extends Entity {
   public TimeSpan() {
     super();
 
+    this.model = centralModel;
     createResource();
     this.setClass(CIDOC.E52_Time_Span);
   }
@@ -74,12 +80,13 @@ public class TimeSpan extends Entity {
   public TimeSpan(String date) {
     super();
 
+    this.model = centralModel;
     createResource();
     this.setClass(CIDOC.E52_Time_Span);
-    String seed = id + "$$$" + date;
-    this.setUri(ConstructURI.build(this.source, this.className, seed));
 
-    if (date == null) return;
+    if (StringUtils.isBlank(date)) return;
+
+    // Parsing the date
 
     // cases: 1871, 1920s
     if (date.matches(SINGLE_YEAR)) {
@@ -100,6 +107,8 @@ public class TimeSpan extends Entity {
 
         startType = XSDDateType.XSDgYear;
         endType = XSDDateType.XSDgYear;
+        startDate = startYear;
+        endDate = endYear;
       }
       // case: 19th–20th century
     } else if (date.matches(CENTURY_SPAN)) {
@@ -116,6 +125,8 @@ public class TimeSpan extends Entity {
 
         startType = XSDDateType.XSDgYear;
         endType = XSDDateType.XSDgYear;
+        startDate = startYear;
+        endDate = endYear;
       }
     } else { // case 31/07/1816
       try {
@@ -133,13 +144,16 @@ public class TimeSpan extends Entity {
       }
     }
 
+    // Creating the RDF resource
+
     this.addProperty(RDFS.label, date)
       .addProperty(CIDOC.P78_is_identified_by, date);
 
-    //Resource result = VocabularyManager.searchInCategory(date, null, "dates", false);
-    //if (result != null) {
-    //this.addProperty(CIDOC.P78_is_identified_by, result);
-    //}
+    String seed = date;
+    if (this.startDate != null)
+      seed = this.startDate + "_" + this.endDate;
+    this.setUri(ConstructURI.transparent(this.className, seed));
+
     if (this.startYear == null) return;
 
     // TODO possibly add some notes
@@ -148,10 +162,6 @@ public class TimeSpan extends Entity {
     if (this.endYear.endsWith("s"))  // end decade
       this.endYear = this.endYear.substring(0, 3) + "9";
 
-    if (startType == XSDDatatype.XSDgYear)
-      startDate = startYear;
-    if (endType == XSDDatatype.XSDgYear)
-      endDate = endYear;
 
     Resource startInstant = makeInstant(startDate, startType);
     Resource endInstant = makeInstant(endDate, endType);
@@ -186,9 +196,10 @@ public class TimeSpan extends Entity {
 
   private static Resource getCenturyURI(String year) {
     int x = (parseInt(year) + 99) / 100;
-    return CENTURY_URI_MAP.get(x);
+    return CENTURY_URI_MAP.getOrDefault(x, null);
   }
 
+  @Nullable
   private Resource makeInstant(String date, XSDDatatype type) {
     if (!date.matches(UCT_DATE_REGEX)) return null;
 
