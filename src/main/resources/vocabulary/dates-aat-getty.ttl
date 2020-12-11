@@ -9950,7 +9950,7 @@ aat:300404514 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	rdfs:label "twentieth century (dates CE)"@en , "century, twentieth (dates CE)"@en , "20th century (dates CE)"@en , "20th-century (dates CE)"@en , "1900s"@en, "siglo veinte"@es,	"ventesimo secolo"@it,
 				"vingtième siècle"@fr, "siglo, veinte"@es,	"secolo, ventesimo"@it,	"siècle, vingtième"@fr,
 				"siglo XX"@es,	"XX secolo"@it,	"20ème siècle"@fr,
-				"siglo 20"@es,	"XX-secolo"@it,	"20ème-siècle"@fr,
+				"siglo 20"@es,	"XX-secolo"@it,	"20ème-siècle"@fr, "20e siècle"@fr,  "segle 20"@ca,
 				"años 1900"@es,	"il 900"@it,	"Années 1900"@fr, "segle vint"@ca, "segle, vint"@ca, "segle XX"@ca, "segle XX"@ca, "anys 1900"@ca,
 				"1900s"@en,	"años 1900"@es,	"il 900"@it,	"Années 1900"@fr ;
 
@@ -9971,8 +9971,8 @@ aat:300404514 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	skos:prefLabel "twentieth century (dates CE)"@en, "siglo veinte"@es,	"ventesimo secolo"@it,	"vingtième siècle"@fr, "segle vint"@ca ;
 	skosxl:altLabel aat_term:1000644184-en , aat_term:1000644185-en , aat_term:1000644186-en , aat_term:1000644187-en ;
 	skos:altLabel "century, twentieth (dates CE)"@en , "20th century (dates CE)"@en , "20th-century (dates CE)"@en , "1900s"@en, "siglo, veinte"@es,	"secolo, ventesimo"@it,	"siècle, vingtième"@fr,
-				"siglo XX"@es,	"XX secolo"@it, "20ème siècle"@fr, "siglo 20"@es,	"XX-secolo"@it,	"20ème-siècle"@fr,
-                "años 1900"@es,	"il 900"@it,	"Années 1900"@fr, "segle, vint"@ca, "segle XX"@ca, "segle XX"@ca, "anys 1900"@ca,
+				"siglo XX"@es,	"XX secolo"@it, "20ème siècle"@fr, "siglo 20"@es,	"XX-secolo"@it,	"20ème-siècle"@fr,"20e siècle"@fr,
+                "años 1900"@es,	"il 900"@it,	"Années 1900"@fr, "segle, vint"@ca, "segle XX"@ca, "segle XX"@ca, "segle 20"@ca, "anys 1900"@ca,
                 "1900s"@en,	"años 1900"@es,	"il 900"@it,	"Années 1900"@fr ;
 	gvp:broaderGeneric aat:300404464 ;
 	gvp:broaderPreferred aat:300404464 ;

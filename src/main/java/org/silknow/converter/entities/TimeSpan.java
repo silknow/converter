@@ -35,23 +35,23 @@ public class TimeSpan extends Entity {
   private static final String UCT_DATE_REGEX = "\\d{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[1-2]\\d|3[0-1]))?)?(?:T" +
     "(?:[0-1]\\d|2[0-3]):[0-5]\\d:[0-5]\\dZ?)?";
   private static final String SINGLE_YEAR = "\\d{4}s?";
-  private static final String YEAR_SPAN = "(\\d{4}s?)\\s*(?:[-–=]|to|a)\\s*(\\d{2,4}s?)";
+  private static final String YEAR_SPAN = "(?i)(?:(?:entre|between)\\s+)?(\\d{4}s?)\\s*(?:[-–=/]|to|a|y|and)\\s*(\\d{2,4}s?)";
   private static final Pattern SPAN_PATTERN = Pattern.compile(YEAR_SPAN);
   private static final String CENTURY_SPAN = "(\\d{1,2})th(?: century)?\\s*(?:[-–=/]|to|or)\\s*(\\d{1,2})th century";
   private static final Pattern CENTURY_SPAN_PATTERN = Pattern.compile(CENTURY_SPAN);
 
-  private static final String CENTURY_PART_EN = "(?i)(first|second|third|fourth|last) (quarter|half),? (?:of the )?";
+  private static final String CENTURY_PART_EN = "(?i)((?:fir|1)st|(?:2|seco)nd|(?:3|thi)rd|fourth|last) (quarter|half),? (?:of(?: the)? )?";
   private static final String CENTURY_PART_IT = "(?i)(?:(prim|second|terz|ultim)[oa]) (quarto|metà) (?:del )?";
-  private static final String CENTURY_PART_ES = "(?i)(primera?|segund[oa]|tercer|último) (cuarto|mitad|tercio) (?:del )?";
+  private static final String CENTURY_PART_ES = "(?i)([1234][ºª]|primera?|segund[oa]|tercer|último) (cuarto|mitad|tercio|1/3) (?:del )?";
   private static final String CENTURY_PART_FR = "(?i)(1er|[234]e) (quart|moitié) (.+)";
   private static final Pattern CENTURY_PART_EN_PATTERN = Pattern.compile(CENTURY_PART_EN+"(.+)");
   private static final Pattern CENTURY_PART_IT_PATTERN = Pattern.compile(CENTURY_PART_IT+"(.+)");
   private static final Pattern CENTURY_PART_ES_PATTERN = Pattern.compile(CENTURY_PART_ES+"(.+)");
   private static final Pattern CENTURY_PART_FR_PATTERN = Pattern.compile(CENTURY_PART_FR+"(.+)");
   private static final Pattern[] CENTURY_PART_PATTERNS = {CENTURY_PART_EN_PATTERN, CENTURY_PART_ES_PATTERN, CENTURY_PART_IT_PATTERN, CENTURY_PART_FR_PATTERN};
-  private static final String EARLY_REGEX = "(?i)(early|(?:p[ri]+ncip|inic)io(?:s| del))";
-  private static final String LATE_REGEX = "(?i)(late|fin(?:e|ales))";
-  private static final String MID_REGEX = "(?i)(mid-|metà del|second or third quarter of|to mid-twentieth century|(?:a )?m+ediados|a mitjan)";
+  private static final String EARLY_REGEX = "(?i)(early|(?:p[ri]+ncipi|inici?)o(?:s| del))";
+  private static final String LATE_REGEX = "(?i)(?:very )?(late|fin(?:e|ale?s))";
+  private static final String MID_REGEX = "(?i)(mid-|metà del|second or third quarter of|to mid-twentieth century|(?:a )?m+ediados(?: del)?|a mitjan)";
   private static final Pattern EARLY_PATTERN = Pattern.compile(EARLY_REGEX);
   private static final Pattern LATE_PATTERN = Pattern.compile(LATE_REGEX);
   private static final Pattern MID_PATTERN = Pattern.compile(MID_REGEX);
@@ -112,6 +112,7 @@ public class TimeSpan extends Entity {
     this.model = centralModel;
 
     // Parsing the date
+    System.out.println(date);
     parseDate(date);
     if (this.fromVocabulary)
       return;
@@ -130,6 +131,8 @@ public class TimeSpan extends Entity {
 
     if (this.startYear == null) return;
 
+    System.out.println(startYear);
+    System.out.println(endYear);
     Resource startInstant = makeInstant(startDate, startType);
     Resource endInstant = makeInstant(endDate, endType);
 
@@ -167,15 +170,25 @@ public class TimeSpan extends Entity {
 
   private void parseDate(@NotNull String date) {
     // preliminary parsing
+    date = date.replaceAll(" A.?D.?", "");
+    date = date.replaceAll(" CE$", "");
+    date = date.replaceAll(" CE-", "");
+    date = date.replaceAll("dC\\.?$", "");
+
+    date = date.replace("'s", "s");
+    date = date.replace("centuries", "century");
+    date = date.replaceAll("or (earli|lat)er", ""); // TODO represent this better
+
     int modifier = 0; // 0 = NONE, 1 = EARLY, 2 = LATE, 3 = MID
     for (int i = 0; i < MODIFIER_PATTERNS.length; i++) {
       Matcher matcher = MODIFIER_PATTERNS[i].matcher(date);
       if (matcher.find()) {
-        date = date.replace(matcher.group(), "").trim();
+        date = date.replace(matcher.group(), "");
         modifier = i + 1;
         break;
       }
     }
+    date = date.trim();
 
     // cases: 18th century, secolo XVI
     century = VocabularyManager.searchInCategory(date, null, "dates", false);
@@ -202,7 +215,7 @@ public class TimeSpan extends Entity {
         this.startYear = decade2year(matcher.group(1), false, modifier);
         this.endYear = matcher.group(2);
 
-        if (this.endYear.length() < 2) {
+        if (this.endYear.length() < 4) {
           this.endYear = this.startYear.substring(0, 2) + this.endYear;
         }
         this.endYear = decade2year(this.endYear, true, modifier);
