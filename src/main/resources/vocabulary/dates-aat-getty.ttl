@@ -9300,7 +9300,7 @@ aat:300404513 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 				"diciannovesimo secolo"@it,	"dix-neuvième siècle"@fr,
 				"siglo, diecinueve"@es,	"secolo, diciannovesimo"@it,	"siècle, dix-neuvième"@fr,
 				"siglo XIX"@es,	"XIX secolo"@it,	"19ème siècle"@fr,
-				"siglo 19"@es,	"XIX-secolo"@it,	"19ème-siècle"@fr,
+				"siglo 19"@es,	"XIX-secolo"@it,	"19ème-siècle"@fr, "19e siècle"@fr,
 				"segle dinou"@ca, "segle, dinou"@ca, "segle XIX"@ca, "segle XIX"@ca, "anys 1800"@ca, "1800s"@en,"años 1800"@es,	"il 800"@it,	"Années 1800"@fr, "segle 19"@ca;
 	rdfs:seeAlso <http://www.getty.edu/vow/AATFullDisplay?find=&logic=AND&note=&subjectid=300404513> ;
 	dct:created "2016-03-16T08:44:38"^^xsd:dateTime ;
@@ -9319,7 +9319,7 @@ aat:300404513 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	skos:prefLabel "nineteenth century (dates CE)"@en, "siglo diecinueve"@es,	"diciannovesimo secolo"@it,	"dix-neuvième siècle"@fr, "segle dinou"@ca ;
 	skosxl:altLabel aat_term:1000644180-en , aat_term:1000644181-en , aat_term:1000644182-en ;
 	skos:altLabel "century, nineteenth (dates CE)"@en , "19th century (dates CE)"@en , "19th-century (dates CE)"@en, "siglo, diecinueve"@es,	"secolo, diciannovesimo"@it,	"siècle, dix-neuvième"@fr,
-				"siglo XIX"@es,	"XIX secolo"@it,	"19ème siècle"@fr,
+				"siglo XIX"@es,	"XIX secolo"@it,	"19ème siècle"@fr, "19e siècle"@fr,
 				"siglo 19"@es,	"XIX-secolo"@it,	"19ème-siècle"@fr, "segle, dinou"@ca,
 		"segle XIX"@ca, "segle XIX"@ca, "anys 1800"@ca, "1800s"@en,	"años 1800"@es,	"il 800"@it,	"Années 1800"@fr, "segle 19"@ca ;
 	gvp:broaderGeneric aat:300404464 ;

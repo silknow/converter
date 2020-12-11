@@ -13,6 +13,7 @@ public class Production extends Entity {
 
   private int tsCount;
   private boolean timeUnconfirmed;
+  private String timeModifier;
 
   public Production(String id) {
     super(id);
@@ -20,13 +21,16 @@ public class Production extends Entity {
 
     tsCount = 0;
     timeUnconfirmed = false;
+    timeModifier = "";
   }
 
   public void addTimeAppellation(String timeAppellation) {
     boolean timeApproximate = false;
 
     if (timeAppellation == null) return;
-    if (timeAppellation.startsWith("Desconocida") || timeAppellation.equalsIgnoreCase("no"))
+    if (timeAppellation.matches("(?i)desconocid[oa]") ||
+      timeAppellation.equalsIgnoreCase("no") ||
+      timeAppellation.matches("n\\.d\\.?"))
       return;
     if (timeAppellation.matches(UNCONFIRMED_REGEX)) {
       timeUnconfirmed = true;
@@ -52,7 +56,15 @@ public class Production extends Entity {
     timeAppellation = timeAppellation.trim();
     if (timeAppellation.isEmpty()) return;
 
-    TimeSpan ts = new TimeSpan(timeAppellation);
+    for (String regex : TimeSpan.CENTURY_PART_REGEXES) { // case "last quarter"
+      if (timeAppellation.matches(regex)) {
+        // this will be added to next line"
+        timeModifier = timeAppellation + " ";
+        return;
+      }
+    }
+
+    TimeSpan ts = new TimeSpan(timeModifier + timeAppellation);
     // centralising the ts definition, those values are incorrect
     // if (timeUnconfirmed) ts.addNote("unconfirmed", "en");
     // if (timeApproximate) ts.addNote("approximate", "en");
