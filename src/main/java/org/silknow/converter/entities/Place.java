@@ -95,9 +95,7 @@ public class Place extends Entity {
     }
   }
 
-  public String getLabel() {
-    return this.resource.getProperty(RDFS.label).getObject().toString();
-  }
+  //public String getLabel() {return this.resource.getProperty(RDFS.label).getObject().toString();}
 
 
 }

@@ -10,3 +10,4 @@ tar -czf mfa.tar.gz mfa/
 tar -czf vam.tar.gz vam/
 tar -czf met.tar.gz met/ 
 
+
