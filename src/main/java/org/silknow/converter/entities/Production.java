@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Production extends Entity {
-  private static final String CIRCA_REGEX = "(?i)(circa|about|(proba|possi)bly|ca?\\.|\\[ca])";
+  private static final String CIRCA_REGEX = "(?i)(circa|around|about|(proba|possi)bly|ca?\\.|\\[ca])";
   private static final String UNCONFIRMED_REGEX = "\\.\\.\\. (unconfirmed|(sin|sense) confirmar)";
 
   private int tsCount;
@@ -56,9 +56,9 @@ public class Production extends Entity {
     timeAppellation = timeAppellation.replaceAll("[(\\[\\])]", ""); // orphan brackets
 
     timeAppellation = timeAppellation.replace("?", "");
-    timeAppellation = timeAppellation.replaceAll(" A.?D.?", "");
-    timeAppellation = timeAppellation.replaceAll("dC\\.?$", "");
     timeAppellation = timeAppellation.replaceAll(CIRCA_REGEX, "");
+    timeAppellation = timeAppellation.replaceAll("\"", "");
+    timeAppellation = timeAppellation.replaceAll("\\.0$", ""); // workaround some dates as 1960.0
     timeAppellation = timeAppellation.replaceAll("\\.$", ""); // trailing dots
     timeAppellation = timeAppellation.trim();
     if (timeAppellation.isEmpty()) return;
