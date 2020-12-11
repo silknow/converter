@@ -126,12 +126,15 @@ public class TimeSpan extends Entity {
     createResource();
     this.setClass(CIDOC.E52_Time_Span);
 
-    this.addProperty(RDFS.label, date)
-      .addProperty(CIDOC.P78_is_identified_by, date);
+    this.addProperty(CIDOC.P78_is_identified_by, date);
 
     String seed = date;
-    if (this.startDate != null)
+    if (this.startDate != null) {
       seed = this.startDate + "_" + this.endDate;
+      this.addProperty(RDFS.label, startDate+" - "+endDate);
+    } else
+      this.addProperty(RDFS.label, date);
+
     this.setUri(ConstructURI.transparent(this.className, seed));
 
     if (this.startYear == null) return;
