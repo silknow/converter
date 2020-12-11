@@ -27,14 +27,15 @@ public class ConstructURI {
 
   @NotNull
   public static String transparent(String className, String name) {
-    return BASE + getCollectionName(className) + "/" + norm(name, "_");
+    return BASE + getCollectionName(className) + "/" + norm(name, "_")
+      .replaceAll("\\s", "_");
   }
 
   private static String generateUUID(@NotNull String seed) {
     // source: https://gist.github.com/giusepperizzo/630d32cc473069497ac1
     try {
       String hash = DatatypeConverter.printHexBinary(MessageDigest.getInstance("SHA-1")
-              .digest(seed.getBytes(StandardCharsets.UTF_8)));
+        .digest(seed.getBytes(StandardCharsets.UTF_8)));
       UUID uuid = UUID.nameUUIDFromBytes(hash.getBytes());
       return uuid.toString();
     } catch (NoSuchAlgorithmException nsae) {

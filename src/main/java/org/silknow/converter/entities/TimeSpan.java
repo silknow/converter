@@ -44,14 +44,14 @@ public class TimeSpan extends Entity {
   private static final String CENTURY_PART_IT = "(?i)(?:(prim|second|terz|ultim)[oa]) (quarto|metà)(?: del)?";
   private static final String CENTURY_PART_ES = "(?i)([1234][ºª]|pr?imera?|segund[oa]|segon|tercer|último?) (cuarto|quart|mitad|meitat|tercio|1/3)(?: del)?";
   private static final String CENTURY_PART_FR = "(?i)(1er|[234]e) (quart|moitié) (.+)";
-  private static final Pattern CENTURY_PART_EN_PATTERN = Pattern.compile(CENTURY_PART_EN+" (.+)");
-  private static final Pattern CENTURY_PART_IT_PATTERN = Pattern.compile(CENTURY_PART_IT+" (.+)");
-  private static final Pattern CENTURY_PART_ES_PATTERN = Pattern.compile(CENTURY_PART_ES+" (.+)");
-  private static final Pattern CENTURY_PART_FR_PATTERN = Pattern.compile(CENTURY_PART_FR+" (.+)");
+  private static final Pattern CENTURY_PART_EN_PATTERN = Pattern.compile(CENTURY_PART_EN + " (.+)");
+  private static final Pattern CENTURY_PART_IT_PATTERN = Pattern.compile(CENTURY_PART_IT + " (.+)");
+  private static final Pattern CENTURY_PART_ES_PATTERN = Pattern.compile(CENTURY_PART_ES + " (.+)");
+  private static final Pattern CENTURY_PART_FR_PATTERN = Pattern.compile(CENTURY_PART_FR + " (.+)");
   private static final Pattern[] CENTURY_PART_PATTERNS = {CENTURY_PART_EN_PATTERN, CENTURY_PART_ES_PATTERN, CENTURY_PART_IT_PATTERN, CENTURY_PART_FR_PATTERN};
-  private static final String EARLY_REGEX = "(?i)(early|(?:p[ri]+ncipi|inici?)o(?:s)?(?: del)?)";
+  private static final String EARLY_REGEX = "(?i)(inizio?|early|(?:p[ri]+ncipi|inici?)o(?:s)?(?: del)?)";
   private static final String LATE_REGEX = "(?i)(?:very )?(late|fin(?:e|ale?s))";
-  private static final String MID_REGEX = "(?i)(mid-|metà del|second or third quarter of|to mid-twentieth century|(?:a )?m+ediados(?: del)?|a mitjan)";
+  private static final String MID_REGEX = "(?i)(mid[- ]|metà del|second or third quarter of|to mid-twentieth century|(?:a )?m+ediados(?: del)?|a mitjan)";
   private static final Pattern EARLY_PATTERN = Pattern.compile(EARLY_REGEX);
   private static final Pattern LATE_PATTERN = Pattern.compile(LATE_REGEX);
   private static final Pattern MID_PATTERN = Pattern.compile(MID_REGEX);
@@ -59,6 +59,11 @@ public class TimeSpan extends Entity {
 
   public static final String[] CENTURY_PART_REGEXES = {CENTURY_PART_EN, CENTURY_PART_ES, CENTURY_PART_IT, CENTURY_PART_FR, EARLY_REGEX, LATE_REGEX, MID_REGEX};
 
+  public static final String DATE_ES_REGEX = "(?i)(?<!\\d)(\\d{1,2})?\\s?(?:de |-)?(ene(?:ro)?|feb(?:r|re+ro?)?|mar(?:zo)?|abr(?:il)?|may(?:o)?|jun(?:io)?|jul(?:iol?)?|ago(?:sto)?|se[pt](?:tiembre)?|oct(?:ubre)?|nov(?:i?embre)?|dic(?:iembre)?)\\.?\\s?(?:de |-)?(\\d{2,4})";
+  public static final Pattern DATE_ES_PATTERN = Pattern.compile(DATE_ES_REGEX);
+  private static final String[] MONTHS_ES = {"enero", "febrero", "marzo", "abril", "mayo",
+    "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+  };
 
   public static final DateFormat ISO_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
   static final DateFormat SLASH_LITTLE_ENDIAN = new SimpleDateFormat("dd/MM/yyyy");
@@ -112,7 +117,6 @@ public class TimeSpan extends Entity {
     this.model = centralModel;
 
     // Parsing the date
-    System.out.println(date);
     parseDate(date);
     if (this.fromVocabulary)
       return;
@@ -131,8 +135,6 @@ public class TimeSpan extends Entity {
 
     if (this.startYear == null) return;
 
-    System.out.println(startYear);
-    System.out.println(endYear);
     Resource startInstant = makeInstant(startDate, startType);
     Resource endInstant = makeInstant(endDate, endType);
 
@@ -149,7 +151,6 @@ public class TimeSpan extends Entity {
     // WARNING: in cases like 1691-1721, the TS is linked both to 17th and 18th century
     // (even if formally not 100% correct)
   }
-
 
 
   public TimeSpan(Date date) {
@@ -248,6 +249,40 @@ public class TimeSpan extends Entity {
       }
       return;
     }
+
+    // case "22 abril 1985"
+    Matcher matcherx = DATE_ES_PATTERN.matcher(date);
+    while (matcherx.find()) {
+      String dd = matcherx.group(1);
+      String mm = matcherx.group(2);
+      String yy = matcherx.group(3);
+      int m;
+      for (m = 0; m < MONTHS_ES.length; m++) {
+        if (mm.substring(0, 3).equalsIgnoreCase(MONTHS_ES[m].substring(0, 3)))
+          break;
+      }
+      m++;
+      // workaround SET
+      if (mm.equalsIgnoreCase("set")) m = 9;
+
+      if (yy.length() == 2) yy = "19" + yy;
+
+      XSDDatatype type = XSDDatatype.XSDgMonth;
+      String formatted = yy + "-" + String.format("%02d", m);
+      if (!StringUtils.isBlank(dd)) {
+        type = XSDDatatype.XSDdate;
+        formatted += "-" + String.format("%02d", parseInt(dd));
+      }
+      if (startDate == null) {
+        startDate = formatted;
+        startYear = yy;
+        startType = type;
+      }
+      endDate = formatted;
+      endYear = yy;
+      endType = type;
+    }
+    if (startDate != null) return;
 
     // case 'early 18th century'
     double it = -1;
