@@ -2,10 +2,14 @@ package org.silknow.converter.entities;
 
 import org.apache.jena.rdf.model.ResIterator;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.vocabulary.RDFS;
 import org.apache.jena.vocabulary.SKOS;
 import org.doremus.string2vocabulary.VocabularyManager;
 import org.silknow.converter.commons.StopWordException;
 import org.silknow.converter.ontologies.CIDOC;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Production extends Entity {
   private static final String CIRCA_REGEX = "(?i)(circa|about|(proba|possi)bly|ca?\\.|\\[ca])";
@@ -13,6 +17,11 @@ public class Production extends Entity {
 
   private int tsCount;
   private boolean timeUnconfirmed;
+
+  List<Place> placeList = new ArrayList<>();
+  public List<Place> getPlaces() {
+    return this.placeList;
+  }
 
   public Production(String id) {
     super(id);
@@ -110,7 +119,11 @@ public class Production extends Entity {
 
   public void addPlace(Place place) {
     this.addProperty(CIDOC.P8_took_place_on_or_within, place);
+    this.placeList.add(place);
   }
+
+
+
 
   public void addTechnique(String technique, String lang) {
     Resource result = VocabularyManager.searchInCategory(technique, null, "thesaurus", false);
@@ -149,5 +162,7 @@ public class Production extends Entity {
   public void addUsedObject(String used_object, String lang) {
     this.addProperty(CIDOC.P125_used_object_of_type, used_object, lang);
   }
+
+
 
 }

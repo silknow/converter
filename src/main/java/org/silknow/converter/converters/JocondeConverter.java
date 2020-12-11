@@ -62,10 +62,10 @@ public class JocondeConverter extends Converter {
             .forEach(doc::addEditor);
 
     ManMade_Object obj = new ManMade_Object(id);
-    obj.addTitle(s.get("TITR"));
+    obj.addTitle(s.get("TITR"), mainLang);
 
 
-
+/*
     if ((!s.getMulti("TITR").findAny().isPresent())) {
       //System.out.println("title gets constructed");
 
@@ -77,9 +77,9 @@ public class JocondeConverter extends Converter {
         .stream()
         .filter(Objects::nonNull)
         .collect(Collectors.joining(", "));
-      obj.addConstructedTitle(constrlabel);
+      obj.addConstructedTitle(constrlabel, mainLang);
     }
-
+*/
 
     s.getMulti("DOMN")
             .forEach(x -> linkToRecord(obj.addClassification(x, "Domaine", "fr")));

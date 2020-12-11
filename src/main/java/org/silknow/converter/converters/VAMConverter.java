@@ -58,6 +58,7 @@ public class VAMConverter extends Converter {
     linkToRecord(obj.addComplexIdentifier(regNum, "museum_number"));
     //obj.addTitle(s.getMulti("object").findFirst().orElse(null));
 
+    /*
     final List<String> terms = new ArrayList<String>();
     terms.add((s.getMulti("object").findFirst().orElse(null)));
     terms.add((s.getMulti("date_text").findFirst().orElse(null)));
@@ -66,8 +67,8 @@ public class VAMConverter extends Converter {
       .stream()
       .filter(Objects::nonNull)
       .collect(Collectors.joining(", "));
-    obj.addConstructedTitle(constrlabel);
-
+    obj.addConstructedTitle(constrlabel, mainLang);
+*/
 
 
     //s.getMulti("object")

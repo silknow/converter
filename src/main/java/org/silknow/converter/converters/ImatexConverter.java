@@ -82,6 +82,7 @@ public class ImatexConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Register number"));
 
+    /*
     final List<String> terms = new ArrayList<String>();
     //terms.add((s.getMulti("CLASSIFICACIÓ GENÈRICA*").findFirst().orElse(null)));
     //terms.add((s.getMulti("CRONOLOGIA*").filter(x -> !Arrays.asList("... unconfirmed", "... sin confirmar", "... sense confirmar").contains(x)).findFirst().orElse(null)));
@@ -93,8 +94,8 @@ public class ImatexConverter extends Converter {
       .stream()
       .filter(Objects::nonNull)
       .collect(Collectors.joining(", "));
-    obj.addConstructedTitle(constrlabel);
-
+    obj.addConstructedTitle(constrlabel, mainLang);
+*/
 
 
     s.getImages().map(Image::fromCrawledJSON)
@@ -111,16 +112,16 @@ public class ImatexConverter extends Converter {
     s.getMulti("ORIGEN*").forEach(prod::addPlace);
     s.getMulti("TÈCNICA*").forEach(technique -> prod.addTechnique(technique, mainLang));
     s.getMulti("CLASSIFICACIÓ GENÈRICA*")
-            .map(x -> obj.addClassification(x, "CLASSIFICACIÓ GENÈRICA", "es"))
+            .map(x -> obj.addClassification(x, "CLASSIFICACIÓ GENÈRICA", mainLang))
             .forEach(this::linkToRecord);
     s.getMulti("DENOMINACIÓ*")
-            .map(x -> obj.addClassification(x, "DENOMINACIÓ", "es"))
+            .map(x -> obj.addClassification(x, "DENOMINACIÓ", mainLang))
             .forEach(this::linkToRecord);
     s.getMulti("DECORACIÓ*").forEach(subject -> obj.addSubject(subject, mainLang));
 
     //s.getMulti("DESTÍ DÚS*").forEach(obj::addIntention);
     s.getMulti("DESTÍ DÚS*")
-            .map(x -> obj.addClassification(x, "DESTÍ DÚS", "es"))
+            .map(x -> obj.addClassification(x, "DESTÍ DÚS", mainLang))
             .forEach(this::linkToRecord);
 
 

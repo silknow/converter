@@ -61,7 +61,7 @@ public class UNIPAConverter extends Converter {
     //s.getMulti("title").forEach(obj::addTitle);
 
 
-
+/*
     final List<String> terms = new ArrayList<String>();
     terms.add((s.getMulti("Description").findFirst().orElse(null)));
     terms.add((s.getMulti("Time chronology").findFirst().orElse(null)));
@@ -78,8 +78,8 @@ public class UNIPAConverter extends Converter {
       .stream()
       .filter(Objects::nonNull)
       .collect(Collectors.joining(", "));
-    obj.addConstructedTitle(constrlabel);
-
+    obj.addConstructedTitle(constrlabel, mainLang);
+*/
 
 
 

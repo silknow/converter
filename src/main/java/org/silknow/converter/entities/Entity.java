@@ -16,6 +16,9 @@ import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.CRMsci;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Entity {
   String className;
   protected String source;
@@ -28,6 +31,7 @@ public abstract class Entity {
   private int observationCount;
   private int typeAssignmentCount;
   private Literal r;
+  List<TimeSpan> timeSpanList = new ArrayList<>();
 
   Entity() {
     // do nothing, enables customisation for child class
@@ -39,6 +43,8 @@ public abstract class Entity {
     this.observationCount = 0;
     this.typeAssignmentCount = 0;
   }
+
+
 
   Entity(String id) {
     this();
@@ -164,6 +170,7 @@ public abstract class Entity {
     if (timeSpan == null) return;
     if (timeSpan.hasNullUri()) timeSpan.setUri(this.uri + "/time");
     this.addProperty(CIDOC.P4_has_time_span, timeSpan.asResource());
+    timeSpanList.add(timeSpan);
     // note: the model is not added here, but saved in a separate file called timespans.ttl
   }
 
@@ -266,4 +273,11 @@ public abstract class Entity {
   public String getId() {
     return this.id;
   }
+
+  public List<TimeSpan> getTimeSpans() {
+    return this.timeSpanList;
+  }
+
+
 }
+

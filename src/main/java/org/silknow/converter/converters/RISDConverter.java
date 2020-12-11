@@ -63,6 +63,7 @@ public class RISDConverter extends Converter {
     linkToRecord(obj.addComplexIdentifier(id, "Object Number"));
     //obj.addTitle(s.getMulti("Title").findFirst().orElse(null));
 
+    /*
     final List<String> terms = new ArrayList<String>();
     terms.add((s.getMulti("Title").findFirst().orElse(null)));
     terms.add((s.getMulti("Year").findFirst().orElse(null)));
@@ -71,8 +72,8 @@ public class RISDConverter extends Converter {
       .stream()
       .filter(Objects::nonNull)
       .collect(Collectors.joining(", "));
-    obj.addConstructedTitle(constrlabel);
-
+    obj.addConstructedTitle(constrlabel, mainLang);
+*/
 
 
 

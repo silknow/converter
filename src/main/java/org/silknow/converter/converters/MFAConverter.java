@@ -60,6 +60,7 @@ public class MFAConverter extends Converter {
             .map(x -> obj.addClassification(x, "titleField", mainLang))
             .forEach(this::linkToRecord);
 
+    /*
     final List<String> terms = new ArrayList<String>();
     terms.add((s.getMulti("titleField").findFirst().orElse(null)));
     terms.add((s.getMulti("displayDateField").findFirst().orElse(null)));
@@ -68,8 +69,11 @@ public class MFAConverter extends Converter {
       .stream()
       .filter(Objects::nonNull)
       .collect(Collectors.joining(", "));
-    obj.addConstructedTitle(constrlabel);
+    obj.addConstructedTitle(constrlabel, mainLang);
+/*
 
+
+     */
     s.getImages().map(Image::fromCrawledJSON)
             .peek(image -> image.addInternalUrl("mfa-boston"))
             .peek(obj::add)
