@@ -63,7 +63,7 @@ public class METConverter extends Converter {
             .map(x -> obj.addClassification(x, "Title", mainLang))
             .forEach(this::linkToRecord);
 
-
+/*
     final List<String> terms = new ArrayList<String>();
     terms.add((s.getMulti("title").findFirst().orElse(null)));
     terms.add((s.getMulti("Date:").findFirst().orElse(null)));
@@ -72,8 +72,8 @@ public class METConverter extends Converter {
       .stream()
       .filter(Objects::nonNull)
       .collect(Collectors.joining(", "));
-    obj.addConstructedTitle(constrlabel);
-
+    obj.addConstructedTitle(constrlabel, mainLang);
+*/
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(image -> image.addInternalUrl("met-museum"))

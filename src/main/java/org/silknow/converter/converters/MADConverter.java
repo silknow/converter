@@ -57,6 +57,7 @@ public class MADConverter extends Converter {
     //obj.addTitle(s.getMulti("title").findFirst().orElse(null));
 
 
+    /*
     final List<String> terms = new ArrayList<String>();
     terms.add((s.getMulti("Textile:").findFirst().orElse(null)));
     terms.add((s.getMulti("Création:").map( Object::toString ).collect( Collectors.joining(", "))));
@@ -64,8 +65,8 @@ public class MADConverter extends Converter {
       .stream()
       .filter(Objects::nonNull)
       .collect(Collectors.joining(", "));
-    obj.addConstructedTitle(constrlabel);
-
+    obj.addConstructedTitle(constrlabel, mainLang);
+*/
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(image -> image.addInternalUrl("les-arts-decoratifs"))

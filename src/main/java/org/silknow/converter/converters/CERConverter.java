@@ -55,21 +55,10 @@ public class CERConverter extends Converter {
     id = regNum;
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Inventario"));
-    obj.addTitle(s.getMulti("Título").findFirst().orElse(null));
+    obj.addTitle(s.getMulti("Título").findFirst().orElse(null), mainLang);
 
 
-    if ((!s.getMulti("Título").findAny().isPresent())) {
 
-      final List<String> terms = new ArrayList<String>();
-      terms.add((s.getMulti("Objeto/Documento").findFirst().orElse(null)));
-      terms.add((s.getMulti("Datación").findFirst().orElse(null)));
-      terms.add((s.getMulti("Lugar de Producción/Ceca").findFirst().orElse(null)));
-      final String constrlabel = terms
-        .stream()
-        .filter(Objects::nonNull)
-        .collect(Collectors.joining(", "));
-      obj.addConstructedTitle(constrlabel);
-    }
 
 
 
@@ -83,6 +72,22 @@ public class CERConverter extends Converter {
     prod.add(obj);
     prod.addActivity(s.getMulti("Autor").findFirst().orElse(null), s.getMulti("Uso/función").findFirst().orElse(null));
 
+/*
+    if ((!s.getMulti("Título").findAny().isPresent())) {
+
+      final List<String> terms = new ArrayList<String>();
+      terms.add((s.getMulti("Objeto/Documento").findFirst().orElse(null)));
+      //terms.add((s.getMulti("Datación").findFirst().orElse(null)));
+      terms.add((s.getMulti("Lugar de Producción/Ceca").findFirst().orElse(null)));
+      //terms.add((prod.getTimeSpans().toString()));
+      terms.add(prod.getPlaces().stream().map(place -> place.getLabel()).collect(Collectors.joining(", ")));
+      final String constrlabel = terms
+        .stream()
+        .filter(Objects::nonNull)
+        .collect(Collectors.joining(", "));
+      obj.addConstructedTitle(constrlabel, mainLang);
+    }
+*/
 
 
     s.getMulti("Iconografia").forEach(subject -> obj.addSubject(subject, mainLang));

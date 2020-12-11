@@ -125,13 +125,13 @@ public class ManMade_Object extends Entity {
             .addProperty(CIDOC.P40_observed_dimension, h.asResource());
   }
 
-  public void addTitle(String title) {
-    this.addProperty(RDFS.label, title)
-            .addProperty(CIDOC.P102_has_title, title);
+  public void addTitle(String title, String lang) {
+    this.addProperty(RDFS.label, title, lang)
+            .addProperty(CIDOC.P102_has_title, title, lang);
   }
 
-  public void addConstructedTitle(String title) {
-    this.addProperty(RDFS.label, title);
+  public void addConstructedTitle(String title, String lang) {
+    this.addProperty(RDFS.label, title, lang);
   }
 
   public Resource addInfo(String section, String text, String lang) {

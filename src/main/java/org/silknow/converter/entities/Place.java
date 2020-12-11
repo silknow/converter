@@ -11,15 +11,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Place extends Entity {
   private static final List<String> STOPWORDS = Arrays.asList(
           "desconocido", "unknown", "desconegut", "ignoto", "about", "probably");
   private static HashMap<String, String> DEMONYM = null;
+
+
 
   public Place(String name) throws StopWordException {
     super();
@@ -70,6 +69,7 @@ public class Place extends Entity {
     } else {
       this.setUri(ConstructURI.build(this.className, name));
       this.addProperty(RDFS.label, name).addProperty(CIDOC.P87_is_identified_by, name);
+
     }
 
     this.setClass(CIDOC.E53_Place);
@@ -94,4 +94,10 @@ public class Place extends Entity {
       e.printStackTrace();
     }
   }
+
+  public String getLabel() {
+    return this.resource.getProperty(RDFS.label).getObject().toString();
+  }
+
+
 }

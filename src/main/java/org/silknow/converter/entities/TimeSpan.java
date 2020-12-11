@@ -147,6 +147,8 @@ public class TimeSpan extends Entity {
     // (even if formally not 100% correct)
   }
 
+
+
   public TimeSpan(Date date) {
     this();
     this.model = centralModel;
@@ -388,6 +390,10 @@ public class TimeSpan extends Entity {
   static Date dateFromString(String value, @NotNull DateFormat format) throws ParseException {
     format.setTimeZone(UCT);
     return format.parse(value);
+  }
+
+  public String toLabel() {
+    return this.resource.getProperty(RDFS.label).getObject().toString();
   }
 
 }

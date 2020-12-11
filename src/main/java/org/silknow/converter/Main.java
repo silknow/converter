@@ -58,6 +58,8 @@ public class Main implements Runnable {
     CommandLine.run(new Main(), args);
   }
 
+
+
   @Override
   public void run() {
     System.setProperty(org.slf4j.impl.SimpleLogger.DEFAULT_LOG_LEVEL_KEY, this.logLevel);
@@ -135,9 +137,10 @@ public class Main implements Runnable {
     if (folder.isDirectory()) convertFolder(folder, converter);
     else if (folder.isFile()) convertFile(folder, converter);
 
-    File timestampOut = Paths.get(outputFolder.getAbsolutePath(), "timestamps.ttl").toFile();
+    Paths.get(outputFolder.getParentFile().getAbsolutePath() + "/timespan/").toFile().mkdirs();
+    File timespanOut = Paths.get(outputFolder.getParentFile().getAbsolutePath(),"/timespan/"+source+"timespans.ttl").toFile();
     try {
-      writeTtl(TimeSpan.centralModel, timestampOut);
+      writeTtl(TimeSpan.centralModel, timespanOut);
     } catch (IOException e) {
       e.printStackTrace();
     }

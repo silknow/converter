@@ -86,14 +86,10 @@ public class GarinConverter extends Converter {
     LegalBody GARIN = new LegalBody("GARIN");
 
     ManMade_Object obj = new ManMade_Object(id);
-    obj.addTitle(s.get("Denominación Principal"));
+    obj.addTitle(s.get("Denominación Principal"), mainLang);
 
-    if ((!s.getMulti("Denominación Principal").findAny().isPresent())) {
-      obj.addConstructedTitle((s.getMulti("Tipología").findFirst().orElse(""))+", "+
-        (s.get("Época"))+", "+
-        "Valencia");
-    }
 
+/*
     if ((!s.getMulti("Denominación Principal").findAny().isPresent())) {
 
       final List<String> terms = new ArrayList<String>();
@@ -104,12 +100,14 @@ public class GarinConverter extends Converter {
         .stream()
         .filter(Objects::nonNull)
         .collect(Collectors.joining(", "));
-      obj.addConstructedTitle(constrlabel);
+      obj.addConstructedTitle(constrlabel, mainLang);
     }
+
+ */
 
 
     linkToRecord(obj.addComplexIdentifier(id, "Register number", owner));
-    linkToRecord(obj.addClassification(s.get("Objecto"), "Objecto", "es", GARIN));
+    linkToRecord(obj.addClassification(s.get("Objecto"), "Objecto", mainLang, GARIN));
     linkToRecord(obj.addObservation(s.get("Descripción"), "Descripción", mainLang));
     linkToRecord(obj.addObservation(s.get("Descripción técnica"), "Descripción técnica", mainLang));
 
