@@ -40,16 +40,16 @@ public class TimeSpan extends Entity {
   private static final String CENTURY_SPAN = "(\\d{1,2})th(?: century)?\\s*(?:[-–=/]|to|or)\\s*(\\d{1,2})th century";
   private static final Pattern CENTURY_SPAN_PATTERN = Pattern.compile(CENTURY_SPAN);
 
-  private static final String CENTURY_PART_EN = "(?i)((?:fir|1)st|(?:2|seco)nd|(?:3|thi)rd|fourth|last) (quarter|half),? (?:of(?: the)? )?";
-  private static final String CENTURY_PART_IT = "(?i)(?:(prim|second|terz|ultim)[oa]) (quarto|metà) (?:del )?";
-  private static final String CENTURY_PART_ES = "(?i)([1234][ºª]|primera?|segund[oa]|tercer|último) (cuarto|mitad|tercio|1/3) (?:del )?";
+  private static final String CENTURY_PART_EN = "(?i)((?:fir|1)st|(?:2|seco)nd|(?:3|thi)rd|fourth|last) (quarter|half|third),?(?: of(?: the)?)?";
+  private static final String CENTURY_PART_IT = "(?i)(?:(prim|second|terz|ultim)[oa]) (quarto|metà)(?: del)?";
+  private static final String CENTURY_PART_ES = "(?i)([1234][ºª]|pr?imera?|segund[oa]|segon|tercer|último?) (cuarto|quart|mitad|meitat|tercio|1/3)(?: del)?";
   private static final String CENTURY_PART_FR = "(?i)(1er|[234]e) (quart|moitié) (.+)";
-  private static final Pattern CENTURY_PART_EN_PATTERN = Pattern.compile(CENTURY_PART_EN+"(.+)");
-  private static final Pattern CENTURY_PART_IT_PATTERN = Pattern.compile(CENTURY_PART_IT+"(.+)");
-  private static final Pattern CENTURY_PART_ES_PATTERN = Pattern.compile(CENTURY_PART_ES+"(.+)");
-  private static final Pattern CENTURY_PART_FR_PATTERN = Pattern.compile(CENTURY_PART_FR+"(.+)");
+  private static final Pattern CENTURY_PART_EN_PATTERN = Pattern.compile(CENTURY_PART_EN+" (.+)");
+  private static final Pattern CENTURY_PART_IT_PATTERN = Pattern.compile(CENTURY_PART_IT+" (.+)");
+  private static final Pattern CENTURY_PART_ES_PATTERN = Pattern.compile(CENTURY_PART_ES+" (.+)");
+  private static final Pattern CENTURY_PART_FR_PATTERN = Pattern.compile(CENTURY_PART_FR+" (.+)");
   private static final Pattern[] CENTURY_PART_PATTERNS = {CENTURY_PART_EN_PATTERN, CENTURY_PART_ES_PATTERN, CENTURY_PART_IT_PATTERN, CENTURY_PART_FR_PATTERN};
-  private static final String EARLY_REGEX = "(?i)(early|(?:p[ri]+ncipi|inici?)o(?:s| del))";
+  private static final String EARLY_REGEX = "(?i)(early|(?:p[ri]+ncipi|inici?)o(?:s)?(?: del)?)";
   private static final String LATE_REGEX = "(?i)(?:very )?(late|fin(?:e|ale?s))";
   private static final String MID_REGEX = "(?i)(mid-|metà del|second or third quarter of|to mid-twentieth century|(?:a )?m+ediados(?: del)?|a mitjan)";
   private static final Pattern EARLY_PATTERN = Pattern.compile(EARLY_REGEX);
@@ -287,7 +287,7 @@ public class TimeSpan extends Entity {
         return;
       }
       span = 50; // half century
-      if (partString.equals("tercio")) {
+      if (partString.matches("(third|tercio|1/3)")) {
         span = 33.3;
         if (it == -1) it = 3;
       }
@@ -365,7 +365,7 @@ public class TimeSpan extends Entity {
     ordinal = ordinal.toLowerCase();
     if (ordinal.equals("first") || ordinal.startsWith("prim"))
       return 1;
-    if (ordinal.matches("se(co|gu)nd[oa]?"))
+    if (ordinal.matches("(se(co|gu)nd[oa]?|segon)"))
       return 2;
     if (ordinal.matches("(third|terz|tercer)"))
       return 3;

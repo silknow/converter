@@ -9190,7 +9190,7 @@ aat_rev:5004061737 prov:used aat:300404552 .
 aat_rev:5004061732 prov:used aat:300404552 .
 
 aat:300404506 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
-	rdfs:label "fourteenth century (dates CE)"@en , "century, fourteenth (dates CE)"@en , "14th century (dates CE)"@en , "14th-century (dates CE)"@en ;
+	rdfs:label "fourteenth century (dates CE)"@en , "century, fourteenth (dates CE)"@en , "14th century (dates CE)"@en , "14th-century (dates CE)"@en, "siglo 14"@es, "segle 14"@ca ;
 	rdfs:seeAlso <http://www.getty.edu/vow/AATFullDisplay?find=&logic=AND&note=&subjectid=300404506> ;
 	dct:created "2016-03-15T16:18:42"^^xsd:dateTime ;
 	dct:modified "2016-03-15T16:19:56"^^xsd:dateTime ;
@@ -9207,7 +9207,7 @@ aat:300404506 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	skosxl:prefLabel aat_term:1000644155-en ;
 	skos:prefLabel "fourteenth century (dates CE)"@en ;
 	skosxl:altLabel aat_term:1000644156-en , aat_term:1000644157-en , aat_term:1000644158-en ;
-	skos:altLabel "century, fourteenth (dates CE)"@en , "14th century (dates CE)"@en , "14th-century (dates CE)"@en ;
+	skos:altLabel "century, fourteenth (dates CE)"@en , "14th century (dates CE)"@en , "14th-century (dates CE)"@en, "siglo 14"@es, "segle 14"@ca ;
 	gvp:broaderGeneric aat:300404464 ;
 	gvp:broaderPreferred aat:300404464 ;
 	gvp:broaderNonConcept aat:300404464 ;
@@ -9825,7 +9825,7 @@ aat_rev:5004060625 prov:used aat:300404495 .
 aat_rev:5004060704 prov:used aat:300404495 .
 
 aat:300404505 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
-	rdfs:label "thirteenth century (dates CE)"@en , "century, thirteenth (dates CE)"@en , "13th century (dates CE)"@en , "13th-century (dates CE)"@en ;
+	rdfs:label "thirteenth century (dates CE)"@en , "century, thirteenth (dates CE)"@en , "13th century (dates CE)"@en , "13th-century (dates CE)"@en, "siglo 13"@es, "segle 13"@ca ;
 	rdfs:seeAlso <http://www.getty.edu/vow/AATFullDisplay?find=&logic=AND&note=&subjectid=300404505> ;
 	dct:created "2016-03-15T16:17:31"^^xsd:dateTime ;
 	dct:modified "2016-03-15T16:18:38"^^xsd:dateTime , "2016-03-15T16:18:25"^^xsd:dateTime ;
@@ -9842,7 +9842,7 @@ aat:300404505 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	skosxl:prefLabel aat_term:1000644151-en ;
 	skos:prefLabel "thirteenth century (dates CE)"@en ;
 	skosxl:altLabel aat_term:1000644152-en , aat_term:1000644153-en , aat_term:1000644154-en ;
-	skos:altLabel "century, thirteenth (dates CE)"@en , "13th century (dates CE)"@en , "13th-century (dates CE)"@en ;
+	skos:altLabel "century, thirteenth (dates CE)"@en , "13th century (dates CE)"@en , "13th-century (dates CE)"@en, "siglo 13"@es, "segle 13"@ca ;
 	gvp:broaderGeneric aat:300404464 ;
 	gvp:broaderPreferred aat:300404464 ;
 	gvp:broaderNonConcept aat:300404464 ;
@@ -9887,7 +9887,8 @@ aat_rev:5004060797 prov:used aat:300404505 .
 aat_rev:5004060802 prov:used aat:300404505 .
 
 aat:300404504 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
-	rdfs:label "twelfth century (dates CE)"@en , "century, twelfth (dates CE)"@en , "12th century (dates CE)"@en , "12th-century (dates CE)"@en ;
+	rdfs:label "twelfth century (dates CE)"@en , "century, twelfth (dates CE)"@en , "12th century (dates CE)"@en ,
+	"12th-century (dates CE)"@en, "siglo 12"@es, "segle 12"@ca;
 	rdfs:seeAlso <http://www.getty.edu/vow/AATFullDisplay?find=&logic=AND&note=&subjectid=300404504> ;
 	dct:created "2016-03-15T16:16:05"^^xsd:dateTime ;
 	dct:modified "2016-03-15T16:17:27"^^xsd:dateTime ;
@@ -9904,7 +9905,7 @@ aat:300404504 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	skosxl:prefLabel aat_term:1000644147-en ;
 	skos:prefLabel "twelfth century (dates CE)"@en ;
 	skosxl:altLabel aat_term:1000644148-en , aat_term:1000644149-en , aat_term:1000644150-en ;
-	skos:altLabel "century, twelfth (dates CE)"@en , "12th century (dates CE)"@en , "12th-century (dates CE)"@en ;
+	skos:altLabel "century, twelfth (dates CE)"@en , "12th century (dates CE)"@en , "12th-century (dates CE)"@en, "siglo 12"@es, "segle 12"@ca ;
 	gvp:broaderGeneric aat:300404464 ;
 	gvp:broaderPreferred aat:300404464 ;
 	gvp:broaderNonConcept aat:300404464 ;
