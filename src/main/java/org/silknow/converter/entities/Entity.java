@@ -31,7 +31,7 @@ public abstract class Entity {
   private int observationCount;
   private int typeAssignmentCount;
   private Literal r;
-  List<TimeSpan> timeSpanList = new ArrayList<>();
+  //List<TimeSpan> timeSpanList = new ArrayList<>();
 
   Entity() {
     // do nothing, enables customisation for child class
@@ -170,7 +170,7 @@ public abstract class Entity {
     if (timeSpan == null) return;
     if (timeSpan.hasNullUri()) timeSpan.setUri(this.uri + "/time");
     this.addProperty(CIDOC.P4_has_time_span, timeSpan.asResource());
-    timeSpanList.add(timeSpan);
+    // timeSpanList.add(timeSpan);
     // note: the model is not added here, but saved in a separate file called timespans.ttl
   }
 
@@ -274,9 +274,7 @@ public abstract class Entity {
     return this.id;
   }
 
-  public List<TimeSpan> getTimeSpans() {
-    return this.timeSpanList;
-  }
+  //public List<TimeSpan> getTimeSpans() {return this.timeSpanList;}
 
 
 }

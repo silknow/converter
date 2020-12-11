@@ -392,8 +392,6 @@ public class TimeSpan extends Entity {
     return format.parse(value);
   }
 
-  public String toLabel() {
-    return this.resource.getProperty(RDFS.label).getObject().toString();
-  }
+  //public String toLabel() {return this.resource.getProperty(RDFS.label).getObject().toString();}
 
 }

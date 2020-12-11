@@ -137,8 +137,8 @@ public class Main implements Runnable {
     if (folder.isDirectory()) convertFolder(folder, converter);
     else if (folder.isFile()) convertFile(folder, converter);
 
-    Paths.get(outputFolder.getParentFile().getAbsolutePath() + "/timespan/").toFile().mkdirs();
-    File timespanOut = Paths.get(outputFolder.getParentFile().getAbsolutePath(),"/timespan/"+source+"timespans.ttl").toFile();
+    Paths.get(outputFolder.getAbsolutePath() + "/timespan/").toFile().mkdirs();
+    File timespanOut = Paths.get(outputFolder.getAbsolutePath(),"/timespan/"+source+"timespans.ttl").toFile();
     try {
       writeTtl(TimeSpan.centralModel, timespanOut);
     } catch (IOException e) {

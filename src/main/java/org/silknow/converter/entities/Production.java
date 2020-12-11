@@ -19,10 +19,8 @@ public class Production extends Entity {
   private boolean timeUnconfirmed;
   private String timeModifier;
 
-  List<Place> placeList = new ArrayList<>();
-  public List<Place> getPlaces() {
-    return this.placeList;
-  }
+  //List<Place> placeList = new ArrayList<>();
+  //public List<Place> getPlaces() {return this.placeList;}
 
   public Production(String id) {
     super(id);
@@ -131,7 +129,7 @@ public class Production extends Entity {
 
   public void addPlace(Place place) {
     this.addProperty(CIDOC.P8_took_place_on_or_within, place);
-    this.placeList.add(place);
+    //this.placeList.add(place);
   }
 
 
