@@ -73,6 +73,7 @@ public class TimeSpan extends Entity {
   static {
     BidiMap<Integer, Resource> map = new DualHashBidiMap<>();
 
+    map.put(8, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404500"));
     map.put(9, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404501"));
     map.put(10, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404502"));
     map.put(11, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404503"));
