@@ -12,12 +12,18 @@ import org.apache.jena.rdf.model.ResourceFactory;
 import org.apache.jena.util.ResourceUtils;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
+import org.apache.jena.vocabulary.SKOSXL;
+import org.doremus.string2vocabulary.SKOSVocabulary;
 import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.Time;
+import org.apache.jena.vocabulary.SKOS;
+
+
+
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -131,9 +137,9 @@ public class TimeSpan extends Entity {
     String seed = date;
     if (this.startDate != null) {
       seed = this.startDate + "_" + this.endDate;
-      this.addProperty(RDFS.label, startDate+" - "+endDate);
+      this.addProperty(SKOS.prefLabel, startDate+" - "+endDate);
     } else
-      this.addProperty(RDFS.label, date);
+      this.addProperty(SKOS.prefLabel, date);
 
     this.setUri(ConstructURI.transparent(this.className, seed));
 
