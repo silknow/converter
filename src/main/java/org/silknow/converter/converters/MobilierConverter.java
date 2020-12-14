@@ -95,7 +95,7 @@ public class MobilierConverter extends Converter {
             .map(x -> obj.addClassification(x, "product_types", mainLang))
             .forEach(this::linkToRecord);
 
-    linkToRecord(obj.addMeasure(s.get("length_or_diameter"), s.get("height_or_thickness")));
+    linkToRecord(obj.addMeasure(s.getMulti("length_or_diameter").findFirst().orElse(""), s.getMulti("height_or_thickness").findFirst().orElse("")));
 
 
 

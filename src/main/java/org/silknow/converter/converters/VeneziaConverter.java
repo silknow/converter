@@ -43,7 +43,9 @@ public class VeneziaConverter extends Converter {
     filename = file.getName();
     String museumName = "Musei Civici Venezia";
 
-    String regNum = s.get("Numero inventario museo");
+
+    String regNum = s.getMulti("Numero inventario museo").findFirst().orElse(null);
+    if (regNum == null) regNum = s.getId();
     id = regNum;
 
     ManMade_Object obj = new ManMade_Object(regNum);
@@ -74,7 +76,7 @@ public class VeneziaConverter extends Converter {
     Production prod = new Production(regNum);
     prod.add(obj);
 
-    String time = s.get("Frazione di secolo")+" "+s.get("Scolo")+" "+s.get("Data inizio")+" "+s.get("Data fine");
+    String time = s.get("Data inizio")+" "+s.get("Data fine");
     prod.addTimeAppellation(time);
     s.getMulti("Denominazione").forEach(prod::addPlace);
 
@@ -85,7 +87,7 @@ public class VeneziaConverter extends Converter {
             .forEach(this::linkToRecord);
 
 
-        linkToRecord(obj.addMeasure(s.get("Altezza"), s.get("Larghezza")));
+      linkToRecord(obj.addMeasure(s.getMulti("Altezza").findFirst().orElse(""), s.getMulti("Larghezza").findFirst().orElse("")));
 
 
 

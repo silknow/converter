@@ -99,7 +99,7 @@ public class PMConverter extends Converter {
             .map(x -> obj.addClassification(x, "Classifications", mainLang))
             .forEach(this::linkToRecord);
 
-    linkToRecord(obj.addMeasure(s.get("Largeur.Œuvre"), s.get("Hauteur.Œuvre")));
+    linkToRecord(obj.addMeasure(s.getMulti("Largeur.Œuvre").findFirst().orElse(""), s.getMulti("Hauteur.Œuvre").findFirst().orElse("")));
 
 
 
