@@ -137,7 +137,9 @@ public class TimeSpan extends Entity {
     String seed = date;
     if (this.startDate != null) {
       seed = this.startDate + "_" + this.endDate;
-      this.addProperty(SKOS.prefLabel, startDate+" - "+endDate);
+      String label = startDate+" - "+endDate;
+      if (startDate.equals(endDate)) label = startDate;
+      this.addProperty(SKOS.prefLabel, label);
     } else
       this.addProperty(SKOS.prefLabel, date);
 
