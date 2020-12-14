@@ -9,5 +9,10 @@ tar -czf mad.tar.gz mad/
 tar -czf mfa.tar.gz mfa/
 tar -czf vam.tar.gz vam/
 tar -czf met.tar.gz met/ 
+tar -czf venezia.tar.gz venezia/
+tar -czf paris-musees.tar.gz paris-musees/
+tar -czf mobilier.tar.gz mobilier/
+tar -czf smithsonian.tar.gz smithsonian/
+tar -czf versailles.tar.gz versailles/
 
 

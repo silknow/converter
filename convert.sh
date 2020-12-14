@@ -12,5 +12,10 @@
     ./gradlew run --args="UNIPA '../crawler/data/unipa_new' -o ./output/unipa -g tschleider"
     ./gradlew run --args="CER '../crawler/data/ceres-mcu' -o ./output/cer -g tschleider"
     ./gradlew run --args="MTMAD '../crawler/data/mtmad' -o ./output/mtmad -g tschleider"
+    ./gradlew run --args="venezia '../crawler/data/venetian' -o ./output/venezia -g tschleider"
+    ./gradlew run --args="PM '../crawler/data/paris-musees' -o ./output/paris-musees -g tschleider"
+    ./gradlew run --args="mobil '../crawler/data/mobilier-international' -o ./output/mobilier -g tschleider"
+    ./gradlew run --args="smiths '../crawler/data/smithsonian' -o ./output/smithsonian -g tschleider"
+    ./gradlew run --args="versailles '../crawler/data/versailles' -o ./output/versailles -g tschleider"
 
 
