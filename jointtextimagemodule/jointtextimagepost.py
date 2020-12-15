@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-
+import os
+from urllib.parse import urlparse
 
 
 df = pd.read_csv('total.csv', low_memory=False)
@@ -44,8 +45,29 @@ df['material_category'] = np.select(conditions_mat, choices_mat)
 df['technique_category'] = df['technique_category'].replace('0', np.nan)
 df['material_category'] = df['material_category'].replace('0', np.nan)
 
+df['category_group'] = df['type_a_group']
 
-df = df.groupby(['obj'], as_index=False)['museum','deeplink','img','place_uri','place_country_code','text','time_uri','time_label','material_group','technique_group', 'technique_category','material_category','depict_group','type_a_group'].agg(lambda x: list(set(x)))
+df['museum'] = df['museum'].apply(lambda x: urlparse(x).path.rsplit("/", 1)[-1])
+df['technique_group'] = df['technique_group'].apply(lambda x: urlparse(x).path.rsplit("/", 1)[-1] if type(x) != float else x)
+df['depict_group'] = df['depict_group'].apply(lambda x: urlparse(x).path.rsplit("/", 1)[-1] if type(x) != float else x)
+df['category_group'] = df['category_group'].apply(lambda x: urlparse(x).path.rsplit("/", 1)[-1] if type(x) != float else x)
+df['material_group'] = df['material_group'].apply(lambda x: urlparse(x).path.rsplit("/", 1)[-1] if type(x) != float else x)
+
+df.groupby('museum')['material_group'].value_counts().to_csv('mat_counts.csv')
+df.groupby('museum')['material_group'].value_counts(normalize=True).to_csv('mat_proportion.csv')
+
+df.groupby('museum')['technique_group'].value_counts().to_csv('tec_counts.csv')
+df.groupby('museum')['technique_group'].value_counts(normalize=True).to_csv('tec_proportion.csv')
+
+df.groupby('museum')['depict_group'].value_counts().to_csv('dep_counts.csv')
+df.groupby('museum')['depict_group'].value_counts(normalize=True).to_csv('dep_proportion.csv')
+
+df.groupby('museum')['category_group'].value_counts().to_csv('category_counts.csv')
+df.groupby('museum')['category_group'].value_counts(normalize=True).to_csv('category_proportion.csv')
+
+
+
+df = df.groupby(['obj'], as_index=False)['museum','deeplink','img','place_uri','place_country_code','text','time_uri','time_label','material_group','technique_group', 'technique_category','material_category','depict_group','category_group'].agg(lambda x: list(set(x)))
 
 '''
 df['technique_category'] = df['technique_category'].astype(str).str.replace("nan,", "")
@@ -59,15 +81,29 @@ df['material_category'] = df['material_category'].astype(str).str.replace(" ", "
 '''
 
 #these three lines remove the material group "animal_fibre", if it has other material groups, too
-df['material_group'] = df['material_group'].astype(str).str.replace("'http://data.silknow.org/vocabulary/facet/animal_fibre',", "")
-df['material_group'] = df['material_group'].astype(str).str.replace(", 'http://data.silknow.org/vocabulary/facet/animal_fibre'", "")
-df['material_group'] = df['material_group'].astype(str).str.replace(", 'http://data.silknow.org/vocabulary/facet/animal_fibre',", ",")
+df['material_group'] = df['material_group'].astype(str).str.replace("'animal_fibre',", "")
+df['material_group'] = df['material_group'].astype(str).str.replace(", 'animal_fibre'", "")
+df['material_group'] = df['material_group'].astype(str).str.replace(", 'animal_fibre',", ",")
 
 
-df = df.reindex(columns=['obj','museum','text','img','deeplink','place_uri','place_country_code','time_uri','time_label','technique_group','technique_category','material_group','material_category','depict_group','type_a_group'])
+
+
+df = df.reindex(columns=['obj','museum','text','img','deeplink','place_uri','place_country_code','time_uri','time_label','technique_group','technique_category','material_group','material_category','depict_group','category_group'])
 df = df.sort_values(by=['museum'])
 
 #this line removes the category columns
 df = df.drop(columns=['technique_category', 'material_category'])
 
+
+df['museum'] = df['museum'].str[0]
+
 df.to_csv('total_post.csv')
+
+f = lambda x: x.to_csv(os.getcwd() + "/data_{}.csv".format(x.name.lower()), index=False)
+df.groupby('museum').apply(f)
+
+
+#count = 0
+#for i, x in df.groupby('museum'):
+#    count = count + 1
+#    x.to_csv(str(count)+"_data.csv", index=False)
