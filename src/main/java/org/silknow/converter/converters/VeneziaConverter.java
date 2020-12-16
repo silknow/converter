@@ -76,7 +76,7 @@ public class VeneziaConverter extends Converter {
     Production prod = new Production(regNum);
     prod.add(obj);
 
-    String time = s.get("Data inizio")+" "+s.get("Data fine");
+    String time = s.get("Data inizio")+"-"+s.get("Data fine");
     prod.addTimeAppellation(time);
     s.getMulti("Denominazione").forEach(prod::addPlace);
 

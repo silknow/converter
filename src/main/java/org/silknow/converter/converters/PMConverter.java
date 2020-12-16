@@ -49,18 +49,18 @@ public class PMConverter extends Converter {
     filename = file.getName();
     String museumName = "Paris Musées";
 
-    String regNum = s.get("entityId");
+    String regNum = s.get("fieldNumeroObjet");
     id = regNum;
 
     ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addComplexIdentifier(regNum, "entityId"));
+    linkToRecord(obj.addComplexIdentifier(regNum, "NumeroObjet"));
     obj.addTitle(s.getMulti("title").findFirst().orElse(null),mainLang);
     //obj.addTitle(s.getMulti("Autre Titre").findFirst().orElse(null),mainLang);
     s.getMulti("fieldOeuvreTypesObjet")
             .map(x -> obj.addClassification(x, "Type(s) d'objet(s)", mainLang))
             .forEach(this::linkToRecord);
 
- s.getMulti("Dénomination(s)")
+ s.getMulti("fieldDenominations")
             .map(x -> obj.addClassification(x, "Dénomination(s)", mainLang))
             .forEach(this::linkToRecord);
 
@@ -86,10 +86,15 @@ public class PMConverter extends Converter {
     Production prod = new Production(regNum);
     prod.add(obj);
 
-    s.getMulti("Dates").forEach(prod::addTimeAppellation);
-    s.getMulti("Lieu(x) d'exécution / réalisation").forEach(prod::addPlace);
+    String time = s.get("fieldDateProduction.startYear")+"-"+s.get("fieldDateProduction.endYear");
+    prod.addTimeAppellation(time);
+    s.getMulti("fieldDateProduction.century").forEach(prod::addTimeAppellation);
 
-    s.getMulti("Thèmes / Sujets / Lieux représentés").forEach(subject -> obj.addSubject(subject, mainLang));
+
+
+    s.getMulti("fieldOeuvreLieuxProductions").forEach(prod::addPlace);
+
+    s.getMulti("fieldSujetsConcernes").forEach(subject -> obj.addSubject(subject, mainLang));
     s.getMulti("Précision sujet représenté").forEach(subject -> obj.addSubject(subject, mainLang));
 
 
@@ -103,7 +108,7 @@ public class PMConverter extends Converter {
 
 
 
-    linkToRecord(obj.addObservation(s.get("Description iconographique"), "Description iconographique", mainLang));
+    linkToRecord(obj.addObservation(s.get("fieldOeuvreDescriptionIcono.value"), "Description iconographique", mainLang));
 
 
 
