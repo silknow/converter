@@ -78,6 +78,9 @@ public class VeneziaConverter extends Converter {
 
     String time = s.get("Data inizio")+"-"+s.get("Data fine");
     prod.addTimeAppellation(time);
+    String time2 = s.get("Frazione di secolo")+" "+s.get("Secolo");
+    prod.addTimeAppellation(time2);
+
     s.getMulti("Denominazione").forEach(prod::addPlace);
 
 
