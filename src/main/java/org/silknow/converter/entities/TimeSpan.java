@@ -48,7 +48,7 @@ public class TimeSpan extends Entity {
   private static final String CENTURY_PART_EN = "(?i)((?:fir|1)st|(?:2|seco)nd|(?:3|thi)rd|fourth|last) (quarter|half|third),?(?: of(?: the)?)?";
   private static final String CENTURY_PART_IT = "(?i)(?:(prim|second|terz|ultim)[oa]) (quarto|metà)(?: del)?";
   private static final String CENTURY_PART_ES = "(?i)([1234][ºª]|pr?i[mn]era?|segund[oa]|segon|tercer|último?) (cuarto|quart|mitad|meitat|tercio|1/3)(?: del)?";
-  private static final String CENTURY_PART_FR = "(?i)(1er|[234]e) (quart|moitié) (.+)";
+  private static final String CENTURY_PART_FR = "(?i)(1er|[234]e) (quart|moitié)";
   private static final Pattern CENTURY_PART_EN_PATTERN = Pattern.compile(CENTURY_PART_EN + " (.+)");
   private static final Pattern CENTURY_PART_IT_PATTERN = Pattern.compile(CENTURY_PART_IT + " (.+)");
   private static final Pattern CENTURY_PART_ES_PATTERN = Pattern.compile(CENTURY_PART_ES + " (.+)");
