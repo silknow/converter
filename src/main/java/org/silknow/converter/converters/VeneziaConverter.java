@@ -51,8 +51,8 @@ public class VeneziaConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Numero inventario museo"));
     s.getMulti("Definizione")
-            .map(x -> obj.addClassification(x, "Definizione", mainLang))
-            .forEach(this::linkToRecord);
+      .map(x -> obj.addClassification(x, "Definizione", mainLang))
+      .forEach(this::linkToRecord);
 
     /*
     final List<String> terms = new ArrayList<String>();
@@ -64,38 +64,34 @@ public class VeneziaConverter extends Converter {
       .filter(Objects::nonNull)
       .collect(Collectors.joining(", "));
     obj.addConstructedTitle(constrlabel, mainLang);
-/*
-
-
      */
+
     s.getImages().map(Image::fromCrawledJSON)
-            .peek(image -> image.addInternalUrl("venezia"))
-            .peek(obj::add)
-            .forEach(this::linkToRecord);
+      .peek(image -> image.addInternalUrl("venezia"))
+      .peek(obj::add)
+      .forEach(this::linkToRecord);
 
     Production prod = new Production(regNum);
     prod.add(obj);
 
-    String time = s.get("Data inizio")+"-"+s.get("Data fine");
-    prod.addTimeAppellation(time);
+    TimeSpan ts = TimeSpan.parseVenezia(s.get("Data inizio"), s.get("Data fine"), s.get("Frazione di secolo"), s.get("Secolo"));
+    prod.addTimeSpan(ts);
     s.getMulti("Denominazione").forEach(prod::addPlace);
 
 
     s.getMulti("Materia e tecnica").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("Classe percorso")
-            .map(x -> obj.addClassification(x, "Classe percorso", mainLang))
-            .forEach(this::linkToRecord);
+      .map(x -> obj.addClassification(x, "Classe percorso", mainLang))
+      .forEach(this::linkToRecord);
 
 
-      linkToRecord(obj.addMeasure(s.getMulti("Altezza").findFirst().orElse(""), s.getMulti("Larghezza").findFirst().orElse("")));
-
+    linkToRecord(obj.addMeasure(s.getMulti("Altezza").findFirst().orElse(""), s.getMulti("Larghezza").findFirst().orElse("")));
 
 
     linkToRecord(obj.addObservation(s.get("Indicazioni sull'oggetto"), "Indicazioni sull'oggetto", mainLang));
 
 
-    LegalBody legalbody = null;
-      legalbody = new LegalBody(s.get("Denominazione raccolta"));
+    LegalBody legalbody = new LegalBody(s.get("Denominazione raccolta"));
 
 
     Transfer transfer = new Transfer(regNum);

@@ -4,6 +4,7 @@ package org.silknow.converter;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.vocabulary.DC;
 import org.apache.jena.vocabulary.RDFS;
+import org.apache.jena.vocabulary.SKOS;
 import org.apache.jena.vocabulary.XSD;
 import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.NotNull;
@@ -207,6 +208,7 @@ public class Main implements Runnable {
     m.setNsPrefix("xsd", XSD.getURI());
     m.setNsPrefix("time", Time.getURI());
     m.setNsPrefix("schema", Schema.getURI());
+    m.setNsPrefix("skos", SKOS.getURI());
 //    m.setNsPrefix("dcterms", DCTerms.getURI());
 //    m.setNsPrefix("owl", OWL.getURI());
 //    m.setNsPrefix("foaf", FOAF.getURI());
