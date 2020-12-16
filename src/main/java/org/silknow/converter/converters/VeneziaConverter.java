@@ -74,16 +74,8 @@ public class VeneziaConverter extends Converter {
     Production prod = new Production(regNum);
     prod.add(obj);
 
-<<<<<<< HEAD
-    String time = s.get("Data inizio")+"-"+s.get("Data fine");
-    prod.addTimeAppellation(time);
-    String time2 = s.get("Frazione di secolo")+" "+s.get("Secolo");
-    prod.addTimeAppellation(time2);
-
-=======
     TimeSpan ts = TimeSpan.parseVenezia(s.get("Data inizio"), s.get("Data fine"), s.get("Frazione di secolo"), s.get("Secolo"));
     prod.addTimeSpan(ts);
->>>>>>> b140b6bdd71095acc26b79b4fb20ae0095e5b1c2
     s.getMulti("Denominazione").forEach(prod::addPlace);
 
 
