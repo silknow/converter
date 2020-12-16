@@ -37,7 +37,8 @@ dependencies {
             'org.geonames:geonames-ws-client:1.1.9',
             'javax.xml.bind:jaxb-api:2.3.0',
             'xml-apis:xml-apis:1.4.01',
-            'com.github.DOREMUS-ANR:string2vocabulary:0.6.0'
+            'com.github.DOREMUS-ANR:string2vocabulary:0.6.0',
+            'com.github.pasqLisena:RomanConverter:1.0.0'
     testImplementation 'junit:junit:4.12'
 }
 

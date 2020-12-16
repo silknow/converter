@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Production extends Entity {
-  private static final String CIRCA_REGEX = "(?i)(circa|around|about|(proba|possi)bly|ca?\\.|\\[ca])";
+  private static final String CIRCA_REGEX = "(?i)(circa|around|about|posiblemente|(proba|possi)bly|ca?\\.|\\[ca])";
   private static final String UNCONFIRMED_REGEX = "\\.\\.\\. (unconfirmed|(sin|sense) confirmar)";
 
   private int tsCount;
@@ -35,7 +35,8 @@ public class Production extends Entity {
     boolean timeApproximate = false;
 
     if (timeAppellation == null) return;
-    if (timeAppellation.matches("(?i)desconocid[oa]") ||
+    timeAppellation = timeAppellation.trim();
+    if (timeAppellation.matches("(?i)de[sc]+ono?cid[oa]") ||
       timeAppellation.equalsIgnoreCase("no") ||
       timeAppellation.matches("n\\.d\\.?"))
       return;
@@ -133,8 +134,6 @@ public class Production extends Entity {
   }
 
 
-
-
   public void addTechnique(String technique, String lang) {
     Resource result = VocabularyManager.searchInCategory(technique, null, "thesaurus", false);
     if (result != null) {
@@ -172,7 +171,6 @@ public class Production extends Entity {
   public void addUsedObject(String used_object, String lang) {
     this.addProperty(CIDOC.P125_used_object_of_type, used_object, lang);
   }
-
 
 
 }

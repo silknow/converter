@@ -1,5 +1,6 @@
 package org.silknow.converter.entities;
 
+import io.github.pasqlisena.RomanConverter;
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 import org.apache.commons.lang3.StringUtils;
@@ -12,19 +13,17 @@ import org.apache.jena.rdf.model.ResourceFactory;
 import org.apache.jena.util.ResourceUtils;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
-import org.apache.jena.vocabulary.SKOSXL;
-import org.doremus.string2vocabulary.SKOSVocabulary;
+import org.apache.jena.vocabulary.SKOS;
 import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.silknow.converter.commons.ConstructURI;
+import org.silknow.converter.converters.Converter;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.Time;
-import org.apache.jena.vocabulary.SKOS;
 
-
-
-
+import java.io.IOException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -48,16 +47,16 @@ public class TimeSpan extends Entity {
 
   private static final String CENTURY_PART_EN = "(?i)((?:fir|1)st|(?:2|seco)nd|(?:3|thi)rd|fourth|last) (quarter|half|third),?(?: of(?: the)?)?";
   private static final String CENTURY_PART_IT = "(?i)(?:(prim|second|terz|ultim)[oa]) (quarto|metà)(?: del)?";
-  private static final String CENTURY_PART_ES = "(?i)([1234][ºª]|pr?imera?|segund[oa]|segon|tercer|último?) (cuarto|quart|mitad|meitat|tercio|1/3)(?: del)?";
+  private static final String CENTURY_PART_ES = "(?i)([1234][ºª]|pr?i[mn]era?|segund[oa]|segon|tercer|último?) (cuarto|quart|mitad|meitat|tercio|1/3)(?: del)?";
   private static final String CENTURY_PART_FR = "(?i)(1er|[234]e) (quart|moitié) (.+)";
   private static final Pattern CENTURY_PART_EN_PATTERN = Pattern.compile(CENTURY_PART_EN + " (.+)");
   private static final Pattern CENTURY_PART_IT_PATTERN = Pattern.compile(CENTURY_PART_IT + " (.+)");
   private static final Pattern CENTURY_PART_ES_PATTERN = Pattern.compile(CENTURY_PART_ES + " (.+)");
   private static final Pattern CENTURY_PART_FR_PATTERN = Pattern.compile(CENTURY_PART_FR + " (.+)");
   private static final Pattern[] CENTURY_PART_PATTERNS = {CENTURY_PART_EN_PATTERN, CENTURY_PART_ES_PATTERN, CENTURY_PART_IT_PATTERN, CENTURY_PART_FR_PATTERN};
-  private static final String EARLY_REGEX = "(?i)(inizio?|early|(?:p[ri]+ncipi|inici?)o(?:s)?(?: del)?)";
+  private static final String EARLY_REGEX = "(?i)(inizio?|early|(?:p[ri]+n?cipi|inici?)o(?:s)?(?: del?)?)";
   private static final String LATE_REGEX = "(?i)(?:very )?(late|fin(?:e|ale?s))";
-  private static final String MID_REGEX = "(?i)(mid[- ]|metà del|second or third quarter of|to mid-twentieth century|(?:a )?m+ediados(?: del)?|a mitjan)";
+  private static final String MID_REGEX = "(?i)(mid[- ]|metà del|second or third quarter of|^mitad|to mid-twentieth century|(?:a )?m+ediados(?: del)?|a mitjan)";
   private static final Pattern EARLY_PATTERN = Pattern.compile(EARLY_REGEX);
   private static final Pattern LATE_PATTERN = Pattern.compile(LATE_REGEX);
   private static final Pattern MID_PATTERN = Pattern.compile(MID_REGEX);
@@ -65,11 +64,22 @@ public class TimeSpan extends Entity {
 
   public static final String[] CENTURY_PART_REGEXES = {CENTURY_PART_EN, CENTURY_PART_ES, CENTURY_PART_IT, CENTURY_PART_FR, EARLY_REGEX, LATE_REGEX, MID_REGEX};
 
-  public static final String DATE_ES_REGEX = "(?i)(?<!\\d)(\\d{1,2})?\\s?(?:de |-)?(ene(?:ro)?|feb(?:r|re+ro?)?|mar(?:zo)?|abr(?:il)?|may(?:o)?|jun(?:io)?|jul(?:iol?)?|ago(?:sto)?|se[pt](?:tiembre)?|oct(?:ubre)?|nov(?:i?embre)?|dic(?:iembre)?)\\.?\\s?(?:de |-)?(\\d{2,4})";
-  public static final Pattern DATE_ES_PATTERN = Pattern.compile(DATE_ES_REGEX);
+  private static final String DATE_ES_REGEX = "(?i)(?<!\\d)(\\d{1,2})?\\s?(?:de |-)?(ene(?:ro)?|feb(?:r|re+ro?)?|mar(?:[zc]o)?|abr(?:il)?|may(?:[o0])?|jun(?:io)?|jul(?:iol?)?|ago(?:sto)?|se[pt](?:tiembre)?|oct(?:ubre)?|nov(?:i?embre)?|dic(?:iembre)?)\\.?\\s?(?:de |-)?(\\d{2,4})";
+  private static final Pattern DATE_ES_PATTERN = Pattern.compile(DATE_ES_REGEX);
   private static final String[] MONTHS_ES = {"enero", "febrero", "marzo", "abril", "mayo",
     "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
   };
+  private static final String DATE_FR_REGEX = "(?i)(?<!\\d)(\\d{1,2})?\\s?(?:de |-)?(janvier|f[ée][vb]rier|mars|avril|mai|juin|juillet|août|septembre|octobre|november|décembre)\\.?\\s?(\\d{4})";
+  private static final Pattern DATE_FR_PATTERN = Pattern.compile(DATE_FR_REGEX);
+  private static final String[] MONTHS_FR = {"janvier", "fevrier", "mars", "avril", "mai",
+    "juin", "juillet", "août", "septembre", "octobre", "november", "décembre"
+  };
+
+  private static final String DECADES_ES_REGEX = "(?i)(?:década de lo|año)(s)? (\\d+|diez)(?:-(\\d+))?(?: del|,)?(?: sig(?:lo|\\.) ?([XIV]+))?( \\d+$)?";
+  private static final Pattern DECADES_ES_PATTERN = Pattern.compile(DECADES_ES_REGEX);
+
+  private static final String FULL_DATE_MULTI = "(3[01]|[012]?[0-9]|\\d{3,4})[-\\/ ·.](1[012]|0?\\d)[-\\/ ·.](\\d{2,4})";
+  private static final Pattern FULL_DATE_PATTERN = Pattern.compile(FULL_DATE_MULTI);
 
   public static final DateFormat ISO_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
   static final DateFormat SLASH_LITTLE_ENDIAN = new SimpleDateFormat("dd/MM/yyyy");
@@ -103,7 +113,6 @@ public class TimeSpan extends Entity {
   private String startDate, endDate;
   private String startTime;
   private XSDDatatype startType, endType;
-  private String label;
   private boolean fromVocabulary;
 
   public TimeSpan() {
@@ -135,14 +144,14 @@ public class TimeSpan extends Entity {
     this.addProperty(CIDOC.P78_is_identified_by, date);
 
     String seed = date;
+    String label = date;
     if (this.startDate != null) {
       seed = this.startDate + "_" + this.endDate;
-      String label = startDate+" - "+endDate;
-      if (startDate.equals(endDate)) label = startDate;
-      this.addProperty(SKOS.prefLabel, label);
-    } else
-      this.addProperty(SKOS.prefLabel, date);
+      label = startDate + " - " + endDate;
+      if (startDate.equals(endDate)) label = seed = startDate;
+    }
 
+    this.addProperty(SKOS.prefLabel, label);
     this.setUri(ConstructURI.transparent(this.className, seed));
 
     if (this.startYear == null) return;
@@ -187,6 +196,9 @@ public class TimeSpan extends Entity {
     date = date.replaceAll(" CE$", "");
     date = date.replaceAll(" CE-", "");
     date = date.replaceAll("dC\\.?$", "");
+    date = date.replace("soglo", "siglo");
+    date = date.replaceAll("s(ig)?\\. ?", "siglo ");
+    date = date.replaceAll(" ca$", " ");
 
     date = date.replace("'s", "s");
     date = date.replace("centuries", "century");
@@ -202,6 +214,9 @@ public class TimeSpan extends Entity {
       }
     }
     date = date.trim();
+
+    // cases: XX
+    if (RomanConverter.isRoman(date)) date += " secolo";
 
     // cases: 18th century, secolo XVI
     century = VocabularyManager.searchInCategory(date, null, "dates", false);
@@ -273,26 +288,32 @@ public class TimeSpan extends Entity {
         if (mm.substring(0, 3).equalsIgnoreCase(MONTHS_ES[m].substring(0, 3)))
           break;
       }
+      if (m > 12) continue;
       m++;
       // workaround SET
       if (mm.equalsIgnoreCase("set")) m = 9;
 
-      if (yy.length() == 2) yy = "19" + yy;
+      setDate(dd, m, yy);
+    }
+    if (startDate != null) return;
 
-      XSDDatatype type = XSDDatatype.XSDgMonth;
-      String formatted = yy + "-" + String.format("%02d", m);
-      if (!StringUtils.isBlank(dd)) {
-        type = XSDDatatype.XSDdate;
-        formatted += "-" + String.format("%02d", parseInt(dd));
+    // case "23 Fevrier 1934"
+    matcherx = DATE_FR_PATTERN.matcher(date);
+    while (matcherx.find()) {
+      String dd = matcherx.group(1);
+      String mm = matcherx.group(2);
+      String yy = matcherx.group(3);
+      int m;
+      for (m = 0; m < MONTHS_FR.length; m++) {
+        if (mm.substring(0, 3).equalsIgnoreCase(MONTHS_FR[m].substring(0, 3)))
+          break;
       }
-      if (startDate == null) {
-        startDate = formatted;
-        startYear = yy;
-        startType = type;
-      }
-      endDate = formatted;
-      endYear = yy;
-      endType = type;
+      if (m > 12) continue;
+      m++;
+      // workaround febrier
+      if (mm.equalsIgnoreCase("febrier")) m = 2;
+
+      setDate(dd, m, yy);
     }
     if (startDate != null) return;
 
@@ -374,9 +395,94 @@ public class TimeSpan extends Entity {
 
       startType = XSDDateType.XSDdate;
       endType = XSDDateType.XSDdate;
+      return;
     } catch (ParseException e) {
       // nothing to do
     }
+
+    // case 31/7/1816 , 13-9-67
+    matcherx = FULL_DATE_PATTERN.matcher(date);
+    while (matcherx.find()) {
+      String dd = matcherx.group(1);
+      int mm = parseInt(matcherx.group(2));
+      String yy = matcherx.group(3);
+
+      if (dd.length() > 2) {
+        if (yy.length() > 2)
+          continue;
+        else { // swap
+          String temp = dd;
+          dd = yy;
+          yy = temp;
+        }
+      }
+
+      if (yy.length() == 3) yy = "1" + yy;
+      else if (yy.length() == 2) yy = "19" + yy;
+
+      setDate(dd, mm, yy);
+    }
+    if (startDate != null) return;
+
+
+    // case "Años 20 siglo XX"
+    matcherx = DECADES_ES_PATTERN.matcher(date);
+    if (matcherx.find()) {
+      this.startType = this.endType = XSDDatatype.XSDgYear;
+
+      String centuryString = matcherx.group(4);
+      int century = 19;
+      if (!StringUtils.isBlank(centuryString))
+        century = RomanConverter.toNumerical(matcherx.group(4)) - 1;
+
+
+      String preciseYear = matcherx.group(5);
+      if (!StringUtils.isBlank(preciseYear)) {
+        preciseYear = preciseYear.trim();
+        if (preciseYear.length() == 3)
+          preciseYear = "1" + preciseYear;
+        else if (preciseYear.length() == 2) {
+          preciseYear = century + preciseYear;
+        }
+
+        this.startDate = this.startYear = preciseYear;
+        this.endDate = this.endYear = preciseYear;
+        return;
+      }
+
+      boolean isSingular = StringUtils.isBlank(matcherx.group(1));
+      String decade = matcherx.group(2);
+      if ("diez".equalsIgnoreCase(decade)) decade = "10";
+      String endDecade = matcherx.group(3);
+      if (StringUtils.isBlank(endDecade))
+        endDecade = decade;
+      if (!isSingular)
+        endDecade = endDecade.charAt(0) + "9";
+
+
+      startYear = startDate = century + decade;
+      endYear = endDate = century + endDecade;
+    }
+
+  }
+
+  private void setDate(String dd, int m, String yy) {
+    if (yy.length() == 2) yy = "19" + yy;
+
+    XSDDatatype type = XSDDatatype.XSDgMonth;
+    String formatted = yy + "-" + String.format("%02d", m);
+    if (!StringUtils.isBlank(dd)) {
+      type = XSDDatatype.XSDdate;
+      formatted += "-" + String.format("%02d", parseInt(dd));
+    }
+    if (startDate == null) {
+      startDate = formatted;
+      startYear = yy;
+      startType = type;
+    }
+    endDate = formatted;
+    endYear = yy;
+    endType = type;
   }
 
   @NotNull
@@ -410,7 +516,7 @@ public class TimeSpan extends Entity {
    */
   private static int ordinalToInt(@NotNull String ordinal) {
     ordinal = ordinal.toLowerCase();
-    if (ordinal.equals("first") || ordinal.startsWith("prim"))
+    if (ordinal.equals("first") || ordinal.startsWith("pri") || ordinal.startsWith("pimer"))
       return 1;
     if (ordinal.matches("(se(co|gu)nd[oa]?|segon)"))
       return 2;
