@@ -18,19 +18,18 @@ import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.silknow.converter.commons.ConstructURI;
-import org.silknow.converter.converters.Converter;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.Time;
 
-import java.io.IOException;
-import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static java.lang.Integer.parseInt;
 
@@ -46,7 +45,7 @@ public class TimeSpan extends Entity {
   private static final Pattern CENTURY_SPAN_PATTERN = Pattern.compile(CENTURY_SPAN);
 
   private static final String CENTURY_PART_EN = "(?i)((?:fir|1)st|(?:2|seco)nd|(?:3|thi)rd|fourth|last) (quarter|half|third),?(?: of(?: the)?)?";
-  private static final String CENTURY_PART_IT = "(?i)(?:(prim|second|terz|ultim)[oa]) (quarto|metà)(?: del)?";
+  private static final String CENTURY_PART_IT = "(?i)(?:(prim|second|terz|ultim|I+)[oa]?) (quarto|metà)(?: del)?";
   private static final String CENTURY_PART_ES = "(?i)([1234][ºª]|pr?i[mn]era?|segund[oa]|segon|tercer|último?) (cuarto|quart|mitad|meitat|tercio|1/3)(?: del)?";
   private static final String CENTURY_PART_FR = "(?i)(1er|[234]e) (quart|moitié)";
   private static final Pattern CENTURY_PART_EN_PATTERN = Pattern.compile(CENTURY_PART_EN + " (.+)");
@@ -173,6 +172,40 @@ public class TimeSpan extends Entity {
     // (even if formally not 100% correct)
   }
 
+  public TimeSpan(int start, int end) {
+    super();
+
+    this.model = centralModel;
+    this.fromVocabulary = false;
+
+    startYear = startDate = Integer.toString(start);
+    endYear = endDate = Integer.toString(end);
+    startType = XSDDateType.XSDgYear;
+    endType = XSDDateType.XSDgYear;
+
+
+    String seed = this.startDate + "_" + this.endDate;
+    String label = startDate + " - " + endDate;
+    if (startDate.equals(endDate)) label = seed = startDate;
+
+    this.setUri(ConstructURI.transparent(this.className, seed));
+    this.setClass(CIDOC.E52_Time_Span);
+    this.addProperty(SKOS.prefLabel, label);
+
+    Resource startInstant = makeInstant(startDate, startType);
+    Resource endInstant = makeInstant(endDate, endType);
+
+    if (startInstant != null) {
+      startInstant = ResourceUtils.renameResource(startInstant, this.getUri() + "/start");
+      this.addProperty(Time.hasBeginning, startInstant);
+      this.addProperty(CIDOC.P86_falls_within, getCenturyURI(startYear));
+    }
+    if (endInstant != null) {
+      endInstant = ResourceUtils.renameResource(endInstant, this.getUri() + "/end");
+      this.addProperty(Time.hasEnd, endInstant);
+      this.addProperty(CIDOC.P86_falls_within, getCenturyURI(endYear));
+    }
+  }
 
   public TimeSpan(Date date) {
     this();
@@ -190,6 +223,7 @@ public class TimeSpan extends Entity {
       .addProperty(Time.hasEnd, instant);
   }
 
+
   private void parseDate(@NotNull String date) {
     // preliminary parsing
     date = date.replaceAll(" A.?D.?", "");
@@ -197,8 +231,11 @@ public class TimeSpan extends Entity {
     date = date.replaceAll(" CE-", "");
     date = date.replaceAll("dC\\.?$", "");
     date = date.replace("soglo", "siglo");
+    date = date.replace("sec.", "secolo");
     date = date.replaceAll("s(ig)?\\. ?", "siglo ");
     date = date.replaceAll(" ca$", " ");
+    date = date.replaceAll("^ca ", " ");
+    date = date.replaceAll("^dated ", " ");
 
     date = date.replace("'s", "s");
     date = date.replace("centuries", "century");
@@ -318,22 +355,7 @@ public class TimeSpan extends Entity {
     if (startDate != null) return;
 
     // case 'early 18th century'
-    double it = -1;
-    double span = -1;
-    // modifier: 0 = NONE, 1 = EARLY, 2 = LATE, 3 = MID
-    switch (modifier) {
-      case 1:
-        it = 1;
-        span = 25;
-        break;
-      case 2:
-        it = 4;
-        span = 25;
-        break;
-      case 3:
-        it = 1.5;
-        span = 50;
-    }
+    double[] itSpan = getItSpanFromModifier(modifier);
 
     // case '1st half of the 18th century'
     for (Pattern pat : CENTURY_PART_PATTERNS) {
@@ -342,29 +364,16 @@ public class TimeSpan extends Entity {
       String itString = matcher.group(1);
       String partString = matcher.group(2);
       String centuryString = matcher.group(3);
-
+      itSpan = getItSpanFromCentParts(itString, partString);
       century = VocabularyManager.searchInCategory(centuryString, null, "dates", false);
       if (century == null) { // this is a part, but of what?
         System.out.println("Century not found: " + centuryString);
         return;
       }
 
-      it = ordinalToInt(itString);
-      if (it == 0) {
-        System.out.println("Error in parsing: " + date);
-        return;
-      }
-      span = 50; // half century
-      if (partString.matches("(third|tercio|1/3)")) {
-        span = 33.3;
-        if (it == -1) it = 3;
-      }
-      if (partString.matches("[qc]uart(o|er)?")) {
-        span = 25;
-        if (it == -1) it = 4;
-      }
-      if (it == -1) it = 2;
     }
+    double it = itSpan[0];
+    double span = itSpan[1];
 
     if (century != null && span > 0 && it > 0) {
       int cent = CENTURY_URI_MAP.inverseBidiMap().get(century) - 1;
@@ -466,6 +475,45 @@ public class TimeSpan extends Entity {
 
   }
 
+  private static double[] getItSpanFromCentParts(String itString, String partString) {
+    double it = ordinalToInt(itString);
+    if (it == 0) {
+      return new double[]{-1, -1};
+    }
+    double span = 50; // half century
+    if (partString.matches("(third|tercio|1/3)")) {
+      span = 33.3;
+      if (it == -1) it = 3;
+    }
+    if (partString.matches("[qc]uart(o|er)?")) {
+      span = 25;
+      if (it == -1) it = 4;
+    }
+    if (it == -1) it = 2;
+    return new double[]{it, span};
+  }
+
+  private static double[] getItSpanFromModifier(int modifier) {
+    double it = -1;
+    double span = -1;
+
+    // modifier: 0 = NONE, 1 = EARLY, 2 = LATE, 3 = MID
+    switch (modifier) {
+      case 1:
+        it = 1;
+        span = 25;
+        break;
+      case 2:
+        it = 4;
+        span = 25;
+        break;
+      case 3:
+        it = 1.5;
+        span = 50;
+    }
+    return new double[]{it, span};
+  }
+
   private void setDate(String dd, int m, String yy) {
     if (yy.length() == 2) yy = "19" + yy;
 
@@ -515,7 +563,12 @@ public class TimeSpan extends Entity {
    * @return related integer, -1 if ordinal is "last", 0 if not recognised
    */
   private static int ordinalToInt(@NotNull String ordinal) {
+    String ordinalMin = ordinal.replaceAll("[oa]", "").toUpperCase();
     ordinal = ordinal.toLowerCase();
+
+    if (RomanConverter.isRoman(ordinalMin)) {
+      return RomanConverter.toNumerical(ordinalMin);
+    }
     if (ordinal.equals("first") || ordinal.startsWith("pri") || ordinal.startsWith("pimer"))
       return 1;
     if (ordinal.matches("(se(co|gu)nd[oa]?|segon)"))
@@ -559,5 +612,92 @@ public class TimeSpan extends Entity {
   }
 
   //public String toLabel() {return this.resource.getProperty(RDFS.label).getObject().toString();}
+
+  public static TimeSpan parseVenezia(String start, String end, String fraction, String century) {
+    String[] labelParts = {century, fraction, start, end};
+    String label = Arrays.stream(labelParts)
+      .filter(s -> (s != null && s.length() > 0))
+      .collect(Collectors.joining(", "));
+
+    TimeSpan ts;
+
+    if (start == null) {
+      if (century.contains("/")) {
+        String[] p = century.split("/");
+        int startCentury = RomanConverter.toNumerical(p[0].trim());
+        int endCentury = RomanConverter.toNumerical(p[1].trim());
+
+        double itStart = -1;
+        double spanStart = -1;
+        double itEnd = -1;
+        double spanEnd = -1;
+
+        if (fraction != null && fraction.contains("/")) {
+          String[] f = fraction.split("/");
+
+          int modifier = 0; // 0 = NONE, 1 = EARLY, 2 = LATE, 3 = MID
+          for (int i = 0; i < MODIFIER_PATTERNS.length; i++) {
+            Matcher matcher = MODIFIER_PATTERNS[i].matcher(f[0]);
+            if (matcher.find()) {
+              modifier = i + 1;
+              break;
+            }
+          }
+          double[] itSpan = getItSpanFromModifier(modifier);
+          itStart = itSpan[0];
+          spanStart = itSpan[1];
+
+          for (int i = 0; i < MODIFIER_PATTERNS.length; i++) {
+            Matcher matcher = MODIFIER_PATTERNS[i].matcher(f[1]);
+            if (matcher.find()) {
+              modifier = i + 1;
+              break;
+            }
+          }
+          itSpan = getItSpanFromModifier(modifier);
+          itEnd = itSpan[0];
+          spanEnd = itSpan[1];
+        }
+
+        int startY, endY;
+        if (itStart > 0 && spanStart > 0 && itEnd>0 && spanEnd>0) {
+          endY = (int) Math.round(endCentury * 100 + spanEnd * itEnd);
+          startY = (int) Math.round(startCentury * 100 + spanStart * (itStart-1) + 1);
+        } else {
+          endY = Math.round(endCentury * 100);
+          startY = Math.round((startCentury - 1) * 100 + 1);
+        }
+        System.out.println(startY);
+        System.out.println(endY);
+        ts = new TimeSpan(startY, endY);
+        ts.addAppellation(label);
+        return ts;
+      }
+      if (fraction != null) century = fraction + " " + century;
+      ts = new TimeSpan(century);
+      ts.addAppellation(label);
+      return ts;
+    }
+
+    start = start.replaceAll(" ca\\.?$", "");
+    for (String x : new String[]{CENTURY_PART_IT, EARLY_REGEX, MID_REGEX, LATE_REGEX}) {
+      if (start.matches(x)) {
+        start += " " + century;
+        if (!start.contains("sec")) start += " secolo";
+        ts = new TimeSpan(start);
+        ts.addAppellation(label);
+        return ts;
+      }
+    }
+
+    if (end != null) {
+      end = end.replaceAll(" ca\\.?$", "");
+      ts = new TimeSpan(start + " - " + end);
+    } else ts = new TimeSpan(start);
+
+    ts.addAppellation(label);
+    return ts;
+  }
+
 
 }
