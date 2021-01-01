@@ -1,9 +1,17 @@
 URI patterns for SILKNOW data
 ==============================
 
-This file documents how the URI are generated for the SILKNOW data.
-See also [#42](https://github.com/silknow/converter/issues/42).
+This is the documentation of the URI design pattern used by the SILKNOW Knowledge Graph. See originally the [issue #42](https://github.com/silknow/converter/issues/42). The following SPARQL query provides the number of instances of each type ([results](https://data.silknow.org/sparql?default-graph-uri=&query=SELECT+DISTINCT+count%28%3Fs%29+as+%3Fnb+%3Ftype%0D%0AWHERE+%7B%0D%0A++%3Fs+a+%3Ftype+.%0D%0A++FILTER+%28contains%28str%28%3Ftype%29%2C+%22erlangen%22%29+%7C%7C+contains%28str%28%3Ftype%29%2C+%22forth%22%29%29%0D%0A%7D%0D%0AGROUP+BY+%3Ftype%0D%0AORDER+BY+DESC%28%3Fnb%29&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)):
 
+``` sparql
+SELECT DISTINCT count(?s) as ?nb ?type
+WHERE {
+  ?s a ?type .
+  FILTER (contains(str(?type), "erlangen") || contains(str(?type), "forth"))
+}
+GROUP BY ?type
+ORDER BY DESC(?nb)
+```
 
 ## Main entities
 
@@ -11,37 +19,34 @@ Pattern:
 
 ``` turtle
 http://data.silknow.org/<group>/<uuid>
-# i.e. http://data.silknow.org/production/d4ec41ba-a4d3-3ebb-ba07-8567f1add9cb/activity/1
+# e.g. http://data.silknow.org/production/d4ec41ba-a4d3-3ebb-ba07-8567f1add9cb/
 ```
 
 The `<group>` is taken from this table 
 
-| Class | Group | Count
-| --- | --- | --- |
-| E38_Image | image | 65050 |
-| D1_Digital_Object | - | 35137 |
-| E22_Man-Made_Object | object | 35126 |
-| E12_Production | production | 35126 | 
-| E8_Acquisition | event | 32945 |
-| E10_Transfer_of_Custody | event | 32067 |
-| E78_Collection | collection | 18827 |
-| E73_Information_Object | informationobject | 3331 |
-| E14_Condition_Assessment | assessment | 3180 |
-| E9_Move | event | 3059 |
-| E53_Place |  place OR http://sws.geonames.org/ {id of place} | 2466 |
-| E39_Actor | actor | 824 |
-| E11_Modification | modification | 751 |
-| E89_Propositional_Object | object | 750 |
-| E31_Document | document | 375 
-| E40_Legal_Body | organization | 33
-| E21_Person | person | 2
-
-Numbers taken from this [query](https://data.silknow.org/sparql?default-graph-uri=&query=SELECT+count%28%3Fs%29+as+%3Fcount+%3FclassORproperty%0D%0AWHERE+%7B+graph+%3Fg+%7B+%0D%0A++++++%3Fs+a+%3FclassORproperty%0D%0A%0D%0A%0D%0AFILTER+%28contains%28str%28%3Fg%29%2C+%22mad%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22mtmad%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22joconde%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22imatex%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22unipa%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22risd%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22vam%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22met%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22cer%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22garin%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22mfa%22%29%29%0D%0A%0D%0A%7D%7D%0D%0A%0D%0AGROUP+BY+%3FclassORproperty%0D%0AORDER+BY+DESC+%28%3Fcount%29&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)
+| Class | Group |
+| --- | --- |
+| D1_Digital_Object | ? |
+| E22_Man-Made_Object | object |
+| E73_Information_Object | informationobject |
+| E89_Propositional_Object | object |
+| E38_Image | image |
+| E12_Production | production |
+| E8_Acquisition | event |
+| E10_Transfer_of_Custody | event |
+| E9_Move | event |
+| E11_Modification | modification |
+| E78_Collection | collection |
+| E14_Condition_Assessment | assessment |
+| E53_Place |  place OR http://sws.geonames.org/ {id of place} |
+| E31_Document | document |
+| E40_Legal_Body | organization |
+| E21_Person | person |
+| E39_Actor | actor |
 
 ## Secondary entities
 
-This group includes entities that cover specific information about the main entities.
-The URI is realized appending a suffix to the parent main entity.
+This group includes entities that cover specific information about the main entities. The URI is realized appending a suffix to the parent main entity.
 
 Pattern if only one instance per main entity is expected:
 
@@ -58,26 +63,22 @@ Pattern if multiple instance per main entity are possible:
 
 The `<suffix>` is taken from this table:
 
-| Class | Group | Suffix | Count
-| --- | --- | --- | --- |
-| E17_Type_Assignment | object | type_assignment/{progressive int} | 52685 |
-| E54_Dimension | object | dimension/{w or h} | 45522 |
-| E42_Identifier | object | id/{id} | 35872 |
-| S4_Observation | object | observation/{progressive int} | 34138 |
-| E15_Identifier_Assignment | object | id_assignment/{id from E42} | 35498 |
-| E52_Time-Span | production | time/{progressive int} | 25415 |
-| E16_Measurement | object | dimension/measurement | 22781 |
-| E3_Condition_State | object | assessment/{progressive int} | 9298 |
-| E7_Activity | production | activity/{progressive int}  | 5245 |
-| E30_Right | object | right | 750 |
-
-Numbers taken from this [query](https://data.silknow.org/sparql?default-graph-uri=&query=SELECT+count%28%3Fs%29+as+%3Fcount+%3Ft%0D%0AWHERE+%7B+graph+%3Fg+%7B+%0D%0A++++++%3Fs+a+%3Ft%0D%0A%0D%0A%0D%0AFILTER+%28contains%28str%28%3Fg%29%2C+%22mad%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22mtmad%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22joconde%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22imatex%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22unipa%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22risd%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22vam%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22met%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22cer%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22garin%22%29+%7C%7C+contains%28str%28%3Fg%29%2C+%22mfa%22%29%29%0D%0A%0D%0A%7D%7D%0D%0A%0D%0AGROUP+BY+%3Ft+%0D%0AORDER+BY+DESC+%28%3Fcount%29&format=text%2Fhtml&timeout=0&debug=on)
-
+| Class | Group | Suffix |
+| --- | --- | --- |
+| E17_Type_Assignment | object | type_assignment/{progressive int} |
+| E54_Dimension | object | dimension/{w or h} |
+| E42_Identifier | object | id/{id} |
+| S4_Observation | object | observation/{progressive int} |
+| E15_Identifier_Assignment | object | id_assignment/{id from E42} |
+| E16_Measurement | object | dimension/measurement |
+| E3_Condition_State | object | assessment/{progressive int} |
+| E30_Right | object | right |
+| E52_Time-Span | production | time/{progressive int} |
+| E7_Activity | production | activity/{progressive int}  |
 
 ## UUID and seed generation
 
-The UUID is computed deterministically starting from a seed string.
-A real UUID taken from an example above looks like this: d4ec41ba-a4d3-3ebb-ba07-8567f1add9cb
+The UUID is computed deterministically starting from a seed string. A real UUID taken from an example above looks like this: d4ec41ba-a4d3-3ebb-ba07-8567f1add9cb
 
 The seed is usually generated  based on:
 
