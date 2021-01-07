@@ -2,7 +2,9 @@ package org.silknow.converter.converters;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.rdf.model.Model;
+import org.geonames.Toponym;
 import org.silknow.converter.commons.CrawledJSON;
+import org.silknow.converter.commons.GeoNames;
 import org.silknow.converter.entities.*;
 
 import java.io.*;
@@ -56,11 +58,11 @@ public class MADConverter extends Converter {
     linkToRecord(obj.addComplexIdentifier(regNum, "Numéro d'inventaire:"));
     //obj.addTitle(s.getMulti("title").findFirst().orElse(null));
 
+    List<String> creation_notes = s.getMulti("Création:").map(Object::toString).collect(Collectors.toList());
 
-
-    final List<String> terms = new ArrayList<String>();
+    final List<String> terms = new ArrayList<>();
     terms.add((s.getMulti("Textile:").findFirst().orElse(null)));
-    terms.add((s.getMulti("Création:").map( Object::toString ).collect( Collectors.joining(", "))));
+    terms.add(String.join(", ", creation_notes));
     final String constrlabel = terms
       .stream()
       .filter(Objects::nonNull)
@@ -69,29 +71,47 @@ public class MADConverter extends Converter {
 
 
     s.getImages().map(Image::fromCrawledJSON)
-            .peek(image -> image.addInternalUrl("les-arts-decoratifs"))
-            .peek(obj::add)
-            .forEach(this::linkToRecord);
+      .peek(image -> image.addInternalUrl("les-arts-decoratifs"))
+      .peek(obj::add)
+      .forEach(this::linkToRecord);
 
     Production prod = new Production(regNum);
+    prod.addNote(String.join(", ", creation_notes));
     prod.add(obj);
 
-    //s.getMulti("Création:").forEach(prod::addTimeAppellation);
+    for (String x : creation_notes) { // Sonia Delaunay, Paris, 1927
+      if (StringUtils.isBlank(x)) continue;
+      x = x.replace("?", "").trim();
 
-    //s.getMulti("Textile:").forEach(material -> prod.addMaterial(material, mainLang));
-    //s.getMulti("Création:").forEach(prod::addPlace);
+      if (x.contains("siècle") || x.matches("^.*(\\d{4}).*$")) { // it is a date
+        if (x.contains("(")) {
+          String[] parts = x.split("[()]");
+          x = parts[1] + " " + parts[0];
+          x = x.trim();
+        }
+        prod.addTimeAppellation(x);
+        continue;
+      }
+      if (!prod.hasTimeSpans() && x.matches("Louis [XVI]+ \\(époq\\.\\)")) {
+        prod.addTimeAppellation(x);
+        continue;
+      }
+
+      Toponym location = GeoNames.query(x);
+      if (location != null) { // it is a place
+        prod.addPlace(new Place(location));
+      }
+    }
+
     s.getMulti("Matières et techniques:").forEach(material -> prod.addMaterial(material, mainLang));
-    //s.getMulti("Domaine")
-      //      .map(x -> obj.addClassification(x, "Domaine", mainLang))
-        //    .forEach(this::linkToRecord);
     s.getMulti("Domaine")
-            .forEach(x -> linkToRecord(obj.addClassification(x, "Domaine", "fr")));
+      .forEach(x -> linkToRecord(obj.addClassification(x, "Domaine", "fr")));
     s.getMulti("Textile:")
       .forEach(x -> linkToRecord(obj.addClassification(x, "Textile", "fr")));
 
     s.getMulti("Appellation")
-            .map(x -> obj.addClassification(x, "Appellation", mainLang))
-            .forEach(this::linkToRecord);
+      .map(x -> obj.addClassification(x, "Appellation", mainLang))
+      .forEach(this::linkToRecord);
 
 
     String dim = s.getMulti("Mesures:").findFirst().orElse(null);
@@ -105,18 +125,12 @@ public class MADConverter extends Converter {
     }
 
 
-    //linkToRecord(obj.addObservation(s.getMulti("description").findFirst().orElse(null), mainLang, "description"));
-    //linkToRecord(obj.addObservation(s.get("TECHNICAL DESCRIPTION"), mainLang, "technical description"));
-
-    //String acquisitionFrom = s.getMulti("Credit Line:").findFirst().orElse(null);
     String acquisitionType = s.getMulti("Acquisition/dépôt:").findFirst().orElse(null);
     LegalBody museum = null;
-
 
     Acquisition acquisition = new Acquisition(regNum);
     //acquisition.transfer(acquisitionFrom, obj, museum);
     //acquisition.setType(acquisitionType);
-
 
     Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(museum);
@@ -129,9 +143,6 @@ public class MADConverter extends Converter {
       collection.addAppellation(appellation.replaceAll(" *\\(.+?\\)", ""));
       linkToRecord(collection);
     }
-
-
-
 
     linkToRecord(obj);
     linkToRecord(acquisition);

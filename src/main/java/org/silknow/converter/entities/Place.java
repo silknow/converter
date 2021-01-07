@@ -15,9 +15,8 @@ import java.util.*;
 
 public class Place extends Entity {
   private static final List<String> STOPWORDS = Arrays.asList(
-          "desconocido", "unknown", "desconegut", "ignoto", "about", "probably");
+    "desconocido", "unknown", "desconegut", "ignoto", "about", "probably");
   private static HashMap<String, String> DEMONYM = null;
-
 
 
   public Place(String name) throws StopWordException {
@@ -51,9 +50,9 @@ public class Place extends Entity {
 
     name = name.trim().replaceAll(",$", "");
     name = name.replaceAll("\\( ?\\)", "")
-            .replaceAll("\\[ ?]", "")
-            .replaceAll("^\\[", "").replaceAll("]$", "")
-            .trim();
+      .replaceAll("\\[ ?]", "")
+      .replaceAll("^\\[", "").replaceAll("]$", "")
+      .trim();
 
     // if it is a Demonym, I convert it to a place
     name = Place.fromDemonym(name);
@@ -69,10 +68,18 @@ public class Place extends Entity {
     } else {
       this.setUri(ConstructURI.build(this.className, name));
       this.addProperty(RDFS.label, name).addProperty(CIDOC.P87_is_identified_by, name);
-
     }
 
     this.setClass(CIDOC.E53_Place);
+  }
+
+  public Place(Toponym tp) {
+    super();
+    this.setUri(GeoNames.toURI(tp.getGeoNameId()));
+
+    GeoNames.downloadRdf(tp.getGeoNameId());
+    this.setClass(CIDOC.E53_Place);
+    this.addProperty(RDFS.label, tp.getName());
   }
 
   public static String fromDemonym(String demonym) {

@@ -46,3 +46,4 @@ Full conversion:
     ./gradlew run --args="CER '../crawler/data/ceres-mcu' -o ./output/CER -g <GEONAMES_USER>"
     ./gradlew run --args="MTMAD '../crawler/data/mtmad' -o ./output/CER -g <GEONAMES_USER>"
 
+    ./gradlew run --args="joconde input -o ./output/joconde -g lisena --replace"

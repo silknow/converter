@@ -47,15 +47,15 @@ public class TimeSpan extends Entity {
   private static final String CENTURY_PART_EN = "(?i)((?:fir|1)st|(?:2|seco)nd|(?:3|thi)rd|fourth|last) (quarter|half|third),?(?: of(?: the)?)?";
   private static final String CENTURY_PART_IT = "(?i)(?:(prim|second|terz|ultim|I+)[oa]?) (quarto|metà)(?: del)?";
   private static final String CENTURY_PART_ES = "(?i)([1234][ºª]|pr?i[mn]era?|segund[oa]|segon|tercer|último?) (cuarto|quart|mitad|meitat|tercio|1/3)(?: del)?";
-  private static final String CENTURY_PART_FR = "(?i)(1er|[234]e) (quart|moitié)";
+  private static final String CENTURY_PART_FR = "(?i)(1[èe]re?|[234]d?e) (quart|moitié)(?: du)?";
   private static final Pattern CENTURY_PART_EN_PATTERN = Pattern.compile(CENTURY_PART_EN + " (.+)");
   private static final Pattern CENTURY_PART_IT_PATTERN = Pattern.compile(CENTURY_PART_IT + " (.+)");
   private static final Pattern CENTURY_PART_ES_PATTERN = Pattern.compile(CENTURY_PART_ES + " (.+)");
   private static final Pattern CENTURY_PART_FR_PATTERN = Pattern.compile(CENTURY_PART_FR + " (.+)");
   private static final Pattern[] CENTURY_PART_PATTERNS = {CENTURY_PART_EN_PATTERN, CENTURY_PART_ES_PATTERN, CENTURY_PART_IT_PATTERN, CENTURY_PART_FR_PATTERN};
-  private static final String EARLY_REGEX = "(?i)(inizio?|early|(?:p[ri]+n?cipi|inici?)o(?:s)?(?: del?)?)";
-  private static final String LATE_REGEX = "(?i)(?:very )?(late|fin(?:e|ale?s))";
-  private static final String MID_REGEX = "(?i)(mid[- ]|metà del|second or third quarter of|^mitad|to mid-twentieth century|(?:a )?m+ediados(?: del)?|a mitjan)";
+  private static final String EARLY_REGEX = "(?i)(inizio?|début|early|(?:p[ri]+n?cipi|inici?)o(?:s)?(?: del?)?)";
+  private static final String LATE_REGEX = "(?i)(?:very )?(late|fin(?:e|ale?s)?)";
+  private static final String MID_REGEX = "(?i)(mid[- ]|milieu|metà del|second or third quarter of|^mitad|to mid-twentieth century|(?:a )?m+ediados(?: del)?|a mitjan)";
   private static final Pattern EARLY_PATTERN = Pattern.compile(EARLY_REGEX);
   private static final Pattern LATE_PATTERN = Pattern.compile(LATE_REGEX);
   private static final Pattern MID_PATTERN = Pattern.compile(MID_REGEX);
@@ -236,10 +236,14 @@ public class TimeSpan extends Entity {
     date = date.replaceAll(" ca$", " ");
     date = date.replaceAll("^ca ", " ");
     date = date.replaceAll("^dated ", " ");
+    date = date.replaceAll("vers ", " ");
+
 
     date = date.replace("'s", "s");
     date = date.replace("centuries", "century");
     date = date.replaceAll("or (earli|lat)er", ""); // TODO represent this better
+
+    date = date.trim();
 
     int modifier = 0; // 0 = NONE, 1 = EARLY, 2 = LATE, 3 = MID
     for (int i = 0; i < MODIFIER_PATTERNS.length; i++) {
@@ -660,15 +664,15 @@ public class TimeSpan extends Entity {
         }
 
         int startY, endY;
-        if (itStart > 0 && spanStart > 0 && itEnd>0 && spanEnd>0) {
+        if (itStart > 0 && spanStart > 0 && itEnd > 0 && spanEnd > 0) {
           endY = (int) Math.round(endCentury * 100 + spanEnd * itEnd);
-          startY = (int) Math.round(startCentury * 100 + spanStart * (itStart-1) + 1);
+          startY = (int) Math.round(startCentury * 100 + spanStart * (itStart - 1) + 1);
         } else {
           endY = Math.round(endCentury * 100);
           startY = Math.round((startCentury - 1) * 100 + 1);
         }
-        System.out.println(startY);
-        System.out.println(endY);
+//        System.out.println(startY);
+//        System.out.println(endY);
         ts = new TimeSpan(startY, endY);
         ts.addAppellation(label);
         return ts;

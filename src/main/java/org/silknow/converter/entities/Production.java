@@ -78,6 +78,7 @@ public class Production extends Entity {
     // if (timeApproximate) ts.addNote("approximate", "en");
 
     this.addTimeSpan(ts);
+    tsCount++;
   }
 
 
@@ -173,4 +174,7 @@ public class Production extends Entity {
   }
 
 
+  public boolean hasTimeSpans() {
+    return tsCount > 0;
+  }
 }
