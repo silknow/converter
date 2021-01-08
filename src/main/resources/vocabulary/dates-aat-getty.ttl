@@ -212,7 +212,7 @@ aat:300404512 a gvp:Subject , skos:Concept , gvp:Concept , _:node17 ;
 	skos:altLabel "century, eighteenth (dates CE)"@en , "18th century (dates CE)"@en , "18th-century (dates CE)"@en, "siglo, dieciocho"@es,	"secolo, diciottesimo"@it,	"siècle, dix-huitième"@fr,
 					"siglo XVIII"@es,	"XVIII secolo"@it,	"18ème siècle"@fr, "18e siècle"@fr,
 					"siglo 18"@es,	"XVIII-secolo"@it,	"18ème-siècle"@fr, "segle, dicuit"@ca, "segle XVIII"@ca, "segle XVIII"@ca, "anys 1700"@ca, "años 1700"@es,
-                    "il 700"@it,	"Années 1700"@fr, "segle 18"@ca ;
+                    "il 700"@it,	"Années 1700"@fr, "segle 18"@ca, "1700s"@en;
 	gvp:broaderGeneric aat:300404464 ;
 	gvp:broaderPreferred aat:300404464 ;
 	gvp:broaderNonConcept aat:300404464 ;

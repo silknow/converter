@@ -8,12 +8,15 @@ import org.doremus.string2vocabulary.VocabularyManager;
 import org.silknow.converter.commons.StopWordException;
 import org.silknow.converter.ontologies.CIDOC;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Production extends Entity {
   private static final String CIRCA_REGEX = "(?i)(circa|around|about|posiblemente|(proba|possi)bly|ca?\\.|\\[ca])";
   private static final String UNCONFIRMED_REGEX = "\\.\\.\\. (unconfirmed|(sin|sense) confirmar)";
+  private static final String UNKNOWN_REGEX = "(?i)(de[sc]+ono?cid[oa]\\.?|n\\.d\\.?|no)";
+  private static final Pattern UNKNOWN_PATTERN = Pattern.compile(UNKNOWN_REGEX);
+  private static final String ANY_BRACKETS = "[(\\[\\])]";
 
   private int tsCount;
   private boolean timeUnconfirmed;
@@ -31,48 +34,54 @@ public class Production extends Entity {
     timeModifier = "";
   }
 
-  public void addTimeAppellation(String timeAppellation) {
+  public void addTimeAppellation(String time) {
     boolean timeApproximate = false;
 
-    if (timeAppellation == null) return;
-    timeAppellation = timeAppellation.trim();
-    if (timeAppellation.matches("(?i)de[sc]+ono?cid[oa]") ||
-      timeAppellation.equalsIgnoreCase("no") ||
-      timeAppellation.matches("n\\.d\\.?"))
-      return;
-    if (timeAppellation.matches(UNCONFIRMED_REGEX)) {
+    if (time == null) return;
+    time = time.trim();
+
+    Matcher m = UNKNOWN_PATTERN.matcher(time);
+    if (m.find()) {
+      time = time.replace(m.group(1), "").trim();
+      if (time.matches(ANY_BRACKETS + ".*" + ANY_BRACKETS)) {
+        time = time.replaceAll(ANY_BRACKETS, "").trim();
+      }
+    }
+    if (time.isEmpty()) return;
+
+    if (time.matches(UNCONFIRMED_REGEX)) {
       timeUnconfirmed = true;
       return;
     }
-    if (timeAppellation.contains("?"))
+    if (time.contains("?"))
       timeUnconfirmed = true;
 
-    if (timeAppellation.matches(".*" + CIRCA_REGEX + ".*"))
+    if (time.matches(".*" + CIRCA_REGEX + ".*"))
       timeApproximate = true;
 
     // we mostly use replaceAll in order to enable case insensitive (?i) replacements
-    timeAppellation = timeAppellation.replaceAll("\\s+", " ");
-    timeAppellation = timeAppellation.replaceAll("\\(.*\\)", ""); // curly brackets
-    timeAppellation = timeAppellation.replaceAll("\\[.*]", ""); // square brackets
-    timeAppellation = timeAppellation.replaceAll("[(\\[\\])]", ""); // orphan brackets
+    time = time.replaceAll("\\s+", " ");
+    time = time.replaceAll("\\(.*\\)", ""); // curly brackets
+    time = time.replaceAll("\\[.*]", ""); // square brackets
+    time = time.replaceAll(ANY_BRACKETS, ""); // orphan brackets
 
-    timeAppellation = timeAppellation.replace("?", "");
-    timeAppellation = timeAppellation.replaceAll(CIRCA_REGEX, "");
-    timeAppellation = timeAppellation.replaceAll("\"", "");
-    timeAppellation = timeAppellation.replaceAll("\\.0$", ""); // workaround some dates as 1960.0
-    timeAppellation = timeAppellation.replaceAll("\\.$", ""); // trailing dots
-    timeAppellation = timeAppellation.trim();
-    if (timeAppellation.isEmpty()) return;
+    time = time.replace("?", "");
+    time = time.replaceAll(CIRCA_REGEX, "");
+    time = time.replaceAll("\"", "");
+    time = time.replaceAll("\\.0$", ""); // workaround some dates as 1960.0
+    time = time.replaceAll("\\.$", ""); // trailing dots
+    time = time.trim();
+    if (time.isEmpty()) return;
 
     for (String regex : TimeSpan.CENTURY_PART_REGEXES) { // case "last quarter"
-      if (timeAppellation.matches(regex)) {
+      if (time.matches(regex)) {
         // this will be added to next line"
-        timeModifier = timeAppellation + " ";
+        timeModifier = time + " ";
         return;
       }
     }
 
-    TimeSpan ts = new TimeSpan(timeModifier + timeAppellation);
+    TimeSpan ts = new TimeSpan(timeModifier + time);
     // centralising the ts definition, those values are incorrect
     // if (timeUnconfirmed) ts.addNote("unconfirmed", "en");
     // if (timeApproximate) ts.addNote("approximate", "en");
