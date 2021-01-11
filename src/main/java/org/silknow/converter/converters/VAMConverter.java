@@ -51,7 +51,8 @@ public class VAMConverter extends Converter {
 
     //String museumName = s.get("MUSEUM");
 
-    String regNum = s.get("museum_number");
+    //String regNum = s.get("museum_number");
+    String regNum = s.getId();
     id = regNum;
 
     ManMade_Object obj = new ManMade_Object(regNum);

@@ -306,11 +306,6 @@ public class TimeSpan extends Entity {
     date = date.trim();
     if (date.isEmpty()) return;
 
-<<<<<<< HEAD
-  private void parseDate(@NotNull String date) {
-    //System.out.println(date);
-=======
->>>>>>> 0b685cf51d4937f2de37705c506450f7af95b7c4
 
     date = date.replaceAll(" A.?D.?", "");
     date = date.replaceAll(" CE$", "");
@@ -551,10 +546,6 @@ public class TimeSpan extends Entity {
         }
       }
       m++;
-<<<<<<< HEAD
-      //System.out.println(m);
-=======
->>>>>>> 0b685cf51d4937f2de37705c506450f7af95b7c4
 
       if (m <= 12) {
         setDate(dd, m, yy);
