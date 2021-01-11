@@ -7,13 +7,16 @@ import org.silknow.converter.entities.*;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SmithsConverter extends Converter {
+
 
   @Override
   public boolean canConvert(File file) {
@@ -106,7 +109,15 @@ public class SmithsConverter extends Converter {
       .map(Actor::new)
       .forEach(copyphoto::ownedBy);
 
-    s.getMulti("Medium").forEach(material -> prod.addMaterial(material, mainLang));
+    if (s.get("Medium") != null && s.get("Medium").contains("Technique:")) {
+
+      Stream<String> MaterialStr = Arrays.stream(s.get("Medium").split("Technique:")[0].replace("Medium","").replace(": ","").split(","));
+      Stream<String>  TechniqueStr = Arrays.stream( s.get("Medium").split("Technique:")[1].split(","));
+      MaterialStr.forEach(material -> prod.addMaterial(material, mainLang));
+      TechniqueStr.forEach(technique -> prod.addTechnique(technique, mainLang));
+    }
+
+
 
 
     linkToRecord(obj.addObservation(s.get("Description"), "Description", mainLang));

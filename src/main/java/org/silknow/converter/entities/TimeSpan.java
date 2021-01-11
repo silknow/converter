@@ -267,7 +267,7 @@ public class TimeSpan extends Entity {
 
 
   private void parseDate(@NotNull String date) {
-    System.out.println(date);
+    //System.out.println(date);
 
     // preliminary parsing
     date = date.replaceAll(" A.?D.?", "");
@@ -477,7 +477,7 @@ public class TimeSpan extends Entity {
         }
       }
       m++;
-      System.out.println(m);
+      //System.out.println(m);
 
       if (m <= 12) {
         setDate(dd, m, yy);

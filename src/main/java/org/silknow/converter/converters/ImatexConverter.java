@@ -158,13 +158,15 @@ public class ImatexConverter extends Converter {
 
 
     String npa = s.get("NOMS PROPIS ASSOCIATS*");
-    if (!npa.equals("Homar, Gaspar, 1870-1955 -"))  {
-      Activity activity = new Activity(regNum, "Noms Propis Associats");
-      activity.addActor(npa);
-      linkToRecord(activity);
-    }
-    if (npa.equals("Homar, Gaspar, 1870-1955 -"))  {
-      prod.addActivity(npa, "Noms Propis Associats");
+    if (npa != null) {
+      if (!npa.equals("Homar, Gaspar, 1870-1955 -")) {
+        Activity activity = new Activity(regNum, "Noms Propis Associats");
+        activity.addActor(npa);
+        linkToRecord(activity);
+      }
+      if (npa.equals("Homar, Gaspar, 1870-1955 -")) {
+        prod.addActivity(npa, "Noms Propis Associats");
+      }
     }
 
     prod.addActivity(s.get("DESSIGNER"), "Designer");
