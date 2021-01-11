@@ -6,6 +6,7 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.vocabulary.DC_11;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
+import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.entities.Entity;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.CRMdig;
@@ -15,7 +16,7 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 
 public abstract class Converter {
-  protected static final String BASE_URI = "http://data.silknow.org/graph/";
+  protected static final String BASE_URI = "http://data.silknow.org/";
   protected final Model model = ModelFactory.createDefaultModel();
   protected String DATASET_NAME;
 
@@ -54,7 +55,9 @@ public abstract class Converter {
   protected void linkToRecord(Resource any) {
     if (any == null) return;
     if (this.record == null) {
-      String recordUri = BASE_URI + this.DATASET_NAME + "/" + id.replaceAll("\\s", "_");
+      //String recordUri = BASE_URI + this.DATASET_NAME + "/" + id.replaceAll("\\s", "_");
+      String seed = this.filename + this.record.toString() + this.id;
+      String recordUri = BASE_URI + "object/" + ConstructURI.generate(seed);
       if (filename != null) {
       String label = "ID_"+id+"_filename_"+filename;
       this.record = model.createResource(recordUri)

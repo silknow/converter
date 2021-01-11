@@ -185,7 +185,7 @@ public abstract class Entity {
     activity.addActor(actor);
 
     if (function != null) activity.addProperty(CIDOC.P2_has_type, function);
-    this.addProperty(CIDOC.P9_consists_of, activity);
+    //this.addProperty(CIDOC.P9_consists_of, activity);
   }
 
   protected void addSimpleIdentifier(String id) {

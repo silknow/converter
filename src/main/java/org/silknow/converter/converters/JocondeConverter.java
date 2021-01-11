@@ -57,9 +57,11 @@ public class JocondeConverter extends Converter {
     LegalBody museum = new LegalBody(museumName);
 
 
-    Document doc = new Document(id);
-    s.getMulti("REDA").map(Person::new)
-            .forEach(doc::addEditor);
+    //Document doc = new Document(id);
+    //s.getMulti("REDA").map(Person::new)
+    //        .forEach(doc::addEditor);
+    //doc.document(obj);
+
 
     ManMade_Object obj = new ManMade_Object(id);
     obj.addTitle(s.get("TITR"), mainLang);
@@ -89,7 +91,6 @@ public class JocondeConverter extends Converter {
     s.getMulti("REPR").forEach(subject -> obj.addSubject(subject, mainLang));
 
 
-    doc.document(obj);
 
     String dim = s.get("DIMS");
     Matcher matcher = DIMENSION_PATTERN.matcher(dim);
@@ -250,7 +251,7 @@ public class JocondeConverter extends Converter {
     }
 
     linkToRecord(obj);
-    linkToRecord(doc);
+    //linkToRecord(doc);
     linkToRecord(po);
     linkToRecord(copyright);
     linkToRecord(prod);
