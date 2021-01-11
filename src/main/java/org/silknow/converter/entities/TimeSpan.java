@@ -10,7 +10,6 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
-import org.apache.jena.util.ResourceUtils;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
 import org.apache.jena.vocabulary.SKOS;
@@ -47,6 +46,8 @@ public class TimeSpan extends Entity {
   private static final Pattern SPAN_PATTERN = Pattern.compile(YEAR_SPAN);
   private static final String CENTURY_SPAN = "(\\d{1,2}th|[XVI]+)(?: century| secolo)?\\s*(?:[-–=/]|to|or)\\s*(\\d{1,2}th|[XVI]+) (?:century|secolo)";
   private static final Pattern CENTURY_SPAN_PATTERN = Pattern.compile(CENTURY_SPAN);
+  private static final String ES_CENTURY_SPAN = "(?i)s[ie]gl[oe]s? (\\d{1,2})(?:-(\\d{1,2}))?";
+  private static final Pattern ES_CENTURY_SPAN_PATTERN = Pattern.compile(ES_CENTURY_SPAN);
 
   private static final String CENTURY_PART_EN = "(?i)((?:fir|1)st|(?:2|seco)nd|(?:3|thi)rd|fourth|last) (quarter|half|third),?(?: of(?: the)?)?";
   private static final String CENTURY_PART_IT = "(?i)(?:(prim|second|terz|ultim|I+)[oa]?) (ventennio|quarto|metà)(?: del)?";
@@ -97,9 +98,22 @@ public class TimeSpan extends Entity {
   public static final DateFormat ISO_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
   static final DateFormat SLASH_LITTLE_ENDIAN = new SimpleDateFormat("dd/MM/yyyy");
 
-  public static final String BEFORE_CHRIST = "(BC|aC|a)";
+  public static final String BEFORE_CHRIST = "(BC|aC|a$)";
+
+  private static final String APPROXIMATE_REGEX = "(?i)(circa|around|about|vers |ca?\\.|\\[ca]|^ca |ca$)";
+  private static final Pattern APPROXIMATE_PATTERN = Pattern.compile(APPROXIMATE_REGEX);
+
+  private static final String UNCERTAIN_REGEX = "(?i)(posiblemente|(proba|possi)bly|\\?)";
+  private static final Pattern UNCERTAIN_PATTERN = Pattern.compile(UNCERTAIN_REGEX);
+
+  public static final String ANY_BRACKETS = "[(\\[\\])]";
 
   private static final BidiMap<Integer, Resource> CENTURY_URI_MAP;
+
+  private static final String BEFORE_REGEX = "(?i)(or earlier|before)";
+  private static final Pattern BEFORE_PATTERN = Pattern.compile(BEFORE_REGEX);
+  private static final String AFTER_REGEX = "(?i)(or later|after)";
+  private static final Pattern AFTER_PATTERN = Pattern.compile(AFTER_REGEX);
 
   static {
     BidiMap<Integer, Resource> map = new DualHashBidiMap<>();
@@ -122,116 +136,135 @@ public class TimeSpan extends Entity {
 
   public static final Model centralModel = ModelFactory.createDefaultModel();
 
-  private Resource century;
   private String startYear, startMonth, startDay;
   private String endYear, endMonth, endDay;
   private String startDate, endDate;
-  private String startTime;
+  private String label;
   private XSDDatatype startType, endType;
-  private boolean fromVocabulary;
+  private String vocabularyMatch;
   private boolean splitted;
+  private boolean startApproximate, endApproximate;
+  private boolean startUncertain, endUncertain;
+  private int before_after;
 
   public TimeSpan() {
     super();
 
     this.model = centralModel;
-    createResource();
-    this.setClass(CIDOC.E52_Time_Span);
-    this.fromVocabulary = false;
+    this.vocabularyMatch = null;
     this.splitted = false;
+    this.label = null;
+    before_after = 0;
+  }
+
+  public TimeSpan(Date date) {
+    this();
+    ISO_DATE_FORMAT.setTimeZone(UCT);
+
+    this.label = ISO_DATE_FORMAT.format(date).substring(0, 10);
+    this.startDate = this.endDate = label;
+    this.startYear = this.endYear = label.substring(0, 4);
+    this.startType = this.endType = XSDDatatype.XSDdate;
   }
 
   public TimeSpan(String date) {
-    super();
+    this();
     if (StringUtils.isBlank(date)) return;
-    this.splitted = false;
-
-    this.fromVocabulary = false;
-    this.century = null;
-    this.model = centralModel;
+    this.label = date;
 
     // Parsing the date
     parseDate(date);
-    if (this.fromVocabulary)
-      return;
-    if (this.startDate == null) {
+    if (this.vocabularyMatch == null && this.startDate == null) {
       this.splitted = true;
       // try again separating the parts
-      for (String p : date.split(SEPARATORS, 2)) {
+      for (String p : date.split(SEPARATORS, 2))
         parseDate(p);
-      }
+    }
+  }
+
+  public TimeSpan(int start, int end) {
+    this();
+    startYear = startDate = padYear(start);
+    endYear = endDate = padYear(end);
+    startType = endType = XSDDateType.XSDgYear;
+  }
+
+  public void createResource() {
+    if (this.vocabularyMatch != null) {
+      this.resource = model.createResource(this.vocabularyMatch);
+      return;
     }
 
-    // Creating the RDF resource
-    createResource();
+    String edtf = getEDTF();
+    String seed = edtf != null ? edtf : this.label;
+    if (seed == null) return; // null timespan
+
+    String uri;
+    if (startDate != null && endDate != null && !hasModifiers())
+      uri = ConstructURI.transparent(this.className, seed);
+    else uri = ConstructURI.build(this.className, seed);
+
+    this.resource = model.createResource(uri);
     this.setClass(CIDOC.E52_Time_Span);
+    this.addProperty(CIDOC.P78_is_identified_by, label);
+    this.addProperty(SKOS.prefLabel, seed.replace("/", " / "));
 
-    this.addProperty(CIDOC.P78_is_identified_by, date);
+    if (edtf == null) return; // no start date AND no end date
+    this.addProperty(RDFS.label, edtf);
 
-    String seed = date;
-    String label = date;
-    if (this.startDate != null) {
-      seed = this.startDate + "_" + this.endDate;
-      label = startDate + " - " + endDate;
-      if (startDate.equals(endDate)) label = seed = startDate;
+    String start = startDate;
+    String end = endDate;
+    if (before_after == 2) {
+      start = endDate;
+      end = null;
+    } else if (before_after == -2) {
+      start = null;
+      end = startDate;
     }
 
-    this.addProperty(SKOS.prefLabel, label);
-    this.setUri(ConstructURI.transparent(this.className, seed));
+    Resource startInstant = makeInstant(start, startType, uri + "/start");
+    Resource endInstant = makeInstant(end, endType, uri + "/end");
 
-    if (this.startYear == null) return;
+    this.addProperty(Time.hasBeginning, startInstant);
+    this.addProperty(CIDOC.P86_falls_within, getCenturyURI(startYear));
 
-    Resource startInstant = makeInstant(startDate, startType);
-    Resource endInstant = makeInstant(endDate, endType);
-
-    if (startInstant != null) {
-      startInstant = ResourceUtils.renameResource(startInstant, this.getUri() + "/start");
-      this.addProperty(Time.hasBeginning, startInstant);
-      this.addProperty(CIDOC.P86_falls_within, getCenturyURI(startYear));
-    }
-    if (endInstant != null) {
-      endInstant = ResourceUtils.renameResource(endInstant, this.getUri() + "/end");
-      this.addProperty(Time.hasEnd, endInstant);
-      this.addProperty(CIDOC.P86_falls_within, getCenturyURI(endYear));
-    }
+    this.addProperty(Time.hasEnd, endInstant);
+    this.addProperty(CIDOC.P86_falls_within, getCenturyURI(endYear));
     // WARNING: in cases like 1691-1721, the TS is linked both to 17th and 18th century
     // (even if formally not 100% correct)
   }
 
-  public TimeSpan(int start, int end) {
-    super();
+  private String getEDTF() {
+    if (startDate == null && endDate == null)
+      return null;
 
-    this.model = centralModel;
-    this.fromVocabulary = false;
-    this.splitted = false;
+    String startSym = "", endSym = "";
+    if (startUncertain && startApproximate) startSym = "%";
+    else if (startUncertain) startSym = "?";
+    else if (startApproximate) startSym = "~";
+    if (endUncertain && endApproximate) endSym = "%";
+    else if (endUncertain) endSym = "?";
+    else if (endApproximate) endSym = "~";
 
-    startYear = startDate = padYear(start);
-    endYear = endDate = padYear(end);
-    startType = XSDDateType.XSDgYear;
-    endType = XSDDateType.XSDgYear;
+    String bf = "", af = "";
+    // 0 = NONE, +1 = ON OR AFTER, +2 = AFTER, -1 = ON OR BEFORE, -2 = BEFORE
+    if (before_after > 0) af = "..";
+    else if (before_after < 0) bf = "..";
 
+    String edtf;
+    if (this.startDate != null) {
+      if (startDate.equals(endDate) && startUncertain == endUncertain && endApproximate == startApproximate)
+        edtf = bf + startDate + af + startSym;
+      else if (endDate != null)
+        if (before_after == 2) {
+          edtf = endDate + endSym + "/..";
+        } else if (before_after == -2) {
+          edtf = "../" + startDate + startSym;
+        } else edtf = bf + startDate + startSym + "/" + endDate + af + endSym;
+      else edtf = bf + startDate + af + startSym + "/";
+    } else edtf = "/" + bf + endDate + af + endSym;
 
-    String seed = this.startDate + "_" + this.endDate;
-    String label = startDate + " - " + endDate;
-    if (startDate.equals(endDate)) label = seed = startDate;
-
-    this.setUri(ConstructURI.transparent(this.className, seed));
-    this.setClass(CIDOC.E52_Time_Span);
-    this.addProperty(SKOS.prefLabel, label);
-
-    Resource startInstant = makeInstant(startDate, startType);
-    Resource endInstant = makeInstant(endDate, endType);
-
-    if (startInstant != null) {
-      startInstant = ResourceUtils.renameResource(startInstant, this.getUri() + "/start");
-      this.addProperty(Time.hasBeginning, startInstant);
-      this.addProperty(CIDOC.P86_falls_within, getCenturyURI(startYear));
-    }
-    if (endInstant != null) {
-      endInstant = ResourceUtils.renameResource(endInstant, this.getUri() + "/end");
-      this.addProperty(Time.hasEnd, endInstant);
-      this.addProperty(CIDOC.P86_falls_within, getCenturyURI(endYear));
-    }
+    return edtf;
   }
 
   private static String padYear(int year) {
@@ -249,27 +282,36 @@ public class TimeSpan extends Entity {
     return y;
   }
 
-  public TimeSpan(Date date) {
-    this();
-    this.model = centralModel;
-    this.fromVocabulary = false;
-
-    ISO_DATE_FORMAT.setTimeZone(UCT);
-
-    String text = ISO_DATE_FORMAT.format(date).substring(0, 10);
-    Resource instant = makeInstant(text, XSDDatatype.XSDdate);
-
-    this.addProperty(RDFS.label, text)
-      .addProperty(CIDOC.P78_is_identified_by, text);
-    this.addProperty(Time.hasBeginning, instant)
-      .addProperty(Time.hasEnd, instant);
-  }
-
 
   private void parseDate(@NotNull String date) {
-    //System.out.println(date);
+    Matcher matcher = APPROXIMATE_PATTERN.matcher(date);
+    if (matcher.find()) {
+      setApproximate(true);
+      date = date.replaceAll(APPROXIMATE_REGEX, " ");
+    }
+
+    matcher = UNCERTAIN_PATTERN.matcher(date);
+    if (matcher.find()) {
+      setUncertain(true);
+      date = date.replaceAll(UNCERTAIN_REGEX, "");
+    }
 
     // preliminary parsing
+    date = date.replaceAll("\\(.*\\)", ""); // curly brackets
+    date = date.replaceAll("\\[.*]", ""); // square brackets
+    date = date.replaceAll(ANY_BRACKETS, ""); // orphan brackets
+
+    date = date.replaceAll("\"", "");
+    date = date.replaceAll("\\.0$", ""); // workaround some dates as 1960.0
+    date = date.trim();
+    if (date.isEmpty()) return;
+
+<<<<<<< HEAD
+  private void parseDate(@NotNull String date) {
+    //System.out.println(date);
+=======
+>>>>>>> 0b685cf51d4937f2de37705c506450f7af95b7c4
+
     date = date.replaceAll(" A.?D.?", "");
     date = date.replaceAll(" CE$", "");
     date = date.replaceAll(" CE-", "-");
@@ -282,15 +324,29 @@ public class TimeSpan extends Entity {
     date = date.replaceAll("(?i)se? ([XVI]+)", "siglo $1");
     date = date.replaceAll(" ca$", " ");
     date = date.replaceAll("^ca ", " ");
-    date = date.replaceAll("^dated ", " ");
-    date = date.replaceAll("vers ", " ");
+    date = date.replaceAll("(?i)^dated ", " ");
 
     date = date.replace("'s", "s");
     date = date.replace("centuries", "century");
-    date = date.replaceAll("or (earli|lat)er", ""); // TODO represent this better
+
     date = date.replaceAll("[.,]$", ""); // trailing punctuation
+    date = date.replaceAll("\\s+", " "); // double space to one space
 
     date = date.trim();
+
+
+    // 0 = NONE, +1 = ON OR AFTER, +2 = AFTER, -1 = ON OR BEFORE, -2 = BEFORE
+    matcher = BEFORE_PATTERN.matcher(date);
+    if (matcher.find()) {
+      before_after = matcher.group(1).contains("or ") ? -1 : -2;
+      date = date.replaceAll(BEFORE_REGEX, "").trim();
+    }
+    matcher = AFTER_PATTERN.matcher(date);
+    if (matcher.find()) {
+      before_after = matcher.group(1).contains("or ") ? 1 : 2;
+      date = date.replaceAll(AFTER_REGEX, "").trim();
+    }
+
 
     if (date.matches(("\\d+ " + BEFORE_CHRIST))) {
       date = "-" + padYear(date.replaceAll(BEFORE_CHRIST, "").trim());
@@ -304,7 +360,7 @@ public class TimeSpan extends Entity {
 
     int modifier = 0; // 0 = NONE, 1 = EARLY, 2 = LATE, 3 = MID
     for (int i = 0; i < MODIFIER_PATTERNS.length; i++) {
-      Matcher matcher = MODIFIER_PATTERNS[i].matcher(date);
+      matcher = MODIFIER_PATTERNS[i].matcher(date);
       if (matcher.find()) {
         date = date.replace(matcher.group(), "");
         modifier = i + 1;
@@ -317,10 +373,9 @@ public class TimeSpan extends Entity {
     if (RomanConverter.isRoman(date)) date += " secolo";
 
     // cases: 18th century, secolo XVI
-    century = VocabularyManager.searchInCategory(date, null, "dates", false);
-    if (century != null && modifier == 0 && !splitted) {
-      this.setUri(century.getURI());
-      this.fromVocabulary = true;
+    Resource century = VocabularyManager.searchInCategory(date, null, "dates", false);
+    if (century != null && modifier == 0 && !splitted && !hasModifiers()) {
+      this.vocabularyMatch = century.getURI();
       return;
     }
 
@@ -329,7 +384,7 @@ public class TimeSpan extends Entity {
 
     // case '1st half of the 18th century'
     for (Pattern pat : CENTURY_PART_PATTERNS) {
-      Matcher matcher = pat.matcher(date);
+      matcher = pat.matcher(date);
       if (!matcher.find()) continue;
       String itString = matcher.group(1);
       String partString = matcher.group(2);
@@ -380,7 +435,7 @@ public class TimeSpan extends Entity {
 
     // cases: 1741–1754,  1960s to 1970s, ...
     if (date.matches(YEAR_SPAN)) {
-      Matcher matcher = SPAN_PATTERN.matcher(date);
+      matcher = SPAN_PATTERN.matcher(date);
       if (matcher.find()) {
         String sy = decade2year(matcher.group(1), false, modifier);
         if (startYear == null) {
@@ -400,7 +455,7 @@ public class TimeSpan extends Entity {
 
     // case: 19th–20th century
     if (date.matches(CENTURY_SPAN)) {
-      Matcher matcher = CENTURY_SPAN_PATTERN.matcher(date);
+      matcher = CENTURY_SPAN_PATTERN.matcher(date);
       if (matcher.find()) {
         String startCentury = matcher.group(1).replace("th", "");
         String endCentury = matcher.group(2).replace("th", "");
@@ -424,12 +479,31 @@ public class TimeSpan extends Entity {
       return;
     }
 
+    // case: siglos 11-12
+    if (date.matches(ES_CENTURY_SPAN)) {
+      matcher = ES_CENTURY_SPAN_PATTERN.matcher(date);
+      if (matcher.find()) {
+        int startCent = parseInt(matcher.group(1));
+        int endCent = parseInt(matcher.group(2));
+
+        // maybe add a note that this is a century?
+        startYear = padYear((startCent - 1) + "01");
+        endYear = padYear(endCent + "00");
+
+        startType = XSDDateType.XSDgYear;
+        endType = XSDDateType.XSDgYear;
+        startDate = startYear;
+        endDate = endYear;
+      }
+      return;
+    }
+
     // case "22 abril 1985"
-    Matcher matcherx = DATE_ES_PATTERN.matcher(date);
-    while (matcherx.find()) {
-      String dd = matcherx.group(1);
-      String mm = matcherx.group(2);
-      String yy = matcherx.group(3);
+    matcher = DATE_ES_PATTERN.matcher(date);
+    while (matcher.find()) {
+      String dd = matcher.group(1);
+      String mm = matcher.group(2);
+      String yy = matcher.group(3);
       int m;
       for (m = 0; m < MONTHS_ES.length; m++) {
         if (mm.substring(0, 3).equalsIgnoreCase(MONTHS_ES[m].substring(0, 3)))
@@ -445,11 +519,11 @@ public class TimeSpan extends Entity {
     if (startDate != null) return;
 
     // case "23 Fevrier 1934"
-    matcherx = DATE_FR_PATTERN.matcher(date);
-    while (matcherx.find()) {
-      String dd = matcherx.group(1);
-      String mm = matcherx.group(2);
-      String yy = matcherx.group(3);
+    matcher = DATE_FR_PATTERN.matcher(date);
+    while (matcher.find()) {
+      String dd = matcher.group(1);
+      String mm = matcher.group(2);
+      String yy = matcher.group(3);
       int m;
       for (m = 0; m < MONTHS_FR.length; m++) {
         if (mm.substring(0, 3).equalsIgnoreCase(MONTHS_FR[m].substring(0, 3)))
@@ -465,11 +539,11 @@ public class TimeSpan extends Entity {
     if (startDate != null) return;
 
     // case "April 30 1856", "December 2004", "Fall 1919"
-    matcherx = DATE_EN_PATTERN.matcher(date);
-    while (matcherx.find()) {
-      String dd = matcherx.group(2);
-      String mm = matcherx.group(1);
-      String yy = matcherx.group(3);
+    matcher = DATE_EN_PATTERN.matcher(date);
+    while (matcher.find()) {
+      String dd = matcher.group(2);
+      String mm = matcher.group(1);
+      String yy = matcher.group(3);
       int m;
       for (m = 0; m < MONTHS_EN.length; m++) {
         if (mm.equalsIgnoreCase(MONTHS_EN[m])) {
@@ -477,7 +551,10 @@ public class TimeSpan extends Entity {
         }
       }
       m++;
+<<<<<<< HEAD
       //System.out.println(m);
+=======
+>>>>>>> 0b685cf51d4937f2de37705c506450f7af95b7c4
 
       if (m <= 12) {
         setDate(dd, m, yy);
@@ -497,7 +574,7 @@ public class TimeSpan extends Entity {
             break;
           case 16: // Winter
             setDate("23", 12, yy);
-            setDate("20", 3, Integer.toString(Integer.parseInt(yy) + 1));
+            setDate("20", 3, Integer.toString(parseInt(yy) + 1));
         }
       }
     }
@@ -521,11 +598,11 @@ public class TimeSpan extends Entity {
     }
 
     // case 31/7/1816 , 13-9-67
-    matcherx = FULL_DATE_PATTERN.matcher(date);
-    while (matcherx.find()) {
-      String dd = matcherx.group(1);
-      int mm = parseInt(matcherx.group(2));
-      String yy = matcherx.group(3);
+    matcher = FULL_DATE_PATTERN.matcher(date);
+    while (matcher.find()) {
+      String dd = matcher.group(1);
+      int mm = parseInt(matcher.group(2));
+      String yy = matcher.group(3);
 
       if (dd.length() > 2) {
         if (yy.length() > 2)
@@ -545,16 +622,16 @@ public class TimeSpan extends Entity {
     if (startDate != null) return;
 
     // case 02/1877, 03/1881-04/1881
-    matcherx = MONTH_DATE_PATTERN.matcher(date);
-    while (matcherx.find()) {
-      int mm = parseInt(matcherx.group(1));
-      String yy = matcherx.group(2);
+    matcher = MONTH_DATE_PATTERN.matcher(date);
+    while (matcher.find()) {
+      int mm = parseInt(matcher.group(1));
+      String yy = matcher.group(2);
 
       setDate(null, mm, yy);
 
-      yy = matcherx.group(4);
+      yy = matcher.group(4);
       if (yy != null) {
-        mm = parseInt(matcherx.group(3));
+        mm = parseInt(matcher.group(3));
         setDate(null, mm, yy);
       }
     }
@@ -562,23 +639,23 @@ public class TimeSpan extends Entity {
 
 
     // case "Años 20 siglo XX"
-    matcherx = DECADES_ES_PATTERN.matcher(date);
-    if (matcherx.find()) {
+    matcher = DECADES_ES_PATTERN.matcher(date);
+    if (matcher.find()) {
       this.startType = this.endType = XSDDatatype.XSDgYear;
 
-      String centuryString = matcherx.group(4);
-      int century = 19;
+      String centuryString = matcher.group(4);
+      int cent = 19;
       if (!StringUtils.isBlank(centuryString))
-        century = RomanConverter.toNumerical(matcherx.group(4)) - 1;
+        cent = RomanConverter.toNumerical(matcher.group(4)) - 1;
 
 
-      String preciseYear = matcherx.group(5);
+      String preciseYear = matcher.group(5);
       if (!StringUtils.isBlank(preciseYear)) {
         preciseYear = preciseYear.trim();
         if (preciseYear.length() == 3)
           preciseYear = "1" + preciseYear;
         else if (preciseYear.length() == 2) {
-          preciseYear = century + preciseYear;
+          preciseYear = cent + preciseYear;
         }
 
         this.startDate = this.startYear = padYear(preciseYear);
@@ -586,18 +663,18 @@ public class TimeSpan extends Entity {
         return;
       }
 
-      boolean isSingular = StringUtils.isBlank(matcherx.group(1));
-      String decade = matcherx.group(2);
+      boolean isSingular = StringUtils.isBlank(matcher.group(1));
+      String decade = matcher.group(2);
       if ("diez".equalsIgnoreCase(decade)) decade = "10";
-      String endDecade = matcherx.group(3);
+      String endDecade = matcher.group(3);
       if (StringUtils.isBlank(endDecade))
         endDecade = decade;
       if (!isSingular)
         endDecade = endDecade.charAt(0) + "9";
 
 
-      startYear = startDate = padYear(century + decade);
-      endYear = endDate = padYear(century + endDecade);
+      startYear = startDate = padYear(cent + decade);
+      endYear = endDate = padYear(cent + endDecade);
     }
 
   }
@@ -720,15 +797,16 @@ public class TimeSpan extends Entity {
   }
 
   private static Resource getCenturyURI(String year) {
+    if (year == null) return null;
     int x = (parseInt(year) + 99) / 100;
     return CENTURY_URI_MAP.getOrDefault(x, null);
   }
 
   @Nullable
-  private Resource makeInstant(@NotNull String date, XSDDatatype type) {
-    if (!date.matches(UCT_DATE_REGEX)) return null;
+  private Resource makeInstant(@NotNull String date, XSDDatatype type, String uri) {
+    if (StringUtils.isBlank(date) || !date.matches(UCT_DATE_REGEX)) return null;
 
-    return this.model.createResource()
+    return this.model.createResource(uri)
       .addProperty(RDF.type, Time.Instant)
       .addProperty(Time.inXSDDate, this.model.createTypedLiteral(date, type));
   }
@@ -743,7 +821,17 @@ public class TimeSpan extends Entity {
     return format.parse(value);
   }
 
-  //public String toLabel() {return this.resource.getProperty(RDFS.label).getObject().toString();}
+  private boolean hasModifiers() {
+    return startApproximate || endApproximate || endUncertain || startUncertain || before_after != 0;
+  }
+
+  public void setUncertain(boolean uncertain) {
+    this.startUncertain = this.endUncertain = uncertain;
+  }
+
+  public void setApproximate(boolean approximate) {
+    this.startApproximate = this.endApproximate = approximate;
+  }
 
   public static TimeSpan parseVenezia(String start, String end, String fraction, String century) {
     String[] labelParts = {century, fraction, start, end};
@@ -809,25 +897,60 @@ public class TimeSpan extends Entity {
       return ts;
     }
 
-    start = start.replaceAll(" ca\\.?$", "");
+
+    boolean approximate = false;
+    boolean uncertain = false;
+    Matcher matcher = APPROXIMATE_PATTERN.matcher(start);
+    if (matcher.find()) {
+      approximate = true;
+      start = start.replaceAll(APPROXIMATE_REGEX, " ");
+    }
+
+    matcher = UNCERTAIN_PATTERN.matcher(start);
+    if (matcher.find()) {
+      uncertain = true;
+      start = start.replaceAll(UNCERTAIN_REGEX, "");
+    }
     for (String x : new String[]{CENTURY_PART_IT, EARLY_REGEX, MID_REGEX, LATE_REGEX}) {
       if (start.matches(x)) {
         start += " " + century;
         if (!start.contains("sec")) start += " secolo";
         ts = new TimeSpan(start);
+        ts.setUncertain(uncertain);
+        ts.setApproximate(approximate);
         ts.addAppellation(label);
         return ts;
       }
     }
 
     if (end != null) {
-      end = end.replaceAll(" ca\\.?$", "");
+      boolean approximateEnd = false;
+      boolean uncertainEnd = false;
+
+      matcher = APPROXIMATE_PATTERN.matcher(end);
+      if (matcher.find()) {
+        approximateEnd = true;
+        end = end.replaceAll(APPROXIMATE_REGEX, " ");
+      }
+
+      matcher = UNCERTAIN_PATTERN.matcher(end);
+      if (matcher.find()) {
+        uncertainEnd = true;
+        end = end.replaceAll(UNCERTAIN_REGEX, "");
+      }
+
       ts = new TimeSpan(start + " - " + end);
-    } else ts = new TimeSpan(start);
+      ts.startApproximate = approximate;
+      ts.endApproximate = approximateEnd;
+      ts.startUncertain = uncertain;
+      ts.endUncertain = uncertainEnd;
+    } else {
+      ts = new TimeSpan(start);
+      ts.setUncertain(uncertain);
+      ts.setApproximate(approximate);
+    }
 
     ts.addAppellation(label);
     return ts;
   }
-
-
 }
