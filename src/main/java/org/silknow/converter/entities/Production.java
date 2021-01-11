@@ -173,6 +173,10 @@ public class Production extends Entity {
     this.addProperty(CIDOC.P125_used_object_of_type, used_object, lang);
   }
 
+  public void addActor(Actor actor) {
+    this.addProperty(CIDOC.P14_carried_out_by, actor);
+  }
+
 
   public boolean hasTimeSpans() {
     return tsCount > 0;

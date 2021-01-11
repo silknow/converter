@@ -145,21 +145,18 @@ public class UNIPAConverter extends Converter {
     prod.addActivity(s.getMulti("Autors").findFirst().orElse(null), "Artist");
 
 
-    Document doc = new Document(id);
-    s.getMulti("Author of the technical analysis").map(Person::new)
-            .forEach(doc::addEditor);
-    s.getMulti("Author of the Historical Critical Information").map(Person::new)
-            .forEach(doc::addEditor);
-    doc.document(obj);
+    //Document doc = new Document(id);
+    //s.getMulti("Author of the technical analysis").map(Person::new)
+    //        .forEach(doc::addEditor);
+    //s.getMulti("Author of the Historical Critical Information").map(Person::new)
+    //        .forEach(doc::addEditor);
+    //doc.document(obj);
 
 
-    LegalBody museum = null;
-    if (museumName != null)
-      museum = new LegalBody(museumName);
+    //
+    //if (museumName != null)
 
 
-    Transfer transfer = new Transfer(id);
-    transfer.of(obj).by(museum);
 
     ////////////////additional mappings for new records
     s.getMulti("name")
@@ -167,8 +164,15 @@ public class UNIPAConverter extends Converter {
             .forEach(this::linkToRecord);
 
     s.getMulti("technique_description").forEach(technique -> prod.addTechnique(technique, mainLang));
+
+
     if (s.get("storage_location") != null) {
-      transfer.of(obj).by(s.get("storage_location"));
+      Transfer transfer = new Transfer(id);
+      LegalBody museum = null;
+      museumName = s.get("storage_location");
+      museum = new LegalBody(museumName);
+      transfer.of(obj).by(museum);
+      linkToRecord(transfer);
     }
 
     s.getMulti("date").forEach(prod::addTimeAppellation);
@@ -217,8 +221,7 @@ public class UNIPAConverter extends Converter {
 
     linkToRecord(obj);
     linkToRecord(prod);
-    linkToRecord(transfer);
-    linkToRecord(doc);
+    //linkToRecord(doc);
 
 
 

@@ -125,7 +125,7 @@ public class VAMConverter extends Converter {
     transfer.of(obj).by(museum);
 
     Move move = new Move(regNum);
-    //move.of(obj).from(s.getMulti("location").findFirst().orElse(null)).to(s.getMulti("location").findFirst().orElse(null));
+    move.of(obj).from(s.getMulti("location").findFirst().orElse(null)).to(s.getMulti("location").findFirst().orElse(null));
 
     Collection collection = new Collection(regNum, s.getMulti("collections").findFirst().orElse(null));
     collection.of(obj);

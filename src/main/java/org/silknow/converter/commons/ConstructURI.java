@@ -20,6 +20,11 @@ public class ConstructURI {
   }
 
   @NotNull
+  public static String generate(String seed) {
+    return generateUUID(seed);
+  }
+
+  @NotNull
   public static String build(String className, String name) {
     String seed = norm(name) + className;
     return BASE + getCollectionName(className) + "/" + generateUUID(seed);
@@ -51,6 +56,7 @@ public class ConstructURI {
     switch (className) {
       case "ManMade_Object":
       case "PropositionalObject":
+      case "InformationObject":
         return "object";
       case "Document":
         return "document";
@@ -58,6 +64,7 @@ public class ConstructURI {
         return "image";
       case "LegalBody":
         return "organization";
+      case "Modification":
       case "Transfer":
       case "Move":
       case "Acquisition":

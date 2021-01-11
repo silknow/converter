@@ -156,13 +156,15 @@ public class ImatexConverter extends Converter {
     //acquisition.setDate(acquisitionDate);
     //acquisition.setType(acquisitionType);
 
-    // From the mapping:
-    // This field cannot be systematically mapped this way. The relation depends on the record itself
-    String npa = s.get("NOMS PROPIS ASSOCIATS");
-    if (!StringUtils.isBlank(npa)) {
-      Activity activity = new Activity(regNum, "npa");
+
+    String npa = s.get("NOMS PROPIS ASSOCIATS*");
+    if (!npa.equals("Homar, Gaspar, 1870-1955 -"))  {
+      Activity activity = new Activity(regNum, "Noms Propis Associats");
       activity.addActor(npa);
       linkToRecord(activity);
+    }
+    if (npa.equals("Homar, Gaspar, 1870-1955 -"))  {
+      prod.addActivity(npa, "Noms Propis Associats");
     }
 
     prod.addActivity(s.get("DESSIGNER"), "Designer");
