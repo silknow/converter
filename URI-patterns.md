@@ -26,9 +26,9 @@ The `<group>` is taken from this table
 
 | Class | Group |
 | --- | --- |
-| D1_Digital_Object | ? |
+| D1_Digital_Object | object |
 | E22_Man-Made_Object | object |
-| E73_Information_Object | informationobject |
+| E73_Information_Object | object |
 | E89_Propositional_Object | object |
 | E38_Image | image |
 | E12_Production | production |
@@ -83,11 +83,12 @@ The UUID is computed deterministically starting from a seed string. A real UUID 
 The seed is usually generated  based on:
 
 * source (e.g. 'unipa', 'met', ...)
-* class (e.g. 'E22_Man-Made_Object', 'D1_Digital_Object', ...)
+* class (e.g. 'E22_Man-Made_Object', ...)
 * the id of the current object (normally it is unique in a file)
 * Hash function: SHA-1
 
 There are some exceptions to this rule, in order to allow automatic cross-source alignment:
+* For D1 Digital Object, the filename (without extension) and the ID of the JSON file are used.
 * For Places and Actors, we use the label ('Rome' e.g.) instead of the id plus the class, but not the source.
 * For Collection, it's the same case as for Places and Actors, but we also use the source addition.
 * For the Images we use a concatenation of id (internal ID of museum record) + "$$$" + imgCount (How many images does the object have) + this.localFilename
