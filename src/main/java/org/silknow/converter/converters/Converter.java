@@ -57,7 +57,7 @@ public abstract class Converter {
     if (this.record == null) {
       //String recordUri = BASE_URI + this.DATASET_NAME + "/" + id.replaceAll("\\s", "_");
       String seed = this.filename + "$$$" + this.id;
-      String recordUri = BASE_URI + "object/" + ConstructURI.generate(seed);
+      String recordUri = BASE_URI + "object/" + ConstructURI.generateUUID(seed);
       if (filename != null) {
       String label = "ID_"+id+"_filename_"+filename;
       this.record = model.createResource(recordUri)

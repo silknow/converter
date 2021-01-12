@@ -19,10 +19,6 @@ public class ConstructURI {
     return BASE + getCollectionName(className) + "/" + generateUUID(seed);
   }
 
-  @NotNull
-  public static String generate(String seed) {
-    return generateUUID(seed);
-  }
 
   @NotNull
   public static String build(String className, String name) {
@@ -36,7 +32,7 @@ public class ConstructURI {
       .replaceAll("\\s", "_");
   }
 
-  private static String generateUUID(@NotNull String seed) {
+  public static String generateUUID(@NotNull String seed) {
     // source: https://gist.github.com/giusepperizzo/630d32cc473069497ac1
     try {
       String hash = DatatypeConverter.printHexBinary(MessageDigest.getInstance("SHA-1")
