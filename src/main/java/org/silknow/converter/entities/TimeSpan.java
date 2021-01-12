@@ -103,7 +103,7 @@ public class TimeSpan extends Entity {
   private static final String APPROXIMATE_REGEX = "(?i)(circa|around|about|vers |ca?\\.|\\[ca]|^ca |ca$)";
   private static final Pattern APPROXIMATE_PATTERN = Pattern.compile(APPROXIMATE_REGEX);
 
-  private static final String UNCERTAIN_REGEX = "(?i)(posiblemente|(proba|possi)bly|\\?)";
+  public static final String UNCERTAIN_REGEX = "(?i)(forse|posiblemente|(proba|possi)ba?ly|\\?)";
   private static final Pattern UNCERTAIN_PATTERN = Pattern.compile(UNCERTAIN_REGEX);
 
   public static final String ANY_BRACKETS = "[(\\[\\])]";
@@ -957,5 +957,37 @@ public class TimeSpan extends Entity {
 
     ts.setLabel(label);
     return ts;
+  }
+
+  public static void main(String[] args) {
+    ClassLoader classLoader = Converter.class.getClassLoader();
+    URL vocabularyFolder = classLoader.getResource("vocabulary");
+    URL p2fTable = classLoader.getResource("property2family.csv");
+    assert vocabularyFolder != null && p2fTable != null;
+    VocabularyManager.setVocabularyFolder(vocabularyFolder.getPath());
+    try {
+      VocabularyManager.init(p2fTable);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    // siglos_11_15, siglos_12_13, segles_10_11
+
+    TimeSpan ts = new TimeSpan("siglos 11-15");
+    ts.createResource();
+    System.out.println(ts.resource);
+    ts = new TimeSpan("siglos 12-13");
+    ts.createResource();
+    System.out.println(ts.resource);
+    ts = new TimeSpan("segles 10-11");
+    ts.createResource();
+    System.out.println(ts.resource);
+    ts = new TimeSpan("siglo 10");
+    ts.createResource();
+    System.out.println(ts.resource);
+    ts = new TimeSpan("6th Century CE-7th Century CE");
+    ts.createResource();
+    System.out.println(ts.resource);
+
   }
 }

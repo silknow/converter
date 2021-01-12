@@ -1,9 +1,6 @@
 package org.silknow.converter.commons;
 
-import org.geonames.Toponym;
-import org.geonames.ToponymSearchCriteria;
-import org.geonames.ToponymSearchResult;
-import org.geonames.WebService;
+import org.geonames.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -54,12 +51,16 @@ public class GeoNames {
     return query(label, null, null);
   }
 
-  public static Toponym query(String label, String featureCode, String continent) {
+  public static Toponym query(String label, String featureCode, String country) {
+    return query(label, featureCode, country, false);
+  }
+
+  public static Toponym query(String label, String featureCode, String country, boolean excludeCache) {
     label = label.trim();
     if (label.isEmpty()) return null;
     Toponym tp = null;
 
-    if (cache.containsKey(label)) {
+    if (!excludeCache && cache.containsKey(label)) {
       int k = cache.get(label);
       if (k != -1) {
         tp = new Toponym();
@@ -72,7 +73,17 @@ public class GeoNames {
     searchCriteria.setName(label);
     searchCriteria.setMaxRows(1);
     if (featureCode != null) searchCriteria.setFeatureCode(featureCode);
-    if (continent != null) searchCriteria.setContinentCode(continent);
+    if (country != null) {
+      if (country.startsWith("+"))
+        searchCriteria.setContinentCode(country.substring(1));
+      else {
+        try {
+          searchCriteria.setCountryCode(country);
+        } catch (InvalidParameterException e) {
+          e.printStackTrace();
+        }
+      }
+    }
 
     try {
       ToponymSearchResult searchResult = WebService.search(searchCriteria);
@@ -101,7 +112,7 @@ public class GeoNames {
     }
   }
 
-  private static void addToCache(String key, int value) {
+  public static void addToCache(String key, int value) {
     cache.put(key, value);
     saveCache();
   }
