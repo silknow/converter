@@ -21,7 +21,6 @@ public class CrawledJSON {
   private List<CrawledJSONExhibitions> exhibitions;
 
 
-
   private String multiSeparator;
   private String id;
   private String url;
@@ -41,9 +40,9 @@ public class CrawledJSON {
 
   private CrawledJSONField getField(String label) {
     return fields.stream()
-            .filter(f -> f.hasLabel(label))
-            .filter(CrawledJSONField::isNotNull)
-            .findFirst().orElse(null);
+      .filter(f -> f.hasLabel(label))
+      .filter(CrawledJSONField::isNotNull)
+      .findFirst().orElse(null);
   }
 
   public String get(String label) {
@@ -52,11 +51,9 @@ public class CrawledJSON {
     return f.getValue();
   }
 
-
   public Stream<String> getMulti(String label) {
     return getMulti(label, this.multiSeparator);
   }
-
 
   public Stream<String> getMulti(String label, String separator) {
     CrawledJSONField f = getField(label);
@@ -66,13 +63,19 @@ public class CrawledJSON {
   }
 
 
-
-
   public void setMultiSeparator(String separator) {
     this.multiSeparator = separator;
   }
 
-  public Stream<CrawledJSONImages> getImages() { return this.images.stream(); }
-  public Stream<CrawledJSONExhibitions> getExhibitions() { return this.exhibitions.stream(); }
-  public Stream<CrawledJSONPublications> getPublications() { return this.publications.stream(); }
+  public Stream<CrawledJSONImages> getImages() {
+    return this.images.stream();
+  }
+
+  public Stream<CrawledJSONExhibitions> getExhibitions() {
+    return this.exhibitions.stream();
+  }
+
+  public Stream<CrawledJSONPublications> getPublications() {
+    return this.publications.stream();
+  }
 }

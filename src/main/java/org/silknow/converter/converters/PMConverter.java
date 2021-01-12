@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 public class PMConverter extends Converter {
 
 
-
   @Override
   public boolean canConvert(File file) {
     return isJson(file);
@@ -54,15 +53,15 @@ public class PMConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "NumeroObjet"));
-    obj.addTitle(s.getMulti("title").findFirst().orElse(null),mainLang);
+    obj.addTitle(s.getMulti("title").findFirst().orElse(null), mainLang);
     //obj.addTitle(s.getMulti("Autre Titre").findFirst().orElse(null),mainLang);
     s.getMulti("fieldOeuvreTypesObjet")
-            .map(x -> obj.addClassification(x, "Type(s) d'objet(s)", mainLang))
-            .forEach(this::linkToRecord);
+      .map(x -> obj.addClassification(x, "Type(s) d'objet(s)", mainLang))
+      .forEach(this::linkToRecord);
 
- s.getMulti("fieldDenominations")
-            .map(x -> obj.addClassification(x, "Dénomination(s)", mainLang))
-            .forEach(this::linkToRecord);
+    s.getMulti("fieldDenominations")
+      .map(x -> obj.addClassification(x, "Dénomination(s)", mainLang))
+      .forEach(this::linkToRecord);
 
     /*
     final List<String> terms = new ArrayList<String>();
@@ -74,47 +73,41 @@ public class PMConverter extends Converter {
       .filter(Objects::nonNull)
       .collect(Collectors.joining(", "));
     obj.addConstructedTitle(constrlabel, mainLang);
-/*
-
-
      */
+
     s.getImages().map(Image::fromCrawledJSON)
-            .peek(image -> image.addInternalUrl("ParisMusees"))
-            .peek(obj::add)
-            .forEach(this::linkToRecord);
+      .peek(image -> image.addInternalUrl("ParisMusees"))
+      .peek(obj::add)
+      .forEach(this::linkToRecord);
 
     Production prod = new Production(regNum);
     prod.add(obj);
 
-    String time = s.get("fieldDateProduction.startYear")+"-"+s.get("fieldDateProduction.endYear");
-    prod.addTimeAppellation(time);
-    s.getMulti("fieldDateProduction.century").forEach(prod::addTimeAppellation);
-
-
+    // Dates
+    String startYear = s.get("fieldDateProduction.startYear");
+    String endYear = s.get("fieldDateProduction.startYear");
+    String century = s.get("fieldDateProduction.century");
+    if (startYear != null || endYear != null) {
+      prod.addTimeSpan(new TimeSpan(startYear, endYear));
+    } else if (century != null) { // this normally do not happen
+      prod.addTimeSpan(new TimeSpan(century));
+    }
 
     s.getMulti("fieldOeuvreLieuxProductions").forEach(prod::addPlace);
 
     s.getMulti("fieldSujetsConcernes").forEach(subject -> obj.addSubject(subject, mainLang));
     s.getMulti("Précision sujet représenté").forEach(subject -> obj.addSubject(subject, mainLang));
 
-
-
     s.getMulti("fieldMateriauxTechnique").forEach(material -> prod.addMaterial(material, mainLang));
     s.getMulti("Classifications")
-            .map(x -> obj.addClassification(x, "Classifications", mainLang))
-            .forEach(this::linkToRecord);
+      .map(x -> obj.addClassification(x, "Classifications", mainLang))
+      .forEach(this::linkToRecord);
 
     linkToRecord(obj.addMeasure(s.getMulti("Largeur.Œuvre").findFirst().orElse(""), s.getMulti("Hauteur.Œuvre").findFirst().orElse("")));
 
-
-
     linkToRecord(obj.addObservation(s.get("fieldOeuvreDescriptionIcono.value"), "Description iconographique", mainLang));
 
-
-
-    LegalBody legalbody = null;
-    legalbody = new LegalBody(s.get("fieldMusee.entity.entityLabel"));
-
+    LegalBody legalbody = new LegalBody(s.get("fieldMusee.entity.entityLabel"));
 
     if (s.get("Nom du donateur, testateur, vendeur") != null) {
       Acquisition acquisition = new Acquisition(regNum);
@@ -122,7 +115,6 @@ public class PMConverter extends Converter {
       acquisition.transfer(acquisitionFrom, obj, legalbody);
       linkToRecord(acquisition);
     }
-
 
     Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(legalbody);
@@ -149,8 +141,6 @@ public class PMConverter extends Converter {
       .map(x -> x.replaceFirst("© ", ""))
       .map(Actor::new)
       .forEach(copyphoto::ownedBy);
-
-
 
     linkToRecord(obj);
 

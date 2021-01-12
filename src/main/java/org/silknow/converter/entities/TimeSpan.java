@@ -193,6 +193,15 @@ public class TimeSpan extends Entity {
     startType = endType = XSDDateType.XSDgYear;
   }
 
+  public TimeSpan(String start, String end) {
+    this();
+    if (!StringUtils.isBlank(start))
+      startYear = startDate = padYear(start);
+    if (!StringUtils.isBlank(end))
+      endYear = endDate = padYear(end);
+    startType = endType = XSDDateType.XSDgYear;
+  }
+
   public void createResource() {
     if (this.vocabularyMatch != null) {
       this.resource = model.createResource(this.vocabularyMatch);
