@@ -118,6 +118,10 @@ public class TimeSpan extends Entity {
   static {
     BidiMap<Integer, Resource> map = new DualHashBidiMap<>();
 
+    map.put(4, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404496"));
+    map.put(5, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404497"));
+    map.put(6, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404498"));
+    map.put(7, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404499"));
     map.put(8, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404500"));
     map.put(9, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404501"));
     map.put(10, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404502"));
@@ -802,9 +806,10 @@ public class TimeSpan extends Entity {
       .addProperty(Time.inXSDDate, this.model.createTypedLiteral(date, type));
   }
 
-  public void addAppellation(String timeAppellation) {
-    this.addProperty(RDFS.label, timeAppellation)
-      .addProperty(CIDOC.P78_is_identified_by, timeAppellation);
+  public void setLabel(String label) {
+    this.label = label;
+    if (this.resource != null)
+      this.addProperty(CIDOC.P78_is_identified_by, label);
   }
 
   static Date dateFromString(String value, @NotNull DateFormat format) throws ParseException {
@@ -879,12 +884,12 @@ public class TimeSpan extends Entity {
           startY = Math.round((startCentury - 1) * 100 + 1);
         }
         ts = new TimeSpan(startY, endY);
-        ts.addAppellation(label);
+        ts.setLabel(label);
         return ts;
       }
       if (fraction != null) century = fraction + " " + century;
       ts = new TimeSpan(century);
-      ts.addAppellation(label);
+      ts.setLabel(label);
       return ts;
     }
 
@@ -909,7 +914,7 @@ public class TimeSpan extends Entity {
         ts = new TimeSpan(start);
         ts.setUncertain(uncertain);
         ts.setApproximate(approximate);
-        ts.addAppellation(label);
+        ts.setLabel(label);
         return ts;
       }
     }
@@ -941,7 +946,7 @@ public class TimeSpan extends Entity {
       ts.setApproximate(approximate);
     }
 
-    ts.addAppellation(label);
+    ts.setLabel(label);
     return ts;
   }
 }
