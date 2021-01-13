@@ -115,6 +115,8 @@ public class TimeSpan extends Entity {
   private static final String AFTER_REGEX = "(?i)(or later|after)";
   private static final Pattern AFTER_PATTERN = Pattern.compile(AFTER_REGEX);
 
+  public static final String ACTIVITY_REGEX = "(?i)\\((embroider(ed|y|ing)|used|made|published|designed( and made)?|printed|collected|sewing|worn|altered|manufactured|(hand |tapestry )?weaving|woven|quilted|paint(ing|ed)|retailed|joinery|sold|upholstered)\\)";
+
   static {
     BidiMap<Integer, Resource> map = new DualHashBidiMap<>();
 
@@ -174,6 +176,10 @@ public class TimeSpan extends Entity {
   public TimeSpan(String date) {
     this();
     if (StringUtils.isBlank(date)) return;
+    date = date.replaceAll(ACTIVITY_REGEX, "");
+    date = date.replaceAll("(?i)^dated ", " ");
+    date = date.replaceAll("(?i)\\(dated\\) ", " ");
+
     this.label = date;
 
     // Parsing the date
@@ -332,7 +338,6 @@ public class TimeSpan extends Entity {
     date = date.replaceAll("(?i)se? ([XVI]+)", "siglo $1");
     date = date.replaceAll(" ca$", " ");
     date = date.replaceAll("^ca ", " ");
-    date = date.replaceAll("(?i)^dated ", " ");
 
     date = date.replace("'s", "s");
     date = date.replace("centuries", "century");

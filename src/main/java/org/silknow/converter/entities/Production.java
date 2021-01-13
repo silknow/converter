@@ -2,7 +2,6 @@ package org.silknow.converter.entities;
 
 import org.apache.jena.rdf.model.ResIterator;
 import org.apache.jena.rdf.model.Resource;
-import org.apache.jena.vocabulary.RDFS;
 import org.apache.jena.vocabulary.SKOS;
 import org.doremus.string2vocabulary.VocabularyManager;
 import org.silknow.converter.commons.StopWordException;
@@ -32,8 +31,6 @@ public class Production extends Entity {
   public void addTimeAppellation(String time) {
     if (time == null) return;
     time = time.trim();
-
-    System.out.println(time);
 
     Matcher m = UNKNOWN_PATTERN.matcher(time);
     if (m.find()) {

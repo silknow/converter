@@ -43,9 +43,9 @@ public class Place extends Entity {
 
     name = name.replaceAll(TimeSpan.UNCERTAIN_REGEX, "");
     name = name.replaceAll("(?i)\\(?(used|marketed|worn) in .+\\)?", ""); // English, used in America
-    name = name.replaceAll("(?i)\\((embroider(ed|y|ing)|used|made|published|designed (and made)?|printed|\\d+)\\)", "");
-    name = name.replaceAll("(?i)\\((collected|sewing|worn|manufactured|(hand )?weaving|woven|quilted|paint(ing|ed))\\)", "");
-    name = name.replaceAll("(?i)\\((retailed|joinery|sold|upholstered)\\)", "");
+    name = name.replaceAll("\\(\\\\d+\\)", "");
+    name = name.replaceAll(TimeSpan.ACTIVITY_REGEX, "");
+
     name = name.replaceAll("(?i)for .+ market", ""); // English, used in America
     name = name.replaceAll("(?i)for export", "");
     name = name.replaceAll("(?i)\\[(.+)?para (?:la )?exportación.+(]|$)", "");
