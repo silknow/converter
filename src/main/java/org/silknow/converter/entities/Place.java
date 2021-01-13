@@ -64,8 +64,8 @@ public class Place extends Entity {
     if (name.contains("(island)")) {
       name = name.replace("(island)", "");
       feature_code = "ISL";
-    } else if (name.contains("(city)")) {
-      name = name.replace("(city)", "");
+    } else if (name.toLowerCase().contains("(city)")) {
+      name = name.replaceAll("(?i)(city)", "");
       feature_code = "P";
     }
 
@@ -176,12 +176,12 @@ public class Place extends Entity {
 
   public static String fromDemonym(String demonym) {
     if (DEMONYM == null) DEMONYM = loadDemonymMap("en");
-    return DEMONYM.getOrDefault(demonym, demonym);
+    return DEMONYM.getOrDefault(demonym.toLowerCase(), demonym);
   }
 
   public static String fromDemonymIT(String demonym) {
     if (IT_DEMONYM == null) IT_DEMONYM = loadDemonymMap("it");
-    return IT_DEMONYM.getOrDefault(demonym, demonym);
+    return IT_DEMONYM.getOrDefault(demonym.toLowerCase(), demonym);
   }
 
   private static HashMap<String, String> loadDemonymMap(String lang) {
@@ -192,7 +192,7 @@ public class Place extends Entity {
     try {
       while (br.ready()) {
         String[] line = br.readLine().split(",");
-        dmn.put(line[0], line[1]);
+        dmn.put(line[0].toLowerCase(), line[1]);
       }
     } catch (IOException e) {
       e.printStackTrace();

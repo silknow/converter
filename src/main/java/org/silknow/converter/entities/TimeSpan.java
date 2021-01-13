@@ -115,7 +115,7 @@ public class TimeSpan extends Entity {
   private static final String AFTER_REGEX = "(?i)(or later|after)";
   private static final Pattern AFTER_PATTERN = Pattern.compile(AFTER_REGEX);
 
-  public static final String ACTIVITY_REGEX = "(?i)\\((embroider(ed|y|ing)|used|made|published|designed( and made)?|printed|collected|sewing|worn|altered|manufactured|(hand |tapestry )?weaving|woven|quilted|paint(ing|ed)|retailed|joinery|sold|upholstered)\\)";
+  public static final String ACTIVITY_REGEX = "(?i)\\((embroider(ed|y|ing)|used|made|published|drawn|designed( and made| \\(process\\))?|(block )?print(ed|ing)|tambouring|collected|sewing|worn|altered|purchased|manufactured|(hand |tapestry )?weaving|woven|quilted|paint(ing|ed)|retailed|joinery|sold|upholstered)\\)";
 
   static {
     BidiMap<Integer, Resource> map = new DualHashBidiMap<>();
