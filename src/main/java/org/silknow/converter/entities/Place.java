@@ -45,9 +45,9 @@ public class Place extends Entity {
     name = name.replaceAll("(?i)\\((embroider(ed|y|ing)|used|made|published|designed|printed|\\d+)\\)", "");
     name = name.replaceAll("(?i)\\((collected|sewing|worn|manufactured|(hand )?weaving|woven|quilted|paint(ing|ed))\\)", "");
     name = name.replaceAll("(?i)\\((retailed|joinery)\\)", "");
-    name = name.replaceAll("(?i)\\(?(used|marketed) in .+\\)?", ""); // English, used in America
+    name = name.replaceAll("(?i)\\(?(used|marketed|worn) in .+\\)?", ""); // English, used in America
     name = name.replaceAll("(?i)for .+ market", ""); // English, used in America
-
+    name = name.replaceAll("(?i)for export", "");
     name = name.replaceAll("(?i)\\[(.+)?para (?:la )?exportación.+(]|$)", "");
     name = name.replaceAll(IT_ART_REGEX, "");
 
@@ -64,6 +64,9 @@ public class Place extends Entity {
     if (name.contains("(island)")) {
       name = name.replace("(island)", "");
       feature_code = "ISL";
+    } else if (name.contains("(city)")) {
+      name = name.replace("(city)", "");
+      feature_code = "P";
     }
 
     name = name.trim().replaceAll(",$", "");
@@ -71,7 +74,9 @@ public class Place extends Entity {
       .replaceAll("\\[ ?]", "")
       .replaceAll("^\\[(.+)]", "$1")
       .replaceAll(", ([)\\]])", "$1")
+      .replaceAll("\\( ", "(")
       .replaceAll("\\s+", " ")
+      .replaceAll("\\.$f", " ")
       .trim();
 
     // if it is a Demonym, I convert it to a place
@@ -81,7 +86,7 @@ public class Place extends Entity {
     // final trim before searching
     name = name.trim();
 
-    Toponym tp = GeoNames.query(name.replaceAll(TimeSpan.ANY_BRACKETS, ","), feature_code, continent);
+    Toponym tp = GeoNames.query(name, feature_code, continent);
     if (tp != null) {
       GeoNames.downloadRdf(tp.getGeoNameId());
       this.setUri(GeoNames.toURI(tp.getGeoNameId()));
@@ -93,6 +98,7 @@ public class Place extends Entity {
 
     // case Italian (Florence) or Spanish, Almeria
     tp = parseDemoCity(name, continent);
+
     if (tp != null) {
       GeoNames.addToCache(name, tp.getGeoNameId());
       GeoNames.downloadRdf(tp.getGeoNameId());
@@ -130,21 +136,33 @@ public class Place extends Entity {
         String[] parts = p2.split(", ");
         p2 = parts[parts.length - 1];
       }
-    } else if (name.contains(", ")) {
-      String[] parts = name.split(", ");
+    } else if (name.contains("[,:] ")) {
+      String[] parts = name.split("[,:] ");
       p1 = parts[0];
       p2 = parts[parts.length - 1];
     } else return null;
 
-    p1 = fromDemonym(p1);
-    p2 = fromDemonym(p2);
-    Toponym t1 = GeoNames.query(p1, "PCLI", continent, true);
+    Toponym t1;
+    String place1 = fromDemonym(p1);
+    String place2 = fromDemonym(p2);
+
+    if ("English".equalsIgnoreCase(p1)) place1 = "United Kingdom"; // workaround
+    else if ("Irish".equalsIgnoreCase(p1)) place1 = "Republic of Ireland"; // workaround
+    else if ("Flemish".equalsIgnoreCase(p1)) {// workaround
+      t1 = GeoNames.query(place2, null, continent, true);
+      if (t1 != null && t1.getCountryCode().matches("(FR|NL|BE)"))
+        return t1;
+      else return null;
+    }
+
+    t1 = GeoNames.query(place1, "PCLI", continent, true);
     if (t1 == null) {
-      t1 = GeoNames.query(p2, "PCLI", continent, true);
-      p2 = p1;
+      t1 = GeoNames.query(place2, "PCLI", continent, true);
+      place2 = place1;
     }
     if (t1 == null) return null;
-    return GeoNames.query(p2, null, t1.getCountryCode(), true);
+
+    return GeoNames.query(place2, null, t1.getCountryCode(), true);
   }
 
   public Place(Toponym tp) {

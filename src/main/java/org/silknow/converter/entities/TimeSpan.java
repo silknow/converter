@@ -103,7 +103,7 @@ public class TimeSpan extends Entity {
   private static final String APPROXIMATE_REGEX = "(?i)(circa|around|about|vers |ca?\\.|\\[ca]|^ca |ca$)";
   private static final Pattern APPROXIMATE_PATTERN = Pattern.compile(APPROXIMATE_REGEX);
 
-  public static final String UNCERTAIN_REGEX = "(?i)(forse|posiblemente|(proba|possi)ba?ly|\\?)";
+  public static final String UNCERTAIN_REGEX = "(?i)(forse|posiblemente|(proba|possi)ba?ly|\\?|¿)";
   private static final Pattern UNCERTAIN_PATTERN = Pattern.compile(UNCERTAIN_REGEX);
 
   public static final String ANY_BRACKETS = "[(\\[\\])]";

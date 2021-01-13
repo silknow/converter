@@ -90,7 +90,9 @@ public class GeoNames {
       if (searchResult.getToponyms().size() > 0)
         tp = searchResult.getToponyms().get(0);
 
-      addToCache(label, tp != null ? tp.getGeoNameId() : -1);
+      int id = tp != null ? tp.getGeoNameId() : -1;
+      if (id > 0 || !excludeCache)
+        addToCache(label, id);
     } catch (Exception e) {
       e.printStackTrace();
     }
