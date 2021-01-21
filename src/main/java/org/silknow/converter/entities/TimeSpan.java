@@ -497,7 +497,9 @@ public class TimeSpan extends Entity {
       matcher = ES_CENTURY_SPAN_PATTERN.matcher(date);
       if (matcher.find()) {
         int startCent = parseInt(matcher.group(1));
-        int endCent = parseInt(matcher.group(2));
+        String ec = matcher.group(2);
+        int endCent = startCent;
+        if (ec != null) endCent = parseInt(ec);
 
         // maybe add a note that this is a century?
         startYear = padYear((startCent - 1) + "01");
@@ -753,7 +755,7 @@ public class TimeSpan extends Entity {
   @NotNull
   private static String decade2year(@NotNull String decade, boolean end, int modifier) {
     // modifier: 0 = NONE, 1 = EARLY, 2 = LATE, 3 = MID
-    if (decade.endsWith("s")) {
+    if (decade.endsWith("0s")) {
       decade = StringUtils.leftPad(decade, 5, "0");
       if (end) { // end decade
         String endDigit = "9";
@@ -769,6 +771,10 @@ public class TimeSpan extends Entity {
       return decade.replace("s", "");
     }
 
+    // In cases like 1399s (`s` not preceded by 0)
+    // I consider the `s` as an error and I strip it
+    decade = decade.replace("s", "");
+
     // choice: mid-years (e.g. mid-1983) are not handle with month-precision
     return padYear(decade);
   }
@@ -777,7 +783,7 @@ public class TimeSpan extends Entity {
    * Convert ordinal literals (e.g. first, second, ...) in related int.
    * Four langs: EN, ES, IT, FR
    *
-   * @param ordinal
+   * @param ordinal number (e.g. "primo", "first", "1st")
    * @return related integer, -1 if ordinal is "last", 0 if not recognised
    */
   private static int ordinalToInt(@NotNull String ordinal) {
