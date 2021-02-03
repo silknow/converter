@@ -11,10 +11,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class ImatexConverter extends Converter {
 //  private static final String DOC_BASE_URI = "http://imatex.cdmt.cat/_cat/fitxa_fitxa.aspx?num_id=";
+
+  private static final String MOD_REGEX = "(.+)(?: -|,|.) (\\d{4})(?: \\((.+)\\))?";
+  private static final Pattern MOD_PATTERN = Pattern.compile(MOD_REGEX);
 
   @Override
   public boolean canConvert(File file) {
@@ -133,12 +138,44 @@ public class ImatexConverter extends Converter {
       linkToRecord(conditionAssessment);
     }
 
+
+
     String rest = s.get("RESTAURACIÓ*");
-    if (rest != null) {
-      Modification modification = new Modification(regNum, "restoration", rest);
-      modification.of(obj);
-      linkToRecord(modification);
+    if (rest != null && !rest.equalsIgnoreCase("no")) {
+      if (rest.contains("/")) {
+        String[] separated = rest.split("/");
+        for (String element : separated) {
+          Matcher matcher2 = MOD_PATTERN.matcher(element);
+          if (matcher2.find()) {
+            Modification modification = new Modification(id, matcher2.group(1), matcher2.group(2), matcher2.group(3));
+            modification.of(obj);
+            linkToRecord(modification);
+          }
+          else {
+            Modification modification = new Modification(id, element);
+            modification.of(obj);
+            linkToRecord(modification);
+          }
+        }
+      }
+      else {
+        Matcher matcher2 = MOD_PATTERN.matcher(rest);
+        if (matcher2.find()) {
+          Modification modification = new Modification(id, matcher2.group(1), matcher2.group(2), matcher2.group(3));
+          modification.of(obj);
+          linkToRecord(modification);
+        }
+        else {
+          Modification modification = new Modification(id, rest);
+          modification.of(obj);
+          linkToRecord(modification);
+        }
+      }
     }
+
+
+
+
 
     linkToRecord(obj.addMeasure(s.get("MEASUREMENT")));
     linkToRecord(obj.addObservation(s.get("DESCRIPTION"), "Description", mainLang));

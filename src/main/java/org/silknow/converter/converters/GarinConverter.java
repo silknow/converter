@@ -29,6 +29,7 @@ public class GarinConverter extends Converter {
   }
 
 
+
   @Override
   public boolean canConvert(File file) {
     return isExcel(file);
@@ -66,15 +67,15 @@ public class GarinConverter extends Converter {
       return null;
 
     //if (s.get("Nº Inventario").isEmpty()  != true ) {
-      String[] path = file.getAbsolutePath().split("/");
-      String regNum = (path[path.length - 3] + "_" + path[path.length - 2] + "_" + s.get("Nº Inventario")).replaceAll(" +", "_");
-      id = regNum;
+    String[] path = file.getAbsolutePath().split("/");
+    String regNum = (path[path.length - 3] + "_" + path[path.length - 2] + "_" + s.get("Nº Inventario")).replaceAll(" +", "_");
+    id = regNum;
 
     //}
 
     //else {
-      //String regNum = filename+" filenameID";
-      //id = regNum;
+    //String regNum = filename+" filenameID";
+    //id = regNum;
     //}
 
 
@@ -130,82 +131,85 @@ public class GarinConverter extends Converter {
     Acquisition acquisition = new Acquisition(id);
     acquisition.transfer(null, obj, owner);
 
+
     String rest = s.get("Restauraciones localizadas");
-    if (rest != null && !rest.equalsIgnoreCase("no")) {
-      Modification modification = new Modification(id, "restoration", rest);
+    if (rest != null) {
+      Modification modification = new Modification(regNum, rest);
       modification.of(obj);
       linkToRecord(modification);
     }
 
 
-    Transfer transfer = new Transfer(id);
-    transfer.of(obj).by("chalet garin");
-
-    Production prod = new Production(id);
-    prod.add(obj);
-    s.getMulti("Técnica").forEach(used_object -> prod.addUsedObject(used_object, mainLang));
-    s.getMulti("Tipología").forEach(technique -> prod.addTechnique(technique, mainLang));
-    s.getMulti("Tipología")
-      .map(x -> obj.addClassification(x, "Tipología", "es"))
-      .forEach(this::linkToRecord);
-    prod.addActivity(s.get("Autor de la obra"), "author");
-    prod.addTimeAppellation(s.get("Época"));
-    s.getMulti("Material").forEach(material -> prod.addMaterial(material, mainLang));
-    //s.getMulti("Accessorios").map(ManMade_Object::new).forEach(prod::addTool);
-    prod.addPlace("valencia");
 
 
+      Transfer transfer = new Transfer(id);
+      transfer.of(obj).by("chalet garin");
 
-    try {
-      Path configFilePath = FileSystems.getDefault().getPath(file.getParent()).getParent().getParent();
-      Stream<Path> fileWithName = Files.walk(configFilePath, Integer.MAX_VALUE);
-
-      //long count = fileWithName.count();
-      //System.out.println(Integer.MAX_VALUE + "..." + count);
-
-      if (s.get("Nº Inventario") != null) {
-      List<String> filenamelist = fileWithName
-              .filter(f -> f.getFileName().toString().matches("^" + s.get("Nº Inventario").replaceAll("[. ]", "") + "[ .].+$"))
-              .filter(f -> !f.toString().endsWith("xls"))
-              .map(Path::getFileName)
-              .map(Path::toString)
-              .map(x -> x.replaceAll(" +", "_")) // singe/double space to single underscore
-              .map(x -> x.replaceAll("(?i)\\.jpg$", ".jpg")) // replace uppercase .JPG
-              .collect(Collectors.toList());
-
-      //if (filenamelist.isEmpty()) {
-        //System.out.println(s.get("Nº Inventario").replaceAll("[. ]", ""));
-      //}
+      Production prod = new Production(id);
+      prod.add(obj);
+      s.getMulti("Técnica").forEach(used_object -> prod.addUsedObject(used_object, mainLang));
+      s.getMulti("Tipología").forEach(technique -> prod.addTechnique(technique, mainLang));
+      s.getMulti("Tipología")
+        .map(x -> obj.addClassification(x, "Tipología", "es"))
+        .forEach(this::linkToRecord);
+      prod.addActivity(s.get("Autor de la obra"), "author");
+      prod.addTimeAppellation(s.get("Época"));
+      s.getMulti("Material").forEach(material -> prod.addMaterial(material, mainLang));
+      //s.getMulti("Accessorios").map(ManMade_Object::new).forEach(prod::addTool);
+      prod.addPlace("valencia");
 
 
-      for (String name : filenamelist) {
-        Matcher matcher = ANV_REV.matcher(name); // search for anverso/reverso
+      try {
+        Path configFilePath = FileSystems.getDefault().getPath(file.getParent()).getParent().getParent();
+        Stream<Path> fileWithName = Files.walk(configFilePath, Integer.MAX_VALUE);
 
-        Image img = new Image();
-        img.setContentUrl(MEDIA_BASE + name);
+        //long count = fileWithName.count();
+        //System.out.println(Integer.MAX_VALUE + "..." + count);
 
-        if (matcher.find())
-          img.addProperty(CIDOC.P2_has_type, ANV_REV_TABLE.get(matcher.group(1)));
+        if (s.get("Nº Inventario") != null) {
+          List<String> filenamelist = fileWithName
+            .filter(f -> f.getFileName().toString().matches("^" + s.get("Nº Inventario").replaceAll("[. ]", "") + "[ .].+$"))
+            .filter(f -> !f.toString().endsWith("xls"))
+            .map(Path::getFileName)
+            .map(Path::toString)
+            .map(x -> x.replaceAll(" +", "_")) // singe/double space to single underscore
+            .map(x -> x.replaceAll("(?i)\\.jpg$", ".jpg")) // replace uppercase .JPG
+            .collect(Collectors.toList());
 
-        obj.add(img);
-      }}
-    } catch (IOException e) {
-      logger.error(e.getLocalizedMessage());
+          //if (filenamelist.isEmpty()) {
+          //System.out.println(s.get("Nº Inventario").replaceAll("[. ]", ""));
+          //}
+
+
+          for (String name : filenamelist) {
+            Matcher matcher = ANV_REV.matcher(name); // search for anverso/reverso
+
+            Image img = new Image();
+            img.setContentUrl(MEDIA_BASE + name);
+
+            if (matcher.find())
+              img.addProperty(CIDOC.P2_has_type, ANV_REV_TABLE.get(matcher.group(1)));
+
+            obj.add(img);
+          }
+        }
+      } catch (IOException e) {
+        logger.error(e.getLocalizedMessage());
+      }
+
+      for (String key : Arrays.asList("Anverso", "Reverso")) {
+        String section = s.get(key);
+        if (section == null || section.equalsIgnoreCase("no")) continue;
+        linkToRecord(obj.addInfo(key, section, "es"));
+      }
+
+      linkToRecord(obj);
+      linkToRecord(transfer);
+      linkToRecord(prod);
+      if (owner != null) linkToRecord(owner);
+      linkToRecord(acquisition);
+      linkToRecord(conditionAssessment);
+      return this.model;
     }
 
-    for (String key : Arrays.asList("Anverso", "Reverso")) {
-      String section = s.get(key);
-      if (section == null || section.equalsIgnoreCase("no")) continue;
-      linkToRecord(obj.addInfo(key, section, "es"));
-    }
-
-    linkToRecord(obj);
-    linkToRecord(transfer);
-    linkToRecord(prod);
-    if (owner != null) linkToRecord(owner);
-    linkToRecord(acquisition);
-    linkToRecord(conditionAssessment);
-    return this.model;
   }
-
-}

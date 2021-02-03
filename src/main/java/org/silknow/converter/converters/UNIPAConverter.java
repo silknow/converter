@@ -178,9 +178,9 @@ public class UNIPAConverter extends Converter {
     s.getMulti("date").forEach(prod::addTimeAppellation);
     String dim2 = s.getMulti("dimensions").findFirst().orElse(null);
     if (dim2 != null) {
-      Matcher matcher = DIMENSION_PATTERN2.matcher(dim2);
-      if (matcher.find()) {
-        linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
+      Matcher matcher2 = DIMENSION_PATTERN2.matcher(dim2);
+      if (matcher2.find()) {
+        linkToRecord(obj.addMeasure(matcher2.group(2), matcher2.group(1)));
       }
     }
 
