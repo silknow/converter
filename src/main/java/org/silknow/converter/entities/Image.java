@@ -73,6 +73,7 @@ public class Image extends Entity {
   }
 
 
+
   public static Image fromCrawledJSON(@NotNull CrawledJSONImages img) {
     Image image;
     if (img.hasId()) image = new Image(img.getId());

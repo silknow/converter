@@ -110,6 +110,8 @@ public abstract class Entity {
 
   public Resource addObservation(String text, String type, String lang) {
     if (StringUtils.isBlank(text)) return null;
+    if (type.contains("Dataset")) {
+      type = "https://schema.org/Dataset"; }
     text = text.trim();
     this.addNote(text, lang);
 

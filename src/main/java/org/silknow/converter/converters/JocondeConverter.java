@@ -229,9 +229,9 @@ public class JocondeConverter extends Converter {
 
 
     s.getImages().map(Image::fromCrawledJSON)
-            .peek(copyphoto::applyTo)
             .peek(image -> image.addInternalUrl("joconde"))
             .peek(obj::add)
+            .peek(copyphoto::applyTo)
             .forEach(this::linkToRecord);
 
 
@@ -254,6 +254,7 @@ public class JocondeConverter extends Converter {
     //linkToRecord(doc);
     linkToRecord(po);
     linkToRecord(copyright);
+    linkToRecord(copyphoto);
     linkToRecord(prod);
     linkToRecord(transfer);
     return this.model;
