@@ -173,6 +173,10 @@ public class UNIPAConverter extends Converter {
       museum = new LegalBody(museumName);
       transfer.of(obj).by(museum);
       linkToRecord(transfer);
+      linkToRecord(obj.addComplexIdentifier(s.get("stock_number"), "Stock Number", museum));
+    }
+    else {
+      linkToRecord(obj.addComplexIdentifier(s.get("stock_number"), "Stock Number"));
     }
 
     s.getMulti("date").forEach(prod::addTimeAppellation);
@@ -184,13 +188,8 @@ public class UNIPAConverter extends Converter {
       }
     }
 
-    if (s.get("manufacturing") != null) {
-      String manufacturing = s.getMulti("manufacturing").findFirst().orElse(null);
-      Actor actor = new Actor(manufacturing);
-      prod.addActivity(actor, "Manufacturing");
-      String stock_number = s.get("stock_number");
-      linkToRecord(obj.addObservation(s.getMulti("note").findFirst().orElse(null), "note", "it"));
-    }
+    s.getMulti("manufacturing").forEach(place -> prod.addPlace(place.replace("Manifattura", "")));
+
 
     /////////////////////
 
@@ -218,6 +217,8 @@ public class UNIPAConverter extends Converter {
       bio.addNote(s.get("bibliography"), mainLang);
       linkToRecord(bio);
     }
+
+
 
     linkToRecord(obj);
     linkToRecord(prod);
