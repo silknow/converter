@@ -100,7 +100,7 @@ public class TimeSpan extends Entity {
 
   public static final String BEFORE_CHRIST = "(BC|aC|a$)";
 
-  private static final String APPROXIMATE_REGEX = "(?i)(circa|around|about|vers |ca?\\.|\\[ca]|^ca |ca$)";
+  private static final String APPROXIMATE_REGEX = "(?i)(circa|around|about|vers |(?<!d)ca?\\.|\\[ca]|^ca |ca$)";
   private static final Pattern APPROXIMATE_PATTERN = Pattern.compile(APPROXIMATE_REGEX);
 
   public static final String UNCERTAIN_REGEX = "(?i)(forse|posiblemente|(proba|possi)ba?ly|\\?|¿)";
@@ -347,7 +347,6 @@ public class TimeSpan extends Entity {
 
     date = date.trim();
 
-
     // 0 = NONE, +1 = ON OR AFTER, +2 = AFTER, -1 = ON OR BEFORE, -2 = BEFORE
     matcher = BEFORE_PATTERN.matcher(date);
     if (matcher.find()) {
@@ -359,7 +358,6 @@ public class TimeSpan extends Entity {
       before_after = matcher.group(1).contains("or ") ? 1 : 2;
       date = date.replaceAll(AFTER_REGEX, "").trim();
     }
-
 
     if (date.matches(("\\d+ " + BEFORE_CHRIST))) {
       date = "-" + padYear(date.replaceAll(BEFORE_CHRIST, "").trim());
