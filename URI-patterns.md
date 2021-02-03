@@ -92,6 +92,7 @@ There are some exceptions to this rule, in order to allow automatic cross-source
 * For Places and Actors, we use the label ('Rome' e.g.) instead of the id plus the class, but not the source.
 * For Collection, it's the same case as for Places and Actors, but we also use the source addition.
 * For the Images we use a concatenation of id (internal ID of museum record) + "$$$" + imgCount (How many images does the object have) + this.localFilename
+* For E11 Modification the seed is either the value of the original field, or (if it can be parsed from it) the author or the year of the modification.
 
 Examples:
 * For most classes: [source]+[class]+[record_internal_id]
