@@ -28,7 +28,9 @@ public class ConditionAssessment extends Entity {
   }
 
   public void addCondition(String type, String value, String lang) {
-    Condition condition = new Condition(this.getUri() + "/condition/" + conditions.size() + 1);
+    int Counter = conditions.size() + 1;
+    Condition condition = new Condition(this.getUri() + "/condition/" + Counter);
+
     condition.addType(type);
     condition.addNote(value, lang);
     this.add(condition);
