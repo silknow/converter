@@ -35,7 +35,7 @@ The `<group>` is taken from this table
 | E8_Acquisition | event |
 | E10_Transfer_of_Custody | event |
 | E9_Move | event |
-| E11_Modification | modification |
+| E11_Modification | event |
 | E78_Collection | collection |
 | E14_Condition_Assessment | assessment |
 | E53_Place |  place OR http://sws.geonames.org/ {id of place} |
