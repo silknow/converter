@@ -99,3 +99,12 @@ Examples:
 * For Place (E53) and Actors (E39): [class]+[label]
 * For Collections  (E78): [source]+[class]+[label]
 * For Images (E38): [record_internal_id] + "$$$" + [img_count_of_record] + [local_filename]
+
+## D1 Digital Object and rdfs:label
+
+We use the property "rdfs:label" to store a combination of the actual internal identifier of a record and the former filename. 
+
+ID:         The ID is taken either from the internal museum / dataset ID, if it has a field with such a number. Or a generated ID from the crawling process.
+Filename:   It's the filename of the record before it's conversion, which is usually in the common JSON format into which we pre-process most data. In the case of        Garin we convert Excel files, that have been provided to us by them (*.xls). Eventual language information from the filename (like "en" or "es") is removed.
+
+
