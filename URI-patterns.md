@@ -102,9 +102,12 @@ Examples:
 
 ## D1 Digital Object and rdfs:label
 
-We use the property "rdfs:label" to store a combination of the actual internal identifier of a record and the former filename. 
+We use the property "rdfs:label" to store a combination of the actual internal identifier of a record and the former filename.
 
-ID:         The ID is taken either from the internal museum / dataset ID, if it has a field with such a number. Or a generated ID from the crawling process.
-Filename:   It's the filename of the record before it's conversion, which is usually in the common JSON format into which we pre-process most data. In the case of        Garin we convert Excel files, that have been provided to us by them (*.xls). Eventual language information from the filename (like "en" or "es") is removed.
+* **Example:**      
+*ID_T.125-1992_filename_O65533.json* (VAM), where "T.125-1992" is the internal identifier and "O65533.json" is the filename. "ID", "filename" and three "_" get added to every rdfs:label to make it easier to read.
 
-
+* **ID:**         
+The ID is taken either from the internal museum / dataset ID, if it has a field with such a number. Or a generated ID from the crawling process.
+* **Filename:**   
+It's the filename of the record before it's conversion, which is usually in the common JSON format into which we pre-process most data. In the case of        Garin we convert Excel files, that have been provided to us by them (*.xls). Eventual language information from the filename (like "en" or "es") is removed.
