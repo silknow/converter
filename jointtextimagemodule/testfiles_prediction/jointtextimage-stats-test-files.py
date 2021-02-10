@@ -14,11 +14,11 @@ for i in filenames:
 
 
 
-    df = df.groupby(['o'], as_index=False)['g','l','c','image'].agg(lambda x: list(set(x)))
+    df = df.groupby(['obj'], as_index=False)['museum','label','text','img'].agg(lambda x: list(set(x)))
 
     numbers_of_rows = len(df.index)
-    df['g'] = df['g'].str[0]
-    museum_count = df.value_counts(subset=['g'])
+    df['museum'] = df['museum'].str[0]
+    museum_count = df.value_counts(subset=['museum'])
     print("number of objects: ",numbers_of_rows)
     print("number per museum: ",museum_count)
 

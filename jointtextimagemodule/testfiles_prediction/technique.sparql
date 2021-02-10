@@ -1,0 +1,14 @@
+SELECT DISTINCT ?museum ?obj ?label ?text ?img
+WHERE {
+  GRAPH ?museum {
+     ?obj a ecrm:E22_Man-Made_Object .
+  }
+  ?obj rdfs:label ?label .
+  ?obj rdfs:comment ?text . 
+  ?obj ecrm:P138i_has_representation ?img .
+  ?img schema:contentUrl ?deeplink .
+  ?p ecrm:P108_has_produced ?obj .
+  OPTIONAL {?p ecrm:P32_used_general_technique  ?ts}
+  FILTER (!bound(?ts))
+}
+GROUP BY ?museum
