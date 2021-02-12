@@ -111,9 +111,9 @@ public class ManMade_Object extends Entity {
     width = width.replace(",", ".");
     height = height.replace(",", ".");
 
-    Dimension w = new Dimension(dimUri + "w", width, "cm", "width");
+    Dimension w = new Dimension(dimUri + "w", width, "cm", "width", width);
     this.addProperty(CIDOC.P43_has_dimension, w);
-    Dimension h = new Dimension(dimUri + "h", height, "cm", "height");
+    Dimension h = new Dimension(dimUri + "h", height, "cm", "height", height);
     this.addProperty(CIDOC.P43_has_dimension, h);
 
     this.model.add(w.model).add(h.model);

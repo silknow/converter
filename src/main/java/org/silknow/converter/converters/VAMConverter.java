@@ -8,15 +8,17 @@ import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 import org.silknow.converter.ontologies.CIDOC;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class VAMConverter extends Converter {
-
-  private static final String DIMENSION_REGEX = "(.+): (Over |<)?(\\d+(?:\\.\\d+)?)([½¾¼]| \\d/\\d)? *([a-z]{1,4})?( .+)?";
+  private static final String DIMENSION_REGEX = "(.+): (Over |<)?(\\d+(?:\\.\\d+)?)( ?[½¾¼]| \\d/\\d)? *([a-z]{1,4})?( .+)?";
   private static final String DIMENSION_REGEX2 = "(.+): *([a-z]{1,4}) ?(\\d+(?:\\.\\d+)?)([½¾¼]| \\d/\\d)?( .+)?";
   private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX);
   private static final Pattern DIMENSION_PATTERN2 = Pattern.compile(DIMENSION_REGEX2);
@@ -139,10 +141,12 @@ public class VAMConverter extends Converter {
     String dimUri = obj.getUri() + "/dimension/";
 
     String unit = null;
+    int count = 1;
     List<Dimension> dimList = new ArrayList<>();
     for (String txt : dim.split(", (?=[A-Z][a-z])")) {
-      Dimension d = parseSingleDimension(txt, unit, dimUri);
+      Dimension d = parseSingleDimension(txt, unit, dimUri + count);
       if (d == null) continue;
+      count++;
       unit = d.getUnit();
       dimList.add(d);
     }
@@ -161,21 +165,41 @@ public class VAMConverter extends Converter {
     linkToRecord(measure);
   }
 
+  private static final Map<String, String> DIM_NOTES;
+
+  static {
+    Map<String, String> map = new HashMap<>();
+    map.put("repe", "repetition");
+    map.put("bott", "bottom");
+    map.put("maxi", "maximum");
+    map.put("mini", "minimum");
+    map.put("a", "a");
+    DIM_NOTES = map;
+  }
+
   private Dimension parseSingleDimension(String txt, String unit, String dimUri) {
     if (txt.length() < 2) return null;
     Matcher matcher = DIMENSION_PATTERN.matcher(txt);
     Matcher matcher2 = DIMENSION_PATTERN2.matcher(txt);
 
-    String type, value, fraction, note, modifier = null;
+    String type, value, fraction, note, label, modifier = null;
     if (matcher.find()) {
+      label = matcher.group();
       type = matcher.group(1).toLowerCase();
       modifier = matcher.group(2);
       value = matcher.group(3);
       fraction = matcher.group(4);
-      if (matcher.group(5) != null)
-        unit = matcher.group(5);
       note = matcher.group(6);
+      String cUnit = matcher.group(5);
+      if (cUnit != null) {
+        unit = cUnit;
+      } else if (DIM_NOTES.containsKey(cUnit)) {
+        cUnit = DIM_NOTES.get(cUnit);
+        if (note == null) note = cUnit;
+        else note = label + " " + cUnit;
+      }
     } else if (matcher2.find()) {
+      label = matcher2.group();
       type = matcher2.group(1).toLowerCase();
       value = matcher2.group(3);
       fraction = matcher2.group(4);
@@ -187,8 +211,9 @@ public class VAMConverter extends Converter {
 
     String decimal = "";
     if (fraction != null) {
+      fraction = fraction.trim();
       if (fraction.contains("/")) {
-        String[] parts = fraction.trim().split("/");
+        String[] parts = fraction.split("/");
         decimal = String.valueOf(Float.parseFloat(parts[0]) / Float.parseFloat(parts[1]));
         decimal = decimal.substring(1);
       } else if ("¼".equals(fraction))
@@ -198,20 +223,11 @@ public class VAMConverter extends Converter {
       else if ("¾".equals(fraction))
         decimal = ".75";
     }
-    Dimension d = new Dimension(dimUri + type.charAt(0), value + decimal, unit, type);
+    Dimension d = new Dimension(dimUri, value + decimal, unit, type, label);
     if ("Over ".equals(modifier)) d.addNote("minimum");
     if ("<".equals(modifier)) d.addNote("maximum");
     d.addNote(note);
 
     return d;
-  }
-
-  private void write(String text, String file) throws IOException {
-    if (StringUtils.isBlank(text)) return;
-    FileWriter fWriter = new FileWriter(file, true);
-    BufferedWriter bWriter = new BufferedWriter(fWriter);
-    bWriter.write("- " + text + "\n");
-    bWriter.close();
-    fWriter.close();
   }
 }
