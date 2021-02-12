@@ -39,6 +39,13 @@ public class Dimension extends Entity {
     this.addProperty(CIDOC.P91_has_unit, this.unit);
   }
 
+  public Dimension(String uri, String value, String unit, String type, String label) {
+    this(uri, value, unit);
+    this.addProperty(CIDOC.P2_has_type, type);
+    this.addProperty(RDFS.label, label);
+  }
+
+
   private String convertInStandard(String value, String unit) {
     if (StringUtils.isBlank(value) || !CONVERSION_RATE.containsKey(unit)) return value;
 
@@ -65,11 +72,6 @@ public class Dimension extends Entity {
     }
   }
 
-  public Dimension(String uri, String value, String unit, String type, String label) {
-    this(uri, value, unit);
-    this.addProperty(CIDOC.P2_has_type, type);
-    this.addProperty(RDFS.label, label);
-  }
 
   public String getUnit() {
     return this.unit;
