@@ -14,5 +14,6 @@ tar -czf paris-musees.tar.gz paris-musees/
 tar -czf mobilier.tar.gz mobilier/
 tar -czf smithsonian.tar.gz smithsonian/
 tar -czf versailles.tar.gz versailles/
+tar -czf artic.tar.gz artic/
 
 

@@ -32,7 +32,7 @@ import java.util.Objects;
 public class Main implements Runnable {
   public static String source;
 
-  enum Type {imatex, garin, joconde, MET, MFA, mobil, RISD, MAD, CER, MTMAD, PM, smiths, versailles, VAM, venezia, UNIPA}
+  enum Type {imatex, garin, joconde, MET, MFA, mobil, RISD, MAD, CER, MTMAD, PM, smiths, versailles, VAM, venezia, artic, UNIPA}
 
   @Parameters(index = "0", paramLabel = "TYPE", description = "Type of source data: ${COMPLETION-CANDIDATES}")
   private Type type;
@@ -143,6 +143,9 @@ public class Main implements Runnable {
         break;
       case versailles:
         converter = new VersaillesConverter();
+        break;
+      case artic:
+        converter = new ArticConverter();
         break;
       case UNIPA:
         converter = new UNIPAConverter();

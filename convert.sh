@@ -17,5 +17,5 @@
     ./gradlew run --args="mobil '../crawler/data/mobilier-international' -o ./output/mobilier -g tschleider"
     ./gradlew run --args="smiths '../crawler/data/smithsonian' -o ./output/smithsonian -g tschleider"
     ./gradlew run --args="versailles '../crawler/data/versailles' -o ./output/versailles -g tschleider"
-
+    ./gradlew run --args="artic '../crawler/data/artic' -o ./output/artic -g tschleider"
 
