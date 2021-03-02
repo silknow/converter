@@ -72,20 +72,20 @@ public class ImatexConverter extends Converter {
         regNumField = "NÚM.REGISTRO";
     }
 
-    //String regNum = s.get(regNumField);
-    //if (regNum == null)
-      //regNum = s.get("REGISTER NUMBER");
-    //if (regNum == null)
-      //regNum = s.get("NUM. REGISTRE");
-    //if (regNum == null)
-      //regNum = s.get("NÚM.REGISTRO");
-    //if (regNum != null)
-    String regNum = s.getId();
-     id = regNum;
+    String regNum = s.get(regNumField);
+    if (regNum == null)
+      regNum = s.get("REGISTER NUMBER");
+    if (regNum == null)
+      regNum = s.get("NUM. REGISTRE");
+    if (regNum == null)
+      regNum = s.get("NÚM.REGISTRO");
+    if (regNum == null)
+      regNum = s.getId();
+     id = s.getId();
 
 
-    ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addComplexIdentifier(regNumField, "Register number"));
+    ManMade_Object obj = new ManMade_Object(id);
+    linkToRecord(obj.addComplexIdentifier(regNum, "Register number"));
 
     /*
     final List<String> terms = new ArrayList<String>();
