@@ -53,11 +53,11 @@ public class VAMConverter extends Converter {
 
     filename = file.getName();
 
-    String regNum = s.getId();
+    String regNum = s.get("object_number");
     id = regNum;
 
     ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addComplexIdentifier(regNum, "museum_number"));
+    linkToRecord(obj.addComplexIdentifier(regNum, "object_number"));
 
     s.getMulti("object").forEach(x -> obj.addClassification(x, "object", mainLang));
 

@@ -50,8 +50,7 @@ public class JocondeConverter extends Converter {
     filename = file.getName();
 
     //String regNum = s.get("INV").split(" ")[0];
-    String regNum = s.getId();
-    id = regNum;
+    id = s.getId();;
 
     String museumName = s.get("LOCA");
     LegalBody museum = new LegalBody(museumName);
@@ -67,21 +66,7 @@ public class JocondeConverter extends Converter {
     obj.addTitle(s.get("TITR"), mainLang);
 
 
-/*
-    if ((!s.getMulti("TITR").findAny().isPresent())) {
-      //System.out.println("title gets constructed");
 
-      final List<String> terms = new ArrayList<String>();
-      terms.add((s.getMulti("DENO").findFirst().orElse(null)));
-      terms.add((s.getMulti("PERI").findFirst().orElse(null)));
-      terms.add((s.getMulti("LIEUX").findFirst().orElse(null)));
-      final String constrlabel = terms
-        .stream()
-        .filter(Objects::nonNull)
-        .collect(Collectors.joining(", "));
-      obj.addConstructedTitle(constrlabel, mainLang);
-    }
-*/
 
     s.getMulti("DOMN")
             .forEach(x -> linkToRecord(obj.addClassification(x, "Domaine", "fr")));

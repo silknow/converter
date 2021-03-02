@@ -85,7 +85,7 @@ public class ImatexConverter extends Converter {
 
 
     ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addComplexIdentifier(regNum, "Register number"));
+    linkToRecord(obj.addComplexIdentifier(regNumField, "Register number"));
 
     /*
     final List<String> terms = new ArrayList<String>();
