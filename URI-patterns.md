@@ -83,7 +83,7 @@ The UUID is computed deterministically starting from a seed string. A real UUID 
 The seed is usually generated  based on:
 
 * source (e.g. 'unipa', 'met', ...)
-* class (e.g. 'E22_Man-Made_Object', ...)
+* class (e.g. 'E12_Production', ...)
 * the id of the current object (normally it is unique in a file)
 * Hash function: SHA-1
 
