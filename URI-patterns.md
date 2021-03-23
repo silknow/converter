@@ -40,8 +40,8 @@ The `<group>` is taken from this table
 | E14_Condition_Assessment | assessment |
 | E53_Place |  place OR http://sws.geonames.org/ {id of place} |
 | E31_Document | document |
-| E40_Legal_Body | organization |
-| E21_Person | person |
+| E40_Legal_Body | actor |
+| E21_Person | actor |
 | E39_Actor | actor |
 
 ## Secondary entities
