@@ -65,7 +65,7 @@ The `<suffix>` is taken from this table:
 
 | Class | Group | Suffix |
 | --- | --- | --- |
-| E17_Type_Assignment | object | type_assignment/{progressive int} |
+| E17_Type_Assignment | object | type/{progressive int} |
 | E54_Dimension | object | dimension/{w or h} |
 | E42_Identifier | object | id/{id} |
 | S4_Observation | object | observation/{progressive int} |
