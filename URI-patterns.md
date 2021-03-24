@@ -40,8 +40,8 @@ The `<group>` is taken from this table
 | E14_Condition_Assessment | assessment |
 | E53_Place |  place OR http://sws.geonames.org/ {id of place} |
 | E31_Document | document |
-| E40_Legal_Body | organization |
-| E21_Person | person |
+| E40_Legal_Body | actor |
+| E21_Person | actor |
 | E39_Actor | actor |
 
 ## Secondary entities
@@ -65,7 +65,7 @@ The `<suffix>` is taken from this table:
 
 | Class | Group | Suffix |
 | --- | --- | --- |
-| E17_Type_Assignment | object | type_assignment/{progressive int} |
+| E17_Type_Assignment | object | type/{progressive int} |
 | E54_Dimension | object | dimension/{w or h} |
 | E42_Identifier | object | id/{id} |
 | S4_Observation | object | observation/{progressive int} |
@@ -83,7 +83,7 @@ The UUID is computed deterministically starting from a seed string. A real UUID 
 The seed is usually generated  based on:
 
 * source (e.g. 'unipa', 'met', ...)
-* class (e.g. 'E22_Man-Made_Object', ...)
+* class (e.g. 'E12_Production', ...)
 * the id of the current object (normally it is unique in a file)
 * Hash function: SHA-1
 
