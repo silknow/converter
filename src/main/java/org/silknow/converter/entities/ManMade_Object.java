@@ -9,6 +9,7 @@ import org.apache.jena.vocabulary.SKOS;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.CRMsci;
 
+import javax.security.auth.Subject;
 import javax.swing.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,8 +30,8 @@ public class ManMade_Object extends Entity {
 
 
 
-  public void addSubject(String subject, String lang) {
-    Resource result = VocabularyManager.searchInCategory(subject, null, "thesaurus", false);
+  public void addSubject(String visual_item, String lang) {
+    Resource result = VocabularyManager.searchInCategory(visual_item, null, "thesaurus", false);
     if (result != null) {
       ResIterator resIterator = result.getModel().listResourcesWithProperty(SKOS.member, result);
       if (resIterator.hasNext()) {
@@ -43,7 +44,7 @@ public class ManMade_Object extends Entity {
         else {
           collection = collection_level2.getURI(); }
         if (collection.contains("depiction") || collection.contains("300264087")) {
-          this.addProperty(CIDOC.P62_depicts, result);
+          this.addProperty(CIDOC.P65_shows_visual_item, result);
         }
 
         else {
@@ -53,7 +54,8 @@ public class ManMade_Object extends Entity {
     }
     if (result == null) {
       //System.out.println("Depiction not found in vocabularies: " + subject;
-      this.addProperty(CIDOC.P62_depicts, subject, lang);
+      Visual_Item depict = new Visual_Item(visual_item, lang);
+      this.addProperty(CIDOC.P65_shows_visual_item, depict);
     }
   }
 

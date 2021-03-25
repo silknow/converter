@@ -102,6 +102,7 @@ public abstract class Entity {
     this.addNote(text, null);
   }
 
+
   public void addNote(String text, String lang) {
     if (text == null) return;
     text = text.replaceAll("^- ", "").trim();
@@ -110,8 +111,16 @@ public abstract class Entity {
 
   public Resource addObservation(String text, String type, String lang) {
     if (StringUtils.isBlank(text)) return null;
-    if (type.contains("Dataset")) {
-      type = "https://schema.org/Dataset"; }
+
+    if (type == null) return null;
+    RDFNode r = VocabularyManager.searchInCategory(type, null, "observation_types", false);
+    if (r == null) {
+      System.out.println("Observation type not found in vocabularies: " + type);
+      r = model.createLiteral(type);
+    }
+
+    if (text.contains("Dataset")) {
+      text = "https://schema.org/Dataset"; }
     text = text.trim();
     this.addNote(text, lang);
 
@@ -119,7 +128,7 @@ public abstract class Entity {
             .addProperty(RDF.type, CRMsci.S4_Observation)
             .addProperty(CRMsci.O8_observed, this.asResource())
             .addProperty(CIDOC.P3_has_note, text, lang)
-            .addProperty(CIDOC.P2_has_type, type);
+            .addProperty(CIDOC.P2_has_type, r);
   }
 
 
