@@ -47,7 +47,7 @@ d:SILKNOW a foaf:Project ;
         "Description of the pattern"@en;
     skos:inScheme silknow_observation_types:silk-O4-P2-vocabulary ;
     skos:prefLabel "Inconographical Observation"@en ;
-    skos:topConceptOf ssilknow_observation_types:silk-O4-P2-vocabulary .
+    skos:topConceptOf silknow_observation_types:silk-O4-P2-vocabulary .
 
 <http://data.silknow.org/observation/historical-observation> a skos:Concept  ;
     skos:altLabel "Historique"@fr,
