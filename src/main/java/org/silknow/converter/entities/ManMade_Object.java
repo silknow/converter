@@ -8,9 +8,9 @@ import org.doremus.string2vocabulary.VocabularyManager;
 import org.apache.jena.vocabulary.SKOS;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.CRMsci;
+import java.net.URI;
 
-import javax.security.auth.Subject;
-import javax.swing.*;
+import java.net.URISyntaxException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -89,6 +89,18 @@ public class ManMade_Object extends Entity {
 
   public ManMade_Object add(Right right) {
     this.addProperty(CIDOC.P104_is_subject_to, right);
+    return this;
+  }
+
+
+  public ManMade_Object addPatternUnit(String length) {
+    if (length == null || length.equals("cm")) return null;
+    String pUri = this.getUri() + "/pattern_unit/";
+    String pURI2 = "http://data.silknow.org/vocabulary/444";
+
+    Pattern_Unit p = new Pattern_Unit(pUri, length, "cm");
+    this.addProperty(CIDOC.P58_has_section_definition, p);
+    this.addProperty(CIDOC.P58_has_section_definition, model.createResource(pURI2));
     return this;
   }
 

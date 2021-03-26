@@ -20,6 +20,9 @@ public class GarinConverter extends Converter {
   private final static Pattern ANV_REV = Pattern.compile("(ANV|REV|DET)");
   public static final Map<String, String> ANV_REV_TABLE;
 
+  private static final String Pattern_unit_REGEX = "Rapport: (\\d+(?:\\.\\d+)?) cm";
+  private static final Pattern Pattern_unit_PATTERN = Pattern.compile(Pattern_unit_REGEX);
+
   static {
     Hashtable<String, String> tmp = new Hashtable<>();
     tmp.put("ANV", "recto"); // anverso
@@ -111,6 +114,16 @@ public class GarinConverter extends Converter {
     linkToRecord(obj.addClassification(s.get("Objecto"), "Objecto", mainLang, GARIN));
     linkToRecord(obj.addObservation(s.get("Descripción"), "Descripción", mainLang));
     linkToRecord(obj.addObservation(s.get("Descripción técnica"), "Descripción técnica", mainLang));
+
+    String dim = s.get("Descripción técnica");
+    if (dim != null) {
+      Matcher matcher5 = Pattern_unit_PATTERN.matcher(dim);
+      if (matcher5.find()) {
+        linkToRecord(obj.addPatternUnit(matcher5.group(1)));
+      }
+    }
+
+
 
     try {
       linkToRecord(obj.addMeasure(s.get("Medidas")));

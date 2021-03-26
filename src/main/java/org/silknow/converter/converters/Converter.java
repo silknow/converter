@@ -3,10 +3,12 @@ package org.silknow.converter.converters;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.vocabulary.DC;
 import org.apache.jena.vocabulary.DC_11;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
 import org.silknow.converter.commons.ConstructURI;
+import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.Entity;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.CRMdig;
@@ -51,7 +53,6 @@ public abstract class Converter {
     this.dataset.addProperty(CIDOC.P106_is_composed_of, record);
   }
 
-
   protected void linkToRecord(Resource any) {
     if (any == null) return;
     if (this.record == null) {
@@ -59,13 +60,14 @@ public abstract class Converter {
       String seed = this.filename + "$$$" + this.id;
       String recordUri = BASE_URI + "object/" + ConstructURI.generateUUID(seed);
       if (filename != null) {
-      String label = "ID_"+id+"_filename_"+filename;
+      String label = "Record " + id;
       this.record = model.createResource(recordUri)
               .addProperty(RDF.type, CRMdig.D1_Digital_Object)
               .addProperty(RDFS.label, label)
-              .addProperty(DC_11.publisher, BASE_URI + "organization/" + this.DATASET_NAME)
-              .addProperty(CIDOC.P2_has_type, "Record");
-      linkToDataset(record);}
+              .addProperty(DC.identifier, filename)
+              .addProperty(DC_11.publisher, BASE_URI + "organization/" + this.DATASET_NAME);
+
+        linkToDataset(record);}
     }
     this.record.addProperty(CIDOC.P129_is_about, any);
   }

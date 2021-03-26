@@ -20,6 +20,8 @@ import java.util.regex.Pattern;
 public class VAMConverter extends Converter {
   private static final String DIMENSION_REGEX = "(.+): (Over |<)?(\\d+(?:\\.\\d+)?)( ?[½¾¼]| \\d/\\d)? *([a-z]{1,4})?( .+)?";
   private static final String DIMENSION_REGEX2 = "(.+): *([a-z]{1,4}) ?(\\d+(?:\\.\\d+)?)([½¾¼]| \\d/\\d)?( .+)?";
+  private static final String Pattern_unit_REGEX = "Length: (\\d+(?:\\.\\d+)?) cm repeat";
+  private static final Pattern Pattern_unit_PATTERN = Pattern.compile(Pattern_unit_REGEX);
   private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX);
   private static final Pattern DIMENSION_PATTERN2 = Pattern.compile(DIMENSION_REGEX2);
 
@@ -129,6 +131,14 @@ public class VAMConverter extends Converter {
       linkToRecord(bio);
     }
 
+    String dim = s.get("dimensions");
+    if (dim != null) {
+      Matcher matcher5 = Pattern_unit_PATTERN.matcher(dim);
+      if (matcher5.find()) {
+        linkToRecord(obj.addPatternUnit(matcher5.group(1)));
+      }
+    }
+
     linkToRecord(obj);
     linkToRecord(acquisition);
     linkToRecord(prod);
@@ -164,6 +174,8 @@ public class VAMConverter extends Converter {
 
     linkToRecord(measure);
   }
+
+
 
   private static final Map<String, String> DIM_NOTES;
 

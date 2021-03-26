@@ -204,6 +204,7 @@ public class Main implements Runnable {
 
   private static void writeTtl(@NotNull Model m, File out) throws IOException {
     m.setNsPrefix("ecrm", CIDOC.getURI());
+    m.setNsPrefix("silknow", SILKNOW.getURI());
     m.setNsPrefix("crmdig", CRMdig.getURI());
     m.setNsPrefix("crmsci", CRMsci.getURI());
     m.setNsPrefix("dc", DC.getURI());

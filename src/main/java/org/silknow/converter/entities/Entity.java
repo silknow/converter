@@ -15,6 +15,7 @@ import org.silknow.converter.Main;
 import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.CRMsci;
+import org.silknow.converter.ontologies.SILKNOW;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,9 @@ public abstract class Entity {
   private int activityCount;
   private int observationCount;
   private int typeAssignmentCount;
+  private int objecttypeAssignmentCount;
+  private int objectdomainAssignmentCount;
+
   private Literal r;
   //List<TimeSpan> timeSpanList = new ArrayList<>();
 
@@ -252,12 +256,56 @@ public abstract class Entity {
       r = model.createLiteral(classification);
     }
 
+    if (type != null && type.matches("Description|Dénomination|Objeto/Documento" +
+            "|Textile|Tipología|Title|object|titleField"))
+    {
+      Resource assignment = model.createResource(this.getUri() + "/object_type_assignment/" + ++objecttypeAssignmentCount)
+              .addProperty(RDF.type, SILKNOW.T35_Object_Type_Assignment)
+              .addProperty(CIDOC.P41_classified, this.asResource())
+              .addProperty(SILKNOW.L1_Assigned_Object_type, r);
 
-    Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)
-            .addProperty(RDF.type, CIDOC.E17_Type_Assignment)
-            .addProperty(CIDOC.P41_classified, this.asResource())
-            .addProperty(CIDOC.P42_assigned, r);
+      if (museum != null) {
+        assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
+        this.model.add(museum.getModel());
+      }
 
+
+      // this.addProperty(CIDOC.P2_has_type, classification);
+      return assignment;
+    }
+
+    if (type != null && type.matches("Clasificación Genérica|Classification|Classifications|" +
+            "DENOMINACIÓ|Domaine|Objecto|Type|categories"))
+    {
+      Resource assignment = model.createResource(this.getUri() + "/object_domain_assignment/" + ++objectdomainAssignmentCount)
+              .addProperty(RDF.type, SILKNOW.T19_Object_Domain_Assignment)
+              .addProperty(CIDOC.P41_classified, this.asResource())
+              .addProperty(SILKNOW.L4_Assigned_Domain_type, r);
+
+      if (museum != null) {
+        assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
+        this.model.add(museum.getModel());
+      }
+
+      // this.addProperty(CIDOC.P2_has_type, classification);
+      return assignment;
+    }
+
+    else {
+      Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)
+              .addProperty(RDF.type, CIDOC.E17_Type_Assignment)
+              .addProperty(CIDOC.P41_classified, this.asResource())
+              .addProperty(CIDOC.P42_assigned, r);
+
+      if (museum != null) {
+        assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
+        this.model.add(museum.getModel());
+      }
+
+      // this.addProperty(CIDOC.P2_has_type, classification);
+      return assignment;
+    }
+    /*
     if (type != null)
     {
       assignment.addProperty(CIDOC.P2_has_type, type);
@@ -269,14 +317,10 @@ public abstract class Entity {
         assignment.addProperty(CIDOC.P2_has_type, t);
       }
     }
+     */
 
-    if (museum != null) {
-      assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
-      this.model.add(museum.getModel());
-    }
 
-    // this.addProperty(CIDOC.P2_has_type, classification);
-    return assignment;
+
   }
 
 
