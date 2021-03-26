@@ -2,6 +2,7 @@ package org.silknow.converter.converters;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.vocabulary.OWL;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 
@@ -58,6 +59,7 @@ public class PMConverter extends Converter {
     s.getMulti("fieldOeuvreTypesObjet")
       .map(x -> obj.addClassification(x, "Type(s) d'objet(s)", mainLang))
       .forEach(this::linkToRecord);
+    linkToRecord(obj.addProperty(OWL.sameAs, s.getUrl()));
 
     s.getMulti("fieldDenominations")
       .map(x -> obj.addClassification(x, "Dénomination(s)", mainLang))

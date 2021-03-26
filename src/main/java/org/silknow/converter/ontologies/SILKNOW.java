@@ -10,7 +10,7 @@ public class SILKNOW {
   private static OntModel m_model = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, null);
 
 
-  public static final String NS = "http://data.silknow.org/ontology/";
+  public static final String NS = "http://data.silknow.org/";
 
 
   public static String getURI() {

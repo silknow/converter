@@ -1,6 +1,7 @@
 package org.silknow.converter.converters;
 
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.vocabulary.OWL;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.Nullable;
 import org.silknow.converter.commons.CrawledJSON;
@@ -74,6 +75,7 @@ public class JocondeConverter extends Converter {
             .forEach(x -> linkToRecord(obj.addClassification(x, "Dénomination", "fr")));
     linkToRecord(obj.addObservation(s.get("DESC"), "Description", mainLang));
     s.getMulti("REPR").forEach(subject -> obj.addSubject(subject, mainLang));
+    linkToRecord(obj.addProperty(OWL.sameAs, s.getUrl()));
 
 
 

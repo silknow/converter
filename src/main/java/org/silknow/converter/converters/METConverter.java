@@ -3,6 +3,7 @@ package org.silknow.converter.converters;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.rdf.model.Model;
 
+import org.apache.jena.vocabulary.OWL;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.commons.GeoNames;
 import org.silknow.converter.entities.*;
@@ -89,6 +90,7 @@ public class METConverter extends Converter {
     s.getMulti("Object Type / Material").forEach(material -> prod.addMaterial(material.replaceAll(" *\\(.+?\\)", ""), mainLang));
 
     s.getMulti("Object Type / Material").forEach(x -> obj.addClassification(x.replaceAll(" *\\(.+?\\)", ""), "Object Type / Material",  mainLang));
+    linkToRecord(obj.addProperty(OWL.sameAs, s.getUrl()));
 
 
 

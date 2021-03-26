@@ -3,6 +3,7 @@ package org.silknow.converter.converters;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.rdf.model.Model;
 
+import org.apache.jena.vocabulary.OWL;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 
@@ -75,7 +76,7 @@ public class ArticConverter extends Converter {
     s.getMulti("Date").forEach(prod::addTimeAppellation);
     s.getMulti("Origin").forEach(prod::addPlace);
     linkToRecord(obj.addObservation(s.get("Medium"), "Medium", mainLang));
-
+    linkToRecord(obj.addProperty(OWL.sameAs, s.getUrl()));
 
 
     s.getMulti("Classification:").forEach(x -> obj.addClassification(x.replaceAll(" *\\(.+?\\)", ""), "Classification",  mainLang));

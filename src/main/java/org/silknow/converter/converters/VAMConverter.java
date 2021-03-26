@@ -3,6 +3,7 @@ package org.silknow.converter.converters;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.vocabulary.OWL;
 import org.apache.jena.vocabulary.RDF;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
@@ -60,6 +61,7 @@ public class VAMConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "object_number"));
+    linkToRecord(obj.addProperty(OWL.sameAs, s.getUrl()));
 
     s.getMulti("object").forEach(x -> obj.addClassification(x, "object", mainLang));
 

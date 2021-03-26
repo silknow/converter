@@ -12,7 +12,7 @@ public class Pattern_Unit extends Entity {
     super();
     this.setUri(uri);
     this.setClass(SILKNOW.T24_Pattern_Unit);
-    Dimension l = new Dimension(this.getUri() + "/dimension/", length, unit);
+    Dimension l = new Dimension(this.getUri() + "dimension/", length, unit);
     this.addProperty(CIDOC.P43_has_dimension, l);
 
   }

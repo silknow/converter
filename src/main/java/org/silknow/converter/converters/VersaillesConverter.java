@@ -1,6 +1,7 @@
 package org.silknow.converter.converters;
 
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.vocabulary.OWL;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 
@@ -55,6 +56,7 @@ public class VersaillesConverter extends Converter {
     s.getMulti("Désignation")
             .map(x -> obj.addClassification(x, "Désignation", mainLang))
             .forEach(this::linkToRecord);
+    linkToRecord(obj.addProperty(OWL.sameAs, s.getUrl()));
 
     /*
     final List<String> terms = new ArrayList<String>();
