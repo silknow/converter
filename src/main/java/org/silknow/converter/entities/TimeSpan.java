@@ -17,18 +17,13 @@ import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.silknow.converter.commons.ConstructURI;
-import org.silknow.converter.converters.Converter;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.Time;
 
-import java.io.IOException;
-import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.TimeZone;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -116,6 +111,7 @@ public class TimeSpan extends Entity {
   private static final Pattern AFTER_PATTERN = Pattern.compile(AFTER_REGEX);
 
   public static final String ACTIVITY_REGEX = "(?i)\\((embroider(ed|y|ing)|used|made|published|drawn|designed( and made| \\(process\\))?|(block )?print(ed|ing)|tambouring|collected|sewing|worn|altered|purchased|manufactured|(hand |tapestry )?weaving|woven|quilted|paint(ing|ed)|retailed|joinery|sold|upholstered)\\)";
+  public static final Pattern ACTIVITY_PATTERN = Pattern.compile(ACTIVITY_REGEX);
 
   static {
     BidiMap<Integer, Resource> map = new DualHashBidiMap<>();
@@ -139,6 +135,8 @@ public class TimeSpan extends Entity {
     map.put(20, ResourceFactory.createResource("http://vocab.getty.edu/aat/300404514"));
     CENTURY_URI_MAP = map;
   }
+
+  public static final List<String> activityList = new ArrayList<>();
 
   public static final Model centralModel = ModelFactory.createDefaultModel();
 
@@ -176,7 +174,13 @@ public class TimeSpan extends Entity {
   public TimeSpan(String date) {
     this();
     if (StringUtils.isBlank(date)) return;
-    date = date.replaceAll(ACTIVITY_REGEX, "");
+
+    Matcher m = ACTIVITY_PATTERN.matcher(date);
+    if (m.find()) {
+      String activity = m.group(1);
+      activityList.add(activity);
+      date = date.replaceAll(ACTIVITY_REGEX, "");
+    }
     date = date.replaceAll("(?i)^dated ", " ");
     date = date.replaceAll("(?i)\\(dated\\) ", " ");
 
@@ -966,37 +970,5 @@ public class TimeSpan extends Entity {
 
     ts.setLabel(label);
     return ts;
-  }
-
-  public static void main(String[] args) {
-    ClassLoader classLoader = Converter.class.getClassLoader();
-    URL vocabularyFolder = classLoader.getResource("vocabulary");
-    URL p2fTable = classLoader.getResource("property2family.csv");
-    assert vocabularyFolder != null && p2fTable != null;
-    VocabularyManager.setVocabularyFolder(vocabularyFolder.getPath());
-    try {
-      VocabularyManager.init(p2fTable);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-
-    // siglos_11_15, siglos_12_13, segles_10_11
-
-    TimeSpan ts = new TimeSpan("siglos 11-15");
-    ts.createResource();
-    System.out.println(ts.resource);
-    ts = new TimeSpan("siglos 12-13");
-    ts.createResource();
-    System.out.println(ts.resource);
-    ts = new TimeSpan("segles 10-11");
-    ts.createResource();
-    System.out.println(ts.resource);
-    ts = new TimeSpan("siglo 10");
-    ts.createResource();
-    System.out.println(ts.resource);
-    ts = new TimeSpan("6th Century CE-7th Century CE");
-    ts.createResource();
-    System.out.println(ts.resource);
-
   }
 }

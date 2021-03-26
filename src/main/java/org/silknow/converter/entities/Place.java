@@ -44,7 +44,13 @@ public class Place extends Entity {
     name = name.replaceAll(TimeSpan.UNCERTAIN_REGEX, "");
     name = name.replaceAll("(?i)\\(?(used|marketed|worn) in .+\\)?", ""); // English, used in America
     name = name.replaceAll("\\(\\\\d+\\)", "");
-    name = name.replaceAll(TimeSpan.ACTIVITY_REGEX, "");
+
+    Matcher m = TimeSpan.ACTIVITY_PATTERN.matcher(name);
+    if (m.find()) {
+      String activity = m.group(1);
+      TimeSpan.activityList.add(activity);
+      name = name.replaceAll(TimeSpan.ACTIVITY_REGEX, "");
+    }
 
     name = name.replaceAll("(?i)for .+ market", ""); // English, used in America
     name = name.replaceAll("(?i)for export", "");
