@@ -20,7 +20,8 @@
     skos:altLabel "Clasificación Razonada"@es,
         "Descripción"@es,
         "Description"@en,
-        "Description"@ef,
+        "Description"@fr,
+        "Inscription"@fr,
         "Descriptive Line"@en,
         "Labels and date"@en,
         "Summary"@en;
@@ -33,6 +34,8 @@
         "Technical description"@en,
         "Weft"@en,
         "Warp"@en,
+        "Medium"@en,
+        "Production Type"@en,
         "Construction"@en,
         "Physical description"@en,
         "Indicazioni sull'oggetto"@it;
@@ -42,7 +45,8 @@
     
     <http://data.silknow.org/observation/iconographical-observation> a skos:Concept ;
     skos:altLabel "note"@en,
-        "Description of the pattern"@en;
+                  "Description iconographique"@fr,
+                  "Description of the pattern"@en;
     skos:inScheme obs:observation-vocabulary ;
     skos:prefLabel "Inconographical Observation"@en ;
     skos:topConceptOf obs:observation-vocabulary .

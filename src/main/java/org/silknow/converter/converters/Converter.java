@@ -3,10 +3,7 @@ package org.silknow.converter.converters;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
-import org.apache.jena.vocabulary.DC;
-import org.apache.jena.vocabulary.DC_11;
-import org.apache.jena.vocabulary.RDF;
-import org.apache.jena.vocabulary.RDFS;
+import org.apache.jena.vocabulary.*;
 import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.Entity;
@@ -66,7 +63,6 @@ public abstract class Converter {
               .addProperty(RDFS.label, label)
               .addProperty(DC.identifier, filename)
               .addProperty(DC_11.publisher, BASE_URI + "organization/" + this.DATASET_NAME);
-
         linkToDataset(record);}
     }
     this.record.addProperty(CIDOC.P129_is_about, any);
