@@ -117,7 +117,7 @@ public abstract class Entity {
     if (StringUtils.isBlank(text)) return null;
 
     if (type == null) return null;
-    RDFNode r = VocabularyManager.searchInCategory(type, null, "observation_types", false);
+    RDFNode r = VocabularyManager.searchInCategory(type, null, "observation", false);
     if (r == null) {
       System.out.println("Observation type not found in vocabularies: " + type);
       r = model.createLiteral(type);
