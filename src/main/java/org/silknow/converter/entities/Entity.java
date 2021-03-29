@@ -15,7 +15,7 @@ import org.silknow.converter.Main;
 import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.CRMsci;
-import org.silknow.converter.ontologies.SILKNOW;
+import org.silknow.converter.ontologies.Silknow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -259,10 +259,10 @@ public abstract class Entity {
     if (type != null && type.matches("Description|Dénomination|Objeto/Documento" +
             "|Textile|Tipología|Title|object|titleField"))
     {
-      Resource assignment = model.createResource(this.getUri() + "/object_type_assignment/" + ++objecttypeAssignmentCount)
-              .addProperty(RDF.type, SILKNOW.T35_Object_Type_Assignment)
+      Resource assignment = model.createResource(this.getUri() + "/category/" + ++objecttypeAssignmentCount)
+              .addProperty(RDF.type, Silknow.T35)
               .addProperty(CIDOC.P41_classified, this.asResource())
-              .addProperty(SILKNOW.L1_Assigned_Object_type, r);
+              .addProperty(Silknow.L1, r);
 
       if (museum != null) {
         assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
@@ -277,10 +277,10 @@ public abstract class Entity {
     if (type != null && type.matches("Clasificación Genérica|Classification|Classifications|" +
             "DENOMINACIÓ|Domaine|Objecto|Type|categories"))
     {
-      Resource assignment = model.createResource(this.getUri() + "/object_domain_assignment/" + ++objectdomainAssignmentCount)
-              .addProperty(RDF.type, SILKNOW.T19_Object_Domain_Assignment)
+      Resource assignment = model.createResource(this.getUri() + "/domain/" + ++objectdomainAssignmentCount)
+              .addProperty(RDF.type, Silknow.T19)
               .addProperty(CIDOC.P41_classified, this.asResource())
-              .addProperty(SILKNOW.L4_Assigned_Domain_type, r);
+              .addProperty(Silknow.L4, r);
 
       if (museum != null) {
         assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());

@@ -16,7 +16,7 @@ repositories {
 }
 
 wrapper {
-    gradleVersion = '6.3'
+    gradleVersion = '6.8.3'
 }
 
 configurations.all {
@@ -46,3 +46,5 @@ dependencies {
 application {
     mainClassName = "org.silknow.converter.Main"
 }
+
+
