@@ -54,7 +54,7 @@ public class VeneziaConverter extends Converter {
     s.getMulti("Definizione")
       .map(x -> obj.addClassification(x, "Definizione", mainLang))
       .forEach(this::linkToRecord);
-    linkToRecord(obj.addProperty(OWL.sameAs, s.getUrl()));
+    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 
     /*
     final List<String> terms = new ArrayList<String>();

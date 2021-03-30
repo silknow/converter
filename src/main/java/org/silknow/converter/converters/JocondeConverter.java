@@ -75,7 +75,7 @@ public class JocondeConverter extends Converter {
             .forEach(x -> linkToRecord(obj.addClassification(x, "Dénomination", "fr")));
     linkToRecord(obj.addObservation(s.get("DESC"), "Description", mainLang));
     s.getMulti("REPR").forEach(subject -> obj.addSubject(subject, mainLang));
-    linkToRecord(obj.addProperty(OWL.sameAs, s.getUrl()));
+    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 
 
 

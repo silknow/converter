@@ -58,7 +58,7 @@ public class MADConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "Numéro d'inventaire:"));
     //obj.addTitle(s.getMulti("title").findFirst().orElse(null));
-    linkToRecord(obj.addProperty(OWL.sameAs, s.getUrl()));
+    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 
     List<String> creation_notes = s.getMulti("Création:").map(Object::toString).collect(Collectors.toList());
 

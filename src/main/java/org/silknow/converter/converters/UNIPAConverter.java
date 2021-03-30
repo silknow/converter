@@ -60,7 +60,7 @@ public class UNIPAConverter extends Converter {
     String regNum = s.getId();
     linkToRecord(obj.addComplexIdentifier(regNum, "RegNum"));
     //s.getMulti("title").forEach(obj::addTitle);
-    linkToRecord(obj.addProperty(OWL.sameAs, s.getUrl()));
+    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 
 
 

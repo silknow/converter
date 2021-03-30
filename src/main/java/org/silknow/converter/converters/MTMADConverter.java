@@ -54,7 +54,7 @@ public class MTMADConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "recordId"));
     obj.addTitle(s.getMulti("title").findFirst().orElse(null), mainLang);
-    linkToRecord(obj.addProperty(OWL.sameAs, s.getUrl()));
+    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 
     s.getImages().map(Image::fromCrawledJSON)
             .peek(image -> image.addInternalUrl("mtmad"))

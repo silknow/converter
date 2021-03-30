@@ -60,7 +60,7 @@ public class MobilierConverter extends Converter {
     s.getMulti("denomination")
             .map(x -> obj.addClassification(x, "denomination", mainLang))
             .forEach(this::linkToRecord);
-    linkToRecord(obj.addProperty(OWL.sameAs, s.getUrl()));
+    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 
     /*
     final List<String> terms = new ArrayList<String>();

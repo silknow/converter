@@ -59,7 +59,7 @@ public class PMConverter extends Converter {
     s.getMulti("fieldOeuvreTypesObjet")
       .map(x -> obj.addClassification(x, "Type(s) d'objet(s)", mainLang))
       .forEach(this::linkToRecord);
-    linkToRecord(obj.addProperty(OWL.sameAs, s.getUrl()));
+    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 
     s.getMulti("fieldDenominations")
       .map(x -> obj.addClassification(x, "Dénomination(s)", mainLang))

@@ -41,9 +41,13 @@ public abstract class Converter {
   private void linkToDataset(Resource record) {
     if (this.dataset == null) {
       this.dataset = model.createResource(BASE_URI + this.DATASET_NAME)
+              .addProperty(RDF.type, DCAT.dataset)
               .addProperty(RDF.type, CRMdig.D1_Digital_Object)
-              .addProperty(RDFS.label, this.DATASET_NAME)
+              .addProperty(RDFS.label, this.DATASET_NAME);
+      /*
               .addProperty(CIDOC.P2_has_type, "Dataset");
+              
+       */
     }
 
 

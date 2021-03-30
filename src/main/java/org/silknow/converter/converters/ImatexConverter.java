@@ -87,22 +87,8 @@ public class ImatexConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(id);
     linkToRecord(obj.addComplexIdentifier(regNum, "Register number"));
-    linkToRecord(obj.addProperty(OWL.sameAs, s.getUrl()));
+    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 
-    /*
-    final List<String> terms = new ArrayList<String>();
-    //terms.add((s.getMulti("CLASSIFICACIÓ GENÈRICA*").findFirst().orElse(null)));
-    //terms.add((s.getMulti("CRONOLOGIA*").filter(x -> !Arrays.asList("... unconfirmed", "... sin confirmar", "... sense confirmar").contains(x)).findFirst().orElse(null)));
-    //terms.add((s.getMulti("ORIGEN*").filter(x -> !Arrays.asList("... unconfirmed", "... sin confirmar ", "... sense confirmar").contains(x)).findFirst().orElse(null)));
-    terms.add((s.get("CLASSIFICACIÓ GENÈRICA*")));
-    terms.add((s.get("CRONOLOGIA*")));
-    terms.add((s.get("ORIGEN*")));
-    final String constrlabel = terms
-      .stream()
-      .filter(Objects::nonNull)
-      .collect(Collectors.joining(", "));
-    obj.addConstructedTitle(constrlabel, mainLang);
-*/
 
 
     s.getImages().map(Image::fromCrawledJSON)

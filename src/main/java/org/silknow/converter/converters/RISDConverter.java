@@ -63,7 +63,7 @@ public class RISDConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(id);
     linkToRecord(obj.addComplexIdentifier(id, "Object Number"));
     //obj.addTitle(s.getMulti("Title").findFirst().orElse(null));
-    linkToRecord(obj.addProperty(OWL.sameAs, s.getUrl()));
+    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 
     /*
     final List<String> terms = new ArrayList<String>();
