@@ -9,6 +9,7 @@ import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 import org.silknow.converter.ontologies.CIDOC;
 
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class VAMConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addComplexIdentifier(regNum, "object_number"));
-    linkToRecord(obj.addProperty(OWL.sameAs, s.getUrl()));
+    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 
     s.getMulti("object").forEach(x -> obj.addClassification(x, "object", mainLang));
 

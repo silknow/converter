@@ -8,9 +8,7 @@ import org.doremus.string2vocabulary.VocabularyManager;
 import org.apache.jena.vocabulary.SKOS;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.CRMsci;
-import java.net.URI;
 
-import java.net.URISyntaxException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

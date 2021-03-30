@@ -17,6 +17,7 @@ import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.CRMsci;
 import org.silknow.converter.ontologies.Silknow;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -174,6 +175,8 @@ public abstract class Entity {
     if (literal != null) this.resource.addProperty(property, literal);
     return this;
   }
+
+
 
   public Entity addProperty(Property property, String literal, XSDDatatype datatype) {
     if (literal != null && !StringUtils.isBlank(literal))
