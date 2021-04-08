@@ -56,9 +56,10 @@ public class VersaillesConverter extends Converter {
     s.getMulti("Désignation")
             .map(x -> obj.addClassification(x, "Désignation", mainLang))
             .forEach(this::linkToRecord);
+    /*
     linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 
-    /*
+
     final List<String> terms = new ArrayList<String>();
     terms.add((s.getMulti("titleField").findFirst().orElse(null)));
     terms.add((s.getMulti("displayDateField").findFirst().orElse(null)));
