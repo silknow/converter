@@ -61,7 +61,7 @@ public abstract class Converter {
       String seed = this.filename + "$$$" + this.id;
       String recordUri = BASE_URI + "object/" + ConstructURI.generateUUID(seed);
       if (filename != null) {
-      String label = "Record " + id;
+      String label = "Record " + id + " " + dataset;
       this.record = model.createResource(recordUri)
               .addProperty(RDF.type, CRMdig.D1_Digital_Object)
               .addProperty(RDFS.label, label)
