@@ -166,8 +166,12 @@ public class ImatexConverter extends Converter {
 
 
     linkToRecord(obj.addMeasure(s.get("MEASUREMENT")));
-    linkToRecord(obj.addObservation(s.get("DESCRIPTION"), "Description", mainLang));
-    linkToRecord(obj.addObservation(s.get("TECHNICAL DESCRIPTION"), "Technical description", mainLang));
+    linkToRecord(obj.addObservation(s.get("DESCRIPTION"), "Description", "en"));
+    linkToRecord(obj.addObservation(s.get("DESCRIPCIÓN"), "Description", "es"));
+    linkToRecord(obj.addObservation(s.get("DESCRIPCIÓ"), "Description", "ca"));
+    linkToRecord(obj.addObservation(s.get("DESCRIPCIÓ TÈCNICA\n"), "Technical description", "ca"));
+    linkToRecord(obj.addObservation(s.get("DESCRIPCIÓN TÉCNICA"), "Technical description", "es"));
+    linkToRecord(obj.addObservation(s.get("TECHNICAL DESCRIPTION"), "Technical description", "en"));
 
     String acquisitionFrom = s.get("FONT INGRÉS*");
     //String acquisitionType = s.get("FORMA INGRÉS*");
