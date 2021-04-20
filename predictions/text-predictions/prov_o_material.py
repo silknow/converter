@@ -2,8 +2,7 @@ from SPARQLWrapper import SPARQLWrapper, RDFXML
 from rdflib import Graph
 import pandas as pd
 import glob
-import urllib
-from urllib.parse import urlparse
+
 
 for file_name in glob.glob('material.csv'):
     x = pd.read_csv(file_name)
@@ -76,5 +75,5 @@ for file_name in glob.glob('material.csv'):
         sparql.setQuery(q)
         sparql.setReturnFormat(RDFXML)
         results = sparql.query().convert()
-        print(results.serialize(format='xml'))
+
         results.serialize(destination="./"+"material"+str(index)+".ttl", format="turtle")
