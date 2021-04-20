@@ -61,7 +61,7 @@ public class RISDConverter extends Converter {
 
 
     ManMade_Object obj = new ManMade_Object(id);
-    linkToRecord(obj.addComplexIdentifier(id, "Object Number"));
+    linkToRecord(obj.addComplexIdentifier(id, "Object Identifier"));
     //obj.addTitle(s.getMulti("Title").findFirst().orElse(null));
     linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 

@@ -45,7 +45,7 @@ public class VeneziaConverter extends Converter {
     String museumName = "Musei Civici Venezia";
 
 
-    String regNum = s.getMulti("Numero inventario museo").findFirst().orElse(null);
+    String regNum = s.getMulti("Object Identifier").findFirst().orElse(null);
     if (regNum == null) regNum = s.getId();
     id = s.getId();
 

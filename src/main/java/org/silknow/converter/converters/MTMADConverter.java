@@ -52,7 +52,7 @@ public class MTMADConverter extends Converter {
     id = regNum;
 
     ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addComplexIdentifier(regNum, "recordId"));
+    linkToRecord(obj.addComplexIdentifier(regNum, "Object Identifier"));
     obj.addTitle(s.getMulti("title").findFirst().orElse(null), mainLang);
     linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 

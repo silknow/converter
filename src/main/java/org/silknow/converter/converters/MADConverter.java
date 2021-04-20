@@ -56,7 +56,7 @@ public class MADConverter extends Converter {
     id = regNum;
 
     ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addComplexIdentifier(regNum, "Numéro d'inventaire:"));
+    linkToRecord(obj.addComplexIdentifier(regNum, "Object Identifier"));
     //obj.addTitle(s.getMulti("title").findFirst().orElse(null));
     linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 

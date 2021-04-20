@@ -58,7 +58,7 @@ public class UNIPAConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.getId();
-    linkToRecord(obj.addComplexIdentifier(regNum, "RegNum"));
+    linkToRecord(obj.addComplexIdentifier(regNum, "Object Identifier"));
     //s.getMulti("title").forEach(obj::addTitle);
     linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 

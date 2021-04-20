@@ -51,7 +51,7 @@ public class VersaillesConverter extends Converter {
     id = regNum;
 
     ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addComplexIdentifier(regNum, "Nº d'inventaire:"));
+    linkToRecord(obj.addComplexIdentifier(regNum, "Object Identifier"));
     obj.addTitle(s.getMulti("title").findFirst().orElse(null),mainLang);
     s.getMulti("Désignation")
             .map(x -> obj.addClassification(x, "Désignation", mainLang))

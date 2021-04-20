@@ -53,7 +53,7 @@ public class PMConverter extends Converter {
     id = regNum;
 
     ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addComplexIdentifier(regNum, "NumeroObjet"));
+    linkToRecord(obj.addComplexIdentifier(regNum, "Object Identifier"));
     obj.addTitle(s.getMulti("title").findFirst().orElse(null), mainLang);
     //obj.addTitle(s.getMulti("Autre Titre").findFirst().orElse(null),mainLang);
     s.getMulti("fieldOeuvreTypesObjet")

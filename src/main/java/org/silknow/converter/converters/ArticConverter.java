@@ -54,7 +54,7 @@ public class ArticConverter extends Converter {
     id = regNum;
 
     ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addComplexIdentifier(regNum, "Reference Number"));
+    linkToRecord(obj.addComplexIdentifier(regNum, "Object Identifier"));
     //obj.addTitle(s.getMulti("title").findFirst().orElse(null));
     s.getMulti("Title")
             .map(x -> obj.addClassification(x, "Title", mainLang))

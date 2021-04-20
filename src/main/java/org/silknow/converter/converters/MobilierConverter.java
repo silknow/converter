@@ -55,7 +55,7 @@ public class MobilierConverter extends Converter {
     id = regNum;
 
     ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addComplexIdentifier(regNum, "inventory_id"));
+    linkToRecord(obj.addComplexIdentifier(regNum, "Object Identifier"));
     obj.addTitle(s.getMulti("title_or_designation").findFirst().orElse(null),mainLang);
     s.getMulti("denomination")
             .map(x -> obj.addClassification(x, "denomination", mainLang))

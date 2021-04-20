@@ -204,7 +204,7 @@ public class JocondeConverter extends Converter {
 
     String oldId = ids.remove("ancien numéro");
 
-    linkToRecord(obj.addComplexIdentifier(ids.remove("Register number"), "Register number", JOCONDE, oldId));
+    linkToRecord(obj.addComplexIdentifier(ids.remove("Register number"), "Object Identifier", JOCONDE, oldId));
     ids.keySet().forEach(x -> linkToRecord(obj.addComplexIdentifier(ids.get(x), x, JOCONDE)));
 
     Right copyphoto = new Right(obj.getUri() + "/image/right");

@@ -61,7 +61,7 @@ public class VAMConverter extends Converter {
     id = s.get("object_number");
 
     ManMade_Object obj = new ManMade_Object(id);
-    linkToRecord(obj.addComplexIdentifier(regNum, "Accession Number"));
+    linkToRecord(obj.addComplexIdentifier(regNum, "Object Identifier"));
     linkToRecord(obj.addComplexIdentifier(id, "Object Number"));
     linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource("https://collections.vam.ac.uk/item/" + this.filename.replace(".json",""))));
 
