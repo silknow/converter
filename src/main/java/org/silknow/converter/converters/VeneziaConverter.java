@@ -45,12 +45,12 @@ public class VeneziaConverter extends Converter {
     String museumName = "Musei Civici Venezia";
 
 
-    String regNum = s.getMulti("Object Identifier").findFirst().orElse(null);
+    String regNum = s.getMulti("Numero inventario museo").findFirst().orElse(null);
     if (regNum == null) regNum = s.getId();
     id = s.getId();
 
     ManMade_Object obj = new ManMade_Object(id);
-    linkToRecord(obj.addComplexIdentifier(regNum, "Numero inventario museo"));
+    linkToRecord(obj.addComplexIdentifier(regNum, "Object Identifier"));
     s.getMulti("Definizione")
       .map(x -> obj.addClassification(x, "Definizione", mainLang))
       .forEach(this::linkToRecord);
