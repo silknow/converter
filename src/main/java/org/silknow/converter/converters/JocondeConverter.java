@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class JocondeConverter extends Converter {
-  private static final LegalBody JOCONDE = new LegalBody("Joconde");
+  private static final LegalBody JOCONDE = new LegalBody("Musée d’art et d’industrie de Saint-Etienne");
 
   private static final String DIMENSION_REGEX = "hauteur en cm (\\d+(?:\\.\\d+)?) ; largeur en cm (\\d+(?:\\.\\d+)?)";
   private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX);
@@ -33,7 +33,7 @@ public class JocondeConverter extends Converter {
       throw new RuntimeException("Joconde converter require files in JSON format.");
 
     String mainLang = "fr";
-    this.DATASET_NAME = "joconde";
+    this.DATASET_NAME = "Joconde";
 
     // Parse JSON
     logger.trace("parsing json");
@@ -202,10 +202,11 @@ public class JocondeConverter extends Converter {
             })
             .forEach(x -> ids.put(x.get(1), x.get(0)));
 
+
     String oldId = ids.remove("ancien numéro");
 
     linkToRecord(obj.addComplexIdentifier(ids.remove("Register number"), "Object Identifier", JOCONDE, oldId));
-    ids.keySet().forEach(x -> linkToRecord(obj.addComplexIdentifier(ids.get(x), x, JOCONDE)));
+    ids.keySet().forEach(x -> linkToRecord(obj.addComplexIdentifier(ids.get(x), "Study Number", JOCONDE)));
 
     Right copyphoto = new Right(obj.getUri() + "/image/right");
     copyphoto.addNote(s.get("PHOT"));

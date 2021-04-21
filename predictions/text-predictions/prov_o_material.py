@@ -3,17 +3,25 @@ from rdflib import Graph
 import pandas as pd
 import glob
 
-
+counter_pred = 0
+counter_act = 0
 for file_name in glob.glob('material.csv'):
     x = pd.read_csv(file_name)
     for index, row in x.iterrows():
         score = row['score']
         predicted = row['predicted']
         obj = row['obj']
-        
-        
-        sparql = SPARQLWrapper("http://data.silknow.org/sparql")
+        counter_pred = counter_pred + 1 
+        counter_act = counter_act + 1
 
+        sparql = SPARQLWrapper("http://data.silknow.org/sparql")
+        if predicted == "http://data.silknow.org/vocabulary/facet/animal_fibre":
+           predicted = "http://data.silknow.org/vocabulary/210"
+        if predicted == "http://data.silknow.org/vocabulary/facet/metal_thread":
+           predicted = "http://data.silknow.org/vocabulary/497"
+        if predicted == "http://data.silknow.org/vocabulary/facet/vegetal_fibre":
+           predicted = "http://data.silknow.org/vocabulary/214"
+           
         a = """
         
             prefix silk:  <http://data.silknow.org/ontology/>
@@ -21,7 +29,7 @@ for file_name in glob.glob('material.csv'):
             prefix crmdig: <http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/>
             prefix prov: <http://www.w3.org/ns/prov#> 
             prefix xsd:  <http://www.w3.org/2001/XMLSchema#> 
-            prefix :     <http://example.com/>
+
 
 
             CONSTRUCT {
@@ -34,45 +42,43 @@ for file_name in glob.glob('material.csv'):
         c =  """
            
            ?statement rdf:predicate ecrm:P126_employed .
-           ?statement ecrm:P43_has_dimension ?dimension .
-
-           
-           ?dimension a ecrm:E54_Dimension .
-           ?dimension ecrm:P2_has_type "Confidence Score" .
-           ?dimension ecrm:P90_has_value
+           ?statement silk:L18
            """
         f = '"'+str(score) +'"'+"^^xsd:float ."
         g = """
-            :statement_generation a prov:Activity, :Statement_generation;
+           ?activity a prov:Activity ;
            prov:AtTime "2021-02-10"^^xsd:dateTime;
            prov:used ?text .
-           ?statement prov:WasGeneratedBy :Statement_generation .
+           ?statement prov:WasGeneratedBy ?activity .
            
-           :text_analysis_algorithms a prov:Agent, :Text_analysis_algorithms;
-           prov:type prov:SoftwareAgent ;
+           ?actor a prov:SoftwareAgen ;
            ecrm:P70_documents """
         j = '"document"' + " ."
         k = """
-            :statement_generation prov:wasAssociatedWith :Text_analysis_algorithms .
+            ?activity prov:wasAssociatedWith ?actor .
             }
             WHERE {
-            VALUES ?object {
-            """
+            VALUES ?object { """
         l = "<"+str(obj)+">"
-        m = """
-            }
+        m = """}
            ?production ecrm:P108_has_produced ?object .
            ?object rdfs:comment ?text .
-           BIND(URI(CONCAT(STR(?production), "/statement")) AS ?statement)
-           BIND(URI(CONCAT(STR(?production), "/statement/dimension")) AS ?dimension)
+
+           BIND(URI(REPLACE(CONCAT(STR(?object), "/text/"""
+        n = str(counter_pred)
+        o = """"), "object", "prediction", "i")) AS ?statement)
+            BIND(URI(REPLACE(CONCAT(STR(?object), "/actor/jsi-text-analysis/"""
+        p = str(counter_act)
+        r = """"), "object", "prediction", "i")) AS ?actor)
+            BIND(URI(CONCAT(STR(?statement), "/generation")) AS ?activity)
             } """
 
 
-        q = a + b + c + f + g + j + k + l + m
-        print(q)
+        q = a + b + c + f + g + j + k + l + m + n + o + p + r
+        print(q.strip())
 
         
-        sparql.setQuery(q)
+        sparql.setQuery(q.strip())
         sparql.setReturnFormat(RDFXML)
         results = sparql.query().convert()
 

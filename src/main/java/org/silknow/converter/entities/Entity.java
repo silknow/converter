@@ -221,29 +221,34 @@ public abstract class Entity {
   public Resource addComplexIdentifier(String id, String type, LegalBody issuer, String replaceId) {
     if (id == null) return null;
 
-    Resource identifier = model.createResource(this.uri + "/id/" + id.replaceAll(" ", "_"))
-            .addProperty(RDF.type, CIDOC.E42_Identifier)
-            .addProperty(RDFS.label, id)
-            .addProperty(CIDOC.P2_has_type, type);
 
-    Resource assignment = model.createResource(this.uri + "/id_assignment/" + id)
-            .addProperty(RDF.type, CIDOC.E15_Identifier_Assignment)
-            .addProperty(CIDOC.P37_assigned, identifier);
-    if (issuer != null) {
-      assignment.addProperty(CIDOC.P14_carried_out_by, issuer.asResource());
-      this.model.add(issuer.getModel());
-    }
 
-    if (replaceId != null) {
-      Resource rIdentifier = model.createResource(this.uri + "/id/" + replaceId.replaceAll(" ", "_"))
-              .addProperty(RDF.type, CIDOC.E42_Identifier)
-              .addProperty(RDFS.label, replaceId)
-              .addProperty(CIDOC.P2_has_type, "old register number");
-      assignment.addProperty(CIDOC.P38_deassigned, rIdentifier);
-    }
+      Resource identifier = model.createResource(this.uri + "/id/" + id.replaceAll(" ", "_"))
+        .addProperty(RDF.type, CIDOC.E42_Identifier)
+        .addProperty(RDFS.label, id)
+        .addProperty(CIDOC.P2_has_type, type);
 
-    this.addProperty(CIDOC.P1_is_identified_by, identifier);
-    return identifier;
+
+      Resource assignment = model.createResource(this.uri + "/id_assignment/" + id)
+        .addProperty(RDF.type, CIDOC.E15_Identifier_Assignment)
+        .addProperty(CIDOC.P37_assigned, identifier);
+      if (issuer != null) {
+        assignment.addProperty(CIDOC.P14_carried_out_by, issuer.asResource());
+        this.model.add(issuer.getModel());
+      }
+
+      if (replaceId != null) {
+        Resource rIdentifier = model.createResource(this.uri + "/id/" + replaceId.replaceAll(" ", "_"))
+          .addProperty(RDF.type, CIDOC.E42_Identifier)
+          .addProperty(RDFS.label, replaceId)
+          .addProperty(CIDOC.P2_has_type, "Older object number");
+        assignment.addProperty(CIDOC.P38_deassigned, rIdentifier);
+      }
+
+      this.addProperty(CIDOC.P1_is_identified_by, identifier);
+
+      return identifier;
+
   }
 
   public Resource addClassification(String classification, String type, String lang) {
