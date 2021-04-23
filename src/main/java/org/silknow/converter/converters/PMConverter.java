@@ -49,7 +49,7 @@ public class PMConverter extends Converter {
     filename = file.getName();
     String museumName = "Paris Musées";
 
-    String regNum = s.get("fieldNumeroObjet");
+    String regNum = s.get("fieldOeuvreNumInventaire");
     id = regNum;
 
     ManMade_Object obj = new ManMade_Object(regNum);
