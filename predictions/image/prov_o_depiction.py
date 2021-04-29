@@ -16,16 +16,11 @@ for file_name in glob.glob('sys_integration_pred_depiction.csv'):
         counter_act = counter_act + 1
 
         sparql = SPARQLWrapper("http://data.silknow.org/sparql")
-        if predicted == "eighteenth_century_(dates_CE)":
-           predicted = "http://vocab.getty.edu/aat/300404512"
-        if predicted == "nineteenth_century_(dates_CE)":
-           predicted = "http://vocab.getty.edu/aat/300404513"
-        if predicted == "seventeenth_century_(dates_CE)":
-           predicted = "http://vocab.getty.edu/aat/300404511"
-        if predicted == "sixteenth_century_(dates_CE)":
-           predicted = "http://vocab.getty.edu/aat/300404510"
-        if predicted == "twentieth_century_(dates_CE)":
-           predicted = "http://vocab.getty.edu/aat/300404514"
+        if predicted == "plant":
+           predicted = "http://data.silknow.org/vocabulary/744"
+        if predicted == "flower":
+           predicted = "http://data.silknow.org/vocabulary/743"
+
            
         a = """
         

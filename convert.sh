@@ -18,4 +18,5 @@
     ./gradlew run --args="smiths '../crawler/data/smithsonian' -o ./output/smithsonian -g tschleider"
     ./gradlew run --args="versailles '../crawler/data/versailles' -o ./output/versailles -g tschleider"
     ./gradlew run --args="artic '../crawler/data/artic' -o ./output/artic -g tschleider"
-
+    ./gradlew run --args="gallica '../crawler/data/gallica' -o ./output/gallica -g tschleider"
+    ./gradlew run --args="europeana '../crawler/data/europeana' -o ./output/europeana -g tschleider"
