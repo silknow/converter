@@ -31,5 +31,15 @@ hs_err_pid*
 
 .DS_Store
 /output/*/
+/predictions/image/depiction/*.ttl/
+/predictions/image/material/*.ttl/
+/predictions/image/technique/*.ttl/
+/predictions/image/place/*.ttl/
+/predictions/image/time/*.ttl/
+/predictions/text/material/*.ttl/
+/predictions/text/technique/*.ttl/
+/predictions/text/place/*.ttl/
+/predictions/text/time/*.ttl/
+
 /src/main/main.iml
 
