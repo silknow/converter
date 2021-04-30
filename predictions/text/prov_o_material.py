@@ -42,6 +42,11 @@ for file_name in glob.glob('material.csv'):
         c =  """
            
            ?statement rdf:predicate ecrm:P126_employed .
+           ?production ecrm:P126_employed """
+        d = "<"+str(predicted)+"> ."
+
+        e = """
+
            ?statement silk:L18
            """
         f = '"'+str(score) +'"'+"^^xsd:float ."
@@ -74,7 +79,7 @@ for file_name in glob.glob('material.csv'):
             } """
 
 
-        q = a + b + c + f + g + j + k + l + m + n + o + p + r
+        q = a + b + c + d + e + f + g + j + k + l + m + n + o + p + r
         print(q.strip())
 
         

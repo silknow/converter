@@ -45,7 +45,12 @@ for file_name in glob.glob('time.csv'):
 
         c =  """
            
-           ?statement rdf:predicate ecrm:P4_has_time-span .
+           ?statement rdf:predicate ecrm:P4_has_time_span .
+           ?production ecrm:P4_has_time_span """
+        d = "<"+str(predicted)+"> ."
+
+        e = """
+
            ?statement silk:L18
            """
         f = '"'+str(score) +'"'+"^^xsd:float ."
@@ -78,7 +83,7 @@ for file_name in glob.glob('time.csv'):
             } """
 
 
-        q = a + b + c + f + g + j + k + l + m + n + o + p + r
+        q = a + b + c + d + e + f + g + j + k + l + m + n + o + p + r
         print(q.strip())
 
         

@@ -64,7 +64,12 @@ for file_name in glob.glob('place.csv'):
 
         c =  """
            
-           ?statement rdf:predicate ecrm:P7_took_place_at .
+           ?statement rdf:predicate ecrm:P8_took_place_on_or_within .
+           ?production ecrm:P8_took_place_on_or_within """
+        d = "<"+str(predicted)+"> ."
+
+        e = """
+
            ?statement silk:L18
            """
         f = '"'+str(score) +'"'+"^^xsd:float ."
@@ -97,7 +102,7 @@ for file_name in glob.glob('place.csv'):
             } """
 
 
-        q = a + b + c + f + g + j + k + l + m + n + o + p + r
+        q = a + b + c + d + e + f + g + j + k + l + m + n + o + p + r
         print(q.strip())
 
         
