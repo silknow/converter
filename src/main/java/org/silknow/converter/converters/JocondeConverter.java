@@ -15,6 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+
 public class JocondeConverter extends Converter {
   private static final LegalBody JOCONDE = new LegalBody("Musée d’art et d’industrie de Saint-Etienne");
 
@@ -26,11 +27,21 @@ public class JocondeConverter extends Converter {
     return isJson(file);
   }
 
+  private int statCount;
+  private int copyCount;
+  private int photCount;
+
+
   @Override
   public Model convert(File file) {
     logger.debug("%%% FILE " + file.getName());
     if (!this.canConvert(file))
       throw new RuntimeException("Joconde converter require files in JSON format.");
+
+    this.statCount = 0;
+    this.copyCount = 0;
+    this.photCount = 0;
+
 
     String mainLang = "fr";
     this.DATASET_NAME = "Joconde";
@@ -171,7 +182,7 @@ public class JocondeConverter extends Converter {
 
     String sj = s.getMulti("STAT").findFirst().orElse(null);
     if (sj != null) {
-      Right right = new Right(obj.getUri() + "/right");
+      Right right = new Right(obj.getUri() + "/right/" + ++statCount);
       if (sj.contains(museumName)) right.ownedBy(museum);
       right.addNote(sj, mainLang);
       right.applyTo(obj);
@@ -181,7 +192,7 @@ public class JocondeConverter extends Converter {
     PropositionalObject record = new PropositionalObject(id + "r");
     record.setType("museum record", mainLang);
     record.isAbout(obj);
-    Right copyright = new Right(record.getUri() + "/right");
+    Right copyright = new Right(record.getUri() + "/right/" + ++copyCount);
     copyright.applyTo(record);
     copyright.addNote(s.get("COPY"));
     s.getMulti("COPY", ", ")
@@ -208,7 +219,7 @@ public class JocondeConverter extends Converter {
     linkToRecord(obj.addComplexIdentifier(ids.remove("Register number"), "Object Identifier", JOCONDE, oldId));
     ids.keySet().forEach(x -> linkToRecord(obj.addComplexIdentifier(ids.get(x), "Study Number", JOCONDE)));
 
-    Right copyphoto = new Right(obj.getUri() + "/image/right");
+    Right copyphoto = new Right(obj.getUri() + "/image/right/" + ++photCount);
     copyphoto.addNote(s.get("PHOT"));
     s.getMulti("PHOT", ", ")
             .map(x -> x.replaceFirst("© ", ""))

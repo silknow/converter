@@ -17,10 +17,6 @@ import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.CRMsci;
 import org.silknow.converter.ontologies.Silknow;
 
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class Entity {
   String className;
   protected String source;
@@ -221,12 +217,16 @@ public abstract class Entity {
   public Resource addComplexIdentifier(String id, String type, LegalBody issuer, String replaceId) {
     if (id == null) return null;
 
-
-
+    if (type == "Object Identifier") {
+      RDFNode r = model.createResource("http://data.silknow.org/object_identifier");
+    }
+    if (type != "Object Identifier") {
+      r = model.createLiteral(type);
+    }
       Resource identifier = model.createResource(this.uri + "/id/" + id.replaceAll(" ", "_"))
         .addProperty(RDF.type, CIDOC.E42_Identifier)
         .addProperty(RDFS.label, id)
-        .addProperty(CIDOC.P2_has_type, type);
+        .addProperty(CIDOC.P2_has_type, r);
 
 
       Resource assignment = model.createResource(this.uri + "/id_assignment/" + id)
@@ -241,7 +241,7 @@ public abstract class Entity {
         Resource rIdentifier = model.createResource(this.uri + "/id/" + replaceId.replaceAll(" ", "_"))
           .addProperty(RDF.type, CIDOC.E42_Identifier)
           .addProperty(RDFS.label, replaceId)
-          .addProperty(CIDOC.P2_has_type, "Older object number");
+          .addProperty(CIDOC.P2_has_type, model.createResource("http://data.silknow.org/older_object_number"));
         assignment.addProperty(CIDOC.P38_deassigned, rIdentifier);
       }
 
