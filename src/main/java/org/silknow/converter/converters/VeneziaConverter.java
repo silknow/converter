@@ -49,8 +49,7 @@ public class VeneziaConverter extends Converter {
     if (regNum == null) regNum = s.getId();
     id = s.getId();
 
-    ManMade_Object obj = new ManMade_Object(id);
-    linkToRecord(obj.addComplexIdentifier(regNum, "Object Identifier"));
+    ManMade_Object obj = new ManMade_Object(regNum);
     s.getMulti("Definizione")
       .map(x -> obj.addClassification(x, "Definizione", mainLang))
       .forEach(this::linkToRecord);

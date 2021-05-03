@@ -48,8 +48,7 @@ public class EuropeanaConverter extends Converter {
       regNum = s.getId();
     id = s.getId();
 
-    ManMade_Object obj = new ManMade_Object(id);
-    linkToRecord(obj.addComplexIdentifier(regNum, "Object Identifier"));
+    ManMade_Object obj = new ManMade_Object(regNum);
     s.getMulti("title")
       .map(x -> obj.addClassification(x, "title", mainLang))
       .forEach(this::linkToRecord);
@@ -71,15 +70,17 @@ public class EuropeanaConverter extends Converter {
     prod.add(obj);
 
     s.getMulti("Date").forEach(prod::addTimeAppellation);
+    s.getMulti("Creation date").forEach(prod::addTimeAppellation);
 
     s.getMulti("Medium").forEach(material -> prod.addMaterial(material.split(",")[0], mainLang));
 
+    linkToRecord(obj.addObservation(s.get("description"), "Description", "en"));
 
     LegalBody legalbody = new LegalBody(s.getMulti("Providing institution").findFirst().orElse(null));
 
 
     Transfer transfer = new Transfer(regNum);
-    transfer.of(obj).by(legalbody);
+    transfer.of(obj).by(legalbody).by(s.get("Provider"));
 
     Right copyphoto = new Right(obj.getUri() + "/image/right");
     s.getMulti("Rights statement for the media in this item (unless otherwise specified)")

@@ -15,7 +15,6 @@ tar -czf mobilier.tar.gz mobilier/
 tar -czf smithsonian.tar.gz smithsonian/
 tar -czf versailles.tar.gz versailles/
 tar -czf artic.tar.gz artic/
-tar -czf gallica.tar.gz gallica/
 tar -czf europeana.tar.gz europeana/
 
 

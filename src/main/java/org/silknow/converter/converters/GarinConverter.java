@@ -110,7 +110,6 @@ public class GarinConverter extends Converter {
  */
 
 
-    linkToRecord(obj.addComplexIdentifier(id, "Object Identifier", owner));
     linkToRecord(obj.addClassification(s.get("Objecto"), "Objecto", mainLang, GARIN));
     linkToRecord(obj.addObservation(s.get("Descripción"), "Descripción", mainLang));
     linkToRecord(obj.addObservation(s.get("Descripción técnica"), "Descripción técnica", mainLang));
@@ -119,7 +118,7 @@ public class GarinConverter extends Converter {
     if (dim != null) {
       Matcher matcher5 = Pattern_unit_PATTERN.matcher(dim);
       if (matcher5.find()) {
-        linkToRecord(obj.addPatternUnit(matcher5.group(1)));
+        linkToRecord(obj.addPatternMeasure(matcher5.group(2), matcher5.group(1)));
       }
     }
 

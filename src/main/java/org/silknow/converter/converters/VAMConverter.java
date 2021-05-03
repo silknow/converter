@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 public class VAMConverter extends Converter {
   private static final String DIMENSION_REGEX = "(.+): (Over |<)?(\\d+(?:\\.\\d+)?)( ?[½¾¼]| \\d/\\d)? *([a-z]{1,4})?( .+)?";
   private static final String DIMENSION_REGEX2 = "(.+): *([a-z]{1,4}) ?(\\d+(?:\\.\\d+)?)([½¾¼]| \\d/\\d)?( .+)?";
-  private static final String Pattern_unit_REGEX = "Length: (\\d+(?:\\.\\d+)?) cm repeat";
+  private static final String Pattern_unit_REGEX = "Width: (\\d+(?:\\.\\d+)?) cm repeat ,Length: (\\d+(?:\\.\\d+)?) cm repeat";
   private static final Pattern Pattern_unit_PATTERN = Pattern.compile(Pattern_unit_REGEX);
   private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX);
   private static final Pattern DIMENSION_PATTERN2 = Pattern.compile(DIMENSION_REGEX2);
@@ -60,9 +60,7 @@ public class VAMConverter extends Converter {
     String regNum = s.get("museum_number");
     id = s.get("object_number");
 
-    ManMade_Object obj = new ManMade_Object(id);
-    linkToRecord(obj.addComplexIdentifier(regNum, "Object Identifier"));
-    linkToRecord(obj.addComplexIdentifier(id, "Object Number"));
+    ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource("https://collections.vam.ac.uk/item/" + this.filename.replace(".json",""))));
 
     s.getMulti("object").forEach(x -> obj.addClassification(x, "object", mainLang));
@@ -139,7 +137,7 @@ public class VAMConverter extends Converter {
     if (dim != null) {
       Matcher matcher5 = Pattern_unit_PATTERN.matcher(dim);
       if (matcher5.find()) {
-        linkToRecord(obj.addPatternUnit(matcher5.group(1)));
+        linkToRecord(obj.addPatternMeasure(matcher5.group(2), matcher5.group(1)));
       }
     }
 

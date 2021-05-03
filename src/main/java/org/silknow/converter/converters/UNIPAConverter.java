@@ -55,10 +55,8 @@ public class UNIPAConverter extends Converter {
     id = file.getName().replace(".json", "");
 
     String museumName = s.get("Museum");
-
-    ManMade_Object obj = new ManMade_Object(id);
     String regNum = s.getId();
-    linkToRecord(obj.addComplexIdentifier(regNum, "Object Identifier"));
+    ManMade_Object obj = new ManMade_Object(regNum);
     //s.getMulti("title").forEach(obj::addTitle);
     linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 
@@ -193,7 +191,7 @@ public class UNIPAConverter extends Converter {
     s.getMulti("manufacturing").forEach(place -> prod.addPlace(place.replace("Manifattura", "")));
 
 
-    /////////////////////
+
 
     String cdt = s.get("State of preservation");
     if (cdt != null) {

@@ -55,7 +55,6 @@ public class MFAConverter extends Converter {
     id = regNum;
 
     ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addComplexIdentifier(regNum, "Object identifier"));
     //s.getMulti("titleField").forEach(obj::addTitle);
     s.getMulti("titleField")
             .map(x -> obj.addClassification(x, "titleField", mainLang))

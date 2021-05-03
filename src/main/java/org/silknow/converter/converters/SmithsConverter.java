@@ -55,7 +55,6 @@ public class SmithsConverter extends Converter {
     id = regNum;
 
     ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addComplexIdentifier(regNum, "Object Identifier"));
     s.getMulti("title")
             .map(x -> obj.addClassification(x, "title", mainLang))
             .forEach(this::linkToRecord);

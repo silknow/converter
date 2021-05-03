@@ -73,8 +73,19 @@ public class JocondeConverter extends Converter {
     //        .forEach(doc::addEditor);
     //doc.document(obj);
 
+    Map<String, String> ids = new HashMap<>();
+    s.getMulti("INV")
+      .map(Utils::extractBrackets)
+      .map(ArrayList::new)
+      .peek(x -> {
+        if (x.get(1) == null) {
+          x.remove(1);
+          x.add("Register number");
+        }
+      })
+      .forEach(x -> ids.put(x.get(1), x.get(0)));
 
-    ManMade_Object obj = new ManMade_Object(id);
+    ManMade_Object obj = new ManMade_Object(ids.remove("Register number"));
     obj.addTitle(s.get("TITR"), mainLang);
 
 
@@ -201,23 +212,7 @@ public class JocondeConverter extends Converter {
             .forEach(copyright::ownedBy);
 
 
-    Map<String, String> ids = new HashMap<>();
-    s.getMulti("INV")
-            .map(Utils::extractBrackets)
-            .map(ArrayList::new)
-            .peek(x -> {
-              if (x.get(1) == null) {
-                x.remove(1);
-                x.add("Register number");
-              }
-            })
-            .forEach(x -> ids.put(x.get(1), x.get(0)));
 
-
-    String oldId = ids.remove("ancien numéro");
-
-    linkToRecord(obj.addComplexIdentifier(ids.remove("Register number"), "Object Identifier", JOCONDE, oldId));
-    ids.keySet().forEach(x -> linkToRecord(obj.addComplexIdentifier(ids.get(x), "Study Number", JOCONDE)));
 
     Right copyphoto = new Right(obj.getUri() + "/image/right/" + ++photCount);
     copyphoto.addNote(s.get("PHOT"));
