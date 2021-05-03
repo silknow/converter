@@ -31,6 +31,7 @@ The `<group>` is taken from this table
 | E73_Information_Object | object |
 | E89_Propositional_Object | object |
 | E38_Image | image |
+| E36_Visual_Item | image | image  |
 | E12_Production | production |
 | E8_Acquisition | event |
 | E10_Transfer_of_Custody | event |
@@ -79,6 +80,7 @@ The `<suffix>` is taken from this table:
 | E52_Time-Span | production | time/{progressive int} |
 | E7_Activity | production | activity/{progressive int}  |
 
+
 ## UUID and seed generation
 
 The UUID is computed deterministically starting from a seed string. A real UUID taken from an example above looks like this: d4ec41ba-a4d3-3ebb-ba07-8567f1add9cb
@@ -87,7 +89,7 @@ The seed is usually generated  based on:
 
 * source (e.g. 'unipa', 'met', ...)
 * class (e.g. 'E12_Production', ...)
-* the id of the current object (normally it is unique in a file)
+* the id of the current object (filename or crawler ID, which is often the same)
 * Hash function: SHA-1
 
 There are some exceptions to this rule, in order to allow automatic cross-source alignment:
