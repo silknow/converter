@@ -1,0 +1,44 @@
+@prefix silk: <http://data.silknow.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix pav: <http://purl.org/pav/>.
+@prefix sil: <http://silknow.eu/>.
+
+<http://data.silknow.org/type>
+    a skos:Concept;
+    skos:altLabel
+        "CLASSIFICACI\u00d3 GEN\u00c8RICA"@en, "Description"@en,
+        "D\u00e9nomination"@en, "Objeto/Documento"@en, "Textile"@en,
+        "Tipolog\u00eda"@en, "Title"@en, "object"@en, "titleField"@en;
+    skos:inScheme silk:silknow-vocabulary;
+    skos:prefLabel "Object Type Assignment"@en;
+    skos:topConceptOf silk:silknow-vocabulary.
+<http://data.silknow.org/domain>
+    a skos:Concept;
+    skos:altLabel
+        "Clasificaci\u00f3n Gen\u00e9rica"@en, "Classification"@en,
+        "Classifications"@en, "DENOMINACI\u00d3"@en, "Domaine"@en, "Objecto"@en,
+        "Type"@en, "categories"@en;
+    skos:inScheme silk:silknow-vocabulary;
+    skos:prefLabel "Object Domain Assignment"@en;
+    skos:topConceptOf silk:silknow-vocabulary.
+silk:SILKNOW
+    a foaf:Project;
+    rdfs:comment
+        "SILKNOW is a research project that improves the understanding, conservation and dissemination of European silk heritage from the 15th to the 19th century.";
+    rdfs:label "SILKNOW";
+    foaf:homepage sil:;
+    foaf:logo
+    <http://silknow.org/wp-content/uploads/2018/06/cropped-silknow-1.png>.
+silk:silknow-vocabulary
+    a skos:ConceptScheme;
+    dct:created "2020-12-08"^^xsd:date;
+    dct:creator silk:SILKNOW;
+    dct:modified "2021-05-03"^^xsd:date;
+    pav:createdOn "2021-05-03"^^xsd:date;
+    pav:version "2.0";
+    rdfs:label
+    "Controlled vocabulary for P2_has_type of E17_Type_Assignments"@en.

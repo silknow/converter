@@ -263,9 +263,9 @@ public abstract class Entity {
       //System.out.println("Classification not found in vocabularies: " + classification);
       r = model.createLiteral(classification);
     }
+    RDFNode t = VocabularyManager.searchInCategory(type, null, "type_domain", false);
 
-    if (type != null && type.matches("Description|Dénomination|Objeto/Documento" +
-            "|Textile|Tipología|Title|object|titleField"))
+    if (t != null && t.toString().contains("type"))
     {
       Resource assignment = model.createResource(this.getUri() + "/category/" + ++objecttypeAssignmentCount)
               .addProperty(RDF.type, Silknow.T35)
@@ -282,8 +282,7 @@ public abstract class Entity {
       return assignment;
     }
 
-    if (type != null && type.matches("Clasificación Genérica|Classification|Classifications|" +
-            "DENOMINACIÓ|Domaine|Objecto|Type|categories"))
+    if (t != null && t.toString().contains("domain"))
     {
       Resource assignment = model.createResource(this.getUri() + "/domain/" + ++objectdomainAssignmentCount)
               .addProperty(RDF.type, Silknow.T19)

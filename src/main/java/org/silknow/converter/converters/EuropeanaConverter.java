@@ -80,7 +80,9 @@ public class EuropeanaConverter extends Converter {
 
 
     Transfer transfer = new Transfer(regNum);
-    transfer.of(obj).by(legalbody).by(s.get("Provider"));
+    if (s.get("Provider") != null) {
+      transfer.of(obj).by(legalbody).by(s.get("Provider"));
+    }
 
     Right copyphoto = new Right(obj.getUri() + "/image/right");
     s.getMulti("Rights statement for the media in this item (unless otherwise specified)")

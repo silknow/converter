@@ -86,7 +86,6 @@ public class ImatexConverter extends Converter {
 
 
     ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 
 
 
