@@ -79,7 +79,7 @@ for file_name in glob.glob('place.csv'):
            prov:used ?text .
            ?statement prov:WasGeneratedBy ?activity .
            
-           ?actor a prov:SoftwareAgen ;
+           ?actor a prov:SoftwareAgent ;
            ecrm:P70_documents """
         j = '"document"' + " ."
         k = """

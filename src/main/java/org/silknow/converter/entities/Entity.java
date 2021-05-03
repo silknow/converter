@@ -216,13 +216,13 @@ public abstract class Entity {
 
   public Resource addComplexIdentifier(String id, String type, LegalBody issuer, String replaceId) {
     if (id == null) return null;
+    RDFNode r = model.createResource("http://data.silknow.org/object_identifier");
 
-    if (type == "Object Identifier") {
-      RDFNode r = model.createResource("http://data.silknow.org/object_identifier");
-    }
+
     if (type != "Object Identifier") {
       r = model.createLiteral(type);
     }
+
       Resource identifier = model.createResource(this.uri + "/id/" + id.replaceAll(" ", "_"))
         .addProperty(RDF.type, CIDOC.E42_Identifier)
         .addProperty(RDFS.label, id)
