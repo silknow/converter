@@ -75,8 +75,8 @@ The `<suffix>` is taken from this table:
 | E15_Identifier_Assignment | object | id_assignment/{id from E42} |
 | E16_Measurement | object | dimension/measurement |
 | E3_Condition_State | object | assessment/{progressive int} |
-| E30_Right | object | /right/{progressive int} |
-| E30_Right | object | /image/right/{progressive int} |
+| E30_Right | object | /right/ |
+| E30_Right | object | /image/right/ |
 | E52_Time-Span | production | time/{progressive int} |
 | E7_Activity | production | activity/{progressive int}  |
 

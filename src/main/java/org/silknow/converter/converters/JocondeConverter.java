@@ -27,9 +27,6 @@ public class JocondeConverter extends Converter {
     return isJson(file);
   }
 
-  private int statCount;
-  private int copyCount;
-  private int photCount;
 
 
   @Override
@@ -38,9 +35,6 @@ public class JocondeConverter extends Converter {
     if (!this.canConvert(file))
       throw new RuntimeException("Joconde converter require files in JSON format.");
 
-    this.statCount = 0;
-    this.copyCount = 0;
-    this.photCount = 0;
 
 
     String mainLang = "fr";
@@ -193,7 +187,7 @@ public class JocondeConverter extends Converter {
 
     String sj = s.getMulti("STAT").findFirst().orElse(null);
     if (sj != null) {
-      Right right = new Right(obj.getUri() + "/right/" + ++statCount);
+      Right right = new Right(obj.getUri() + "/right/");
       if (sj.contains(museumName)) right.ownedBy(museum);
       right.addNote(sj, mainLang);
       right.applyTo(obj);
@@ -203,7 +197,7 @@ public class JocondeConverter extends Converter {
     PropositionalObject record = new PropositionalObject(id + "r");
     record.setType("museum record", mainLang);
     record.isAbout(obj);
-    Right copyright = new Right(record.getUri() + "/right/" + ++copyCount);
+    Right copyright = new Right(record.getUri() + "/right/");
     copyright.applyTo(record);
     copyright.addNote(s.get("COPY"));
     s.getMulti("COPY", ", ")
@@ -214,7 +208,7 @@ public class JocondeConverter extends Converter {
 
 
 
-    Right copyphoto = new Right(obj.getUri() + "/image/right/" + ++photCount);
+    Right copyphoto = new Right(obj.getUri() + "/image/right/");
     copyphoto.addNote(s.get("PHOT"));
     s.getMulti("PHOT", ", ")
             .map(x -> x.replaceFirst("© ", ""))
