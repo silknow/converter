@@ -68,8 +68,8 @@ The `<suffix>` is taken from this table:
 | E17_Type_Assignment | object | type/{progressive int} |
 | T19_Object_Domain_Assignment | object | /domain/{progressive int} |
 | T35_Object_Type_Assignment | object | /type/{progressive int} |
-| E54_Dimension | object | dimension/{w or h} |
-| E42_Identifier | object | id/{id} |
+| E54_Dimension | object | /dimension/{1 or 2} |
+| T24_Pattern_Unit | object | /pattern/{1 or 2} |
 | S4_Observation | object | observation/{progressive int} |
 | E15_Identifier_Assignment | object | id_assignment/{id from E42} |
 | E16_Measurement | object | dimension/measurement |
