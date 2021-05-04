@@ -263,13 +263,14 @@ public abstract class Entity {
       //System.out.println("Classification not found in vocabularies: " + classification);
       r = model.createLiteral(classification);
     }
-    RDFNode t = VocabularyManager.searchInCategory(type, null, "type_domain", false);
+    RDFNode t = VocabularyManager.searchInCategory(type, null, "assignment", false);
 
     if (t != null && t.toString().contains("type"))
     {
       Resource assignment = model.createResource(this.getUri() + "/category/" + ++objecttypeAssignmentCount)
               .addProperty(RDF.type, Silknow.T35)
               .addProperty(CIDOC.P41_classified, this.asResource())
+              .addProperty(CIDOC.P2_has_type, t)
               .addProperty(Silknow.L1, r);
 
       if (museum != null) {
@@ -287,6 +288,7 @@ public abstract class Entity {
       Resource assignment = model.createResource(this.getUri() + "/domain/" + ++objectdomainAssignmentCount)
               .addProperty(RDF.type, Silknow.T19)
               .addProperty(CIDOC.P41_classified, this.asResource())
+              .addProperty(CIDOC.P2_has_type, t)
               .addProperty(Silknow.L4, r);
 
       if (museum != null) {
