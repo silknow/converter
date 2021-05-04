@@ -411,7 +411,7 @@ public class TimeSpan extends Entity {
         if (RomanConverter.isRoman(centuryString)) centuryString += " secolo";
         century = VocabularyManager.searchInCategory(centuryString, null, "dates", false);
         if (century == null) { // this is a part, but of what?
-          System.out.println("Century not found: " + centuryString);
+          //System.out.println("Century not found: " + centuryString);
           return;
         }
       }

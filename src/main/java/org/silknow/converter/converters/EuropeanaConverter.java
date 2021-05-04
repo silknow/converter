@@ -80,7 +80,8 @@ public class EuropeanaConverter extends Converter {
 
 
     Transfer transfer = new Transfer(regNum);
-    if (s.get("Provider") != null) {
+    String provider = s.get("Provider");
+    if (provider != null) {
       transfer.of(obj).by(legalbody).by(s.get("Provider"));
     }
 

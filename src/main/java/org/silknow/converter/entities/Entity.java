@@ -265,55 +265,54 @@ public abstract class Entity {
     }
     RDFNode t = VocabularyManager.searchInCategory(type, null, "assignment", false);
 
-    if (t != null && t.toString().contains("type"))
-    {
-      Resource assignment = model.createResource(this.getUri() + "/category/" + ++objecttypeAssignmentCount)
-              .addProperty(RDF.type, Silknow.T35)
-              .addProperty(CIDOC.P41_classified, this.asResource())
-              .addProperty(CIDOC.P2_has_type, t)
-              .addProperty(Silknow.L1, r);
+    if (t != null) {
+      if (t.toString().contains("type")) {
+        Resource assignment = model.createResource(this.getUri() + "/category/" + ++objecttypeAssignmentCount)
+          .addProperty(RDF.type, Silknow.T35)
+          .addProperty(CIDOC.P41_classified, this.asResource())
+          .addProperty(CIDOC.P2_has_type, t)
+          .addProperty(Silknow.L1, r);
 
-      if (museum != null) {
-        assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
-        this.model.add(museum.getModel());
+        if (museum != null) {
+          assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
+          this.model.add(museum.getModel());
+        }
+
+
+        // this.addProperty(CIDOC.P2_has_type, classification);
+        return assignment;
+      }
       }
 
+      if (t != null && t.toString().contains("domain")) {
+        Resource assignment = model.createResource(this.getUri() + "/domain/" + ++objectdomainAssignmentCount)
+          .addProperty(RDF.type, Silknow.T19)
+          .addProperty(CIDOC.P41_classified, this.asResource())
+          .addProperty(CIDOC.P2_has_type, t)
+          .addProperty(Silknow.L4, r);
 
-      // this.addProperty(CIDOC.P2_has_type, classification);
-      return assignment;
-    }
+        if (museum != null) {
+          assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
+          this.model.add(museum.getModel());
+        }
 
-    if (t != null && t.toString().contains("domain"))
-    {
-      Resource assignment = model.createResource(this.getUri() + "/domain/" + ++objectdomainAssignmentCount)
-              .addProperty(RDF.type, Silknow.T19)
-              .addProperty(CIDOC.P41_classified, this.asResource())
-              .addProperty(CIDOC.P2_has_type, t)
-              .addProperty(Silknow.L4, r);
+        // this.addProperty(CIDOC.P2_has_type, classification);
+        return assignment;
+      } else {
+        Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)
+          .addProperty(RDF.type, CIDOC.E17_Type_Assignment)
+          .addProperty(CIDOC.P41_classified, this.asResource())
+          .addProperty(CIDOC.P2_has_type, type)
+          .addProperty(CIDOC.P42_assigned, r);
 
-      if (museum != null) {
-        assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
-        this.model.add(museum.getModel());
+        if (museum != null) {
+          assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
+          this.model.add(museum.getModel());
+        }
+
+        // this.addProperty(CIDOC.P2_has_type, classification);
+        return assignment;
       }
-
-      // this.addProperty(CIDOC.P2_has_type, classification);
-      return assignment;
-    }
-
-    else {
-      Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)
-              .addProperty(RDF.type, CIDOC.E17_Type_Assignment)
-              .addProperty(CIDOC.P41_classified, this.asResource())
-              .addProperty(CIDOC.P42_assigned, r);
-
-      if (museum != null) {
-        assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
-        this.model.add(museum.getModel());
-      }
-
-      // this.addProperty(CIDOC.P2_has_type, classification);
-      return assignment;
-    }
     /*
     if (type != null)
     {
