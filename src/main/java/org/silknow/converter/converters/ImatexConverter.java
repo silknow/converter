@@ -172,7 +172,6 @@ public class ImatexConverter extends Converter {
     linkToRecord(obj.addObservation(s.get("TECHNICAL DESCRIPTION"), "Technical description", "en"));
 
     String acquisitionFrom = s.get("FONT INGRÉS*");
-    //String acquisitionType = s.get("FORMA INGRÉS*");
     String acquisitionDate = s.get("YEAR ENTERED THE MUSEUM");
     LegalBody museum = null;
     if (museumName != null)
@@ -180,8 +179,8 @@ public class ImatexConverter extends Converter {
 
     Acquisition acquisition = new Acquisition(regNum);
     acquisition.transfer(acquisitionFrom, obj, museum);
-    //acquisition.setDate(acquisitionDate);
-    //acquisition.setType(acquisitionType);
+    acquisition.setDate(acquisitionDate);
+    acquisition.addNote(s.get("FORMA INGRÉS*"));
 
 
     String npa = s.get("NOMS PROPIS ASSOCIATS*");

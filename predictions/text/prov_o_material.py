@@ -24,7 +24,7 @@ for file_name in glob.glob('material.csv'):
            
         a = """
         
-            prefix silk:  <http://data.silknow.org/ontology/>
+            prefix silk:  <http://data.silknow.org/ontology/property>
             prefix crmsci: <http://www.ics.forth.gr/isl/CRMsci/>
             prefix crmdig: <http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/>
             prefix prov: <http://www.w3.org/ns/prov#> 

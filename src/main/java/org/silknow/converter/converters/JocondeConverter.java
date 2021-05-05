@@ -200,7 +200,7 @@ public class JocondeConverter extends Converter {
     Right copyright = new Right(record.getUri() + "/right/");
     copyright.applyTo(record);
     copyright.addNote(s.get("COPY"));
-    s.getMulti("COPY", ", ")
+    s.getMulti("COPY", "©")
             .map(x -> x.replaceFirst("© ", ""))
             .map(LegalBody::new)
             .forEach(copyright::ownedBy);

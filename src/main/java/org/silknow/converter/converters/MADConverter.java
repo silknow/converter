@@ -126,15 +126,14 @@ public class MADConverter extends Converter {
     }
 
 
-    String acquisitionType = s.getMulti("Acquisition/dépôt:").findFirst().orElse(null);
+    String acquisitionFrom = s.getMulti("Acquisition/dépôt:").findFirst().orElse(null);
     LegalBody museum = null;
 
     Acquisition acquisition = new Acquisition(regNum);
-    //acquisition.transfer(acquisitionFrom, obj, museum);
-    //acquisition.setType(acquisitionType);
+    acquisition.transfer(acquisitionFrom, obj, museum);
 
-    Transfer transfer = new Transfer(regNum);
-    transfer.of(obj).by(museum);
+    Move mo = new Move(regNum);
+    mo.to(s.getMulti("situation").findFirst().orElse(null));
 
     String appellation = s.getMulti("field-skpublishedin").findFirst().orElse(null);
     if (appellation != null) {
@@ -145,10 +144,28 @@ public class MADConverter extends Converter {
       linkToRecord(collection);
     }
 
+    Right copyright = new Right(obj.getUri() + "/right/");
+    copyright.applyTo(obj);
+    s.getMulti("Droits auteur:", "©")
+      .map(x -> x.replaceFirst("© ", ""))
+      .map(LegalBody::new)
+      .forEach(copyright::ownedBy);
+
+    Right copyphoto = new Right(obj.getUri() + "/image/right/");
+    s.getMulti("Photographie:", "©")
+      .map(x -> x.replaceFirst("© ", ""))
+      .map(Actor::new)
+      .forEach(copyphoto::ownedBy);
+
+    s.getImages().map(Image::fromCrawledJSON)
+      .peek(image -> image.addInternalUrl("les-arts-decoratifs"))
+      .peek(obj::add)
+      .peek(copyphoto::applyTo)
+      .forEach(this::linkToRecord);
+
     linkToRecord(obj);
     linkToRecord(acquisition);
     linkToRecord(prod);
-    linkToRecord(transfer);
     return this.model;
   }
 

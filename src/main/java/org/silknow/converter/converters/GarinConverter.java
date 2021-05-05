@@ -144,8 +144,11 @@ public class GarinConverter extends Converter {
 
 
     Acquisition acquisition = new Acquisition(id);
+
     acquisition.transfer(null, obj, owner);
 
+    Move mo = new Move(regNum);
+    mo.to(s.getMulti("Ubicación").findFirst().orElse(null));
 
     String rest = s.get("Restauraciones localizadas");
     if (rest != null) {

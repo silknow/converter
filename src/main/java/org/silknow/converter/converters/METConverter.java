@@ -75,10 +75,7 @@ public class METConverter extends Converter {
     obj.addConstructedTitle(constrlabel, mainLang);
 */
 
-    s.getImages().map(Image::fromCrawledJSON)
-            .peek(image -> image.addInternalUrl("met-museum"))
-            .peek(obj::add)
-            .forEach(this::linkToRecord);
+
 
     Production prod = new Production(regNum);
     prod.add(obj);
@@ -133,13 +130,24 @@ public class METConverter extends Converter {
     linkToRecord(obj.addObservation(s.get("description"), "Description", "en"));
 
     String acquisitionFrom = s.get("Credit Line:");
-    //String acquisitionType = s.get("Provenance");
     LegalBody museum = null; // FIXME ?
 
 
     Acquisition acquisition = new Acquisition(regNum);
     acquisition.transfer(acquisitionFrom, obj, museum);
-    //acquisition.setType(acquisitionType);
+
+    Right copyphoto = new Right(obj.getUri() + "/image/right/");
+    copyphoto.addNote(s.get("imagesRightsLink"));
+    s.getMulti("imagesRightsText", ", ")
+      .map(x -> x.replaceFirst("© ", ""))
+      .map(Actor::new)
+      .forEach(copyphoto::ownedBy);
+
+    s.getImages().map(Image::fromCrawledJSON)
+      .peek(image -> image.addInternalUrl("met-museum"))
+      .peek(obj::add)
+      .peek(copyphoto::applyTo)
+      .forEach(this::linkToRecord);
 
 
     Transfer transfer = new Transfer(regNum);

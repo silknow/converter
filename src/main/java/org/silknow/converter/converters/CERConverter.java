@@ -70,6 +70,11 @@ public class CERConverter extends Converter {
     Production prod = new Production(regNum);
     prod.add(obj);
     prod.addActivity(s.getMulti("Autor").findFirst().orElse(null), s.getMulti("Uso/función").findFirst().orElse(null));
+    PartRemoval pr = new PartRemoval(s.get("Conjunto"));
+    pr.diminished(obj);
+    pr.removed(obj);
+
+
 
 /*
     if ((!s.getMulti("Título").findAny().isPresent())) {

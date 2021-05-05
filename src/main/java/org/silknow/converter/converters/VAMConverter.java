@@ -103,11 +103,11 @@ public class VAMConverter extends Converter {
 
 
     Acquisition acquisition = new Acquisition(regNum);
+    String acquisitionFrom = s.get("credit");
     acquisition.addNote(s.get("history_note"), mainLang);
+    acquisition.transfer(acquisitionFrom, obj, museum);
+    linkToRecord(acquisition);
 
-
-    Transfer transfer = new Transfer(regNum);
-    transfer.of(obj).by(museum);
 
     if (s.getMulti("location").findFirst().orElse(null) != null) {
       Move move = new Move(regNum);
@@ -141,12 +141,15 @@ public class VAMConverter extends Converter {
       }
     }
 
+    Mark m = new Mark(s.get("mark"));
+    m.carries(obj);
+
     linkToRecord(obj);
-    linkToRecord(acquisition);
     linkToRecord(prod);
-    linkToRecord(transfer);
     return this.model;
   }
+
+
 
   private void parseDimensions(String dim, ManMade_Object obj) {
     if (StringUtils.isBlank(dim) || dim.length() < 2) return;
