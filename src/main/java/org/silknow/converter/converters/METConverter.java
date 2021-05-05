@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.rdf.model.Model;
 
 import org.apache.jena.vocabulary.OWL;
+import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.commons.GeoNames;
 import org.silknow.converter.entities.*;
@@ -62,6 +63,14 @@ public class METConverter extends Converter {
     s.getMulti("title")
             .map(x -> obj.addClassification(x, "Title", mainLang))
             .forEach(this::linkToRecord);
+
+    s.getMulti("relatedObjects")
+      .map(PropositionalObject::new)
+      .map(x -> x.refersTo("http://data.silknow.org/object/"+ ConstructURI.generateUUID((x + "json" + "$$$" + x + "MET"))))
+      .map(x -> x.isAbout(obj))
+      .forEach(this::linkToRecord);
+
+
 
 /*
     final List<String> terms = new ArrayList<String>();

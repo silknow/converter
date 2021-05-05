@@ -36,6 +36,11 @@ public class PropositionalObject extends Entity {
     return this;
   }
 
+  public PropositionalObject refersTo(String object) {
+    this.addProperty(CIDOC.P67_refers_to, object);
+    return this;
+  }
+
 
 
 }
