@@ -56,7 +56,7 @@ public class METConverter extends Converter {
     //String museumName = s.get("MUSEUM");
 
     String regNum = s.get("Accession Number:");
-    id = regNum;
+    id = s.getId();
 
     ManMade_Object obj = new ManMade_Object(regNum);
     //obj.addTitle(s.getMulti("title").findFirst().orElse(null));
@@ -66,7 +66,7 @@ public class METConverter extends Converter {
 
     s.getMulti("relatedObjects")
       .map(PropositionalObject::new)
-      .map(x -> x.refersTo("http://data.silknow.org/object/"+ ConstructURI.generateUUID((x + "json" + "$$$" + x + "MET"))))
+      .map(x -> x.refersTo(model.createResource("http://data.silknow.org/object/"+ ConstructURI.generateUUID((x + ".json" + "$$$" + x + "http://data.silknow.org/met")))))
       .map(x -> x.isAbout(obj))
       .forEach(this::linkToRecord);
 

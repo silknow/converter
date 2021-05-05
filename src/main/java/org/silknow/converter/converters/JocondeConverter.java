@@ -4,6 +4,7 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.vocabulary.OWL;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.Nullable;
+import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.commons.Utils;
 import org.silknow.converter.entities.*;
@@ -141,6 +142,12 @@ public class JocondeConverter extends Converter {
     PropositionalObject po = new PropositionalObject(id);
     po.isAbout(obj);
     po.addNote(s.getMulti("PREP").findFirst().orElse(null), mainLang);
+
+    s.getMulti("REF")
+      .map(PropositionalObject::new)
+      .map(x -> x.refersTo(model.createResource("http://data.silknow.org/object/"+ ConstructURI.generateUUID((x + ".json" + "$$$" + x + "http://data.silknow.org/joconde")))))
+      .map(x -> x.isAbout(obj))
+      .forEach(this::linkToRecord);
 
     //String gen = s.getMulti("GENE").findFirst().orElse(null);
     //if ("objet en rapport".equalsIgnoreCase(gen)) {

@@ -1,5 +1,6 @@
 package org.silknow.converter.entities;
 
+import org.apache.jena.rdf.model.Resource;
 import org.silknow.converter.commons.CrawledJSONImages;
 import org.silknow.converter.commons.CrawledJSONPublications;
 import org.silknow.converter.ontologies.CIDOC;
@@ -36,7 +37,7 @@ public class PropositionalObject extends Entity {
     return this;
   }
 
-  public PropositionalObject refersTo(String object) {
+  public PropositionalObject refersTo(Resource object) {
     this.addProperty(CIDOC.P67_refers_to, object);
     return this;
   }
