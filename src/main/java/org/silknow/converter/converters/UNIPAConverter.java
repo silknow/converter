@@ -173,11 +173,11 @@ public class UNIPAConverter extends Converter {
       museum = new LegalBody(museumName);
       transfer.of(obj).by(museum);
       linkToRecord(transfer);
-      linkToRecord(obj.addComplexIdentifier(s.get("stock_number"), "Stock Number", museum));
+      //linkToRecord(obj.addComplexIdentifier(s.get("stock_number"), "Stock Number", museum));
     }
-    else {
-      linkToRecord(obj.addComplexIdentifier(s.get("stock_number"), "Stock Number"));
-    }
+    //else {
+      //linkToRecord(obj.addComplexIdentifier(s.get("stock_number"), "Stock Number"));
+    //}
 
     s.getMulti("date").forEach(prod::addTimeAppellation);
     String dim2 = s.getMulti("dimensions").findFirst().orElse(null);
@@ -223,12 +223,6 @@ public class UNIPAConverter extends Converter {
     linkToRecord(obj);
     linkToRecord(prod);
     //linkToRecord(doc);
-
-
-
-
-
-
 
 
 
