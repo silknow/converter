@@ -133,8 +133,9 @@ public class MADConverter extends Converter {
     acquisition.transfer(acquisitionFrom, obj, museum);
 
     Move mo = new Move(regNum);
-    mo.to(s.getMulti("situation").findFirst().orElse(null));
-
+    if (s.getMulti("situation").findFirst().orElse(null) != null) {
+      mo.to(s.getMulti("situation").findFirst().orElse(null));
+    }
     String appellation = s.getMulti("field-skpublishedin").findFirst().orElse(null);
     if (appellation != null) {
 
