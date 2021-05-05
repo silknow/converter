@@ -213,7 +213,7 @@ public class Main implements Runnable {
     Arrays.stream(files)
       .filter(File::isDirectory)
       .sorted()
-      .peek(x -> System.out.println("--- " + x.getName()))
+      //.peek(x -> System.out.println("--- " + x.getName()))
       .forEach(x -> convertFolder(x, converter));
   }
 

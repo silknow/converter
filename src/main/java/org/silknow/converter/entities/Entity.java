@@ -263,10 +263,18 @@ public abstract class Entity {
       //System.out.println("Classification not found in vocabularies: " + classification);
       r = model.createLiteral(classification);
     }
-    RDFNode t = VocabularyManager.searchInCategory(type, null, "assignment", false);
+    RDFNode t = null;
+    if (type != null) {
+      t = VocabularyManager.searchInCategory(type, null, "assignment", false);
+      if (t == null){
+        t = model.createLiteral(type);
+      }
+    }
+    if (type == null) {
+      t = null;
+    }
 
-    if (t != null) {
-      if (t.toString().contains("type")) {
+      if (t != null && t.toString().contains("type")) {
         Resource assignment = model.createResource(this.getUri() + "/category/" + ++objecttypeAssignmentCount)
           .addProperty(RDF.type, Silknow.T35)
           .addProperty(CIDOC.P41_classified, this.asResource())
@@ -282,37 +290,53 @@ public abstract class Entity {
         // this.addProperty(CIDOC.P2_has_type, classification);
         return assignment;
       }
+
+
+    if (t != null && t.toString().contains("domain")) {
+      Resource assignment = model.createResource(this.getUri() + "/domain/" + ++objectdomainAssignmentCount)
+        .addProperty(RDF.type, Silknow.T19)
+        .addProperty(CIDOC.P41_classified, this.asResource())
+        .addProperty(CIDOC.P2_has_type, t)
+        .addProperty(Silknow.L4, r);
+
+      if (museum != null) {
+        assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
+        this.model.add(museum.getModel());
       }
 
-      if (t != null && t.toString().contains("domain")) {
-        Resource assignment = model.createResource(this.getUri() + "/domain/" + ++objectdomainAssignmentCount)
-          .addProperty(RDF.type, Silknow.T19)
-          .addProperty(CIDOC.P41_classified, this.asResource())
-          .addProperty(CIDOC.P2_has_type, t)
-          .addProperty(Silknow.L4, r);
+      // this.addProperty(CIDOC.P2_has_type, classification);
+      return assignment;
+    }
+    if (type == null) {
+      Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)
+        .addProperty(RDF.type, CIDOC.E17_Type_Assignment)
+        .addProperty(CIDOC.P41_classified, this.asResource())
+        .addProperty(CIDOC.P42_assigned, r);
 
-        if (museum != null) {
-          assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
-          this.model.add(museum.getModel());
-        }
-
-        // this.addProperty(CIDOC.P2_has_type, classification);
-        return assignment;
-      } else {
-        Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)
-          .addProperty(RDF.type, CIDOC.E17_Type_Assignment)
-          .addProperty(CIDOC.P41_classified, this.asResource())
-          .addProperty(CIDOC.P2_has_type, type)
-          .addProperty(CIDOC.P42_assigned, r);
-
-        if (museum != null) {
-          assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
-          this.model.add(museum.getModel());
-        }
-
-        // this.addProperty(CIDOC.P2_has_type, classification);
-        return assignment;
+      if (museum != null) {
+        assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
+        this.model.add(museum.getModel());
       }
+
+      // this.addProperty(CIDOC.P2_has_type, classification);
+      return assignment;
+    }
+
+    else {
+      Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)
+        .addProperty(RDF.type, CIDOC.E17_Type_Assignment)
+        .addProperty(CIDOC.P41_classified, this.asResource())
+        .addProperty(CIDOC.P2_has_type, type)
+        .addProperty(CIDOC.P42_assigned, r);
+
+      if (museum != null) {
+        assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
+        this.model.add(museum.getModel());
+      }
+
+      // this.addProperty(CIDOC.P2_has_type, classification);
+      return assignment;
+    }
     /*
     if (type != null)
     {
@@ -326,7 +350,6 @@ public abstract class Entity {
       }
     }
      */
-
 
 
   }
