@@ -57,8 +57,8 @@ public abstract class Converter {
   protected void linkToRecord(Resource any) {
     if (any == null) return;
     if (this.record == null) {
-      //String recordUri = BASE_URI + this.DATASET_NAME + "/" + id.replaceAll("\\s", "_");
       String seed = this.filename + "$$$" + this.id + this.dataset;
+      //System.out.println(seed);
       String recordUri = BASE_URI + "object/" + ConstructURI.generateUUID(seed);
       if (filename != null) {
       String label = "Record " + id;

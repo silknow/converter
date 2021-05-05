@@ -133,21 +133,21 @@ public class JocondeConverter extends Converter {
       prod.addPlace(city);
     }
 
-    String hist = null;
-    for (String h : s.getMulti("HIST").collect(Collectors.toList())) {
-      if (h.startsWith("voir aussi :")) hist = h;
-      else obj.addNote(h.replaceAll("(^\\(|\\)$)", ""));
+
+    //PropositionalObject po = new PropositionalObject(id);
+    //po.isAbout(obj);
+    //po.addNote(s.getMulti("PREP").findFirst().orElse(null), mainLang);
+
+    if (s.get("HIST") != null) {
+      String h = s.get("HIST");
+      if (h.contains("(")) {
+        PropositionalObject hist = new PropositionalObject(id);
+        hist.refersTo(model.createResource("http://data.silknow.org/object/" + ConstructURI.generateUUID(("joconde" + " " + "ManMade_Object" + " " + h.split("[\\(\\)]")[1]))));
+        hist.isAbout(obj);
+        linkToRecord(hist);
+
+      }
     }
-
-    PropositionalObject po = new PropositionalObject(id);
-    po.isAbout(obj);
-    po.addNote(s.getMulti("PREP").findFirst().orElse(null), mainLang);
-
-    s.getMulti("REF")
-      .map(PropositionalObject::new)
-      .map(x -> x.refersTo(model.createResource("http://data.silknow.org/object/"+ ConstructURI.generateUUID((x + ".json" + "$$$" + x + "http://data.silknow.org/joconde")))))
-      .map(x -> x.isAbout(obj))
-      .forEach(this::linkToRecord);
 
     //String gen = s.getMulti("GENE").findFirst().orElse(null);
     //if ("objet en rapport".equalsIgnoreCase(gen)) {
@@ -247,7 +247,6 @@ public class JocondeConverter extends Converter {
 
     linkToRecord(obj);
     //linkToRecord(doc);
-    linkToRecord(po);
     linkToRecord(copyright);
     linkToRecord(copyphoto);
     linkToRecord(prod);

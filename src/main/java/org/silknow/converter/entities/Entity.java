@@ -68,6 +68,7 @@ public abstract class Entity {
 
   public String getUri() {
     if (hasNullUri()) this.uri = ConstructURI.build(this.source, this.className, this.id);
+    //System.out.println("source+classnameid: "+this.source + " " + this.className + " " + this.id);
 
     return this.uri;
   }
