@@ -111,9 +111,9 @@ public class ImatexConverter extends Converter {
     s.getMulti("DECORACIÓ*").forEach(subject -> obj.addSubject(subject, mainLang));
 
     //s.getMulti("DESTÍ DÚS*").forEach(obj::addIntention);
-    s.getMulti("DESTÍ DÚS*")
-            .map(x -> obj.addClassification(x, "DESTÍ DÚS", mainLang))
-            .forEach(this::linkToRecord);
+    //s.getMulti("DESTÍ DÚS*")
+    //        .map(x -> obj.addClassification(x, "DESTÍ DÚS", mainLang))
+    //        .forEach(this::linkToRecord);
 
 
     String cdt = s.get("ESTAT DE CONSERVACIÓ*");

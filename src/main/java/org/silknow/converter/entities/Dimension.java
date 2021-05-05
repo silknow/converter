@@ -2,7 +2,9 @@ package org.silknow.converter.entities;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.datatypes.xsd.XSDDatatype;
+import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.vocabulary.RDFS;
+import org.doremus.string2vocabulary.VocabularyManager;
 import org.silknow.converter.ontologies.CIDOC;
 
 import java.util.HashMap;
@@ -41,7 +43,14 @@ public class Dimension extends Entity {
 
   public Dimension(String uri, String value, String unit, String type, String label) {
     this(uri, value, unit);
-    this.addProperty(CIDOC.P2_has_type, type);
+    if (type != null) {
+      RDFNode t = VocabularyManager.searchInCategory(type, null, "dimension", false);
+      if (t != null) {
+        this.addProperty(CIDOC.P2_has_type, t.asResource());
+      }
+      else
+        this.addProperty(CIDOC.P2_has_type, type);
+    }
     this.addProperty(RDFS.label, label);
   }
 
