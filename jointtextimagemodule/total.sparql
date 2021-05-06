@@ -1,5 +1,6 @@
 prefix crmdig: <http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/>  
 prefix crmsci: <http://www.ics.forth.gr/isl/CRMsci/>
+prefix silk:   <http://data.silknow.org/ontology/property/>
 
 SELECT DISTINCT ?obj ?museum ?text ?img ?deeplink  ?place_uri ?place_country_code ?time_uri ?time_label ?technique_group ?material_group ?depict_group ?type_a_group
 WHERE {
@@ -38,8 +39,8 @@ WHERE {
                }
 
 optional {?dig ecrm:P129_is_about ?type_a .
-          ?type_a ecrm:P42_assigned ?P42 .
-          ?type_a_group skos:member ?P42 FILTER contains(str(?type_a_group), "facet")
+          ?type_a silk:L4|silk:L1 ?type .
+          ?type_a_group skos:member ?type FILTER contains(str(?type_a_group), "facet")
                }
 
 

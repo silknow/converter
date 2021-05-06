@@ -156,6 +156,7 @@ public class VAMConverter extends Converter {
 
     String unit = null;
     int count = 1;
+    int pattcount = 1;
     List<Dimension> dimList = new ArrayList<>();
     for (String txt : dim.split(", (?=[A-Z][a-z])")) {
       Dimension d = parseSingleDimension(txt, unit, dimUri + count);
@@ -163,6 +164,12 @@ public class VAMConverter extends Converter {
       count++;
       unit = d.getUnit();
       dimList.add(d);
+
+      if (txt.contains("repeat")) {
+        Pattern_Unit p = new Pattern_Unit(pattUri + pattcount++, d);
+        obj.addProperty(CIDOC.P58_has_section_definition, p);
+        obj.addProperty(CIDOC.P58_has_section_definition, model.createResource(pattUri2));
+      }
     }
     if (dimList.size() == 0) return;
 
@@ -170,14 +177,9 @@ public class VAMConverter extends Converter {
       //.addProperty(RDF.type, CIDOC.E16_Measurement)
       //.addProperty(CIDOC.P39_measured, obj.asResource());
 
-    int pattcount = 1;
     for (Dimension d : dimList) {
       obj.addProperty(CIDOC.P43_has_dimension, d);
-      if (d.toString().contains("repeat")) {
-        Pattern_Unit p = new Pattern_Unit(pattUri + pattcount++, d);
-        obj.addProperty(CIDOC.P58_has_section_definition, p);
-        obj.addProperty(CIDOC.P58_has_section_definition, model.createResource(pattUri2));
-      }
+
       //measure.addProperty(CIDOC.P40_observed_dimension, d.asResource());
       model.add(d.getModel());
     }
