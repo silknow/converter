@@ -8,7 +8,7 @@ WHERE {
   ?obj ecrm:P138i_has_representation ?img .
   ?img schema:contentUrl ?deeplink .
   ?p ecrm:P108_has_produced ?obj .
-  OPTIONAL {?obj ecrm:P62_depicts  ?ts}
+  OPTIONAL {?obj ecrm:P65_shows_visual_item  ?ts}
   FILTER (!bound(?ts))
 }
 GROUP BY ?museum
