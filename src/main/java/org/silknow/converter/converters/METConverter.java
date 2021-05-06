@@ -65,7 +65,7 @@ public class METConverter extends Converter {
             .forEach(this::linkToRecord);
 
     s.getMulti("relatedObjects")
-      .map(PropositionalObject::new)
+      .map(x -> new PropositionalObject(x))
       .peek(x -> x.isAbout(obj))
       .peek(x -> x.refersTo(model.createResource("http://data.silknow.org/object/"+ ConstructURI.generateUUID((x.getId() + ".json" + "$$$" + x.getId() + "http://data.silknow.org/met")))))
       .forEach(this::linkToRecord);

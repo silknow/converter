@@ -22,6 +22,9 @@ public class UNIPAConverter extends Converter {
   private static final String DIMENSION_REGEX2 = "(\\d+(?:\\.\\d+)?)x(\\d+(?:\\.\\d+)?)";
   private static final Pattern DIMENSION_PATTERN2 = Pattern.compile(DIMENSION_REGEX2);
 
+  private static final String Pattern_unit_REGEX = "Rapport: (\\d+(?:\\.\\d+)?) cm";
+  private static final Pattern Pattern_unit_PATTERN = Pattern.compile(Pattern_unit_REGEX);
+
   @Override
   public boolean canConvert(File file) {
     return isJson(file);
@@ -141,6 +144,13 @@ public class UNIPAConverter extends Converter {
     linkToRecord(obj.addObservation(s.getMulti("Historical Critical Information").findFirst().orElse(null), "Historical Critical Information", "it"));
     linkToRecord(obj.addObservation(s.getMulti("Pattern unit").findFirst().orElse(null), "Pattern unit", "it"));
 
+    String pat = s.get("Pattern Unit");
+    if (pat != null) {
+      Matcher matcher5 = Pattern_unit_PATTERN.matcher(pat);
+      if (matcher5.find()) {
+        linkToRecord(obj.addSinglePattern(matcher5.group(1)));
+      }
+    }
 
     prod.addActivity(s.getMulti("Autors").findFirst().orElse(null), "Artist");
 

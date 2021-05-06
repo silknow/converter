@@ -25,15 +25,15 @@ WHERE {
                  ?material_group skos:member ?x FILTER contains(str(?material_group), "facet")}
       
 
-      optional{ ?prod ecrm:P4_has_time-span ?time_uri . FILTER contains(str(?time_uri), "getty") 
-                ?time_uri skos:prefLabel ?time_label . FILTER  (lang(?time_label) = 'en')}
+      optional{ ?prod ecrm:P4_has_time-span ?time_uri .
+                ?time_uri ecrm:P86_falls_within ?time_label . FILTER  (lang(?time_label) = 'en')}
        
 
        optional{ ?prod ecrm:P32_used_general_technique  ?y .
                 ?technique_group skos:member ?y FILTER contains(str(?technique_group), "facet")
                }
 
-       optional{ ?obj ecrm:P62_depicts  ?z .
+       optional{ ?obj ecrm:P65_shows_visual_item  ?z .
                 ?depict_group skos:member ?z FILTER contains(str(?depict_group), "facet")
                }
 
