@@ -131,15 +131,13 @@ public class JocondeConverter extends Converter {
     }
 
 
-    //PropositionalObject po = new PropositionalObject(id);
-    //po.isAbout(obj);
-    //po.addNote(s.getMulti("PREP").findFirst().orElse(null), mainLang);
+
 
     if (s.get("HIST") != null) {
       String h = s.get("HIST");
       if (h.contains("(")) {
         PropositionalObject hist = new PropositionalObject(id);
-        hist.refersTo(model.createResource("http://data.silknow.org/object/" + ConstructURI.generateUUID(("joconde" + "ManMade_Object" + h.split("[\\(\\)]")[1]))));
+        hist.refersTo(model.createResource("http://data.silknow.org/object/" + ConstructURI.generateUUID(("joconde" + h.split("[\\(\\)]")[1] + "ManMade_Object"))));
         hist.isAbout(obj);
         linkToRecord(hist);
 
@@ -198,11 +196,9 @@ public class JocondeConverter extends Converter {
       linkToRecord(right);
     }
 
-    PropositionalObject record = new PropositionalObject(id + "r");
-    record.setType("museum record", mainLang);
-    record.isAbout(obj);
-    Right copyright = new Right(record.getUri() + "/right/");
-    copyright.applyTo(record);
+
+    Right copyright = new Right(obj.getUri() + "/right/");
+    copyright.applyTo(obj);
     copyright.addNote(s.get("COPY"));
     s.getMulti("COPY", "©")
             .map(x -> x.replaceFirst("© ", ""))
