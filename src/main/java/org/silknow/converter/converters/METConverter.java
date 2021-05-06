@@ -67,7 +67,7 @@ public class METConverter extends Converter {
     s.getMulti("relatedObjects")
       .map(PropositionalObject::new)
       .peek(x -> x.isAbout(obj))
-      .peek(x -> x.refersTo(model.createResource("http://data.silknow.org/object/"+ ConstructURI.generateUUID((x + ".json" + "$$$" + x.toString() + "http://data.silknow.org/met")))))
+      .peek(x -> x.refersTo(model.createResource("http://data.silknow.org/object/"+ ConstructURI.generateUUID((x.getId() + ".json" + "$$$" + x.getId() + "http://data.silknow.org/met")))))
       .forEach(this::linkToRecord);
 
 
@@ -144,6 +144,11 @@ public class METConverter extends Converter {
 
     Acquisition acquisition = new Acquisition(regNum);
     acquisition.transfer(acquisitionFrom, obj, museum);
+    acquisition.addActor(new Actor(acquisitionFrom));
+
+
+
+
 
     Right copyphoto = new Right(obj.getUri() + "/image/right/");
     copyphoto.addNote(s.get("imagesRightsLink"));

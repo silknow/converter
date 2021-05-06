@@ -132,6 +132,7 @@ public class SmithsConverter extends Converter {
     if (s.get("Credit Line") != null) {
       Acquisition acquisition = new Acquisition(regNum);
       String acquisitionFrom = s.get("Credit Line");
+      acquisition.addActor(new Actor(acquisitionFrom));
       acquisition.transfer(acquisitionFrom, obj, legalbody);
       linkToRecord(acquisition);
     }

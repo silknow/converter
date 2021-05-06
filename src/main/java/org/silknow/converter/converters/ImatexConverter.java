@@ -181,7 +181,9 @@ public class ImatexConverter extends Converter {
     acquisition.transfer(acquisitionFrom, obj, museum);
     acquisition.setDate(acquisitionDate);
     acquisition.addNote(s.get("FORMA INGRÉS*"));
-
+    if (acquisitionFrom != null) {
+      acquisition.addActor(new Actor(acquisitionFrom));
+    }
 
     String npa = s.get("NOMS PROPIS ASSOCIATS*");
     if (npa != null) {

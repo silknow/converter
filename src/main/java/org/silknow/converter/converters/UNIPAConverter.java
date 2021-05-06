@@ -145,12 +145,8 @@ public class UNIPAConverter extends Converter {
     prod.addActivity(s.getMulti("Autors").findFirst().orElse(null), "Artist");
 
 
-    //Document doc = new Document(id);
-    //s.getMulti("Author of the technical analysis").map(Person::new)
-    //        .forEach(doc::addEditor);
-    //s.getMulti("Author of the Historical Critical Information").map(Person::new)
-    //        .forEach(doc::addEditor);
-    //doc.document(obj);
+    s.getMulti("Author of the technical analysis").forEach(author -> obj.addActivity(new Actor (author), "Technical Analysis"));
+    s.getMulti("Author of the Historical Critical Information").forEach(author -> obj.addActivity(new Actor(author), "Historical Critical Information"));
 
 
     //

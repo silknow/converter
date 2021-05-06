@@ -68,8 +68,12 @@ public class VAMConverter extends Converter {
 
     Production prod = new Production(regNum);
     prod.add(obj);
-    prod.addActivity(s.get("artist"), "artist");
+    if (s.get("artist") != null) {
+      prod.addActor(new Actor(s.get("artist")));
+    }
     prod.addNote(s.get("production_note"));
+
+
 
     s.getMulti("date_text").forEach(prod::addTimeAppellation);
     s.getMulti("materials_techniques").forEach(materials -> {
@@ -106,6 +110,9 @@ public class VAMConverter extends Converter {
     String acquisitionFrom = s.get("credit");
     acquisition.addNote(s.get("history_note"), mainLang);
     acquisition.transfer(acquisitionFrom, obj, museum);
+    if (acquisitionFrom != null) {
+      acquisition.addActor(new Actor(acquisitionFrom));
+    }
     linkToRecord(acquisition);
 
 
@@ -167,17 +174,16 @@ public class VAMConverter extends Converter {
     }
     if (dimList.size() == 0) return;
 
-    Resource measure = model.createResource(dimUri + "measurement")
-      .addProperty(RDF.type, CIDOC.E16_Measurement)
-      .addProperty(CIDOC.P39_measured, obj.asResource());
+    //Resource measure = model.createResource(dimUri + "measurement")
+      //.addProperty(RDF.type, CIDOC.E16_Measurement)
+      //.addProperty(CIDOC.P39_measured, obj.asResource());
 
     for (Dimension d : dimList) {
       obj.addProperty(CIDOC.P43_has_dimension, d);
-      measure.addProperty(CIDOC.P40_observed_dimension, d.asResource());
+      //measure.addProperty(CIDOC.P40_observed_dimension, d.asResource());
       model.add(d.getModel());
     }
-
-    linkToRecord(measure);
+    //linkToRecord(measure);
   }
 
 

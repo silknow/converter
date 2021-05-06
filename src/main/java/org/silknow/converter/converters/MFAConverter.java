@@ -119,6 +119,7 @@ public class MFAConverter extends Converter {
       Acquisition acquisition = new Acquisition(regNum);
       String acquisitionFrom = s.get("Provenance") + " " + s.get("Credit Line");
       acquisition.transfer(acquisitionFrom, obj, museum);
+      acquisition.addActor(new Actor(acquisitionFrom));
       linkToRecord(acquisition);
     }
 

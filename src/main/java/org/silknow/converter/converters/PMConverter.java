@@ -84,6 +84,8 @@ public class PMConverter extends Converter {
     Production prod = new Production(regNum);
     prod.add(obj);
 
+    s.getMulti("Auteur(s)").forEach(actor -> prod.addActor((new Actor(actor))));
+
     // Dates
     String startYear = s.get("fieldDateProduction.startYear");
     String endYear = s.get("fieldDateProduction.startYear");
@@ -113,6 +115,7 @@ public class PMConverter extends Converter {
     if (s.get("Nom du donateur, testateur, vendeur") != null) {
       Acquisition acquisition = new Acquisition(regNum);
       String acquisitionFrom = s.get("Nom du donateur, testateur, vendeur");
+      acquisition.addActor(new Actor(acquisitionFrom));
       acquisition.transfer(acquisitionFrom, obj, legalbody);
       linkToRecord(acquisition);
     }

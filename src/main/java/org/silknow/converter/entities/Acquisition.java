@@ -36,4 +36,9 @@ public class Acquisition extends Entity {
     TimeSpan ts = new TimeSpan(d);
     this.addTimeSpan(ts);
   }
+
+  public void addActor(Actor actor) {
+    this.addProperty(CIDOC.P14_carried_out_by, actor);
+  }
+
 }

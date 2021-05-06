@@ -90,6 +90,23 @@ public class ManMade_Object extends Entity {
     return this;
   }
 
+  public Resource addSinglePattern(String pattern) {
+    String dimUri = this.getUri() + "/pattern/";
+    String pURI2 = "http://data.silknow.org/vocabulary/444";
+
+    pattern = pattern.replace(",", ".");
+
+    Pattern_Unit p = new Pattern_Unit(dimUri, pattern, "cm");
+    this.addProperty(CIDOC.P58_has_section_definition, p);
+    this.addProperty(CIDOC.P58_has_section_definition, model.createResource(pURI2));
+
+    this.model.add(p.model);
+
+
+    return null;
+  }
+
+
   public Resource addPatternMeasure(String width, String height) {
     String dimUri = this.getUri() + "/pattern/";
     String pURI2 = "http://data.silknow.org/vocabulary/444";
