@@ -1,6 +1,7 @@
 SELECT distinct ?obj ?collection
 WHERE { GRAPH ?collection {
       ?s a ecrm:E12_Production .
+      ?s ecrm:P125_employed <http://data.silknow.org/vocabulary/857> .
       ?s ecrm:P108_has_produced ?obj .
 
  { ?s ecrm:P8_took_place_on_or_within ?l
