@@ -8,39 +8,39 @@ WHERE {
   
       ?prod ecrm:P108_has_produced ?obj .
       ?obj a ecrm:E22_Man-Made_Object . }
-
-      optional {?obj rdfs:comment ?text }
-
-      optional {?obj ecrm:P138i_has_representation ?img .
-      ?img schema:contentUrl ?deeplink. FILTER contains(str(?deeplink), "silknow")}
+{
+      optional {?obj rdfs:comment ?text }}
+union
+      {optional {?obj ecrm:P138i_has_representation ?img .
+      ?img schema:contentUrl ?deeplink. FILTER contains(str(?deeplink), "silknow")}}
       
+union
+     {optional{ ?prod ecrm:P8_took_place_on_or_within ?place_uri . FILTER contains(str(?place_uri), "geonames")
+                ?place_uri  geonames:countryCode ?place_country_code . }}
+union
 
-     optional{ ?prod ecrm:P8_took_place_on_or_within ?place_uri . FILTER contains(str(?place_uri), "geonames")
-                ?place_uri  geonames:countryCode ?place_country_code . }
 
+       {optional{ ?prod ecrm:P126_employed ?x .
+                 ?material_group skos:member ?x FILTER contains(str(?material_group), "facet")}}
+ union     
 
-
-       optional{ ?prod ecrm:P126_employed ?x .
-                 ?material_group skos:member ?x FILTER contains(str(?material_group), "facet")}
-      
-
-     optional{ ?prod ecrm:P4_has_time-span ?time_uri .
+     {optional{ ?prod ecrm:P4_has_time-span ?time_uri .
                 ?time_uri ecrm:P86_falls_within ?century . 
-                ?century skos:prefLabel ?time_label . FILTER  (lang(?time_label) = 'en')}
-       
+                ?century skos:prefLabel ?time_label . FILTER  (lang(?time_label) = 'en')}}
+       union
 
-       optional{ ?prod ecrm:P32_used_general_technique  ?y .
+       {optional{ ?prod ecrm:P32_used_general_technique  ?y .
                 ?technique_group skos:member ?y FILTER contains(str(?technique_group), "facet")
-               }
-
-       optional{ ?obj ecrm:P65_shows_visual_item  ?z .
+               }}
+union
+       {optional{ ?obj ecrm:P65_shows_visual_item  ?z .
                 ?depict_group skos:member ?z FILTER contains(str(?depict_group), "facet")
-               }
-
-optional {?type_a ecrm:P41_classified ?obj .
+               }}
+union
+{optional {?type_a ecrm:P41_classified ?obj .
           ?type_a silk:L4|silk:L1 ?type .
           ?type_a_group skos:member ?type FILTER contains(str(?type_a_group), "facet")
-               }
+               }}
 
 
 }
