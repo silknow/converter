@@ -29,8 +29,8 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 ## A. Location
 
-1. **[en]** Which items were produced in Spain?   
-[query](./1.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=%0D%0ASELECT+distinct++%3Fobj+%3Fname%0D%0AWHERE+%7B%0D%0A++++++%3Fs+a+ecrm%3AE12_Production+.%0D%0A++++++%3Fs+ecrm%3AP108_has_produced+%3Fobj.%0D%0A+++optional+%7B+++%3Fobj+ecrm%3AP3_has_note+%3Fname+.+%7D%0D%0A%0D%0A+%7B+%3Fs+ecrm%3AP8_took_place_on_or_within+%3Fl%0D%0A+++++%7B+SELECT+%3Fl+SAMPLE%28%3Floc%29+as+%3Fplace%0D%0A++++++++++WHERE+%7B+%3Fl+geonames%3AcountryCode+%3Floc%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fl%29%29%0D%0A+++++++++++%3Fl+geonames%3AcountryCode+%22ES%22++%7D%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
+1. **[en]** 
+Which items were produced in Spain? [query](./1.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=%0D%0ASELECT+distinct++%3Fobj+%3Fname%0D%0AWHERE+%7B%0D%0A++++++%3Fs+a+ecrm%3AE12_Production+.%0D%0A++++++%3Fs+ecrm%3AP108_has_produced+%3Fobj.%0D%0A+++optional+%7B+++%3Fobj+ecrm%3AP3_has_note+%3Fname+.+%7D%0D%0A%0D%0A+%7B+%3Fs+ecrm%3AP8_took_place_on_or_within+%3Fl%0D%0A+++++%7B+SELECT+%3Fl+SAMPLE%28%3Floc%29+as+%3Fplace%0D%0A++++++++++WHERE+%7B+%3Fl+geonames%3AcountryCode+%3Floc%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fl%29%29%0D%0A+++++++++++%3Fl+geonames%3AcountryCode+%22ES%22++%7D%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
 
 1. **[en]** Where were Mudejar-style fabrics produced?
 
@@ -38,8 +38,7 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 1. **[en]** What was la Fabrique Lyonnaise ?
 
-1. **[en]** Which items have been produced in Italy and are now preserved in France? (Note: "Moves" not well documented)   
-[query](./2.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Ffrom+%3Fto+%3Fobj%0D%0AWHERE+%7B%0D%0A++++++%3Fs+a+ecrm%3AE9_Move+.%0D%0A++++++Optional+%7B%3Fs+ecrm%3AP25_moved+%3Fobj+.%7D%0D%0A+%0D%0A%0D%0A+%7B+%3Fs+ecrm%3AP27_moved_from+%3Fl%0D%0A+++++%7B+SELECT+%3Fl+SAMPLE%28%3Floc%29+as+%3Ffrom%0D%0A++++++++++WHERE+%7B+%3Fl+geonames%3AcountryCode+%3Floc%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fl%29%29%0D%0A+++++++++++%3Fl+geonames%3AcountryCode+%22IT%22%0D%0A+++++++++++%7D%0D%0A%0D%0A%7B+%3Ff+ecrm%3AP26_moved_to+%3Fx%0D%0A+++++%7B+SELECT+%3Fx+SAMPLE%28%3Floc2%29+as+%3Fto%0D%0A++++++++++WHERE+%7B+%3Fx+geonames%3AcountryCode+%3Floc2%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fx%29%29%0D%0A+++++++++++%3Fx+geonames%3AcountryCode+%22FR%22%0D%0A+++++++++++%7D%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
+1. **[en]** Which items have been produced in Italy and are now preserved in France? 
 
 1. **[en]** Give me all the items that are preserved in the Musée des Tissus de Lyon  
 [query](./3.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobject%0D%0AWHERE+%7B%0D%0AGRAPH+%3Chttp%3A%2F%2Fdata.silknow.org%2Fmtmad%3E%7B%0D%0A+%0D%0A+++++++++%3Fobject+a+ecrm%3AE22_Man-Made_Object+.+%0D%0A%7D%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
