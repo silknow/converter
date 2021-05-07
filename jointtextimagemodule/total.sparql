@@ -24,8 +24,9 @@ WHERE {
                  ?material_group skos:member ?x FILTER contains(str(?material_group), "facet")}
       
 
-      optional{ ?prod ecrm:P4_has_time-span ?time_uri .
-                ?time_uri ecrm:P86_falls_within ?time_label . FILTER  (lang(?time_label) = 'en')}
+     optional{ ?prod ecrm:P4_has_time-span ?time_uri .
+                ?time_uri ecrm:P86_falls_within ?century . 
+                ?century skos:prefLabel ?time_label . FILTER  (lang(?time_label) = 'en')}
        
 
        optional{ ?prod ecrm:P32_used_general_technique  ?y .

@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import os
+import re
+
 from urllib.parse import urlparse
 
 
@@ -67,7 +69,7 @@ df.groupby('museum')['category_group'].value_counts(normalize=True).to_csv('cate
 
 
 
-df = df.groupby(['obj'], as_index=False)['museum','deeplink','img','place_uri','place_country_code','text','time_uri','time_label','material_group','technique_group', 'technique_category','material_category','depict_group','category_group'].agg(lambda x: list(set(x)))
+df = df.groupby(['obj'], as_index=False)['museum','deeplink','img','place_uri','place_country_code','text','time_uri','time_label','material_group','technique_group', 'technique_category','material_category','depict_group','category_group'].agg(lambda x: list([i for i in x if pd.notna(i)]))
 
 '''
 df['technique_category'] = df['technique_category'].astype(str).str.replace("nan,", "")
