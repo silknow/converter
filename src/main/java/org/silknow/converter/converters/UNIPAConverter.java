@@ -5,6 +5,7 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.vocabulary.OWL;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
+import org.silknow.converter.ontologies.CIDOC;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -21,9 +22,6 @@ public class UNIPAConverter extends Converter {
 
   private static final String DIMENSION_REGEX2 = "(\\d+(?:\\.\\d+)?)x(\\d+(?:\\.\\d+)?)";
   private static final Pattern DIMENSION_PATTERN2 = Pattern.compile(DIMENSION_REGEX2);
-
-  private static final String Pattern_unit_REGEX = "Rapport: (\\d+(?:\\.\\d+)?) cm";
-  private static final Pattern Pattern_unit_PATTERN = Pattern.compile(Pattern_unit_REGEX);
 
   @Override
   public boolean canConvert(File file) {
@@ -146,11 +144,16 @@ public class UNIPAConverter extends Converter {
 
     String pat = s.get("Pattern Unit");
     if (pat != null) {
-      Matcher matcher5 = Pattern_unit_PATTERN.matcher(pat);
-      if (matcher5.find()) {
-        linkToRecord(obj.addSinglePattern(matcher5.group(1)));
+      String dimUri = obj.getUri() + "/dimension/1";
+      String pattUri = dimUri + "/pattern/1";
+      String pattUri2 = "http://data.silknow.org/vocabulary/444";
+      Dimension d = new Dimension(dimUri, pat, "cm");
+      linkToRecord(obj.addProperty(CIDOC.P43_has_dimension, d));
+      Pattern_Unit p = new Pattern_Unit(pattUri, d);
+      linkToRecord(obj.addProperty(CIDOC.P58_has_section_definition, p));
+      linkToRecord(obj.addProperty(CIDOC.P58_has_section_definition, model.createResource(pattUri2)));
       }
-    }
+
 
     prod.addActivity(s.getMulti("Autors").findFirst().orElse(null), "Artist");
 
