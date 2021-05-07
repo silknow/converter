@@ -1,4 +1,4 @@
-SELECT distinct ?title  ?collection ?object 
+SELECT distinct ?title  ?collection ?object ?visual_item
 WHERE { graph ?collection{
 
      ?prod ecrm:P108_has_produced ?object .
@@ -8,6 +8,13 @@ WHERE { graph ?collection{
 
 ?prod ecrm:P4_has_time-span ?t .
 ?t ecrm:P86_falls_within <http://vocab.getty.edu/aat/300404510> .
+     
+{?object ecrm:P65_shows_visual_item ?vitem .
+?vitem  skos:prefLabel ?visual_item FILTER(lang(str(?visual_item)) = "en")}
+union
+{?object ecrm:P65_shows_visual_item ?vitem .
+?vitem  ecrm:P3_has_note ?visual_item}     
+
      
      
 }}
