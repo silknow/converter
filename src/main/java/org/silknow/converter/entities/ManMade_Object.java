@@ -90,26 +90,27 @@ public class ManMade_Object extends Entity {
     return this;
   }
 
-  public Resource addPatternMeasure(String width, String height) {
-    String dimUri = this.getUri() + "/pattern/";
+  public Resource addSinglePattern(String pattern) {
+    String dimUri = this.getUri() + "/dimension/";
+    pattern = pattern.replace(",", ".");
+
+    Dimension p = new Dimension(dimUri + "1", pattern, "cm", "pattern", pattern);
+    String patUri = this.getUri() + "/pattern/1";
     String pURI2 = "http://data.silknow.org/vocabulary/444";
 
-    width = width.replace(",", ".");
-    height = height.replace(",", ".");
-
-    Pattern_Unit w = new Pattern_Unit(dimUri + "1", width, "cm");
-    this.addProperty(CIDOC.P58_has_section_definition, w);
+    this.addProperty(CIDOC.P43_has_dimension, p);
+    Pattern_Unit patt = new Pattern_Unit(patUri, p);
+    this.addProperty(CIDOC.P58_has_section_definition, patt);
     this.addProperty(CIDOC.P58_has_section_definition, model.createResource(pURI2));
 
-    Pattern_Unit h = new Pattern_Unit(dimUri + "2", height, "cm");
-    this.addProperty(CIDOC.P58_has_section_definition, h);
-    this.addProperty(CIDOC.P58_has_section_definition, model.createResource(pURI2));
-
-    this.model.add(w.model).add(h.model);
+    this.model.add(p.model).add(patt.model);
 
 
     return null;
   }
+
+
+
 
   public Resource addMeasure(String value) throws RuntimeException {
     if (value == null || value.equals("cm")) return null;

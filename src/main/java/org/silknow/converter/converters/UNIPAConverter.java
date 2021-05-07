@@ -5,6 +5,7 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.vocabulary.OWL;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
+import org.silknow.converter.ontologies.CIDOC;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -141,16 +142,24 @@ public class UNIPAConverter extends Converter {
     linkToRecord(obj.addObservation(s.getMulti("Historical Critical Information").findFirst().orElse(null), "Historical Critical Information", "it"));
     linkToRecord(obj.addObservation(s.getMulti("Pattern unit").findFirst().orElse(null), "Pattern unit", "it"));
 
+    String pat = s.get("Pattern Unit");
+    if (pat != null) {
+      String dimUri = obj.getUri() + "/dimension/1";
+      String pattUri = dimUri + "/pattern/1";
+      String pattUri2 = "http://data.silknow.org/vocabulary/444";
+      Dimension d = new Dimension(dimUri, pat, "cm");
+      linkToRecord(obj.addProperty(CIDOC.P43_has_dimension, d));
+      Pattern_Unit p = new Pattern_Unit(pattUri, d);
+      linkToRecord(obj.addProperty(CIDOC.P58_has_section_definition, p));
+      linkToRecord(obj.addProperty(CIDOC.P58_has_section_definition, model.createResource(pattUri2)));
+      }
+
 
     prod.addActivity(s.getMulti("Autors").findFirst().orElse(null), "Artist");
 
 
-    //Document doc = new Document(id);
-    //s.getMulti("Author of the technical analysis").map(Person::new)
-    //        .forEach(doc::addEditor);
-    //s.getMulti("Author of the Historical Critical Information").map(Person::new)
-    //        .forEach(doc::addEditor);
-    //doc.document(obj);
+    s.getMulti("Author of the technical analysis").forEach(author -> obj.addActivity(new Actor (author), "Technical Analysis"));
+    s.getMulti("Author of the Historical Critical Information").forEach(author -> obj.addActivity(new Actor(author), "Historical Critical Information"));
 
 
     //

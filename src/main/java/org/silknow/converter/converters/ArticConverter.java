@@ -95,6 +95,7 @@ public class ArticConverter extends Converter {
 
     Acquisition acquisition = new Acquisition(regNum);
     acquisition.transfer(acquisitionFrom, obj, museum);
+    acquisition.addActor(new Actor(acquisitionFrom));
     //acquisition.setType(acquisitionType);
 
 

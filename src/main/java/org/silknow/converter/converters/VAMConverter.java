@@ -22,8 +22,6 @@ import java.util.regex.Pattern;
 public class VAMConverter extends Converter {
   private static final String DIMENSION_REGEX = "(.+): (Over |<)?(\\d+(?:\\.\\d+)?)( ?[½¾¼]| \\d/\\d)? *([a-z]{1,4})?( .+)?";
   private static final String DIMENSION_REGEX2 = "(.+): *([a-z]{1,4}) ?(\\d+(?:\\.\\d+)?)([½¾¼]| \\d/\\d)?( .+)?";
-  private static final String Pattern_unit_REGEX = "Width: (\\d+(?:\\.\\d+)?) cm repeat ,Length: (\\d+(?:\\.\\d+)?) cm repeat";
-  private static final Pattern Pattern_unit_PATTERN = Pattern.compile(Pattern_unit_REGEX);
   private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX);
   private static final Pattern DIMENSION_PATTERN2 = Pattern.compile(DIMENSION_REGEX2);
 
@@ -106,6 +104,9 @@ public class VAMConverter extends Converter {
     String acquisitionFrom = s.get("credit");
     acquisition.addNote(s.get("history_note"), mainLang);
     acquisition.transfer(acquisitionFrom, obj, museum);
+    if (acquisitionFrom != null) {
+      acquisition.addActor(new Actor(acquisitionFrom));
+    }
     linkToRecord(acquisition);
 
 
@@ -133,14 +134,6 @@ public class VAMConverter extends Converter {
       linkToRecord(bio);
     }
 
-    String dim = s.get("dimensions");
-    if (dim != null) {
-      Matcher matcher5 = Pattern_unit_PATTERN.matcher(dim);
-      if (matcher5.find()) {
-        linkToRecord(obj.addPatternMeasure(matcher5.group(2), matcher5.group(1)));
-      }
-    }
-
     Mark m = new Mark(s.get("mark"));
     m.carries(obj);
 
@@ -149,14 +142,15 @@ public class VAMConverter extends Converter {
     return this.model;
   }
 
-
-
   private void parseDimensions(String dim, ManMade_Object obj) {
     if (StringUtils.isBlank(dim) || dim.length() < 2) return;
     String dimUri = obj.getUri() + "/dimension/";
+    String pattUri = dimUri + "/pattern/";
+    String pattUri2 = "http://data.silknow.org/vocabulary/444";
 
     String unit = null;
     int count = 1;
+    int pattcount = 1;
     List<Dimension> dimList = new ArrayList<>();
     for (String txt : dim.split(", (?=[A-Z][a-z])")) {
       Dimension d = parseSingleDimension(txt, unit, dimUri + count);
@@ -164,20 +158,26 @@ public class VAMConverter extends Converter {
       count++;
       unit = d.getUnit();
       dimList.add(d);
+
+      if (txt.contains("repeat")) {
+        Pattern_Unit p = new Pattern_Unit(pattUri + pattcount++, d);
+        obj.addProperty(CIDOC.P58_has_section_definition, p);
+        obj.addProperty(CIDOC.P58_has_section_definition, model.createResource(pattUri2));
+      }
     }
     if (dimList.size() == 0) return;
 
-    Resource measure = model.createResource(dimUri + "measurement")
-      .addProperty(RDF.type, CIDOC.E16_Measurement)
-      .addProperty(CIDOC.P39_measured, obj.asResource());
+    //Resource measure = model.createResource(dimUri + "measurement")
+      //.addProperty(RDF.type, CIDOC.E16_Measurement)
+      //.addProperty(CIDOC.P39_measured, obj.asResource());
 
     for (Dimension d : dimList) {
       obj.addProperty(CIDOC.P43_has_dimension, d);
-      measure.addProperty(CIDOC.P40_observed_dimension, d.asResource());
+
+      //measure.addProperty(CIDOC.P40_observed_dimension, d.asResource());
       model.add(d.getModel());
     }
-
-    linkToRecord(measure);
+    //linkToRecord(measure);
   }
 
 

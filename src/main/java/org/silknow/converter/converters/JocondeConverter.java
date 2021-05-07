@@ -63,10 +63,7 @@ public class JocondeConverter extends Converter {
     LegalBody museum = new LegalBody(museumName);
 
 
-    //Document doc = new Document(id);
-    //s.getMulti("REDA").map(Person::new)
-    //        .forEach(doc::addEditor);
-    //doc.document(obj);
+
 
     Map<String, String> ids = new HashMap<>();
     s.getMulti("INV")
@@ -83,7 +80,7 @@ public class JocondeConverter extends Converter {
     ManMade_Object obj = new ManMade_Object(ids.remove("Register number"));
     obj.addTitle(s.get("TITR"), mainLang);
 
-
+    s.getMulti("REDA").forEach(author -> obj.addActivity(new Actor(author), "Author"));
 
 
     s.getMulti("DOMN")
@@ -134,15 +131,13 @@ public class JocondeConverter extends Converter {
     }
 
 
-    //PropositionalObject po = new PropositionalObject(id);
-    //po.isAbout(obj);
-    //po.addNote(s.getMulti("PREP").findFirst().orElse(null), mainLang);
+
 
     if (s.get("HIST") != null) {
       String h = s.get("HIST");
       if (h.contains("(")) {
         PropositionalObject hist = new PropositionalObject(id);
-        hist.refersTo(model.createResource("http://data.silknow.org/object/" + ConstructURI.generateUUID(("joconde" + " " + "ManMade_Object" + " " + h.split("[\\(\\)]")[1]))));
+        hist.refersTo(model.createResource("http://data.silknow.org/object/" + ConstructURI.generateUUID(("joconde" + h.split("[\\(\\)]")[1] + "ManMade_Object"))));
         hist.isAbout(obj);
         linkToRecord(hist);
 
@@ -201,11 +196,9 @@ public class JocondeConverter extends Converter {
       linkToRecord(right);
     }
 
-    PropositionalObject record = new PropositionalObject(id + "r");
-    record.setType("museum record", mainLang);
-    record.isAbout(obj);
-    Right copyright = new Right(record.getUri() + "/right/");
-    copyright.applyTo(record);
+
+    Right copyright = new Right(obj.getUri() + "/right/");
+    copyright.applyTo(obj);
     copyright.addNote(s.get("COPY"));
     s.getMulti("COPY", "©")
             .map(x -> x.replaceFirst("© ", ""))

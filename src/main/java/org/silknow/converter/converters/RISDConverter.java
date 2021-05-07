@@ -122,6 +122,9 @@ public class RISDConverter extends Converter {
 
     Acquisition acquisition = new Acquisition(id);
     acquisition.transfer(acquisitionFrom, obj, museum);
+    if (acquisitionFrom != null) {
+      acquisition.addActor(new Actor(acquisitionFrom));
+    }
 
     Transfer transfer = new Transfer(id);
     transfer.of(obj).by(museum);

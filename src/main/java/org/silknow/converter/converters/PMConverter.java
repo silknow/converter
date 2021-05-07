@@ -111,6 +111,7 @@ public class PMConverter extends Converter {
     if (s.get("Nom du donateur, testateur, vendeur") != null) {
       Acquisition acquisition = new Acquisition(regNum);
       String acquisitionFrom = s.get("Nom du donateur, testateur, vendeur");
+      acquisition.addActor(new Actor(acquisitionFrom));
       acquisition.transfer(acquisitionFrom, obj, legalbody);
       linkToRecord(acquisition);
     }
