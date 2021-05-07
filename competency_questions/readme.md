@@ -129,7 +129,6 @@ Which items were produced in Spain? [query](./A1.rq) - [results](http://data.sil
 1. **[en]** Which items have been created by Philippe de la Salle ?  
 
 1. **[en]** Give me all the information you have on Philippe de la Salle!  
-[query](./12.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=select+%3Fs1+as+%3Fc1%2C+%28+bif%3Asearch_excerpt+%28+bif%3Avector+%28+%27PHILIPPE%27%2C+%27SALLE%27%2C+%27LA%27%2C+%27DE%27+%29+%2C+%3Fo1+%29+%29+as+%3Fc2%2C+%3Fsc%2C+%3Frank%2C+%3Fg+where%0D%0A++%7B%0D%0A++++%7B%0D%0A++++++%7B%0D%0A++++++++select+%3Fs1%2C+%28+%3Fsc+*+3e-1+%29+as+%3Fsc%2C+%3Fo1%2C+%28+sql%3Arnk_scale+%28+%3CLONG%3A%3AIRI_RANK%3E+%28+%3Fs1+%29+%29+%29+as+%3Frank%2C+%3Fg+where%0D%0A++++++++%7B%0D%0A++++++++++quad+map+virtrdf%3ADefaultQuadMap%0D%0A++++++++++%7B%0D%0A++++++++++++graph+%3Fg%0D%0A++++++++++++%7B%0D%0A++++++++++++++%3Fs1+%3Fs1textp+%3Fo1+.%0D%0A++++++++++++++%3Fo1+bif%3Acontains+%27+%28+PHILIPPE+AND+SALLE+AND+LA+AND+DE+%29+%27+option+%28+score+%3Fsc+%29+.%0D%0A++++++++++++++%0D%0A++++++++++++%7D%0D%0A+++++++++++%7D%0D%0A+++++++++%7D%0D%0A+++++++order+by+desc+%28+%3Fsc+*+3e-1+%2B+sql%3Arnk_scale+%28+%3CLONG%3A%3AIRI_RANK%3E+%28+%3Fs1+%29+%29+%29+limit+20+offset+0%0D%0A++++++%7D%0D%0A+++++%7D%0D%0A+++%7D&format=text%2Fhtml&timeout=0&debug=on)
 
 1. **[en]** Give me all the items inspired by a work of Giambologna  
 
@@ -239,7 +238,7 @@ Which items were produced in Spain? [query](./A1.rq) - [results](http://data.sil
 
 1. **[en]** Give me the religious clothing produced in Spain 
 
-1. **[en]** What textiles belonged to the collector Mariano Fortuny? [query](./13.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj+%3Factor+%3Ftex%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object.%0D%0A+++++%3Fdig+ecrm%3AP129_is_about+%3Fobj+.%0D%0A%0D%0A+++++%3Fact+a+ecrm%3AE39_Actor+.%0D%0A+++++%3Fact+ecrm%3AP1_is_identified_by+%3Factor+.%0D%0A%0D%0A+++++%3Fdig+ecrm%3AP129_is_about+%3Fas+.%0D%0A+++++%3Fas+ecrm%3AP42_assigned+%3Ftex+.%0D%0A%0D%0AFILTER+%28contains%28str%28%3Factor%29%2C+%22Mariano%22%29+%7C%7C+contains%28str%28%3Factor%29%2C+%22Fortuny%22%29+%26%26+contains%28str%28%3Ftex%29%2C+%22text%22%29%29+%0D%0A+++++%0D%0A%7D%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&debug=on) 
+1. **[en]** What textiles belonged to the collector Mariano Fortuny? 
 
 <!-- END Types of items and location -->
 
@@ -265,7 +264,7 @@ Which items were produced in Spain? [query](./A1.rq) - [results](http://data.sil
 
 ## O. Type of items, time, location and material
 
-1. **[en]** Give me all the ribbon involving silver and produced in Italy during the Renaissance . [query](./16.rq) - [results]( http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct++%3Ftitle+%3Fassignment+%3Fdescription+%3Fmaterial+%3Fcollection++%3Fobject%0D%0AWHERE+%7B+graph+%3Fcollection+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A++++++%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fdig+ecrm%3AP129_is_about+%3Ftype+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A+%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP3_has_note+%3Fdescription+%7D%0D%0A%0D%0A%7B+%3Fs+ecrm%3AP8_took_place_on_or_within+%3Fl%0D%0A+++++%7B+SELECT+%3Fl+SAMPLE%28%3Floc%29+as+%3Fplace%0D%0A++++++++++WHERE+%7B+%3Fl+geonames%3AcountryCode+%3Floc%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fl%29%29%0D%0A+++++++++++%3Fl+geonames%3AcountryCode+%22IT%22++%7D%0D%0A%0D%0A%0D%0A++++++++%3Fprd+ecrm%3AP126_employed+%3Fmaterial++.%0D%0A%0D%0A%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F628%3E+.%7D%0D%0A++++++++%0D%0A++++++++optional+%7B+%3Ftype+a+ecrm%3AE17_Type_Assignment+.+%7D%0D%0A%0D%0A%0D%0A%0D%0A++++++++%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+.FILTER+contains%28str%28%3Ftitle%29%2C+%22ribbon%22%29%7D%0D%0A+++++++++UNION%0D%0A++++++++%7B%3Ftype+ecrm%3AP42_assigned+%3Chttp%3A%2F%2Fvocab.getty.edu%2Faat%2F300014668%3E+%7D%0D%0A+++++++++UNION%0D%0A++++++++%7B%3Ftype+ecrm%3AP42_assigned+%3Fassignment+.FILTER+contains%28str%28%3Fassignment%29%2C+%22ribbon%22%29%7D%0D%0A%0D%0A+++++%0D%0A%3Fprod+ecrm%3AP4_has_time-span+%3Ft+.%0D%0A%3Ft+ecrm%3AP78_is_identified_by+%3Ftime.%0D%0A%0D%0A%0D%0AFILTER+contains%28str%28%3Ftime%29%2C+%22renaissance%22%29++++++++%0D%0A++++++++%0D%0A%0D%0A%7D%7D&format=text%2Fhtml&timeout=0&debug=on )
+1. **[en]** Give me all the ribbon involving silver and produced in Italy during the Renaissance . 
 
 1. **[en]** Give me those ornamental motifs from classical antiquity that appear in fabrics, mises-en-carte and designs ... Organized by chronology, location, place of origin ... 
 
