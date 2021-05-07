@@ -8,7 +8,10 @@ WHERE { graph ?collection{
 
 ?prod ecrm:P4_has_time-span ?t .
 ?t ecrm:P86_falls_within <http://vocab.getty.edu/aat/300404510> .
-     
+
+?prod ecrm:P126_employed <http://data.silknow.org/vocabulary/649> .
+
+
 {?object ecrm:P65_shows_visual_item ?vitem .
 ?vitem  skos:prefLabel ?visual_item FILTER(lang(str(?visual_item)) = "en")}
 union
