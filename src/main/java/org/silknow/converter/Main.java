@@ -88,7 +88,7 @@ public class Main implements Runnable {
     GeoNames.setDestFolder(Paths.get(outputFolder.getPath(), "geonames").toFile());
     GeoNames.loadCache();
 
-    File isniFolder = Paths.get(folder.getParentFile().getAbsolutePath(), "isni").toFile();
+    File isniFolder = Paths.get(outputFolder.getParentFile().getAbsolutePath(), "isni").toFile();
     isniFolder.mkdirs();
     ISNIWrapper.init(isniFolder.getAbsolutePath());
 

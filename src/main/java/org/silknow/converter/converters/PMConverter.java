@@ -154,9 +154,6 @@ public class PMConverter extends Converter {
     String name = author.get(0);
     String birth = author.get(1);
     String death = author.get(2);
-    System.out.println(name);
-    System.out.println(birth);
-    System.out.println(death);
     return new Person(name, birth, death);
   }
 
