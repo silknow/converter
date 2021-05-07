@@ -82,6 +82,7 @@ Which items were produced in Spain? [query](./A1.rq) - [results](http://data.sil
 ## C. Time and location
 
 1. **[en]** Which items were produced in France during the 18th century?
+[query](./C1.rq) - [results](https://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Ftitle++%3Fcollection+%3Fobject%0D%0AWHERE+%7B+graph+%3Fcollection%7B%0D%0A%0D%0A+++++%3Fprod+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A+++++%3Fobject+a+ecrm%3AE22_Man-Made_Object+.%0D%0A+%0D%0A+optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A%0D%0A%3Fprod+ecrm%3AP4_has_time-span+%3Ft+.%0D%0A%3Ft+ecrm%3AP86_falls_within+%3Chttp%3A%2F%2Fvocab.getty.edu%2Faat%2F300404512%3E+.%0D%0A%0D%0A+%7B+%3Fprod+ecrm%3AP8_took_place_on_or_within+%3Flocation+FILTER%28isIRI%28%3Flocation%29%29%0D%0A%0D%0A++++%3Flocation+geonames%3AcountryCode+%22FR%22++%7D+%0D%0A+++++%0D%0A%7D%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)
 
 1. **[en]** Give me all the items that have been produced after 1750 in France.
 
