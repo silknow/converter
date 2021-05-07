@@ -1,15 +1,13 @@
-SELECT distinct  ?title ?description ?collection  ?object ?material
+SELECT distinct  ?title ?collection  ?object ?material
 WHERE { graph ?collection {
 
-     ?dig a crmdig:D1_Digital_Object .
-     ?dig  ecrm:P129_is_about ?prd .
      ?prd ecrm:P108_has_produced ?object .
+     ?object a ecrm:E22_ManMade-Object .
  
      ?prd ecrm:P126_employed ?material .
      
       
  optional {?object ecrm:P102_has_title ?title }
-     optional {?object rdfs:comment ?description }
 
         {?prd ecrm:P126_employed <http://data.silknow.org/vocabulary/628> . }
         UNION
