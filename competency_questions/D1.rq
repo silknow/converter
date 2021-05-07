@@ -2,7 +2,7 @@ SELECT distinct  ?title ?collection  ?object ?material
 WHERE { graph ?collection {
 
      ?prd ecrm:P108_has_produced ?object .
-     ?object a ecrm:E22_ManMade-Object .
+     ?object a ecrm:E22_Man-Made_Object .
  
      ?prd ecrm:P126_employed ?material .
      
