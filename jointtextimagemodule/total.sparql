@@ -5,11 +5,9 @@ prefix silk:   <http://data.silknow.org/ontology/property/>
 SELECT DISTINCT ?obj ?museum ?text ?img ?deeplink  ?place_uri ?place_country_code ?time_uri ?time_label ?technique_group ?material_group ?depict_group ?type_a_group
 WHERE {
   GRAPH ?museum {
-     ?dig a crmdig:D1_Digital_Object . }
   
-      ?dig ecrm:P129_is_about ?prod .
       ?prod ecrm:P108_has_produced ?obj .
-      ?obj a ecrm:E22_Man-Made_Object .
+      ?obj a ecrm:E22_Man-Made_Object . }
 
       optional {?obj rdfs:comment ?text }
 
@@ -38,7 +36,7 @@ WHERE {
                 ?depict_group skos:member ?z FILTER contains(str(?depict_group), "facet")
                }
 
-optional {?dig ecrm:P129_is_about ?type_a .
+optional {?type_a ecrm:P41_classified ?obj .
           ?type_a silk:L4|silk:L1 ?type .
           ?type_a_group skos:member ?type FILTER contains(str(?type_a_group), "facet")
                }
