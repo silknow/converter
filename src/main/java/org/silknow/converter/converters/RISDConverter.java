@@ -94,7 +94,7 @@ public class RISDConverter extends Converter {
 
     Production prod = new Production(id);
     prod.add(obj);
-    prod.addActivity(s.getMulti("Maker").findFirst().orElse(null), "Maker");
+    prod.addActivity(s.getMulti("Maker").findFirst().orElse(null), "author");
 
     s.getMulti("Year").forEach(prod::addTimeAppellation);
     s.getMulti("Materials").forEach(material -> prod.addMaterial(material, mainLang));

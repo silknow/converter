@@ -66,12 +66,8 @@ public class VAMConverter extends Converter {
 
     Production prod = new Production(regNum);
     prod.add(obj);
-    if (s.get("artist") != null) {
-      prod.addActor(new Actor(s.get("artist")));
-    }
+    prod.addActivity(s.get("artist"), "author");
     prod.addNote(s.get("production_note"));
-
-
 
     s.getMulti("date_text").forEach(prod::addTimeAppellation);
     s.getMulti("materials_techniques").forEach(materials -> {
@@ -145,8 +141,6 @@ public class VAMConverter extends Converter {
     linkToRecord(prod);
     return this.model;
   }
-
-
 
   private void parseDimensions(String dim, ManMade_Object obj) {
     if (StringUtils.isBlank(dim) || dim.length() < 2) return;

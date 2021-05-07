@@ -3,16 +3,10 @@ package org.silknow.converter.converters;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.vocabulary.OWL;
-import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class PMConverter extends Converter {
 
@@ -34,9 +28,9 @@ public class PMConverter extends Converter {
 
     // Parse JSON
     logger.trace("parsing json");
-    CrawledJSON s;
+    PMRecord s;
     try {
-      s = CrawledJSON.from(file);
+      s = PMRecord.from(file);
     } catch (FileNotFoundException e) {
       e.printStackTrace();
       return null;
@@ -84,7 +78,9 @@ public class PMConverter extends Converter {
     Production prod = new Production(regNum);
     prod.add(obj);
 
-    s.getMulti("Auteur(s)").forEach(actor -> prod.addActor((new Actor(actor))));
+    // Authors
+    s.getAuthors().map(this::toPerson)
+      .forEach(x-> prod.addActivity(x, "author"));
 
     // Dates
     String startYear = s.get("fieldDateProduction.startYear");
@@ -151,6 +147,14 @@ public class PMConverter extends Converter {
     linkToRecord(prod);
     linkToRecord(transfer);
     return this.model;
+  }
+
+  private Person toPerson(List<String> author) {
+    if (author.size() != 3) return null;
+    String name = author.get(0);
+    String birth = author.get(1);
+    String death = author.get(2);
+    return new Person(name, birth, death);
   }
 
   private void write(String text, String file) throws IOException {

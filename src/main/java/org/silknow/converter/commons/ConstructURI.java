@@ -58,8 +58,6 @@ public class ConstructURI {
         return "document";
       case "Image":
         return "image";
-      case "LegalBody":
-        return "organization";
       case "Modification":
       case "Transfer":
       case "Move":
@@ -67,6 +65,10 @@ public class ConstructURI {
         return "event";
       case "ConditionAssessment":
         return "assessment";
+      case "Person":
+      case "Actor":
+      case "LegalBody":
+        return "actor";
       default:
         return className.toLowerCase();
     }
