@@ -1,6 +1,6 @@
 SELECT distinct ?object
 WHERE {
-GRAPH <http://data.silknow.org/mtmad>{
+GRAPH <http://data.silknow.org/graph/mtmad>{
  
          ?object a ecrm:E22_Man-Made_Object . 
 }
