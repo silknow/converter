@@ -112,10 +112,10 @@ Which items were produced in Spain? [query](./A1.rq) - [results](http://data.sil
 1. **[en]** Where does the name of the Batista fabric come from?
 
 
-1. **[en]** Give me the objects that involve at most silk, silver and wool (Note: there is non with these three)
+1. **[en]** Give me the objects that involve at most silk, silver and wool 
 [query](./D7.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=%0D%0ASELECT+distinct+%3Fobj%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A+%0D%0A%0D%0A%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F628%3E%2C+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F368%3E%2C+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F644%3E++.%7D++++++%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
 
-1. **[en]** Give me the objects that involve silk, silver and wool, except those that involve gold. (Note: See the question above)
+1. **[en]** Give me the objects that involve silk, silver and wool, except those that involve gold. (Same results as the question above.)
 [query](./D8.rq) - [results](http://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj%0D%0AWHERE+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A+%0D%0A%0D%0A%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F628%3E%2C+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F368%3E%2C+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F644%3E++.%7D%0D%0A+%3Fprd+ecrm%3AP126_employed+%3Fmore+.%0D%0A%0D%0AFILTER+%28contains%28str%28%3Fmore%29%2C+str%28%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F627%3E%29%29+%21%3D+true%29+++++%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on)
 
 
