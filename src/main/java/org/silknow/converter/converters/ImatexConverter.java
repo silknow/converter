@@ -196,8 +196,9 @@ public class ImatexConverter extends Converter {
     }
 
     prod.addActivity(s.get("DESSIGNER"), "Designer");
-    prod.addActivity(s.get("MANUFACTURER"), "Manufacturer");
-    prod.addActivity(s.get("TAILOR/COUTURIER"), "Tailor/Couturier");
+    prod.addActivity(s.get("MANUFACTURER"), "Maker");
+    // prod.addActivity(s.get("TAILOR/COUTURIER"), "Tailor/Couturier");
+    // Pierre explained that this field was not useful; for the period of interest to SILKNOW, there is no tailor/couturier
     prod.addActivity(s.get("AUTHOR"), "Author");
 
     Transfer transfer = new Transfer(regNum);

@@ -31,8 +31,7 @@ public abstract class Entity {
   private int objecttypeAssignmentCount;
   private int objectdomainAssignmentCount;
 
-  private Literal r;
-  //List<TimeSpan> timeSpanList = new ArrayList<>();
+  private  static final String ANONYMOUS_REGEX = "(?i)(Anon(yme|imo)|Unknown|Empty)";
 
   Entity() {
     // do nothing, enables customisation for child class
@@ -44,7 +43,6 @@ public abstract class Entity {
     this.observationCount = 0;
     this.typeAssignmentCount = 0;
   }
-
 
 
   Entity(String id) {
@@ -123,15 +121,16 @@ public abstract class Entity {
     }
 
     if (text.contains("Dataset")) {
-      text = "https://schema.org/Dataset"; }
+      text = "https://schema.org/Dataset";
+    }
     text = text.trim();
     this.addNote(text, lang);
 
     return model.createResource(this.uri + "/observation/" + ++observationCount)
-            .addProperty(RDF.type, CRMsci.S4_Observation)
-            .addProperty(CRMsci.O8_observed, this.asResource())
-            .addProperty(CIDOC.P3_has_note, text, lang)
-            .addProperty(CIDOC.P2_has_type, r);
+      .addProperty(RDF.type, CRMsci.S4_Observation)
+      .addProperty(CRMsci.O8_observed, this.asResource())
+      .addProperty(CIDOC.P3_has_note, text, lang)
+      .addProperty(CIDOC.P2_has_type, r);
   }
 
 
@@ -151,10 +150,13 @@ public abstract class Entity {
     return this;
   }
 
-
-
   public Entity addProperty(Property property, Resource resource) {
     if (resource != null) this.resource.addProperty(property, resource);
+    return this;
+  }
+
+  protected Entity addPropertyResource(Property property, String uri) {
+    if (uri != null) this.resource.addProperty(property, model.createResource(uri));
     return this;
   }
 
@@ -174,8 +176,6 @@ public abstract class Entity {
     return this;
   }
 
-
-
   public Entity addProperty(Property property, String literal, XSDDatatype datatype) {
     if (literal != null && !StringUtils.isBlank(literal))
       this.resource.addProperty(property, literal.trim(), datatype);
@@ -190,7 +190,7 @@ public abstract class Entity {
   }
 
   public void addActivity(String actor, String function) {
-    if (actor == null || actor.equalsIgnoreCase("unknown")) return;
+    if (actor == null || actor.matches(ANONYMOUS_REGEX)) return;
     this.addActivity(new Actor(actor), function);
   }
 
@@ -201,7 +201,7 @@ public abstract class Entity {
     activity.addActor(actor);
 
     if (function != null) activity.addProperty(CIDOC.P2_has_type, function);
-    //this.addProperty(CIDOC.P9_consists_of, activity);
+    this.addProperty(CIDOC.P9_consists_of, activity);
   }
 
   protected void addSimpleIdentifier(String id) {
@@ -225,36 +225,36 @@ public abstract class Entity {
       r = model.createLiteral(type);
     }
 
-      Resource identifier = model.createResource(this.uri + "/id/" + id.replaceAll(" ", "_"))
+    Resource identifier = model.createResource(this.uri + "/id/" + id.replaceAll(" ", "_"))
+      .addProperty(RDF.type, CIDOC.E42_Identifier)
+      .addProperty(RDFS.label, id)
+      .addProperty(CIDOC.P2_has_type, r);
+
+
+    Resource assignment = model.createResource(this.uri + "/id_assignment/" + id)
+      .addProperty(RDF.type, CIDOC.E15_Identifier_Assignment)
+      .addProperty(CIDOC.P37_assigned, identifier);
+    if (issuer != null) {
+      assignment.addProperty(CIDOC.P14_carried_out_by, issuer.asResource());
+      this.model.add(issuer.getModel());
+    }
+
+    if (replaceId != null) {
+      Resource rIdentifier = model.createResource(this.uri + "/id/" + replaceId.replaceAll(" ", "_"))
         .addProperty(RDF.type, CIDOC.E42_Identifier)
-        .addProperty(RDFS.label, id)
-        .addProperty(CIDOC.P2_has_type, r);
+        .addProperty(RDFS.label, replaceId)
+        .addProperty(CIDOC.P2_has_type, model.createResource("http://data.silknow.org/older_object_number"));
+      assignment.addProperty(CIDOC.P38_deassigned, rIdentifier);
+    }
 
+    this.addProperty(CIDOC.P1_is_identified_by, identifier);
 
-      Resource assignment = model.createResource(this.uri + "/id_assignment/" + id)
-        .addProperty(RDF.type, CIDOC.E15_Identifier_Assignment)
-        .addProperty(CIDOC.P37_assigned, identifier);
-      if (issuer != null) {
-        assignment.addProperty(CIDOC.P14_carried_out_by, issuer.asResource());
-        this.model.add(issuer.getModel());
-      }
-
-      if (replaceId != null) {
-        Resource rIdentifier = model.createResource(this.uri + "/id/" + replaceId.replaceAll(" ", "_"))
-          .addProperty(RDF.type, CIDOC.E42_Identifier)
-          .addProperty(RDFS.label, replaceId)
-          .addProperty(CIDOC.P2_has_type, model.createResource("http://data.silknow.org/older_object_number"));
-        assignment.addProperty(CIDOC.P38_deassigned, rIdentifier);
-      }
-
-      this.addProperty(CIDOC.P1_is_identified_by, identifier);
-
-      return identifier;
+    return identifier;
 
   }
 
   public Resource addClassification(String classification, String type, String lang) {
-    return addClassification(classification, type, lang,null);
+    return addClassification(classification, type, lang, null);
   }
 
 
@@ -268,7 +268,7 @@ public abstract class Entity {
     RDFNode t = null;
     if (type != null) {
       t = VocabularyManager.searchInCategory(type, null, "assignment", false);
-      if (t == null){
+      if (t == null) {
         t = model.createLiteral(type);
       }
     }
@@ -276,22 +276,22 @@ public abstract class Entity {
       t = null;
     }
 
-      if (t != null && t.toString().contains("type")) {
-        Resource assignment = model.createResource(this.getUri() + "/category/" + ++objecttypeAssignmentCount)
-          .addProperty(RDF.type, Silknow.T35)
-          .addProperty(CIDOC.P41_classified, this.asResource())
-          .addProperty(CIDOC.P2_has_type, t)
-          .addProperty(Silknow.L1, r);
+    if (t != null && t.toString().contains("type")) {
+      Resource assignment = model.createResource(this.getUri() + "/category/" + ++objecttypeAssignmentCount)
+        .addProperty(RDF.type, Silknow.T35)
+        .addProperty(CIDOC.P41_classified, this.asResource())
+        .addProperty(CIDOC.P2_has_type, t)
+        .addProperty(Silknow.L1, r);
 
-        if (museum != null) {
-          assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
-          this.model.add(museum.getModel());
-        }
-
-
-        // this.addProperty(CIDOC.P2_has_type, classification);
-        return assignment;
+      if (museum != null) {
+        assignment.addProperty(CIDOC.P14_carried_out_by, museum.asResource());
+        this.model.add(museum.getModel());
       }
+
+
+      // this.addProperty(CIDOC.P2_has_type, classification);
+      return assignment;
+    }
 
 
     if (t != null && t.toString().contains("domain")) {
@@ -322,9 +322,7 @@ public abstract class Entity {
 
       // this.addProperty(CIDOC.P2_has_type, classification);
       return assignment;
-    }
-
-    else {
+    } else {
       Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)
         .addProperty(RDF.type, CIDOC.E17_Type_Assignment)
         .addProperty(CIDOC.P41_classified, this.asResource())
@@ -360,6 +358,7 @@ public abstract class Entity {
   public String getId() {
     return this.id;
   }
+
 
 
   //public List<TimeSpan> getTimeSpans() {return this.timeSpanList;}

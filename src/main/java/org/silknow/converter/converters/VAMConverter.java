@@ -68,7 +68,7 @@ public class VAMConverter extends Converter {
 
     Production prod = new Production(regNum);
     prod.add(obj);
-    prod.addActivity(s.get("artist"), "artist");
+    prod.addActivity(s.get("artist"), "author");
     prod.addNote(s.get("production_note"));
 
     s.getMulti("date_text").forEach(prod::addTimeAppellation);

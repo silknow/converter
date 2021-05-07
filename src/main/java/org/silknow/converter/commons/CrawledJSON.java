@@ -33,7 +33,6 @@ public class CrawledJSON {
     return url;
   }
 
-
   public static CrawledJSON from(File file) throws FileNotFoundException {
     return new Gson().fromJson(new FileReader(file), CrawledJSON.class);
   }

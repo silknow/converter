@@ -9,6 +9,7 @@ import org.apache.jena.vocabulary.XSD;
 import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.NotNull;
 import org.silknow.converter.commons.GeoNames;
+import org.silknow.converter.commons.ISNIWrapper;
 import org.silknow.converter.converters.*;
 import org.silknow.converter.entities.TimeSpan;
 import org.silknow.converter.ontologies.*;
@@ -81,12 +82,16 @@ public class Main implements Runnable {
     if (outputFolder == null)
       outputFolder = Paths.get(folder.getParentFile().getAbsolutePath(), "out").toFile();
 
+    outputFolder.mkdirs();
+
     GeoNames.setUser(geonamesUser);
     GeoNames.setDestFolder(Paths.get(outputFolder.getPath(), "geonames").toFile());
     GeoNames.loadCache();
 
-    //noinspection ResultOfMethodCallIgnored
-    outputFolder.mkdirs();
+    File isniFolder = Paths.get(folder.getParentFile().getAbsolutePath(), "isni").toFile();
+    isniFolder.mkdirs();
+    ISNIWrapper.init(isniFolder.getAbsolutePath());
+
     Paths.get(Main.outputFolder + "/img/").toFile().mkdirs();
 
     try {

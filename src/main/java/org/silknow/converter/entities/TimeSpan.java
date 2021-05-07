@@ -971,4 +971,8 @@ public class TimeSpan extends Entity {
     ts.setLabel(label);
     return ts;
   }
+
+  public String getStartDate() {
+    return startDate;
+  }
 }

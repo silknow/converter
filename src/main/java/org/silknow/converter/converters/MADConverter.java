@@ -20,6 +20,8 @@ public class MADConverter extends Converter {
 
   private static final String DIMENSION_REGEX = "hauteur en cm : (\\d+?) largeur en cm : (\\d+?) ";
   private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX);
+  private static final String AUTHOR_ROLE_REGEX = "Author: (.+) - Role: (.+)";
+  private static final Pattern AUTHOR_ROLE_PATTERN = Pattern.compile(AUTHOR_ROLE_REGEX);
 
   @Override
   public boolean canConvert(File file) {
@@ -59,11 +61,14 @@ public class MADConverter extends Converter {
     //obj.addTitle(s.getMulti("title").findFirst().orElse(null));
     linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 
-    List<String> creation_notes = s.getMulti("Création:").map(Object::toString).collect(Collectors.toList());
+    List<String> creation_fields = s.getMulti("Création:").map(Object::toString).collect(Collectors.toList());
+    List<String> creation_notes = creation_fields.stream()
+      .map(x -> x.replaceAll(AUTHOR_ROLE_REGEX, "$1 ($2)")).collect(Collectors.toList());
 
     final List<String> terms = new ArrayList<>();
     terms.add((s.getMulti("Textile:").findFirst().orElse(null)));
     terms.add(String.join(", ", creation_notes));
+
     final String constrlabel = terms
       .stream()
       .filter(Objects::nonNull)
@@ -80,9 +85,17 @@ public class MADConverter extends Converter {
     prod.addNote(String.join(", ", creation_notes));
     prod.add(obj);
 
-    for (String x : creation_notes) { // Sonia Delaunay, Paris, 1927
+    for (String x : creation_fields) { // Sonia Delaunay, Paris, 1927
       if (StringUtils.isBlank(x)) continue;
       x = x.replace("?", "").trim();
+
+      if (x.matches(AUTHOR_ROLE_REGEX)) {
+        Matcher m = AUTHOR_ROLE_PATTERN.matcher(x);
+        m.find();
+        String author = m.group(1);
+        String role = m.group(2);
+        prod.addActivity(author, role);
+      }
 
       if (x.contains("siècle") || x.matches("^.*(\\d{4}).*$")) { // it is a date
         if (x.contains("(")) {

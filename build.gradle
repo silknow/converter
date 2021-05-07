@@ -36,15 +36,18 @@ dependencies {
             'org.apache.poi:poi:3.17',
             'org.geonames:geonames-ws-client:1.1.9',
             'javax.xml.bind:jaxb-api:2.3.0',
+            'javax.activation:activation:1.1',
+            'org.glassfish.jaxb:jaxb-runtime:2.3.0',
             'xml-apis:xml-apis:1.4.01',
             'com.github.DOREMUS-ANR:string2vocabulary:0.6.0',
+            'com.github.DOREMUS-ANR:isnimatcher:1.4.0',
             'com.github.pasqLisena:RomanConverter:1.0.0'
     testImplementation 'junit:junit:4.12'
 }
 
 
 application {
-    mainClassName = "org.silknow.converter.Main"
+    mainClass.set("org.silknow.converter.Main")
 }
 
 
