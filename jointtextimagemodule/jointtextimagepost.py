@@ -55,10 +55,15 @@ df['depict_group'] = df['depict_group'].apply(lambda x: urlparse(x).path.rsplit(
 df['category_group'] = df['category_group'].apply(lambda x: urlparse(x).path.rsplit("/", 1)[-1] if type(x) != float else x)
 df['material_group'] = df['material_group'].apply(lambda x: urlparse(x).path.rsplit("/", 1)[-1] if type(x) != float else x)
 
+df.groupby('museum')['museum'].value_counts().to_csv('museum_counts.csv')
+
+
 df.groupby('museum')['material_group'].value_counts().to_csv('mat_counts.csv')
+df.groupby('material_group')['material_group'].value_counts().to_csv('mat_total_counts.csv')
 df.groupby('museum')['material_group'].value_counts(normalize=True).to_csv('mat_proportion.csv')
 
 df.groupby('museum')['technique_group'].value_counts().to_csv('tec_counts.csv')
+df.groupby('technique_group')['technique_group'].value_counts().to_csv('tec_total_counts.csv')
 df.groupby('museum')['technique_group'].value_counts(normalize=True).to_csv('tec_proportion.csv')
 
 df.groupby('museum')['depict_group'].value_counts().to_csv('dep_counts.csv')
@@ -68,9 +73,11 @@ df.groupby('museum')['category_group'].value_counts().to_csv('category_counts.cs
 df.groupby('museum')['category_group'].value_counts(normalize=True).to_csv('category_proportion.csv')
 
 df.groupby('museum')['time_label'].value_counts().to_csv('time_counts.csv')
+df.groupby('time_label')['time_label'].value_counts().to_csv('time_total_counts.csv')
 df.groupby('museum')['time_label'].value_counts(normalize=True).to_csv('time_proportion.csv')
 
 df.groupby('museum')['place_country_code'].value_counts().to_csv('place_counts.csv')
+df.groupby('place_country_code')['place_country_code'].value_counts().to_csv('place_total_counts.csv')
 df.groupby('museum')['place_country_code'].value_counts(normalize=True).to_csv('place_proportion.csv')
 
 
