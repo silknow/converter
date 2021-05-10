@@ -55,7 +55,7 @@ df['depict_group'] = df['depict_group'].apply(lambda x: urlparse(x).path.rsplit(
 df['category_group'] = df['category_group'].apply(lambda x: urlparse(x).path.rsplit("/", 1)[-1] if type(x) != float else x)
 df['material_group'] = df['material_group'].apply(lambda x: urlparse(x).path.rsplit("/", 1)[-1] if type(x) != float else x)
 
-df.groupby('museum')['museum'].value_counts().to_csv('museum_counts.csv')
+
 
 
 df.groupby('museum')['material_group'].value_counts().to_csv('mat_counts.csv')
@@ -111,7 +111,7 @@ df = df.drop(columns=['technique_category', 'material_category'])
 
 
 df['museum'] = df['museum'].str[0]
-
+df.groupby('museum')['museum'].value_counts().to_csv('museum_counts.csv')
 df.to_csv('total_post.csv')
 
 f = lambda x: x.to_csv(os.getcwd() + "/data_{}.csv".format(x.name.lower()), index=False)
