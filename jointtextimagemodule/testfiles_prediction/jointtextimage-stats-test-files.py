@@ -4,7 +4,7 @@ import os
 from urllib.parse import urlparse
 
 
-filenames = ["depiction.csv", "material.csv", "place.csv", "technique.csv", "time.csv"]
+filenames = ["depiction_visual_item.csv", "material.csv", "place.csv", "technique.csv", "time-span.csv"]
 results = []
 
 
