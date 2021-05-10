@@ -67,6 +67,12 @@ df.groupby('museum')['depict_group'].value_counts(normalize=True).to_csv('dep_pr
 df.groupby('museum')['category_group'].value_counts().to_csv('category_counts.csv')
 df.groupby('museum')['category_group'].value_counts(normalize=True).to_csv('category_proportion.csv')
 
+df.groupby('museum')['time_label'].value_counts().to_csv('time_counts.csv')
+df.groupby('museum')['time_label'].value_counts(normalize=True).to_csv('time_proportion.csv')
+
+df.groupby('museum')['place_country_code'].value_counts().to_csv('place_counts.csv')
+df.groupby('museum')['place_country_code'].value_counts(normalize=True).to_csv('place_proportion.csv')
+
 
 
 df = df.groupby(['obj'], as_index=False)['museum','deeplink','img','place_uri','place_country_code','text','time_uri','time_label','material_group','technique_group', 'technique_category','material_category','depict_group','category_group'].agg(lambda x: list([i for i in x if pd.notna(i)]))
