@@ -7,10 +7,18 @@ import org.silknow.converter.ontologies.CIDOC;
 import java.util.Arrays;
 
 public class Inscription extends Entity {
+
   public Inscription() {
     super();
     this.resource = model.createResource();
     this.setClass(CIDOC.E34_Inscription);
+  }
+
+  public Inscription(String text, String lang) {
+    super(text);
+    this.resource = model.createResource();
+    this.setClass(CIDOC.E34_Inscription);
+    this.addNote(text, lang);
   }
 
   public static Inscription fromJoconde(@NotNull String text, String lang) {
