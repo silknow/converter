@@ -125,13 +125,16 @@ Which items were produced in Spain? [query](./A1.rq) - [results](https://data.si
 
 ## E. Artists
 
-1. **[en]** Which items have been created by Philippe de la Salle ?  
+1. **[en]** Which items have been created by Philippe de la Salle ?
+[query](./E1.rq)  [result](https://data.silknow.org/sparql?default-graph-uri=&query=prefix+crmdig%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMext%2FCRMdig.rdfs%2F%3E%0D%0Aprefix+crmsci%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMsci%2F%3E%0D%0ASELECT+DISTINCT+%3Fobject+%3Factor+%3Flabel+%3Ftitle+%3Fcollection%0D%0AWHERE+%7Bgraph+%3Fcollection+%7B%0D%0A%0D%0A++++++values+%3Flabel+%7B+%22Philippe+de+la+Salle%22+%7D%0D%0A+++++++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A++++%3Fobject+a+ecrm%3AE22_Man-Made_Object+.%0D%0A++++%3Fproduction+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A++++%3Fproduction+ecrm%3AP9_consists_of+%3Factivity+.%0D%0A++++%3Factivity+ecrm%3AP14_carried_out_by+%3Factor.%0D%0A++++%3Factor+a+ecrm%3AE39_Actor+.%0D%0A++++%3Factor+rdfs%3Alabel+%3Flabel+.%0D%0A++++%0D%0A%0D%0A%7D%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)    
 
 1. **[en]** Give me all the information you have on Philippe de la Salle!  
 
-1. **[en]** Give me all the items inspired by a work of Giambologna  
+1. **[en]** Give me all the items inspired by a work of Giambologna
+[query](./E3.rq)  [result](https://data.silknow.org/sparql?default-graph-uri=&query=prefix+crmdig%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMext%2FCRMdig.rdfs%2F%3E%0D%0Aprefix+crmsci%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMsci%2F%3E%0D%0ASELECT+DISTINCT+%3Fobject+%3Factor+%3Flabel+%3Ftitle+%3Fcollection%0D%0AWHERE+%7Bgraph+%3Fcollection+%7B%0D%0A%0D%0A++++++values+%3Flabel+%7B+%22Giambologna%22+%7D%0D%0A+++++++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A++++%3Fobject+a+ecrm%3AE22_Man-Made_Object+.%0D%0A++++%3Fproduction+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A++++%3Fproduction+ecrm%3AP9_consists_of+%3Factivity+.%0D%0A++++%3Factivity+ecrm%3AP14_carried_out_by+%3Factor.%0D%0A++++%3Factor+a+ecrm%3AE39_Actor+.%0D%0A++++%3Factor+rdfs%3Alabel+%3Flabel+.%0D%0A++++%0D%0A%0D%0A%7D%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)    
 
-1. **[en]** Give me all the items designed by François Boucher  
+1. **[en]** Give me all the items designed by François Boucher
+[query](./E4.rq)  [result](https://data.silknow.org/sparql?default-graph-uri=&query=prefix+crmdig%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMext%2FCRMdig.rdfs%2F%3E%0D%0Aprefix+crmsci%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMsci%2F%3E%0D%0ASELECT+DISTINCT+%3Fobject+%3Factor+%3Flabel+%3Ftitle+%3Fcollection%0D%0AWHERE+%7Bgraph+%3Fcollection+%7B%0D%0A++++++values+%3Flabel+%7B+%22Fran%C3%A7ois+Boucher%22+%7D%0D%0A%0D%0A++++%3Fobject+a+ecrm%3AE22_Man-Made_Object+.%0D%0A+++++++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A++++%3Fproduction+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A++++%3Fproduction+ecrm%3AP9_consists_of+%3Factivity+.%0D%0A++++%3Factivity+ecrm%3AP14_carried_out_by+%3Factor.%0D%0A++++%3Factor+a+ecrm%3AE39_Actor+.%0D%0A++++%3Factor+rdfs%3Alabel+%3Flabel+.%0D%0A++++%0D%0A+%0D%0A++++%0D%0A++++%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%7D+%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)    
 
 1. **[en]** Give me all the items designed by Italian artists  
 
@@ -139,7 +142,8 @@ Which items were produced in Spain? [query](./A1.rq) - [results](https://data.si
 
 1. **[en]** Give all the items for which the designer has been influenced by Philippe de la Salle  
 
-1. **[en]** Who were the printers or engravers that produced graph paper for making mise-en-cartes?  
+1. **[en]** Who were the printers or engravers that produced graph paper for making mise-en-cartes?
+[query](./E8.rq)  [result](https://data.silknow.org/sparql?default-graph-uri=&query=prefix+crmdig%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMext%2FCRMdig.rdfs%2F%3E%0D%0Aprefix+crmsci%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMsci%2F%3E%0D%0ASELECT+DISTINCT+%3Fobject+%3Factor+%3Flabel+%3Ftitle+%3Fcollection%0D%0AWHERE+%7Bgraph+%3Fcollection+%7B%0D%0A%0D%0A%0D%0A+++++++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A++++%3Fobject+a+ecrm%3AE22_Man-Made_Object+.%0D%0A++++%3Fproduction+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A++++%3Fproduction+ecrm%3AP9_consists_of+%3Factivity+.%0D%0A++++%3Factivity+ecrm%3AP14_carried_out_by+%3Factor.%0D%0A++++%3Factor+a+ecrm%3AE39_Actor+.%0D%0A++++%3Factor+rdfs%3Alabel+%3Flabel+.%0D%0A++++%0D%0A++++%7B%3Fproduction+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F856%3E+.+%7D%0D%0A%0D%0A%0D%0A%7D%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)    
 
 
 <!-- END Artists -->
@@ -149,11 +153,14 @@ Which items were produced in Spain? [query](./A1.rq) - [results](https://data.si
 
 ## F. Artists and time
 
-1. **[en]** Give me all the items designed by François Bouchez in the 18th century  
+1. **[en]** Give me all the items designed by François Bouchez in the 18th century
+[query](./F1.rq)  [result](https://data.silknow.org/sparql?default-graph-uri=&query=prefix+crmdig%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMext%2FCRMdig.rdfs%2F%3E%0D%0Aprefix+crmsci%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMsci%2F%3E%0D%0ASELECT+DISTINCT+%3Fobject+%3Factor+%3Flabel+%3Ftitle+%3Fcollection%0D%0AWHERE+%7Bgraph+%3Fcollection+%7B%0D%0A++++++values+%3Flabel+%7B+%22Fran%C3%A7ois+Bouchez%22+%7D%0D%0A%0D%0A++++%3Fobject+a+ecrm%3AE22_Man-Made_Object+.%0D%0A+++++++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A++++%3Fproduction+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A++++%3Fproduction+ecrm%3AP9_consists_of+%3Factivity+.%0D%0A++++%3Factivity+ecrm%3AP14_carried_out_by+%3Factor.%0D%0A++++%3Factor+a+ecrm%3AE39_Actor+.%0D%0A++++%3Factor+rdfs%3Alabel+%3Flabel+.%0D%0A++++%0D%0A++++%3Fprododuction+ecrm%3AP4_has_time-span+%3Ft+.%0D%0A++++%3Ft+ecrm%3AP86_falls_within+%3Chttp%3A%2F%2Fvocab.getty.edu%2Faat%2F30040451%3E+.%0D%0A++++%0D%0A++++%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%7D+%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)  
 
-1. **[en]** Give me all the items created by Philippe de la Salle in the last 5 years of his life.  
+1. **[en]** Give me all the items created by Philippe de la Salle in the last 5 years of his life.
+[query](./F2.rq)  [result](https://data.silknow.org/sparql?default-graph-uri=&query=prefix+crmdig%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMext%2FCRMdig.rdfs%2F%3E%0D%0Aprefix+crmsci%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMsci%2F%3E%0D%0ASELECT+DISTINCT+%3Fobject+%3Factor+%3Flabel+%3Ftitle+%3Fcollection%0D%0AWHERE+%7Bgraph+%3Fcollection+%7B%0D%0A++++++values+%3Flabel+%7B+%22Philippe+de+la+Salle%22+%7D%0D%0A%0D%0A++++%3Fobject+a+ecrm%3AE22_Man-Made_Object+.%0D%0A+++++++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A++++%3Fproduction+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A++++%3Fproduction+ecrm%3AP9_consists_of+%3Factivity+.%0D%0A++++%3Factivity+ecrm%3AP14_carried_out_by+%3Factor.%0D%0A++++%3Factor+a+ecrm%3AE39_Actor+.%0D%0A++++%3Factor+rdfs%3Alabel+%3Flabel+.%0D%0A++++%0D%0A++++%3Fprododuction+ecrm%3AP4_has_time-span+%3Ft1+.%0D%0A++++%3Ft1+time%3AhasBeginning+%3Chttp%3A%2F%2Fdata.silknow.org%2Ftimespan%2F1799%2Fstart%3E+.%0D%0A++++%0D%0A++++%3Fprododuction+ecrm%3AP4_has_time-span+%3Ft2+.%0D%0A++++%3Ft2+time%3AhasEnd+%3Chttp%3A%2F%2Fdata.silknow.org%2Ftimespan%2F1804%2Fend%3E+.%0D%0A++++%0D%0A++++%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%7D+%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)  
 
-1. **[en]** Give me a list of designers from a Valencia during the 19th century  
+1. **[en]** Give me a list of designers from a Valencia during the 19th century
+[query](./F3.rq)  [result](https://data.silknow.org/sparql?default-graph-uri=&query=prefix+crmdig%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMext%2FCRMdig.rdfs%2F%3E%0D%0Aprefix+crmsci%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMsci%2F%3E%0D%0ASELECT+DISTINCT+%3Fcollection+%3Factor+%3Factor_label+%0D%0AWHERE+%7Bgraph+%3Fcollection+%7B%0D%0A%0D%0A%0D%0A++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Fobject_title+%7D%0D%0A++++%3Fobject+a+ecrm%3AE22_Man-Made_Object+.%0D%0A++++%3Fproduction+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A++++%3Fproduction+ecrm%3AP9_consists_of+%3Factivity+.%0D%0A++++%3Factivity+ecrm%3AP14_carried_out_by+%3Factor.%0D%0A++++%3Factor+a+ecrm%3AE39_Actor+.%0D%0A++++%3Factor+rdfs%3Alabel+%3Factor_label+.%0D%0A++++%0D%0A++++%3Fproduction+ecrm%3AP8_took_place_on_or_within+%3Chttps%3A%2F%2Fsws.geonames.org%2F2509954%2F%3E+.%0D%0A++++%0D%0A++++%0D%0A%0D%0A%0D%0A%7D%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)  
 
 
 <!-- END Artists and time -->
@@ -176,10 +183,12 @@ Which items were produced in Spain? [query](./A1.rq) - [results](https://data.si
 ## H. Style
 
 1. **[en]** Who is the Revel style name after?
+[query](./H1.rq)  [result](https://data.silknow.org/sparql?default-graph-uri=&query=prefix+crmdig%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMext%2FCRMdig.rdfs%2F%3E%0D%0Aprefix+crmsci%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMsci%2F%3E%0D%0ASELECT+DISTINCT+%3Fobject+%3Factor+%3Flabel+%3Ftitle+%3Fcollection%0D%0AWHERE+%7Bgraph+%3Fcollection+%7B%0D%0A%0D%0A++++++values+%3Flabel+%7B+%22Jean+Revel%22+%7D%0D%0A+++++++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A++++%3Fobject+a+ecrm%3AE22_Man-Made_Object+.%0D%0A++++%3Fproduction+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A++++%3Fproduction+ecrm%3AP9_consists_of+%3Factivity+.%0D%0A++++%3Factivity+ecrm%3AP14_carried_out_by+%3Factor.%0D%0A++++%3Factor+a+ecrm%3AE39_Actor+.%0D%0A++++%3Factor+rdfs%3Alabel+%3Flabel+.%0D%0A++++%0D%0A%0D%0A%7D%7D%0D%0A%0D%0A&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)
 
 1. **[en]** Give me all the items that have been influenced by oriental fashion. 
 
-1. **[en]** Give me all the items with flowers on them.  
+1. **[en]** Give me all the items with flowers on them. 
+[query](./H3.rq)  [result](https://data.silknow.org/sparql?default-graph-uri=&query=prefix+crmdig%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMext%2FCRMdig.rdfs%2F%3E%0D%0Aprefix+crmsci%3A+%3Chttp%3A%2F%2Fwww.ics.forth.gr%2Fisl%2FCRMsci%2F%3E%0D%0ASELECT+DISTINCT+%3Fobject+%3Ftitle+%3Fcollection+%3Fvisual_item%0D%0AWHERE+%7Bgraph+%3Fcollection+%7B%0D%0A%0D%0A%0D%0A++++++values+%3Fvitem+%7B+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F743%3E+%7D%0D%0A+++++++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A++++%3Fobject+a+ecrm%3AE22_Man-Made_Object+.%0D%0A++++%3Fproduction+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A%0D%0A++++%0D%0A++++%0D%0A++++%7B%3Fobject+ecrm%3AP65_shows_visual_item+%3Fvitem+.%0D%0A+++++%3Fvitem++skos%3AprefLabel+%3Fvisual_item+FILTER%28lang%28str%28%3Fvisual_item%29%29+%3D+%22en%22%29%7D%0D%0A++++%0D%0A%0D%0A%7D%7D%0D%0A%0D%0A%0D%0A&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+) 
 
 1. **[en]** Give me all the items with hearts and flowers on them
 
@@ -198,10 +207,14 @@ Which items were produced in Spain? [query](./A1.rq) - [results](https://data.si
 ## I. Type of items
 
 1. **[en]** Give me all the scarves
+[query](./I1.rq)  [result](https://data.silknow.org/sparql?default-graph-uri=&query=prefix+silk%3A+++%3Chttp%3A%2F%2Fdata.silknow.org%2Fontology%2Fproperty%2F%3E%0D%0ASELECT+distinct++%3Ftitle+%3Fassignment+%3Fdescription++%3Fcollection++%3Fobject%0D%0AWHERE+%7B+graph+%3Fcollection+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A++++++%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A+%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP3_has_note+%3Fdescription+%7D%0D%0A%0D%0A++++++++%0D%0A++++++++%0D%0A%0D%0A%0D%0A%0D%0A++++++++%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+.FILTER+contains%28str%28%3Ftitle%29%2C+%22scarf%22%29%7D%0D%0A+++++++++UNION%0D%0A++++++++%7B%3Ftype+ecrm%3AP41_classified+%3Fobject+.%0D%0A+++++++++%3Ftype+silk%3AL1+%3Fassignment+.FILTER+contains%28str%28%3Fassignment%29%2C+%22scarf%22%29%7D%0D%0A%0D%0A+++++%0D%0A++++++++%0D%0A++++++++%0D%0A%0D%0A%7D%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)
 
 1. **[en]** Give me all the dresses that have been worn with a petticoat 
+[query](./I2.rq)  [result](https://data.silknow.org/sparql?default-graph-uri=&query=prefix+silk%3A+++%3Chttp%3A%2F%2Fdata.silknow.org%2Fontology%2Fproperty%2F%3E%0D%0ASELECT+distinct++%3Ftitle+%3Fassignment+%3Fdescription++%3Fcollection++%3Fobject%0D%0AWHERE+%7B+graph+%3Fcollection+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A++++++%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A+%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP3_has_note+%3Fdescription+%7D%0D%0A%0D%0A++++++++%0D%0A++++++++%0D%0A%0D%0A%0D%0A%0D%0A++++++++%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+.FILTER+contains%28str%28%3Ftitle%29%2C+%22dress%22%29%7D%0D%0A+++++++++UNION%0D%0A++++++++%7B%3Ftype+ecrm%3AP41_classified+%3Fobject+.%0D%0A+++++++++%3Ftype+silk%3AL1+%3Fassignment+.FILTER+contains%28str%28%3Fassignment%29%2C+%22dress%22%29%7D%0D%0A%0D%0A+++++%0D%0A++++++++FILTER+contains%28str%28%3Fdescription%29%2C+%22petticoat%22%29+%0D%0A++++++++%0D%0A++++++++%0D%0A%0D%0A%7D%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)
 
 1. **[en]** Give examples of textiles that conserve both the fabric and the mise-en-carte  
+[query](./I3.rq)  [result](https://data.silknow.org/sparql?default-graph-uri=&query=prefix+silk%3A+++%3Chttp%3A%2F%2Fdata.silknow.org%2Fontology%2Fproperty%2F%3E%0D%0ASELECT+distinct+%3Fassignment+%3Ftitle++%3Fdescription++%3Fcollection++%3Fobject%0D%0AWHERE+%7B+graph+%3Fcollection+%7B%0D%0A%0D%0A%7B%0D%0A++%0D%0A++++++%3Fprod+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A++++++%3Fobject+a+ecrm%3AE22_Man-Made_Object+.+%7D%0D%0A+%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP3_has_note+%3Fdescription+%7D%0D%0A%0D%0A%0D%0A%0D%0A++++++++%3Fprod+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F649%3E+.%0D%0A++++++++%3Fprod+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F441%3E+.%0D%0A%0D%0A++++++++%0D%0A%0D%0A++++++++%7B%0D%0A++++++++values+%3Fassignment+%7B+%3Chttp%3A%2F%2Fdata.silknow.org%2Fcategory%2F1%3E+%7D+%0D%0A++++++++%3Ftype+ecrm%3AP41_classified+%3Fobject+.%0D%0A+++++++++%3Ftype+silk%3AL1+%3Fassignment%7D%0D%0A%0D%0A%0D%0A+++++%0D%0A++++++++%0D%0A++++++++%0D%0A%0D%0A%7D%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)
+
 
 1. **[en]** When do the first mise-en-carte appeared?
 
@@ -212,10 +225,10 @@ Which items were produced in Spain? [query](./A1.rq) - [results](https://data.si
 
 ## J. Type of items and materials
 
-1. **[en]** Give me all the ribbons with cotton [query](./J1.rq)  [result](https://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct++%3Ftitle+%3Fassignment+%3Fdescription+group_concat%28distinct+%3Fmaterial%3Bseparator%3D%22%7C%22%29+as+%3Fmaterials+%3Fcollection++%3Fobject%0D%0AWHERE+%7B+graph+%3Fcollection+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A++++++%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A+%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP3_has_note+%3Fdescription+%7D%0D%0A%0D%0A++++++++%3Fprd+ecrm%3AP126_employed+%3Fmaterial++.%0D%0A%0D%0A%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F617%3E+.%7D%0D%0A++++++++%0D%0A++++++++%3Ftype+a+ecrm%3AE17_Type_Assignment+.%0D%0A%0D%0A%0D%0A%0D%0A++++++++%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+.FILTER+contains%28str%28%3Ftitle%29%2C+%22ribbon%22%29%7D%0D%0A+++++++++UNION%0D%0A++++++++%7B%3Ftype+ecrm%3AP42_assigned+%3Chttp%3A%2F%2Fvocab.getty.edu%2Faat%2F300014668%3E+%7D%0D%0A+++++++++UNION%0D%0A++++++++%7B%3Ftype+ecrm%3AP42_assigned+%3Fassignment+.FILTER+contains%28str%28%3Fassignment%29%2C+%22ribbon%22%29%7D%0D%0A%0D%0A+++++%0D%0A++++++++%0D%0A++++++++%0D%0A%0D%0A%7D%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)
+1. **[en]** Give me all the ribbons with cotton [query](./J1.rq)  [result](https://data.silknow.org/sparql?default-graph-uri=&query=prefix+silk%3A+++%3Chttp%3A%2F%2Fdata.silknow.org%2Fontology%2Fproperty%2F%3E%0D%0ASELECT+distinct++%3Ftitle+%3Fassignment+%3Fdescription+group_concat%28distinct+%3Fmaterial%3Bseparator%3D%22%7C%22%29+as+%3Fmaterials+%3Fcollection++%3Fobject%0D%0AWHERE+%7B+graph+%3Fcollection+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A++++++%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A+%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP3_has_note+%3Fdescription+%7D%0D%0A%0D%0A++++++++%3Fprd+ecrm%3AP126_employed+%3Fmaterial++.%0D%0A%0D%0A%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F617%3E+.%7D%0D%0A++++++++%0D%0A%0D%0A%0D%0A%0D%0A++++++++%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+.FILTER+contains%28str%28%3Ftitle%29%2C+%22ribbon%22%29%7D%0D%0A+++++++++UNION%0D%0A++++++++%7B%3Ftype+ecrm%3AP41_classified+%3Fobject+.%0D%0A+++++++++%3Ftype+silk%3AL1+%3Fassignment+.FILTER+contains%28str%28%3Fassignment%29%2C+%22ribbon%22%29%7D%0D%0A%0D%0A+++++%0D%0A++++++++%0D%0A++++++++%0D%0A%0D%0A%7D%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)
 
 1. **[en]** Give me all the dresses with silk, cotton and gold
-
+[query](./J2.rq) - [results](https://data.silknow.org/sparql?default-graph-uri=&query=prefix+silk%3A+++%3Chttp%3A%2F%2Fdata.silknow.org%2Fontology%2Fproperty%2F%3E%0D%0ASELECT+distinct++%3Ftitle+%3Fassignment+%3Fdescription++%3Fcollection++%3Fobject%0D%0AWHERE+%7B+graph+%3Fcollection+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A++++++%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A+%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP3_has_note+%3Fdescription+%7D%0D%0A%0D%0A++++++++%0D%0A++++++++%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F368%3E+.%7D%0D%0A++++++++UNION%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F617%3E+.%7D%0D%0A++++++++UNION%0D%0A++++++++%7B%3Fprd+ecrm%3AP126_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F627%3E+.%7D%0D%0A%0D%0A%0D%0A++++++++%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+.FILTER+contains%28str%28%3Ftitle%29%2C+%22dress%22%29%7D%0D%0A+++++++++UNION%0D%0A++++++++%7B%3Ftype+ecrm%3AP41_classified+%3Fobject+.%0D%0A+++++++++%3Ftype+silk%3AL1+%3Fassignment+.FILTER+contains%28str%28%3Fassignment%29%2C+%22dress%22%29%7D%0D%0A%0D%0A++++++++%0D%0A++++++++%0D%0A%0D%0A%7D%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+) 
 
 <!-- END Type of items and materials -->
 
@@ -235,9 +248,11 @@ Which items were produced in Spain? [query](./A1.rq) - [results](https://data.si
 
 ## L. Types of items and location
 
-1. **[en]** Give me the religious clothing produced in Spain 
+1. **[en]** Give me the religious clothing produced in Spain
+[query](./L1.rq) - [results](https://data.silknow.org/sparql?default-graph-uri=&query=prefix+silk%3A+++%3Chttp%3A%2F%2Fdata.silknow.org%2Fontology%2Fproperty%2F%3E%0D%0ASELECT+distinct++%3Ftitle+%3Fassignment+%3Fdescription++%3Fcollection++%3Fobject%0D%0AWHERE+%7B+graph+%3Fcollection+%7B%0D%0A%0D%0A%7B++++%3Fprd+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A++++++%3Fobject+a+ecrm%3AE22_Man-Made_Object+.+%7D%0D%0A%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A+%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP3_has_note+%3Fdescription+%7D%0D%0A%0D%0A++++++++%0D%0A%0D%0A%0D%0A++++++++%3Ftype+ecrm%3AP41_classified+%3Fobject+.%0D%0A+++++++++%3Ftype+silk%3AL4+%3Fassignment+.%0D%0A+++++++++%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2Ffacet%2Freligious_attire%3E+skos%3Amember+%3Fassignment+.%0D%0A++++++++%0D%0A%0D%0A%7D%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+) 
 
-1. **[en]** What textiles belonged to the collector Mariano Fortuny? 
+1. **[en]** What textiles belonged to the collector Mariano Fortuny?
+
 
 <!-- END Types of items and location -->
 
@@ -246,6 +261,7 @@ Which items were produced in Spain? [query](./A1.rq) - [results](https://data.si
 ## M. Type of items and time
 
 1. **[en]** Give me all the dresses produced during the Victorian era
+[query](./M1.rq) - [results](https://data.silknow.org/sparql?default-graph-uri=&query=prefix+silk%3A+++%3Chttp%3A%2F%2Fdata.silknow.org%2Fontology%2Fproperty%2F%3E%0D%0ASELECT+distinct++%3Ftitle+%3Fassignment+%3Fdescription++%3Fcollection++%3Fobject%0D%0AWHERE+%7B+graph+%3Fcollection+%7B%0D%0A%0D%0A+++++%3Fdig+a+crmdig%3AD1_Digital_Object+.%0D%0A++++++%0D%0A+++++%3Fdig++ecrm%3AP129_is_about+%3Fprd+.%0D%0A+++++%3Fprd+ecrm%3AP108_has_produced+%3Fobject+.%0D%0A+%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+%7D%0D%0A+++++optional+%7B%3Fobject+ecrm%3AP3_has_note+%3Fdescription+%7D%0D%0A%0D%0A%0D%0A+++++%3Fprod+ecrm%3AP4_has_time-span+%3Ft+.%0D%0A+++++%3Ft+ecrm%3AP86_falls_within+%3Chttp%3A%2F%2Fvocab.getty.edu%2Faat%2F300404513%3E+.%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A++++++++%7B%3Fobject+ecrm%3AP102_has_title+%3Ftitle+.FILTER+contains%28str%28%3Ftitle%29%2C+%22dress%22%29%7D%0D%0A+++++++++UNION%0D%0A++++++++%7B%3Ftype+ecrm%3AP41_classified+%3Fobject+.%0D%0A+++++++++%3Ftype+silk%3AL1+%3Fassignment+.FILTER+contains%28str%28%3Fassignment%29%2C+%22dress%22%29%7D%0D%0A%0D%0A++++++++%0D%0A++++++++%0D%0A%0D%0A%7D%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)
 
 <!-- END Type of items and time -->
 
