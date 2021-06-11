@@ -13,6 +13,6 @@ WHERE {graph ?collection {
     ?actor rdfs:label ?label .
     
     {?production ecrm:P126_employed <http://data.silknow.org/vocabulary/856> . }
-
+    {?production ecrm:P126_employed <http://data.silknow.org/vocabulary/441> . }
 
 }}
