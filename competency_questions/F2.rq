@@ -12,11 +12,13 @@ WHERE {graph ?collection {
     ?actor a ecrm:E39_Actor .
     ?actor rdfs:label ?label .
     
-    ?prododuction ecrm:P4_has_time-span ?t1 .
-    ?t1 time:hasBeginning <http://data.silknow.org/timespan/1799/start> .
-    
-    ?prododuction ecrm:P4_has_time-span ?t2 .
-    ?t2 time:hasEnd <http://data.silknow.org/timespan/1804/end> .
+    ?prododuction ecrm:P4_has_time-span ?ts .
+    ?ts skos:prefLabel ?time ;
+                time:hasEnd / time:inXSDDate ?end ;
+                time:hasBeginning / time:inXSDDate ?start .
+
+
+  FILTER ( ?start >= "1799"^^xsd:gYear AND ?end <= "1804"^^xsd:gYear )
     
     
 
