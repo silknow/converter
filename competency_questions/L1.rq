@@ -1,6 +1,6 @@
 prefix silk:   <http://data.silknow.org/ontology/property/>
 SELECT distinct  ?place ?title ?assignment ?description  ?collection  ?object
-WHERE { graph ?collection {
+WHERE { graph ?collection {          <http://data.silknow.org/vocabulary/facet/religious_attire> skos:member ?assignment . }
 
 {    ?prd ecrm:P108_has_produced ?object .
       ?object a ecrm:E22_Man-Made_Object . }
@@ -18,8 +18,8 @@ WHERE { graph ?collection {
 
         ?type ecrm:P41_classified ?object .
          ?type silk:L4 ?assignment .
-         <http://data.silknow.org/vocabulary/facet/religious_attire> skos:member ?assignment .
+
 
         
 
-}}
+}
