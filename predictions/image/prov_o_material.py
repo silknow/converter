@@ -26,7 +26,7 @@ for file_name in glob.glob('sys_integration_pred_material.csv'):
            
         a = """
         
-            prefix silk:  <http://data.silknow.org/ontology/property>
+            prefix silk:  <http://data.silknow.org/ontology/>
             prefix crmsci: <http://www.ics.forth.gr/isl/CRMsci/>
             prefix crmdig: <http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/>
             prefix prov: <http://www.w3.org/ns/prov#> 
@@ -60,7 +60,7 @@ for file_name in glob.glob('sys_integration_pred_material.csv'):
         y = """
            ?statement prov:WasGeneratedBy ?activity .
            
-           ?actor a prov:SoftwareAgen ;
+           ?actor a prov:SoftwareAgent ;
            ecrm:P70_documents """
         j = '"document"' + " ."
         k = """

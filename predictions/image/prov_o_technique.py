@@ -2,6 +2,7 @@ from SPARQLWrapper import SPARQLWrapper, RDFXML
 from rdflib import Graph
 import pandas as pd
 import glob
+import uuid
 
 counter_pred = 0
 counter_act = 0
@@ -23,6 +24,9 @@ for file_name in glob.glob('sys_integration_pred_technique.csv'):
         if predicted == "velvet":
            predicted = "http://data.silknow.org/vocabulary/379"
            
+
+
+
         a = """
         
             prefix silk:  <http://data.silknow.org/ontology/>
@@ -43,9 +47,14 @@ for file_name in glob.glob('sys_integration_pred_technique.csv'):
         c =  """
            
            ?statement rdf:predicate ecrm:P32_used_general_technique .
+           ?production ecrm:P32_used_general_technique """
+        d = "<"+str(predicted)+"> ."
+
+        e = """
+
            ?statement silk:L18
            """
-        f = '"'+str(score) +'" .'
+        f = '"'+str(float(score.strip('%'))/100) +'"'+"^^xsd:float ."
         g = """
            ?activity a prov:Activity ;
            prov:AtTime "2021-02-10"^^xsd:dateTime;
@@ -54,7 +63,7 @@ for file_name in glob.glob('sys_integration_pred_technique.csv'):
         y = """
            ?statement prov:WasGeneratedBy ?activity .
            
-           ?actor a prov:SoftwareAgen ;
+           ?actor a prov:SoftwareAgent ;
            ecrm:P70_documents """
         j = '"document"' + " ."
         k = """
@@ -67,18 +76,17 @@ for file_name in glob.glob('sys_integration_pred_technique.csv'):
            ?production ecrm:P108_has_produced ?object .
            ?object rdfs:comment ?text .
 
-           BIND(URI(REPLACE(CONCAT(STR(?object), "/image/technique/"""
-        n = str(counter_pred)
+           BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/image/technique/"""
+        n = str(uuid.uuid5(uuid.NAMESPACE_DNS, str(str(obj)+str(img)+str(predicted))))
         o = """"), "object", "prediction", "i")) AS ?statement)
-            BIND(URI(REPLACE(CONCAT(STR(?object), "/actor/luh-image-analysis/"""
+            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/actor/luh-image-analysis/"""
         p = str(counter_act)
         r = """"), "object", "prediction", "i")) AS ?actor)
             BIND(URI(CONCAT(STR(?statement), "/generation")) AS ?activity)
             } """
 
 
-
-        q = a + b + c + f + g + x + y + j + k + l + m + n + o + p + r
+        q = a + b + c + d + e + f + g + x + y + j + k + l + m + n + o + p + r
         print(q.strip())
 
         
