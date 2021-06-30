@@ -97,6 +97,9 @@ for file_name in glob.glob('sys_integration_pred_timespan.csv'):
         
         sparql.setQuery(q.strip())
         sparql.setReturnFormat(RDFXML)
-        results = sparql.query().convert()
-
-        results.serialize(destination="./time/"+"image_time"+str(index)+".ttl", format="turtle")
+        try:
+            results = sparql.query().convert()
+            results.serialize(destination="./time/"+"image_time"+str(index)+".ttl", format="turtle")
+        except:
+            time.sleep(10)
+            continue

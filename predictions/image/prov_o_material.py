@@ -99,6 +99,6 @@ for file_name in glob.glob('sys_integration_pred_material.csv'):
             results = sparql.query().convert()
             results.serialize(destination="./material/"+"image_material"+str(index)+".ttl", format="turtle")
         except:
-            time.sleep(3)
+            time.sleep(10)
             continue
         
