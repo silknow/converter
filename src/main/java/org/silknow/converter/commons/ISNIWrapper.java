@@ -63,17 +63,18 @@ public class ISNIWrapper {
     }
 
     if (DEBUG) System.out.println("ISNI by string: " + k);
-    ISNIRecord r = ISNI.search(fullName, date);
-    if (r == null) {
-      cache.put(k, null);
-      saveCache();
-      return null;
-    }
-    r.save(Paths.get(folder, r.id + ".xml"));
-    if (DEBUG) System.out.println("--found " + r.uri);
-    cache.put(k, r.id);
-    saveCache();
-    return r;
+    return null;
+    //ISNIRecord r = ISNI.search(fullName, date);
+    //if (r == null) {
+    //  cache.put(k, null);
+    //  saveCache();
+    //  return null;
+    //}
+    //r.save(Paths.get(folder, r.id + ".xml"));
+    //if (DEBUG) System.out.println("--found " + r.uri);
+    //cache.put(k, r.id);
+    //saveCache();
+    //return r;
   }
 
   private static void saveCache() {
