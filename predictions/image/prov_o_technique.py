@@ -3,6 +3,7 @@ from rdflib import Graph
 import pandas as pd
 import glob
 import uuid
+import time
 
 counter_pred = 0
 counter_act = 0
@@ -13,6 +14,8 @@ for file_name in glob.glob('sys_integration_pred_technique.csv'):
         predicted = row[' predicted_class'].strip()
         obj = row['obj_uri'].strip()
         img = row[' image_name'].strip()
+        museum = row[' museum'].strip()
+        image = "https://silknow.org/silknow/media/"+str(museum)+"/"+str(img)
         counter_pred = counter_pred + 1 
         counter_act = counter_act + 1
 
@@ -59,7 +62,7 @@ for file_name in glob.glob('sys_integration_pred_technique.csv'):
            ?activity a prov:Activity ;
            prov:AtTime "2021-02-10"^^xsd:dateTime;
            prov:used """
-        x = "<"+str(img)+">" + " ."
+        x = "<"+str(image)+">" + " ."
         y = """
            ?statement prov:WasGeneratedBy ?activity .
            
