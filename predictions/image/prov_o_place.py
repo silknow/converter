@@ -48,6 +48,9 @@ for file_name in glob.glob('sys_integration_pred_place.csv'):
            predicted = "https://sws.geonames.org/2017370/"
         if predicted == "TR":
            predicted = "https://sws.geonames.org/298795/"
+        if predicted == "JM":
+           predicted = "https://sws.geonames.org/3489940/"
+
 
 
            
@@ -70,8 +73,8 @@ for file_name in glob.glob('sys_integration_pred_place.csv'):
 
         c =  """
 
-           ?statement rdf:predicate ecrm:P7_took_place_at .
-           ?production ecrm:P7_took_place_at """
+           ?statement rdf:predicate ecrm:P8_took_place_on_or_within .
+           ?production ecrm:P8_took_place_on_or_within """
         d = "<"+str(predicted)+"> ."
 
         e = """
@@ -81,11 +84,11 @@ for file_name in glob.glob('sys_integration_pred_place.csv'):
         f = '"'+str(float(score.strip('%'))/100) +'"'+"^^xsd:float ."
         g = """
            ?activity a prov:Activity ;
-           prov:AtTime "2021-02-10"^^xsd:dateTime;
+           prov:atTime "2021-02-10"^^xsd:dateTime;
            prov:used """
         x = "<"+str(image)+">" + " ."
         y = """
-           ?statement prov:WasGeneratedBy ?activity .
+           ?statement prov:wasGeneratedBy ?activity .
            
            ?actor a prov:SoftwareAgent ;
            ecrm:P70_documents """

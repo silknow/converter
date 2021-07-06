@@ -1,0 +1,26 @@
+SELECT DISTINCT ?museum ?obj ?label ?text ?img ?place_country_code ?time_label ?technique_group ?depict_group
+WHERE {
+  GRAPH ?museum {
+     ?obj a ecrm:E22_Man-Made_Object .
+  }
+  ?obj rdfs:label ?label .
+  ?obj rdfs:comment ?text . 
+  ?obj ecrm:P138i_has_representation ?img .
+  ?img schema:contentUrl ?deeplink .
+  ?p ecrm:P108_has_produced ?obj .
+  OPTIONAL {?p ecrm:P126_employed  ?ts}
+  optional{ 
+        ?p ecrm:P8_took_place_on_or_within ?place_uri . FILTER contains(str(?place_uri),"geonames")
+        ?place_uri  geonames:countryCode ?place_country_code . }
+  optional{ ?p ecrm:P4_has_time-span ?time_uri .
+                ?time_uri ecrm:P86_falls_within ?century . 
+                ?century skos:prefLabel ?time_label . FILTER  (lang(?time_label) = 'en')}
+  optional{ ?p ecrm:P32_used_general_technique  ?y .
+                ?technique_group skos:member ?y FILTER contains(str(?technique_group), "facet")
+               }
+  optional{ ?obj ecrm:P65_shows_visual_item  ?z .
+                ?depict_group skos:member ?z FILTER contains(str(?depict_group), "facet")
+               }
+  FILTER (!bound(?ts))
+}
+GROUP BY ?museum

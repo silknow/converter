@@ -60,11 +60,11 @@ for file_name in glob.glob('sys_integration_pred_technique.csv'):
         f = '"'+str(float(score.strip('%'))/100) +'"'+"^^xsd:float ."
         g = """
            ?activity a prov:Activity ;
-           prov:AtTime "2021-02-10"^^xsd:dateTime;
+           prov:atTime "2021-02-10"^^xsd:dateTime;
            prov:used """
         x = "<"+str(image)+">" + " ."
         y = """
-           ?statement prov:WasGeneratedBy ?activity .
+           ?statement prov:wasGeneratedBy ?activity .
            
            ?actor a prov:SoftwareAgent ;
            ecrm:P70_documents """

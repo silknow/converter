@@ -2,29 +2,31 @@ from SPARQLWrapper import SPARQLWrapper, RDFXML
 from rdflib import Graph
 import pandas as pd
 import glob
+import uuid
+import time
 
 counter_pred = 0
 counter_act = 0
-for file_name in glob.glob('material.csv'):
-    x = pd.read_csv(file_name)
+for file_name in glob.glob('material.tsv'):
+    x = pd.read_csv(file_name,sep="\t")
     for index, row in x.iterrows():
         score = row['score']
         predicted = row['predicted']
-        obj = row['obj']
+        obj = row['id']
         counter_pred = counter_pred + 1 
         counter_act = counter_act + 1
 
         sparql = SPARQLWrapper("http://data.silknow.org/sparql")
-        if predicted == "http://data.silknow.org/vocabulary/facet/animal_fibre":
+        if predicted == "animal_fibre":
            predicted = "http://data.silknow.org/vocabulary/210"
-        if predicted == "http://data.silknow.org/vocabulary/facet/metal_thread":
+        if predicted == "metal_thread":
            predicted = "http://data.silknow.org/vocabulary/497"
-        if predicted == "http://data.silknow.org/vocabulary/facet/vegetal_fibre":
+        if predicted == "vegetal_fibre":
            predicted = "http://data.silknow.org/vocabulary/214"
            
         a = """
         
-            prefix silk:  <http://data.silknow.org/ontology/property>
+            prefix silk:  <http://data.silknow.org/ontology/>
             prefix crmsci: <http://www.ics.forth.gr/isl/CRMsci/>
             prefix crmdig: <http://www.ics.forth.gr/isl/CRMext/CRMdig.rdfs/>
             prefix prov: <http://www.w3.org/ns/prov#> 
@@ -52,13 +54,13 @@ for file_name in glob.glob('material.csv'):
         f = '"'+str(score) +'"'+"^^xsd:float ."
         g = """
            ?activity a prov:Activity ;
-           prov:AtTime "2021-02-10"^^xsd:dateTime;
+           prov:atTime "2021-02-10"^^xsd:dateTime;
            prov:used ?text .
-           ?statement prov:WasGeneratedBy ?activity .
+           ?statement prov:wasGeneratedBy ?activity .
            
            ?actor a prov:SoftwareAgent ;
            ecrm:P70_documents """
-        j = '"document"' + " ."
+        j = '"Predictions made using a...."' + " ."
         k = """
             ?activity prov:wasAssociatedWith ?actor .
             }
@@ -69,22 +71,29 @@ for file_name in glob.glob('material.csv'):
            ?production ecrm:P108_has_produced ?object .
            ?object rdfs:comment ?text .
 
-           BIND(URI(REPLACE(CONCAT(STR(?object), "/text/material/"""
-        n = str(counter_pred)
+           BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/statement/"""
+        n = str(uuid.uuid5(uuid.NAMESPACE_DNS, str(str(obj)+str(predicted)+str(score)+str(file_name))))
         o = """"), "object", "prediction", "i")) AS ?statement)
-            BIND(URI(REPLACE(CONCAT(STR(?object), "/actor/jsi-text-analysis/"""
-        p = str(counter_act)
+            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/actor/jsi-text-analysis/1"""
         r = """"), "object", "prediction", "i")) AS ?actor)
-            BIND(URI(CONCAT(STR(?statement), "/generation")) AS ?activity)
+            BIND(URI(CONCAT("http://data.silknow.org", "/activity/"""
+        s = str(uuid.uuid5(uuid.NAMESPACE_DNS, str(str(obj)+str(predicted)+str(score)+str(file_name))))
+        t = """")) AS ?activity)
             } """
 
 
-        q = a + b + c + d + e + f + g + j + k + l + m + n + o + p + r
+        q = a + b + c + d + e + f + g + j + k + l + m + n + o + r + s + t
         print(q.strip())
 
         
         sparql.setQuery(q.strip())
         sparql.setReturnFormat(RDFXML)
-        results = sparql.query().convert()
 
-        results.serialize(destination="./material/"+"text_material"+str(index)+".ttl", format="turtle")
+
+
+        try:
+            results = sparql.query().convert()
+            results.serialize(destination="./material/"+"text_material"+str(index)+".ttl", format="turtle")
+        except:
+            time.sleep(10)
+            continue

@@ -24,110 +24,110 @@ public class Silknow {
     /** <p>The ontology's owl:versionInfo as a string</p> */
     public static final String VERSION_INFO = "Version 1.0";
     
-    public static final ObjectProperty L1 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L1" );
+    public static final ObjectProperty L1 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L1" );
     
-    public static final ObjectProperty L10 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L10" );
+    public static final ObjectProperty L10 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L10" );
     
-    public static final ObjectProperty L11 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L11" );
+    public static final ObjectProperty L11 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L11" );
     
-    public static final ObjectProperty L12 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L12" );
+    public static final ObjectProperty L12 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L12" );
     
-    public static final ObjectProperty L13 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L13" );
+    public static final ObjectProperty L13 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L13" );
     
-    public static final ObjectProperty L14 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L14" );
+    public static final ObjectProperty L14 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L14" );
     
-    public static final ObjectProperty L15 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L15" );
+    public static final ObjectProperty L15 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L15" );
     
-    public static final ObjectProperty L16 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L16" );
+    public static final ObjectProperty L16 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L16" );
     
-    public static final ObjectProperty L17 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L17" );
+    public static final ObjectProperty L17 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L17" );
     
-    public static final ObjectProperty L18 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L18" );
+    public static final ObjectProperty L18 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L18" );
     
-    public static final ObjectProperty L2 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L2" );
+    public static final ObjectProperty L2 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L2" );
     
-    public static final ObjectProperty L3 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L3" );
+    public static final ObjectProperty L3 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L3" );
     
-    public static final ObjectProperty L4 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L4" );
+    public static final ObjectProperty L4 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L4" );
     
-    public static final ObjectProperty L5 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L5" );
+    public static final ObjectProperty L5 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L5" );
     
-    public static final ObjectProperty L6 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L6" );
+    public static final ObjectProperty L6 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L6" );
     
-    public static final ObjectProperty L7 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L7" );
+    public static final ObjectProperty L7 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L7" );
     
-    public static final ObjectProperty L8 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L8" );
+    public static final ObjectProperty L8 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L8" );
     
-    public static final ObjectProperty L9 = m_model.createObjectProperty( "http://data.silknow.org/ontology/property/L9" );
+    public static final ObjectProperty L9 = m_model.createObjectProperty( "http://data.silknow.org/ontology/L9" );
     
-    public static final OntClass T1 = m_model.createClass( "http://data.silknow.org/ontology/class/T1" );
+    public static final OntClass T1 = m_model.createClass( "http://data.silknow.org/ontology/T1" );
     
-    public static final OntClass T10 = m_model.createClass( "http://data.silknow.org/ontology/class/T10" );
+    public static final OntClass T10 = m_model.createClass( "http://data.silknow.org/ontology/T10" );
     
-    public static final OntClass T11 = m_model.createClass( "http://data.silknow.org/ontology/class/T11" );
+    public static final OntClass T11 = m_model.createClass( "http://data.silknow.org/ontology/T11" );
     
-    public static final OntClass T12 = m_model.createClass( "http://data.silknow.org/ontology/class/T12" );
+    public static final OntClass T12 = m_model.createClass( "http://data.silknow.org/ontology/T12" );
     
-    public static final OntClass T13 = m_model.createClass( "http://data.silknow.org/ontology/class/T13" );
+    public static final OntClass T13 = m_model.createClass( "http://data.silknow.org/ontology/T13" );
     
-    public static final OntClass T14 = m_model.createClass( "http://data.silknow.org/ontology/class/T14" );
+    public static final OntClass T14 = m_model.createClass( "http://data.silknow.org/ontology/T14" );
     
-    public static final OntClass T15 = m_model.createClass( "http://data.silknow.org/ontology/class/T15" );
+    public static final OntClass T15 = m_model.createClass( "http://data.silknow.org/ontology/T15" );
     
-    public static final OntClass T16 = m_model.createClass( "http://data.silknow.org/ontology/class/T16" );
+    public static final OntClass T16 = m_model.createClass( "http://data.silknow.org/ontology/T16" );
     
-    public static final OntClass T17 = m_model.createClass( "http://data.silknow.org/ontology/class/T17" );
+    public static final OntClass T17 = m_model.createClass( "http://data.silknow.org/ontology/T17" );
     
-    public static final OntClass T18 = m_model.createClass( "http://data.silknow.org/ontology/class/T18" );
+    public static final OntClass T18 = m_model.createClass( "http://data.silknow.org/ontology/T18" );
     
-    public static final OntClass T19 = m_model.createClass( "http://data.silknow.org/ontology/class/T19" );
+    public static final OntClass T19 = m_model.createClass( "http://data.silknow.org/ontology/T19" );
     
-    public static final OntClass T2 = m_model.createClass( "http://data.silknow.org/ontology/class/T2" );
+    public static final OntClass T2 = m_model.createClass( "http://data.silknow.org/ontology/T2" );
     
-    public static final OntClass T20 = m_model.createClass( "http://data.silknow.org/ontology/class/T20" );
+    public static final OntClass T20 = m_model.createClass( "http://data.silknow.org/ontology/T20" );
     
-    public static final OntClass T21 = m_model.createClass( "http://data.silknow.org/ontology/class/T21" );
+    public static final OntClass T21 = m_model.createClass( "http://data.silknow.org/ontology/T21" );
     
-    public static final OntClass T22 = m_model.createClass( "http://data.silknow.org/ontology/class/T22" );
+    public static final OntClass T22 = m_model.createClass( "http://data.silknow.org/ontology/T22" );
     
-    public static final OntClass T23 = m_model.createClass( "http://data.silknow.org/ontology/class/T23" );
+    public static final OntClass T23 = m_model.createClass( "http://data.silknow.org/ontology/T23" );
     
-    public static final OntClass T24 = m_model.createClass( "http://data.silknow.org/ontology/class/T24" );
+    public static final OntClass T24 = m_model.createClass( "http://data.silknow.org/ontology/T24" );
     
-    public static final OntClass T25 = m_model.createClass( "http://data.silknow.org/ontology/class/T25" );
+    public static final OntClass T25 = m_model.createClass( "http://data.silknow.org/ontology/T25" );
     
-    public static final OntClass T26 = m_model.createClass( "http://data.silknow.org/ontology/class/T26" );
+    public static final OntClass T26 = m_model.createClass( "http://data.silknow.org/ontology/T26" );
     
-    public static final OntClass T27 = m_model.createClass( "http://data.silknow.org/ontology/class/T27" );
+    public static final OntClass T27 = m_model.createClass( "http://data.silknow.org/ontology/T27" );
     
-    public static final OntClass T28 = m_model.createClass( "http://data.silknow.org/ontology/class/T28" );
+    public static final OntClass T28 = m_model.createClass( "http://data.silknow.org/ontology/T28" );
     
-    public static final OntClass T29 = m_model.createClass( "http://data.silknow.org/ontology/class/T29" );
+    public static final OntClass T29 = m_model.createClass( "http://data.silknow.org/ontology/T29" );
     
-    public static final OntClass T3 = m_model.createClass( "http://data.silknow.org/ontology/class/T3" );
+    public static final OntClass T3 = m_model.createClass( "http://data.silknow.org/ontology/T3" );
     
-    public static final OntClass T30 = m_model.createClass( "http://data.silknow.org/ontology/class/T30" );
+    public static final OntClass T30 = m_model.createClass( "http://data.silknow.org/ontology/T30" );
     
-    public static final OntClass T31 = m_model.createClass( "http://data.silknow.org/ontology/class/T31" );
+    public static final OntClass T31 = m_model.createClass( "http://data.silknow.org/ontology/T31" );
     
-    public static final OntClass T32 = m_model.createClass( "http://data.silknow.org/ontology/class/T32" );
+    public static final OntClass T32 = m_model.createClass( "http://data.silknow.org/ontology/T32" );
     
-    public static final OntClass T33 = m_model.createClass( "http://data.silknow.org/ontology/class/T33" );
+    public static final OntClass T33 = m_model.createClass( "http://data.silknow.org/ontology/T33" );
     
-    public static final OntClass T34 = m_model.createClass( "http://data.silknow.org/ontology/class/T34" );
+    public static final OntClass T34 = m_model.createClass( "http://data.silknow.org/ontology/T34" );
     
-    public static final OntClass T35 = m_model.createClass( "http://data.silknow.org/ontology/class/T35" );
+    public static final OntClass T35 = m_model.createClass( "http://data.silknow.org/ontology/T35" );
     
-    public static final OntClass T4 = m_model.createClass( "http://data.silknow.org/ontology/class/T4" );
+    public static final OntClass T4 = m_model.createClass( "http://data.silknow.org/ontology/T4" );
     
-    public static final OntClass T5 = m_model.createClass( "http://data.silknow.org/ontology/class/T5" );
+    public static final OntClass T5 = m_model.createClass( "http://data.silknow.org/ontology/T5" );
     
-    public static final OntClass T6 = m_model.createClass( "http://data.silknow.org/ontology/class/T6" );
+    public static final OntClass T6 = m_model.createClass( "http://data.silknow.org/ontology/T6" );
     
-    public static final OntClass T7 = m_model.createClass( "http://data.silknow.org/ontology/class/T7" );
+    public static final OntClass T7 = m_model.createClass( "http://data.silknow.org/ontology/T7" );
     
-    public static final OntClass T8 = m_model.createClass( "http://data.silknow.org/ontology/class/T8" );
+    public static final OntClass T8 = m_model.createClass( "http://data.silknow.org/ontology/T8" );
     
-    public static final OntClass T9 = m_model.createClass( "http://data.silknow.org/ontology/class/T9" );
+    public static final OntClass T9 = m_model.createClass( "http://data.silknow.org/ontology/T9" );
     
 }

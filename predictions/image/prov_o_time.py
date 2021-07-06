@@ -30,6 +30,8 @@ for file_name in glob.glob('sys_integration_pred_timespan.csv'):
            predicted = "http://vocab.getty.edu/aat/300404510"
         if predicted == "twentieth_century_(dates_CE)":
            predicted = "http://vocab.getty.edu/aat/300404514"
+        if predicted == "fifteenth century (dates CE) ":
+           predicted = "http://vocab.getty.edu/aat/300404465"
            
 
 
@@ -64,11 +66,11 @@ for file_name in glob.glob('sys_integration_pred_timespan.csv'):
         f = '"'+str(float(score.strip('%'))/100) +'"'+"^^xsd:float ."
         g = """
            ?activity a prov:Activity ;
-           prov:AtTime "2021-02-10"^^xsd:dateTime;
+           prov:atTime "2021-02-10"^^xsd:dateTime;
            prov:used """
         x = "<"+str(image)+">" + " ."
         y = """
-           ?statement prov:WasGeneratedBy ?activity .
+           ?statement prov:wasGeneratedBy ?activity .
            
            ?actor a prov:SoftwareAgent ;
            ecrm:P70_documents """
