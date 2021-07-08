@@ -26,4 +26,4 @@ WHERE {
 
   FILTER (!bound(?ts))
 }
-GROUP BY ?museum
+

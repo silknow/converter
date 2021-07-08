@@ -22,4 +22,4 @@ WHERE {
   optional{ ?p ecrm:P126_employed ?x .
                  ?material_group skos:member ?x FILTER contains(str(?material_group), "facet")}
 }
-GROUP BY ?museum
+
