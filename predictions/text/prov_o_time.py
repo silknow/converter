@@ -47,8 +47,8 @@ for file_name in glob.glob('time-span.tsv'):
 
         c =  """
            
-           ?statement rdf:predicate ecrm:P4_has_time_span .
-           ?production ecrm:P4_has_time_span """
+           ?statement rdf:predicate ecrm:P4_has_time-span .
+           ?production ecrm:P4_has_time-span """
         d = "<"+str(predicted)+"> ."
 
         e = """
