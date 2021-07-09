@@ -23,6 +23,8 @@ for file_name in glob.glob('technique.tsv'):
            predicted = "http://data.silknow.org/vocabulary/87"
         if predicted == "velvet":
            predicted = "http://data.silknow.org/vocabulary/379"
+        if predicted == "tabby":
+           predicted = "http://data.silknow.org/vocabulary/236"
            
         a = """
         

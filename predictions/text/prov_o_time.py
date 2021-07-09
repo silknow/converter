@@ -64,7 +64,7 @@ for file_name in glob.glob('time-span.tsv'):
            
            ?actor a prov:SoftwareAgent ;
            ecrm:P70_documents """
-        j = '"document"' + " ."
+        j = '"Predictions made using a...."' + " ."
         k = """
             ?activity prov:wasAssociatedWith ?actor .
             }

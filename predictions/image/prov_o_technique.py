@@ -26,6 +26,8 @@ for file_name in glob.glob('sys_integration_pred_technique.csv'):
            predicted = "http://data.silknow.org/vocabulary/87"
         if predicted == "velvet":
            predicted = "http://data.silknow.org/vocabulary/379"
+        if predicted == "tabby":
+           predicted = "http://data.silknow.org/vocabulary/236"
            
 
 

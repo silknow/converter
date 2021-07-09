@@ -39,7 +39,7 @@ for file_name in glob.glob('sys_integration_pred_depiction.csv'):
 
             CONSTRUCT {
            ?statement a rdf:Statement .
-           ?statement rdf:subject ?production .
+           ?statement rdf:subject ?object .
            ?statement rdf:object """
            
         b = "<"+str(predicted)+"> ."
@@ -47,7 +47,7 @@ for file_name in glob.glob('sys_integration_pred_depiction.csv'):
         c =  """
            
            ?statement rdf:predicate ecrm:P65_shows_visual_item .
-           ?production ecrm:P65_shows_visual_item """
+           ?object ecrm:P65_shows_visual_item """
         d = "<"+str(predicted)+"> ."
 
         e = """
