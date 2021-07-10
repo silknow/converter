@@ -50,10 +50,16 @@ for file_name in glob.glob('sys_integration_pred_place.csv'):
            predicted = "https://sws.geonames.org/298795/"
         if predicted == "JM":
            predicted = "https://sws.geonames.org/3489940/"
-
+        if predicted == "GR":
+           predicted = "https://sws.geonames.org/390903/"
+        if predicted == "US":
+           predicted = "https://sws.geonames.org/6252001/"
+        if predicted == "PK":
+           predicted = "https://sws.geonames.org/1168579/"
 
 
            
+
         a = """
         
             prefix silk:  <http://data.silknow.org/ontology/>

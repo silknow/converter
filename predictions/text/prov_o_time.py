@@ -27,7 +27,11 @@ for file_name in glob.glob('time-span.tsv'):
            predicted = "http://vocab.getty.edu/aat/300404510"
         if predicted == "twentieth century (dates CE)":
            predicted = "http://vocab.getty.edu/aat/300404514"
-           
+        if predicted == "fifteenth century (dates CE) ":
+           predicted = "http://vocab.getty.edu/aat/300404465"
+                      
+
+
         a = """
         
             prefix silk:  <http://data.silknow.org/ontology/>
