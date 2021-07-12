@@ -66,7 +66,7 @@ for file_name in glob.glob('sys_integration_pred_timespan.csv'):
         f = '"'+str(float(score.strip('%'))/100) +'"'+"^^xsd:float ."
         g = """
            ?activity a prov:Activity ;
-           prov:atTime "2021-02-10"^^xsd:dateTime;
+           prov:atTime "2021-05-21"^^xsd:dateTime;
            prov:used """
         x = "<"+str(image)+">" + " ."
         y = """
@@ -74,7 +74,7 @@ for file_name in glob.glob('sys_integration_pred_timespan.csv'):
            
            ?actor a prov:SoftwareAgent ;
            ecrm:P70_documents """
-        j = '''"Predictions made using a CNN-based image classification software. Given an input image, the model, available at https://zenodo.org/record/4742418, is able to predict values for five properties, namely production 'timespan', 'production place', 'technique', 'material' and 'depiction'. It has been trained based on a February 2021 snapshot of the Knowledge Graph. The multi-task learning (MTL) variant is being used in a multi-class classification (mutually exclusive classes) fashion based on the softmax function for computing the class scores."''' + " ."
+        j = '''"Predictions made using a CNN-based image classification software. Given an input image, the model, available at https://doi.org/10.5281/zenodo.5091813, is able to predict values for five properties, namely production 'timespan', 'production place', 'technique', 'material' and 'depiction'. It has been trained based on a May 2021 snapshot of the Knowledge Graph. The multi-task learning (MTL) variant is being used in a multi-class classification (mutually exclusive classes) fashion based on the softmax function for computing the class scores."''' + " ."
         k = """
             ?activity prov:wasAssociatedWith ?actor .
             }

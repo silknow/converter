@@ -1,7 +1,0 @@
-SELECT  DISTINCT ?obj 
-WHERE {
-  
-                ?statement a rdf:Statement .
-                ?statement rdf:subject ?prod .
-                ?prod ecrm:P108_has_produced ?obj 
-}
