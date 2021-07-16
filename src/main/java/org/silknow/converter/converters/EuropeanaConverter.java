@@ -7,6 +7,8 @@ import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 
 import java.io.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class EuropeanaConverter extends Converter {
 
@@ -43,7 +45,14 @@ public class EuropeanaConverter extends Converter {
     filename = file.getName();
 
 
-    String regNum = s.getMulti("Identifier").skip(1).findFirst().orElse(null);
+    String regNum = s.getMulti("Identifier")
+      .map(Object::toString)
+      .collect(Collectors.joining(", "));
+
+    regNum = regNum.replaceAll("http\\S*", "");
+    regNum = regNum.replaceAll(",", "");
+    System.out.print(regNum);
+
     if (regNum == null)
       regNum = s.getId();
     id = s.getId();

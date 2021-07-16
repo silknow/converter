@@ -68,7 +68,7 @@ for file_name in glob.glob('time-span.tsv'):
            
            ?actor a prov:SoftwareAgent ;
            ecrm:P70_documents """
-        j = '"Predictions made using a...."' + " ."
+        j = '''"Predictions made using a CNN-based text classification software with cross-lingual word embeddings. Given an input text description of a silk object, the models available at https://zenodo.org/record/5070696 are able to predict values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The models have bee trained based on a May 2021 snapshot of the Knowledge Graph. The single task multi-class classification (mutually exclusive classes) models have a softmax classification head, the maximum value output of which corresponds to the provided prediction score."''' + " ."
         k = """
             ?activity prov:wasAssociatedWith ?actor .
             }
