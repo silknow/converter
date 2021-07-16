@@ -45,6 +45,13 @@ The `<group>` is taken from this table
 | E21_Person | actor |
 | E39_Actor | actor |
 
+For the metadata predictions (either based on text or image) we created the following two groups, whereas the general pattern is the same as above:
+
+| Class | Group |
+| --- | --- |
+| prov:Activity | activity |
+| rdf:Statement | statement |
+
 ## Secondary entities
 
 This group includes entities that cover specific information about the main entities. The URI is realized appending a suffix to the parent main entity.
@@ -98,6 +105,7 @@ There are some exceptions to this rule, in order to allow automatic cross-source
 * For Collection, it's the same case as for Places and Actors, but we also use the source addition.
 * For the Images we use a concatenation of id (internal ID of museum record) + "$$$" + imgCount (How many images does the object have) + this.localFilename
 * For E11 Modification the seed is either the value of the original field, or (if it can be parsed from it) the author or the year of the modification.
+* For rdf:Statement and prov:Activity the UUID is always the same per prediction. The seed is either the according object UUID + the image file name and the predicted class (image-based predictions) or the object UUID + the predicted value + the confidence score + the file name of the prediction csv (text-based).
 
 Examples:
 * For most classes: [source]+[class]+[record_internal_id]
