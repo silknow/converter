@@ -7,11 +7,15 @@ import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 
 import java.io.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LouvreConverter extends Converter {
 
+  private static final String DIMENSION_REGEX = "Largeur : (\\d+(?:\\.\\d+)?) cm ; Hauteur : (\\d+(?:\\.\\d+)?) cm";
+  private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX);
 
   @Override
   public boolean canConvert(File file) {
@@ -25,8 +29,10 @@ public class LouvreConverter extends Converter {
     if (!this.canConvert(file))
       throw new RuntimeException("LouvreConverter require files in JSON format.");
 
-    String mainLang = "en";
+    String mainLang = "fr";
     this.DATASET_NAME = "louvre";
+
+    String museumName = "Musée du Louvre";
 
     // Parse JSON
     logger.trace("parsing json");
@@ -45,28 +51,28 @@ public class LouvreConverter extends Converter {
     filename = file.getName();
 
 
-    String regNum = s.getMulti("Identifier")
-      .map(Object::toString)
-      .collect(Collectors.joining(", "));
-
-    regNum = regNum.replaceAll("http\\S*", "");
-    regNum = regNum.replaceAll(",", "");
-    System.out.print(regNum);
+    String regNum = s.getMulti("Numéro d’inventaire").findFirst().orElse(null);
 
     if (regNum == null)
       regNum = s.getId();
     id = s.getId();
 
+
+
     ManMade_Object obj = new ManMade_Object(regNum);
-    s.getMulti("title")
-      .map(x -> obj.addClassification(x, "title", mainLang))
+
+    s.getMulti("Type d'objet")
+      .map(x -> obj.addClassification(x, "Type d'objet", mainLang))
       .forEach(this::linkToRecord);
-    s.getMulti("Subject")
-      .map(x -> obj.addClassification(x, "Subject", mainLang))
+
+    s.getMulti("Catégorie")
+      .map(x -> obj.addClassification(x, "Catégorie", mainLang))
       .forEach(this::linkToRecord);
-    s.getMulti("Type of object")
-      .map(x -> obj.addClassification(x, "Type of object", mainLang))
+
+    s.getMulti("Type")
+      .map(x -> obj.addClassification(x, "Type", mainLang))
       .forEach(this::linkToRecord);
+
     linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
 
 
@@ -78,12 +84,30 @@ public class LouvreConverter extends Converter {
     Production prod = new Production(regNum);
     prod.add(obj);
 
-    s.getMulti("Date").forEach(prod::addTimeAppellation);
-    s.getMulti("Creation date").forEach(prod::addTimeAppellation);
 
-    s.getMulti("Medium").forEach(material -> prod.addMaterial(material.split(",")[0], mainLang));
+    s.getMulti("Artiste / Auteur / Ecole / Centre artistique").forEach(author -> prod.addActivity(new Actor (author), "Artiste / Auteur / Ecole / Centre artistique"));
 
-    linkToRecord(obj.addObservation(s.get("description"), "Description", "en"));
+    obj.addTitle(s.get("title"), mainLang);
+
+
+
+    if (s.getMulti("Description / Décor").findFirst().orElse(null) != null) {
+      linkToRecord(obj.addObservation(s.get("Description / Décor"), "Description / Décor", mainLang));
+    }
+
+    String dim = s.getMulti("Dimensions").findFirst().orElse(null);
+    if (dim != null) {
+      Matcher matcher = DIMENSION_PATTERN.matcher(dim);
+      if (matcher.find()) {
+        linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
+      }
+    }
+
+    s.getMulti("Date de création / fabrication").forEach(time -> prod.addTimeAppellation(time.replaceAll("Epoque / période : ","").replaceAll("Date de création/fabrication : ","")));
+
+    s.getMulti("Matière et technique").forEach(material -> prod.addMaterial(material.replaceAll("Matériau/Technique : ","").replaceAll("Matériau : ",""), mainLang));
+    s.getMulti("Lieu de création / fabrication / exécution").forEach(prod::addPlace);
+
 
     LegalBody legalbody = new LegalBody(s.getMulti("Providing institution").findFirst().orElse(null));
 
@@ -102,6 +126,26 @@ public class LouvreConverter extends Converter {
       .map(x -> x.replaceFirst("© ", ""))
       .map(Actor::new)
       .forEach(copyphoto::ownedBy);
+
+    if (s.getMulti("Collection").findFirst().orElse(null) != null) {
+      Collection collection = new Collection(regNum, s.getMulti("Collection").findFirst().orElse(null));
+      collection.of(obj);
+      collection.addAppellation(s.getMulti("Collection").findFirst().orElse(null));
+      linkToRecord(collection);
+    }
+
+    String acquisitionFrom = s.get("Mode d’acquisition");
+    LegalBody museum = new LegalBody(museumName);
+
+    Acquisition acquisition = new Acquisition(regNum);
+
+    if (s.get("Bibliografía") != null) {
+      InformationObject bio = new InformationObject(regNum + "b");
+      bio.setType("Bibliografía", mainLang);
+      bio.isAbout(obj);
+      bio.addNote(s.get("Bibliografía"), mainLang);
+      linkToRecord(bio);
+    }
 
     linkToRecord(obj);
 
