@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/d665c632-f2ac-5205-ab4b-98885a67f2f3> a rdf:Statement ;
+    silk:L18 "0.723281"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404513> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/208c7e50-32c5-3851-be8e-0a7af7f861bd> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/d665c632-f2ac-5205-ab4b-98885a67f2f3> .
+
+<http://data.silknow.org/activity/d665c632-f2ac-5205-ab4b-98885a67f2f3> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Elément de bordure en satin blanc brodée de soie et cordonnets colorés. Bande de section rectangulaire, dont l’un des angles est lacunaire. Broderie au point de chaînette, dit « point de Beauvais ». Dessin de guirlande de fleurs et cordons perlés.
+
+Historique : 
+L’intérêt pour ces broderies se répandit dans les productions lyonnaises à partir du milieu du XVIIIe siècle, répondant à un changement de goût."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/208c7e50-32c5-3851-be8e-0a7af7f861bd> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404513> .
+

@@ -1,0 +1,87 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/a78deb00-a8b6-5347-9e41-ddc30d6171c6> a rdf:Statement ;
+    silk:L18 "0.723281"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404513> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/0794649f-f1b2-31cb-b237-e438c3e49f27> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/a78deb00-a8b6-5347-9e41-ddc30d6171c6> .
+
+<http://data.silknow.org/activity/a78deb00-a8b6-5347-9e41-ddc30d6171c6> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """portière basse lisse sans or, 3ème bordure par Pierre Josse Perrot
+carton : vers 1699 Cf : GOB-474-001. GOB-47-002. GOB-47-003. GOB-47-004.
+tissage : période 1740 - 1774
+
+Domaine 	
+
+tapisserie
+Dénomination 	
+
+tenture ; élément d'ensemble
+Titre 	
+
+Portières des Dieux (sans or, troisième bordure) : Jupiter ou le Feu
+Auteur/exécutant 	
+
+AUDRAN Claude III (auteur du modèle) ; manufacture des Gobelins (manufacture)
+Précision auteur/exécutant 	
+
+AUDRAN : Lyon, 1658 ; Paris, 1734
+Ecole 	
+
+France
+Lieu création / utilisation 	
+
+France (lieu de création) ; Paris (lieu d'exécution)
+Période création/exécution 	
+
+18e siècle
+Millésime création/exécution 	
+
+1740 commencé après ; 1774 achevé avant
+Matériaux/techniques 	
+
+laine, soie, haute lisse
+Dimensions 	
+
+H. 345 ; l. 267
+Sujet représenté 	
+
+figure mythologique (les quatre éléments, feu, Jupiter, assis, aigle, foudre, putti, autel, trophée, bouclier, bouc, vase, orfèvrerie, arc, torche, console orn, trépied, casque, ruche, portique, guirlande, fleur, phénix, en médaillon)
+Précision sujet représenté 	
+
+Au-dessous d'un portique orné de guirlandes de fleurs, Jupiter est assis sur son aigle et tient de la main droite son foudre et de l'autre main une baguette ; à gauche, un amour se tient dans son manteau. Sur le soubassement, au milieu, un autel est surmonté d'un trophée de bouclier, branches et tête de bouc. De chaque côté de l'autel, à droite, un vase d'orfèvrerie et un Amour préparant son arc, à gauche un Amour tenant une torche. Sur les consoles, à droite et à gauche, un trépied allumé, un bouclier et un casque. Au-dessus des colonnettes, deux ruches, deux aigles, des guirlandes de fleurs et un médaillon avec un autel allumé. De chaque côté des colonnettes, une chute de torches, de loupes et un médaillon représentant un phénix dans le feu.
+Lieu de conservation 	
+
+Paris ; Mobilier national
+	
+
+Musée de France
+au sens de la loi n°2002-5 du 4 janvier 2002
+Statut juridique 	
+
+propriété de l'Etat ; Paris ; Mobilier national
+Anciennes appartenances 	
+
+Fonds ancien du garde-meuble (inv. 283-1)
+Numéro d'inventaire 	
+
+GMTT 169/4
+Bibliographie 	
+
+Maurice Fenaille, Etat général des tapisseries de la manufacture des Gobelins depuis son origine jusqu'à nos jours, 1600-1900, Impr. Nationale, Paris, 1903-1923 (III, p. 49-50) ; Jules Guiffrey, Inventaire général des richesses d'art de la France, Paris, monuments civils, tome IV : Tapisseries du Garde-Meuble, Paris, 1913 (p. 115)
+Rédacteur 	
+
+Emmanuelle Plumet ; Monique de Savignac ; Jean Vittet"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/0794649f-f1b2-31cb-b237-e438c3e49f27> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404513> .
+

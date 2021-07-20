@@ -1,0 +1,33 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/ec0b7b80-a227-5ec9-8de2-f3bf339304c4> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/e5d628ea-eae1-3a89-bd44-785a125c07d8> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/ec0b7b80-a227-5ec9-8de2-f3bf339304c4> .
+
+<http://data.silknow.org/activity/ec0b7b80-a227-5ec9-8de2-f3bf339304c4> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Eléments de bordures pour sièges et talon de la bordure de tenture. Pièces de section carrée. Velours ciselé jaune d'or sur fond satin carrelé cramoisi, dessin courant de feuilles d'eau.
+GMMP 253-001-001 : Lg. 0,270 x Larg. 0,128 m.
+GMMP 253-001-002 : Lg. 0,270 x Larg. 0,121 m.
+GMMP 253-001-003 : Lg. 0,495 x Larg. 0,135 m.
+GMMP 253-001-004 : Lg. 0,486 x Larg. 0,150 m. L'un des bords longitudinaux présente encore sa lisière.
+GMMP 253-001-005 : Lg. 0,283 x Larg. 0,141 m.
+GMMP 253-001-006 : Lg. 0,111 x Larg. 0,140 m.
+
+Historique :
+Bordures exécutées par Dutillieu et Theoleyre, à Lyon, pour deux salons de ministres ou de grands officiers au Palais de Versailles.
+Ces bordures n'ont pas été utilisées sous l'Empire mais dès le 19 juillet 1818, des métrages ont été envoyés à Vienne où le comte de Caraman était alors Ambassadeur de France. Par ailleurs, cette bordure a fait partie des étoffes dont l'emploi a été autorisé exceptionnellement pour le Ministère de l'Intérieur en 1819."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/e5d628ea-eae1-3a89-bd44-785a125c07d8> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

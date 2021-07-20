@@ -1,0 +1,23 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/f5be7cea-3282-52fd-b2a8-8495ba6efdda> a rdf:Statement ;
+    silk:L18 "0.453908"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/130758/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/800ba330-0557-3187-82eb-fb8617dde14d> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/f5be7cea-3282-52fd-b2a8-8495ba6efdda> .
+
+<http://data.silknow.org/activity/f5be7cea-3282-52fd-b2a8-8495ba6efdda> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Silk programme on cream silk in black typography.  Produced for the 41st performance of 'Melodrame Mad!  or The Siege of Troy' and the 101st performance of 'Heart of Mid Lothian', also advertising next Monday's performance of 'Scanderbeg', Surrey Theatre, 6th August 1819."@en ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/800ba330-0557-3187-82eb-fb8617dde14d> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/130758/> .
+

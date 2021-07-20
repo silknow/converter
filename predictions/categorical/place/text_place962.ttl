@@ -1,0 +1,27 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/75f9e3f6-a648-5cbb-b477-937492ba9407> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/50919b3c-f37e-394c-a846-35c1c1c36cbb> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/75f9e3f6-a648-5cbb-b477-937492ba9407> .
+
+<http://data.silknow.org/activity/75f9e3f6-a648-5cbb-b477-937492ba9407> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Dans une lettre qu’Albert Gayet écrit à Émile Guimet depuis Rodah, le 25 mars 1898, pour l’informer des résultats de sa campagne, l’archéologue annonce : « j’ai à cette heure vingt manteaux d’hommes avec splendides soieries, plusieurs paires de jambières incomparables fond vert, avec semis de médaillons rouges renfermant chacun une figure d’animal, dix paires de manchettes de cuir avec applications de soieries (des taureaux ailés et des oiseaux, style assyrien) [...]. » Les « taureaux ailés » sont à nouveau cités par Albert Gayet dans l’introduction au Catalogue des objets recueillis à Antinoé pendant les fouilles de 1898, et l’auteur précise qu’il s’agit du numéro 108 dans le meuble à volets, c’est-à-dire la « soierie de manchette, fond jaune, taureaux de style sassanide » provenant de la tombe B 108. 
+À l’issue de l’exposition, la majeure partie de l’étoffe rejoint la collection lyonnaise. Quelques fragments demeurent au musée Guimet. Ils sont aujourd’hui conservés au musée du Louvre (inv. E 29376). Le décor de ce samit, dessiné au moyen de trois lats bleu foncé, blanc et ocre-rouge, est constitué, en réalité, de registres avec des bouquetins passants, alternativement tournés vers la gauche sur une frise et en sens inverse sur la suivante, comme le montre une gouache d'Émile Chazot conservée au musée du Louvre. D’un registre à l’autre, les animaux sont disposés en quinconce. Les animaux, pourvus de cornes volumineuses qui dessinent une grande volute au-dessus de leur tête, ont un collier perlé autour de l’encolure attaché par un ruban flottant.
+Comme la soierie extraite de la tombe B 165 (inv. MT 26812.11), ils présentent des caractéristiques techniques qui les distinguent des autres samits exhumés dans les nécropoles d’Antinoé. La proportion de leur chaîne est de un fil triple pièce pour un fil de liage. Les fils sont en soie brun-rouge, et les lats, de trois couleurs, sont tous suivis. Leurs lisières, également, sont parfaitement identiques, ainsi que la réduction des chaînes et le nombre de passées par centimètre, à tel point qu’on est tenté de les croire issus d’un même atelier, sinon d’une même région de production, étrangère à l’Égypte. C’est aussi ce que semble indiquer l’usage sur les deux pièces du « berclé », un effet particulier de dessin permettant, par la juxtaposition de trames de deux couleurs contrastées, d’obtenir un ton moyen. La direction du liage en sergé varie cependant d’un exemplaire à l’autre. Elle est en S sur l’exemplaire issu de la tombe B 165, en Z pour celui de la tombe B 108.
+Des exemplaires comparables de soieries, ornées de chevaux ailés ou de bouquetins passants, ont récemment été identifiés, dans la collection Katoen Natie à Anvers (inv. 938 a)ou au Metropolitan Museum of Art de New York (inv. 2005.134), notamment. La provenance centre-asiatique de ces pièces est avérée, confirmant le fait que les soieries découvertes par Albert Gayet constituaient vraisemblablement des importations. Quelques rares exemples d’étoffes précieuses, produites en Asie Centrale ou en Inde ont été mis au jour dans les sépultures antinoïtes (inv. MT 26812.13, MT 28518, MT 28520.122, Paris, musée du Louvre, inv. E 29180, et Lille, Palais des Beaux-Arts, inv. D.2011.0.2). 
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/50919b3c-f37e-394c-a846-35c1c1c36cbb> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

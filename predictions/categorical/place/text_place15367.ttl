@@ -1,0 +1,30 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/35b0a380-cbed-590e-a4ac-617ccb2a1553> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/68cf6e32-16a9-3a69-84a3-32d308866dbb> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/35b0a380-cbed-590e-a4ac-617ccb2a1553> .
+
+<http://data.silknow.org/activity/35b0a380-cbed-590e-a4ac-617ccb2a1553> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Eléments de bordures pour pour dossiers de sièges. Section rectangulaire. Velours uni fond pomme jaune chiné nuée, dessin à courant de fleurs et de feuilles. 
+GMMP 754-003-001 : Lg. 0,142 x Larg. 0,499 m. Une lisière toujours présente. Festonnage sur les bords latéraux (au fil blanc).
+GMMP 754-003-002 : Lg. 0,133 x Larg. 0,509 m. Festonnage sur letout le pourtour de l'étoffe (au fil blanc).
+GMMP 754-003-003 : Lg. 0,261 x Larg. 0,505 m. Festonnage sur letout le pourtour de l'étoffe (au fil blanc).
+
+Historique : 
+Ce velours chiné fut commandé en l'an X (1802) à Camille Pernon par le général Duroc, d'après les ordres du Premier Consul, pour la Salle des Ambassadeurs de Saint-Cloud, au rez-de-chaussée, à côté du Salon des officiers de service. 
+Les étoffes ne furent néanmoins pas utilisées à Saint-Cloud. C'est seulement en 1808 qu'il fut décidé d'envoyer ce meuble pour la Chambre à coucher de l'Empereur Napoléon à Fontainebleau, au premier étage, dans l'ancien cabinet à poudre de Louis XVI. Avant d'entreprendre la confection, le tapissier Flamand confia les étoffes à la maison Picot pour broder le fond afin de l'éclairicir."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/68cf6e32-16a9-3a69-84a3-32d308866dbb> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

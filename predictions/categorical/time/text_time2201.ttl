@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/a969c296-f3c4-511d-a01a-9ca255cc7df5> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/038f244e-47f0-3bdc-899e-67739b5f8bae> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/a969c296-f3c4-511d-a01a-9ca255cc7df5> .
+
+<http://data.silknow.org/activity/a969c296-f3c4-511d-a01a-9ca255cc7df5> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Le menu imprimé commémore le dîner organisé à l’occasion de l’Exposition internationale urbaine de Lyon, le 2 juillet 1914, pour les congressistes de l’Union des syndicats patronaux de l’Industrie textile en France. L’impression, sur un satin de belle qualité, a été réalisée par la maison Arnaud, située à Lyon et à Paris. 
+Le menu présente, sur sa couverture, l’entrée principale de l’Exposition internationale urbaine, avec le bâtiment de Tony Garnier, puis à l’intérieur, outre le menu lui-même et la liste des vins, un double portrait de Philippe de Lasalle, d’après le dessin de Jean-Jacques de Boissieu conservé au musée des Arts décoratifs (inv. MAD 2308), et de Joseph-Marie Jacquard, d’après le portrait de Jean-Claude Bonnefond commandé par la Ville de Lyon et livré en 1834, quelques jours après la mort de l’inventeur de la mécanique qui porte son nom. Un métier Jacquard figure d’ailleurs également sur cette double page, d’après une photographie. Enfin, la dernière page présente une vue du coteau de Fourvière et une vue de l’Hôtel de Ville de Lyon.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/038f244e-47f0-3bdc-899e-67739b5f8bae> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/bc9211d8-e7c5-50dc-a3f3-16487bbb5f8d> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/db16afe5-d42d-3e84-8ed3-b85f4c2216dc> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/bc9211d8-e7c5-50dc-a3f3-16487bbb5f8d> .
+
+<http://data.silknow.org/activity/bc9211d8-e7c5-50dc-a3f3-16487bbb5f8d> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Dépècement de garniture pour siège (assise) en gros de Tours 15/16 jaune brodé au passé de soie amarante. Dessin central de lyre dans une couronne de blaches d'olivier et de fleurs, encadré par une frise de trèfles. Les bordures sont ornées d'une frise de branches d'olivier.
+
+Historique :
+Boulard, chargé en 1808 de l'ameublement des nouveaux appartements de l'Empereur et de l'Impératrice au rez-de-chaussée de Fontainebleau a fait exécuter la broderie d'un 15/16 jaune pour le Grand Salon de Joséphine. Le devis du 4 décembre 1808 comprenait huit pièces de tenture, huit parties de rideaux, la façon et la garniture de deux canapés divan, d'un autre canapé, de deux bergères, six fauteuils, vingt-six chaises, quatre tabourets de pieds, un écran. L'ensemble figure à l'inventaire de Fontainebleau de 1810. Cette même année, les tapissiers Poussin et Lejeune ont été chargés de supprimer sur six dessus d'oreillers double face et sur l'écran le chiffre J. qu'il ont remplacé par le monogramme M.L. de la nouvelle impératrice Marie-Louise. Deux parties de tenture ont aussi été rebrodées. Ce salon a conservé son décor et son ameublement d'origine, à l'exception de dix chaises rentrées au Garde-Meuble en 1869 ; elles appartiennent toujours au Mobilier national (GMT 1296). La tenture, déposée en 1865, avait été installée dans le Gros Pavillon. Elle a été remise en place dans ce salon en 1955."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/db16afe5-d42d-3e84-8ed3-b85f4c2216dc> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

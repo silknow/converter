@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/3bc82a22-fff4-5d7a-bb8c-5f404c303160> a rdf:Statement ;
+    silk:L18 "0.351471"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3017382/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/92cfa0db-6fb3-3929-aba0-95b541adfe61> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/3bc82a22-fff4-5d7a-bb8c-5f404c303160> .
+
+<http://data.silknow.org/activity/3bc82a22-fff4-5d7a-bb8c-5f404c303160> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Cinturón ancho con picos en la zona central, realizado con armazón de cartón cubierto por tres piezas de tejido de tafetán de seda beige con decoración bordada con punto de cadeneta con hilos de algodón de colores. La decoración se desarrolla a partir de un eje de simetría que se localiza en el centro de la pieza que está ocupado por un hueco circular, destinado probablemente a albergar alguna imagen actualmente desaparecida y que aparece enmarcado por un ramo de carácter vegetal formado por distintos tipos de flores, hojas y pequeños frutos, que extiende sus ramas hacia los extremos de la pieza.   
+El cinturón se cierra con tres pares de cintas de tafetán de seda que se localizan en los extremos de la pieza, habiéndose perdido dos de ellas . Estas cintas son listadas en rosa y celeste a excepción de la de la parte inferior del lateral izquierdo que es rosa. Se conserva en la misma zona alguno de los corchetes originales.  
+Forro de tafetán de seda de color beige."""@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/92cfa0db-6fb3-3929-aba0-95b541adfe61> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3017382/> .
+

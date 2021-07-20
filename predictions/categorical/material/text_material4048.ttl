@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/b3dc6f81-28e5-547c-9fc2-5e54bf71e901> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/d29746f0-2740-3b0c-8dcf-cf3cdd707f76> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/b3dc6f81-28e5-547c-9fc2-5e54bf71e901> .
+
+<http://data.silknow.org/activity/b3dc6f81-28e5-547c-9fc2-5e54bf71e901> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Albert Gayet, dans le Catalogue des objets recueillis à Antinoé pendant les fouilles de 1898 indique que cette soierie constituait une « manchette coulissée, soie gris-jaune, dessin losanges, décrits par des chaînages d'amandes vertes ; marguerites et pois brochés de marguerites inscrites. » C'est la seule fois qu'il qualifie ainsi une soierie. Dans le Catalogue, il réserve l'adjectif « coulissé » aux cols et aux revers des manteaux d'hommes garnis de cordelettes appliquées recouvertes d'une toile fine en laine et bordées de parements. Sur les fragments de soierie de Lyon (inv. MT 26812.32 et MT 40313.1 ainsi que MT 40313.2), il ne reste rien de ce dispositif qui aurait orné une manche. Seule une couture subsiste.
+Le décor est aujourd'hui difficile à lire parfaitement, puisqu'on ne distingue plus le lat crème du lat ocre. Le lat bleu-vert dessine, sur le fond qui paraît monochrome, un réseau losangé formé par des pastilles ovoïdes. Aux intersections des mailles prennent place des rosettes à quatre ou huit pétales. Dans les losanges s'inscrivent des médaillons, contenant une rosette à quatre pétales, ou une grosse fleur, également à quatre pétales, entourés d'un cerne rayonnant.
+Par la proportion de ses chaînes et la gamme des couleurs utilisées, bleu-vert, crème et ocre, le samit se rattache au groupe des « soieries d'Antinoé » attribuable aux ateliers de la ville entre le milieu du Ve siècle et le début du VIIe siècle. Cependant, la couleur brun-rouge de la chaîne, le liage en Z du sergé, le nombre des passées inférieur à la moyenne généralement observée, les irrégularités dans le traitement du rapport de dessin et l'absence d'erreur de tissage engendrée par un travail à contretemps du tisserand et du tireur semblent révéler une production issue d'autres ateliers méditerranéens que ceux habituellement représentés dans le matériel antinoïte.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/d29746f0-2740-3b0c-8dcf-cf3cdd707f76> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

@@ -1,0 +1,31 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/55920eb8-026c-5a55-a5e5-af9d646f4cf0> a rdf:Statement ;
+    silk:L18 "0.375053"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3017382/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/5d0d1550-3c48-337e-8336-8db45d7e197f> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/55920eb8-026c-5a55-a5e5-af9d646f4cf0> .
+
+<http://data.silknow.org/activity/55920eb8-026c-5a55-a5e5-af9d646f4cf0> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "English, 1722, gilded, Glemham Hall"@en,
+        """From a set of ten chairs, a pair of stools and a pair of small settees, from Glemham Hall in Suffolk.
+The frames are of carved and gilt-gessoed walnut. The seat-rails of the set are arched at the centre and carved with over-scrolled inverted lambrequins framed by acanthus  leaves. The cabriole legs have similar motifs above the cabuchons at the knees, the decoration continuing down in trellised, shaped narrow panels, terminating in square acanthus leaf pad feet. The settees have tall raked upholstered backs, and outswept scrolled upholstered arms.
+The set is covered in a material exactly copied from the original upholstery dating from between 1717 and 1723. It embodies two sorts of silver and two sorts of gold thread on a background of salmon pink silk which shows through the rich brocading to form a delicate linear pattern.
+Under the settees are labels marked 'North Heirlooms' followed by the numbers '26' and '27'. 
+Instead of a secondary frame which is underneath the chairs and stools, the settees have struts, shaped at the top and nailed across the corners. Under all the set the walnut  frames have a yellow ochre colour where the gesso shows ungilded. The bolus, which shows through the gilding in places, is a brownish red."""@en,
+        """This chair is from a set of seat furniture orginally at Glenham Hall, in Suffolk. Glenham Hall was the seat of the North family. The set of furniture, which comprises ten chairs, two stools, and two settees, dates from the 1720s. It may have been made in 1722, when alterations were carried out Glenham Hall. The set is remarkable for its rich carving and original gilding. 
+
+The settee is currently on loan to Marble Hill House."""@en ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/5d0d1550-3c48-337e-8336-8db45d7e197f> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3017382/> .
+

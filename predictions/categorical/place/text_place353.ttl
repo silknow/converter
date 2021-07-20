@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/15771cf7-a75a-5c02-a8d2-491000b8e4a6> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/86ebc148-5359-3243-ba51-8f7b9bba83aa> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/15771cf7-a75a-5c02-a8d2-491000b8e4a6> .
+
+<http://data.silknow.org/activity/15771cf7-a75a-5c02-a8d2-491000b8e4a6> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Sur le fond havane de l’étoffe, des ornements argent, évoquant à la fois les circonvolutions d’un coquillage et les enroulements de crosses feuillues et chargés de fleurs en panaches ou en boules, de feuilles et de branches d’arbres fruitiers, dessinent une succession de cartouches. Ils contiennent une terrasse rocaille, au milieu de laquelle repose un gros fruit qui rappelle une grenade. Des primevères et des fougères complètent cette composition ornementale de fantaisie. Un effet particulier de tissage, appelé « berclé » ou « points rentrés », donne un relief extraordinaire au dessin, particulièrement soigné sur cette étoffe de grand luxe. 
+ 	L’invention de cet effet « berclé » est attribuée à Jean Revel (1684-1751), figure emblématique de l’émancipation et du développement par le dessin de l’industrie de la soie à Lyon. Il est le premier à introduire ce système d’interpénétration des couleurs sous la forme de petites hachures horizontales donnant l’illusion d’un fondu entre tons clairs et tons foncés qui permet de traduire pour la première fois sur étoffe des effets comparables à ceux obtenus en peinture. Fils du peintre d’histoire et de portraits Gabriel Revel (1643-1712), reçu à l’Académie royale de peinture en 1683, Jean Revel s’est probablement établi à Lyon en 1710. Il mène une carrière de négociant ou marchand-fabricant, et il est mentionné, dès 1715, comme « bourgeois. » C’est son activité de dessinateur, surtout, qui l’a rendu célèbre. Elle lui a valu, de son vivant déjà, le titre de « Raphaël de la Fabrique ». Il est difficile de lui attribuer avec certitude le dessin d’étoffes en particulier. La très grande qualité de l'étoffe du musée des Tissus doit être soulignée, au sein des tissus à effet « berclé » des premières années du règne de Louis XV.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/86ebc148-5359-3243-ba51-8f7b9bba83aa> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

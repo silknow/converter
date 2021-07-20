@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/8ed66a09-ead9-5590-9a50-6a90314b4836> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/4f240399-c640-3098-a737-eec7dee02bdc> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/8ed66a09-ead9-5590-9a50-6a90314b4836> .
+
+<http://data.silknow.org/activity/8ed66a09-ead9-5590-9a50-6a90314b4836> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """En 1910, Louis Tassinari tente une expérience nouvelle qu'il mène en dehors de la société. Fortement impressionné par les recherches de Gaspard Grégoire et par les conclusions de sa Table des couleurs, publiée en 1813, où l'auteur avait disposé mille trois cent cinquante teintes graduées obtenues par le mélange des couleurs, il élabore un procédé inédit, le tissage d'un velours façonné comportant trois couleurs, chacune nuancée de trois tons auxquels s'ajoutent deux qualités de blanc, pour réaliser le portrait de son père, Cleto Tassinari (1821-1885). La mise en carte de ce velours a été réalisée par Reine Déplanche. Elle est conservée au musée des Tissus (inv. MT 2012.1.8), avec un exemplaire du velours ainsi produit (inv. MT 29577). En 1911, Louis Tassinari reproduisit l'expérience pour tisser un second portrait, celui d'Hélène de Monténégro, reine d'Italie, l'épouse du roi Victor-Emmanuel III. Le modèle est une photographie de la souveraine assise, dont il ne retient que le buste, contenu dans un médaillon. Le blason italien repose en partie inférieure, et des branchages de laurier, des guirlandes de fleurs nouées de rubans tricolores, des draperies aux couleurs de la France et de l'Italie complètent la composition. Louis Tassinari en fit présent à la reine en 1911. Le portrait est exécuté selon la même technique que celui de Cleto Tassinari, mais il ajoute la couleur noire, inexistante sur le précédent, utilisée seulement pour la chevelure. Cette couleur représente un corps du velours discontinu sur la hauteur du tissu et interrompu dans la largeur. Le 11 janvier 1913, Louis Tassinari sollicite un brevet d'invention de quinze années pour son procédé de fabrication de tissus à poils à teintes multiples, délivré le 12 janvier 1914 et publié le 19 mars de la même année sous le numéro 464.353. Il espérait, en effet, l'exploiter avec des partenaires suisses pour l'adaptation de ce type de tissage à la réalisation de tapis mécaniques, mais le projet fut interrompu par l'avènement de la Première Guerre mondiale et n'eut pas de suite. Les portraits de Cleto Tassinari et d'Hélène de Monténégro restent donc des chefs-d'œuvre isolés, extraordinaires dans leur exécution, difficilement reproductible. 
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/4f240399-c640-3098-a737-eec7dee02bdc> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

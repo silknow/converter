@@ -1,0 +1,28 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/d77ad789-2ac9-50f3-9a58-3edd33d3d79f> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/d206cbd4-4c9a-3c4f-9475-cdbecfdc923d> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/d77ad789-2ac9-50f3-9a58-3edd33d3d79f> .
+
+<http://data.silknow.org/activity/d77ad789-2ac9-50f3-9a58-3edd33d3d79f> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Lé de tissu présentant 2 éléments de bordure (les deux lisières sont visibles). Au niveau du bord supérieur, le début du tissage du motif est visible, marqué par 3 liserés lilas. Des marques de pliures sont visibles à une quizaine de centimètres de bords supérieur et inférieur. 
+Satin blanc broché or et soie nuée. 
+2 frises principales présentant des enroulements d'ornements, des fleurs et des feuilles de pavots coloriées. Chacune encadrée par une bordure avec alternance d'éléments végétaux stylisés sur fond vert et une bordure faite d'un bandeau doré uni et d'un liseré lilas. 
+
+Historique :
+Textile destiné à la chambre à coucher de l'Empereur au Palais de Versailles. En 1821, les étoffes étaient toujours dans les magasins du Garde-Meuble."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/d206cbd4-4c9a-3c4f-9475-cdbecfdc923d> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

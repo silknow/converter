@@ -1,0 +1,91 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/e0d69104-ac78-55c0-95f1-567384723ef9> a rdf:Statement ;
+    silk:L18 "0.351471"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3017382/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/e4d0f6ab-87ef-38b9-85c8-f40e856c37eb> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/e0d69104-ac78-55c0-95f1-567384723ef9> .
+
+<http://data.silknow.org/activity/e0d69104-ac78-55c0-95f1-567384723ef9> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Tenture sans or de haute lice, première bordure, fond jaune
+Modèle - carton vers 1699 Cf : GOB-49-001. GOB-49-002.
+Tissage - 1722-1728
+               8 fils de chaîne au cm
+               
+Domaine 	
+
+tapisserie
+Dénomination 	
+
+tenture ; élément d'ensemble
+Titre 	
+
+Portières des Dieux (sans or, première bordure) : Neptune ou l'Eau
+Auteur/exécutant 	
+
+AUDRAN Claude III (auteur du modèle) ; manufacture des Gobelins (manufacture)
+Précision auteur/exécutant 	
+
+AUDRAN : Lyon, 1658 ; Paris, 1734
+Ecole 	
+
+France
+Lieu création / utilisation 	
+
+France (lieu de création) ; Paris (lieu d'exécution)
+Période création/exécution 	
+
+2e quart 18e siècle
+Millésime création/exécution 	
+
+1722 commencé après ; 1728 achevé avant
+Historique 	
+
+Toutes ces portières sont sur fonds jaunes unis ou sur fonds de deux tons, paille et jaune.
+Matériaux/techniques 	
+
+laine, soie, haute lisse
+Dimensions 	
+
+H. 334 ; l. 240
+Sujet représenté 	
+
+figure mythologique (les quatre éléments, eau, Neptune, assis, nuage, trident, portique, guirlande, coquillage, branche, corail, enfant, putti, bateau, torse, homme, perle, console orn, ancre, filet, poisson, tortue, en médaillon, dauphin)
+Précision sujet représenté 	
+
+Au-dessous d'un portique orné de guirlandes, de coquillages, de plantes marines et de branches de corail, Neptune, tourné vers la gauche, est assis sur les nuages, avec son trident dans la main droite. Un enfant, à droite, tient un coquillage et une branche de corail. Au-dessous, l'avant d'un navire, décoré d'un torse d'homme, s'élève entre deux enfants ; celui de gauche tient une coquille et une perle, celui de droite verse de l'eau devant le navire. Sur les consoles, à droite, une ancre, des filets, des poissons, une tortue ; à gauche, les même objets et animaux. Au-dessus du portique, des guirlandes et trophées de coquillages et plantes marines, deux canards volant et, au milieu, un médaillon avec un dauphin. De chaque côté des colonettes, à droite et à gauche, une chute de coquillages, crabes et poissons, et un petit tableau.
+Lieu de conservation 	
+
+Paris ; Mobilier national
+	
+
+Musée de France
+au sens de la loi n°2002-5 du 4 janvier 2002
+Statut juridique 	
+
+propriété de l'Etat ; Paris ; Mobilier national
+Anciennes appartenances 	
+
+Fonds ancien du garde-meuble (inv. 286)
+Numéro d'inventaire 	
+
+GMTT 165/7
+Bibliographie 	
+
+Maurice Fenaille, Etat général des tapisseries de la manufacture des Gobelins depuis son origine jusqu'à nos jours, 1600-1900, Impr. Nationale, Paris, 1903-1923 (III, p. 33-34) ; Jules Guiffrey, Inventaire général des richesses d'art de la France, Paris, monuments civils, tome IV : Tapisseries du Garde-Meuble, Paris, 1913 (p. 115)
+Rédacteur 	
+
+Emmanuelle Plumet ; Monique de Savignac ; Jean Vittet"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/e4d0f6ab-87ef-38b9-85c8-f40e856c37eb> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3017382/> .
+

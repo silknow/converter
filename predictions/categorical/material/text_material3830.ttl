@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/34db6211-423e-51cb-812e-2ba2010c871d> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/147794e9-2814-3f47-9e97-f0a538be6260> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/34db6211-423e-51cb-812e-2ba2010c871d> .
+
+<http://data.silknow.org/activity/34db6211-423e-51cb-812e-2ba2010c871d> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Cette laize de tenture est un damas bicolore. La chaîne en soie jaune produit l’effet de fond tandis que la trame en schappe rouge constitue le décor. La schappe est un fil de soie obtenu par la filature de rebuts de cocons ce qui le rend moins brillant qu’un fil de soie continu. Cette irrégularité de la trame sert ici le décor en lui donnant cet aspect chevronnant. Il contribue également à renforcer le contraste entre le fond et le décor par la matité intrinsèque de sa matière. En effet, l’armure du damas joue avec la lumière qui rend alternativement plus brillant le fond ou le décor en fonction du point de vue adopté. 
+Le rapport de dessin mesure cent cinq centimètres de haut pour quarante-huit centimètres de large. Il a été construit par rapport à un axe de symétrie vertical. Il est composé d’un motif principal de fleuron, au bouton en forme de rosette et à la corolle rotacée de pétales acuminés. Il jaillit d’un pédoncule renflé bordé de feuilles dentées d’où s’échappent des tigelles végétales. La suite de fleurons est contenue dans un réseau d’accolades festonnées qui prend l’aspect d’une dentelle. L’ensemble du dessin est comme étiré. Cette impression est soutenue à la fois par les matériaux employés et par leur technique d’exécution.
+Le musée des Tissus conserve une laize de damas, fond satin rayé (MT 34730), dont le décor végétal stylisé et étiré est très comparable. Les deux exemplaires peuvent être attribués à la France ou à l'Italie, sans qu'il soit possible de trancher entre l'un ou l'autre de ces centres de production.
+Claire Berthommier"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/147794e9-2814-3f47-9e97-f0a538be6260> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

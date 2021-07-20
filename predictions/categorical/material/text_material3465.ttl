@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/ba3a2be1-f1ee-5691-aa02-78d77e95e0fb> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/35e5350a-b058-3c2f-93f2-6146685d1eda> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/ba3a2be1-f1ee-5691-aa02-78d77e95e0fb> .
+
+<http://data.silknow.org/activity/ba3a2be1-f1ee-5691-aa02-78d77e95e0fb> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """La pièce, un suzani, du persan سوزن signifiant « aiguille », appartient à une production domestique (appelée suzandozi,  سوزن‌دوزی) attestée notamment autour des villes de Boukhara, Samarcande, Shahrisabz, Nurata, Tashkent et Pskent, dans l'actuel Ouzbékistan, ou Khodjent et Istaravshan, au Tajikistan, et d'autres régions du Kazakhstan ou d'Asie centrale. Des broderies de ce type faisaient partie de la dot des jeunes filles et elles étaient généralement réalisées par des femmes. Des laizes de coton ou de lin étaient confiées au dessinateur local, le kalamkash, et pouvaient ensuite être brodées par différents membres d'une même famille avant d'être raboutées. 
+D'amples dimensions, cette étoffe (composée de cinq laizes de trente-cinq centimètres de large cousues bord à bord) servait probablement de tenture pour isoler un espace privé comme la chambre à coucher. Le décor est constitué de motifs floraux stylisés à l'extrême, presque géométriques, disposés dans une composition dense et colorée, où domine la teinte aubergine. Cette couleur apparaît fréquemment dans la production des broderies de type suzani. Il est malheureusement difficile de proposer une datation pour ces pièces, dont la création s'inscrit dans une tradition sinon immuable, du moins extrêmement conservatrice.
+La pièce du musée des Tissus semble néanmoins être un exemplaire précoce, de la fin du XVIIIe siècle ou du début du XIXe siècle. Elle peut être comparée à des exemplaires conservés au Metropolitan Museum of Art, par exemple (inv. 63.61 ou inv. 08.16.1).
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/35e5350a-b058-3c2f-93f2-6146685d1eda> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

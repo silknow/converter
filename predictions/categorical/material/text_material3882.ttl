@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/7b894d3e-6b89-5765-96d5-91d26bd57595> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/e0f98f24-ee98-3907-aca1-61a25d29ec5d> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/7b894d3e-6b89-5765-96d5-91d26bd57595> .
+
+<http://data.silknow.org/activity/7b894d3e-6b89-5765-96d5-91d26bd57595> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Cette laize de tenture porte, en partie supérieure, la marque de la moulure du panneau de lambris sur lequel elle prenait place. Le dessin a certainement été pensé en fonction de cette disposition en panneaux séparés. En effet, aucun élément situé en bordure n’appelle de complément pour former, dans le cas où plusieurs laizes seraient raboutées ensemble, un motif continu. 
+Cependant, le décor de cette laize marque une évolution dans l’art de décorer les étoffes. En effet, le début du XVIIIe siècle offre les premiers exemples d’un traitement plus varié et plus naturaliste, y compris dans les couleurs employées, des motifs floraux. Grâce à l’innovation introduite à Lyon par Jean Revel (1684-1751) au début des années 1730, appelée « points rentrés » ou encore « berclé », qui consiste en un système de séparation des couleurs sous la forme de petites hachures horizontales, il est désormais possible de multiplier les effets. 
+Le décor de cette laize est composé d’un motif symétrique. Il présente, dans un panier tressé au corps godronné, une composition végétale ornée d’une grosse fleur aux pétales disposés sur plusieurs rangs et aux anthères rondes de même couleur, d’une grappe de raisin et de deux fruits tranchés dont la chair étoilée ressemble à celle du kaki. Les anses du panier sont remplacées par deux branches fleuries sur lesquelles s’épanouissent plusieurs espèces de fleurs, dont des petites fleurs bleues et des fleurs aux pétales découpés. Compte tenu de l’effet berclé identifiable sur cette laize, il est possible d’attribuer sa production aux ateliers lyonnais des années 1730-1735.
+Claire Berthommier"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/e0f98f24-ee98-3907-aca1-61a25d29ec5d> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

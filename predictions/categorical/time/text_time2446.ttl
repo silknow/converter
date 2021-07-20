@@ -1,0 +1,27 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/1f2d32f2-1177-5cee-9a43-55e49ce7a002> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/0100b8b3-40b5-35f3-80ce-32bb1a60dc79> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/1f2d32f2-1177-5cee-9a43-55e49ce7a002> .
+
+<http://data.silknow.org/activity/1f2d32f2-1177-5cee-9a43-55e49ce7a002> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Spécialisée dans les « soieries façonnées et imprimées, nouveautés en carrés et métrages », la maison Ogier, Duplan et Cie, établie 31, rue Puits-Gaillot avait été fondée en 1852 par Claude Jandin et Antonin Duval, et continuée, depuis 1880, par Victor Ogier, associé à Paul Noyer sous la raison commerciale V. Ogier, P. Noyer et Cie. En 1887, Paul Noyer se retire, et Victor Ogier choisit de nouveaux associés : Léopold Duplan le rejoint comme associé en nom collectif, tandis que trois commanditaires, ses confrères Emmanuel Brosset-Heckel, Alfred Girodon et l'ancien notaire Paul Messimy acceptent de fournir un demi million de francs. Membre de l'Association de la Fabrique lyonnaise de 1882 à 1885, il en devient le trésorier pendant la dernière année de son mandat. 
+La maison s'est surtout distinguée dans le domaine de l'impression, tout en créant les nouveautés les plus variées, mettant à contribution toutes les ressources du tissage, de la teinture et de l'apprêt. Depuis 1867, la maison a organisé un cabinet de dessin pour l'exécution de ses planches d'impression, puis en 1873, à Vizille (Isère), une usine de tissage pour la fabrication des articles nouveaux ou spéciaux, demandant une exécution particulièrement soignée ou rapide. En 1873, la maison a établi une maison de vente à Londres, et une autre à Paris en 1886. Dès 1855, elle obtenait une Médaille d'argent à l'Exposition universelle de Paris, confirmée à Londres en 1862, à Paris en 1867 et à Vienne en 1873. En 1876, à Philadelphie, elle était gratifiée d'une Médaille de progrès. En 1878, à Paris, elle obtenait finalement une Médaille d'or, confirmée à Amsterdam en 1883 et à Anvers en 1885. 
+En 1889, à l'Exposition universelle de Paris, elle recevait à nouveau une médaille d'or. À l'issue de l'événement, elle donnait à la Chambre de Commerce pour son musée d'Art et d'Industrie les laizes les plus remarquées durant l'Exposition, à savoir : un panneau Couronne de roses aux armes de Lyon fond vieil or (inv. MT 24981) comparé par Adrien Storck, le commentateur des soieries lyonnaises à l'Exposition, à une peinture de Simon Saint-Jean (1808-1860) ; un panneau sur levantine teinte en pièce, reproduisant une peinture de chien de Rosa Bonheur, autre chef-d'œuvre d'exposition (inv. MT 24982) ; une laize avec des roses japonaises sur fond noir, sur une faille française teinte en pièce (inv. MT 24983) ; un velours au sabre imprimé et surteint en pièce et découpé après l'impression avec des plumes de paon fond crème (inv. MT 24984) ; un autre velours au sabre imprimé surteint en pièce et découpé après l'impression avec des palmes cachemire sur fond pourpre (inv. MT 24985) ; et une pente de robe, roses enluminées fond crème sur faille teinte en pièce (inv. MT 24985). Toutes révèlent les spécificités de la maison dans la composition du dessin, la maîtrise de l'impression et la mise en œuvre de techniques délicates, comme le velours au sabre.
+Le motif des plumes de paon, très apprécié des dessinateurs de fabrique, est ici totalement renouvelé dans un effort de stylisation et de modernité, qui se traduit aussi par la conception d'un motif à disposition, dont la taille augmente vers le bas de la laize.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/0100b8b3-40b5-35f3-80ce-32bb1a60dc79> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/b7095306-34fa-59b5-ace6-cee722d49836> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/833a291f-3f0d-36dd-b99a-6047c52c390d> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/b7095306-34fa-59b5-ace6-cee722d49836> .
+
+<http://data.silknow.org/activity/b7095306-34fa-59b5-ace6-cee722d49836> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """La maison Mathevon et Bouvard, qui avait offert le portrait de Charles X (inv. MT 30603 et MT 37766) à Marie-Caroline de Bourbon-Siciles, duchesse de Berry, lors de son séjour à Lyon en 1829, produit en 1834 une effigie des nouveaux monarques, Louis-Philippe (inv. MT 30972) et son épouse Marie-Amélie. Déjà récompensés d’une médaille d’argent en 1823 et 1827, la maison obtient une médaille d’or à l’Exposition des produits de l’industrie française. Le Rapport du jury central indique : « On a surtout admiré parmi les produits de MM. Mathevon et Bouvard (…) une tenture brochée or et soie, nuancée, avec le portrait du roi et de la reine, d’une grande dimension. » Le musée des Tissus conserve deux panneaux de tenture présentant les portraits de Louis-Philippe et de Marie-Amélie. Les profils du roi et de la reine des Français sont exécutés d’après les modèles de Jean-Jacques Barré, fournis pour la médaille commémorative de la visite de la famille royale à la Monnaie de Paris le 8 novembre 1833. Exécutées en lampas lancé, broché sur fond satin, en soie et filé or, les tentures présentent les portraits dans un médaillon, dont la couronne est composée de fleurs polychromes, lui-même contenu dans des enroulements d’acanthe. 
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/833a291f-3f0d-36dd-b99a-6047c52c390d> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

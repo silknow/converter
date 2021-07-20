@@ -1,0 +1,49 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/b0fe29af-b10e-5182-a71b-646cc8c18347> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/9277e7f2-3b18-31a6-8ee2-af3376113164> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/b0fe29af-b10e-5182-a71b-646cc8c18347> .
+
+<http://data.silknow.org/activity/b0fe29af-b10e-5182-a71b-646cc8c18347> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Gros de Tours fond blanc broché or et soie nuée, dessin de "bouquet de fleurs vives".
+Appartient à une série d'éléments de tentures en gros de Tours blanc broché or et soie nuée, à décor de rosaces, fleurs de cloches, camées et cygnes.
+- GMMP 24-002-001 : H. 0,424 x l. 0,555
+- GMMP 24-002-002 : H. 0,518 x l. 0,558
+- GMMP 24-002-003 : H. 0,516 x l. 0,556
+- GMMP 24-002-004 : H. 0,430 x l. 0544
+- GMMP 24-002-005 : H. 0,751 x l. 0553
+- GMMP 24-002-006 : H. 0,357 x l. 0,286
+- GMMP 24-002-007 : H. 0,385 x l. 0,555
+- GMMP 24-002-008 : H. 0,395 x l. 0,299
+- GMMP 24-002-009 : H. 0,397 x l. 0,563
+- GMMP 24-002-010 : H. 0,412 x l. 0,563
+- GMMP 24-002-011 : H. 0,365 x l. 0,501
+- GMMP 24-002-012 : H. 0,430 x l. 0,535
+- GMMP 24-002-013 : H. 0,385 x l. 0,307
+- GMMP 24-002-014 : H. 0,400 x l. 0,317
+- GMMP 24-002-015 : H. 0,440 x l. 0,512
+- GMMP 24-002-016 : H. 0,469 x l. 0,516
+- GMMP 24-002-017 : H. 0,442 x l. 0,512
+- GMMP 24-002-018 : H. 0,421 x l. 0,504
+
+
+Historique:
+Commandé à grand frères en 1811 pour le cabinet de repos de l'appartement de l'Empereur à Versailles, l'ensemble fut livré le 18 avril 1812. La livraison est enregistrée au journal du Garde-Meuble le 31 juillet 1812.
+Pendant l'Empire, les étoffes restèrent en magasin mais furent employées à plusieurs reprises à Saint-Cloud sous la Restauration : pour le Boudoir de la duchesse de Berry en 1827 et pour le Cabinet de travail de la duchesse d'Angoulême en 1829.
+
+Cf. GMMP 24/001 (couronnement de tenture), GMMP 25/001 (tenture), GMMP 25/002 (bordures pour encadrement de panneaux), GMMP 26/000 (bordures pour tenture et rideaux), GMMP 993/000 (bordures pour sièges), GMMP 994/000 (bordures pour sièges) et GMMP 995/000 (bordures pour sièges)."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/9277e7f2-3b18-31a6-8ee2-af3376113164> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

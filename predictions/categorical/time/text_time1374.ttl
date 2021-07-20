@@ -1,0 +1,28 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/d1c1895c-e54c-5c58-bfc6-b9e042bedc91> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/d435999b-873a-3775-aeb7-4f4adb91b24d> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/d1c1895c-e54c-5c58-bfc6-b9e042bedc91> .
+
+<http://data.silknow.org/activity/d1c1895c-e54c-5c58-bfc6-b9e042bedc91> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """La robe de statue a été confectionnée dans une étoffe appartenant à un groupe de soieries dites « bizarres » en raison de leur composition asymétrique et de leur dessin combinant des éléments naturalistes et des ornements fantaisistes, voire exubérants. Elle est doublée d’un bougran bleu, et son patron est très simple. Il permettait au vêtement de couvrir l’avant de la statue et de donner à cette dernière un aspect tronconique, souvent apprécié pour les effigies parées de vêtements véritables. 
+C’est la qualité de l’étoffe et l’originalité de son décor qui font bien sûr son intérêt. Celle-ci a été utilisée dans toute la largeur du lé, il ne s’agit donc probablement pas d’une étoffe de remploi, mais bien d’un tissu choisi parce qu’il était prestigieux. De lisière à lisière, le tissage mesure 55,5 cm de largeur. 
+Sur un fond bleu se déploient de larges bandes ondulantes, au profil fortement découpé, et des tiges fleuries. Le décor est traité dans les tons de jaune, de beige et de rose, rehaussés de blanc et de filés métalliques dorés. 
+Par l’organisation de son décor et la découpe de ses volutes de style rocaille, où s’accrochent des tiges fleuries, elle rappelle la soierie dans laquelle ont été réalisées une chasuble et son étole de la Fondation Abegg, à Riggisberg, attribuée aux années 1712-1715 et à un atelier français ou italien (inv. 2537 a et b). De nombreuses analogies existent aussi avec le décor d’une étoffe du musée des Tissus (inv. MT 26014). Mais sur ces deux exemplaires, les motifs s’enlèvent sur un fond rouge. Ils apparaissent sur un fond bleu, plus denses, néanmoins, sur une chasuble de Riggisberg (France ou Italie, vers 1712-1715 ; inv. 4241 a-d), ou sur une soierie de la même collection (vers 1715-1718 ; inv. 365). 
+Les « soieries bizarres » étaient tissées en Italie, en France, en Hollande, en Espagne et en Angleterre. Il est souvent difficile d’identifier un centre de production particulier. Les manufactures de Lyon et de Venise sont susceptibles d’avoir réalisé le tissu employé pour cette robe de statue. Cependant, la largeur du lé et la réduction des fils de chaîne et de trame du tissage pourraient désigner dans ce cas une production vénitienne. 
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/d435999b-873a-3775-aeb7-4f4adb91b24d> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

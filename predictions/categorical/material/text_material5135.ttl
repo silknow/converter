@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/e25a38ec-7a60-56d5-92c4-a13a253f65ec> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/1c4a497c-346c-31c7-8727-6bb9d7838395> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/e25a38ec-7a60-56d5-92c4-a13a253f65ec> .
+
+<http://data.silknow.org/activity/e25a38ec-7a60-56d5-92c4-a13a253f65ec> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """La pièce a probablement été réalisée pour être présentée à l'Exposition universelle qui s'est tenue à Lyon en 1894. Elle représente la très jeune souveraine des Pays-Bas, Wilhelmine, devenue reine en 1890 à l'âge de dix ans. Sa mère, Emma de Waldeck-Pyrmont, assura la régence jusqu'en 1898. Le tableau imaginé par Louis Chatel et Vincent Tassinari reproduit un portrait de Wilhelmine en costume traditionnel frison, réalisé en 1892 par le photographe Cornelis Bernardus Broersma (1841-1919), dont le studio était installé à Leuvarde, en Frise. Cette photographie eut un certain succès et elle fut diffusée par le biais de la carte postale notamment. Du portrait en pied, Chatel et Tassinari n'ont conservé que le buste de la reine, avec sa coiffe de dentelle rehaussée de bijoux et sa robe à manches bouffantes et jabot de dentelle. La couronne du médaillon qui entoure l'adolescente imite un cadre en bois doré rocaille. Pour réaliser un motif aussi complexe qu'un portrait en couleurs, les prédécesseurs de Chatel et Tassinari avaient adopté la technique du lampas, qui se caractérise par l'emploi de deux chaînes (au moins) et de plusieurs trames, brochées ou liserées. C'est ce type de lampas qu'utilisent aussi Chatel et Tassinari. Mais ses effets ne pouvaient rendre la modernité voulue par les tisseurs pour cette expérience. C'est donc dans le sens trame que se lit le décor, et non dans le sens chaîne, ce qui est très inhabituel. La matité du médaillon enfermant le portrait tranche sur la brillance du fond de satin et accentue la ressemblance avec une photographie. Sur l'exemplaire du musée des Tissus, un tampon indique « PERNON FONDATEUR/ en 1762/ CHATEL ET V. TASSINARD/ SUCCRS DE GRAND FRÈRES/ LYON/ A LYON ». Le 24 juin 1894, le président Sadi Carnot, venu inaugurer l'Exposition universelle, fut assassiné par l'anarchiste Sante Ironimo Caserio en sortant du banquet donné au Palais du Commerce, place de la Bourse, et les manifestations d'hostilité envers les Italiens étaient telles que Vincent Tassinari préféra franciser son patronyme, pour un temps, et le faire apparaître sous la forme « Tassinard » pour ne pas nuire aux affaires. On ne s'étonnera pas de voir apparaître à cette date le nom de Chatel en première position dans la raison commerciale de la société : il était d'usage de placer l'aîné en tête, Louis Chatel étant le cofondateur de la maison avec Cleto Tassinari, décédé en février 1885, son fils Vincent lui ayant succédé. 
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/1c4a497c-346c-31c7-8727-6bb9d7838395> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

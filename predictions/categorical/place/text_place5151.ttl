@@ -1,0 +1,34 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/8b12af5a-a298-5339-be11-d2e5c11aa17b> a rdf:Statement ;
+    silk:L18 "0.932421"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/72baee4a-588a-38ea-9a97-28aba2283c23> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/8b12af5a-a298-5339-be11-d2e5c11aa17b> .
+
+<http://data.silknow.org/activity/8b12af5a-a298-5339-be11-d2e5c11aa17b> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Edad Moderna"@es,
+        """En la segunda mitad del siglo XVI, el tema de Alejandro conoció un enorme éxito en la tapicería flamenca. En este tapiz, la identificación del episodio no ofrece dificultades a pesar de faltarle un trozo considerable. La comparación con otro de Patrimonio Nacional, del mismo tema y tejido por el mismo modelo en las manufacturas de Jean Raes I y Jacques Geubels I, nos permite reconstruir lo cortado, la escena principal, en la que Alejandro, enfermo, recibe una carta advirtiéndole de que no se fie de su médico, Filipo, pues está al servicio de Darío. Alejandro rechaza esta sospecha,dando a leer la carta al propio Filipo, al mismo tiempo que bebe la medicina que este le ha preparado, testimoniándole de este forma su confianza. En el tapiz del Museo podemos apreciar la parte en la que están los personajes, soldados y sabios, presenciando la escena principal descrita más arriba. El autor del modelo parece haberse inspirado para este episodio en Plutarco (capítulos 32 y 33), en su obra sobre el macedonio.  
+  
+Las cenefas que rodean el tapiz fueron muy populares en la segunda mitad del siglo XVI. Contienen figuras alegóricas con sus respectivos atributos y letretos explicativos. En el lado izquierdo: ALACRITAS (presteza del ánimo para la acción), simbolizado por una figura con corona de flores y que toca un instrumento musical; CONFIDENTIA (confianza): mujer que sostiene con ambas manos una nave; VINDICTA (venganza): figura femenina provista de armadura, de espada y de un arco. En el derecho: TIRANNYS (tiranía), simbolizada por una figura con una espada y un escudo; HONOR (honor): hombre barbado con una corona en su mano; FAMA BONA (la buena fama), representada por una figura alada con una doble trompeta. En la superior se representa la CONCIENTIA (conciencia) mediante una figura sentada en una balaustrada con un corazón en su mano; y en la inferior el EXILIUM (el destierro): figura alada con un niño en brazos. Parece evidente la relación entre las figuras de la cenefa y el tema central: Alejandro, prototipo de valiente y esforzado, alcanza el honor por sus acciones públicas gloriosas que le traerán la buena fama.  
+  
+El tapiz fue tejido en una de las manufacturas más importantes de Bruselas, la de Jacques Geubels I. Miembro de una de las familias más conocidas en el mundo de los tapices, son numerosos los ejemplares salidos de su taller y que hoy forman parte de las colecciones más importantes. Tejidos según cartones de la mitad del siglo XVI aproximadamente, apuntan a un pintor bajo la influencia estilística de Michel Coxcie (1499-1592), conocido como el Rafael flamenco y a quien se le atribuyen los diseños de algunas de las series más sobresalientes de mediados del siglo XVI como es el caso de la Vida de Noé (Castillo Wawel, Cracovia, entre otros) o la Vida de Ciro el Grande (Patrimonio Nacional, Madrid).  
+  
+Esta pieza parace haber formado parte de un conjunto de ocho, de los que tres aún se conservan en la iglesia parrpquial de Pastrana (Guadalajara): Marcha triunfal de Alejandro por la Carmania, Batalla de Iso y Episodio de juventud de Alejandro en vida de su padre Filipo. Otro tapiz, La familia de Darío a los pies de Alejandro, conservado en la sede central del Banco de España (Madrid), es muy posible que haya pertenecido también a esta serie.  
+Esta tapicería fue adquirida por el segundo duque de Pastrana, Rodrigo de Silva y Mendoza (1526-1596), en Amberes poco antes de su muerte con la intención de que fuesen donados a la iglesia de la villa, en donde entrarán posteriormente, en el año 1797."""@es,
+        """Tapiz incompleto con la representación de una escena con soldados y sabios sobre fondo de paisaje, con el horizonte alto. En la parte superior y en los laterales del tapiz hay sendas cenefas donde se representan figuras simbólicas a la izquierda de arriba a abajo: Alacritas, Confidentia, Vindicta; a la derecha: Tirannys, Honor y Fama Bona y en la parte superior: Concientia.  
+  
+Representa un fragmento del paño 4 de la Serie sobre Alejandro Magno, tejida por Iacob Geubels, donde aparece la escena de Alejandro Magno y su médico, Philippos, narrada por el escritor Plutarco. Falta en la escena toda la zona derecha del tapiz donde debería estar representado Alejandro recostado en su lecho."""@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/72baee4a-588a-38ea-9a97-28aba2283c23> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

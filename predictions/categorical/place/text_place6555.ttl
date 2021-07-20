@@ -1,0 +1,27 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/7e19b0fb-daeb-53b0-8829-711a909bde19> a rdf:Statement ;
+    silk:L18 "0.932421"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/b1abe825-7c72-3777-a716-fafdcf1781ff> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/7e19b0fb-daeb-53b0-8829-711a909bde19> .
+
+<http://data.silknow.org/activity/7e19b0fb-daeb-53b0-8829-711a909bde19> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Edad Moderna"@es,
+        "Fragmento textil, de damasco azul y rojo decorado con motivo figurado de leones rampantes afrontados, dispuestos en motivos romboidales, también motivos de flores. Hilos de urdimbre de color rojo y trama azul. Ligamento de tafetán largo 3:1, combinando el efecto de trama y el de urdimbre."@es,
+        """V. Miguel y Badia, pg. 284 fig. 14, lo considera de reminiscencia mudéjar, siglo XV o principios del XVI.  
+Tiene un paralelo en la colección de los Musée royaux d´Art et d´Histoire de Bruselas, en seda verde y amarilla (Herrea, I., 1901, Collection d´Anciennes Étoffes, nº 360, p. 170). En él se recoge otros paralelos en el Victoria and ALbert Museum de Londres y en el Museo de Nuremberg. Se considera trabajo holandés de los siglos XVI-XVII o italiano del siglo XVI.  
+Catálogo del Museo de Artes Decortivas de Barcelona, pg., 61, nº 89: trabajo español del siglo XVI"""@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/b1abe825-7c72-3777-a716-fafdcf1781ff> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

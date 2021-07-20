@@ -1,0 +1,27 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/ee7e0d59-9f66-55b2-a490-b09a772d00ec> a rdf:Statement ;
+    silk:L18 "0.932421"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/3878d29e-135d-32fd-83d9-d769c5a375fe> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/ee7e0d59-9f66-55b2-a490-b09a772d00ec> .
+
+<http://data.silknow.org/activity/ee7e0d59-9f66-55b2-a490-b09a772d00ec> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Cenefa de la parte central de una pieza de indumentaria religiosa. Se trata de un bordado erudito de aplicación sobre fondo de terciopelo granate.   
+La decoración está formada por dos tondos con San Cristobal y San Pedro, con las carnaciones bordadas al matiz y el resto bordado de hilos tendidos. Están perfilados con un cordón de hilos metálicos dorados y rodeada de otro cordón de hilo metálico plateado.   
+El fondo del tejido presenta decoración ´a candelieri´ de animales fantásticos, roleos y elementos vegetales realizados en bordado de aplicación con hilo metálico sobrepuesto. Los extremos están rematados por dos grecas de hilos metálicos de dorados y plateados   
+Toda la pieza está rematada por una pasamanería de flecos de hilos de seda y metálicos no original al momento de manufactura de la cenefa."""@es,
+        "Edad Moderna"@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/3878d29e-135d-32fd-83d9-d769c5a375fe> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

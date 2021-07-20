@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/f6cbfbaf-63d3-5eb8-a778-97405b8848d1> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/a1e156b2-ebbd-3971-be57-9ba44cac0580> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/f6cbfbaf-63d3-5eb8-a778-97405b8848d1> .
+
+<http://data.silknow.org/activity/f6cbfbaf-63d3-5eb8-a778-97405b8848d1> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Prenda femenina larga con leve cola y  apertura parcial en el delantero, elaborada con tejido de raso de color verde claro. Presenta pequeño cuerpo con escote de pico, cortado bajo el pecho y cubierto, tanto por el delantero como por la espalda, con una banda de encaje de bolillos tipo guipur de carácter mecánico con motivos florales. Falda evasé fruncida, con costuras centrales y nesgas en el centro de la espalda y en ambos costados. Un entredós de carácter mecánico imitación Valenciennes, con motivo formado por un  tallo sinuoso de flores contrapeadas,  contornea el cuello y  la abertura delantera y se entrecruza para formar rombos que recorren el borde inferior de la falda. Manga larga compuesta por una primera de farol en raso verde de la que sale una segunda tipo tubo, realizada con el mismo encaje que cubre el cuerpo.  Una puntilla a juego con el entredós  remata el cuello y las mangas.   
+El vestido está modificado para su adaptación en época posterior.  Se le han realizado algunos pliegues en la zona la espalda, que acortan levemente la falda. Asimismo, la abertura del delantero ha sido modificada, ya que existe una tercera banda de entredós en el centro de la falda que permanece oculta al habérsele practicado una costura que cierra parcialmente la prenda.  La apertura originariamente se cerraba con presillas, conservándose algunas de ellas. Posteriormente se le ha colocado cierres de presión metálicos."""@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/a1e156b2-ebbd-3971-be57-9ba44cac0580> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

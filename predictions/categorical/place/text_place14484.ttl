@@ -1,0 +1,31 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/2837f0c8-d565-54fb-9932-22d0d0ed4eed> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/a6e2d369-fd0a-31b7-a757-b46ca3251085> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/2837f0c8-d565-54fb-9932-22d0d0ed4eed> .
+
+<http://data.silknow.org/activity/2837f0c8-d565-54fb-9932-22d0d0ed4eed> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Elément de tenture, fond satin cramoisi fin broché 3 ors. Laurier entourant le chiffre impérial et la croix de la Légion d'honneur, entre deux montants en forme de palmier stylisé. Au sommet de la composition était un aigle aux ailes déployées. Sous la Restauration, l'aigle fut remplacé par des cornes d'abondance, les N et les croix par des rosaces en or.
+
+Historique :
+La fabrication de ce brocart avait été prévue dans le budget de 1806 pour le Palais de Versailles, que l'Empereur songeait dès cette époque à réinstaller, en même temps que cinq autres meubles sans affectation  précise.
+L'Empereur ayant momentanément renoncé à Versailles, les étoffes demeurèrent dans les magasin du Mobilier Impérial.
+Ce n'est quà partir de 1820 que le brocart devait être utilisé, à plusieurs reprises, aux Tuileries, dans l'appartement de la duchesse de Berry, au pavillon de Marsan.
+Le duc d'Orléans qui, sous la Monarchie de Juillet, occupa l'appartement de le duchesse de Berry conserva les étoffes.
+Entre ces deux utilisations par la duchesse de Berry et le duc d'Orléans, les étoffes aivaient été employées à l'occasion du Sacre de Charles X et enregistrés  le 16 décembre 1825. Elles servirent à l'ameublement du Salon des Nobles de l'appartement du Roi au Palais archiépiscopal de Reims.
+Elles servirent ensuite au décor de la Salle du Trône de Napoléon III aux Tuileries."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/a6e2d369-fd0a-31b7-a757-b46ca3251085> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

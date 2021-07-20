@@ -1,0 +1,29 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/fb69e3f2-dfee-51c4-afbe-f5a5a24edfc5> a rdf:Statement ;
+    silk:L18 "0.648348"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/4e5a31c1-473a-3592-beeb-98801c257ca4> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/fb69e3f2-dfee-51c4-afbe-f5a5a24edfc5> .
+
+<http://data.silknow.org/activity/fb69e3f2-dfee-51c4-afbe-f5a5a24edfc5> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "2 orditi; I di fondo, organzino di seta, 2 capi, S, colore rosa salmon; II di pelo, organzino di seta, 2 capi, S, colore rosa salmone. Scalinatura: 2 fili; Riduzione: 60 fili di fondo al cm/32 fili di pelo al cm; Proporzione:2/1"@it,
+        "53 cm senza cimose"@it,
+        "Provenienza: Palermo, Santuario di Santa Rosalia; : il tralcio sinuoso che si arrampica lungo tutta la tonacella, nel suo andamento ondulato, richiama le piu famose soluzioni a meandro dei tessuti della metà del XVIII secolo. Inoltre l’impostazione vivace dell’elemento fitomorfo, che campeggia su tutte le parti della sacra veste, rimanda alla soluzione compositiva realizzata a ricamo della pianeta della Chiesa Madre di Gioiosa Marea in provincial di Messina, datata intorno il 1750 che riprende il tema dell’ Albero della Vita (cfr. C. Ciolino Maugeri, scheda n. IV,1, in Lusso e …, 1984, p. 164). L’interessante broccatura del tessuto analizzato, per l’effetto luministico reso dall’argenteo filato, puo essere raffrontata con quell ache si nota nel parato in pampasso liseré broccato, datato al XVIII secolo, della Chiesa di San Raimondo al Refugio di Siena (cfr. F. Bari, scheda n. 120, in Drappi, velluti…, a cura di M. Ciatti, 1994, p.194). (R. Civiletto; M. Vitella)"@it,
+        "Su un tronco fogliato, a sviluppo sinuoso, da cui originano piccolo gemme e si snodano esili ramoscelli, poggiano steli fiori div aria tipologia. Sul controfondo figurano, in direzioni sparse, minute foglie."@it,
+        "cm 60 x 53; numero dei campi: 1; tipo di campo: seguente"@it,
+        "fondo in taffetas prodotto da tutti I fili di fondo e da tutte le trame di fondo. Opera create da effetti di ordito supplementare (di pelo) che, slegando 4 fili su 3 colpi, lega il 4°, produce il controfondo, e da trame broccate, in seta e metalliche, che descrivono il disegno. La trama lamellare è fissata al dritto in taffetas, da fili di ordito prelevati dal fondo, mentre le alter broccate sono prive di legatura"@it,
+        "trame; I di fondo, seta, X capi, S, colore rosaceo; II broccata, argento filato avvolto su anima in seta, 2 capi, S,colore bianco, doppia; III broccata, argento filato fries avvolto su anima in seta ondata, 2 capi, S, colore bianco; IV broccata, argento lamellare; V broccata, seta, 2 capi, S,colore rosa salmone;Scalinature: 1 passata; Riduzione: 21 passate al cm; Proporzione 1/1"@it ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/4e5a31c1-473a-3592-beeb-98801c257ca4> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

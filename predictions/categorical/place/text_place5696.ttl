@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/e57111cc-18ac-520f-8d86-c758f63b96de> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/e422c0a6-a80e-34eb-9e06-f762dc03b844> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/e57111cc-18ac-520f-8d86-c758f63b96de> .
+
+<http://data.silknow.org/activity/e57111cc-18ac-520f-8d86-c758f63b96de> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Edad Contemporánea"@es,
+        "Respaldo con cuadrado curvado hacia atrás, asiento trapezoidal. Palos del respaldo, brazos y ménsulas prismáticas decoradas con leones alados en bronce dorado. Patas prismáticas en estípite algo curvadas hacia fuera, las delanteras rematan en garras de bronce."@es,
+        "Época Fernando VII, en sus inicios, versión española del Imperio francés. Hace juego con otro sillón y otras dos sillas, en la misma sala."@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/e422c0a6-a80e-34eb-9e06-f762dc03b844> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

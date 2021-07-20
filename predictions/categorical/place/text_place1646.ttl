@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/b230c19d-b1df-52f6-a8e7-cc60661f4158> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/d9f48165-ab1e-38da-a431-0bee55eb5571> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/b230c19d-b1df-52f6-a8e7-cc60661f4158> .
+
+<http://data.silknow.org/activity/b230c19d-b1df-52f6-a8e7-cc60661f4158> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Un brocart en quatre ors, filé, frisé, lamé et or en cannetille imitation de broderie, sur fond satin bleu n° 3 avec liseré soie, « dessein à compartimens ou lozanges d'Épine antique guirlande ou paquets de fleurs et fruits porté par des fleurons tenant aux lozanges au centre desquels Sont deux Sujets lun la Couronne Impérial au centre de Riches ornemens le Second Sujet ornement de Double fleurons terminées d'Étoille haut et bas et aux deux côtés des palmettes d'Écossas » fut commandé à la maison Grand frères, successeurs de Camille Pernon, en 1811 pour le Grand Salon de l'Impératrice à Versailles. La soumission du 2 octobre 1811 fut acceptée par Alexandre Desmazis, administrateur du Mobilier impérial, et approuvée le 12 par Jean-Baptiste de Nompère de Champagny, duc de Cadore. Le temps accordé pour la fabrication était de quinze à dix-huit mois à partir du jour de réception de l'ordre d'exécution. Il fut dépassé de six mois, la livraison ayant été expédiée de Lyon le 13 décembre 1813. En 1815, les étoffes étaient réservées non plus pour le Grand Salon de l'Impératrice, mais pour le Salon de Mercure. Le projet d'ameublement de Versailles n'ayant pas vu le jour, la commande complète demeura au Garde-Meuble. En 1817, le brodeur François-André Picot fut chargé de supprimer les couronnes impériales et les abeilles qui rendaient son utilisation impossible dans les demeures royales. Les emblèmes impériaux furent donc transformés en couronnes royales et en rosaces. En 1822, les étoffes remplacèrent le brocart argent fond bleu, à couronnes de myrte et de lierre, du Deuxième Salon de l'Impératrice aux Tuileries, dont le musée des Tissus conserve un élément avec sa bordure transversale (inv. MT 24796), devenu, à la Restauration, le Salon de Réception de Madame Royale, la duchesse d'Angoulême. Le décor du Grand Salon resta globalement en place sous Louis-Philippe. La pièce était alors le Cabinet du Roi. Le musée des Tissus conserve une laize complète (inv. MT 24819), comportant encore les emblèmes impériaux, de ce meuble, ainsi que trois esquisses à la gouache de la main de Jean-François Bony (inv. MT 40473, MT 44234.1 et MT 44234.2) et trois éléments de bordure (inv. MT 24820.1, MT 24820.3 et MT 24820.4). La composition de la tenture présente des losanges formés par des guirlandes de fleurs et de fruits, attachées à des médaillons ornés de la couronne impériale, et contenant d'autres losanges d'« Épine antique », avec rosaces à abeilles, contenant un fleuron complété par des étoiles et des palmettes. Le rapport de dessin est important — 101,3 cm x 74 cm —, et l'exécution, en lampas fond satin, lancé et broché de soie, filé et frisé or, filé or riant et cannetille, est remarquable. À réception des étoffes de cette commande, le vérificateur du Mobilier impérial jugea l'« Exécution très belle et soygnée dans la perfection. » Le fabricant avait seulement dépassé dans l'ensemble, et parfois de beaucoup, le poids au mètre fixé par la soumission.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/d9f48165-ab1e-38da-a431-0bee55eb5571> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

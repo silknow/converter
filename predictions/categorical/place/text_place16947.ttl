@@ -1,0 +1,23 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/ab98e642-dde5-5f1d-b82b-4c08b58a4759> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/125a8be1-9be0-3055-b41f-01963aaa31d5> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/ab98e642-dde5-5f1d-b82b-4c08b58a4759> .
+
+<http://data.silknow.org/activity/ab98e642-dde5-5f1d-b82b-4c08b58a4759> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Lit en broderie acquis en 1833 comme provenant \"du lit de Louis XIV\", par le comte de Montalivet, intendant général de la liste civile, sur ordre de Louis-Philippe. Il s'agit en fait de plusieurs pièces au petit point, assemblées, provenant d'un lit incomplet, mais aussi de garnitures de canapés et de sièges datables du début du XVIIIe siècle ; c'est le tapissier Laflèche qui eut la tâche de garnir de ces petits points, les bois commandés à Georges-Alphonse Jacob-Desmalter en 1834 et dorés par Pauwels. L’ensemble placé dans la chambre de Louis XIV à Versailles ; démonté en 1939 et mis en réserve ; restauré en 1997 et présenté au public dans le salon de Mercure depuis 1998."@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/125a8be1-9be0-3055-b41f-01963aaa31d5> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

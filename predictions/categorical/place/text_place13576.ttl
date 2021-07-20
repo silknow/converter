@@ -1,0 +1,23 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/8f103da3-aa13-5b83-a15d-e23c1588382e> a rdf:Statement ;
+    silk:L18 "0.40109"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2635167/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/b5d7f1b5-7847-3638-827f-039afbba99ed> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/8f103da3-aa13-5b83-a15d-e23c1588382e> .
+
+<http://data.silknow.org/activity/8f103da3-aa13-5b83-a15d-e23c1588382e> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Half-length portrait of the king facing to the left within an oval. He has long hair, a moustache and beard, and wears a wide-brimmed hat, a lace collar and a cloak emblazoned on the left shoulder with the star of the Order of Garter. Behind him is a landscape showing the Lambeth marshes, the Thames and, on the far bank, Westminster Abbey, Parliament Buildings, Whitehall and the new Banqueting House."@en ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/b5d7f1b5-7847-3638-827f-039afbba99ed> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2635167/> .
+

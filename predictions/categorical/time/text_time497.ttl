@@ -1,0 +1,29 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/538e8f58-8c9a-5ccd-880c-718c9e9d8e65> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/d1c50b0a-b61f-3888-97d5-e9ee946e2cf5> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/538e8f58-8c9a-5ccd-880c-718c9e9d8e65> .
+
+<http://data.silknow.org/activity/538e8f58-8c9a-5ccd-880c-718c9e9d8e65> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Exécuté sur un fond sergé en soie, cet échantillon de broderie présente un décor composé d'une frise de palmettes alternant avec des rosettes cantonnées de folioles lancéolées, au-dessus duquel se déploie un courant de palmes, régulièrement interrompu par des roses coupées, tête vers le haut ou vers le bas. Le décor est exécuté au moyen de soie et de chenille de soie, contrastant avec les éléments métalliques qui constituent une grande partie du décor, paillettes cousues en rivière, paillettes bombées, paillons estampés ou filé métallique et cannetille dorés travaillés en passementerie.
+L'échantillon de broderie pour bas de robe provient d'un grand livre de patrons, relié in folio, acquis par la Chambre de Commerce de Lyon pour son jeune musée d'Art et d'Industrie en avril 1866 auprès du « S(ieu)r Gallot, passage des Terreaux », qui contenait « cent trente-trois échantillons de broderies soie nuancée, paillettes, dorures et pierreries pour vêtements, d'une belle conservation. [...] Travail du commencement du XIXe siècle. »
+Le livre d'inventaire ne mentionne pas le nom de la maison d'où proviennent ces échantillons. Cependant, la plupart des modèles sont attribuables à Jean-François Bony (1754-1825), célèbre dessinateur de fabrique, brodeur, fabricant et occasionnellement peintre de fleurs. C'est le cas, notamment des échantillons de broderie pour robes de cour (inv. MT 18511, MT 18514, MT 18614 et MT 18620, par exemple). Il est très probable, d'ailleurs, que le modèle de broderie or sur drap d'argent de la robe commandée à Jean-François Bony par le Conseil municipal de Lyon en avril 1810 pour l'impératrice Marie-Louise (inv. MT 18797.2) provienne de ce livre de patrons, qui a été démonté à son entrée dans les collections. Cet échantillon de broderie, en effet, a perdu son numéro d'inventaire d'origine et il a été réinventorié a posteriori sous le numéro 18797.2 qui ne correspond à aucune entrée du livre d'inventaire. On a seulement dédoublé le numéro MT 18797 correspondant au projet gouaché de la robe, acquis cette même année 1866 de Paul Desq, fabricant de soieries lyonnais, avec dix-huit autres projets de robes (inv. MT 18794 à MT 18812) de la main de Jean-François Bony. Le musée des Tissus conserve par ailleurs plusieurs autres documents relatifs à cette commande pour l'impératrice Marie-Louise (inv. MT 2014.0.1, MT 2014.0.2, MT 2014.0.3 et MT 2014.0.4) préparant la broderie.
+Du livre de patrons d'origine, le musée des Tissus a peut-être conservé une double page, elle aussi réinventoriée a posteriori, contenant un échantillon de broderie d'argent et soie, et, sur la page en regard, des indications à l'encre comme le numéro de patron et le nom du modèle de robe, intitulé La Prêtresse (inv. MT 35142). Le musée des Tissus conserve plusieurs documents manuscrits de Jean-François Bony, et notamment un carnet de dessins qu'il a utilisé entre 1802 et 1816 (inv. MT 27638). C'est bien son écriture qui figure sur la double page contenant l'échantillon de La Prêtresse.
+L'échantillon de broderie avec des palmes et des roses coupées présente par ailleurs de très grandes analogies avec des œuvres de Jean-François Bony conservées au musée des Tissus, comme une bordure brodée ornée d'un courant de roses (inv. MT 1294). La manière de représenter les fleurs sur les deux pièces, avec l'emploi conjoint de soie et de chenille de soie, ou la manière de transcrire les étamines et le pistil, sont parfaitement identiques.
+Jean-François Bony a assurément été le marchand-brodeur le plus prolifique, mais aussi le plus réputé, de la ville de Lyon durant l'Empire et sous la Restauration. Outre la robe commandée par la ville pour l'impératrice Marie-Louise, il réalise aussi des robes pour la duchesse d'Angoulême, lors de sa visite à Lyon en 1814, et pour la duchesse de Berry, deux ans plus tard.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/d1c50b0a-b61f-3888-97d5-e9ee946e2cf5> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

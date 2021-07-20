@@ -1,0 +1,30 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/b73fe579-b815-5213-b8d9-f4b601d61549> a rdf:Statement ;
+    silk:L18 "0.932421"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/d7c6abf1-0805-3c88-bd11-484e9767bf46> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/b73fe579-b815-5213-b8d9-f4b601d61549> .
+
+<http://data.silknow.org/activity/b73fe579-b815-5213-b8d9-f4b601d61549> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Edad Moderna"@es,
+        """Este episodio es infrecuente en las series de Alejandro Magno. Se ajusta a la descripción que de la fundación de Alejandría hace Plutarco en su obra sobre el macedonio y que recoge M. García Calvo en su artículo:  " Tapices de Alejandro Magno", en la revista Reales Sitios, nº 133, 1997: "... ya tenía medido y acotado el emplazamiento, según consejo de los arquitectos, cuando durante la noche tuvo una visión maravillosa, le pareció que un anciano de canosa cabellera, de aspecto muy vulnerable, colocándose a su lado, le recitaba los siguientes versos: una isla allí que rodean las olas, faro lleva por nombre y está frente a Egipto.... Al contemplar, pues, lugar tan ventanjoso y favorecido exclamó como Homero, que en los demás era admirable, fue también el más sabio arquitecto, y, a continuación, ordenó diseñar el plano de la ciudad ajustándose a las características del terreno...."  
+  
+Posiblemente pertenezca a la misma serie que el tapiz anterior, colgadura que fue tejida en la manufactura de Jacques Geubels I y adquirida en Amberes por Rodrigo de Silva y Mendoza (1526-1596), II duque de Pastrana, poco antes de su muerte. Fue donada en 1797 a la iglesia parroquial de la villa alcarreña."""@es,
+        """Tapiz con la representación de la fundación de Alejandría por Alejandro Magno, el cual aparece eligiendo el emplazamiento ideal para la fundación de Alejandría.  
+  
+Centro composición: Alejandro sentado en su trono, señala con su mano un plano que le está siendo comentado por un personaje, posiblemente el arquitecto. A su izquierda está un anciano de larga barba en actitud de hacerle alguna indicación, quizá el emplazamiento ideal de la ciudad. Al fondo se ven grupos de obreros trabajando. Derecha: Parte de una tienda de campaña. Al fondo a la izquierda, una ciudad.  
+El paño solo conserva las cenefas superior e inferior, formadas por figuras alegóricas con sus respectivos atributos, y que gozaron de gran popularidad en la segunda mitad del siglo XVI. En la superior vemos la OBEDIENTIA (obediencia), la CONCIENTIA (conciencia). En la inferior está el EXILIUM ( el destierro), y ANIMI PROMPTITUDO (presteza, disponibilidad)."""@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/d7c6abf1-0805-3c88-bd11-484e9767bf46> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

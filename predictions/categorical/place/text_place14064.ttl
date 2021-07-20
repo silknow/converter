@@ -1,0 +1,29 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/463762ef-cd89-511f-b470-f0793806514f> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/e13f6b10-2d96-3413-8438-7a4d486f5a09> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/463762ef-cd89-511f-b470-f0793806514f> .
+
+<http://data.silknow.org/activity/463762ef-cd89-511f-b470-f0793806514f> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Satin uni fond blanc qualité forte, brodé en soie et chenille et filés d'or. Dessin en trois lés : au centre une corbeille de fleurs; de part et d'autre, un oiseau dans une couronne de fleurs, le fond semé de 85 bouquets détachés..
+
+Historique : 
+Le décor est un des chefs-d'oeuvre du dessinateur Bony. Il fut exécuté entre 1811 et 1812, par la maison Bissardon dont faisait partie Bony, et livré au Mobilier impérial le 24 octobre 1812, pour le petit salon de l'impératrice Marie-Louise, au Palais de Versailles.
+La livraison comprenait 15 lés d'étoffe pour tenture murale, mesurant chacun 0,735m de large et 3,10 m de long et l'étoffe et des bordures de différentes largeurs nécessaires pour l'encadrement et la couverture d'un canapé, une bergère, huit fauteuils, six chaises, deux tabourets et un écran.
+La maison Bissardon, Bony et Cie reçut la somme de 25154 francs pour la livraison de ce travail. 
+Comme pour les autres commandes impériales passées à partir de 1811 pour le renouveau du château de Versailles, ce meuble de satin brodé ne fut jamais utilisé et resta complet dans les magasins du Garde-Meuble jusqu'à la fin du XIXe siècle, à l'exception du damas blanc pour rideaux. Celui-ci fut employé en 1839 par le chasublier Biais et en 1842 par Leys à Trianon."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/e13f6b10-2d96-3413-8438-7a4d486f5a09> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

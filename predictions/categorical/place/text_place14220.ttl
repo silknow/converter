@@ -1,0 +1,27 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/3fed3313-7949-52d5-824a-8511694593ab> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/55ac60b7-8c5d-31b7-8461-b76ce2ed3291> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/3fed3313-7949-52d5-824a-8511694593ab> .
+
+<http://data.silknow.org/activity/3fed3313-7949-52d5-824a-8511694593ab> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Etoffe pour tenture, sièges et lits. Damas 2 couleurs fond vert n°2 liseré blanc, "le dessin blanc façonné en liseré composé de fleurs arabesques, couronnes, palmes de fleurs sur les coutures couvertes à dessin à pointe".
+
+Historique :
+Exécuté par Grand frères, à Lyon, pour sept meubles d'appartements de ministres ou de grands officiers au Palais de Versailles.
+ Ce damas n'a pas été utilisé sous l'Empire mais dès le 7 mars 1817, pour le Major Général de la Garde aux Tuileries, le tapissier Laflèche 87 m 35 de tissu pour tenture et le tapissier Lejeune 71 m 25, certainement pour la même pièce, un tapissier étant chargé de la confection de la tenture et des rideaux, l'autre de la garniture des sièges. On retrouve en effet dans "le petit salon servant de cabinet de travail" de l'appartement du duc d'Angoulême un ameublement réalisé avec ces étoffes. En 1821, Mme Cheniot s'est vu remettre des métrages de tissu pour tenture pour le service du duc d'Angoulême aux Tuileries  ; à nouveau en 1825 et en 1827 d'autres métrages pour tenture ont été sortis pour les Tuileries. En 1838, 17 m 70 pour tenture ont été employés par le tapissier Perelle au Grand Trianon et en 1854, 60 m 50 sont utilisés pour l'Hôtel de Place Vendôme."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/55ac60b7-8c5d-31b7-8461-b76ce2ed3291> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

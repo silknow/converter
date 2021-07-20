@@ -1,0 +1,27 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/a42db117-7a6a-5d5a-8dc3-824929014331> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/ba12a2bc-743f-30a7-91a2-a84c071c0af0> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/a42db117-7a6a-5d5a-8dc3-824929014331> .
+
+<http://data.silknow.org/activity/a42db117-7a6a-5d5a-8dc3-824929014331> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Le fragment, qui comporte les traces de replis de couture, était très certainement découpé en galon et appliqué sur un vêtement dont il dissimulait les coutures. Le samit a été tissé sur une chaîne, en pièce et en liage, en soie, poil de torsion Z, de couleur beige, au moyen de trames en soie, en assemblé de deux (?) bouts sans torsion appréciable de couleur cramoisi et jaune. Les fils de liage croisent en sergé de 2 lie 1, direction S, par passée. Les fils pièce séparent en s'intercalant entre elles la trame d'endroit de la trame d'envers.
+Le décor, jaune sur fond cramoisi, présente un réseau losangé formé par des tiges feuillues affrontées autour d'une svastika. Aux intersections des mailles ainsi créées prenait place un carré, contenant un autre carré timbré de cinq pois. Dans les compartiments du réseau losangé prenaient place des médaillons. Celui qui est conservé adopte la forme d'une étoile à huit branches ornée d'une rosette à quatre pétales cordiformes.
+Le décor est très comparable à celui qui orne des soieries bicolores découvertes à Antinoé, essentiellement durant les campagnes de 1897 et 1898, qui présentent un réseau losangé, tracé par des tigelles ou des rinceaux feuillus, ponctués d'éléments géométriques, enfermant des médaillons de forme variées, eux-mêmes ornés. Le musée des Tissus en conserve de nombreux exemplaires, sur fond cramoisi (inv. MT 26812.17, MT 26812.30 et MT 26812.33) ou bleu vert (inv. MT 26812.25, MT 26812.26, MT 26812.27 et MT 26812.34). Tous ont été tissés sur une chaîne de soie beige, tordue en Z, avec une proportion de un fil pièce pour un fil de liage et une densité relativement faible par rapport au nombre élevé de passées (19 fils de chaque chaîne par centimètre pour 42 à 45 passées, ici), le tissage avec une direction en S de la diagonale du sergé des liages et au moyen de lats suivis. Ce groupe de soieries est aussi caractérisé par des irrégularités de tissage, produites aux passages entre fond et motifs par le décalage entre le travail du tisseur et celui du tireur de lacs. La grande homogénéité de ce groupe, et de la plupart des soieries découvertes à Antinoé, comme les samits à trois lats ou plus (généralement quatre ou cinq, dont certains lattés ou interrompus), laisse supposer que les ateliers de la ville fournissaient la clientèle aisée à Antinoé.
+Les soieries bicolores étaient généralement utilisées en application sur des vêtements de luxe. Elles étaient alors découpées en bandes. Des vêtements complets conservés au musée des Tissus (inv. MT 34872, MT 34872 bis, par exemple) montrent encore l'usage de ces galons, dissimulant les coutures d'assemblage. Albert Gayet appelait ces galons des « cache-coutures ». La campagne de 1897 semble avoir révélé plusieurs vêtements ornés d'applications de soierie. Mal équipé pour ce type de découvertes, l'archéologue ne put en rapporter que des fragments, qui ont été donnés à la Chambre de Commerce de Lyon pour son musée par Émile Guimet. Ce dernier espérait convaincre l'institution de financer en grande partie la campagne suivante de fouilles à Antinoé, à l'issue de laquelle le musée des Tissus devait recevoir tout le matériel textile qui y serait découvert.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/ba12a2bc-743f-30a7-91a2-a84c071c0af0> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

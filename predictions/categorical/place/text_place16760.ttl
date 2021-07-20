@@ -1,0 +1,28 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/79e7d5ed-adb7-5dbb-b004-3af0ef481d2d> a rdf:Statement ;
+    silk:L18 "0.358964"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/1269750/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/e5bdcb1b-5f49-3dd1-a1bb-0d6005a72386> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/79e7d5ed-adb7-5dbb-b004-3af0ef481d2d> .
+
+<http://data.silknow.org/activity/79e7d5ed-adb7-5dbb-b004-3af0ef481d2d> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """This is a lady's scoring kit for archery. These usually hung from a lady archer's belt together with a quiver, a spare string, and sometimes a purse containing shillings.  Three golds (arrows in the centre) entitled a competitor to receive a shilling from each opponent. 
+
+The kit has three parts: The acorn-shaped cup or pot contained grease (a mixture of mutton fat and tallow) which help the finger protectors or shooting glove slide more easily off the bowstring. The pricker is the tubular object with a sharp pointed stiletto used for marking scores onto the  card disc which holds a circular replaceable printed paper bulls-eye card with circles in gold, red, white, black and blue. Players scored nine for gold, seven for red, five for blue three for black and one for white. 
+
+Archery was a popular pastime in the 19th century. Queen Victoria was an enthusiastic player.  It was one of the few sports open to middle-class ladies and provided opportunities for them to mix socially with the opposite sex without a chaperone.  This method of scoring archery goes back at least to the 1830s. Scoring in this way ceased at public archery meetings in 1872 and was succeeded by score books and pencils."""@en,
+        "[*] archery scoring kit; LADY'S ARCHERY SCORE KIT"@en ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/e5bdcb1b-5f49-3dd1-a1bb-0d6005a72386> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/1269750/> .
+

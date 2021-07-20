@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/6a019a5d-89cb-53a5-b233-84e8f47fccfd> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/4baeb71d-5a71-3bbe-a5f9-0a5a58fce64e> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/6a019a5d-89cb-53a5-b233-84e8f47fccfd> .
+
+<http://data.silknow.org/activity/6a019a5d-89cb-53a5-b233-84e8f47fccfd> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Albert Gayet mentionne peut-être cette étoffe dans un article sur « le trésor de la nécropole d’Antinoé », publié en 1898 dans la Revue des Arts décoratifs, lorsqu’il décrit une « soierie (qui) montre, sur fond bistre clair, un semis de fleurettes brunes, brochées (sic) ». Dans le même paragraphe, il évoque aussi un « brochage damassé (sic), montrant, ici, des lions passants, jaune intense sur fond lapis » et, « sur fond bleu encore, des créneaux de style assyrien, blancs et rouges, au-dessous desquels des médaillons s’assemblent, surmontés de têtes de perroquets, blanches et rouges, tandis que sur le champ, une tête semblable vient s’écarteler ». On reconnaît, là aussi, des soieries découvertes durant la campagne de 1897, dans la sépulture d’une « jeune dame romaine » (inv. MT 26812.13, déposé au musée du Louvre) et d’un « officier » (inv. MT 26812.8, 40310 et 40311). Sur un fond beige foncé s’enlève un décor ocre, blanc, vert et jaune clair. Il a conservé deux registres de fleurons. Le premier présente des fleurs de lis blanches, marquées d’un motif cordiforme ocre. Elles sont supportées par de courtes tiges vertes, d’où jaillissent deux tigelles feuillues, portant une petite fleur de lis jaune. Le second registre est composé de grandes palmettes ocre à trois lobes, dont celui du milieu adopte la forme d’un cœur. Elles sont cernées de blanc et comportent, à leur base, trois médaillons blancs timbrés d’une feuille de trèfle beige. Elles sont soutenues par une tige jaune, qui supporte également deux bourgeons blancs et des sépales verts. 
+Les particularités techniques de cette soierie la rapprochent d’autres exemplaires découverts à Antinoé (inv. MT 26812.8, MT 40310, MT 40311, MT 26812.24, MT MT 26812.9, MT 26812.3, MT 40316, MT 26812.2, MT 26812.1, MT 26812.44, MT 2013.0.17, MT 2013.0.18 et MT 26812.38, MT 40315, MT 26812.18, MT 26812.12, MT 26812.15, MT 26812.6, MT 26812.37, MT 26812.7, MT 26812.32 et MT 40313). Le groupe, probablement attribuable à des ateliers de la ville actifs entre le milieu du Ve siècle et les premières décennies du VIIe siècle, est particulièrement homogène. Il s’agit de samits façonnés tissés sur des fils de chaîne de soie beige, de torsion Z, avec une proportion de une chaîne pièce pour une chaîne de liage ; les passées sont suivies, et le décor comprend au moins trois lats, mais généralement quatre ou cinq, dont certains sont lattés ou interrompus ; le nombre des passées est très élevé, par rapport à la densité des chaînes ; le tissage chevronne parfois de manière assez visible et des erreurs de tissage se produisent fréquemment entre le fond et les motifs. L’iconographie de ces étoffes puise à la fois dans le répertoire byzantin et dans les ornements de la Perse sassanide. On ignore quel usage a été fait de cette soierie. Elle ornait probablement un vêtement de luxe. Albert Gayet exhume ces étoffes façonnées presque exclusivement durant les deuxième et troisième campagnes de fouilles, dans les quartiers de la nécropole qu’il baptise « B » et « C » et qui lui semblent réservés à des « fonctionnaires » ou des « officiers impériaux en résidence en Égypte. »
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/4baeb71d-5a71-3bbe-a5f9-0a5a58fce64e> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

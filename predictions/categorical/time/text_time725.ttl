@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/449386cb-1bed-5364-8c72-e7abd9af7c74> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/e2f89c31-15d4-3441-b66f-f68b09b717b7> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/449386cb-1bed-5364-8c72-e7abd9af7c74> .
+
+<http://data.silknow.org/activity/449386cb-1bed-5364-8c72-e7abd9af7c74> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """La maison Schulz, Gourdon et Cie, établie 8, rue du Griffon, était spécialisée dans les « soieries, hautes nouveautés riches pour robes et confections, étoffes unies couleur en tous genres ». Elle avait reçu de nombreuses distinctions aux grandes manifestations internationales : une Grande Médaille d'honneur à l'Exposition universelle de Paris, en 1855, une Prize Medal à celle de Londres, en 1862, une Grande Médaille d'honneur à l'Exposition internationale de Porto, en 1865 ; un Diplôme d'honneur à l'Exposition universelle de Vienne en 1873 ; un Grand Prix à l'Exposition universelle de Paris, en 1878. Charles Schulz fut décoré de la Croix de la Légion d'honneur à Paris en 1855, puis de la Croix de l'ordre du Christ à Porto en 1865 ; Michel Béraud, d'une médaille et de la Croix de la Légion d'honneur à l'Exposition universelle de 1867 avec la mention « Talent hors ligne pour les dessins de fabrique. A contribué par ses travaux à la supériorité de l'industrie lyonnaise » ; Émile Schulz reçoit la Croix de la Légion d'honneur à Vienne, en 1873. D'abord dessinateur puis associé des frères Charles et Émile Schulz, Michel Béraud se retire en1875. Jean-Baptiste Alexandre Barqui, comme lui ancien élève d'Augustin Thierriat à l'École des Beaux-Arts de Lyon, lui succède comme dessinateur après avoir été son collaborateur. On lui a attribué parfois le dessin de la laize Soleil, orchidées, saluée par tous les commentateurs de l'Exposition universelle de Paris, en 1889, à l'issue de laquelle la maison Schulz, Gourdon et Cie est gratifiée d'un Grand Prix. Plusieurs des collaborateurs de la maison sont d'ailleurs aussi distingués à cette occasion : Jean-Baptiste Alexandre Barqui, lui-même, d'une Médaille d'or, Joseph Billet, Étienne Chemain, Charles Clairenson, Joseph Garin-Michaud et Paul Nicoud, d'une Médaille d'argent, Denis-Derville Bonnard, François Martin et Louis Sigaud, d'une Médaille de bronze. C'est pourtant à Arthur Martin que Victor Champier, rédacteur en chef de la Revue des Arts décoratifs, attribue le dessin de Soleil, orchidées dans Les industries d'Art à l'Exposition universelle de 1889, publié en 1891. Arthur Martin est alors considéré comme un « dessinateur industriel de premier ordre ». Il est établi à Paris, rue de Trévise. Il fournit des dessins de tapis, de tapisseries, d'étoffes, d'ameublements et de robes pour les plus grandes maisons de France. L'étoffe, un satin pour robe liseré, lancé et broché, présentait l'un des plus importants rapports de dessin de l'Exposition universelle de 1889 (94,5 cm de haut pour 63 cm de large). Il représente, sur un fond crème, des gerbes d'orchidées auréolées de rayons dorés. Adrien Storck, commentant les produits présentés à l'Exposition universelle de 1889, parle d'un « véritable tableau soyeux ».
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/e2f89c31-15d4-3441-b66f-f68b09b717b7> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

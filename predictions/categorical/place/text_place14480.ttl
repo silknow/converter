@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/ada593ab-46c7-5cb6-bff3-8af2870fba48> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/71a60ffe-c1ae-384d-88c3-12349a2aa74f> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/ada593ab-46c7-5cb6-bff3-8af2870fba48> .
+
+<http://data.silknow.org/activity/ada593ab-46c7-5cb6-bff3-8af2870fba48> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Bordures pour tenture (bordures montantes). Damas économique fond couleur d'or, listel bleu, fil blanc. Dessin de palmettes, guirlandes de lierre, couronnes de fleurs et flèches. 
+
+Historique : 
+Ce damas fut commandé à Pernon pour le Palais de Versailles en même temps que les étoffes pour la salle du Trône et quatre meubles sans affectation précise. Les étoffes furent enregistrées au Journal du Garde Meuble du 22 juin 1808. Les étoffes furent utilisées au Palais de Strasbourg, puis pour la chambre du Gouverneur à Compiègne. En juillet 1810, deux autres projets pour Compiègne furent confiés à Darrac : pour la chambre à coucher de la dame d'honneur et pour la chambre à coucher de l'appartement de prince n°4."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/71a60ffe-c1ae-384d-88c3-12349a2aa74f> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

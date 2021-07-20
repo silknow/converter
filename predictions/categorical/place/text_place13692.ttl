@@ -1,0 +1,23 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/05caf2cc-e0e0-57c3-9dd6-bd4bce04d11d> a rdf:Statement ;
+    silk:L18 "0.341088"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2635167/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/11b79749-873d-362e-a235-dbf78e45681c> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/05caf2cc-e0e0-57c3-9dd6-bd4bce04d11d> .
+
+<http://data.silknow.org/activity/05caf2cc-e0e0-57c3-9dd6-bd4bce04d11d> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "One saint wears a pallium over a chasuble, a style of dress that suggests a dating between the eleventh and the twelfth centuries. He is otherwise not vested as an ecclesiastic; the embroidery may therefore have originated outside Europe, possibly at a Coptic community in Egypt. On the other hand, the technique and the architecture, which have something in common with Carolingian art, may suggest a European origin."@en ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/11b79749-873d-362e-a235-dbf78e45681c> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2635167/> .
+

@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/a1251ea1-41c0-5241-b8c2-c6b48ac720d8> a rdf:Statement ;
+    silk:L18 "0.453908"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/130758/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/e2e75d2f-5394-3b3a-b6fc-7a7f3ea159bf> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/a1251ea1-41c0-5241-b8c2-c6b48ac720d8> .
+
+<http://data.silknow.org/activity/a1251ea1-41c0-5241-b8c2-c6b48ac720d8> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Panel, calico embroidered in wools and silk, Norway (Telemark), 1700s."@en,
+        "Triangular panel of calico, embroidered in stem and satin stitches in coloured wools and silk, with balanced ornament of leaf devices, and edged with drawn and netted work."@en ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/e2e75d2f-5394-3b3a-b6fc-7a7f3ea159bf> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/130758/> .
+

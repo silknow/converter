@@ -1,0 +1,23 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/aa8f9e69-350b-5b04-9d8f-d9a1c65aed22> a rdf:Statement ;
+    silk:L18 "0.737777"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/425b14cf-7308-385a-9946-1fc835901d1e> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/aa8f9e69-350b-5b04-9d8f-d9a1c65aed22> .
+
+<http://data.silknow.org/activity/aa8f9e69-350b-5b04-9d8f-d9a1c65aed22> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "dos hojas adheridas con adhesivo, con dibujo inscrito en un rectángulo regular, en la parte inferior con dalmática decorada con volutas, hojas y flores, y en la superior con varios bocetos de vestimenta religiosa"@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/425b14cf-7308-385a-9946-1fc835901d1e> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

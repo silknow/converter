@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/8a3db13c-d530-5513-b3a3-673f0c81842e> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/b66e6d6a-b224-32d6-8628-ac16d5b6e508> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/8a3db13c-d530-5513-b3a3-673f0c81842e> .
+
+<http://data.silknow.org/activity/8a3db13c-d530-5513-b3a3-673f0c81842e> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Cette laize de tissu pour ameublement a été exécutée en damas base satin de 8, appelé communément « damas des Indes. » Les damas se caractérisent par une même armure, sens chaîne pour le fond, et sens trame pour le décor, dont la lumière accentue encore l’opposition en jouant sur leur brillance et leur matité respectives. Ainsi, dans le cas de cette laize monochrome, c’est bien le jeu des armures qui fait apparaître le décor. Celui-ci présente un vase chinois sur un reposoir. Du col évasé de ce vase jaillit une composition végétale à deux étages de feuilles découpées, marquée en son centre par une large fleur de tournesol et enrichie de fleurettes ou de fruits. Des rinceaux fleuris prolongent le piédestal du vase. 
+Les motifs inspirés par les objets importés d’Extrême-Orient par les compagnies des Indes occidentales étaient particulièrement en vogue dès la seconde moitié du XVIIe siècle. Ce goût pour l’exotisme culmine à la fin du règne de Louis XIV et traverse, avec le mouvement de la « chinoiserie », tout le XVIIIe siècle. L'importation d'étoffes chinoises à décor de tournesol dans des vases de porcelaine sur reposoir (un exemple de damas chinois de ce type, de couleur ponceau, est conservé au Cooper-Hewitt, National Design Museum, Smithsonian Institution de New York, inv. 1920-I-914 ; un autre damas, jaune, aussi à décor de vases chinois et fleurs de tournesol, acquis par le prince Eugène de Savoie et provenant d'un lit du château de Hof, conservé au Museum für Angewandte Kunst de Vienne, inv. T 9064, a aussi probablement été exécuté en Chine) a suscité diverses imitations européennes, identifiables par l'adaptation des dessins au répertoire baroque, par la technique de tissage et par les dimensions des laizes. L'exemplaire du musée des Tissus présente toutes les caractéristiques d'une soierie exécutée en Occident, en Italie ou en France. D'autres exemplaires comparables peuvent être mentionnés (voir, par exemple, un damas jaune à vases chinois et fleurs de tournesol ayant servi de rideaux de lit au château de Leeds, conservé au Victoria & Albert Museum de Londres, inv. T.27-1963).
+Claire Berthommier"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/b66e6d6a-b224-32d6-8628-ac16d5b6e508> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

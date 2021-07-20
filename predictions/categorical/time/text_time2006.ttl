@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/a1a46fe4-c7d9-52f4-99d9-45a374c1d1f4> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/fed5e0ce-7559-3fe3-8765-14e0f5d94b8e> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/a1a46fe4-c7d9-52f4-99d9-45a374c1d1f4> .
+
+<http://data.silknow.org/activity/a1a46fe4-c7d9-52f4-99d9-45a374c1d1f4> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """La laize a été tissée sur une chaîne en organsin de soie (deux bouts, torsion S, 54 fils doubles par centimètre) crème, au moyen de trames de soie crème (assemblé sans torsion appréciable de deux ou trois bouts) pour le fond, premier coup, et de soie polychrome (assemblé de deux ou trois bouts, faible torsion S ou sans torsion appréciable) pour les lats de broché, par un coup de chaque lat de broché selon le décor (20 passées par centimètre). La découpure, en hauteur, est de quatre fils, et d'une passée en largeur. Le taffetas du fond est formé par tous les fils et par tous les coups de la trame de fond, tandis que les trames brochées sont lattées entre tous les coups de fond et liées en sergé de 3 lie 1 par le cinquième des fils et reposant sur le taffetas formé par tous les fils et tous les coups de la trame de fond.
+Le rapport de dessin, haut de presque cinquante-trois centimètres, est large de cinquante-trois centimètres et demi, soit deux chemins à pointe. Le décor présente donc une composition symétrique, selon un axe vertical, qui répète en hauteur le même groupe inversé de branches fleuries et de fruits. Le motif réunit un gros melon que sa maturité a fait éclater, des grappes de raisin et des pêches. Des branches supportent à la fois des grappes de raisin et des fleurs bleues en cloches. Un effet de points rentrés, ou « berclé », donne du volume aux fruits et accentue le naturalisme de la composition.
+Le tissage en taffetas broché à liage repris et les lisières de la laize (six cordelines en cordonnet de soie retors S de deux bouts crème, simple ou double, puis tissage en taffetas à fils multiples sur six millimètres), ainsi que les couleurs employées pour les trames brochées (brun foncé, plusieurs tons de vert, plusieurs tons de rouge et de rose, plusieurs tons de jaune et plusieurs tons de bleu) et la composition, qui associe de manière fantaisiste des éléments traités avec beaucoup de naturalisme, tout comme l'usage des points rentrés sont caractéristiques de la production française, et plus particulièrement lyonnaise, des années 1735-1740. La Fondation Abegg, à Riggisberg, conserve une laize très comparable (inv. Nr. 5041), tant du point de vue technique que stylistique. Le Deutsches Textilmuseum de Krefeld conserve également un taffetas broché à liage repris, sur fond crème, incluant des filés métalliques dorés (inv. Nr. 14129), produit à Lyon vers 1735-1740, qui associe des fleurs et des bottes de radis, tandis que la collection Richelieu, à la Bibliothèque nationale de France, Cabinet des Estampes, contient un échantillon comparable intitulé « Gros de Tours blanc nouveau garnie (sic) de paquets de Celery renoués avec du Ruban que la Reine porte au printemps 1736 » (Lh 45 fol. 40, n° 183). Les associations de fleurs, au naturel ou fantaisistes, et de fruits ou légumes étaient particulièrement en vogue dans le deuxième quart du XVIIIe siècle, comme en témoigne aussi la laize du musée des Tissus.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/fed5e0ce-7559-3fe3-8765-14e0f5d94b8e> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

@@ -1,0 +1,41 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/43868e57-58c6-53d0-a7fe-d0ce90a5a264> a rdf:Statement ;
+    silk:L18 "0.351471"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3017382/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/bd1c0147-816b-3793-98a2-8a2c4f5deed1> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/43868e57-58c6-53d0-a7fe-d0ce90a5a264> .
+
+<http://data.silknow.org/activity/43868e57-58c6-53d0-a7fe-d0ce90a5a264> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Abanico plegable  
+  
+País: doble de tafetán  seda  en su color, pintado a la aguada y toques de oro. Hilo entorchado de plata dorada (perdido el dorado en gran parte), bordado a cadeneteta, lentejuelas metálicas de colores cosidas y aplicación de flores de seda.  Revés sin decoración.   
+Varillaje tipo esqueleto: 12 varillas + 2 guardas de marfil, grabado, calado con "grillé" y plata colada.Lámina de nácar sobre el fondo de la parte superior de la guarda.  
+ Clavillo: rematado con vidrio  imitación de diamante, engastado a la antigua.  
+  
+Cara: cartela  central oval de lentejuelas con alegoria del amor ; escena galante en un jardín. El caballero le ofrece una rosa a la dama sentada. Otra dama, situada en segundo término, en pie observa la escena y le coloca el tocado. Mesa vestida con espejo. Junto al caballero, un perro sobre un escabel. Flanqueando la cartela  central  medallones  con una pareja de palomas, coronados por un jarrón con flores en cadeneta de hilo metálico. A ambos lados, cartelas con un barco de vela pintado a la aguada. Enmarcado por fina cenefa con flores. En los extremos grandes rocallas , pájaros, insectos, cesto con flores, frutos...  
+Revés: carece de decoración.  
+  
+Fuente: alegoría del amor; en en centro una pajeja, flanqueada por altares del amor con corazones ardientes.   
+Guardas: en la parte superior, figura femenina con paloma recortada sobre fondo de lámina de nácar.  
+Revés: sin decoración."""@es,
+        """De gran calidad, este abanico, al igual que el 4170,  4172, 4195, 4199 y 4200, son abanicos franceses con las características propias de los abanicos de estilo Luis XVI.  
+  
+Bibliografía comparada:  
+- Catálogo de Christie´s: An Important Collection of Fans. London, Tuesday 11 june 1991,p. 27, nº 56, p. 37 - nº 112, 113, 114 y 115.    
+- MAYOR, Susan: The Collector´s Guide to Fans. London, 1995, Bracken Books, p. 85.  
+-VOLET, Maryse; BEENTJES, Annette: Éventails, Collection du Musée d´ art et d´ histoire de Genéve. Genéve.  Editions Clairfontaine, 1987, p. 75, nº 15 - pp. 131-132, nº 57 a 64."""@es,
+        "Época Luis XVI   Edad Moderna"@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/bd1c0147-816b-3793-98a2-8a2c4f5deed1> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3017382/> .
+

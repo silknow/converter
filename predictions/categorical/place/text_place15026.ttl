@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/2b8fb017-7b44-5e3e-8ad4-91d57ce03e06> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/aedbacc8-b845-3271-b470-785ed451a3d1> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/2b8fb017-7b44-5e3e-8ad4-91d57ce03e06> .
+
+<http://data.silknow.org/activity/2b8fb017-7b44-5e3e-8ad4-91d57ce03e06> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Bordure pour siège. Gros de Tours fond chamois broché soie nuée, dessin à suite d'ornements et de rosaces. 
+
+Historique : 
+Initialement exécuté pour le cabinet de repos de l'Empereur à Versaiiles, les étoffes restèrent au magasin pendant l'Empire mais furent employées à plusieurs reprises à Saint-Cloud sous la Restauration par le tapissier Laflèche en 1827 pour le Boudoir de la duchesse de Berry (Marie-Caroline de Bourbon-Siciles 1798-1870) ; et en 1829 par le tapissier Lejeune pour le Cabinet de travail de la duchesse d'Angoulême (Marie-Thérèse de France, 1778-1851) pour encadrer des rideaux, recouvrir un ensemble de sièges en bois sculpté et doré qui avaient été exécutés par Jacob-Desmalter pour l'Impératrice Joséphine d'après les aquarelles de Percier. En 1843, l'ensemble figure toujours à Saint-Cloud mais dans le cabinet de travail du Roi. En 1855, il est au Garde-Meuble d'où il sort pour le château de Malmaison en 1865. Une partie y demeure toujours au sein du Musée Napoléon."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/aedbacc8-b845-3271-b470-785ed451a3d1> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

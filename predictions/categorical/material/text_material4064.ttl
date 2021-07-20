@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/09d5831a-43e1-5be9-bb34-5159954f2d6f> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/dce218f2-8d8a-3e55-952a-3d0f0b8fea6c> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/09d5831a-43e1-5be9-bb34-5159954f2d6f> .
+
+<http://data.silknow.org/activity/09d5831a-43e1-5be9-bb34-5159954f2d6f> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Parmi les étoffes envoyées par Émile Guimet au président de la Chambre de Commerce de Lyon le 28 septembre 1897 figuraient plusieurs échantillons de soieries qui, découpées en bandes et bordées de replis de couture, avaient été appliquées comme garnitures de vêtements de luxe (inv. MT 26812.8, MT 40310, MT 40311, MT 26812.5, MT 26812.24, MT 26812.9 et  MT 26812.3). Parmi elles figuraient des soieries bicolores, à décor jaune sur fond bleu-vert ou rouge, et des samits façonnés comportant au moins trois lats, mais plus souvent quatre ou cinq dont certains lattés ou interrompus. Les samits bicolores sont généralement inspirés par le répertoire décoratif de l’Antiquité tardive ou de l’Empire byzantin, tandis que les étoffes polychromes trouvent leurs modèles dans l’art de la Perse sassanide. C’est à la première catégorie qu’appartiennent les quatre fragments de soierie sur fond rouge, ornés d’un réseau losangé tracé par des rubans contenant des feuilles d’acanthes disposées de chaque côté d’un fleuron trilobé. Les intersections des rubans sont marquées par un petit losange timbré d’une étoile à huit branches. Les mailles du réseau contenaient des palmettes composées de feuilles et de tigelles. Les caractéristiques techniques de la majorité des soieries découvertes à Antinoé, bicolores ou polychromes, présentent de grandes similitudes. La diversité des ornements et des modèles qui ont servi à les élaborer a souvent fait considérer que les unes pouvaient avoir été produites en Égypte ou dans des ateliers de l’Empire romain d’Orient, et les autres, en Perse sassanide. Ils relèvent pourtant tous d’une même tradition de tissage, qui n’est assurément pas asiatique. L’homogénéité du groupe des « soieries d’Antinoé » permet de penser que des ateliers étaient établis dans la ville. Ils étaient actifs entre le milieu du Ve siècle et les premières décennies du VIIe siècle. 
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/dce218f2-8d8a-3e55-952a-3d0f0b8fea6c> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

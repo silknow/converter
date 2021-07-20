@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/7f1b257c-3f08-5d1b-ae6c-cc17b26b294d> a rdf:Statement ;
+    silk:L18 "0.351471"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3017382/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/4570b2e1-2994-3663-9ff1-2b04443a3247> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/7f1b257c-3f08-5d1b-ae6c-cc17b26b294d> .
+
+<http://data.silknow.org/activity/7f1b257c-3f08-5d1b-ae6c-cc17b26b294d> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Prenda masculina de busto con cuello a la caja, sin mangas, entallada, con abertura frontal con botonadura forrada oculta y bolsillos de tapilla. Los delanteros, que terminan en pequeños faldones, están realizados con tejido de de lamé de plata y por su interior están forrados con tafetán de seda marfil. El espaldar está compuesto de dos piezas de tafetán de lino unidas longitudinalmente por el centro de la prenda dejando una pequeña abertura en la parte inferior. La decoración que se localiza en el perímetro de los delanteros, en las tapillas de los bolsillos y en los botones, combina ramos sinuosos, flores y motivos perlados y está realizada mediante bordado de aplicación, utilizándose hilos de canutillo de plata sobredorada, lentejuelas y espejuelos."@es,
+        "Rococó"@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/4570b2e1-2994-3663-9ff1-2b04443a3247> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3017382/> .
+

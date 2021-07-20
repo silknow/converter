@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/ceae8110-392c-52d8-a3c4-a741da782218> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/12c6aa62-3edf-3235-8895-fd705a52d449> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/ceae8110-392c-52d8-a3c4-a741da782218> .
+
+<http://data.silknow.org/activity/ceae8110-392c-52d8-a3c4-a741da782218> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Edad Contemporánea"@es,
+        """Silla de brazos (faltan los brazos) de madera de nogal, con tapizado al aire de terciopelo de seda de color rojo, casando elementos pertenecientes al Renacimiento y al estilo Empire.  
+Ensamble de montantes y largueros a caja y espiga; el montante trasero, de sección rectangular, formando pata aserrada y respaldo inclinado, rematado en bustos femeninos tallados en altorrelieve, con sus cabezas giradas hacia dentro, la izquierda con indumentaria Renacentista, la derecha con indumentaria clásica. El fondo del montante, que sobresale la altura de sus cabezas, enrollado en volutas.  Los montantes frontales formando Hermes a partir de listones de sección rectangular con el lado frontal convexo a la altura de las patas; sobre pies en forma de garra de león y remates de figuras de medio cuerpo que constituyen el apoyo del brazo; el de la izquierda femenino, el de la derecha masculino, barbudo. Presentan atuendo egipcio en las cabezas que forma colgadura. Rematado en espigas, para la unión con los brazos, igual que el montante trasero presenta cajeado. Las patas reforzadas por travesaños en forma de tablas; las laterales en su cara exterior tallados con acanaladuras rellenas en su mitad inferior por baquetones; el trasero en forma de listón sencillo, y el frontal en forma de tabla excavada de manera que quedan bordes elevados, con motivos tallados en bajorrelieve inscritos. Cintura corrida, que forma el bastidor para el tapizado al aire, de madera de nogal con chapeado al interior de madera de conífera; los travesaños frontal y trasero curvos en forma de U. El respaldo, abierto en su parte inferior, constituido por dos travesaños, formando el bastidor para el tapizado de la parte superior. El tapizado de terciopelo de seda de color rojo, claveteado en los cantos superiores y laterales de la cintura y de los montantes del respaldo, mediante clavos con cabezas decorativas grandes de bronce, en forma de rosetas (en ambos está recortado el campo central del tejido, donde aparece una tela de forro de algodón o de lino de color crudo. Debajo del asiento aparece red cerrada de cinchas de fibras vegetales. El tapizado del respaldo y el del asiento parcialmente, bordeados de cinta de pasamanería de seda de color carmesí con hilo metálico."""@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/12c6aa62-3edf-3235-8895-fd705a52d449> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

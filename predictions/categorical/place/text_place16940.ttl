@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/85a5486d-7ac8-5298-8446-8463c140e975> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/0466c29d-ce33-3894-afc5-a2655cba8224> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/85a5486d-7ac8-5298-8446-8463c140e975> .
+
+<http://data.silknow.org/activity/85a5486d-7ac8-5298-8446-8463c140e975> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """panneau de tenture provenant du meuble d'été de la salle du Trône du Palais des Tuileries, commandé par Louis XVIII en 1818 ; exécuté à Lyon par la maison Grand Frères, sur des dessins de Dugourc, et livré en 1822 ; déposé et envoyé au Garde-Meuble en 1831.
+A la demande de Louis-Philippe, une partie de ce meuble fut utilisée par le tapissier Laflèche, pour confectionner la tenture d'alcôve de la Chambre de Louis XIV à Versailles. Sont envoyés à Versailles en 1834 : deux panneaux de tenture (VMB 918.1.1-2), deux bandeaux (Vmb 918.2.1-2) et quatre chutes (Vmb 918.3.1-4), deux rideaux de croisées remployés en rideaux de lit (Vmb 919.5.1-2) et quatres cantonnières (Vmb 919.6.1-4). Les rideaux et cantonnières étaient destinées à compléter le lit en broderie acquis en 1833 (aujourd'hui présenté dans le salon de Mercure, Vmb 919.1-4 et Vmb 920).
+L'ensemble fut déposé et mis en réserve en 1939."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/0466c29d-ce33-3894-afc5-a2655cba8224> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

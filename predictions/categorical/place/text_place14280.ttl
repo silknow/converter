@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/f25bcf32-f726-50d0-92cb-032472fa99bd> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/941d5e8b-d1e0-34f9-8378-ed0ed4e0db9c> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/f25bcf32-f726-50d0-92cb-032472fa99bd> .
+
+<http://data.silknow.org/activity/f25bcf32-f726-50d0-92cb-032472fa99bd> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Elément de bordure pour tenture. Section rectangulaire. Une petite déchirure transversale est visible sur l'une des bordures longitudinales. Velours pourpre chiné morodré brun, brodé en or relevé de palmettes, étoiles et enroulements. Largeur motif : 240 mm.
+
+Historique : 
+Le meuble de velours  destiné à l'origine à la Chambre à coucher de l'Empereur Napoléon au Palais de Saint-Cloud,  avait été commandé à Pernon par Lefuel, conservateur du Mobilier Impérial, sans avoir reçu au préalable l'accord du général Duroc, ce qui valut quelques aléas administratifs, changements de devis, retards. C'est seulement en 1813 que les services du Mobilier Impérial remirent au tapissier Maigret la totalité des étoffes en velours chiné pour tenture et sièges afin de confectionner le décor et l'ameublement du Grand Cabinet de l'Empereur à Saint-Cloud qui reste en place jusqu'en 1839. Une fois rentré au Garde-Meuble, le mobilier est dépecé et les étoffes sont réutilisées pour le décor de la chambre de Napoléon à la Malmaison. En 1968, en raison d'un nouvel aménagement, les étoffes rentrèrent au Mobilier national."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/941d5e8b-d1e0-34f9-8378-ed0ed4e0db9c> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

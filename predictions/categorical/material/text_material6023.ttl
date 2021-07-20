@@ -1,0 +1,29 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/746cd6fc-110d-5c04-993d-b2363dc4600d> a rdf:Statement ;
+    silk:L18 "0.498901"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/67709665-da8c-3cc5-a9b7-f451c488359a> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/746cd6fc-110d-5c04-993d-b2363dc4600d> .
+
+<http://data.silknow.org/activity/746cd6fc-110d-5c04-993d-b2363dc4600d> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "1 ordito, di fondo, organzino di seta, 2 capi, S, colore azzurro. Scalinatura:8 fili; Riduzione: 192 fili /cm;"@it,
+        "1 trama, di fondo, seta 2 capi, S, colore bianco e blu binati. Scalinature: 2 trame. Riduzione: 30 trame/ cm;"@it,
+        "Le grandi maglie campite da anfore fiorite, la cui resa naturalistica comincia ad essere maggiormente aderente alla reale, suggeriscono una datazione del tessuto verso gli inizi del XVII secolo. La presenza nei punti di tangenza delle maglie delle melegrane, figurazione usuale nei tessuti tra Quattro e Cinquecento, ma qui sormontata da croce apicale, fa ipotizzare una realizzazione della stoffa su committenza ecclesiastica, interpretando la presenza del frutto ricco di grani come una metaforica unione dei fedeli sotto l’autorità della Chiesa (cfr. J. Hall, Dizionario…, 1996, p. 276) Si ricorda inoltre che la simbolica accoppiata della melagrana con la croce nell’iconografia devozionale sarà l’attributo di San Giovanni di Dio dopo il 1690, anno della sua canonizzazione (cfr. Idem, p.207). Affinità compositive si notano con il damasco del piviale datato tra la fine del XVI e gli inizi del XVII secolo della basilica di San Giacomo Apostolo dell’Isola di San Giulio in provincia di Novara (cfr. P. Marabelli, in T. Boccherini – P. Marabelli, Atlante di…, 1995, p. 60) e il damasco della pianeta della prima metà del XVII secolo della chiesa di Santa Maria in Provenzano di Siena (cfr. S. Bogi, scheda n. 47 in Drappi, velluti…, 1994, p. 136). (R. Civiletto; M. Vitella)"@it,
+        "cm 36 x n.r.; numero dei campi: non rilevabile; tipo di campo : a ritorno"@it,
+        "fondo in raso da 8, diffalca mento 3, faccia ordito, prodotto da tutti i fili e da tutte le trame di fondo. Opera in raso da 8, diffalcamento2, faccia trama prodotto da tutti i fili e da tutte le trame di fondo."@it,
+        "impaginazione a rete di grandi maglie mistilinee definite da nastri campiti al loro interno da minute volute a pois, che si ripetono in orizzontale e in verticale a scacchiera. All’interno delle maglie si dispongono anfore ansate recanti bouquets con fiori stilizzati che si aprono a ventaglio tra i quali si riconoscono un papavero al centro, iris e serti di piccoli fiori ai lati. Nei punti di tangenza compaiono pomi simili a melograne stilizzate con crocetta apicale."@it,
+        "non rilevabile"@it ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/67709665-da8c-3cc5-a9b7-f451c488359a> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

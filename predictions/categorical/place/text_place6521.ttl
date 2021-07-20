@@ -1,0 +1,28 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/5fd66f55-c378-5cfe-8516-7337b21fc552> a rdf:Statement ;
+    silk:L18 "0.351471"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3017382/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/f965150d-78ba-36d1-9562-0d2a018a7cef> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/5fd66f55-c378-5cfe-8516-7337b21fc552> .
+
+<http://data.silknow.org/activity/5fd66f55-c378-5cfe-8516-7337b21fc552> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Baúl de tapa tumbada provisto de asas laterales, forrado enteramente de tejido, con decoración bordada polícroma en seda en las caras exteriores.  
+La estructura construida de madera de conífera unida a tope, posiblemente claveteada, de tableros enterizos menos la parte curvada de la tapa, que se compone de varios listones (numerosos agujeros de ataque de xilófagos en todas las partes; debajo del tablero del fondo con algunas galerías al aire). Falta su cerradura - presenta rebajo de anterior encaje de una caja de cerradura en la cara interior del lado superior de la tabla frontal - pero presenta escudete de bocallave de latón (?) prensado de molde, en forma de escudete, fijado mediante tornillos modernos.  
+El interior de la caja forrada de seda verde, aplicada mediante claveteado de clavos de latón (?) de cabeza redonda (abultada), en el interior de la tapa, donde está además encolada, con cinta roja aplicada, formando red, los clavos dispuestos ornamentalmente en grupos de cinco en los puntos de intersección. El exterior del baúl, en su lado trasero, forrado de tejido de tafetán de lino en su color, encolado. La tapa, el frente y los laterales forrados de tejido de tafetán de seda de color blanco, bordado de hilos de seda de colores amarillo, verde, azul y salmón, y de hilo dorado entorchado alrededor de alma de hilo de seda amarilla (tiene muchas faltas y suciedad). Presenta motivos florales y de aves realizados en las técnicas de punto de matiz para los fondos, de bucleados de aguja para resaltar elementos en particular de los motivos, y de hilo suspendido para los contornos, realizados en el hilo metálico. Está encolado, y bordeado de cintas de pasamanería amarillas, aplicada mediante clavos de cabeza redonda a intervalos regulares.  
+Presenta escudo eclesiástico de varios tejidos (terciopelo rojo y verde, entre otros) encolados sobre cartón recortado, aplicado encima del ojo de cerradura, con decoración de bordado."""@es,
+        "Corresponde al tipo de bordado erudito. El tejido del forro interior parece menos antiguo que el del exterior, repuesto posteriormente al interior."@es,
+        "Edad Moderna"@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/f965150d-78ba-36d1-9562-0d2a018a7cef> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3017382/> .
+

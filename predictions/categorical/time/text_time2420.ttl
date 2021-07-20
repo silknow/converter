@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/421486a2-6a3e-5f1e-a675-e25ca3fcc55a> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/e40fc2e7-b33c-31f8-92f5-dd9ad64909bb> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/421486a2-6a3e-5f1e-a675-e25ca3fcc55a> .
+
+<http://data.silknow.org/activity/421486a2-6a3e-5f1e-a675-e25ca3fcc55a> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """La maison, fondée en 1861 par Lacombe et Piotet, fut continuée de 1866 à 1885 par Jean-Martinon Piotet seul. En 1872, il acquit d'Eugène Yéméniz son fonds de fabricant d'étoffes pour ameublement, la propriété des dessins et les succursales à Aubusson et à Paris, avec le matériel de fabrique, cartes et tissus anciens remontant aux premiers fondateurs, Danjour et Gérôme. Associé à Joseph Roque et établi au 4, Grande-Rue des Feuillants, il maintint la tradition qui avait fait la gloire de ses prédécesseurs, en ajoutant la fabrication des nouveautés pour robe. La maison a obtenu des récompenses à toutes les Expositions où elle a envoyé ses produits : des diplômes à Dublin, en 1865, à Toulouse, la même année, au Havre, en 1868 ; une médaille d'argent à Paris, en 1867 ; une médaille de progrès, à Vienne, en 1873 ; une médaille d'or, à Paris, en 1878. À l'Exposition universelle de Paris, en 1889, Jean-Martinon Piotet et Joseph Roque obtiennent un grand prix. Parmi les produits de la maison qui sont particulièrement remarqués, Adrien Storck signale quelques motifs de fleurs pour robe : « l'iris, de coloris variés, se détachant en vigueur sur ses feuillages légèrement atténués formera de magistrales guirlandes. On les trouvera peut-être un peu rigides dans le lampas à fond satin exposé par MM. Piotet et Roque. Cela tient à ce que l'échantillon se présente (...) plat et tendu comme jamais, heureusement, il n'est utilisé ; les plis, les ondoiements de l'étoffe, le coup de main savamment ordonné dans son apparente insouciance lui restitueront toute sa grâce sans rien lui enlever de sa grandeur » (Lyon à l'Exposition universelle de 1889, Groupe V, VI, VII & VIII. Tissus. Métallurgie et Mine. Mécanique. Produits alimentaires. Agriculture, 1889, p. 78-79). Le tissage, réalisé au moyen de deux chemins de mille cent crochets, nécessitait six mille cartons pour un rapport de dessin de quarante-quatre centimètres de haut pour trente centimètres huit millimètres (soit un chemin). La grande variété des coloris était obtenue par trois trames lancées et vingt nuances brochées. Adrien Storck remarque aussi un « damas robe » avec un motif de bouillon blanc traité en taille-douce armuré de sept tons (inv. MT 24882) et deux panneaux pour traîne de robe de cour, en lampas fond satin, tissé avec mécanique Verdol (inv. MT 24885). À l'issue de l'Exposition universelle, ces étoffes et deux supplémentaires (inv. MT 24881 et MT 24884) furent données au musée d'Art et d'Industrie.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/e40fc2e7-b33c-31f8-92f5-dd9ad64909bb> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

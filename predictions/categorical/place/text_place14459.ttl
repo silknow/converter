@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/2ac62af6-0338-5e27-80ae-dde21fabb84a> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/b966e955-e11e-35df-9f43-e349f8b619bf> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/2ac62af6-0338-5e27-80ae-dde21fabb84a> .
+
+<http://data.silknow.org/activity/2ac62af6-0338-5e27-80ae-dde21fabb84a> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Gros de Tours fond blanc broché soie nuée lustrée "le Dessin Représente Des Palmes en Bronze avec des ornements couleur D'or auxquels sont attachées des guirlandes De Marguerites Nuées qui sont réunies Par une traverse surmontée de quatre attributs représentant la guerre, les arts, le Commerce et les sciences, le tout en couleur D'or." ; fond mosaïque couleur d'or à dessin de feuilles de lierre. Le motif pour dossiers représente une palmette à feuille de feuille lierre entourée d'une guirlande de reines-marguerites nuées. Le motif pour fond de siège est un papillon sur fond de treillage entouré d'une guirlande de roses.
+
+Historique :
+Par ordre de l'Empereur du 23 avril 1806, le château de Meudon avait été réservé afin "d'y faire un établissement pour l'éducation des princes de la famille impériale". Un fonds de 100 000 francs restant sur le budget accordé à Meudon en 1807 permit à Desmazis de proposer à Daru une commande d'étoffes de soie afin de soutenir les fabricants lyonnais. Ce textile orna les sièges du deuxième salon des grands appartements."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/b966e955-e11e-35df-9f43-e349f8b619bf> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

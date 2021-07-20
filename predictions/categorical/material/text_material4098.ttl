@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/9e10f9e9-0e97-5015-904f-63dfa070452b> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/3bd1898c-c0bc-3d7e-950d-5ca9fbca9bb7> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/9e10f9e9-0e97-5015-904f-63dfa070452b> .
+
+<http://data.silknow.org/activity/9e10f9e9-0e97-5015-904f-63dfa070452b> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Le samit a été tissé sur une chaîne en soie poil de torsion Z de couleur beige, en pièce et en liage, avec une proportion de un fil pièce pour un fil de liage (29 fils de chaque chaîne par centimètre). Les trames, cramoisi et jaune clair, sont en assemblé de plusieurs bouts sans torsion appréciable. Elles sont passées par un coup de chaque lat (66 passées au centimètre), les fils de liage croisant en sergé de 2 lie 1, direction S, par passée. Les découpures sont de un fil pièce en hauteur et de une passée en largeur.
+Le décor, jaune clair sur fond cramoisi, est aujourd'hui difficilement lisible. On distingue cependant un motif de pique qui se répétait. La soierie a été découpée en lanières, bordées d'un repli de couture, puis appliquée sur un vêtement dont elle dissimulait probablement les coutures.
+Le décor bicolore, sur fond cramoisi, et les caractéristiques techniques, rattachent le fragment à un ensemble de soieries, dont le musée des Tissus conserve de nombreux exemples, qui furent exhumées des nécropoles d'Antinoé durant les campagnes de 1897 et 1898 essentiellement. La grande homogénéité stylistique, mais aussi technique, de ce groupe permet d'envisager une production locale, dans les ateliers de la ville, de ces samits bicolores, mais aussi de samits à trois lats ou plus, également découverts dans les sépultures antinoïtes, qui partagent les mêmes caractéristiques. Ces soieries sont généralement caractérisée par l'usage de fils de chaîne beige, avec une proportion de un fil pièce pour un fil de liage et une densité relativement faible par rapport au nombre de passées, le tissage avec une direction en S de la diagonale du sergé des liages et au moyen de lats suivis, et les irrégularités produites aux passages entre le fond et les motifs. On attribue généralement cette production à une période comprise entre le milieu du Ve siècle et les premières décennies du VIIe siècle.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/3bd1898c-c0bc-3d7e-950d-5ca9fbca9bb7> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

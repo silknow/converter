@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/a710facb-f3c4-52bc-b053-917ac17c10a0> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/75223a6a-275f-3710-9247-eb443b30fb4c> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/a710facb-f3c4-52bc-b053-917ac17c10a0> .
+
+<http://data.silknow.org/activity/a710facb-f3c4-52bc-b053-917ac17c10a0> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Cette laize de tenture présente un motif répétitif construit selon un axe de symétrie vertical. Son rapport de dessin majestueux mesure près de cent soixante-neuf centimètres de haut. Il est rythmé par une fleur stylisée, au cœur tapissé d’une résille de fleurettes, jaillissant d’un culot d’acanthe. De part et d’autre se dressent deux accolades végétales ornées de fleurs et de grenades éclatées. Le fond est enrichi de fleurettes, de rosettes et de fleurons en éventail. Cette tenture est une brocatelle bicolore. Le décor se détache du fond par le jeu d’opposition de la direction des flottés, en chaîne (verticale) et en trame (horizontale). 
+Claire Berthommier"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/75223a6a-275f-3710-9247-eb443b30fb4c> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

@@ -1,0 +1,35 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/9497dc44-4757-5c0e-b0af-2fdb5feb5916> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/4029e4d7-a824-3e82-a5e9-632ddd7227a5> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/9497dc44-4757-5c0e-b0af-2fdb5feb5916> .
+
+<http://data.silknow.org/activity/9497dc44-4757-5c0e-b0af-2fdb5feb5916> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Couronnement de tenture : sept dépècements sont encore conservés. Gros de tours blanc, broché or et soie nuée. Deux cygnes adossés dans un camé, entouré d'une couronne et d'une guirlande de fleurs.
+- GMMP 24/001/001 : Pièce de section restangulaire, les deux lisières sont encore en place. 0,686x0,571 m.
+- GMMP 24/001/002 : Pièce de section restangulaire, les deux lisières sont encore en place. 0,715x0,0,555 m.
+- GMMP 24/001/003 : Pièce de section restangulaire, les deux lisières sont encore en place. 0,684x0,562 m.
+- GMMP 24/001/004 : Pièce de section restangulaire, les deux lisières sont encore en place. 0,643x0,568 m.
+- GMMP 24/001/005 : Pièce de section restangulaire, les deux lisières sont encore en place. 0,647x0,570 m.
+- GMMP 24/001/006 : Pièce de section restangulaire, les deux lisières sont encore en place. 0,619x0,568 m.
+- GMMP 24/001/007 : Pièce de section restangulaire, les deux lisières sont encore en place. 0,752x0,570 m.
+
+Historique :
+Commande d'un meuble pour le cabinet de l'Empereur au Palais de Versailles (tenture, garnitures de siège). 
+Employé à plusieurs reprises à Saint-Cloud sous la Restauration : pour le boudoir de la duchesse de Berry en 1827, tapissier : Laflèche, pour le Cabinet de travail de la duchesse d'Angoulême en 1829 ; tapissier : Lejeune
+La tenture fut employée à Compiègne en 1832. Enfin, un élément de tenture avec ses bordures fut mis en dépôt à Malmaison en 1804, lors de la constitution du Musée Napoléonien. Également déposé à la Malmaison, un ensemble de siège provenant de Saint Cloud."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/4029e4d7-a824-3e82-a5e9-632ddd7227a5> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/aa76755e-7073-5a8b-b8ea-187edc42efbe> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/7a06dbc5-bb5d-3538-b455-55f8d0bc9589> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/aa76755e-7073-5a8b-b8ea-187edc42efbe> .
+
+<http://data.silknow.org/activity/aa76755e-7073-5a8b-b8ea-187edc42efbe> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """La soierie est aujourd’hui très ruinée, et son décor est malheureusement peu lisible. Pourtant, les restes fantomatiques du décor permettent de reconnaître sans aucun doute la « manchette de soie » extraite de la tombe B 289. À l’instar des autres soieries utilisées comme « manchettes » (inv. MT 26812.18, MT 26812.12, MT 26812.15 et MT 26812.6), elle présentait un champ central, encadré par deux bordures festonnées, à pendentifs fleuronnés. Seule celle de la partie inférieure subsiste. Elle est suivie d’une bande verte, sur laquelle se succèdent des rosettes à quatre pétales en amande. Le décor du registre principal, bleu foncé, ivoire et vert sur fond ocre, comportait un rang de demi-octogones étoilés contenant une demi-rosette et des fleurs de lis, et de grands motifs, peut-être des médaillons, contenus dans des losanges formés par de grêles rinceaux fleuris. Par ses caractéristiques techniques, elle appartient au groupe des « soieries d’Antinoé », avec lesquelles elle partage aussi sa gamme colorée et son répertoire décoratif. Le fond ocre rappelle les exemplaires découverts en 1897 (inv. MT 40316 et MT 26812.16) et en 1898 dans les tombes B 158 (inv. MT 26812.12) ou B 218 (inv. MT 26812.15), par exemple. Les rinceaux fleuris et les fleurs de lis ornent aussi les parements du manteau du « haut dignitaire » Achille (inv. MT 26812.1). L’homogénéité du groupe ne fait aucun doute, et c’est à des ateliers de la ville, actifs entre le milieu du Ve siècle et les premières décennies du VIIe siècle qu’il convient d’attribuer cette production. Elle trouve d’ailleurs des échos dans les productions plus populaires, en tapisserie de laine. Un coussin funéraire, exposé dans la dix-huitième vitrine (Paris, musée du Louvre, inv. E 29325 et E 29326), reproduit exactement l’assemblage de rosettes à quatre pétales ocre sur fond vert du registre inférieur de la manchette. De la tombe B 289 provenait aussi une « tête de Vénus, marbre », présentée dans la treizième vitrine. 
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/7a06dbc5-bb5d-3538-b455-55f8d0bc9589> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

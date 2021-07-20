@@ -1,0 +1,28 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/05834b70-d58e-5b9f-afb1-1a2a7cf75e0f> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/1c5a9448-cfe6-3282-bc57-32a5ff0cf517> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/05834b70-d58e-5b9f-afb1-1a2a7cf75e0f> .
+
+<http://data.silknow.org/activity/05834b70-d58e-5b9f-afb1-1a2a7cf75e0f> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Dix-huit écussons. Brocart or à fond ponceau fin, dessin à couronnes. 
+GMMP 248-001-001 : 0,240 x 0,255 m.
+
+Historique : 
+Destiné à la Chambre de Joséphine Bonaparte au Palais de Saint-Cloud par ordre du Premier Consul et commandé par le général Duroc, gouverneur au Palais, à Camille Pernon en 1802. 
+Le brocart ne fut toutefois pas utilisé à Saint-Cloud. En 1808, l'étoffe fut utilisée pour le Quatrième Salon ou Salon des Grâces de l'Appartement de l'Impératrice Joséphine aux Tuileries pour réaliser l'encadrement de deux rideaux de croisée, une bergère, deux fauteuils, six chaises. Des bordures ponceau et or furent aussi utilisées sous l'Empire à Strasbourg pour le Salon de réception de l'ancien Palais Rohan devenu Palais Impérial par décret de l'Empereur du 21 janvier 1806. Le tapissier Darrac les reçut en 1909 pour la confection d'une tenture, de six rideaux de croisée et d'un meuble. Enfin, en 1811, des étoffes pour écussons sont confiées au tapissier Flamand à Fontainebleau dans le Cabinet-Bibliothèque de l'Empereur (transformé en petite chambre à coucher)."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/1c5a9448-cfe6-3282-bc57-32a5ff0cf517> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

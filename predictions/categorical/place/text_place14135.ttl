@@ -1,0 +1,98 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/750ffbce-8f2c-5c05-9731-64cc3eb3176b> a rdf:Statement ;
+    silk:L18 "0.351471"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3017382/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/856d14e7-df4b-3122-b715-3fddce56e081> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/750ffbce-8f2c-5c05-9731-64cc3eb3176b> .
+
+<http://data.silknow.org/activity/750ffbce-8f2c-5c05-9731-64cc3eb3176b> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Tenture sans or de haute lice, première bordure, fond jaune
+carton vers 1699 Cf : GOB-45-001.
+tissage : 1722 - 1728
+              portière sans or de haute-lisse, Atelier de Le Febvre
+Signature : LE FEBVRE
+
+Domaine 	
+
+tapisserie
+Dénomination 	
+
+tenture ; élément d'ensemble
+Titre 	
+
+Portières des Dieux (sans or, première bordure) : Diane ou la Terre
+Auteur/exécutant 	
+
+AUDRAN Claude III (auteur du modèle) ; manufacture des Gobelins (manufacture) ; LEFEBVRE (atelier)
+Précision auteur/exécutant 	
+
+AUDRAN : Lyon, 1658 ; Paris, 1734
+Ecole 	
+
+France
+Lieu création / utilisation 	
+
+France (lieu de création) ; Paris (lieu d'exécution)
+Période création/exécution 	
+
+1ère moitié 18e siècle
+Millésime création/exécution 	
+
+1722 commencé après ; 1728 achevé avant
+Historique 	
+
+Toutes ces portières sont sur fonds jaunes unis ou sur fonds de deux tons, paille et jaune.
+Matériaux/techniques 	
+
+laine, soie, haute lisse
+Dimensions 	
+
+H. 348 ; l. 245
+Inscriptions 	
+
+marque de manufacture
+Précision inscriptions 	
+
+marque de manufacture dans la bordure inférieure à droite: LE FEBVRE
+Sujet représenté 	
+
+figure mythologique (les quatre éléments, terre, Diane, assis, nuage, arc, enfant, chien, lévrier, trophée, cerf, javelot, console orn, biche, faisan)
+Précision sujet représenté 	
+
+Sous le portique à guirlandes de fleurs, Diane, assise et s'appuyant de la main gauche sur un nuage, tient de la main droite un arc. Elle est vêtue d'une tunique bleue et d'une draperie rose et porte le croissant sur la tête. A droite, un enfant tient un lévrier blanc en laisse. Au-dessous, deux enfants et deux chiens se tiennent de chaque côté d'un trophée de chasse surmonté d'une tête de cerf. L'enfant de droite tire à l'arc, celui de gauche lance un javelot. Sur la console de droite, une biche morte, pendue par un pied à une colonnette ; sur la console de gauche, un chien assis de face auprès d'un faisan tué.
+Lieu de conservation 	
+
+Paris ; Mobilier national
+	
+
+Musée de France
+au sens de la loi n°2002-5 du 4 janvier 2002
+Statut juridique 	
+
+propriété de l'Etat ; Paris ; Mobilier national
+Anciennes appartenances 	
+
+Fonds ancien du garde-meuble (inv. 5935-2)
+Numéro d'inventaire 	
+
+GMTT 165/4
+Bibliographie 	
+
+Maurice Fenaille, Etat général des tapisseries de la manufacture des Gobelins depuis son origine jusqu'à nos jours, 1600-1900, Impr. Nationale, Paris, 1903-1923 (III, p. 33-34) ; Jules Guiffrey, Inventaire général des richesses d'art de la France, Paris, monuments civils, tome IV : Tapisseries du Garde-Meuble, Paris, 1913 (p. 114)
+Rédacteur 	
+
+Emmanuelle Plumet ; Monique de Savignac ; Jean Vittet"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/856d14e7-df4b-3122-b715-3fddce56e081> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3017382/> .
+

@@ -1,0 +1,36 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/ac242097-a058-5f96-b52a-047d77be104d> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/d42ffc5e-4c85-32db-815e-7c6168c24637> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/ac242097-a058-5f96-b52a-047d77be104d> .
+
+<http://data.silknow.org/activity/ac242097-a058-5f96-b52a-047d77be104d> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """1 ordito, di fondo, organzino di seta, 2 capi, S, colore rosa salmone 
+Scalinatura: 8 fili 
+Riduzione: 108 fili al cm"""@it,
+        """5 trame; I di fondo, seta, X capi, S, colore rosaceo; II broccata, seta, 3 capi, S, nei colori: celeste, blu, e violetto binati, verde erba, rosa, marrone; III broccata, argento filato frisé avvolto su anima in seta ondata, 2 capi, S, colore bianco, doppia; VI broccata, oro filato avvolto su anima in seta, 2 capi, S colore giallo, doppia; V broccata, oro filato frisé avvolto su anima in seta ondata, 2 capi, S, colore giallo Scalinatura: 1 passata Riduzione: 14 passate 
+Proporzione: 1/1"""@it,
+        "52 cm senza cimose"@it,
+        """Provenienza: Palermo, Chiesa della Compagnia di San Giovanni Battista la Kalca;  La tonacella, come attesta un timbro posto sulla fodera, proviene dalla chiesa, parzialmente distrutta dai bombardamenti del 1943, dedicata a San Giovanni Decollato, ancora oggi situata nell’omonima piazza di fronte Palazzo Sclafani. Lì si era insediata la Compagnia di San Giovanni Battista la Kalca, dopo che la sede originaria era stata abbattuta per ampliare il piano del Palazzo Reale (cfr. G. Palermo - G. Di Marzo Ferro, Guida istruttiva..., 1858, pp. 513-514; R. La Duca, Repertorio..., 1991, pp. 104-105). 
+Gli elementi piumati e dentellati che ornano il paramento sono tra i decori più caratteristici dei tessuti prodotti nel primo trentennio del XVIII secolo, definiti bizarre. La loro realizzazione, impiantata secondo criteri astratti e casuali, donano estro e movimentano nell’insieme tutto il modulo disegnativo che annovera anche la presenza di reali infiorescenze. Un calzante raffronto permette di accostare il disegno del tessuto in esame con quello del parato datato alla prima metà del XVIII secolo proveniente dal Monastero di Santa Caterina di Cefalù e oggi alla Galleria Regionale della Sicilia di Palazzo Abatellis (cfr. E. D’Amico Del Rosso, I paramenti..., 1997, pp. 82-83) e con quello della pianeta degli inizi del XVIII secolo della Maggior Chiesa di Termini Imerese (cfr. R. Civiletto - M. Vitella, scheda n. 9, in M.C. Di Natale - M. Vitella, Ori e stoffe..., 1997, p. 70), tutte opere confezionate con stoffe di probabile fattura francese. ( R. Civiletto; M. Vitella)"""@it,
+        """cm 57 x 25; numero dei campi: 2; tipo di campo: a ritorno 
+Ordito: 1 ordito, di fondo, organzino di seta, 2 capi, S, colore rosa salmone 
+Scalinatura: 8 fili 
+Riduzione: 108 fili al cm"""@it,
+        "fondo in raso da 8 diffalcamento 3, faccia ordito, prodotto da tutti i fili di fondo e da tutte le trame di fondo. Opera in natté (gros de Tours di due fili) e per effetto di trame broccate, in seta e metalliche, tutte legate al dritto in diagonale 3 lega 1 direzione S, da fili di ordito prelevati dal fondo"@it,
+        "motivo ad impostazione verticale, creato da una successione assiale di diverse varietà di foglie, piumate, sfrangiate, e di ispirazione fantastica, che si intrecciano a ramoscelli fioriti, alternandosi con diversi orientamenti"@it ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/d42ffc5e-4c85-32db-815e-7c6168c24637> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

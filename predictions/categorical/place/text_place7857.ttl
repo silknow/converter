@@ -1,0 +1,23 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/a63e43c8-9623-54f1-9869-62828a6ceb84> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/b4a6b332-950d-3821-b6cc-7356be2e677e> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/a63e43c8-9623-54f1-9869-62828a6ceb84> .
+
+<http://data.silknow.org/activity/a63e43c8-9623-54f1-9869-62828a6ceb84> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Prenda femenina de busto, realizada con tejido de tafetán de seda de color rosa. El cuerpo es amplio y recto, más largo por el delantero, de talle corto a la cintura que se ajusta en la espalda mediante pasacintas, escote cuadrado con cuello marinero, pechera central de tafetán de seda de color marfil con abertura total con abrochadero oculto con cierres a presión metálicos. Pequeños botoncillos decorativos al exterior con cuentas de strass de los que tan sólo se conservan dos. Puntilla a la aguja de carácter mecánico que bordea el cuello y flanquea la abertura frontal. Los hombros están reforzados al exterior con banda de tejido igual a la del cuerpo. Las mangas son largas, decoradas con jaretas longitudinales, con puño largo y ajustado con apertura parcial con cierres a presión.  Los bordes aparecen decorados con la misma puntilla del cuerpo y volante de encaje mecánico imitación Valenciennes."@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/b4a6b332-950d-3821-b6cc-7356be2e677e> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

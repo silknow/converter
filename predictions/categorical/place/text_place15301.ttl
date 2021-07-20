@@ -1,0 +1,30 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/def0d882-4bb5-5b3f-92c3-c047872930c8> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/f40a0c43-2d7e-3ff6-9e59-de13b5b40bbd> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/def0d882-4bb5-5b3f-92c3-c047872930c8> .
+
+<http://data.silknow.org/activity/def0d882-4bb5-5b3f-92c3-c047872930c8> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Quatre dépècements de tenture, de section rectangulaire. Gourgouran. Décor rayé jaune et blanc, avec motif courant de feuilles d'acanthe. 
+GMMP 1658-004-001 : H.0,832 x l.0,548 m.
+GMMP 1658-004-002 : Etroite bande découpée à angle droit sur l'un de ses côtés longitudinaux. H.0,150 x l.0,550 m.
+GMMP 1658-004-003 : Une lisière encore en place. L'étiquette du Garde-meuble de 1815 a laissé une marque d'encollage importante à l'avers et au revers du tissu. H.0,152 x l.0,548 m.
+GMMP 1658-004-004 : Les deux lisières sont présentes mais repliées sur le revers. H.1,464 x l.0,530 m.
+
+Historique : 
+Gourgouran acheté en 1806 au marchand Vacher, pour la chambre à coucher de Madame la Maréchale au Palais de Fontainebleau. Le métrage servit à la confection d'une devanture d'alcôve ornée de galon rose et blanc, d'une draperie, de deux rideaux, d'une courtepointe et fut utilisée pour la garniture d'un ensemble de sièges en acajou, une bergère à pied de biche, deux tabourets de pieds, deux fauteuils, quatre chaises et un écran. Placé dans la deuxième chambre à coucher de l'appartement du Grand Maréchal Duroc, l'ensemble demeura à Fonotainebleau jusqu'à la fin du XIXème siècle."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/f40a0c43-2d7e-3ff6-9e59-de13b5b40bbd> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

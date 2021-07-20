@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/ad9c97a4-ca46-5135-bb9f-a6bced71c90b> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/61a00da3-95a0-3afc-8f49-b3c8502dbc72> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/ad9c97a4-ca46-5135-bb9f-a6bced71c90b> .
+
+<http://data.silknow.org/activity/ad9c97a4-ca46-5135-bb9f-a6bced71c90b> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Ce dessus de ployant (couverture de siège) était destiné au deuxième salon d'un appartement d'honneur du Palais de Versailles, faisant partie d'un meuble comprenant aussi une tenture et des bordures pour tenture et pour sièges dont le musée conserve des exemplaires (inv. MT 26957, laize de tenture ; MT 26956.6, bordure neuf pouces pour tenture ; MT 26956.15, bordure pour sièges). Le motif reprend celui de certaines parties de la tenture : sa plaque rectangulaire consiste en un étirement de la plaque carrée ornant cette dernière (toutes deux ont notamment le même cadre), les rinceaux entourant la plaque sont identiques dans les deux soieries, et les axes orthogonaux et diagonaux sont marqués de la même manière dans le dessus de ployant que dans la tenture, bien que le motif exact soit légèrement différent. Ces étoffes, livrées en 1813 par la maison Bissardon, Cousin et Bony, de Lyon, font partie des commandes impériales pour Versailles passées en 1811. La richesse de la technique utilisée – un velours ciselé, avec réserves en velours frisé et satin bleu clair, lamé or à plusieurs effets – correspond à l'importance de la destination. En 1815, encore, les fabricants exécutaient un écran en velours façonné coupé lamé or destiné aux souverains de la Sainte Alliance (voir, au musée des Tissus, l’exemplaire MT 30931, par exemple) : la fonction de ces objets était de démontrer les compétences de la maison et de s’attirer les bonnes grâces des destinataires, notamment sous la forme de commandes. Le choix de la technique du velours façonné, pour cette fonction de représentation de grande importance pour la fabrique, indique le prestige dont elle jouissait. Les étoffes commandées pour le deuxième salon des appartements d’honneur ne furent jamais utilisées au Palais de Versailles, qui ne fut d'ailleurs pas remeublé sous le règne de Napoléon, malgré les grands projets et les importantes commandes qui lui étaient destinés. Elles ornèrent néanmoins le Cabinet du Roi au Palais épiscopal de Reims, le 29 mai 1825, lors du sacre de Charles X.
+Desmond-Bryan Kraege"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/61a00da3-95a0-3afc-8f49-b3c8502dbc72> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

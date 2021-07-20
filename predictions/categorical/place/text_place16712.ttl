@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/195e32ef-8a0a-5f4d-ad56-088621a835c5> a rdf:Statement ;
+    silk:L18 "0.453908"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/130758/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/050f0f89-ffa7-3d33-8b75-22507e74f10e> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/195e32ef-8a0a-5f4d-ad56-088621a835c5> .
+
+<http://data.silknow.org/activity/195e32ef-8a0a-5f4d-ad56-088621a835c5> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Card case of green leather with tuck-in flap to top and inset enamelled porcelain panel with flowers in decorative surround; The outside and inner flap are tooled with a gold scroll and stylized foliage design.  The case is lined with matching dark green silk and has a pleated matching gusset, and is stamped on the flap: \"CHAMBERLAIN WORCESTER AND / 156, NEW BOND STREET LONDON\""@en,
+        """This card case belonged to Marie Taglioni (1804-1884), a celebrated Italian dancer of the romantic ballet, who performed at Her Majesty's Theatre in London and Théâtre de l'Académie Royale de Musique in Paris in the late 1830s. She became famous for dancing en pointe, not as an acrobatic stunt, but as an aesthetic decision in choreography.
+The case was designed and produced by the manufacturer Chamberlain Worcester in the early 1800s. Although the case is primarily made of leather embossed with gold powder in a fashionable foliage design, the central panel is made with enamelled porcelain, decorated with flowers. This glamorous case held Taglioni's business cards (S.853:2&3-2001)."""@en,
+        "Visiting card case owned by ballerina Marie Taglioni (1804-1884).   Gold tooled leather with porcelain painted plaque to the front, lined with matching green silk"@en ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/050f0f89-ffa7-3d33-8b75-22507e74f10e> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/130758/> .
+

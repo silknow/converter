@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/c4b60d82-a4df-5997-9031-906deff5eea1> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/1c71dc10-02dc-351b-8c59-66f527ea3949> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/c4b60d82-a4df-5997-9031-906deff5eea1> .
+
+<http://data.silknow.org/activity/c4b60d82-a4df-5997-9031-906deff5eea1> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Les portraits en velours peints sur chaîne et tissés comme des unis de Gaspard Grégoire ont fortement impressionné Louis Tassinari. Cent ans exactement après la publication de la Table des couleurs par leur auteur, où Grégoire avait disposé mille trois cent cinquante teintes graduées obtenues par le mélange des couleurs, Louis Tassinari déposait un brevet d'invention de quinze ans, sous le n° 464.353, pour son procédé de fabrication de tissus à poils à teintes multiples reposant sur le même principe de combinaison de bases chromatiques. La première application de ce procédé a été, en 1910, le tissage du portrait de son père Cleto Tassinari (1821-1885), fondateur, avec Louis Chatel (1836-1912) de la maison de soieries portant leurs noms. D'après une photographie le représentant, remise à Reine Déplanche, fut exécutée la mise en carte de ce portrait, elle aussi conservée au musée des Tissus (inv. MT 2012.1.8). Henri Pourrot effectua le lisage et le perçage des cartons. Le tissage est un velours façonné comportant trois couleurs principales, jaune, rouge et bleu, chacune nuancée de trois tons auxquels s'ajoutent deux qualités de blanc. Le nombre de corps du velours, de trois à neuf ou dix, varie selon le décor. La juxtaposition, dans les bouclons du velours, des fils rouges, jaunes et bleus et leur combinaison permettent de produire des teintes variées, imitant le rendu photographique à la perfection, mais en couleurs, au moment même où était mis au point définitivement le procédé des autochromes sur plaque de verre. L'expérience, menée par Louis Tassinari à son propre compte, en dehors de la société, avait nécessité la location d'un atelier suffisamment grand pour l'installation des cantres. Le velours, tissé sur un fond en sergé de 3 lie 1, Z, face trame, est d'une forte densité — il comprend vingt fers au centimètre — et la hauteur du poil, 2 mm environ, est inhabituelle. Des fers très étroits et plus hauts que la norme ont été utilisés pour l'exécution du portrait. Le résultat obtenu, bien que remarquable, n'était évidemment pas exploitable commercialement. Un autre portrait seulement fut réalisé selon cette technique, celui de la reine d'Italie, Hélène de Monténégro, qui fut offert à la souveraine en 1911. Un exemplaire est conservé au musée des Tissus (inv. SN 5890). Un projet d'exploitation du procédé avec des partenaires suisses pour l'adaptation de ce type de tissage à la réalisation de tapis mécaniques fut interrompu par l'avènement de la Première Guerre mondiale et n'eut pas de suite. 
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/1c71dc10-02dc-351b-8c59-66f527ea3949> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

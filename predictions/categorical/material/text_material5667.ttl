@@ -1,0 +1,43 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/97aa6906-710c-5a30-8e1d-c462197bb4ed> a rdf:Statement ;
+    silk:L18 "0.472237"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/497> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/79ccc554-8f25-3a6f-bc71-8026ae7dad22> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/97aa6906-710c-5a30-8e1d-c462197bb4ed> .
+
+<http://data.silknow.org/activity/97aa6906-710c-5a30-8e1d-c462197bb4ed> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "(Primo tessuto) cm 55 ; (Secondo tessuto) non rilevabile."@it,
+        "(Primo tessuto) cm 55 x 28; numero dei campi: 2 campi; tipo di campo: a ritorno ; (Secondo tessuto)non rilevabile; numero dei campi: non rilevabile; tipo di campo: a ritorno?"@it,
+        "(Primo tessuto) impaginazione a “rete” con maglie chiuse ovali a doppia punta formate da tronchi fogliati campiti da un motivo a scacchiera e ornate, nei punti di tangenza, da corone. All’interno di ogni maglia è racchiusa un’anfora con tre fiori; (Secondo tessuto) il disegno non è interamente leggibile; probabilmente si tratta di una rete di maglie a grandi rapporti costituita da coppie di elementi florealvegetali che racchiudono una composizione di fiori stilizzati."@it,
+        """(Primo tessuto)1 ordito; organzino di seta, 2 capi, S, colore rosso 
+Scalinatura: 4 fili 
+Riduzione: 120 fili al cm; (secondo tessuto)1 ordito, di fondo, organzino di seta, 2 capi, S, colore rosso 
+Scalinatura: 6 fili
+Riduzione: 100 fili al cm"""@it,
+        "(Primo tessuto)fondo in raso da 5 faccia-ordito, diffalcamento 2, prodotto da tutti i fili di fondo e da tutte le trame di fondo. Opera in raso da 5 faccia-trama, diffalcamento 3, prodotto da tutti i fili e tutte le trame ; (Secondo tessuto)fondo in raso da 5 taccia-ordito, diffalcamento 2, prodotto da tutti i fili di fondo e da tutte le trame di fondo. Opera in raso da 5 taccia-trama, diffalcamento 3, prodotto da tutti i fili e tutte le trame"@it,
+        """1 trama di fondo, seta, 2 capi, S, colore rosso
+Scalinatura: 2 trame 
+Riduzione: 34 trame al cm
+Costruzione: fondo in raso da 5 faccia-ordito, diffalcamento 2, prodotto da tutti i fili di fondo e da tutte le trame di fondo. Opera in raso da 5 faccia-trama, diffalcamento 3, prodotto da tutti i fili e tutte le trame; (Secondo tessuto)  1 trama, di fondo, seta, 2 capi, S, colore rosso 
+Scalinatura: 2 trame 
+Riduzione: 26 trame al cm"""@it,
+        """Parato costituito da un piviale, due tonacelle, una pianeta, una stola. Dimensioni cm 142 x 465; cm 95 x 142; cm 100 x 66; cm 214 x 20. Dei due tessuti che compongono il parato, uno presenta un caratteristico sviluppo disegnativo degli ornati la cui realizzazione è ampiamente documentata su stoffe cinquecentesche, soprattutto la presenza delle anfore fortemente stilizzate, da cui fuoriescono racemi fioriti, che segna il superamento di vetusti moduli quattrocenteschi che vedevano inserite all’interno delle cornici ovaliformi le tipiche melagrane.
+Particolarmente interessanti sono i dettagli decorativi “i quali, per i contorni così accuratamente incisi nelle rientranze sinuose delle foglie e dei loro arricciamenti finali, sembrano usciti da un raffinato lavoro di cesello tardo cinquecentesco” (I. Silvestri, scheda 2, in Tessuti antichi…, 1981, p. 127). L’elemento coronato che si pone nei punti di tangenza è una caratteristica dell’organizzazione dei disegni in cui predominano gli ovali che investe anche i tessuti da rivestimento (cfr. D. Devoti, L’arte del…, 1974, p. 25).
+Il secondo tessuto è invece caratterizzato dalla presenza di carnosi motivi fitomorfi, tra cui si riconoscono le toglie d’acanto, dall’andamento enfatizzato e dallo sviluppo ad ampi rapporti.
+Il completo qui esaminato presenta l’identico sviluppo disegnativo rilevato sul paliotto in damasco datato alla seconda metà del XVI secolo del Duomo di San Marziale e Sant’Alberto di Colle Val d’Elsa (cfr, I. Pacini, scheda n. 38, in Drappi, velluti…, 1994,p. 128).
+Stringenti affinità stilistiche si possono anche cogliere con il piviale in lampasso lanciato datato agli inizi del XVII secolo e con la dalmatica in damasco datata tra la fine del XVI secolo I l’inizio del successivo entrambi della chiesa Collegiata di Santa Maria di Arona (cfr. M. Cuoghi Costantini, scheda n. 1, I. Silvestri, scheda n. 2, in Tessuti antichi..., 1981, pp. 123-127). Inoltre si notano stringenti analogie, soprattutto per il motivo a corona, con un broccatello datato al XVI secolo della chiesa di Santa Maria Corteorlandini di Lucca (cfr. D. Devoti, L’arte del..., 1974, fig. 109).
+ (R. Civiletto ; M. Vitella)"""@it ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/79ccc554-8f25-3a6f-bc71-8026ae7dad22> ecrm:P126_employed <http://data.silknow.org/vocabulary/497> .
+

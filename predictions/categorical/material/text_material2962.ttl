@@ -1,0 +1,28 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/7988c50c-7d0a-53c3-b998-1572018fbe15> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/d3f1a4fc-42da-34ea-87cc-dae1fb293a0a> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/7988c50c-7d0a-53c3-b998-1572018fbe15> .
+
+<http://data.silknow.org/activity/7988c50c-7d0a-53c3-b998-1572018fbe15> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Le fragment conserve, en partie supérieure, la toile lâche de lin, filé en S en chaîne et en trame, dans laquelle étaient incluses trois bandes de tapisserie de soie rouge, jaune et bleue et de lin blanchi, séparées par d'étroits passages de toile unie. Le registre médian est entièrement orné d'un réseau de rubans cloisonnés de couleur jaune et rouge, qui s'entrecroisent en formant cinq rangées de médaillons en losange, disposés en quinconce. Les losanges de la première, de la troisième et de la cinquième rangée ont un fond rouge et enferment un lièvre stylisé jaune, tourné vers la gauche. Les autres médaillons ont un fond jaune et ils présentent un motif stylisé rouge, peut-être un couple d'oiseaux.
+De part et d'autre de cette bande médiane prenaient place des registres au décor répété. Dans un bandeau central, des entrelacs de rubans jaunes cloisonnés de rouge forment de grands losanges enfermant, au centre, un médaillon à fond rouge avec un lièvre stylisé jaune. Dans les compartiments au-dessus et en dessous de ce médaillon prennent place des oiseaux affrontés, tête retournée, bleu, rouge et blanc sur fond jaune. Une sorte de fleuron stylisé marque les interstices à gauche et à droite du médaillon central. Ce bandeau décoratif est encadré par deux bandes d'inscriptions, entre deux rinceaux stylisés.
+L'inscription, tracée en naskhi tardif, répète la même formule al-yumn wa-l-iqbal, c'est-à-dire « la félicité et la prospérité ».
+Un fragment de la même pièce (39,3 cm x 17,8 cm), acquis en 1961 de Michael E. Abemayor, à New York, est conservé au Royal Ontario Museum de Toronto (inv. 961.107.3). Il conserve une lisère sur son côté droit. La pièce, dispersée entre Lyon et Toronto, offre toutes les caractéristiques d'une production égyptienne de la fin de l'époque fatimide. Un grand fragment du Museum of Fine Art de Boston (inv. 30.677) qui présente un décor en registres superposés de tapisserie de soie à dominante jaune et rouge, rehaussé de bleu et de bleu-noir, porte des inscriptions en naskhi déformé indiquant : « Au nom de Dieu, le Clément, le Miséricordieux. Il n'y a pas d'autre Dieu [...] », « Assistance de Dieu » et « [... au serviteur] de Dieu et son Ami Abd al-Majid Abu'l-Maymun [al-Hafiz ...] ». Le règne d'al-Hafiz, onzième calife fatimide (1130-1149), voit, en effet, se développer ce type d'étoffes inscrites, qui sont également en vogue sous ses successeurs az-Zafir (1149-1154), al-Faiz (1154-1160) et al-Adid (1160-1171). Le groupe auquel appartiennent les fragments de Lyon et de Toronto est donc situé entre le milieu et le troisième quart du XIIe siècle. Il est relativement bien représenté dans les collections publiques.       
+Le style épigraphique de cette pièce ainsi que l'organisation de son décor en registres losangés, encadrés par des bandes d'inscriptions répétitives, la rapprochent par exemple de fragments conservés à la Fondation Abegg, à Riggisberg (inv. Nr. 517 et Nr. 502), au Museum of Fine Arts de Boston (inv. 07.466), au Victoria & Albert Museum de Londres (inv. 613-1892 ; provient de la nécropole d'Ermant/Hermonthis, en Haute-Égypte), qui portent tous la formule al-yumn wa-l-iqbal, ou encore au musée des Tissus (inv. MT 29723 et MT 41571), à la Bibliothèque apostolique vaticane (inv. BAV 6825) et au musée d'Art islamique du Caire (inv. 15658) portant tous la formule nasr min Allah, « Assistance de Dieu ». Une autre pièce du musée d'Art islamique du Caire (inv. 3311) est presque complète : elle a, notamment, conservé ses franges.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/d3f1a4fc-42da-34ea-87cc-dae1fb293a0a> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

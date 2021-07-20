@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/07bd71fc-d4bc-5fb1-8e49-a26fdb5e2884> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/34474beb-e460-3966-8df7-07018027c6ad> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/07bd71fc-d4bc-5fb1-8e49-a26fdb5e2884> .
+
+<http://data.silknow.org/activity/07bd71fc-d4bc-5fb1-8e49-a26fdb5e2884> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Casulla realizada en un tejido azul, cuya cronología, según Dra. Lesley Miller (conservadora de tejidos del Victoria & Albert Museum) estaría entre 1740 y 1750, mientras que el orfre sería posterior."@es,
+        "Edad Contemporánea"@es,
+        "Las tallas en seda azul brochada con florones y tallos ondulados en oro en composición rocosa. Las cenefas formadas por trozos de seda brochada en plata con florecillas sueltas en sedas de colores. En el delantero, sobrepuesto, anagrama de MARIA bordado en oro y en la espalda también sobrepuesta cruz florenzana también en oro a la que se ha añadido el emblema de la anunciata de la orden de Carlos III."@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/34474beb-e460-3966-8df7-07018027c6ad> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

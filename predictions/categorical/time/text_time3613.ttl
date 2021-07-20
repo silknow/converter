@@ -1,0 +1,85 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/f661c349-5fe9-5228-a170-4ed90754fa19> a rdf:Statement ;
+    silk:L18 "0.723281"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404513> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/bba11ac3-89a7-3f4e-a348-d244f34f87d1> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/f661c349-5fe9-5228-a170-4ed90754fa19> .
+
+<http://data.silknow.org/activity/f661c349-5fe9-5228-a170-4ed90754fa19> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Portière de basse lisse sans or, troisième bordure
+
+Domaine 	
+
+tapisserie
+Dénomination 	
+
+tenture ; élément d'ensemble
+Titre 	
+
+Portières des Dieux (sans or, troisième bordure) : Cérès ou l'Eté
+Auteur/exécutant 	
+
+AUDRAN Claude III (auteur du modèle) ; manufacture des Gobelins (manufacture)
+Précision auteur/exécutant 	
+
+AUDRAN : Lyon, 1658 ; Paris, 1734
+Ecole 	
+
+France
+Lieu création / utilisation 	
+
+France (lieu de création) ; Paris (lieu d'exécution)
+Période création/exécution 	
+
+18e siècle
+Millésime création/exécution 	
+
+1740 commencé après ; 1774 achevé avant
+Matériaux/techniques 	
+
+laine, soie, haute lisse
+Dimensions 	
+
+H. 343 ; l. 265
+Sujet représenté 	
+
+figure mythologique (les saisons, été, Cérès, assis, nuage, blé, flambeau, enfant, putti, faucille, trophée, outil agricole, bouteille, chien, console orn, vase, vannerie, chat, lapin, panier, signe du zodiaque, le lion, le cancer, la Vierge)
+Précision sujet représenté 	
+
+Au milieu, Cérès, sur des nuages, supporte une gerbe de blé dans le bras droit et un flambeau dans la main gauche. A côté d'elle, à droite, un enfant nu tient une faucille. Au bas de la composition, de chaque côté d'un trophée d'instruments d'agriculture, à droite, un enfant vanne du blé, et, à gauche, un enfant boit à une bouteille de terre, à côté d'un chien assis qui le regarde. Sur les consoles, à droite, un vase de grès, une vannerie, un chat ; à gauche, un autre vase et un lapin. Au-dessus des colonnettes sont posées deux bouteilles enfermées dans des paniers. En haut, guirlandes de fleurs, nids d'oiseaux et, au milieu, le signe du Lion. De chaque côté des colonnettes, une chute de divers objets avec le signe du Cancer à gauche et le signe de la Vierge à droite.
+Lieu de conservation 	
+
+Paris ; Mobilier national
+	
+
+Musée de France
+au sens de la loi n°2002-5 du 4 janvier 2002
+Statut juridique 	
+
+propriété de l'Etat ; Paris ; Mobilier national
+Anciennes appartenances 	
+
+Fonds ancien du garde-meuble (inv. 4818)
+Numéro d'inventaire 	
+
+GMTT 168/1
+Bibliographie 	
+
+Maurice Fenaille, Etat général des tapisseries de la manufacture des Gobelins depuis son origine jusqu'à nos jours, 1600-1900, Impr. Nationale, Paris, 1903-1923 (III, p. 49-50) ; Jules Guiffrey, Inventaire général des richesses d'art de la France, Paris, monuments civils, tome IV : Tapisseries du Garde-Meuble, Paris, 1913 (p. 114)
+Rédacteur 	
+
+Emmanuelle Plumet ; Monique de Savignac ; Jean Vittet"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/bba11ac3-89a7-3f4e-a348-d244f34f87d1> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404513> .
+

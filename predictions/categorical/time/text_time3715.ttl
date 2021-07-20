@@ -1,0 +1,27 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/e14271db-a253-5216-9a79-c0d52422f4f1> a rdf:Statement ;
+    silk:L18 "0.723281"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404513> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/e3394f84-5f0b-3e29-87e3-ba5408d13a53> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/e14271db-a253-5216-9a79-c0d52422f4f1> .
+
+<http://data.silknow.org/activity/e14271db-a253-5216-9a79-c0d52422f4f1> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Bordure de siège composée de quatre morceaux cousus ensemble. Etoffe d'origine inconnue mais probablement orientale.
+Fond or et soie ponceau, à dessin de palmes argent, liseré noir, façon cachemire.
+
+Historique :
+Ces bordures proviennent de dépécements des meubles du bourdoir d'argent de l'impératrice Joséphine au château de Fontainebleau, à l'emplacement de l'ancien boudoir de la reine Marie-Antoinette. Elles s'harmonisaient avec le décor de cette pièce composé de boiseries sur fond d'or blanc et d'or jaune encadré de moulures argent. En 1809, pour renouveler cet ameublement, le Grade-Meuble commanda un ensemble de sièges en bois sculpté et doré au tapissier Gagnol qui utilisa pour les recouvrir les étoffes appartenant à l'Impératrice, étoffes que la maison Picot fut chargée de modifier par des travaux de broderies."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/e3394f84-5f0b-3e29-87e3-ba5408d13a53> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404513> .
+

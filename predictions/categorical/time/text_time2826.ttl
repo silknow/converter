@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/b8080ade-64d8-5ee6-bdac-43fe5f7ec621> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/bffa891e-5ed8-32c1-92d8-20109f3b3fc8> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/b8080ade-64d8-5ee6-bdac-43fe5f7ec621> .
+
+<http://data.silknow.org/activity/b8080ade-64d8-5ee6-bdac-43fe5f7ec621> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """La chasuble présente un montage français caractéristique de la première moitié du XVIIIe siècle, avec une croix dorsale sans redents. Elle est constituée d'une gaze produite en Chine pour l'exportation, en soie de couleur bleue, peinte à la gouache de branches fleuries. Au dos de la chasuble, la largeur totale de la laize a été utilisée (soixante-neuf centimètres). Les deux lisières, constituées d'un fil simple, sont donc conservées. La doublure de la chasuble a été taillée dans une toile de lin gommée et calandrée, de qualité bougran, de couleur rose foncé. La colonne, sur le devant de la chasuble, la croix dans le dos avec ses deux branches rajoutées (il en manque une aujourd'hui) sont constituées d'une toile de coton blanc, brodée en laine polychrome au point de chaînette majoritairement, au point lancé et au point de nœud. Le décor fait se succéder des grappes de raisin et des branches fleuries ou chargées de fruits. Un galon de passementerie à franges, en cordonnet de soie crème et rose foncé, est appliqué en bord de chasuble. Autour des orfrois et de l'encolure a été appliqué un autre galon en toile de lin (chaîne) et soie polychrome, façonnée à poil traînant, avec une succession de fleurettes et de motifs géométriques. Toutes les coutures, en lin beige rosé (retors S de deux bouts Z), sont d'origine, montrant que la chasuble n'a pas été remaniée.
+La chasuble, de couleur bleue, pouvait être utilisée, sous l'Ancien Régime, lors de la fête de l'Immaculée Conception. Le décor de fleurs peintes ou brodées s'adaptait alors parfaitement à la liturgie en l'honneur de la Vierge, ainsi que la couleur blanche des orfrois.
+L'utilisation de gazes peintes chinoises pour des vêtements liturgiques, bien que rarement représentée dans les collections publiques, est cependant bien attestée pour la première moitié du XVIIIe siècle. C'est bien la particularité de cette gaze et le fait qu'elle soit peinte qui avait intéressé la maison Henry J.-A. et ses successeurs. En effet, cette chasuble faisait partie du fonds de « vieux matériaux » (c'est-à-dire d'archives pour inspiration) des fabricants. Elle a été donnée au musée des Tissus par la famille Truchot, avec un ensemble remarquable de pièces constituant les archives familiales de l'entreprise.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/bffa891e-5ed8-32c1-92d8-20109f3b3fc8> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

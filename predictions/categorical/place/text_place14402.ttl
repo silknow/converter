@@ -1,0 +1,28 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/1f9fceb1-0caf-5061-9123-e38684d06323> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/7e210fc0-a32a-30b1-9113-ab56f4757cb6> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/1f9fceb1-0caf-5061-9123-e38684d06323> .
+
+<http://data.silknow.org/activity/1f9fceb1-0caf-5061-9123-e38684d06323> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """"Damassade fond bleu solide et fil blanc, dessin à pampres de feuilles de lierre et plamettes". 
+
+Historique :
+Ce damas a été commandé par Sulleau en même temps que les damas économiques vert et blanc (GMT 212), orange et blanc (GMT 5277), et comme ces derniers, le damas bleu et blanc a été livré directement aux tapissiers Flamand et Susse qqui les ont utilisé en totalité. Elles n'ont donc jamais été enregistrées au Journal du Garde-Meuble et ne peuvent être connues que par les soumissions et les mémoires de tapissiers. 
+Flamand a confectionné pour l'appartement de ministre n°9 quatre parties de rideaux 15/16 bleu encadré de bordure damas économique bleu et blanc, une alcôve tendue en trois parties et un plafond en damas économique bleu et blanc, deux rideaux d'alcôve, une draperie, une courtepointe, deux bergères, quatre fauteuils, deux chaises, deux chaises, deux tabourets de pieds, un écran en acajou couverts en damas encadré de bordure large. A Fontainebleau depuis 1810, cet ensemble était encore en place en 1855. Deux chaises, une bergère, deux fauteuils, un tabouret de pieds sont rentrés au Garde-Meuble en 1864, l'écran en 1870, la seconde bergère, les deux autres fauteuils et le second tabouret de pieds ont été vendus en 1886. La devanture d'alcôve appartient toujours au Mobilier national (GMT 208). Pour la chambre à coucher de l'appartement de ministre n°24, deux parties de croisée, deux rideaux et une devanture d'alcôve, une couretepointe, une draperie à la romaine, un ensemble de siège ont été installés en 1810 et toujours en place en 1833. Pour le salon de l'appartement de ministre n°44, quatre parties de rideaux et un ensemble de sièges ont été installés en 1810, les sièges ont été déménagés dans le Salon bleu du Roi en 1833. Les sièges ont été vendus aux Domaines. 
+Le tapissier Susse, pour sa part, a réalisé pour la chambre à coucher de l'appartement de ministre n°25 deux parties de rideaux, une devanture d'alcôve, rideaux pente, courtepointe, un ensemble de sièges ; installés en 1810, ils sont restés jusqu'en 1855 en place, les sièges ont ensuite été vendus aux Domaines en 1882. Pour le salon de l'appartement de ministre n°29, le cabinet de travail à gauche de l'appartement de ministre n°45, la chambre à coucher de ce même appartement, et celle de l'appartement n°26, l'ameublement est sensiblement identique pour chacune des pièces, il a été installé en 1810 et est dispersé au fur et à mesure des usages et des déplacements de la famille royale puis impériale au cours du temps."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/7e210fc0-a32a-30b1-9113-ab56f4757cb6> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

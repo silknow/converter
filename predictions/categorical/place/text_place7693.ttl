@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/0bd609a9-a9ef-5644-a1e8-0d4d358b923e> a rdf:Statement ;
+    silk:L18 "0.932421"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/dc831729-54de-376e-9590-2f68896d22fa> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/0bd609a9-a9ef-5644-a1e8-0d4d358b923e> .
+
+<http://data.silknow.org/activity/0bd609a9-a9ef-5644-a1e8-0d4d358b923e> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Medallón bordado en oro y sedas de colores, con representación de San Roque, santo protector de la peste, con la iconografía propia del mismo.  Se dispone de pie y viste túnica azul y manto rojizo; con una mano sujeta el bordón de peregrino, mientras que con la otra levanta sus ropas y deja al descubierto toda su pierna derecha, para mostrar sus llagas. Un ángel de pequeñas proporciones se inclina ante él y le cura las heridas. A la derecha del santo se sitúa un perro con un pan en la boca. La escena se desarrolla en medio de paisaje rocoso y con montañas al fondo, bajo un cielo azul.  
+Rodea la representación una ancha cenefa de tipo renacentista, constituida por círculos y roleos enlazados.  
+Aplicado a un tejido de fondo, debió formar parte de algún ornamento o paño litúrgico."""@es,
+        "Renacimiento"@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/dc831729-54de-376e-9590-2f68896d22fa> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

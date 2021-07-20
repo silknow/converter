@@ -12,7 +12,7 @@ for file_name in glob.glob('technique_group.tsv'):
     for index, row in x.iterrows():
         score = row['score']
         predicted = row['predicted']
-        obj = row['id']
+        obj = row['obj']
         counter_pred = counter_pred + 1 
         counter_act = counter_act + 1
 
@@ -62,7 +62,7 @@ for file_name in glob.glob('technique_group.tsv'):
            
            ?actor a prov:SoftwareAgent ;
            ecrm:P70_documents """
-        j = '''"Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill "gaps", i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score."''' + " ."
+        j = '''"Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score."''' + " ."
         k = """
             ?activity prov:wasAssociatedWith ?actor .
             }

@@ -1,0 +1,27 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/1f7a88e2-96fd-5ab7-833c-f0033eccc259> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/ea7e7e14-8654-3887-bd46-fbf26dabb72f> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/1f7a88e2-96fd-5ab7-833c-f0033eccc259> .
+
+<http://data.silknow.org/activity/1f7a88e2-96fd-5ab7-833c-f0033eccc259> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Tenture. "fond carrelé bleu à l'indigo…liseré deux bleus, le tout teint à la Manufacture des Gobelins", "dessin de plantes d'indigo d'Inde et fleuron au centre à pointes". 
+
+Historique :
+Exécuté par Grand frères et Cie, à Lyon, pour un salon de l'appartement de l'Empereur au Palais de Versailles.
+Ces étoffes n'ont pas été utilisées sous l'Empire. Le 21 septembre 1819, le tapissier Hellant et Mme Mibord ont employé 73m45 de damas pour tenture pour le marquis de Dreux-Brézé en même que l'étoffe bleu pastel (GMMP 1024, GMMP 1026 et GMMP 914, 980, 981, 982, 982). Le 5 novembre, les 20 m 80 restants sont portés en sortie pour les Tuileries mais ne semblent pas avoir été effectivement utiisés puisqu'ils sont toujours inscrits à l'inventaire de 1894. Pour le troisième trimestre de 1931, 11 m 40 ont été employés pour "entretien" à l'hôtel de l'Alma."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/ea7e7e14-8654-3887-bd46-fbf26dabb72f> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

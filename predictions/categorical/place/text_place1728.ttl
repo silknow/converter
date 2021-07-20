@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/8e288417-5506-57a8-b939-522359f9d954> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/9a2d1d0b-c439-3421-8413-3e79490e6a3f> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/8e288417-5506-57a8-b939-522359f9d954> .
+
+<http://data.silknow.org/activity/8e288417-5506-57a8-b939-522359f9d954> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Cette robe de statue était destinée à vêtir une statue de l’Enfant Jésus : elle ne présente donc aucune des caractéristiques du costume féminin du XVIIIe siècle et ses dimensions sont très menues. 
+La dévotion à l’Enfant Jésus se développe au XVIIe siècle. Le Christ Roi, tel qu’il est vénéré à Prague, par exemple, suscite beaucoup de ferveur. Les statues de l’Enfant Jésus sont alors vêtues de tenues précieuses et variées en fonction des fêtes liturgiques. Comme la Vierge, l’Enfant fait également l’objet d’une dévotion privée et sa statue, protégée le plus souvent dans une boîte vitrée, était installée dans les foyers des classes les plus aisées. Le remploi de vêtements civils se justifie d’autant plus dans ce cadre privé que vêtir la statue coûtait très cher. La robe est ici de forme trapézoïdale et ouverte sur toute sa hauteur dans le dos. Les manches sont garnies d’un volant de dentelle tandis que le devant et le bas de la robe sont ornés d’un galon à réseau losangé en lame métallique dorée, frisé et frisé riant. 
+Elle a été confectionnée à partir d’un pékin, tissu à bandes d’armures différentes, disposées parallèlement à la chaîne, orné d’un décor broché de fleurs traitées de manière naturaliste, retenues en bouquet par un ruban noué. Le pékin, inspiré des tissus d’Extrême-Orient, connaît un grand succès en Europe dès le début du XVIIIe siècle. Il fut surtout employé pour la réalisation des costumes. 
+Dorothée Lécrivain"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/9a2d1d0b-c439-3421-8413-3e79490e6a3f> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/f9c6a075-1676-50c5-959c-3c197d51033e> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/c2c7d981-c018-3e79-9479-bff6923d559b> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/f9c6a075-1676-50c5-959c-3c197d51033e> .
+
+<http://data.silknow.org/activity/f9c6a075-1676-50c5-959c-3c197d51033e> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Carné con tapas compuestas por dos placas de nácar unidas por  lomo de tela roja. La tapa anterior calada de roleos con óvalo central de nácar. En el interior, libro de notas, calendario con viñetas en francés, del año 1841. Forro de moaré rojo. Portada grabada con tres damas y niña bajo pabellón. Doble vidrio con interior azogado. Lapicero de plata sobredorada."@es,
+        "Edad Contemporánea"@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/c2c7d981-c018-3e79-9479-bff6923d559b> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

@@ -1,0 +1,89 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/b7b621bf-ae64-5cdb-a54c-172f2b896df7> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/3442de5e-f8bf-3e80-b0ad-2b652aa6ac0c> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/b7b621bf-ae64-5cdb-a54c-172f2b896df7> .
+
+<http://data.silknow.org/activity/b7b621bf-ae64-5cdb-a54c-172f2b896df7> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Au dessus d'un char, dont on voit les roues de face, est placé un grand écusson aux armes de France et de Navarre, au milieu d'un trophée de drapeaux, d'armures et d'armes de toutes sortes. Deux enfants, placés sur les corniches du haut de la composition, soutiennent des globes. Bordure de fleurs de lis alternant avec des rosaces dans un enroulement imitant le bronze doré.
+carton préparé par Yvart le père d'après un modèle peint par Le Brun en 1659-60
+
+Domaine 	
+
+tapisserie
+Dénomination 	
+
+tenture ; élément d'ensemble
+Titre 	
+
+Portières du Char de triomphe (7e suite, 5e ordre sans or)
+Auteur/exécutant 	
+
+LE BRUN Charles (auteur du modèle) ; manufacture des Gobelins (manufacture) ; DE LA CROIX Père (atelier)
+Précision auteur/exécutant 	
+
+LE BRUN : Paris, 1619 ; Paris, 1690
+Ecole 	
+
+France
+Lieu création / utilisation 	
+
+France (lieu de création) ; Paris (lieu d'exécution)
+Période création/exécution 	
+
+17e siècle ; 18e siècle
+Millésime création/exécution 	
+
+1699 commencé en ; 1701 achevé en
+Historique 	
+
+Cette suite fut interrompue et reprise plusieurs fois par divers ateliers.
+Matériaux/techniques 	
+
+laine, soie, basse lisse
+Dimensions 	
+
+H. 340 ; l. 260
+Sujet représenté 	
+
+représentation non figurative (armoiries, fleur de lys, couronne, putti, cartouche orn, trophée, arme, serpent, sphère, fronton)
+Précision sujet représenté 	
+
+Armes de France et de Navarre sur un cartouche central, au milieu de trophées d'armes surmontés du soleil, et tout en haut, la couronne royale. En bas, deux serpents enlacés. Deux génies tenant des globes sont assis de chaque côtés d'un fronton d'architecture qui encadre le tout.
+Lieu de conservation 	
+
+Paris ; Mobilier national
+	
+
+Musée de France
+au sens de la loi n°2002-5 du 4 janvier 2002
+Statut juridique 	
+
+propriété de l'Etat ; Paris ; Mobilier national
+Anciennes appartenances 	
+
+Fonds ancien du garde-meuble (inv. 50) ; mobilier de la Couronne (n°194 des tentures sans or)
+Numéro d'inventaire 	
+Cf carton : GOB-737-001.
+GMTT 150
+Bibliographie 	
+
+Maurice Fenaille, Etat général des tapisseries de la manufacture des Gobelins depuis son origine jusqu'à nos jours, 1600-1900, Impr. Nationale, Paris, 1903-1923 (I, p. 19-20) ; Jules Guiffrey, Inventaire général des richesses d'art de la France, Paris, monuments civils, tome IV : Tapisseries du Garde-Meuble, Paris, 1913 (p. 110)
+Rédacteur 	
+
+Emmanuelle Plumet ; Monique de Savignac ; Jean Vittet"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/3442de5e-f8bf-3e80-b0ad-2b652aa6ac0c> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

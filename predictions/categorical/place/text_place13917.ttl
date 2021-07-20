@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/5ed928a1-f43b-5d8e-9817-a9eab94755c8> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/515e5f79-d36b-36b8-a99c-73251d945dea> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/5ed928a1-f43b-5d8e-9817-a9eab94755c8> .
+
+<http://data.silknow.org/activity/5ed928a1-f43b-5d8e-9817-a9eab94755c8> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Etoffe pour tenture, lits et sièges. Damas 2 couleurs fond vert n°2, liseré blanc, dessin à cornes d'abondance et guirlandes de fleurs.
+
+Historique 
+Exécuté par J.P. Seguin, à Lyon, en 1811, pour des chambres de suite du château de Versailles. C'est seulement sous le Second Empire que ce damas fut utilisé pour la première fois. Le 26 décembre 1852, 70,55 mètres furent confiés au tapissier Munier, sans autre précision. Le 28 décembre suivant, ce même tapissier employa 102,45 mètres pour les Tuileries. En 1855, 1856, 1857, 1858, 25,78 mètres servirent au ministère d'État, place du Carrousel, dont le titulaire était Achille Fould. Le 20 juillet 1857, deux sorties sont mentionnées : une pour le Grand Maréchal, le comte Vaillant, et une pour le Grand Veneur, le Maréchal Vagnan. Une dernière sortie est mentionnée en 1857 à destination de la place Vendôme, sans autre précision."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/515e5f79-d36b-36b8-a99c-73251d945dea> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

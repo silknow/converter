@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/4d305569-2f2c-52c1-af84-3b4bc42e084e> a rdf:Statement ;
+    silk:L18 "0.351471"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3017382/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/6f332172-2b86-3917-a73b-fe8cd085b3ea> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/4d305569-2f2c-52c1-af84-3b4bc42e084e> .
+
+<http://data.silknow.org/activity/4d305569-2f2c-52c1-af84-3b4bc42e084e> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Prenda de cabeza de forma semicircular realizada con dos piezas de tejido, la menor colocada en sentido transversal, con ligamento de seda de color salmón con decoración realizada en seda azul, verde, blanca e hilos metálicos de plata y plata sobredorada. La decoración principal se reparte alternándose en bandas, en las que se suceden los ramos vegetales en azul y blanco con león rampante en hilo dorado, con otras en las que aparece el mismo ramo vegetal en este caso verde y un ave empenachada en hilo de plata. Los espacios resultantes se completan con pequeñas ramitas con hojas y frutos que se alternan según la hilera con ovejas adornadas con lazo y pequeños jabalíes.   
+La prenda aparece rematada perimetralmente por puntilla de encaje tipo Puntos de España realizada con hilo metálico de plata sobredorada."""@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/6f332172-2b86-3917-a73b-fe8cd085b3ea> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3017382/> .
+

@@ -1,0 +1,28 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/be2d2eaa-4869-5c39-8d37-ae93210b530e> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/7c90b7cc-0249-329f-a1f7-2bdd2fc64b36> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/be2d2eaa-4869-5c39-8d37-ae93210b530e> .
+
+<http://data.silknow.org/activity/be2d2eaa-4869-5c39-8d37-ae93210b530e> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Talon de bordure de tenture.
+Satin vert broché or.
+Décor de rosaces, fleurs de pavot et feuilles de chêne, encadré de deux bordures unies le long des bords longitudinaux
+
+Historique : 
+Le vérificateur du Mobilier Impérial remarque à la réception des étoffes "que les Etoffes sont très riches, d'un bon Effet de dessin, soignées dans tous les détails et exécutées avec une rare précision pour des Etoffes brochées". Initialement créé pour la chambre à coucher de l'Empereur au châteua de Versailles, en 1821, les étoffes sont toujours dans le Garde-Meuble. À l'exception de celles pour tenture, il a été décidé de les employer pour la Chambre de la duchesse d'Angoulême aux Tuileries, ancienne chambre des impératrices Joséphine et Marie-Louise."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/7c90b7cc-0249-329f-a1f7-2bdd2fc64b36> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

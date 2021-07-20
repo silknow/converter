@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/d91f3c5f-fb57-5bcb-bf00-12a64aaa8632> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/07cf16fb-cd4b-35d1-9c7c-a0d61c7b221a> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/d91f3c5f-fb57-5bcb-bf00-12a64aaa8632> .
+
+<http://data.silknow.org/activity/d91f3c5f-fb57-5bcb-bf00-12a64aaa8632> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Acquise en 1862 lors de la dispersion de la collection Bert — la laize correspond au n° 376 du catalogue : « Lampas pour tenture, le Jardinier et la Bouquetière, dans un médaillon suspendu à un nœud » —, cette soierie avait été utilisée comme support pour un médaillon en taffetas broché sur fond satin présentant, en buste et de profil, le comte de Provence (inv. MT 2856), lui aussi acquis à la vente de la collection Bert — il portait le n° 336 du catalogue et était identifié comme « Louis XV » —. L'association de la garniture de siège et du portrait étant moderne, la couture non originale a pu être défaite, permettant d'apprécier à nouveau le décor du champ central, sur lequel sont associées deux figures bien connues des compositions de Philippe de Lasalle, le jardinier (MT 1284, par exemple) et la bouquetière (inv. MT 2885, par exemple), également réunies, au musée des Tissus, sur un autre lampas, fond satin (inv. MT 2920).
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/07cf16fb-cd4b-35d1-9c7c-a0d61c7b221a> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

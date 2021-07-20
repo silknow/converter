@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/9b8b14cf-1345-522e-88ea-86fc8b67971e> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/92a4c59f-4652-3a28-ac79-3e618bf3053c> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/9b8b14cf-1345-522e-88ea-86fc8b67971e> .
+
+<http://data.silknow.org/activity/9b8b14cf-1345-522e-88ea-86fc8b67971e> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """En décembre 1864, la Chambre de Commerce achetait pour son jeune musée d'Art et d'Industrie, qui venait d'ouvrir ses portes au public, « huit broderies sur étoffes, dessin de Bony » (inv. MT 10406, MT 10407, MT 10408, MT 10409, MT 10410, MT 10411, MT 10412 et MT 10413), un « gilet (non monté) soie, brodé nuances, époque de Louis XVI » (inv. MT 10414) et « un grand échantillon d'une étoffe à fond rouge, pour tenture, époque de Louis XIII » au chef d'atelier Sautemouche, résidant 1, rue des Anges, dans le quartier de Saint-Just, également connu comme collectionneur de mobilier ancien.
+L'échantillon est exécuté sur un velours frisé à deux types de boucles, fond gros de Tours par deux et quatre coups, un lat de liseré, noir et violet foncé. La broderie, réalisée en soie polychrome et en cordonnet de soie, montre un courant de roseaux réunis en faisceau. Au talon, une broderie de soie blanche imite une application de dentelle.
+La composition est caractéristique du travail de Jean-François Bony (1754-1825), célèbre dessinateur de fabrique, brodeur, fabricant et occasionnellement peintre de fleurs, tout comme les points de broderie associés sur cet échantillon, essentiellement le passé plat et le point lancé, et plus ponctuellement le point de tige et le point de nœud. La manière de juxtaposer les couleurs, dans les feuilles, par exemple, ou l'habileté pour rendre les contrastes de matières sont aussi récurrentes sur les œuvres issues des ateliers de Jean-François Bony. On retrouve la même science du dessin, la même maîtrise des techniques de la broderie, le même goût pour le trompe-l'œil, aussi, sur une bordure brodée d'un courant d'églantines, par exemple (inv. MT 1294) ou sur un projet de panneau de tenture (inv. MT 2829).
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/92a4c59f-4652-3a28-ac79-3e618bf3053c> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/1ad74821-6663-5b53-a624-71abd3af5950> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/40ad211f-e56a-3285-a52a-b356fd189800> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/1ad74821-6663-5b53-a624-71abd3af5950> .
+
+<http://data.silknow.org/activity/1ad74821-6663-5b53-a624-71abd3af5950> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """La laize présente un décor dans le goût rocaille rythmé par des motifs dits « en coup de fouet ». Les courbes et les contre-courbes sont formées en hauteur par le même dessin orienté dans le sens opposé. Il figure une plate-forme fleurie, couverte notamment de pensées, bleuets, œillets et roses, sur laquelle s’épanouissent des branches feuillues de mûrier où évoluent des Bombyx mori. Tout le cycle de développement de ce papillon qui dure environ une année est ici résumé, de la ponte des œufs, appelées graines, au coconnage des vers à soie, jusqu’à l’apparition d’un nouveau papillon. 
+En chef de pièce, une inscription indique l’auteur de la laize et son lieu de production. Charles-Simon Colliot, dessinateur et fabricant, est né à Lyon le 5 novembre 1725 de François Colliot, marchand et maître horlogeur, et d’Antoinette Charropin. En octobre 1739, il entre comme apprenti au service de Claude Flandrin, marchand-fabricant, et de son frère, le dessinateur Jacques Flandrin. Charles-Simon Colliot devient compagnon en décembre 1745 et maître-marchand en décembre 1753 travaillant pour Claude Baréty, écuyer, secrétaire du Roi, et négociant à Lyon. À la mort de ce dernier, le dessinateur Charles-Simon Colliot reçoit en héritage mille livres ainsi que tous les tableaux placés aux deuxième et troisième étages de la maison qu’occupait le testateur rue Saint-Marcel. À la mort de son légateur, il se met à travailler sous son propre nom. En 1754, il épouse Marie-Françoise Vanrisamburg, fille de l’ingénieur et architecte Joachim van Risamburgh. En 1779, Colliot se retrouve à Paris, œuvrant pour la maison lyonnaise Durand jeune et Cie. En 1792, Colliot est encore cité dans le compte rendu de la municipalité de Lyon, mais en 1796, il apparaît comme domicilié à Écully, alors que l’administration départementale du Rhône le prévient qu’il doit acquitter la somme de mille livres au titre de l’emprunt forcé de l’an 4. Charles-Simon Colliot décède à Écully le 16 mai 1809. 
+Dans les années 1880, se profile, suite à une faillite, une vente prestigieuse, celle de la collection Dommartin, qui regroupe des esquisses, des compositions pour servir à la fabrication des étoffes, des mises en carte et plus de deux cents pièces de choix. Cette collection témoigne, à elle seule, du génie de la Fabrique pendant près de deux siècles. À l’occasion de la présentation de la collection, Colliot est cité au même titre que Philippe de Lasalle, Jean-Baptiste Pillement, Jean-François Bony et Antoine Berjon. Son souvenir s’est malheureusement évanoui dans l’historiographie moderne. La laize du musée des Tissus, qui porte sa signature, prouve cependant son talent comme dessinateur et comme fabricant.
+Claire Berthommier"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/40ad211f-e56a-3285-a52a-b356fd189800> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

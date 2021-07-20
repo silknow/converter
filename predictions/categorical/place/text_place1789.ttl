@@ -1,0 +1,28 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/73ae7401-32de-53f8-8637-32f9bf9de90d> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/eb1efff5-9f0b-3bdd-bdc8-cbcea1a9f74b> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/73ae7401-32de-53f8-8637-32f9bf9de90d> .
+
+<http://data.silknow.org/activity/73ae7401-32de-53f8-8637-32f9bf9de90d> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """L’association des anciens élèves de l’école de soierie de Côme fait don régulièrement au musée des Tissus des plus belles pièces qu'elle produit, images tissées en imitation de gravure des abords du lac de Côme (Villa Carlotta, inv. MT 49502 ; Villa Olmo, inv. MT 2013.2.4), d'architectures de la région (Basilique Sant'Abbondio, inv. MT 41336 ; Palazzo Terragni, inv. MT 42599 ), de scènes ou de souvenirs historiques (Carte de l'Italie, 1861, inv. MT 2012.1.6) ou portraits des grands saints de l'Église ou des promoteurs de la foi (Portrait de Jean-Paul II, inv. MT 2012.1.7).
+La rencontre d'Alessandro Volta et de Napoléon Ier a fait l'objet au XIXe siècle de trois compositions différentes. La première est une peinture à fresque de Gasparo Martellini (1785-1857) sur un carton de Nicola Cianfanelli (1793-1848) dans la Tribune de Galilée à Florence. La deuxième est une fresque de Giuseppe Bertini (1825-1898), datée de 1858 et conservée dans la Villa Ponti de Varese. La troisième, également peinte par Ponti, est une toile de 1891, conservée dans le Tempio Voltiano de Côme.
+La reproduction tissée de la fresque de Giuseppe Bertini dans la Villa Ponti fut exécutée par la manufacture d'Arturo Dolara sur un dessin de Marco Di Capua, à l'occasion de l'exposition commémorative de 1899 pour le centenaire de l'invention de la pile voltaïque. Le musée d'Art et d'Industrie de Saint-Étienne conserve un exemplaire de ce tissage (inv. 2005.90.14).
+Le panneau actuel, réalisé par l'Associazione Ex-Allievi della Scuola di Setificio de Côme en 1999, cent ans après le premier exemplaire, a été réalisé par la manufacture Tessitura Serica Gianni Binda & C. S.p.a. sur le même dessin de Marco Di Capua, adapté au système informatisé de tissage CAD-CAM de Luigi Pianezza. La mise en carte originale de Marco Di Capua est conservée au siège de l'Associazione.
+Un exemple précoce d'images tissées selon le procédé CAD-CAM est le Portrait de Jean-Paul II, réalisé en 1984 par la firme Pianezza Paolo Srl. d'Azzio, dont le musée des Tissus conserve deux exemplaires en polyamide 6 ou nylon (inv. MT 42589 et MT 49500).
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/eb1efff5-9f0b-3bdd-bdc8-cbcea1a9f74b> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/f273acd4-a9a2-5d11-842e-5b791a5e4e22> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/acdd9682-6619-348f-86fa-fc406a729928> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/f273acd4-a9a2-5d11-842e-5b791a5e4e22> .
+
+<http://data.silknow.org/activity/f273acd4-a9a2-5d11-842e-5b791a5e4e22> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Corpiño de cuerpo corto y ajustado, sin mangas, con escote de pico y abertura frontal con ojetes. La prenda está confeccionada con tres piezas de tejido de terciopelo de seda de color Burdeos que se unen entre sí en los hombros y en los costadillos de la espalda. Además lleva un estrecho galón dorado que bordea el cuello y los delanteros ocultando además las costuras de los costadillos. Puede verse también un cordoncillo igualmente en hilo de oro, que discurre por la abertura frontal. Cosido al borde inferior del cuerpo, presenta un faldellín de tafetán de lino, tejido que se utiliza también para el forro del interior."@es,
+        "Edad Contemporánea"@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/acdd9682-6619-348f-86fa-fc406a729928> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

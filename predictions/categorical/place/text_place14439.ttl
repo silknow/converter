@@ -1,0 +1,40 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/4e9734e2-603e-5d65-8595-e64166f224b4> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/e5516302-d097-34e1-bd5a-1ccbf981142f> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/4e9734e2-603e-5d65-8595-e64166f224b4> .
+
+<http://data.silknow.org/activity/4e9734e2-603e-5d65-8595-e64166f224b4> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Dix sept pièces de sergé de soie verte brodées (broderies d'application de filés or renforcées par une toile de lin) provenant du dépécement de la garniture textile du berceau du duc de Bordeaux (GMEC 38 / 000).
+GMEC 38 / 001 / 1 : élément de rideau, en forme de L brodé de fleurs de lis au naturel orientées dans la même direction et d'une rosette dans l'angle ; 1,64x1,53x0,05
+GMEC 38 / 001 / 2 : élément de rideau, en forme de L brodé de fleurs de lis au naturel orientées dans la même direction et d'une rosette dans l'angle ; 1,79x1,60x0,06 ; porte une inscription au crayon graphite, sur une étiquette en carton "dépècement de rideaux rentrant de la monnaie provenant du bernceau du duc de Bordeaux rentré en magasin le 5 dexbre 1873".
+GMEC 38 / 001 / 3 : frise brodée de fleurs de lis au naturel orientées dans la même direction ; 1,42x0,12
+GMEC 38 / 001 / 4 : frise brodée de fleurs de lis au naturel orientées dans la même direction ; 1,90x0,08 ; porte une étiquette collée au revers imprimée en vert "palais des Trianons, inventaire 1855".
+GMEC 38 / 001 / 5 : frise brodée de fleurs de lis au naturel orientées dans la même direction ; 1,64x,0,081
+GMEC 38 / 001 / 6 : frise brodée de fleurs de lis au naturel orientées dans la même direction ; 1,48x0,06
+GMEC 38 / 001 / 7 : frise brodée de fleurs de lis au naturel orientées dans la même direction et d'une rosette ; 1,50x0,07
+GMEC 38 / 001 / 8 : frise brodée de fleurs de lis au naturel orientées dans la même direction et d'une rosette ; 1,52x0,065
+GMEC 38 / 001 / 9 : frise brodée de fleurs de lis au naturel orientées dans la même direction ; 1,42x0,076
+GMEC 38 / 001 / 10 : frise brodée de fleurs de lis au naturel orientées dans la même direction et d'une rosette ; 1,44x0,12
+GMEC 38 / 001 / 11 : frise brodée de fleurs de lis au naturel orientées dans la même direction et d'une rosette ; 1,49x0,008
+GMEC 38 / 001 / 12 : frise brodée de fleurs de lis au naturel orientées dans deux directions et d'une rosette ; 1,46x0,134
+GMEC 38 / 001 / 13 : frise brodée de fleurs de lis au naturel orientées dans deux directions et d'une rosette ; 1,51x0,085
+GMEC 38 / 001 / 14 : frise brodée de fleurs de lis au naturel orientées dans deux directions et d'une rosette ; 1,54x0,075
+GMEC 38 / 001 / 15 : frise brodée de fleurs de lis au naturel orientées dans deux directions et d'une rosette ; 1,47x0,06
+GMEC 38 / 001 / 16 : frise brodée de fleurs de lis au naturel orientées dans la même direction ; 0,40x0,065
+GMEC 38 / 001 / 17 : grande bande de sergé de soie unie ornée sur l'un de ses longs côtés d'une frange de filé or et d'un reste de petit galon en crête de filé or ; 2,97x0,12"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/e5516302-d097-34e1-bd5a-1ccbf981142f> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

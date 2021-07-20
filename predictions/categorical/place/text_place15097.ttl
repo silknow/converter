@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/9cf2387a-839a-5ac6-ab52-41a80bf78ca9> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/ab508618-4999-319d-8332-3e6f5a92bfad> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/9cf2387a-839a-5ac6-ab52-41a80bf78ca9> .
+
+<http://data.silknow.org/activity/9cf2387a-839a-5ac6-ab52-41a80bf78ca9> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Dépècement de rideaux. Largeur de lé complète. Damas blanc ton sur ton, sans envers. Motifs de soleil rayonnant répétés entre des compartiments constitués de guirlandes d’althéas et de feuilles de laurier. 
+
+Historique : 
+Commandé à J.P. Seguin et Compagnie pour divers appartements du Palais de Versailles en 1811, ce damas fut livré en 1812 et ne connut aucune utilisation sous l’Empire. Il fut réservé pour diverses pièces des Grands Appartements de Versailles à la Restauration, mais fut finalement utilisé pour la première fois au Palais de l’Elysée, en 1816. Un métrage en fut employé pour la confection de rideaux dans la Chambre d’Honneur des Grands Appartements du rez-de-chaussée. En 1818, un nouveau métrage servit à la fabrication de rideaux pour le Cabinet du Conseil du Roi, aux Tuileries, ancien Grand Cabinet de l’Empereur. Ce damas fut par la suite régulièrement utilisé aux Tuileries, ainsi qu’à Trianon et Compiègne, jusqu’en 1837. Par ailleurs, un métrage en fut utilisé à Fontainebleau, en tenture d’alcôve de l’ancienne Chambre à coucher de Napoléon Ier, dans les Petits Appartements du rez-de-chaussée."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/ab508618-4999-319d-8332-3e6f5a92bfad> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

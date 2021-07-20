@@ -1,0 +1,92 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/ce4775b4-b1c1-57a6-a403-b450ec29abab> a rdf:Statement ;
+    silk:L18 "0.351471"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3017382/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/f4c77354-ef00-390d-ae5c-4dbad03c70b2> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/ce4775b4-b1c1-57a6-a403-b450ec29abab> .
+
+<http://data.silknow.org/activity/ce4775b4-b1c1-57a6-a403-b450ec29abab> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Tissage : 1717 - 1721 atelier de Jans
+              2 ème tenture, haute lice
+
+Domaine 	
+
+tapisserie
+Dénomination 	
+
+tenture ; élément d'ensemble
+Titre 	
+
+Ancien Testament (2e tenture) : Le jugement de Salomon
+Auteur/exécutant 	
+
+COYPEL Antoine (auteur du modèle) ; manufacture des Gobelins (manufacture) ; JANS (atelier) ; LE FEBVRE (atelier)
+Précision auteur/exécutant 	
+
+COYPEL : Paris, 1661 ; Paris, 1722
+Ecole 	
+
+France
+Lieu création / utilisation 	
+
+Paris (lieu de création, lieu d'exécution)
+Période création/exécution 	
+
+1ère moitié 18e siècle
+Millésime création/exécution 	
+
+1717 commencé en ; 1721 achevé en
+Matériaux/techniques 	
+
+laine, soie, haute lisse
+Dimensions 	
+
+H. 473 ; l. 543
+Sujet représenté 	
+
+scène biblique (Salomon, jugement, femme, enfant, soldat, meurtre, trône, palais)
+Précision sujet représenté 	
+
+Salomon, jeune, est représenté sur son trône. Il est entouré de vieillards. Devant lui, à gauche, la mauvaise mère, au centre l'enfant mort. A droite, la mère qui arrête le bras du soldat s'apprêtant à couper en deux l'enfant qu'il tient par le bras. De nombreux personnages de part et d'autre assistent à la scène. Première bordure : composée d'un cadre très large et très riche, imitant une bordure en bois sculpté, doré et décoré à moulures, fleur de lys et feuillages. Au milieu de la bordure supérieure, les armes de France, sur un cartouche entre deux ailes éployées, surmontées de la couronne et soutenues par deux palmes ; aux quatre angles, des cartouches au chiffre du roi ; et, au milieu de la bordure supérieure, le cartouche portant le titre du tableau. Les armes, les écoinçons et le cartouche débordent sur la composition.
+Source sujet représenté 	
+
+Ancien Testament
+Lieu de conservation 	
+
+Paris ; Mobilier national
+	
+
+Musée de France
+au sens de la loi n°2002-5 du 4 janvier 2002
+Statut juridique 	
+
+propriété de l'Etat ; ancien fonds ; Paris ; Mobilier national
+Anciennes appartenances 	
+
+fonds ancien du garde-meuble (inv. 1425-6) ; mobilier de la Couronne (n° 210 des tentures sans or)
+Numéro d'inventaire 	
+
+GMTT 24/6
+Exposition 	
+
+Tapisseries françaises des XVIIe et XVIIIe siècles à sujets religieux, Beauvais, Galerie nationale de la tapisserie, Paris, 1998, p. 4
+Bibliographie 	
+
+Maurice Fenaille, Etat général des tapisseries de la manufacture des Gobelins depuis son origine jusqu'à nos jours, 1600-1900, Impr. Nationale, Paris, 1903-1923 ( III, p. 88-90 ) ; Jules Guiffrey, Inventaire général des richesses d'art de la France, Paris, monuments civils, tome IV : Tapisseries du Garde-Meuble, Paris, 1913 (p. 119).
+Rédacteur 	
+
+Carine Politi ; Monique de Savignac ; Jean Vittet"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/f4c77354-ef00-390d-ae5c-4dbad03c70b2> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3017382/> .
+

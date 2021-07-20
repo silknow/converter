@@ -1,0 +1,97 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/1739cc7d-14d5-5eeb-b96b-512800c4bf55> a rdf:Statement ;
+    silk:L18 "0.351471"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3017382/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/80f25291-16de-33e7-b952-f68fc23a792f> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/1739cc7d-14d5-5eeb-b96b-512800c4bf55> .
+
+<http://data.silknow.org/activity/1739cc7d-14d5-5eeb-b96b-512800c4bf55> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Carton : par Canouville cf : GOB-705-000.
+tissage 1706 - 1711
+Historique : 3ème tenture haute lisse sans or - 10 pièces - 7ème pièce
+Atelier de Jans en bas à droite
+
+Domaine 	
+
+tapisserie
+Dénomination 	
+
+tenture ; élément d'ensemble
+Titre 	
+
+Les chambres du Vatican (3e tenture sans or) : Attila chassé de Rome
+Auteur/exécutant 	
+
+RAPHAEL (dit, d'après), SANTI Raffaello (d'après) ; manufacture des Gobelins (manufacture) ; JANS (atelier)
+Précision auteur/exécutant 	
+
+RAPHAEL : Urbin, 1483 ; Rome, 1520
+Ecole 	
+
+Italie ; France
+Lieu création / utilisation 	
+
+Italie (lieu de création) ; France ; Paris (lieu d'exécution)
+Période création/exécution 	
+
+1er quart 18e siècle
+Millésime création/exécution 	
+
+1706 commencé en ; 1711 achevé en
+Historique 	
+
+En 1721, le Régent accorda à titre définitif la tenture au duc de la Feuillade. A la mort du duc en 1725, la tenture fut rendue au Roi et entra au Garde-Meuble de la Couronne.
+Matériaux/techniques 	
+
+laine, soie, haute lisse
+Dimensions 	
+
+H. 485 ; l. 850
+Inscriptions 	
+
+marque de manufacture
+Précision inscriptions 	
+
+marque de manufacture : IANS
+Sujet représenté 	
+
+scène historique (Attila, défaite, pape, tiare, cheval, cardinal, soldat, cavalier, apparition, ciel, saint Pierre, saint Paul, épée)
+Précision sujet représenté 	
+
+A gauche, le pape, coiffé de la tiare et monté sur un cheval blanc, s'avance, suivi de deux cardinaux, au-devant d'Attila et de ses soldats et cavaliers qui occupent la droite de la scène. Dans le ciel, apparition de saint Pierre et de saint Paul qui ont l'épée à la main.
+Lieu de conservation 	
+
+Paris ; Mobilier national
+	
+
+Musée de France
+au sens de la loi n°2002-5 du 4 janvier 2002
+Statut juridique 	
+
+propriété de l'Etat ; Paris ; Mobilier national
+Anciennes appartenances 	
+
+Fonds ancien du garde-meuble ; mobilier de la Couronne (n°197 des tentures sans or)
+Numéro d'inventaire 	
+
+GMTT 175/6
+Bibliographie 	
+
+Maurice Fenaille, Etat général des tapisseries de la manufacture des Gobelins depuis son origine jusqu'à nos jours, 1600-1900, Impr. Nationale, Paris, 1903-1923 (II, p. 208-209)
+Rédacteur 	
+
+Emmanuelle Plumet ; Monique de Savignac ; Jean Vittet"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/80f25291-16de-33e7-b952-f68fc23a792f> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3017382/> .
+

@@ -1,0 +1,23 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/d1cd4b05-2610-5e32-a3f0-752b9135b1cc> a rdf:Statement ;
+    silk:L18 "0.341088"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2635167/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/e8b69c47-762f-3340-9be6-e69f1d8cc9a1> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/d1cd4b05-2610-5e32-a3f0-752b9135b1cc> .
+
+<http://data.silknow.org/activity/d1cd4b05-2610-5e32-a3f0-752b9135b1cc> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Foreign travelers from as early as Marco Polo knew of the quality of the embroidery produced in Gujarat, a state on India’s northwestern coast, and as soon as European trade with India picked up in the early 1600s, embroidered Gujarati textiles were identified as among the most lucrative goods for export. This fragment from a hanging is one of the earliest examples of this overseas commerce, and comes from the Ashburnham House in Sussex, England. Embroideries like this were probably made at different centers throughout Gujarat, but are usually associated with Cambay, the port from which they were exported."@en ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/e8b69c47-762f-3340-9be6-e69f1d8cc9a1> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2635167/> .
+

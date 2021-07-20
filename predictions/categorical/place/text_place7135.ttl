@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/7002b35a-1be6-5b68-b4b8-208d059f0927> a rdf:Statement ;
+    silk:L18 "0.948216"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/0f685e4f-9973-34e2-9d08-15cd84abd4ef> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/7002b35a-1be6-5b68-b4b8-208d059f0927> .
+
+<http://data.silknow.org/activity/7002b35a-1be6-5b68-b4b8-208d059f0927> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Edad Contemporánea"@es,
+        """Tapete bordado en seda marrón. La banda central se decora con un perro corriendo hacia la derecha con la cabeza vuelta. Está rodeado de ramas y tallos formando espirales.   
+Esta banda está delimitada por dos grecas con "eses" paralelas e inclinadas, y, en el exterior, grecas con bordado corrido de realce. Rematado por puntilla formando ondas de filtiré."""@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/0f685e4f-9973-34e2-9d08-15cd84abd4ef> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

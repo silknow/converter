@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/6cd37d64-1c02-5b83-b06d-eccb17522998> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/2fb9af37-d6b0-3f74-ac9c-7b9ed9780a04> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/6cd37d64-1c02-5b83-b06d-eccb17522998> .
+
+<http://data.silknow.org/activity/6cd37d64-1c02-5b83-b06d-eccb17522998> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """La laize a été présentée à l’Exposition universelle, internationale et coloniale de Lyon, qui se tenait en 1894 au Parc de la Tête d’Or. Elle figurait dans le « Salon mosaïque », exposition parfaitement innovante de soieries où les maisons ne présentaient pas leur production sous leur propre nom, mais où les plus beaux spécimens de tissage exécutés à Lyon étaient agencés de manière à se mettre en valeur les uns les autres.
+Caractéristique de la révolution du dessin qui s’opère dès les années 1880 dans le domaine de la fleur, et qui triomphe à l’Exposition universelle de Paris, elle met en œuvre un grand courant de feuillages verts sur fond paille, au milieu duquel jaillissent des colchiques aux reflets vieil or et mauve. Les fleurs d’automne adoptent les couleurs mordorées des feuilles caduques, pour une pente de robe au dessin majestueux. 
+La laize est donnée au musée par Louis Chavent lui-même. Les soieries que la maison expose au premier Salon des Arts décoratifs de Lyon en 1884, puis au Salon de la Société lyonnaise des Beaux-Arts, en 1902, montrent la même attention portée à la représentation des fleurs et des feuilles, comme en témoignent leurs titres : « damas broché, feuilles de bégonias », « damas broché, feuilles d’orchidée », « damas broché or, feuilles d’acanthe », « damas, fouillis de feuilles », « damas, branches de saule »…
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/2fb9af37-d6b0-3f74-ac9c-7b9ed9780a04> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

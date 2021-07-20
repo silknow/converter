@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/9328bb0a-604d-585a-95e3-160beb753c40> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/446b5c8a-71f8-3966-8ee5-3ab445176a70> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/9328bb0a-604d-585a-95e3-160beb753c40> .
+
+<http://data.silknow.org/activity/9328bb0a-604d-585a-95e3-160beb753c40> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """La maison Ollagnier, Fructus et Descher, fondée en 1896 et sise au 13, quai de Retz, s’illustre à l’Exposition universelle de 1900 par ses velours et ses soieries façonnées ou imprimées pour la haute couture naissante. À l’issue de l’Exposition, elle donne au musée des Tissus trois laizes qui ont été particulièrement remarquées lors de l’événement (inv. MT 26891, grande laize de velours au sabre, décor de fleurs ; inv. MT 26892, grande laize de satin imprimé fond beige de fleurs des champs ; inv. MT 26893, grande laize de satin paille, décor de plumes noires et blanches brochées). 
+La pente de robe en satin paille, ornée de plumes d’autruche blanches et noires, nouées par des rubans, est une variation sur un thème, particulièrement apprécié pour les traînes de robe du soir, dès la fin des années 1880, comme en témoignent les soieries exposées par les maisons Schulz, Gourdon et Cie (pente de robe utilisée par Charles Frederick Worth pour une robe de bal destinée à Marie-Pauline-Cécile Dupont- White, épouse du président Sadi Carnot ; inv. MT 24896), Ogier, Duplan et Cie (pente de velours au sabre imprimé et surteint en pièce, découpé après l’impression, à décor de plumes de paon, fond crème, inv. MT 24984) ou J.-M. Piotet et J. Roque (deux pentes à décor de bouquets de plumes et de fleurs, inv. MT 24885), par exemple. 
+La légèreté de la composition, le jeu subtil des matières entre le fond de satin et le décor broché annoncent déjà le renouveau de la soierie lyonnaise pour la haute couture et son triomphe dans les années 1910-1920, durant lesquelles la maison Ollagnier, Fructus et Descher, qui a fusionné en 1905 avec la maison Coudurier de Paris pour former une société en nom collectif à la raison commerciale Coudurier, Fructus et Descher, s’impose comme une des principales maisons lyonnaises. Le musée des Tissus a acquis, en 1978, après la faillite de l’entreprise, neuf cent soixante-dix-huit albums d’échantillons, représentant une grande partie des archives textiles de la maison, les documents comptables ayant rejoint le fonds des Archives départementales du Rhône. 
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/446b5c8a-71f8-3966-8ee5-3ab445176a70> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

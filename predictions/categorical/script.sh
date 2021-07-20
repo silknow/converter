@@ -2,18 +2,21 @@ python prov_o_place.py
 cd place
 cat *.ttl > text_place.ttl
 mv text_place.ttl ../
+cd ..
 python prov_o_material.py
-cd ../material
+cd material
 cat *.ttl > text_material.ttl
 mv text_material.ttl ../
+cd ..
 python prov_o_time.py
-cd ../time
+cd time
 cat *.ttl > text_time.ttl
 mv text_time.ttl ../
+cd ..
 python prov_o_technique.py
-cd ../technique
+cd technique
 cat *.ttl > text_technique.ttl
 mv text_technique.ttl ../
-cd ../
+cd ..
 rm *.gz
 gzip *.ttl

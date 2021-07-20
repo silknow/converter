@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/4c4034d5-9764-59db-8f30-744471360447> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/8e3beb1e-e1ca-33be-8442-784b3ff29216> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/4c4034d5-9764-59db-8f30-744471360447> .
+
+<http://data.silknow.org/activity/4c4034d5-9764-59db-8f30-744471360447> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Appartenant au vestiaire de la même statue qu'une autre robe de statue de la Vierge conservée au musée des Tissus (inv. MT 24783.1), cette robe d’Enfant Jésus est conservée avec celle de sa Mère (inv. MT 24783.3). Les deux vêtements ont été confectionnés dans un tissu de remploi, très probablement issu de la garde-robe d’une élégante. Il s’agit d’un taffetas de soie écrue, brodé dans sa partie inférieure de paillettes, de fils torsadés métalliques, de fils de chenille et agrémenté d’applications de satin rosé pour les fleurs à multiples pétales. La robe de la Vierge comprend deux morceaux taillés à la forme du vêtement et assemblés par le milieu. Ils sont complétés par deux petites pièces du même taffetas sans décor constituant l’angle inférieur droit. La robe de l’Enfant Jésus ne comprend que deux morceaux de taffetas brodé, cousus ensemble par le milieu. L’ensemble a été doublé d’un bougran bleu clair. Les deux vêtements ont ensuite été bordés d’un galon bleu clair, cousu avec un fil vert. Le décor d’origine a été enrichi par des applications de feuilles, d’oiseaux ou d’étoiles métalliques argentés et dorés, par des paillettes argentées et des ornements en fils métalliques, également argentés. Un dessin sous-jacent apparaît par endroits sous les broderies anciennes et sous les nouvelles, mais il n’est pas systématique. Des fleurs pailletées rondes ont été découpées au ras du motif dans le taffetas d’origine et appliquées sur la robe de la Vierge, de part et d’autre de l’axe de symétrie central. Une dentelle métallique a été cousue sur les côtés et à l’encolure des deux robes. Un bourrelet métallique borde l’ourlet inférieur du vêtement de la Vierge, et une frange argentée celui de la robe de l’Enfant. Sur la robe de la Vierge, une fente a été pratiquée dans la partie supérieure droite pour permettre le positionnement de l’Enfant. Des rubans écrus ont été fixés aux encolures. Ils servaient à attacher les vêtements à la statue. De la même manière, de nombreux trous d’épingle correspondent à l’habillage de l’effigie. 
+L’utilisation de chenille de soie, de passementerie, de paillettes, de clinquants, de cannetille métallique frisée et non frisée caractérise les broderies réalisées pour les bas des robes sous le Premier Empire. Sur des étoffes légères couraient des frises de fleurs ou de feuilles, réalisées en soies polychromes et lames de métal divers. Le musée des Tissus en conserve de nombreux exemplaires (inv. MT 18627, MT 18514, MT 18613.1 et 2, MT 18571, MT 35135.3, MT 35135.1, MT 35137.1 et MT 2952, par exemple) qui permettent d’attribuer le décor de ces robes de statues aux premières années du XIXe siècle. 
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/8e3beb1e-e1ca-33be-8442-784b3ff29216> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

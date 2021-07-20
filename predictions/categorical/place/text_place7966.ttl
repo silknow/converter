@@ -1,0 +1,27 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/0d7a8652-1e71-5b1c-9e75-909fe4c443e5> a rdf:Statement ;
+    silk:L18 "0.932421"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/da98ecfa-e102-3801-b214-f8091a7dfe40> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/0d7a8652-1e71-5b1c-9e75-909fe4c443e5> .
+
+<http://data.silknow.org/activity/0d7a8652-1e71-5b1c-9e75-909fe4c443e5> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Paño cuadrangular confeccionado con tejido de terciopelo de seda de color verde botella decorado con bordado de aplicación de temática heráldica realizado combinando tejidos de tafetán de seda en ocre y marfil y bordado de hilos tendidos de plata sobredorada y al pasado plano con hilos de seda en verde y beige. En el centro, se dispone una cartela con lambrequines en cuyo centro aparece un escudo partido, armado con corona de marqués y con aguila coronada, explayada y acolada.  En el de la diestra y sobre fondo de oro, pueden verse cinco hojas de sinople. En el de la siniestra, sobre fondo de oro, tres fajas probablemente de gules. Rodeando el motivo central, una greca tambien de aplicación con dos cintas serpenteantes entrelazadas adornadas con roleos en hilos entorchados.  
+A lo largo del borde superior e inferior se han añadido,  posiblemente en época posterior, dos bandas de terciopelo estampillado con motivos de losanges con flores de lis inscritas, la inferior más ancha. Rematando el perímetro, un galón de seda verde e hilos dorados.  
+Por el reverso, forro de tafetán de cáñamo.  
+  
+Forma juego con las piezas DE996B y DE997B."""@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/da98ecfa-e102-3801-b214-f8091a7dfe40> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

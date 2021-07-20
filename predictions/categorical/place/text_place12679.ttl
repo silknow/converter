@@ -1,0 +1,36 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/3e71bdcd-3e58-5f97-84cf-32f411686100> a rdf:Statement ;
+    silk:L18 "0.430041"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/1269750/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/e8fb3202-ac96-3446-9e11-574467c91ad5> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/3e71bdcd-3e58-5f97-84cf-32f411686100> .
+
+<http://data.silknow.org/activity/3e71bdcd-3e58-5f97-84cf-32f411686100> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Decoració obtinguda per fils de perdut per ordit sobre base de tafeta.
+
+- materia ordit : seda
+- relació fils ordit: 1 fil fons (vermell) - 2 fils de perdut (groc-verd-beig)
+- densitat fils d'ordit:86-88 fils/cm fons i 258-260 fils/cm zona de de coració fils de perdut
+- materia trama : seda, vermella
+- densitat de trama: 28-30 passades/cm"""@en,
+        """Decoració obtinguda per fils de perdut per ordit sobre base de tafeta.
+
+- materia ordit : seda
+- relació fils ordit: 1 fil fons (vermell) - 2 fils de perdut (groc-verd-beig)
+- densitat fils d'ordit:86-88 fils/cm fons i 258-260 fils/cm zona de de coració fils de perdut
+- materia trama : seda, vermella
+- densitat de trama: 28-30 passades/cm"""@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/e8fb3202-ac96-3446-9e11-574467c91ad5> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/1269750/> .
+

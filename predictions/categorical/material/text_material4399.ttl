@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/1fad0f06-c74c-5bda-a757-8e43431a1eae> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/ecc7d364-72f6-3b52-84d3-3eb78473dddb> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/1fad0f06-c74c-5bda-a757-8e43431a1eae> .
+
+<http://data.silknow.org/activity/1fad0f06-c74c-5bda-a757-8e43431a1eae> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """La maison Schulz, Gourdon et Cie, établie 8, rue du Griffon, était spécialisées dans les « soieries, hautes nouveautés riches pour robes et confections, étoffes unies couleur en tous genres ». Elle avait reçu de nombreuses distinctions aux grandes manifestations internationales : une Grande Médaille d'honneur à l'Exposition universelle de Paris, en 1855, une Prize Medal à celle de Londres, en 1862, une Grande Médaille d'honneur à l'Exposition internationale de Porto, en 1865 ; un Diplôme d'honneur à l'Exposition universelle de Vienne en 1873 ; un Grand Prix à l'Exposition universelle de Paris, en 1878. Charles Schulz fut décoré de la Croix de la Légion d'honneur à Paris en 1855, puis de la Croix de l'ordre du Christ à Porto en 1865 ; Michel Béraud, d'une médaille et de la Croix de la Légion d'honneur à l'Exposition universelle de 1867 avec la mention « Talent hors ligne pour les dessins de fabrique. A contribué par ses travaux à la supériorité de l'industrie lyonnaise » ; Émile Schulz reçoit la Croix de la Légion d'honneur à Vienne, en 1873. D'abord dessinateur puis associé des frères Charles et Émile Schulz, Michel Béraud se retire en 1875. Jean-Baptiste Alexandre Barqui, comme lui ancien élève d'Augustin Thierriat à l'École des Beaux-Arts de Lyon, lui succède comme dessinateur après avoir été son collaborateur. C'est à sa direction, sinon à sa main même, qu'on doit les motifs à disposition de chutes de plumes d'autruche qui ornent cette pente de robe, créée en 1889 et présentée à l'Exposition universelle de Paris, à l'issue de laquelle la maison Schulz, Gourdon et Cie est gratifiée d'un Grand Prix. Plusieurs des collaborateurs de la maison sont d'ailleurs aussi distingués à cette occasion : Jean-Baptiste Alexandre Barqui, lui-même, d'une Médaille d'or, Joseph Billet, Étienne Chemain, Charles Clairenson, Joseph Garin-Michaud et Paul Nicoud, d'une Médaille d'argent, Denis-Derville Bonnard, François Martin et Louis Sigaud, d'une Médaille de bronze. Sur le fond de satin, le motif, en velours ciselé simple corps, présente un rapport de dessin conséquent, haut d'un mètre soixante-quinze. Le motif aurait été utilisé par Charles Frederick Worth pour une traîne de robe de bal destinée à Marie Pauline Cécile Dupont-White, épouse du président Sadi Carnot.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/ecc7d364-72f6-3b52-84d3-3eb78473dddb> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

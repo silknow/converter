@@ -1,0 +1,36 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/a4e2e764-d770-5e3d-80ee-4c1330aa7cd0> a rdf:Statement ;
+    silk:L18 "0.461055"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2635167/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/2ec2e19a-f220-32bc-ae85-58da7820a5d9> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/a4e2e764-d770-5e3d-80ee-4c1330aa7cd0> .
+
+<http://data.silknow.org/activity/a4e2e764-d770-5e3d-80ee-4c1330aa7cd0> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Quilted bed cover of yellow and white silk satin. The quilted design at the centre shows four rows of conjoined diamond-shapes. Each diamond contains a design of a double fleur-de-lys with arabesques. A wide quilted border contains a complex design of arabesques, and smaller diamonds infilled with diamonds. Quilted in running stitch in silk thread and wadded with wool."@en,
+        """Quilting is a method of stitching layers of material together. The layers are most commonly divided as follows:
+
+Quilt top: The decorative layer of the quilt. If the top is pieced, it is known as a 'patchwork quilt'. If the top is a single piece of fabric in which the design is formed primarily through the stitching, such as this example, it is known as a 'wholecloth quilt'.
+
+Wadding/batting: A layer of cotton, wool, polyester, silk or other material, which adds warmth and dimension to the quilt. 
+
+Reverse: The bottom layer, usually made from one piece of fabric. 
+
+Hand-quilting is done on a frame using needles called 'betweens'. The stitches are executed with one hand; the other hand is kept underneath the quilt to feel for the needle. Small, uniform stitches (usually a 'running stitch') are taken through the three layers to form a decorative design.
+
+In early eighteenth century Britain, the bedrooms of the wealthy were used for the display of luxury goods. They were a place where servants entered, family members rested and guests were entertained. Sumptuous silk quilts, such as this example, would have come to life under the gentle dance of candlelight. Inventories of the period reveal that they were a popular choice in the bedrooms of both middling and aristocratic households. The Drayton House inventory of 1710, for example, lists a 'white Sattain' quilt amongst its contents. This quilt's reverse of bold yellow satin would have made this quilt both highly fashionable and versatile, whereby either side could be displayed to enhance the decor of the room."""@en,
+        "Unique"@en,
+        "quilted silk, 1700c, English"@en ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/2ec2e19a-f220-32bc-ae85-58da7820a5d9> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2635167/> .
+

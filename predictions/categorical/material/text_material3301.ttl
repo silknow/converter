@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/9d4a5b25-625b-546e-9172-1c806e1f7d00> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/ac235c5a-2350-399c-a408-486f8da534a1> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/9d4a5b25-625b-546e-9172-1c806e1f7d00> .
+
+<http://data.silknow.org/activity/9d4a5b25-625b-546e-9172-1c806e1f7d00> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """La maison Verzier, Bonnart et Cie présente à l'Exposition des produits de l'industrie française de 1844 des tableaux tissés, un « Napoléon, [un] Louis-Philippe et [...] une Vierge raphaélique ». L'image de Louis-Philippe n'est plus une composition originale, inspirée par une œuvre gravée et mise en carte par un dessinateur qui adapte son modèle aux codes définis par Philippe de Lasalle et ses successeurs. Elle est la copie servile d'une gravure, reproduisant elle-même le tableau commandé en 1839 à Franz Xaver Winterhalter pour Versailles. L'image est bien celle d'un « roi bourgeois », puisque le portrait tissé n'est plus seulement destiné à un prestigieux usage, il n'est plus envisagé comme une production limitée à quelques exemplaires seulement, mais bien comme une production de série. La maison Verzier, Bonnart et Cie est gratifiée d'une médaille d'argent à l'Exposition de 1844. Le jury remarque « un bel assortiment de châles de soie pour l'exportation et des mouchoirs, écharpes et cravates d'un choix très varié », « ses étoffes pour meubles, satins, gros de Naples, foulards, reps, etc... pour robes », mais il applaudit surtout les « portraits tissés, imitant la gravure en taille-douce. Ce produit considéré jusqu'ici comme un objet de coûteuse fantaisie descend aujourd'hui dans les derniers rangs de la consommation, grâce au bas prix auquel MM. Verzier, Bonnart et Cie l'ont réduit. Cette exposition donne une juste idée de l'intelligente activité de cette maison et explique l'importance de ses affaires, qui s'élève au-delà d'un million et demi. » Le portrait de Louis-Philippe proposé par la maison Verzier, Bonnart et Cie sortait de l'atelier de tissage de Michel-Marie Carquillat. Un exemplaire est aussi conservé au musée d'Art et d'Industrie de Saint-Étienne (inv. 95.72.2331). 
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/ac235c5a-2350-399c-a408-486f8da534a1> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

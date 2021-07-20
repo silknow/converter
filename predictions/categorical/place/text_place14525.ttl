@@ -1,0 +1,52 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/1607fb90-fce2-567e-a853-a1b923ae5e79> a rdf:Statement ;
+    silk:L18 "0.351471"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3017382/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/d3465810-5595-3b69-8370-8c73678792d2> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/1607fb90-fce2-567e-a853-a1b923ae5e79> .
+
+<http://data.silknow.org/activity/1607fb90-fce2-567e-a853-a1b923ae5e79> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Dépècements de fauteuils, taffetas brodé en soie. Gros de Naples brodé au passé, Lampas fond cannetillé. Décor de bouquets de fleurs nuées dans un encadrement de pensées. Petite bordure sur fond carrelé vert pomme broché soie nuée à dessin de roses et de lilas.
+Bien composé de 25 éléments : 
+GMMP 1657-007-001 : Bordure d'assise de siège : longue bande de section rectangulaire composée de 2 morceaux cousus ensemble. 1,220 x 0,082 m.
+GMMP 1657-007-002 : Fragment de bordure de siège. Courte bande rectangulaire. 0,0295 x 0,071 m.
+GMMP 1657-007-003 : Bordure d'assise de siège : longue bande de section rectangulaire, composée de 2 morceaux cousus ensemble. 1,220 x 0,084 m.
+GMMP 1657-007-004 : Bordure d'assise de siège : longue bande de section rectangulaire., présentant également un fragment de l'assise, solidaire, sur un des bords. 0,590 x 0,136 m.
+GMMP 1657-007-005 : Bordure d'assise de siège : bande de section rectangulaire avec fragment de lisière. 0,410 x 0,112 m.
+GMMP 1657-007-006 : Bordure d'assise de siège : bande de section rectangulaire avec fragment de lisière. 0,425 x 0,101 m.
+GMMP 1657-007-007 : Bordure d'assise de siège : bande de section rectangulaire avec fragment de lisière. 0,415 x 0,112 m.
+GMMP 1657-007-008 : Bordure d'assise de siège : très courte bande de section rectangulaire avec fragment de lisière. 0,180 x 0,103 m.
+GMMP 1657-007-009 : Bordure d'assise de siège : bande de section rectangulaire avec fragment de lisière. 0,420 x 0,104 m.
+GMMP 1657-007-010 : Bordure d'assise de siège : courte bande de section rectangulaire. avec fragment de lisière. 0,315 x 0,104 m.
+GMMP 1657-007-011 : Bordure d'assise de siège : courte bande de section rectangulaire avec fragment de lisière. Un morceau de l'assise est encore solidaire. 0,312 x 0,115 m. 
+GMMP 1657-007-012 : Bordure d'assise de siège : courte bande de section rectangulaire avec fragment de lisière. 0,320 x 0,102 m.
+GMMP 1657-007-013 : Bordure d'assise de siège : Très petit élément de section rectangulaire. 0,185 x 0,120 m.
+GMMP 1657-007-014 : Bordure d'assise de siège : courte bande de section rectangulaire. 0,230 x 0,097 m.
+GMMP 1657-007-015 : Dépècement de siège : assise de fauteuil avec fragment de bordure en partie supérieure. Monté sur une toile de coton. 0,650 x 0,655 m.
+GMMP 1657-007-016 : Dépècement de siège : dossier monté sur une toile de coton blanc. Nombreuses traces de clous. Extrèmement usé. Dessin préparatoire de la broderie apparent. 0,835x0,530 (hors tout) ; 0,585x0,470
+GMMP 1657-007-017 : Dépècement de siège : assise de fauteuil avec fragment de bordure en partie supérieure. Monté sur une toile de coton. 0,650 x 0,610 m.
+GMMP 1657-007-018 : Dépècement de siège : dossier monté sur une toile de coton blanc. Nombreuses traces de clous. Extrèmement usé. Dessin préparatoire de la broderie apparent. Monté sur toile coton blanc. 0,630 x 0,495 m.
+GMMP 1657-007-019 : Dépècement de siège : manchette, forme ovale. Traces de clous. 0,340 x 0,150 m.
+GMMP 1657-007-020 : Dépècement de siège : manchette, forme ovale. Traces de clous. 0,370 x 0,135 m.
+GMMP 1657-007-021 : Dépècement de siège : manchette, forme ovale. Partie de gros de Tour : 2 morceaux cousus ensemble. Traces de clous. 0,390 x 0,145 m.
+GMMP 1657-007-022 : Dépècement de siège : manchette, forme ovale. Traces de clous et piqûres de rouille. 0,360 x 0,140 m.
+GMMP 1657-007-023 : Dépècement de siège : manchette, forme ovale. Traces de clous, nombreuses déchirures et pliure importante. 0,395 x 0,135 m.
+GMMP 1657-007-024 : Dépècement de siège : manchette, forme ovale. Traces de clous, lacunes et nombreuses déchirures. 0,390 x 0,130 m.
+GMMP 1657-007-025 : Dépècement de siège : manchette, forme ovale. Traces de clous, 1 clou de tapissier encore solidaire. Une déchirure importante. 0,340 x 0,130 m.
+
+Historique : 
+Tissu commandé pour le meuble d'été de la Chambre de Marie-Antoinette, à Versailles. Il fut exécuté à Lyon, sous la direction de Desfarges. La commande avait été passée pour remplacer l'étoffe à double fond bleu et or (GMMP 132), livrée en 1785 pour le meuble d'été de la reine. Le présent tissu appartient à un ensemble en gros de Tours blanc broché, à dessin de fleurs nuées, ruban et plumes de paon réalisé pour des tenture, portières, cantonnières, ployants, lit, canapé, fauteuils et paravent pour la chambre de la reine. La commande, bien que livrée, fit l'objet de discussions entre Desfarges et le Garde-Meuble jusqu'en 1792, concernant une mésentente entre les deux parties à propos du paiement. A la Révolution, le meuble d'été fut mis en vente mais ne trouva pas acquéreur. Il fut retiré du château et placé à l'Hôtel du Garde-Meuble de Versailles."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/d3465810-5595-3b69-8370-8c73678792d2> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3017382/> .
+

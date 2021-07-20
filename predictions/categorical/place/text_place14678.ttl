@@ -1,0 +1,32 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/48ca6486-6a0e-5b96-ac29-d2d2ea53cc9c> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/8be4aeef-0ecb-32da-b91d-8391e66bedfa> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/48ca6486-6a0e-5b96-ac29-d2d2ea53cc9c> .
+
+<http://data.silknow.org/activity/48ca6486-6a0e-5b96-ac29-d2d2ea53cc9c> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Elément de tenture, étoffe double corps rayé ombré et couleur d'or. Dessin à feuilles d'acanthe, losanges, arceaux, branches de laurier. Echantillon de section rectangulaire.
+
+
+Historique : 
+Commandé en l'an X (1802) à Camille Pernon par le général Duroc pour le Petit Salon de Joséphine Bonaparte à Saint-Cloud. Livré à partir du floréal an XII (19 mai 1804) par Pernon au Garde-Meuble : 128,18 mètres de ce damas pour la tenture ; 206,99 mètres de damas couleur d'or (GMMP 1762) pour des rideaux, portières, fauteuils ; 75,54 mètres de damas à trois couleurs à feuilles d'acanthe (GMMP 1468) pour des bordures de tentures ; 27,33 mètres de damas trois couleurs dessin grecque, à arceaux, pour bordure de tenture (GMMP 1470/2) ; 11,58 mètres de damas trois couleurs dessin grecque pour bordure de tenture (GMMP 1470/3) ; 18,41 mètres de damas trois couleurs à dessin d'arceaux pour bordure de tenture ; 20,49 mètres de damas trois couleurs à dessin de feuilles d'acanthe pour bordure de rideaux (GMMP 1470/1). Le 15 septembre 1807, 39,70m de bordure fond violet et couleur d'or sont livrés au Garde-Meuble.
+Finalement, le damas rayé ombré et couleur d'or ne fut pas utilisé à Saint-Cloud mais resta dans le magasin du Garde-Meuble jusqu'en 1808. Affecté en 1808 au Palais de Compiègne (avec l'ensemble des livraisons faites pour le Petit Salon de Joséphine Bonaparte). Le tapissier Flamand confectionne deux ensembles : pour le Deuxième salon de l'Appartement double de Prince sur le jardin (tenture en damas ombré avec encadrement, garniture d'un canapé, deux fauteuils meublants, six chaises, deux tabourets de pieds en damas couleur d'or encadré de bordure à galon grec violet et aurore) et pour la Chambre à coucher du Premier appartement de Prince à côté de la chapelle (tenture en damas ombré avec encadrement, garniture d'un lit chassis à baldaquin et corniche en damas couleur d'or encadré de galon grec violet et aurore, des sièges, une méridienne, quatre fauteuils, quatre chaises, un tabouret de pieds en damas encadré de galon grec).
+Durant la Restauration, le meuble du Deuxième salon de l'Appartement double de prince sur le jardin est encore présent, la pièce est alors dans l'Appartement du duc et de la duchesse de Berry.
+Le meuble de la Chambre à coucher du Premier appartement de Prince à côté de la chapelle n'est plus présent durant la Restauration.
+La tenture est retirée en 1858 pour être déposée aux Tuileries et au magasin du Garde-Meuble.
+En 1910, plusieurs métrages de tenture et bordure provenant des dépècements sont déposés à Malmaison."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/8be4aeef-0ecb-32da-b91d-8391e66bedfa> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

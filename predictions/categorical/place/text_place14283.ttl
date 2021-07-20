@@ -1,0 +1,27 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/9f0ba016-3c73-51ef-8bdd-4c4e16000895> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/8a4a795d-00c7-3981-8e6a-08eebe1e3c2e> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/9f0ba016-3c73-51ef-8bdd-4c4e16000895> .
+
+<http://data.silknow.org/activity/9f0ba016-3c73-51ef-8bdd-4c4e16000895> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Elément de tenture, section rectangulaire. Damas 3 couleurs fond bleu, liseré en 2 couleurs d’or, dessin à compartiments de feuilles de lierre, couronne de roses, papillon, jatte de fruit, gerbe de blé.
+
+Historique :
+Tissu exécuté par Fournel, à Lyon, pour le premier salon de l’Empereur au château de Versailles. 
+La commande ne comprenait que des étoffes pour tenture sans bordures et le fabriquant s'engageait à les tisser sur régulateur. Ce damas ne fut pas utilisé sous l'Empire mais une partie des étoffes fut employée pour les Tuileries, entre 1815 et 1845, puis à Saint-Cloud en 1845, et enfin au Grand Trianon en 1874. En 1910, 1929 et 1933, plusieurs métrages en furent envoyés à Malmaison."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/8a4a795d-00c7-3981-8e6a-08eebe1e3c2e> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/7ec3e4d5-e7d1-50c0-b257-5429bee93527> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/1f656dd0-f0ee-38de-82aa-8fde6cfba606> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/7ec3e4d5-e7d1-50c0-b257-5429bee93527> .
+
+<http://data.silknow.org/activity/7ec3e4d5-e7d1-50c0-b257-5429bee93527> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Cette robe présente une technique très particulière puisqu’elle a été réalisée à partir de matériaux précieux tels que les passementeries et les dentelles. Les différentes pièces ont été assemblées et maintenues par un ruban resserré à la taille et au niveau du décolleté tandis que les manches ont été fixées assez grossièrement aux emmanchures. Les décors indiquent que le vêtement initial était d’une grande qualité. En effet, les pompons sont réservés uniquement à la cour et son entourage proche, tandis que les « sourcils de hannetons » et les rosettes sont employés le plus souvent pour les habits de présentation. Du fait des décors et des matériaux composant cette robe, il semblerait qu’elle soit le résultat du remploi d’un tablier de cour. Un exemple quasiment similaire dans la technique et le décor est conservé au Mobilier national, à Paris. Ces tabliers, souvent en dentelle, étaient un accessoire du costume très prisé au XVIIIe siècle. Cet engouement s’accentue à la fin du siècle quand on cherche à imiter la garde-robe de la reine Marie-Antoinette lors de ces séjours au Trianon à Versailles. Le musée du costume de Kyoto conserve plusieurs exemples de ces tenues, comme une robe de cour en pékin richement ornée de dentelles métalliques et agrémentée d’un petit tablier en gaze de soie brodé (inv. AC 4687 83-29-3AB). 
+Dorothée Lécrivain"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/1f656dd0-f0ee-38de-82aa-8fde6cfba606> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

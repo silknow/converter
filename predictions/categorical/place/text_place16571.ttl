@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/e6a1e0b9-ea84-54e4-9259-6e177e7c26b6> a rdf:Statement ;
+    silk:L18 "0.647724"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2635167/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/2570832c-9688-36e1-b57f-ef743e5832a3> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/e6a1e0b9-ea84-54e4-9259-6e177e7c26b6> .
+
+<http://data.silknow.org/activity/e6a1e0b9-ea84-54e4-9259-6e177e7c26b6> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "A bodice for a religious statue, 1700-1800, Italian; made of embroidered crimson satin, 1600-1640"@en,
+        "The fabric is crimson satin embroidered with yellow silk in satin stitch and couched yellow and white cord.  It has been pieced and made into the front of a high-necked sleeveless bodice with a gathered 'peplum' at the waist, and lined with pale green satin.  The back of the bodice is coarse blue linen, with a pink silk tie at the back waist.  No other means of fastening."@en,
+        "Unique"@en ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/2570832c-9688-36e1-b57f-ef743e5832a3> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2635167/> .
+

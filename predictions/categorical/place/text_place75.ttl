@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/fe7e0475-b166-598d-b540-4cb19e18246b> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/7db530f0-fb85-3937-a7ce-beced56160ea> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/fe7e0475-b166-598d-b540-4cb19e18246b> .
+
+<http://data.silknow.org/activity/fe7e0475-b166-598d-b540-4cb19e18246b> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """En 1851, à l'Exposition universelle de Londres, la maison Caquet-Vauzelle, Raime et Côte, établie au 6, grand rue des Feuillants, recevait une médaille de bronze. À Paris, en 1855, elle exposait des « tissus de soie brochés à disposition et mélangés de velours, des articles très riches de haute nouveauté » qui lui valurent une médaille d'honneur pour sa « supériorité de fabrication et de goût dans cette spécialité. » À Londres, en 1862, la maison recevait une Prize Medal et Victor Caquet-Vauzelle était décoré de la croix de la Légion d'honneur. C'est le 5 octobre 1865, qu'Amédée Monterrad, membre de la Chambre de Commerce de Lyon, Victor Caquet-Vauzelle et Henri Côte faisaient don pour la première fois au musée d'Art et d'Industrie de pièces de leur production. Pour l'occasion, ils sélectionnèrent vingt-neuf échantillons imprimées sur chaîne, « choisis parmi les meilleurs dessins produits par leur maison de fabrique », dix-huit en poult de soie, onze en moire antique (inv. MT 14552 à MT 14580). La laize, en taffetas ciel imprimé sur chaîne, présente un semé de plumes bleues, violettes, vertes et gris-beige. L’impression chaîne, qui imité ici l’effet flouté du « chiné à la branche » en vogue sous le règne de Louis XVI, accentue l’effet duveteux des plumes et l’impression de légèreté du décor, destiné à l’habillement. C’est en mouvement, animée par les ondulations d’une jupe, qu’il faut imaginer ce taffetas imprimé. Dans la seconde moitié du XIXe siècle, les fabricants de haute nouveauté rivalisaient d’inventivité dans le dessin pour répondre à la demande des élégantes, qui affectionnaient, pour les robes de bal ou de soir, les montants, les volants ou les guirlandes fleuris, et, pour l’après-midi, les motifs plus subtils, jonchées de fleurs coupées, semés de pétales ou de plumes, par exemple. En 1868, la maison Caquet-Vauzelle et Côte donne au musée de nouveaux échantillons de soieries imprimées sur chaîne ayant figuré à l'Exposition universelle de 1867, où elle est gratifiée d'une médaille d'argent (inv. MT 20676 à MT 20699). En 1873, elle est récompensée à Vienne d'une médaille de progrès. Depuis 1877, elle est connue sous la raison commerciale Ducôté, Caquet-Vauzelle et Côte. À Paris, en 1878, elle reçoit une médaille d'or, à Anvers, en 1885, un diplôme d'honneur, et à Paris, en 1889, un grand prix, à la suite duquel elle concèdera de nouvelles étoffes au musée (inv. MT 24926 à MT 24936).
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/7db530f0-fb85-3937-a7ce-beced56160ea> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

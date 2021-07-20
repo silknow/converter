@@ -1,0 +1,23 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/43b0c709-fff1-5bed-b249-339dabe33b0f> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/3669bd37-5ca8-32c1-95ad-84fc41af1f54> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/43b0c709-fff1-5bed-b249-339dabe33b0f> .
+
+<http://data.silknow.org/activity/43b0c709-fff1-5bed-b249-339dabe33b0f> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Raso lanciato liserèe. Su armatura di fondo in raso da 8, prodotta da un ordito di fondo in  seta color amaranto, due capi, torsione S, e da una trama faccia pelo in lino ecrù, n.d. numero capi e torsione, il disegno è descritto in Gros de grain da una trama supplementare legata all'ordito di fondo raso. Trame supplementari in sete policrome legano all'ordito di accompagnamento descrivendo il motivo floreale in seta verde, rosa, avorio: minuti mazzolini  di ginestre, margherite, iris, lavanda, ginestre, si dispongono fittamente confondendosi col motivo floreale e a piccole pagode orientali del controfondo opaco del disegno in Gros. Il disegno si dispone ad andamento verticale e sinuoso; la sua ricchezza di motivi  confonde i piani, fondo sfondo, mono\\ poli- cromia dello schema, richiamando sia motivi orientali che gusto quasi rococcò nei moduli floreali. È tipica rilettura di moduli antiche in chiave moderna. (Vedi tessuti Bevilacqua)."@it ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/3669bd37-5ca8-32c1-95ad-84fc41af1f54> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

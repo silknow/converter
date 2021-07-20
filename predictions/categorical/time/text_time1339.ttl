@@ -1,0 +1,28 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/23bd9116-b053-531c-b1d4-1cb6be0bd9f0> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/fbd2df1c-842b-39cc-b8c1-fb2ae3420d00> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/23bd9116-b053-531c-b1d4-1cb6be0bd9f0> .
+
+<http://data.silknow.org/activity/23bd9116-b053-531c-b1d4-1cb6be0bd9f0> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Né dans une famille modeste de Lyon, Michel Dubost intègre à quinze ans l’École des Beaux-Arts et à dix-sept ans la « classe de la fleur », qui enseigne la décoration textile. Il est alors l’élève d’Adolphe-Louis-Napoléon Castex-Dégrange (1840-1918). Il complète sa formation en cabinet de dessin pour la soierie. Dès 1905, il livre ses premiers dessins pour différents fabricants, et fonde, en 1910, son propre cabinet. Il est mobilisé lorsqu’éclate la Première Guerre mondiale, mais sa santé le fait réformer avant la fin du conflit. 
+De retour à Lyon, il est choisi par Castex-Dégrange pour le remplacer par intérim à la tête de la classe qu’il dirigeait à l’École des Beaux-Arts.  Il est titularisé à la mort du professeur. Parallèlement, il enseigne à l’École municipale de tissage de Lyon qu’il avait fréquentée pour sa propre formation et avec laquelle il avait gardé d’excellents rapports. Michel Dubost imagine même une collaboration avec Félix Guicherd, le directeur de l’École, qui a donné naissance à plusieurs étoffes remarquables, chefs-d’œuvre de l’Art déco, comme L’Alhambra. 
+ 	Créée en 1921, suite à un voyage en Espagne, L’Alhambra présente un envol de colombes blanches, aux ailes déployées, se détachant sur un fond noir, à travers un réseau d’arcs et d’arabesques hispano-mauresques. L’effet décoratif du tissu repose sur la simplicité des couleurs, bleu, blanc, noir, la rigueur géométrique du décor d’architecture disposé en quinconce et le rapport d’échelle inversé entre les oiseaux, au second plan, et les arcs à travers lesquels on les aperçoit, au premier plan. 
+Michel Dubost embrasse ici les principes de l’Art déco et ses références. L’artiste est alors très lié au milieu artistique parisien et emmène ses élèves une fois par an dans la capitale visiter des expositions d’art moderne. C’est d’ailleurs à Paris qu’il rejoindra François Ducharne, fabricant de soieries lyonnais établi au plus près des maisons de Haute Couture avec lesquelles il collabore. Michel Dubost dirige à partir de 1922 et jusuq'en 1933 chez Ducharne un véritable cabinet de dessin, composé d’une trentaine d’artistes. La maison travaille les plus grands couturiers, Paul Poiret, Madeleine Vionnet, Jean Patou ou Gabrielle Chanel. 
+	Michel Dubost retourne à Lyon en 1937, puis s’établit à Grasse à la fin de l’année 1938. Il y poursuit sa carrière d’artiste peintre, présentant notamment ses œuvres dans des expositions à Lyon en 1939 et 1944, à Grasse en 1939 et à Paris en 1944. Il meurt en 1952. Il est aujourd’hui considéré comme l’un des principaux dessinateurs pour le textile de la période Art déco, et le musée des Tissus conserve une part importante de son œuvre.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/fbd2df1c-842b-39cc-b8c1-fb2ae3420d00> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

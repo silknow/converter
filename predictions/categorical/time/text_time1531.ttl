@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/03d55537-14ea-5d97-b55b-c3b50dceaa8b> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/a21c74bf-2766-3736-924f-421c69fcd0c7> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/03d55537-14ea-5d97-b55b-c3b50dceaa8b> .
+
+<http://data.silknow.org/activity/03d55537-14ea-5d97-b55b-c3b50dceaa8b> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """L'année même où Étienne Maisiat obtient la médaille d'or à l'Exposition des produits de l'industrie française, au palais du Louvre, pour Le Testament de Louis XVI et La Lettre de Marie-Antoinette à Madame Élisabeth, la maison Mathevon et Bouvard frères qui, sous la raison de Veuve Bouvard et Cie, avait obtenu une médaille d'argent en 1823, en recevait une nouvelle pour une suite d'étoffes pour ornements d'église et pour meubles. Le jury central de l'Exposition des produits de l'industrie française avait aussi admiré deux tableaux tissés à grande réduction, de fabrication dite « taille-douce ». C'est aussi cette technique du lampas « taille-douce » que choisit la Maison Mathevon et Bouvard frères pour tisser le portrait de Charles X, dont le musée des Tissus conserve deux exemplaires (inv. MT 30603 et MT 37766). La représentation du souverain, qui imite la gravure, rompt avec tous les modèles précédents, et plus particulièrement avec la formule inaugurée par Philippe de Lasalle et utilisée pour représenter le même modèle, alors comte d'Artois, plus d'un demi-siècle auparavant (inv. MT 2857 et MT 25081). Charles X n'est pas figuré à 'antique ni de profil, mais de trois-quarts. Si l'estampe constituait la source première à partir de laquelle les dessinateurs de la Fabrique élaboraient leurs portraits, la transposition du modèle en textile prenait soin d'imiter la peinture. Ici, la référence à la gravure au burin est pleinement assumée. Le lampas « taille-douce », technique bien connue de la soierie lyonnaise, permet cette illusion. Le succès des tableaux de Maisiat et la mécanisation progressive de la production ont sûrement inspiré à Mathevon et Bouvard frères l'idée d'exploiter de manière nouvelle les possibilités contenues dans une technique traditionnelle du tissage des grands façonnés. Puisqu'il s'agit du portrait officiel d'un souverain Bourbon, cette technique convenait à la dignité du modèle. Mais l'image est résolument moderne. Le portrait fut offert à Marie-Caroline de Bourbon-Siciles, duchesse de Berry et belle-fille du roi, le 22 octobre 1829, à l'occasion d'un séjour qu'elle fit à Lyon, durant lequel elle souhaitait surtout visiter les fabriques en compagnie des infants Marie-Christine de Bourbon-Siciles et François de Paule de Bourbon. 
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/a21c74bf-2766-3736-924f-421c69fcd0c7> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

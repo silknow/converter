@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/8aa1859c-35b6-5a1f-ac46-3d476016bf43> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/1ce5523b-7123-38ce-a8a3-5b8dca4df5a4> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/8aa1859c-35b6-5a1f-ac46-3d476016bf43> .
+
+<http://data.silknow.org/activity/8aa1859c-35b6-5a1f-ac46-3d476016bf43> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Elément de bordure de sièges. Damas fond satin renforcé vert brun, liseré gris et blanc. Frise végétale : tige sinueuse centrale autour de laquelle se déploient des feuilles et fleurettes.
+
+Historique : 
+Ce damas fait partie des soieries commandées à Pernon en 1806 pour le Palais de Versailles, en même temps que quatre autres meubles et les étoffes de la Salle du Trône. Peu après sa livraison, c'est à Saint-Cloud, dans le Salon de Famille, que le damas est finalement utilisé. Il y figure jusqu'en 1826, où il rentre au Garde-Meuble pour être dégarni, puis retourne à Saint-Cloud jusqu'à la fin du Second Empire."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/1ce5523b-7123-38ce-a8a3-5b8dca4df5a4> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

@@ -1,0 +1,30 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/bf14dead-ac8b-5fff-b044-b064af8b1fd0> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/c71463c9-ba00-3051-9630-cab3b79ebc77> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/bf14dead-ac8b-5fff-b044-b064af8b1fd0> .
+
+<http://data.silknow.org/activity/bf14dead-ac8b-5fff-b044-b064af8b1fd0> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Bordure pour tenture. Fond satin citron broché nuée, le dessin représente des ornements avec des fleurs nuées, pavots et fleurs de timbalier, listel carmélite liseré blanc.
+GMMP 905-001-001
+GMMP 905-001-002
+GMMP 905-001-003
+
+Historique :
+Ce satin fut commandé à Grand frères pour le quatrième petit salon de l'appartement de l'Impératrice à Versailles par soumission du 7 juillet 1811 approuvée le 13.
+Non utilisé sous l'Empire, ce satin qui avait été réservé en 1817 pour la venue de l'ambassadeur d'Angleterre en France, Sir Charles Stuart, n'est utilisé que vingt ans plus tard en 1837 à Meudon par le tapissier Munier pour recouvrir un ensemble de bois doré de la Chambre du Roi, ancienne Chambre de l'Empereur. Le 3 août 1849, Ternisien s'est vu confié pour l'Élysée quelques métrages de bordures fin de réaliser des aménagements pour Louis-Napoléon Bonaparte qui était devenu Président de la République depuis le 12 décembre 1848. Le satin a été utilisé pour renouveler le décor de gourgouran velouté cramoisi du Grand Salon du premier étage (Salon Doré) qui était celui de 1807 créé pour le prince Murat. Lors de l'installation de la duchesse de Berry en 1816 et bien que l'on ait signalé le mauvais état des étoffes, celles-ci ont finalement été conservées, après avoir été nettoyées et racommodées."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/c71463c9-ba00-3051-9630-cab3b79ebc77> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

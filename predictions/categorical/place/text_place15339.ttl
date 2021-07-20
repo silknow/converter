@@ -1,0 +1,28 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/4d066810-2a12-5d32-980e-46974ff37061> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/0ca1b9fb-3d6a-33ea-8485-5af4a908d16b> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/4d066810-2a12-5d32-980e-46974ff37061> .
+
+<http://data.silknow.org/activity/4d066810-2a12-5d32-980e-46974ff37061> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Ecoinçon carré. Le bord inférieur est replié au revers. Présence d'une partie de la lisière sur le bord inférieur. Velours fond pourpre antique chiné modoré brun, brodé en or relevé (fil or et canetille et petits morceaux de pate dorée). 
+Dessin de fleurs et étoiles noires sur le velours cramoisi. Décor en or relevé formant une rosace au centre, entourée d'une grande palme enroulée sur elle-même. Le tout dans un encadremenet or. 
+
+Historique :
+Le meuble de velours  pour la Chambre à coucher de l'Empereur Napoléon au Palais de Saint-Cloud,  avait été commandé à Pernon par Lefuel, conservateur du Mobilier Impérial, sans avoir reçu au préalable l'accord du général Duroc, ce qui valut quelques aléas administratifs, changements de devis, retards. Le damas cramoisi commandé en même temps pour les portières et rideaux fut employé séparemment. Dès l'an XII, le damas cramoisi est réservé pour la Salle du Trône des Tuileries (établie dans l'ancienne chambre du Roi dont le décor créé pour Louis XVI subsistait toujours) et une commande complémentaire fut adressée à Pernon. La Salle du Trône resta inchangée pendant les premières années de la Restauration à l'exception des rideaux de croisées qui furent renouvelés à l'été 1818. 
+Le damas cramoisi fut également employé dans la Salle du Conseil de Fontainebleau en 1805 et les rideaux restèrent en place jusqu'en 1964. La restitution du décor Empire de cette pièce fut achevée en 1972. Enfin, en 1808, des bordures pour rideaux en damas cramoisi sont aussi utilisées pour le Premier Salon de l'Empereur aux Tuileries."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/0ca1b9fb-3d6a-33ea-8485-5af4a908d16b> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

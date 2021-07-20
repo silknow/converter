@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/a8cf7e35-ded5-5660-bbc5-d01abcbf08e2> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/dd683bff-14ef-3994-883d-5f3ca9cb1a34> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/a8cf7e35-ded5-5660-bbc5-d01abcbf08e2> .
+
+<http://data.silknow.org/activity/a8cf7e35-ded5-5660-bbc5-d01abcbf08e2> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Prenda femenina de busto  realizada con tafetán de algodón estampado con motivos florales de pequeño tamaño en azul, granate, negro y ocre, dispuestos en grecas horizontales de distintos grosores sobre fondo blanco. El cuerpo es corto, levemente abullonado y ajustado a la cintura, escote redondo ribeteado con estrecha puntilla de encaje Valenciennes, falsa apertura parcial de carácter decorativo con hilera de botones esféricos dorados situada en la mitad izquierda del delantero y abertura posterior con abrochadero oculto con corchetes metálicos originales. Presenta además manga larga con apertura parcial también decorativa con botones y puño de tul,  con aplicaciones de cordoncillo de espiguilla de seda blanca.  
+La pieza está decorada por toda su superficie con cordoncillos dobles de seda de colores azul celeste y beige, sobrepuestos formando grecas variadas, realizadas con motivos en zigzag,  pequeñas flores, rombos y entrelazados en forma de ocho. Esta profusa decoración llega a ocultar casi por completo el motivo estampado del tejido. Por su parte la cinturilla es un galón que combina dos franjas beige y otra celeste.  
+Forro de tafetán de lino de escasa densidad cubre por completo el interior de la prenda."""@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/dd683bff-14ef-3994-883d-5f3ca9cb1a34> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/bd5b4fe5-4f93-5186-8835-23e14fe08452> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/5186accf-03f6-34fc-a539-2eac5d766ab8> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/bd5b4fe5-4f93-5186-8835-23e14fe08452> .
+
+<http://data.silknow.org/activity/bd5b4fe5-4f93-5186-8835-23e14fe08452> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """L’étoffe provient de la collection de Jules Reybaud et a été acquise en 1862 pour le musée d’Art et d’Industrie de la Chambre de Commerce de Lyon. L’inventaire manuscrit de la collection conservé dans les archives du musée des Tissus, indique qu’il s’agit d’une « étoffe pour tenture », « dessin attribué à Jean Revel. » Cette attribution a été reprise par Ernest Pariset, en 1890, dans son ouvrage Les industries de la soie, publié à Lyon, et par Raymond Cox, en 1900, dans L’art de décorer les tissus d’après les collections du musée historique de la Chambre de Commerce de Lyon, également publié à Lyon. 
+Il s’agit d’un décor contresemplé, c’est-à-dire en quinconce, composé d’une terrasse flottante sur laquelle prend place un cache-pot et son présentoir contenant une composition florale au centre de laquelle trône un ananas. Au-dessus d’elle, flotte un second bouquet piqué dans une coquille spiralée garnie de perles dont un rang s’échappe gracieusement. Ces deux motifs sont reliés entre eux par un mince filet de dentelle ondoyant. Ces motifs traités avec un grand naturalisme sont caractéristiques du goût français. La fantaisie de leur composition flottante et l’exotisme des fleurs représentées inaugurent une vague de décors dit de « chinoiserie » qui s’épanouiront sur les soieries européennes dans les décennies suivantes. 
+Claire Berthommier et Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/5186accf-03f6-34fc-a539-2eac5d766ab8> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

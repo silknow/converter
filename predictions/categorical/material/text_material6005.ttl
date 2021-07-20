@@ -1,0 +1,34 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/2727008d-9136-59d9-88f6-af640a4c8cbe> a rdf:Statement ;
+    silk:L18 "0.498901"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/08d70c5a-ddc2-3367-aa6e-cb8e2b548294> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/2727008d-9136-59d9-88f6-af640a4c8cbe> .
+
+<http://data.silknow.org/activity/2727008d-9136-59d9-88f6-af640a4c8cbe> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """1 ordito, di fondo, organzino di seta, 2 capi, S, colore blu
+Scalinatura: 6 fili 
+Riduzione: 95 fili al cm"""@it,
+        """4 trame: I di fondo, seta, 3 capi, S, 2 capi colore azzurro» 1 capo colore indaco; II broccata, seta, 3 capì, S, nei colori: avorio, bianco, celeste, verde acceso; III broccata argento filato riant avvolto su anima in seta ondata, 2 capi, S, colore bianco; IV broccata, oro filato riant avvolto su anima in seta ondata, 2 capì, S, colore giallo Scarnatura: 1 passata
+Riduzione: 15 passate
+Proporzione: 2/1"""@it,
+        "52 cm senza cimose"@it,
+        """Note: simile esecuzione tecnica si riscontra nella pianeta della chiesa del Convento di Maria SS. Assunta di San Fratello in provincia di Messina (cfr. C, Ciolino Maugeri, Lusso e..., 1984, p. 144) Le forme astratte degli elementi che compongono il modulo decorativo della pianeta inducono ad inquadrare il tessuto con cui è confezionata entro quella fase, individuata dal Thornton (Baroque and..., 1965), delle stoffe bizarre, caratterizzata da ornati indescrivibili e misti talvolta a fiori seminaturalistici molto stilizzati (cfr. Lusso e..., a cura di C. Ciolino Maugeri, 1984, p. 123).
+Motivi a fungo, infiorescenze di diverse tipologie, pannocchie stilizzate, contribuiscono a creare un affollato ornato che in Sicilia fu molto apprezzato, considerato l’alto numero di reperti sino ad oggi censiti (cfr. Idem, schede nn. II. 1-14, pp. 124 - 150; R. Civiletto - M. Vitella, schede nn. 9 -10, in M.C Di Natale - M. Vitella, Ori e stoffe..., 1997, pp. 70 - 7); E. D’Amico Del Rosso, I perimenti…, schede nn. 50 e 66, 1997, pp. 102 - 103 e 117; R Civiletto - M. Vitella, scheda n. 13, in L’eredità di..., 1997, p. 217). (R. Civiletto; M. Vitella)"""@it,
+        "cm 53x26; numero dei campi: 2; tipo dì campo: seguente"@it,
+        "fondo in raso da 5 diffalcamento 2, faccia ordito, prodotto da tutti fili di fondo e da tutte le trame di fondo. Opera in raso da 5 diffalcamento 3, faccia trama e definita da trame broccate legate al dritto in diagonale 4 lega 1 direzione S, da fili di ordito prelevati dal fondo"@it,
+        "motivo ad impostazione verticale, dato da una serie di elementi, naturalistici e fantastici, a cui si intrecciano garofani, campanule ed altre varietà di fiorì, che si succedono in direzioni oblique e contrapposte"@it ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/08d70c5a-ddc2-3367-aa6e-cb8e2b548294> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

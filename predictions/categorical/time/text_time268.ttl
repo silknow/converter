@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/97391ccd-ff12-5557-8536-ad55b9423afa> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/a4e5cb93-f31c-34a6-baf8-e53fa7c20c53> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/97391ccd-ff12-5557-8536-ad55b9423afa> .
+
+<http://data.silknow.org/activity/97391ccd-ff12-5557-8536-ad55b9423afa> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Donnée en 1891 par la maison Lamy et Giraud au musée historique des Tissus, avec neuf autres étoffes (inv. MT 25286, MT 25287, MT 25288, MT 25290, MT 25291, MT 25292, MT 25293 et MT 25294), cette laize provient du fonds de la maison Lemire Père et Fils racheté, avec la société, par Antoine Lamy et Auguste Giraud en 1865. Le livre d'inventaire du musée a conservé le numéro de patron, 4194, et la date de création de cette brocatelle de soie et coton, brochée d'or, 1844. Elle a probablement été présentée à la dernière Exposition des produits de l'industrie française, qui se tient cette année-là. Le Rapport du Jury central sur l'Exposition des produits de l'industrie française de 1844 indique : « MM. Lemire Père et Fils, de Lyon (Rhône), ont exposé une grande variété d'étoffes pour ameublement et pour ornements d'église, parmi lesquelles on remarque les dorures, les damas et les brocatelles qui sont établis à des prix très modérés, et dont l'exécution ne laisse rien à désirer. Depuis la dernière exposition, M. Lemire a pris ses fils pour associés, et ses affaires ont reçu de leur concours une nouvelle activité. Cette honorable maison a obtenu la médaille d'or en 1827, et le rappel en 1834 et 1839. Les progrès réels faits par MM. Lemire Père et Fils méritent un nouveau rappel de la médaille d'or. » La composition, qui s'inscrit dans un cartouche Rocaille caractéristique du style Louis XV mis à l'honneur dans les tissus d'ameublement, est traitée dans une gamme colorée surprenante, cramoisi et verte sur fond blanc, aux couleurs de l'islam dont le croissant et l'étoile timbrent le cœur du cartouche. En 1839, la maison, encore connue sous la raison commerciale Lemire, Danguin et Cie, recevait un rappel de médaille d'or à l'Exposition des produits de l'industrie, pour ses « damas, (s)es brocarts d'or et d'argent, (s)es brocatelles et (s)es satins liserés. Cette maison soutient son ancienne réputation, tant par la perfection de ses produits que par l'importance de ses affaires ; elle travaille particulièrement avec le Levant et les cours étrangères », comme le rappelle le Rapport du Jury central pour cette manifestation. C'est probablement ici un exemple de cette production réservée « au Levant », où les couleurs et les symboles de l'Empire ottoman côtoient les références ornementales du XVIIIe siècle français.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/a4e5cb93-f31c-34a6-baf8-e53fa7c20c53> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

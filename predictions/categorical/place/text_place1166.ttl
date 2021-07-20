@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/b4fda6f6-d0e2-52e1-8bd1-21190d1d0dac> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/5ae57776-0753-3f9a-92c2-4d1178efe7be> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/b4fda6f6-d0e2-52e1-8bd1-21190d1d0dac> .
+
+<http://data.silknow.org/activity/b4fda6f6-d0e2-52e1-8bd1-21190d1d0dac> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Le musée des Tissus conserve trois laizes assemblées, complétées par une bordure en partie supérieure, du meuble commandé en octobre 1784 pour le service du Garde-Meuble de la Couronne, à cinquante-quatre livres l'aune pour la tenture, et cinquante-six livres l'aune pour les grandes bordures, au marchand fabricant Michel. Un autre fragment de la tenture (inv. MT 27979) et un de la bordure existent aussi dans les collections (inv. MT 37093). Ces étoffes furent utilisées en 1786 pour la confection du meuble d'été du salon des jeux de la Reine au château de Versailles.
+La tenture, exécutée en taffetas broché à liage repris en taffetas (par un quart des fils), présente un fond crème et un décor exécuté en soie blanche, beige, jaune (deux tons), vert-jaune (deux tons), verte (trois tons), rose-violet (deux tons). Le rapport de dessin est important (environ cent quatre centimètres de haut, par déduction, puisqu'il est partiellement conservé). Il représente des branches de chêne, chargées de feuilles et de glands, qui s'élèvent en sinuant, formant des compartiments en quinconce. Des guirlandes de fleurs blanches s'y accrochent, tandis que de grands bouquets, noués par un ruban ou jaillissant d'une terrasse naturelle, occupent les compartiments. La bordure présente la même structure et une lisière identique à celles de la tenture (six cordelines en cordonnet retors S de deux bouts de soie crème), puis un tissage en taffetas à fils multiples (sur quatre millimètres). Elle est exécutée sur un fond de soie crème, et compte dix couleurs (blanc, beige, deux tons de jaune, deux tons de jaune-vert, trois tons de vert et noir). Elle est ornée d'une tresse à deux brins, l'un de palmes d'ornement, l'autre de chêne, entre deux listels avec ornements de jonc couleur d'or. Le broché comporte un effet de berclé.
+Un complément de grande bordure fut commandé en 1792 par le Garde-Meuble. Joseph Savournin (1736-1818), contrôleur des étoffes fabriquées à Lyon pour le Garde-Meuble de la Couronne, chargea Gilles Gaudin de leur exécution.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/5ae57776-0753-3f9a-92c2-4d1178efe7be> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

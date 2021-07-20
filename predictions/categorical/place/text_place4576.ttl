@@ -1,0 +1,27 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/c00fa04f-88f2-5cef-a0ba-c6b24992a703> a rdf:Statement ;
+    silk:L18 "0.932421"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/cc0beb5d-07f0-32a3-b16a-74e63cf50706> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/c00fa04f-88f2-5cef-a0ba-c6b24992a703> .
+
+<http://data.silknow.org/activity/c00fa04f-88f2-5cef-a0ba-c6b24992a703> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Cenefa, perteneciente a la espalda de una casulla litúrgica.  
+El terciopelo de seda verde  de dos alturas esta decorado con hojas y tallos dispuestos simétricamente a ambos lados de un eje central, tipo ´a candelieri´.  
+Esta decoración está  bordada con sedas de colores y perfiladas con hilo metálico de plata dorada y cordón de seda.  
+Pieza similar al número de inventario 1246, que se corresponde con el bordado de la parte delantera de la casulla."""@es,
+        "Renacimiento"@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/cc0beb5d-07f0-32a3-b16a-74e63cf50706> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

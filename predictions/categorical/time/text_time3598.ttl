@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/115d5b6e-a851-5a58-ae04-90720496045b> a rdf:Statement ;
+    silk:L18 "0.723281"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404513> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/094fd3e9-0cca-3b16-9060-b88e72be5e69> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/115d5b6e-a851-5a58-ae04-90720496045b> .
+
+<http://data.silknow.org/activity/115d5b6e-a851-5a58-ae04-90720496045b> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Modèle de Claude François, dit Frère Luc.
+Tapisserie de Paris, vers 1650.
+Il s'agit probablement d'Ulysse quittant Scyros, la victoire au-dessus d'eux symbolisant le futur triomphe des Grecs sur les Troyens puisque les oracles avait prédit que les Grecs ne pourraient être vainqueurs que si Achille venait combattre à leurs côtés.
+Le tableau à l'origine de la tapisserie est conservée au musée de Fécamp."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/094fd3e9-0cca-3b16-9060-b88e72be5e69> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404513> .
+

@@ -1,0 +1,28 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/f59f5556-446e-56bd-86f7-ef9825fa2285> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/42f875cb-3944-3bd1-89f4-e99c6ae9fee6> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/f59f5556-446e-56bd-86f7-ef9825fa2285> .
+
+<http://data.silknow.org/activity/f59f5556-446e-56bd-86f7-ef9825fa2285> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Les manchettes elles-mêmes ne sont pas décrites par Albert Gayet dans son petit catalogue de l'exposition de 1898 au musée Guimet ; seule la soierie, qui était exposée dans le grand meuble à volets, a fait l'objet de toute son attention.
+Le musée du Louvre conserve plusieurs fragments de ces manchettes : le support en laine grattée (inv. E 29377 ; curieusement, la première manchette est pliée en deux dans le sens chaîne, alors que la seconde manchette est pliée en deux dans le sens trame), une manchette de cuir, qui était cousue à l'extrémité de chaque manche à l'origine, ainsi que les fragments du décor en soierie, déposés au Louvre par le musée des Tissus de Lyon, appliqué à l'origine sur les manchettes. Cet ensemble est tout à fait unique par la présence en particulier des manchettes de cuir dont c'est la seule attestation.
+La manchette est de forme tubulaire (27 centimètres de circonférence) avec un léger repli du cuir à son extrémité (sur 1,1 centimètre) ; le matériau est devenu extrêmement cassant. Les traces de points de couture sont encore visibles, faiblement espacés et très réguliers ; ils maintenaient la soierie. Le cuir pouvait en effet recevoir des applications de soierie en ornement : Albert Gayet décrit notamment ce procédé pour des chaussures ou des jambières (Albert Gayet, Ministère de l'Instruction publique et des Beaux-Arts. Musée Guimet. Catalogue des objets recueillis à Antinoé pendant les fouilles de 1898 et exposés au musée Guimet du 22 mai au 30 juin 1898, Paris, 1898, p. 11 : « D'autres fois encore, la mule est [...] doublée à l'intérieur de soieries brochées, ou plus modestement d'une toile de lin » ; ibid., p. 35 : « Houzeaux (sic) de cuir, brun-rouge, ayant été ornés d'une bande de soierie, dont on voit encore la trace sur le bas »).
+Le décor de la soierie se compose de plusieurs registres horizontaux superposés, sur fond bleu ou jaune foncé : les motifs végétaux ou géométriques (palmettes à deux branches, losanges, cercles, étoiles à huit branches, rosettes à quatre pétales) y alternent avec des motifs figurés (félins assis et cravatés, adossés ou affrontés, et canards). Ce répertoire, comme la composition, sont d'inspiration sassanide plus que byzantine, sans que le produit manufacturé soit forcément d'origine étrangère.
+Des analyses au radiocarbone sur la manchette en toile de laine et le manchon de cuir ont donné pour résultats deux fourchettes chronologiques : 430 à 590 et 400 à 550, soit une moyenne pour les deux comprise entre 420 et 550 de notre ère.
+Florence Calament"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/42f875cb-3944-3bd1-89f4-e99c6ae9fee6> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

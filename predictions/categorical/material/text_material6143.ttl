@@ -1,0 +1,29 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/29a604fb-870e-5423-8dcf-fe0e256f1aa6> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/333a020d-2c35-31a4-96e1-7fe7f4f7a758> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/29a604fb-870e-5423-8dcf-fe0e256f1aa6> .
+
+<http://data.silknow.org/activity/29a604fb-870e-5423-8dcf-fe0e256f1aa6> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "1 ordito, di fondo, organzino di seta, 2 capi, S, colore avorio. Scalinatura: 5 fili; Riduzione: 150 fili/cm"@it,
+        "5 trame; I di fondo, seta 3 capi, S, 2 di colore avorio, 1 di colore giallo; II broccata, oro filato ritorto avvolto su anima in seta gialla ritorta, 2 capi, S,colore giallo; III oro filato frisé avvolto su anima in seta ondata, 2 capi, S, colore giallo; IV broccata, oro filato riant avvolto su anima in seta, 2 capi, S, colore giallo, doppia; V broccata, seta, 3 capi, S, nei colori: rosa salmone, verde chiaro, azzurro, celeste, violetto, rosa, lilla. Scalinatura: 1 passata; Riduzione: 16 passate/cm; proporzione: 1 di fondo/ 1 broccata."@it,
+        "Parato composto da pianeta e stola che misurano rispettivamente cm 103 x 66 e cm 180 x 25. Il fantasioso modulo disegnativo a cui si intercalano fiori e anfore caratterizza il tessuto come esemplare bizzarre di ‘seconda generazione’. Infatti compaiono accanto alle estreme stilizzazioni dei motivi fitomorfi elementi che rispecchiano una maggiore adesione al dato realistico. L’ ornato è ancora impiantato su tipologie astratte: si vedano ad esempio le foglie frangiate, elemento costante nei tessuti del primo decennio del Settecento. Tuttavia la presenza di panciute anfore da cui fuoriescono bouquets inseriti nella più ampia astrazione formale d’insieme e il rapporto di disegno  a grandi dimensioni suggeriscono un inserimento cronologico del tessuto in esame entro il primo ventennio del XVIII secolo. Conforta questo inquadramento temporale l’analogia sintattica che si riscontra con il lampasso liseré lanciato e broccato di una pianeta, datata proprio al secondo decennio del Settecento del Seminario vescovile di Vicenza (cfr. G. Galasso, scheda n. 88 in Tessuti nel Veneto…, 1993, pp. 398-399). (R. Civiletto; M. Vitella)"@it,
+        "cm 88 x 25.5; numero dei campi: 2; tipo di campo: seguente"@it,
+        "fondo in raso da 5, diffalca mento 2, faccia ordito, prodotto da tutti i fili e da tutte le trame di fondo. Opera creata dal gros de Tours di 2 fili (nattè), che definisce effetti di controfondo, e da più trame broccate, seriche e metalliche per la descrizione del disegno in primo piano. In corrispondenza dei filati metallici, nelle varie tipologie in cui si presentano, intervengono slegature della trama di fondo (liseré), solo i capi di colore giallo, con la funzione di trama di accompagnamento. Tutte le trame supplementari sono ancorate al corpo del tessuto in diagonale 3 lega 1, direzione S, da 1/8 dei fili prelevati dall’ordito di fondo"@it,
+        "motivo a impostazione asimmetrica con sviluppo diagonale. Su un fondo caratterizzato da estese ombreggiature si dispongono, lungo direttrici oblique, vistosi motivi di chiara ispirazione fantastica, raffiguranti astratti elementi fitomorfi, grandi foglie frangiate, che si intercalano ad anfore con infiorescenze di papavero e fiori di campo, mentre campanule, peonie e altre tipologie floreali si distribuiscono in ordine sparso sulla superficie."@it,
+        "non rilevabile"@it ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/333a020d-2c35-31a4-96e1-7fe7f4f7a758> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

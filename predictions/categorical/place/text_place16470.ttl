@@ -1,0 +1,28 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/017a2857-b7d3-50d5-80b9-ce4a1ba337a0> a rdf:Statement ;
+    silk:L18 "0.375053"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3017382/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/dc4799e3-9b61-3d11-9660-c51e67ce17a0> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/017a2857-b7d3-50d5-80b9-ce4a1ba337a0> .
+
+<http://data.silknow.org/activity/017a2857-b7d3-50d5-80b9-ce4a1ba337a0> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "1780s, English; pink linen trimmed with pale blue silk, lining missing"@en,
+        "Pair of stays, c.1780s. Formed from pink linen and trimmed with pale blue silk. The lining has broken down is now missing."@en,
+        "Pair of stays, c.1780s. Formed from pink linen and trimmed with pale blue silk. The lining has broken down is now missing. The corset is boned throughout to shape with whalebone, each bone stitched down individually in vertical rows. Three bones are inserted horizontally across the top at the front to give roundness to the bust. The front is cut low and is pointed over the stomach. At the waist the lower edge of the corset is scalloped all round to a depth of 3\" approximately. The portion covering the stomach and diaphragm is reinforced on the inside with a panel of glue or whalebone. The corset fastens down the centre of the back and there is a row of eyelet holes on each side of the opening, but the laces are missing. The main outlines of the figure are defined on the outside with corded silk or silk ribbon."@en,
+        """These stays have lost their lining, making it possible to see some of the baleen (‘whalebone’) strips through tears in the interlining. The x-ray reveals the strips’ uniform width.
+The central panel flattened the stomach. Its lower edges are defined by long bones which connect with the top corners of the front panel. Three broad curved baleen strips run along the stays’ top edge.
+When laced together and tightened, the stays would have dug uncomfortably into the flesh and pushed the wearer’s shoulders back. [21/04/2018 - 27/01/2019]"""@en ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/dc4799e3-9b61-3d11-9660-c51e67ce17a0> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3017382/> .
+

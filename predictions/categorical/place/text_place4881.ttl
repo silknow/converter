@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/30d1893d-9f80-5e6a-b433-1fea6fab23cc> a rdf:Statement ;
+    silk:L18 "0.351471"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3017382/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/65580ed8-bbb2-3b6e-8f42-37ccd7aa175c> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/30d1893d-9f80-5e6a-b433-1fea6fab23cc> .
+
+<http://data.silknow.org/activity/30d1893d-9f80-5e6a-b433-1fea6fab23cc> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Barroco"@es,
+        "De pequeño tamaño, patas y chambranas con torneado de bola; brazos rectos rematados en voluta y respaldo rectangular, con asiento de tabla. Respaldo y asiento de tela de color salmón, con decoración bordada sobrepuesta en hilos de plata, representando custodia y racimos de uvas en el respaldo."@es,
+        "Sillón tipo frailero, reproduce las tipologías mobiliarias habituales pero con cierta libertad de interpretación."@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/65580ed8-bbb2-3b6e-8f42-37ccd7aa175c> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3017382/> .
+

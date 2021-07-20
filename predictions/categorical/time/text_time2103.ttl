@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/e34bad28-aaca-5e54-b4e5-cb26d46aea9b> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/a316d27c-2d2d-31f7-abc8-8ce2077d9ef9> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/e34bad28-aaca-5e54-b4e5-cb26d46aea9b> .
+
+<http://data.silknow.org/activity/e34bad28-aaca-5e54-b4e5-cb26d46aea9b> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Avec le matériel issu de la tombe B 285, Albert Gayet mentionne des « galons rouges à frette jaune et verte ». Le motif du galon a été dessiné par Jules-Paul Gérard sur une feuille inédite, conservée dans une collection privée, qui réunit plusieurs croquis des objets contenus dans la cinquième vitrine de l’exposition de 1898. Le motif de « frette » y est esquissé, non loin du fleuron terminant les bandes d’épaules de la robe de laine portée par la défunte. À l’issue de l’événement, Jules-Paul Gérard avait d’ailleurs obtenu un fragment de ce galon, conservé aujourd’hui à Los Angeles, dans la Llyod Cotsen Textile Traces Collection (Inv. T. 1372).
+Le décor de ce galon est produit par les trames de soie jaune, verte, ivoire et rouge, brochées et lancées, qui reposent sans liage sur le fond de chaîne cordée brun-rouge, assombri par la trame de fond en laine bleu foncé. Contre la bordure longitudinale du galon s’appuie une rangée de festons jaunes, qui abritent alternativement un losange ivoire ou rouge. Les écoinçons sont timbrés d’un triangle vert.
+Les chaînes du galon ont disparu aux lisières. La brève notice rédigée par Albert Gayet décrit, juste avant les galons, des « fragments de résille » (inv. MT 2013.0.9). Les deux éléments sont séparés par un point-virgule, laissant entendre qu’ils étaient associés. Le tissage aux plaquettes aurait pu être appliqué le long de l’ouverture d’un bonnet disparu, du même type que celui des occupantes des tombes B 149 (Paris, musée du Louvre, inv. E 29487), B 417 (inv. MT 2013.0.24) ou B 106 (Paris, musée du Louvre, inv. E 29498). On sait que cet accessoire était généralement associé à une résille maintenant les cheveux. Les coutures ont pu fragiliser la bande tissée aux plaquettes de chaque côté ce qui expliquerait la disparition de la chaîne aux lisières.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/a316d27c-2d2d-31f7-abc8-8ce2077d9ef9> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

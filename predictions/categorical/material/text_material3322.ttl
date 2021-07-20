@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/79954b84-9a5c-52a2-8c15-4a35f458aa98> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/1e6abad3-5b3e-3fd2-8968-a21b190d4390> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/79954b84-9a5c-52a2-8c15-4a35f458aa98> .
+
+<http://data.silknow.org/activity/79954b84-9a5c-52a2-8c15-4a35f458aa98> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """La composition est une reprise avec quelques variantes du patron numéro B. F. 13738 créé en juillet 1919 par Raoul Dufy. Elle fut utilisée par l'artiste pour une maquette d'affiche publicitaire de la maison Bianchini-Férier pour les « Soieries modernes pour l'ameublement » en 1921 (Raoul Dufy, la passion des tissus, Honfleur, Le Grenier à sel, 1993, p. 42). L'inspiration mythologique de Raoul Dufy et les références à l'art grec antique découlent directement de son travail d'illustration pour Le Bestaire ou Cortège d'Orphée de Guillaume Apollinaire, publié en 1911, mais aussi de l'engouement des artistes et des créateurs de mode, entre 1915 et 1920, pour les modèles issus de l'Antiquité.
+Charles Bianchini, en 1921, réédite plusieurs patrons inspirés par la mythologie, en variant les couleurs, le rapport de dessin (pour l'habillement ou pour l'ameublement) ou quelques détails. La plus célèbre de ces rééditions est sans doute Le Cortège d'Orphée (numéro de patron B. F. 30187), dont un exemplaire fut acquis par le musée des Tissus dès 1923, suite à la Foire de Lyon. Ce dernier présente de grandes analogies avec le Char d'Apollon (numéro de patron B. F. 15229), notamment la dépendance aux modèles de la céramique grecque à fond rouge. Destiné à l'ameublement, Le Char d'Apollon présente cependant un rapport de dessin plus conséquent, et une disposition des motifs différente. Un quadrige, consuit par un jeune aurige nu, un manteau plaqué par le vent sur le torse, est répété en registres horizontaux, tourné vers la droite sur un registre, puis vers la gauche sur l'autre. Sur le premier registre, la caranation du conducteur de char, la robe du premier cheval et du troisième sont sombres, les autres éléments de la composition étant de couleur blanche ; sur le registre suivant, les couleurs sont inversées. Les quadriges sont disposés, d'un registre sur l'autre, en quinconce, dans des bandes verticales formées par des rayures fines soulignées de pois blancs ou noirs. L'élan vertical de la composition est accentué par l'enchaînement de palmiers stylisés, derrière les chevaux, et d'un rameau de lierre, derrière le conducteur, qui forment des rubans sinueux. Les rayures et les végétaux en rinceaux évoquent les compositions traditionnelles de la soierie lyonnaise, tout comme la disposition en quinconce des motifs, mais ici profondément renouvelées par l'hommage fait à l'art grec et par le choix des couleurs.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/1e6abad3-5b3e-3fd2-8968-a21b190d4390> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

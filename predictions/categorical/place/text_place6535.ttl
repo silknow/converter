@@ -1,0 +1,29 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/54bd38aa-19bc-5df1-bcfe-cab0fd2c0fd6> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/b6d60c66-4065-3782-8252-586e67670fe0> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/54bd38aa-19bc-5df1-bcfe-cab0fd2c0fd6> .
+
+<http://data.silknow.org/activity/54bd38aa-19bc-5df1-bcfe-cab0fd2c0fd6> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Edad Contemporánea"@es,
+        """Mantón cuadrangular de color negro con decoración bordada a base de flores, peonías, crisantemos, y pájaros: pavo real, pelícanos, loros y otras aves del Paraíso.   
+Los motivos se agrupan con respecto a dos ejes de simetría y aparecen, cuatro a cuatro, un mismo motivo en las cuatro esquinas.   
+  
+La alternancia de diversas flores de tipo medio (cerezo, almendro.) y pequeños tallos, junto con las peonías que destacan sobre el resto, nos hablan de rasgos característicos del último tercio del siglo XIX. Se intercalan flores y pájaros, entre los que destacan las aves del paraíso y el pavo real, motivos habituales en el repertorio oriental. Aparecen también garzas que van a beber agua, representada por medio de esquematizaciones de líneas más o menos quebradas. Esta combinación de motivos decorativos puede indicar su procedencia de China.   
+  
+Se presenta en distintos tonos: naranja, violeta, rojo, gris y blanco. Posee una greca con poca separación de la decoración del campo profusamente decorado. Los mantones de Manila aparecen en España en la época de María Cristina, madre de Isabel II, lo cual no quiere decir que no hubiese pañuelos de seda con anterioridad."""@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/b6d60c66-4065-3782-8252-586e67670fe0> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

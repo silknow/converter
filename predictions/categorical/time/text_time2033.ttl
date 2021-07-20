@@ -1,0 +1,28 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/53f0f03f-3d38-59c0-9179-b94f4542cdb5> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/d7cd2eea-3978-3b58-a912-b1bdf4c21d2f> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/53f0f03f-3d38-59c0-9179-b94f4542cdb5> .
+
+<http://data.silknow.org/activity/53f0f03f-3d38-59c0-9179-b94f4542cdb5> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Fondée en 1891 par Jeanne Paquin (1869-1936) au 3, rue de la Paix, à Paris, la maison Paquin, dont le siège est transféré à Londres en 1896, est particulièrement importante pour la naissance de la Haute Couture. Ses modèles, ornés de fourrure ou de dentelles, assurent la notoriété de la créatrice qui présidera la Chambre syndicale de la couture de 1917 à 1919, avant de se retirer en 1920. Elle est la première couturière à recevoir, en 1913, la croix de la Légion d'honneur.
+Elle confie la gestion de la maison Paquin à Henri Joire et la direction artistique à Madeleine Wallis, qui continue à proposer des modèles réputés pour la qualité des étoffes employées et pour leur confection remarquable.
+La blouse légère en mousseline et dentelle parme ornée de fils métallique est donc particulièrement représentative de la production de la maison Paquin dans les années 1930, par ses effets de transparence et de superposition, par l'usage d'une dentelle de qualité et par l'utilisation de fils doré. 
+Entre la Belle Epoque et la fin de sa carrière en 1920, la renommée de Madame Paquin reste fondée sur l’utilisation subtile d’étoffes précieuses et légères pour la réalisation de modèles toujours adaptés aux modifications de la silhouette. Ses successeurs dont Madeleine Wallis, auteur de ce modèle, s’attachent à perpétuer ces principes, valorisant chaque matière par une mise en œuvre remarquable de leurs singularités et qualités. Ce travail est aussi le fruit d’une collaboration étroite entre fabricants textiles et couturiers, particulièrement sensible dans les années 1930, période pendant laquelle la matière prime souvent sur le décor pour mieux exprimer la ligne.
+La blouse faisait partie de la garde-robe d'une élégante lyonnaise de l'Entre-deux-guerres dont le musée des Tissus possède deux autres pièces, une robe du début des années 1930, en lin brodé de cordonnets de soie (inv. MT 2013.2.1) et une robe en satin brodée de soie et de paillettes (inv. MT 2013.2.2). 
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/d7cd2eea-3978-3b58-a912-b1bdf4c21d2f> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

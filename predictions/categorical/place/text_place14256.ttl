@@ -1,0 +1,34 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/1bdd8472-04a8-5a1e-8ce2-26f253973486> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/d23f8613-000a-37f0-af52-ea90ce5df0ea> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/1bdd8472-04a8-5a1e-8ce2-26f253973486> .
+
+<http://data.silknow.org/activity/1bdd8472-04a8-5a1e-8ce2-26f253973486> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Damas double corps, dessin à couronnes de myrthe, couronnes de pavots et étoiles.
+GMMP-1658-012-002 (anciennement "bis"): Dépècements de rideaux de croisée. Damas double corps fond blanc de Paris. Lot de quatre pièces de divers formats, toutes ayant conservé leurs deux lisières. L'une d'elles présente des bords supérieur et inférieur festonnés et une étiquette du Grade-Meuble de 1815. H. 0,480 x l. 0,556 m.
+GMMP-1658-012-003 (anciennement "ter") : Dépècements de portières et rideaux. Damas double corps fond gros de Tours et satin cramoisi. Lot de quatre pièces de divers formats, parfois constituées de plusieurs morceaux de tissus cousus ensemble
+
+Historique :
+Le meuble de velours pour la Chambre à coucher de l'Empereur Napoléon au Palais de Saint-Cloud,  avait été commandé à Pernon par Lefuel, conservateur du Mobilier Impérial, sans avoir reçu au préalable l'accord du général Duroc, ce qui valut quelques aléas administratifs, changements de devis, retards.
+Le meuble devait être constitué de trois étoffes, qui furent commandées en même temps : un velours chiné fond pourpre (GMMP 698, GMMP 701 à GMMP 704), un damas cramoisi (GMMP 1658-012-001, GMMP 221 à GMMP 223) et un damas à fond blanc (GMMP 1658-012-002).
+Elles connurent finalement des utilisations distinctes.
+
+GMMP 1658-012-001 : Dès l'an XIII, le damas cramoisi est réservé pour la Salle du Trône des Tuileries (établie dans l'ancienne chambre du Roi dont le décor créé pour Louis XVI subsistait toujours) et une commande complémentaire fut adressée à Pernon. La Salle du Trône resta inchangée pendant les premières années de la Restauration à l'exception des rideaux de croisées qui furent renouvelés à l'été 1818. Pour la Salle du Conseil de Fontainebleau, 41 m 30 de ce damas cramoisi furent utilisés pour confectionner entre autre des rideaux qui restèrent en place jusqu'en 1964. 
+
+GMMP 1658-012-002 : En 1807, Napoléon avait ordonné une nouvelle distribution de son Petit Appartement de Saint-Cloud. Le Cabinet de l'Empereur fur installé sur l'Orangerie entre le Salon de Famille et la Chambre à coucher. Le damas blanc fut remis en 1808 pour ce Cabinet, également appelé Petit Salon de l'Empereur ou Salon blanc. L'étoffe fut utilisée avec une bordure brocart ponceau brochée or (GMMP 250 et GMMP 251) pour la confection de quatre parties de tenture, deux rideaux de croisée, quatre embrasses, trois draperies, un canapé, huit fauteuils, six chaises, un tabouret de pieds et un écran. L'ensemble resta en place, avec sa garniture de damas blanc, jusqu'en 1824. D'autres métrages de la même étoffe furent également utilisés à Compiègne et aux Tuileries, entre 1837 et 1838."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/d23f8613-000a-37f0-af52-ea90ce5df0ea> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

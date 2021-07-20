@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/074f4b71-43c6-5027-a08d-165ee0726bbe> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/01d7eaba-a5eb-30e2-a524-61ad800d487b> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/074f4b71-43c6-5027-a08d-165ee0726bbe> .
+
+<http://data.silknow.org/activity/074f4b71-43c6-5027-a08d-165ee0726bbe> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Les deux importants fragments de chemise étaient identifiés au musée des Tissus par l’étiquette manuscrite de l’exposition de 1898 qui portait le numéro de la tombe C 478. Ils composaient la partie inférieure gauche d’une chemise d’homme, et son devant droit. Le vêtement appartenait à une typologie bien différente des habituelles chemises en lin, ornées de galons, qui habillaient les occupants des tombes B 281 (inv. MT 28520.123.1, MT 28520.123.2 et MT 49158), C 395 (inv. MT 24400.614), B 114 (inv. MT 2013.0.19), C 597 (inv. MT 2013.0.25), par exemple, ou qui revêtent encore les dépouilles du « chevalier byzantin » du musée des Confluences de Lyon (inv. 90002982) ou du « fonctionnaire à la pourpre » du Palais des Beaux-Arts de Lille (inv. D.2011.0.2).
+Taillée dans une toile tissée sur une chaîne en lin de torsion S avec des fils de trame en laine de torsion Z, elle était ouverte sur le devant et évasée sur les côtés par des pièces triangulaires. Elle comportait des manches, comme l’indiquent les plis marqués qui sont conservés sur le grand devant droit du musée des Tissus. Les différentes pièces ont été montées après avoir été bordées d’un repli, dissimulé dans l’assemblage. Les bords du vêtement sont ourlés d’un repli tourné vers l’intérieur, à l’exception du grand revers droit qui utilise la lisière de la laize, ne nécessitant pas de finition. Le repli longeant le grand revers gauche, en revanche, a été maintenu au point de surjet, assez grossièrement.
+Une toile légère, en laine de forte torsion Z, a été appliquée en doublure à l’intérieur de la chemise. Elle est brochée de fils doubles, en laine de torsion S, qui dessinent un semis de trèfles à quatre feuilles. De larges bandes, appliquées sur les bords du vêtement, et des bandes plus étroites, appliquées pour couvrir les coutures d’assemblage, ont été découpées dans un samit façonné de soie, à quatre lats, dont un latté et un autre interrompu. Le décor est difficilement lisible, mais il dessinait, sur un fond bleu foncé, un réseau de losanges formé par des branches feuillues, enfermant des étoiles, des carrés et des losanges verts, jaunes, ocre-rouge et blancs, comparable à celui qui s’épanouit sur les soieries bicolores (inv. MT 26812.33 et MT 26812.27). Il utilise cependant les tonalités des samits polychromes à motifs influencés par l’art sassanide. Des fragments de la même chemise, correspondant probablement à un poignet garni de soie, sont conservés au musée du Louvre (inv. E 29379). Un autre grand morceau de toile de lin de torsion S et de laine de torsion Z issu de la tombe B 127 est également conservé au Louvre (inv. E 29381). Il est garni de bandes de soie, dont le musée des Tissus possède plusieurs fragments (inv. MT 26812.24). Il appartenait très certainement à une chemise de ce type, à manches, ouverte sur le devant. Les parements de soierie appliqués sur ces vêtements indiquent qu’ils ont été réalisés entre le milieu du Ve siècle et les premières décennies du VIIe siècle. Les procédés de coupe, d’assemblage et de couture des chemises sont tout à fait comparables à ceux qui ont été observés sur les manteaux en toile de laine cachemire, grattée après tissage, de couleur carmin ou turquoise, majoritairement produits entre le VIe et le VIIe siècle. 
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/01d7eaba-a5eb-30e2-a524-61ad800d487b> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

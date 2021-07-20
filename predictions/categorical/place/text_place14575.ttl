@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/b359b500-7b48-5a23-897f-7950ad5b00a6> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/952cd227-a32e-3273-a11e-5a131c2bb7a0> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/b359b500-7b48-5a23-897f-7950ad5b00a6> .
+
+<http://data.silknow.org/activity/b359b500-7b48-5a23-897f-7950ad5b00a6> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Bordure pour siège. Damas fond satin renforcé vert et brun liseré gris de lin et blanc. Le dessin représente une suite de fleurettes et ornements, courant de feuillage sur fond aurore dans le talon.
+
+Historique :
+Ce damas fait partie des soieries commanédes à Camille Pernon en 1806 pour le Palais de Versailles, en même temps que quatre autres meubles et les étoffes de la Salle du Trône. L'Empereur ayant précisé qu'il n'habiterait pas ce palais avant plusieurs annéess, Desmazis avait prévu de rendre cette commande propre à être utilisée dans une autre demeure. C'est à Saint-Cloud que peu après sa livraison en 1809, ce damas devait être utilisé dans le Salon de Famille. Cette pièce, aménagée dans l'appartement de l'Empereur, au rez-de-chaussée sur l'Orangerie, à l'emplacement d'un bureau topographique avec corps de bibliothèque, avait d'abord été meublé rapidement avec un fonds du Garde-meuble : rideaux en 15/16 aurore et sièges en bois doré recouverts de tapisserie de Beauvais. En 1808, on avait décidé qu'il était temps de renouveler cet ameubelemnt et le tapissier Maigret a fait sortir du magasin des métrages de damas pour confectionner une tenture en quartorze panneaux, deux portières, cinq cantonnières, cinq rideaux de croisée, et garnir deux canapés, douze fauteuils, dix-huit chaises, deux tabourets de pieds et un écran. Cet ensemble est demeuré dans le Salon de Famille jusqu'en 1826 puis est rentré au Garde-Meuble pour être dégarni et retourner à Saint-Cloud pour y rester jusqu'à la fin du Second Empire."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/952cd227-a32e-3273-a11e-5a131c2bb7a0> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

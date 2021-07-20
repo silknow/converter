@@ -1,0 +1,25 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/6c44cf06-8386-5d9e-b09c-e0fdfbc1c5ba> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/f1a03286-a4ad-3ef1-b0a0-6063bcf25501> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/6c44cf06-8386-5d9e-b09c-e0fdfbc1c5ba> .
+
+<http://data.silknow.org/activity/6c44cf06-8386-5d9e-b09c-e0fdfbc1c5ba> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Trois fragments d’un samit façonné de soie préservent un décor géométrique blanc, jaune, rose et vert clair sur fond bleu foncé. Des médaillons, enfermant des pastilles, entourées de huit grosses perles, alternent avec des polygones à huit branches, contenant un second polygone et une rosette à huit pétales. De petits disques ornés ponctuent les espaces entre les médaillons et les polylobes. Le samit a été tissé sur des fils de chaîne en soie brun-rouge de torsion Z. La même couleur, qui donne une profondeur intense au bleu foncé du fond, a également été choisie pour réaliser une soierie découverte durant la même campagne de 1897 et conservée au musée des Tissus (inv. MT 2013.0.19). Ces deux exemplaires présentent d’ailleurs une organisation du décor, en registres successifs, et une iconographie qui les a fait attribuer aux ateliers de la Perse sassanide. Ils partagent pourtant leurs caractéristiques techniques avec tout un ensemble de soieries découvertes à Antinoé et qui semblent relever d’une tradition de tissage purement méditerranéenne.
+La couleur de la chaîne, brun-rouge, a probablement été choisie pour imiter les productions d’Asie centrale, dont certains exemplaires remarquables ont été découverts dans les nécropoles d’Antinoé (inv. MT 26812.11 et MT 26812.10). La même particularité apparaît sur des étoffes en tapisserie, dont la production égyptienne ne fait aucun doute, qui montrent aussi une forte influence sassanide. La disposition du réseau géométrique, sur la soierie conservée à Lyon, et la gamme des couleurs, bleu foncé, blanc, jaune, rose et vert clair, apparaissent à l’identique sur la partie inférieure d’une paire de jambières historiées en tapisserie de laine, découverte à Antinoé durant la campagne de 1908 et dispersée entre le musée des Tissus (inv. MT 28928) et le musée du Louvre (inv. E 29323). Une datation au radiocarbone, effectuée sur l’exemplaire du Louvre, situe la production de ces jambières dans une période comprise entre 530 et 650. Cette fourchette chronologique est aussi compatible avec la date fournie par les indications techniques de la soierie elle-même, tissée debout – c’est-à-dire avec la chaîne dans le sens de lecture du décor – à partir de l’envers, au moyen de cinq lats différents. Ce mode de tissage, en effet, qui résulte d’une innovation technique importante, s’impose en Méditerranée entre le milieu du Ve siècle et les premières décennies du VIIe siècle. 
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/f1a03286-a4ad-3ef1-b0a0-6063bcf25501> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

@@ -1,0 +1,27 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/30775eab-e47d-5824-b628-526ede8d6b71> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/93df9421-4415-334b-85fb-9a7a8a85bd79> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/30775eab-e47d-5824-b628-526ede8d6b71> .
+
+<http://data.silknow.org/activity/30775eab-e47d-5824-b628-526ede8d6b71> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Bordure transversale de la tenture. Brocart argent à fond bleu, à palmettes. 
+
+Historique : 
+Bordure transversale de tenture pour le Grand Salon de Joséphine Bonaparte au palais de Saint-Cloud. 
+Afin d'encourager les manufactures de Lyon en l'an X (1802), le Premier Consul commande un ameublement complet pour le palais de Saint-Cloud à Camille Pernon. Duroc, alors gouverneur au Palais, fait savoir à Fontaine la nécessité de hâter les travaux qui restent à faire au niveau des peintures et des dorures, de manière à pouvoir bientôt y mettre les tentures et les meubles. Comme le prévoyait Duroc, les étoffes commandées furent livrées après l'installation du Palais et demeurèrent au Garde-Meuble en attente d'autres affectations. Ce brocart ne fut utilisé qu'en 1808 au Palais des Tuileries dans le Deuxième ou Grand Salon de l'Impératrice Joséphine. Dès juillet 1805, toutefois, l'emploi en avait été envisagé pour cette pièce ; par décret de l'Empereur du 11 Germinal an XIII (1er avril 1805), l'appartement de l'Impératrice au rez-de-chaussée du Palais des Tuileries avait été augmenté d'une antichambre et de deux salons. Une nouvelle décoration fut alors demandée. Calmelet, Administrateur du Mobilier Impérial, insista pour que le décor du Grand Salon, et notamment de la corniche, des portes et des lambris, soit mis en harmonie avec "la richesse de l'ameublement qui est d'une étoffe de Lyon, très riche de brocart bleu or et argent". Puis en 1808, Joséphine émet des voeux pour la conduite de la décoration du Salon et souhaite que ce soit le tapissier Boulard qui en soit chargé. Malgré son avis cependant (des étoffes en cramoisi ou nakarat), c'est bien le brocart argent fond bleu qui est utilisé. Le mobilier de ce salon est de Jacob-Desmalter. L'ensemble fut livré en 1809 aux Tuileries et y resta après la chute de l'Empereur Napoléon. Pour raisons d'étiquettes, le mobilier fut retiré sous la Restauration, vendu en 1826 et remplacé par trente ployants que le tapissier Flamand recouvrit de brocart argent fond bleu. Trois chaises couvertes de ce tissu sont conservées au Mobilier national aujourd'hui."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/93df9421-4415-334b-85fb-9a7a8a85bd79> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

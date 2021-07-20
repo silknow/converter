@@ -1,0 +1,28 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/2c8ef14c-11f0-5afb-b0e7-7f09bde04b7f> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/d6dd7b3d-1f5d-3926-bd00-94a4744d1eb7> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/2c8ef14c-11f0-5afb-b0e7-7f09bde04b7f> .
+
+<http://data.silknow.org/activity/2c8ef14c-11f0-5afb-b0e7-7f09bde04b7f> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Le dessin, sur cette laize, a été conçu pour être raccordé, dans le cas de la confection d’une robe de cour, notamment. Le décor est caractéristique de l’évolution dans l’art de décorer les étoffes vers 1730, où le traitement des motifs est plus varié et plus naturaliste, y compris dans le nombre et les nuances des couleurs employées. 
+Grâce à l’innovation introduite à Lyon par Jean Revel (1684-1751) au début des années 1730, appelée « points rentrés » ou encore « berclé », qui consiste en un système de séparation des couleurs sous la forme de petites hachures horizontales qui s’interpénètrent, il est désormais possible de multiplier les effets. 
+ Le décor de cette laize est composé de deux motifs, répétés en alternance sur plusieurs registres et disposés en quinconce.  Le premier est un cartouche rocaille formé de concrétions aquatiques qui évoquent des coquilles, de végétation et d’un vase déversant les flots d’un cours d’eau glissant sous une passerelle de bois et le long d’un aqueduc antique. Dans le cartouche, comme une percée, apparaît un paysage traité en camaïeu de bleu pour évoquer un lointain atmosphérique : une maisonnette y occupe la place centrale, abritée par la frondaison d’un arbre. 
+Le second présente une arche antique, habillée de draperies et entourée de fleurs de pavot, qui dévoile un paysage de montagnes avec une construction pourvue d’une tour ronde. Compte tenu de l’effet « berclé » identifiable sur cette laize, et au vu de son iconographie évoquant la quiétude d’une retraite (paysages sans habitants) et la réflexion sur le temps qui passe (eau qui coule, ruines antiques, pavots presque fanés), il est possible d’attribuer sa production aux ateliers lyonnais des années 1730-1735. 
+On appréciait, en effet, dans les premières années du règne de Louis XV, les représentations allégoriques traitant de la vanité du monde, notamment, et paradoxalement, comme un rappel destiné aux élégantes, sur les étoffes de leurs éphémères robes de cour.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/d6dd7b3d-1f5d-3926-bd00-94a4744d1eb7> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

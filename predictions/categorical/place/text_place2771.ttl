@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/ad69e12a-7aeb-57a9-8fdb-f493a17eb51b> a rdf:Statement ;
+    silk:L18 "0.900139"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/acc35d38-f3fd-3964-aecf-8d9bebc53ef8> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/ad69e12a-7aeb-57a9-8fdb-f493a17eb51b> .
+
+<http://data.silknow.org/activity/ad69e12a-7aeb-57a9-8fdb-f493a17eb51b> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Damasco rosso: ordito e trama in seta rossa eseguono il disegno e il fondo in raso, ornato di gallone in seta gialla. Pezzo di damasco, probabilmente parte di un corredo sacro, rosso di forma triangolare, bordato da gallone in seta gialla e dal bordo frangiato in giallo. Il disegno di controfondo è composto da grandi elementi floreali alternati in verticale da una corona che trattiene, come anello, 3 gigli piumati stilizzati."@it,
+        "Lampasso armatura di fondo raso prodotto da un ordito di seta color rossa e da una trama di seta color giallo. Broccature per trame supplementari di color giallo che legano ad un ordito di legatura/ liserè"@it ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/acc35d38-f3fd-3964-aecf-8d9bebc53ef8> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

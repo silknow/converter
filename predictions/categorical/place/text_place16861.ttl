@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/1f894e92-347e-52e1-b898-b4da1d75ee98> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/a9d244a4-53a9-350f-a763-fed25d1e4d3a> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/1f894e92-347e-52e1-b898-b4da1d75ee98> .
+
+<http://data.silknow.org/activity/1f894e92-347e-52e1-b898-b4da1d75ee98> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Restitution du meuble d’été de la Chambre du Roi, en place de 1723 à 1785, commandé par Louis XV quand il retourna vivre au château et livré le 8 mai 1723 par Lallier ; s’inspirait du textile du meuble d’été fourni en 1705 pour le roi Louis XIV.
+Le retissage du brocard - un tissu à fond violet et cramoisi, broché d’or et d’argent, à décor de rinceaux, cornets et grandes fleurs, et garni de franges d’or - fut commencé en 1957, interrompu, puis repris entre 1972 et 1980 ; il fut confié aux maisons lyonnaises Prelle et Tassinari & Chatel d’après des documents textiles originaux conservés au Mobilier national et fut enrichi de broderies exécutées par la maison Brocard."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/a9d244a4-53a9-350f-a763-fed25d1e4d3a> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

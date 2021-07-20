@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/51d4cf29-8e11-5c4b-ac15-287fba089c2b> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/207fb95e-fed3-35d5-af3b-4407e3d34840> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/51d4cf29-8e11-5c4b-ac15-287fba089c2b> .
+
+<http://data.silknow.org/activity/51d4cf29-8e11-5c4b-ac15-287fba089c2b> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Les grandes maisons de soierie lyonnaise, sous le Second Empire, proposent à leur clientèle des tissus d’ameublement à dessin riche, mais à des prix modérés. La maison Mathevon et Bouvard, qui domine pendant presque tout le XIXe siècle les grandes manifestations internationales par les chefs-d’œuvre d’exposition qu’elle propose, afin de démontrer son extraordinaire maîtrise technique tout autant que la diversité de ses produits, offre aussi une gamme de brocatelles, en soie et lin, base satin, lancées et brochées à plusieurs lats, qui sont des étoffes d’un luxe raisonnable, convenant parfaitement à l’ameublement des salons bourgeois. 
+Les compositions sont généralement inspirées par les exemples du passé. Le jeune musée d’Art et d’Industrie (futur musée des Tissus), fondé en 1856 et inauguré en 1864, offre un répertoire inépuisable de motifs issus des prestigieuses étoffes historiques. Les fonds d’archives que les maisons constituent, qui comprennent aussi des étoffes anciennes, servent aussi à fournir des modèles aux dessinateurs. 
+Pour les brocatelles, les références sont bien évidemment celles du Grand Siècle, durant lequel ce type d’étoffes était particulièrement apprécié, en France comme en Italie. La gamme colorée de la laize (le musée des Tissus conserve une seconde laize du même dessin, mais de couleur corail et maïs, avec des variantes dans les couleurs des roses dans les bouquets ; inv. MT 51421.6), grenat et maïs, fait d’ailleurs écho à ces tissages originaux, tout comme la composition en larges médaillons, le profil baroque des feuilles, les fleurs de grenadier stylisées ou les ornements guillochés. Cependant, les tigelles de lierre qui animent le fond des médaillons sont empruntées au règne de Louis XVI, et les larges bouquets brochés en soie nuancée, qui ont pu être exécutés grâce à la mécanique Jacquard, sont caractéristiques du Second Empire. Cet éclectisme est adopté par la plupart des grandes maisons pour les tissus d'ameublement, au point que les commentateurs des Expositions universelles, tout en reconnaissant l’exécution parfaite de ces étoffes, regretteront le recours perpétuel à des citations historiques. Parallèlement, pourtant, les mêmes maisons produisent des étoffes au dessin étonnamment moderne et inventif, notamment dans le domaine de la haute nouveauté, réservé à l’habillement. 
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/207fb95e-fed3-35d5-af3b-4407e3d34840> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

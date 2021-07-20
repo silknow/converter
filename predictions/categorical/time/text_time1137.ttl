@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/4bd05b2c-f3c4-59cf-b01d-d6e501c8bfa0> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/3419b009-c5ce-33d1-b687-07bcbc6eed9f> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/4bd05b2c-f3c4-59cf-b01d-d6e501c8bfa0> .
+
+<http://data.silknow.org/activity/4bd05b2c-f3c4-59cf-b01d-d6e501c8bfa0> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Le fragment est une toile de lin, filé en S, plus fin et plus tordu en trame qu'en chaîne. Il est barré d'une inscription en tapisserie de soie marron et de lin blanchi. Des passages de toile sont intercalés entre les lettres de cette inscription, et la trame de la toile flotte à l'envers pour amenuiser la différence de réduction entre la toile et la tapisserie. L'inscription, en caractères coufiques assez grands — trente-cinq millimètres de haut — présente une ligne de base épaisse et des hampes larges. Les lettres sont sobrement tracées. Elles comportent simplement, en haut des hampes, une pastille de lin blanchi soulignée d'un trait courbe. Les deux premiers jambages du sin, et l'attache du lam et du ha d'Allah forment une boucle en dessous de la ligne de base, marquée, en haut, par un tiret de lin blanchi.
+Par ses caractéristiques techniques, ce fragment peut être rapproché de plusieurs étoffes à inscriptions de tiraz au nom du calife abbasside al-Muti (946-974) ou des califes fatimides al-Mu'izz (952-975), al-Aziz (975-996) et al-Hakim (996-1020). Il s'agit en général de toiles de lin filé en S, barrées de tapisserie de soie et de lin, avec passage de toile entre les lettres et flottés de trame de fond derrière les caractères. Elles furent tissées dans des ateliers égyptiens, situés notamment à Tinnis, dans le Delta, ou à Fustat.
+C'est la présence de boucles en dessous de la ligne de base qui incite à situer la production de cette étoffe sous le règne du calife al-Hakim, à la fin du Xe siècle ou au début du XIe siècle, plutôt que sous celui de ses prédécesseurs. Même si certains tiraz au nom d'al-Aziz, barrés de tapisserie de soie rouge ou verte, annoncent déjà cette tendance (voir, par exemple, au George Washington University Museum-Textile Museum de Washington, inv. 73.432 et 73.544), elle est presque systématique sur les inscriptions au nom d'al-Hakim, y compris lorsque le style des caractères est beaucoup plus sophistiqué que sur l'exemplaire du musée des Tissus (voir, par exemple, à Washington, toujours, inv. 73.627 ; ou à Boston, au Museum of Fine Arts, inv. 34.119, 34.116 et 32.31). Une toile de lin barrée de tapisserie de soie marron et de lin blanchi, au George Washington University Museum-Textile Museum de Washington (inv. 73.36), présente de grandes similitudes avec le fragment lyonnais et confirme cette datation. En effet, les caractères coufiques, hauts de vingt-sept millimètres, y sont sobres et épais ; les hampes sont marquées de la pastille blanche soulignée par un trait courbe ; la graphie du nom d'Allah est identique, avec l'attache du lam et du ha bouclée sous la ligne de base ; celle du mot bismillah est aussi très comparable, même si le ba a une hampe plus longue que les jambages du sin sur l'exemplaire de Washington, et que les deux premiers de ces jambages ne forment pas une boucle sous la ligne de base. L'inscription, plus complète à Washington qu'à Lyon, indique : « Au nom de Dieu, le Clément, le Miséricordieux. Bénédiction de Dieu sur al-Mansur Abu [Ali l'imam al-Hakim bi-Amri'-llah...] »   
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/3419b009-c5ce-33d1-b687-07bcbc6eed9f> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

@@ -1,0 +1,42 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/fbd13f13-306a-5564-9666-8db03ab6574f> a rdf:Statement ;
+    silk:L18 "0.533513"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/e084c6f7-36ed-3040-a4db-9fd95811855d> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/fbd13f13-306a-5564-9666-8db03ab6574f> .
+
+<http://data.silknow.org/activity/fbd13f13-306a-5564-9666-8db03ab6574f> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Primo tessuto: 1 ordito, di fondo, organzino di seta, 2 capi, S, colore avorio 
+Scalinatura: 4 fili 
+Riduzione: 60 fili al cm . Secondo tessuto: 1 ordito, di fondo, organzino di seta, 2 capi, S, colore avorio 
+Scalinatura: 4 fili 
+Riduzione: 62 fili al cm"""@it,
+        """Primo tessuto: 4 trame; I di fondo, seta, x capi, STA, colore avorio; II broccata, oro lamellare; III di accompagnamento, seta, 2 capi, colore giallo; IV broccata, seta, 2 capi, S, colore celeste, rosa antico, rosa cipria, viola, violetto, verde scuro, amaranto 
+Proporzione: 1/1/1/1 
+Scalinatura: 1 passata 
+Riduzione: 20 passate al cm. Secondo tessuto: 3 trame; I di fondo, seta, x capi, STA, colore avorio; II broccata, oro filato riant avvolto su anima in seta ondata, x capi, STA, colore giallo; III broccata, seta 3 capi, S, colore verde chiaro, verde muschio, azzurro, celeste, rosa cipria, rosa antico, viola, violetto 
+Proporzione: 1/1/1 
+Scalinatura: 1 passata 
+Riduzione: 19 passate al cm"""@it,
+        "Primo tessuto: cm 34 x 26; numero dei campi: 2 campi; tipo di campo: seguente. Secondo tessuto: cm 24 x 13; numero dei campi: 4 campi; tipo di campo: seguente"@it,
+        "Primo tessuto: cm 51; Secondo tessuto: cm 52"@it,
+        "Primo tessuto: fondo in taffetas prodotto da tutti i fili di fondo e da tutte le trame di fondo. Opera creata da effetti liseré dati da slegature della trama di fondo, da trame broccate in seta policroma e da una metallica che lavora con un’altra di accompagnamento. Al dritto le trame in seta slegano in corrispondenza del disegno, mentre quella metallica con la trama di accompagnamento sono legate in diagonale 2 lega 1 direzione S da fili prelevati dall’ordito di fondo. Secondo tessuto: fondo in taffetas prodotto da tutti i fili di fondo e da tutte le trame di fondo. Opera creata da effetti liseré dati da slegature della trama di fondo e da trame broccate che al dritto appaiono slegante in corrispondenza del disegno"@it,
+        "Primo tessuto: impostazione verticale a sviluppo sinuoso. Successione di tralci di rose alla cui base originano esili rametti fioriti che si dispongono in teorie parallele, orientate alternativamente verso destra e verso sinistra. Minuti ornati floreali monocromi creano il controfondo . Secondo tessuto : impianto a scacchiera. Tralci fioriti ordinati per teorie parallele si dispongono in verticale e in orizzontale, orientati alternativamente verso destra e verso sinistra. A queste serie si intercalano, in ritmica successione, altre teorie di fiori a piccola corolla. Minuti ornati geometrici monocromi creano il controfondo"@it,
+        """l’accentuata semplificazione dei motivi disegnativi che si riscontra sul manto è un’attestazione di quel rinnovamento stilistico volto in favore di combinazioni più ordinate che si diffondono nell’ultimo quarto del XVIII secolo, probabilmente dettato dal nascente rigore neo-classico o dall’economizzazione dei filati per rendere più concorrenziale sui mercati il prezzo del prodotto finito.
+La Devoti (cfr. L’arte del..., 1974, p. 31) riconduce la paternità di queste composizioni decorative a quella nutrita schiera di tessitori francesi che, a causa dell’Editto di Nantes abbandonarono la loro patria riu¬nendosi nel sobborgo di Spitalfieds, nei pressi di Londra.
+La confezione di stoffe così congegnate è documentata dalla metà del XVIII secolo e un chiaro esempio sono i frammenti a fondo taffetas del Victoria and Albert Museum di Londra (Eadem, figg. 194 e 196) e il piviale in pékin broccato attribuito a manifattura francese degli anni 1770-1790 della Chiesa Collegiata di Santa Maria di Arona (E. Bazzani, scheda n. 23, in Tessuti antichi..., 1981, pp. 199-201).
+Il tessuto con cui sono stati realizzati lo stolone e il cappuccio presenta, invece, un aggraziato motivo che vede disposti i soggetti floreali secondo quelle curve sinusoidali altrove, soprattutto in composizioni più ricche, definibili “a meandro”. Simile orientamento compositivo si può cogliere nella pianeta in taffetas lanciato e broccato di Palazzo Pitti a Firenze (cfr. R. Orsi Landini, scheda n. 72, in I paramenti sacri.:., 1988, p. 138).( R. Civiletto; M. Vitella)"""@it ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/e084c6f7-36ed-3040-a4db-9fd95811855d> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

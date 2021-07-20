@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/4ad3be2e-dea3-5764-bd92-6e2762bc8db2> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/ec5472eb-6a85-301a-84e2-9f4f9ce10cb3> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/4ad3be2e-dea3-5764-bd92-6e2762bc8db2> .
+
+<http://data.silknow.org/activity/4ad3be2e-dea3-5764-bd92-6e2762bc8db2> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Le décor est simple mais particulièrement soigné dans le traitement et la disposition des motifs par rapport aux différentes parties du costume. De grandes branches fleuries sont brodées sur la surface de l’étoffe dont les morceaux sont agencés de manière à créer une symétrie ornementale. Une guirlande de fleurettes et de petites feuilles court le long du galon de dentelle. De part et d’autre, sur la jupe, le corsage et les manches, sont disposés en miroir des bouquets traités de manière naturaliste et délicate. Certains décors coupés au niveau du pli, sous le galon, trahissent le remploi d’un costume civil. Les motifs ornementaux sont caractéristiques de la fin du XVIIIe siècle. En effet, la broderie lyonnaise atteint un niveau d’exception dans son traitement des fleurs au naturel et de motifs directement inspirés de la nature et des planches de botanique. Ces décors ornent aussi bien les costumes, masculins et féminins, que les étoffes destinées à l’ameublement. 
+Dorothée Lécrivain"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/ec5472eb-6a85-301a-84e2-9f4f9ce10cb3> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

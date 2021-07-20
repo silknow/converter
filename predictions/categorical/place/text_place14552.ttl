@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/7b68a1b4-0648-5113-9396-af63e6c45b6a> a rdf:Statement ;
+    silk:L18 "0.351471"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3017382/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/44635ad0-ad1d-36c5-b571-8a2bb76ccfae> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/7b68a1b4-0648-5113-9396-af63e6c45b6a> .
+
+<http://data.silknow.org/activity/7b68a1b4-0648-5113-9396-af63e6c45b6a> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Fond carrelé vert pomme à décor de roses et de lilas (grande bordure, échantillon d'origine).
+
+Historique :
+Commandé à Desfarges en 1785 pour le meuble d'été de la chambre de la reine à Versailles pour remplacer le tissu à double fond bleu et or livré par Pernon l’année précédente (GMMP 132), avec 202 aunes de tissu blanc pour tenture, portières et cantonnières, 207 aunes de petite, moyenne et grande bordure, 13 dessus de ployants en tissu broché, tissu pour couvrir 1 lit complet, 1 canapé, 2 fauteuils, 1 paravent de 12 feuilles et 1 écran en gros de Naples broché. Ces étoffes furent présentées lors des ventes révolutionnaires le 1er messidor an II (19 juin 1794) mais ne trouvèrent pas d'acquéreur. Elles seront placées dans l’hôtel du Garde-Meuble de Versailles le 22 fructidor an II (8 septembre 1794), puis employées durant l'Empire dans le Salon des Princes à Saint-Cloud, pour le rideau d'alcôve de Napoléon Bonaparte au Palais des Tuileries et en 1806 dans l'Appartement de Madame Mère (Laetitia Bonaparte, 1750-1836) à Fontainebleau."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/44635ad0-ad1d-36c5-b571-8a2bb76ccfae> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3017382/> .
+

@@ -1,0 +1,36 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/e0cd9e7e-14af-550c-92f9-597050348531> a rdf:Statement ;
+    silk:L18 "0.498901"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/9ab7f57e-5860-3964-98c1-2a8c0254fb95> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/e0cd9e7e-14af-550c-92f9-597050348531> .
+
+<http://data.silknow.org/activity/e0cd9e7e-14af-550c-92f9-597050348531> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """2 orditi; I di fondo, organzino di seta, 2 capi, S, colore rosa , doppio; II di legatura, organzino di seta, 2 capi, S, colore bianco 
+Proporzione: 5/1 
+Scalinatura: 5 fili
+Riduzione: 62 fili di fondo al cm.; 12 fili di legatura al cm"""@it,
+        """3 trame; I di fondo, seta, x capi, S, colore rosaceo; II lanciata, argento filato avvolto su anima in seta colore bianco; III di accompagnamento, seta, 2 capi, colore bianco
+Proporzione: 1/1/1 
+Scalinatura: 1 passata al cm
+Riduzione: 23 passate"""@it,
+        """Parato costituito da una pianeta, due tonacelle, due stole, tre manipoli, un velo di calice, una borsa. Dimensioni cm 100 x 70; cm 100 x 156; cm 198 x 20; cm 80 x 20; cm 58 x 61; cm 24 x 24. Il parato potrebbe essere identificato con la cappella fiorita cioè casubola, tonacelli guar(ni)ti di gallone d’oro fino elencato nell’inedito inventario stilato in occasione della Sacra Visita Pastorale che Mons. Filangeri fece nel 1766 
+Il tessuto utilizzato per confezionare i sacri abiti è da riferire, per l’organizzazione del modulo disegnativo, a quelle tipologie definite “a pizzo”. Ma a differenza di altre stoffe affini, come quella del parato datato alla fine del XVII secolo della stessa Maggior Chiesa termitana , l’opera qui in esame presenta una diversa impostazione degli ornati, soprattutto di quelli disposti nella zona centrale che, invece di essere incorniciati da elementi trinati, sono inseriti all’interno di decori esoticheggianti con profilature dentellate entro cui compaiono fiori di diverse tipologie. L’elegante tessuto è anche caratterizzato dal particolare effetto luministico dato dalla trama metallica lanciata: è proprio attraverso questo espediente tecnico che i parati assumono un ricco effetto argentato che la luce riflessa contemporaneamente esalta e modula. La presenza degli insoliti ornati laterali piumati e dentellati, che segnano l’avvio verso nuove soluzioni dall’aspetto esotico, inducono a datare il tessuto tra la fine del XVII e il primo decennio del secolo successivo. Inoltre le esuberanti infiorescenze dell’asse centrale segnano il superamento di più tipiche e minute decorazioni floreali seicentesche verso ornati a rapporti più ampi e fantasiosi. (R. Civiletto; M. Vitella)"""@it,
+        "cm 54"@it,
+        "cm. 42x53; numero dei campi: 1 campo; tipo di campo: a ritorno"@it,
+        "fondo in taffetas prodotto da tutti i fili di fondo e da tutte le trame di fondo. Opera per effetto di due trame lanciate, una metallica e l’altra di accompagnamento che lavorano per passate, legate al dritto in diagonale da 2 lega 2 direzione Z dall’ordito di legaura. Al rovescio gli effetti di trama appaiono legati in diagonale 2 lega 2 direzione S dall’ordito di legatura. L’opera riposa sul taffetas di fondo"@it,
+        "motivo ad impostazione verticale, creato da due cornici laterali, speculari con andamento mistilineo e profilature “a pizzo” sulle quali compaiono fiori e frutti esoticheggianti. Sull’asse centrale si susseguono ricche composizioni di melagra¬ni, garofani, tralci fogliati e minuti fiori Galloni: cm 4 e cm 5; trina in oro filato e lamellare lavorato a fuselli con motivi a ventaglio e a nido d’ape."@it ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/9ab7f57e-5860-3964-98c1-2a8c0254fb95> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

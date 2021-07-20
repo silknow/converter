@@ -1,0 +1,31 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/4a64a612-09e2-5294-a609-def969f4d981> a rdf:Statement ;
+    silk:L18 "0.375053"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3017382/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/2edc0f10-d886-3b6e-9d1b-5bdcd9f8530f> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/4a64a612-09e2-5294-a609-def969f4d981> .
+
+<http://data.silknow.org/activity/4a64a612-09e2-5294-a609-def969f4d981> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Right side of waistcoat, of linen, with embroidery in silver thread and in shades of blue silk, and perforated ornament resembling lace. The waistcoat panel cut straight down the front and square-cornered at the bottom edge. The pockets are outlined by straight bands. Pattern of vertical stitches enclosing wavy stems, and floral devices in openwork, from the former spring short leafy sprigs. Down the front edge is cable ornament in openwork with embroidered bows, and sequins (many missing)."@en,
+        """This delicate fabric is decorated with pierced work by which the technique is known.
+
+Accessories made using the technique became fashionable during the late eighteenth century. Fine fabric, either linen or silk, was stiffened by starch so the threads would stick together. Then the fabric was punched using fine rounded metal teeth to push the threads aside rather than severing them, creating a lace-like pattern.
+
+Examples of pierced work can be seen in waistcoats of the 1780s and 1790s, such as: 835-1907 and the present waistcoat panel T.110-1916, in the V&A collection.
+
+Larger examples of pierced work such an apron: T.313-1920, and veil: T.314-1920 are included in the V&A Textile and Fashion collection."""@en,
+        "embroidered L, 1775-99, English; Pierced work"@en ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/2edc0f10-d886-3b6e-9d1b-5bdcd9f8530f> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3017382/> .
+

@@ -1,0 +1,30 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/2c2bc689-c900-5a87-bdae-5b28cc66dde8> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/2f5fc99b-996c-3711-8b31-0b98c383369b> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/2c2bc689-c900-5a87-bdae-5b28cc66dde8> .
+
+<http://data.silknow.org/activity/2c2bc689-c900-5a87-bdae-5b28cc66dde8> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """L’association des anciens élèves de l’école de soierie de Côme fait don régulièrement au musée des Tissus des plus belles pièces qu'elle produit, images tissées en imitation de gravure des abords du lac de Côme (Villa Carlotta, inv. MT 49502 ; Villa Olmo, inv. MT 2013.2.4), d'architectures de la région (Basilique Sant'Abbondio, inv. MT 41336 ; Palazzo Terragni, inv. MT 42599 ), de scènes ou de souvenirs historiques (Carte de l'Italie, 1861, inv. MT 2012.1.6 ; Volta présente sa pile à Napoléon Ier, inv. MT 2011.1.15) ou portraits des grands saints de l'Église ou des promoteurs de la foi.
+C'est à cette dernière catégorie qu'appartient le Portrait de Jean-Paul II, réalisé à l'occasion de sa béatification place Saint-Pierre, le 1er mai 2011.
+Mort le 2 avril 2005, le pape Jean-Paul II (Karol Józef Wojtyła) est inhumé le 8 avril suivant. Au cours de ses funérailles, une partie de la foule scande « Subito santo ! », c'est-à-dire « Saint tout de suite ! » Cette expression de la Vox populi et la pétition signée par cent soixante-dix cardinaux pour l'ouverture du procès de béatification de Jean-Paul II incite le pape Benoît XVI à autoriser l'instruction de ce procès, le 13 mai 2005. C'est une exception aux règles de la Congrégation pour la Cause des saints, qui fixe ordinairement un délai de cinq ans entre le décès en odeur de sainteté et l'ouverture du procès de béatification. C'est donc la première fois depuis les prescriptions du Concile de Trente (1588) qu'une cause est ouverte aussi rapidement.
+Le 18 mai 2005, le cardinal Camillo Ruini, vicaire général du diocèse de Rome, fit appel à tous les témoignages favorables ou défavorables à la réputation de sainteté du prélat. Le procès en béatification de Jean-Paul II commence officiellement dans le diocèse de Rome  le 28 juin 2005. Le postulateur de la cause désigné est Monseigneur Slawomir Oder, prélat du vicariat de Rome.
+Le 1er avril 2007, l'archevêque d'Aix et Arles remet à la Congrégation pour la cause des saints l'enquête menée sur la guérison de sœur Marie-Simon-Pierre (née Marie-Pierre Normand), de la congrégation des Petites Sœurs des Maternités catholiques, qui prétend avoir été libérée de la maladie de Parkinson le 2 juin 2005 grâce à l'intercession de Jean-Paul II. L'enquête diocésaine sur la vie et les vertus du pape est clôturée le lendemain, 2 avril 2007. Le 19 novembre 2009 est proclamée l'héroïcité des vertus de Jean-Paul II, désormais Vénérable.
+Le 14 janvier 2011, après un avis positif de la Congrégation sur le caractère miraculeux de la guérison de sœur Marie-Simon-Pierre, le Vatican annonce la béatification de Jean-Paul II pour le 1er mai suivant. Le rite de béatification est célébré par le pape Benoît XVI place Saint-Pierre, lors du premier dimanche après Pâques, appelé aussi dimanche de la divine miséricorde, fête instituée par le Bienheureux Jean-Paul II en 2000, à la veille de laquelle il mourut en 2005.
+Le portrait retenu par l'Associazione de Côme est l'un des portraits officiels diffusés au cours de cette cérémonie, issu d'une photographie du Souverain Pontife. La mise en carte du portrait, réalisée au moyen du procédé informatisé CAD/CAM, a été confiée à la manufacture Tessitura Mantero Seta S.p.a., à Côme. Le portrait est accompagné des armoiries de Jean-Paul II, en couleurs (d'azur à la croix d'or accompagné dans le canton en pointe senestre de la lettre M d'or, le « M » d'or en hommage à la Vierge Marie) et de la signature du pape, en partie inférieure.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/2f5fc99b-996c-3711-8b31-0b98c383369b> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

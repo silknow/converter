@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/90082e81-8d54-5f2b-956b-168c7156f274> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/1d099f6e-f6cc-3c39-8153-b29db35ac12a> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/90082e81-8d54-5f2b-956b-168c7156f274> .
+
+<http://data.silknow.org/activity/90082e81-8d54-5f2b-956b-168c7156f274> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Satin blanc broché soies polychromes. Dessin de branches ondulées de lilas liées en quinconces de couronnes de roses et formant médaillons ovales, sur lesquels se détachent des corbeilles chargées de fleurs et de tulipes or. En diagonale, lyres sur culots encadrées de palmes. Commandé pour le troisème grand salon de l'Impératrice Marie-Louise au Palais de Versailles. Ce tissu s'inscrit dans la très grande commande passée par Napoléon en soutien à l'artisanat luxueux français pour le réaménagement du Palais de Versailles. 
+Livré en 1813, il montre quelques défauts de confection, certainement dus aux contraintes techniques qu'implique l'usage du métier Jacquard encore balbutiant. Il n'est utilisé qu'en 1818,  à la Restauration, pour l'ameublement de la chambre à coucher des petits appartements du Roi à Saint-Cloud, et en 1820 pour l'appartement de la duchesse de Berry aux Tuileries. La présence de roses et de lilas, motifs chers à Marie-Antoinette, explique l'utilisation d'un élément de bordure de ce tissu pour la recréation du décor de la chambre de la reine à Compiègne en 1857."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/1d099f6e-f6cc-3c39-8153-b29db35ac12a> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

@@ -1,0 +1,27 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/a98177c1-b104-5113-8608-b9d671482af2> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/29a91d49-ac57-3408-98c8-07804eb73e2b> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/a98177c1-b104-5113-8608-b9d671482af2> .
+
+<http://data.silknow.org/activity/a98177c1-b104-5113-8608-b9d671482af2> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Bordure pour rideaux et draperies. Fond satin vert broché en chenille de divers couleurs, et broché en soie nuée de même. Le dessin représente un courant de feuilles d'acanthe coloriée autour desquelles sont entrelacées des couronnes de marguerites de couleurs.
+
+Historique :
+Exécuté par Chuard et Cie, à Lyon, pour la Salle des Exercice du Pavillon des Enfants de France au Palais des Tuileries. Le vérificateur signalait que si le fabricant s'était conformé aux clauses de la soumission, il y avait un manque de couleurs d'ombre dans les bordures mais ce défaut était moins sensible que pour le reste de la commande. Cette observation additionnée d'une irrégularité dans la hauteur des dessins justifia une réduction de prix sur chaque mètre d'étoffe. 
+Ces étoffes ne furent pas installées dans le Pavillon des Enfants de France en raison des événements, toutefois Maigret reçut finalement les métrages en 1815 pour cet espace et également pour le meuble du Roi de Rome au Pavillon de Marsan, dans l'appartement que Charles X occupa à la Restauration. En 1820, l'ameublement complet rentra au Garde-Meuble. En 1824, la tenture fut placée dans la Salle d'étude du duc de Bordeaux et de Mademoiselle."""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/29a91d49-ac57-3408-98c8-07804eb73e2b> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

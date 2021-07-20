@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/fd5b2a11-6c94-5ca3-a053-399240a8079e> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/a86d2071-4878-3ffa-a70e-f1f73d7e193a> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/fd5b2a11-6c94-5ca3-a053-399240a8079e> .
+
+<http://data.silknow.org/activity/fd5b2a11-6c94-5ca3-a053-399240a8079e> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Une gouache, conservée au musée du Louvre, montre le motif reconstitué de cette soierie fragmentaire. Le décor du samit était dessiné en bleu clair, ocre, vert clair et bleu foncé sur un fond ivoire. Il présente une succession d’arcs de cercle outrepassés, ocre et bleu clair, disposés en quinconce, qui s’interpénètrent pour former, à l’intérieur de chaque arc, des médaillons ovales contenant une rosette à huit pétales et une conque ornée d’une palmette. Le motif est répété au registre suivant, si bien que la courbe des arcs bleu clair est tangente à celle des arcs ocre. Dans l’espace ménagé entre les deux registres prennent place des médaillons bleu foncé, orné d’une rosette formée de quatre pétales cordiformes verts, autour d’un cœur beige.
+Par son répertoire décoratif, la soierie a été attribuée « à un centre de production de l’Orient chrétien plutôt qu’à la Perse sassanide », voire même « à un atelier constantinopolitain du VIe ou du VIIe siècle ». Pourtant, l’étoffe présente les mêmes caractéristiques techniques que d’autres soieries découvertes à Antinoé, utilisées comme manchettes ou comme parements de manteaux, souvent attribuées à l’Orient sassanide en raison de leur iconographie(inv. MT 26812.8, MT 40310, MT 40311, MT 26812.24, MT 26812.9, MT 26812.3, MT 40316, MT 26812.16MT 26812.1, MT 26812.44, MT 26812.38, MT 2013.0.26.1 et MT 2013.0.26.2, MT 40315, MT 26818.18, MT 26812.12, MT 26812.15, MT 26812.6, MT 26812.37, MT 26812.7, MT 26812.32 et MT 40313). L’homogénéité du groupe paraît désigner plutôt une production locale. Toutes sont des samits façonnés qui relèvent, en effet, d’une tradition de tissage proprement méditerranéenne. 
+Jules-Paul Gérard avait obtenu un fragment de cette soierie. Il est aujourd’hui conservé à Los Angeles, dans la Llyod Cotsen Textile Traces Collection (inv. T 1376).
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/a86d2071-4878-3ffa-a70e-f1f73d7e193a> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

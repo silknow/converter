@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/aeb140a9-d827-5503-a9c1-1d875ac34900> a rdf:Statement ;
+    silk:L18 "0.453908"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/130758/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/71cf77e2-0d66-33b0-b7ab-68029eeaf412> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/aeb140a9-d827-5503-a9c1-1d875ac34900> .
+
+<http://data.silknow.org/activity/aeb140a9-d827-5503-a9c1-1d875ac34900> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Cushion cover tapestry-woven in wool, silk and metal thread, from a set depicting the Story of Jacob. The scene is set within a diamond-shaped frame with lion masks at the angles, surrounded by a square border of fruit and flowers with female herms at the sides."@en,
+        "This cushion cover, tapestry-woven in silk, silver and silver-gilt thread and wool, depicts the scene of <i>Rebecca disguising Jacob</i> from the story of Jacob (Genesis Chapters 27-29). The scene is set within a diamond-shaped frame with lion masks at the angles, surrounded by a rich border with swags of fruit and flowers and with female herms at the sides. Before upholstered furniture came into use in the sevententh century, cushions were placed on chairs, stools and window-seats, to provide warmth and comfort."@en ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/71cf77e2-0d66-33b0-b7ab-68029eeaf412> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/130758/> .
+

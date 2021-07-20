@@ -1,0 +1,32 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/6d77b759-e278-5faf-a9fe-d515f467f4ff> a rdf:Statement ;
+    silk:L18 "0.482058"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/497> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/317561a8-c5ab-3931-ba3c-aa3e679fc2d8> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/6d77b759-e278-5faf-a9fe-d515f467f4ff> .
+
+<http://data.silknow.org/activity/6d77b759-e278-5faf-a9fe-d515f467f4ff> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "1 ordito, di fondo, organzino di seta, 2 capi, S, colore celeste; Scalinatura: 5 fili ; Riduzione: 75 fili/cm"@it,
+        """3 trame; I di fondo, filaticcio di seta 4 capi, S, colore celeste; II di accompagnamento, seta, 2 capi, S, colore bianco; III broccata, oro lamellare 
+Scalinatura: 1 passata 
+Riduzione: 12 passate/cm 
+Proporzione: 1 di fondo/1 broccata"""@it,
+        "Il vaso baccellato, spesso biansato, con fiori e foglie che fuoriescono dalla stretta gola con labbro svasato è un elemento decorativo costante nei tessili prodotti tra la fine del XVI e la prima metà del XVII secolo. Compare ora all’interno di maglie ovali più o meno stilizzate, ora come motivo isolato, ma anche, come nel caso in esame, disposto secondo teorie continue alternato a bouquets. Qui l’elemento figurativo, pur nelle sue stilizzazioni, è trattato con cura iconografica e chiara leggibilità. Si nota, rispetto a quanto avveniva nel XVI secolo, un cambiamento della resa formale dei motivi fitomorfi che qui sembrano risentire della riproduzione di specie botaniche ritratte in pittura dal vero che per tutto il XVII secolo sarà il soggetto principale di quel “genere” chiamato Natura Morta. La soluzione disegnativa che si nota nel damasco verde del paliotto dell’ultimo quarto del XVI secolo della parrocchiale di San Pietro di Miasino in provincia di Novara (cfr. F. Fiori, scheda n. 54 in I tessili nell’età..., 1994, pp. 324-326) potrebbe essere considerata un’anticipazione dello sviluppo in orizzontale dell’elemento vasiforme, sebbene ancora l’anfora fiorita, disposta a cadenza fissa, sia ancora inclusa entro maglie. (R. Civiletto; M. Vitella)"@it,
+        "cm 38 x n.r.; numero dei campi: 1(?); tipo di campo: a ritorno"@it,
+        "fondo in raso da 5, diffalcamento 2, faccia ordito, prodotto da tutti i fili e da tutte le trame di fondo. Opera creata dal raso da 5, diffalcamento 3 faccia trama prodotto da tutti i fili e da tutte le trame di fondo, unitamente a 2 trame braccate, una delle quali funge da trama di accompagnamento, legate entrambe al corpo del tessuto in taffetas da 1/5 dei fili prelevati dall’ordito di fondo."@it,
+        "motivo a impostazione simmetrica e sviluppo orizzontale. Teorie di vasi baccellati, recanti carnose foglie sfrangiate, si alterna a bauquets di fiori dalle grandi corolle che si aprono a ventaglio, lungo una fascia orizzontale. La successione è delimitata da una cornice creata da un’esile banda, sormontata poi da un motivo di minuti fiori e pois"@it,
+        "non rilevabile"@it ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/317561a8-c5ab-3931-ba3c-aa3e679fc2d8> ecrm:P126_employed <http://data.silknow.org/vocabulary/497> .
+

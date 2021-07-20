@@ -1,0 +1,27 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/d0a2791a-ade7-514c-9d52-01cbf2eabbe9> a rdf:Statement ;
+    silk:L18 "0.587782"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/58385677-93a3-3030-b93d-f48693dd1ee7> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/d0a2791a-ade7-514c-9d52-01cbf2eabbe9> .
+
+<http://data.silknow.org/activity/d0a2791a-ade7-514c-9d52-01cbf2eabbe9> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """En 1959, le musée des Tissus achète à Louis Jarrosson, un des dirigeants de la maison Jarrosson-Volay, successeur de Mathevon et Bouvard, treize velours extraits des archives de cette ancienne maison, datant de décembre 1868 jusqu'à décembre 1900 (inv. MT 31397 à MT 31411).
+La laize intitulée Velours Louis XIV, deux poils, est destinée à garnir un fauteuil dans le style de la fin du XVIIe siècle. Le musée des Tissus conserve deux exemplaires de ce modèle : le premier sur fond ciel (inv. MT 31404) qui ne comprend que la moitié inférieure du rapport de dessin, pour la garniture du siège, et le second, sur fond paille, avec la totalité du rapport, siège et dossier. La grande largeur de la laize (un peu plus de soixante quinze centimètres) correspond à cette destination.
+La partie pour le siège montre une terrasse surmontée d'un culot d'où jaillissent des ornements, qui s'entrelacent avec des ferronneries. Des enfants engainés, appuyés à la terrasse, soufflent dans des conques. En partie supérieure, destinée au dossier, une autre terrasse supporte un grand vase contenant un bouquet.
+Les indications fournies dans le livre de patrons, fournies par Louis Jarrosson au moment de l'acquisition, précisent : « Velours soie 2 poils en 75/100. Dessin Louis XIV. Bouquet dans un vase, pour dossier. Enfant soufflant dans des conques, pour siège. 460 cordes batard doubles corps ; 170 cordes pointe doubles corps ; soit 630 x 2 = 1260 de mécanique. Carte 8/10, 38 coups de fer, 4 coups de pointes au fer. » On sait aussi, grâce à ce livre des patrons, que le modèle a été créé en décembre 1868.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/58385677-93a3-3030-b93d-f48693dd1ee7> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

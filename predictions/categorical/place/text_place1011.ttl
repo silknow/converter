@@ -1,0 +1,26 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/12fcc440-bf91-50ca-8761-43bdacebf106> a rdf:Statement ;
+    silk:L18 "0.53208"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/39435bac-b0bb-3359-adc5-e8cf8b66c2af> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/12fcc440-bf91-50ca-8761-43bdacebf106> .
+
+<http://data.silknow.org/activity/12fcc440-bf91-50ca-8761-43bdacebf106> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Cette chasuble fait partie d’un ornement liturgique de quatre pièces acquises en 1909 comportant étole, manipule et voile de calice taillés dans la même étoffe, d’époque Louis XV, à décor dit « d’hermine ». L’étole est une longue bande d’étoffe portée autour du cou, toujours sur une chasuble, et de même étoffe que celle-ci. Utilisés lors de la célébration eucharistique, le manipule est une bande d’étoffe plus courte, pliée en deux et posée sur l’avant-bras gauche et le voile de calice ou la pale, un linge de forme carrée, servant à recouvrir le calice et la patène. Ces éléments sont tous assortis avec la chasuble, vêtement ordinaire du prêtre. 
+La chasuble présentée ici est de forme française avec un décor formant une croix au dos et une bande verticale sur le devant, entièrement serti d’un galon. La chasuble est constituée d’un pan arrière en deux parties cousues milieu dos, se poursuivant par deux bandes d’épaule formant l’encolure, elles-mêmes cousues au pan devant. L’avant de la chasuble présente deux échancrures d’aisance à la naissance des bras. C’est un vêtement toujours ouvert sur les côtés se superposant aux autres habits de l’officiant. 
+L’étoffe employée pour la fabrication de cet ornement liturgique est caractéristique du règne de Louis XV. En effet, le motif dit « à la fourrure » est réputé avoir fait son apparition en hommage à la jeune Marie Leszczyńska, fille du roi de Pologne, devenue reine de France par son mariage avec Louis XV en 1725. L’exécution de ce motif inédit dans le tissage est un véritable tour de force puisqu’il s’agit pour les dessinateurs de la Fabrique de réaliser un trompe-l’œil de fourrure, d’hermine et de plume en donnant l’illusion de leur brillance, de leur douceur et de leur délicatesse. La composition elle-même ménage de charmantes surprises. Les bordures mêlées de plumes et d’hermine abritent des courants sinueux ponctués de motifs floraux aux feuilles de fourrure et aux pétales d’hermine. Cette étoffe pour robe a certainement constitué une offrande à l’Église. Le fond de l’étoffe était à l’origine entièrement couvert de fils métalliques dorés et argentés. La chasuble porte ainsi des marques d’usage évidentes, notamment sur l’avant du vêtement à l’endroit où l’officiant joignait ses mains pour la prière. Cet ornement liturgique peut être daté des années 1765.
+Claire Berthommier"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/39435bac-b0bb-3359-adc5-e8cf8b66c2af> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

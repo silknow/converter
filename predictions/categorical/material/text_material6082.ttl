@@ -1,0 +1,29 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/f9a7a03d-6dce-5c45-9e7a-effdbf2da7a6> a rdf:Statement ;
+    silk:L18 "0.498901"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/1943480b-80b2-33ea-9294-c0928f527955> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/f9a7a03d-6dce-5c45-9e7a-effdbf2da7a6> .
+
+<http://data.silknow.org/activity/f9a7a03d-6dce-5c45-9e7a-effdbf2da7a6> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "1 ordito, di fondo, organzino di seta, 2 capi, S, colore carta da zucchero. Scalinatura: 4 fili; Riduzione: 54 fili/ cm"@it,
+        "3 trame; I di fondo, seta, 4 capi, STA, 1 di colore azzurro, 1 di colore violaceo binati e 1 di colore bianco, 1 di colore giallo binati; III broccata, seta, 3 capi, capi, S, nei colori: pesca, rosa antico, violaceo, lilla, giallo oro, bianco. Scalinatura: 1 passata ; riduzione: 15 passate/cm ; proporzione: 2 di fondo/1 broccata"@it,
+        "Le forme astratte degli elementi che compongono il modulo decorativo della pianeta inducono a inquadrare il tessuto con cui è confezionata entro quella fase, individuata dal Thornton ( Baroque and…, 1965), delle stoffe bizzarre, caratterizzata da ornati indescrivibili e misti, come nel caso in esame, a fiori seminaturalistici molto stilizzati (cfr: Lusso e…, 1984, p.123). Motivi ondulati, infiorescenze di diverse tipologie e tralci stilizzati, contribuiscono a creare un affollato ornato che in Sicilia fu molto apprezzato, considerato l’alto numero di reperti stilisticamente affini sino a oggi censiti (cfr. C. Ciolino Maugeri, schede nn. II.1-14 in Lusso e…, 1984, pp. 124 – 150; R. Civiletto-M. Vitella, Ori e Stoffe…, 1997, pp. 70-73; E. D’ Amico Del Rosso, I paramenti…, schede nn. 50 e 66, 1997, pp. 102 -103 e 117; R. Civiletto-M. Vitella, scheda n.13 in L’eredità di…, 1997, p. 217). La bassa riduzione di fili di ordito al centimetro quadrato, nonché le suggestioni coloristiche che richiamano quelle della pianeta del Museo Diocesano di Palermo farebbero ritenere il tessuto analizzato di manifattura siciliana.(R. Civiletto; M. Vitella)"@it,
+        "cm 46 x 26; numero dei campi: non rilevabile; tipo di campo: seguente"@it,
+        "fondo in taffetas prodotto da tutti i fili e da tutte le trame di fondo. Opera creata da effetti della trama di fondo (liseré) che interviene nella descrizione del disegno slegando alternativamente i capi di colore bianco e quelli di colore giallo. Alla decorazione partecipano numerose trame broccate seriche fissate al dritto i diagonale 3 lega 1 direzione S da ¼ dei fili prelevati dall’ordito di fondo, mentre le stesse, quando non partecipano al disegno rimangono slegate sul retro"@it,
+        "motivo a sviluppo ondulante verticale. Variegate tipologie floreali, sorrette da esili steli, affiancate da sottili tralci fogliati, si intercalano a composizioni astratte dal profilo polilobato, disponendosi in assetto obliquo e contrapposto per direzione, lungo assi verticali."@it,
+        "non rilevabile"@it ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/1943480b-80b2-33ea-9294-c0928f527955> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

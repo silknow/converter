@@ -1,0 +1,27 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/0f08b7ef-f03f-5ae5-968a-ac2b667820cc> a rdf:Statement ;
+    silk:L18 "0.456838"^^xsd:float ;
+    rdf:object <http://vocab.getty.edu/aat/300404512> ;
+    rdf:predicate ecrm:P4_has_time-span ;
+    rdf:subject <http://data.silknow.org/production/9d82d485-a620-34ad-a9a5-0bc94d36d24d> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/0f08b7ef-f03f-5ae5-968a-ac2b667820cc> .
+
+<http://data.silknow.org/activity/0f08b7ef-f03f-5ae5-968a-ac2b667820cc> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """Vers 1839, les châles cachemires longs, qui avaient un temps disparu au profit des châles carrés, reviennent à la mode. L'album publié à Paris par Fleury Chavant en 1840, intitulé Souvenir de l'Exposition des produits de l'industrie française de 1839. Reproduction exacte des principales étoffes façonnées et imprimées (...), reproduit autant de châles carrés que de longs. La planche 4 montre la bordure transversale extérieure et les palmes d'un châle exposé par la maison parisienne Frédéric Hébert et Cie qui présente des similitudes avec l'exemplaire du musée des Tissus. Sur les deux modèles, la structure classique du châle indien est respectée, avec bordure de grandes palmes, galerie de palmettes entourant la réserve du fond, bordure transversale extérieure et bordure montante. Sur l'exemplaire du musée des Tissus, comme probablement sur le châle présenté à l'Exposition de 1839, cependant, la bordure transversale intérieure a disparu. Son souvenir est, en quelque sorte, matérialisé par le changement de couleur de la chaîne, teinte de plusieurs couleurs sur la hauteur du fil et montée à disposition, successivement arlequinée (en vert, rouge, turquoise et jaune), puis rouge au niveau de la bordure de grandes palmes, puis bleue au niveau du champ central et à nouveau rouge et arlequinée à disposition. Les grandes palmes mordent sur la couleur bleue du champ central, formant un mince registre de décor plus sombre qui est comme le fantôme de la bordure transversale intérieure des châles indiens.
+Des bordures arlequinées rehaussent les deux extrémités, formant des rectangles colorés rouges, verts, jaunes et bleu turquoise. Les lisières, tissées en sergé de 3 lie 1, trame, Z, sont en soie verte. Elles sont renforcées par un point de feston cousu à l'aiguille au moyen d'un fil vert. 
+Deux paires de palmes adossées constituent le motif de la grande bordure. Les palmes externes, plus hautes que les deux palmes affrontées du centre, assurent la transition avec la galerie qui encadre la réserve centrale, bleu foncé. La chaîne teinte de plusieurs couleurs sur la hauteur du fil est en soie organsin (retors Z de deux bouts de faible torsion S ; réduction : 35-36 fils par centimètre ; découpure : 1 fil). Le tissage, en sergé de 3 lie 1, trame, Z, lancé découpé lié en sergé de 3 lie 1, trame, Z, à liage repris, est exécuté au moyen de trames de laine (filé de torsion Z) par un coup du premier lat de fond, rouge ou bleu, et un coup de lancé-découpé, lié en sergé de 3 lie 1, Z, face trame, à liage repris, comptant neuf couleurs (rouge, bleu moyen, bleu clair, deux tons de jaune, vert, blanc, rose et violet ; réduction : 21-22 passées par centimètre ; découpure : 1 passée). Dans les bordures arlequinées, les trames discontinues présentent un simple crochetage. 
+Les châles riches, à cette date, présentaient une chaîne en laine ou en soie et des trames en laine comptant au moins huit couleurs et jusqu'à quinze. Le tissage de ce châle français, probablement parisien, a été exécuté au moyen d'un métier équipé de la mécanique Jacquard. L'usage de ce mécanisme a grandement contribué à la complexification des motifs cachemires sur les châles produits en France.
+Maximilien Durand"""@fr ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/9d82d485-a620-34ad-a9a5-0bc94d36d24d> ecrm:P4_has_time-span <http://vocab.getty.edu/aat/300404512> .
+

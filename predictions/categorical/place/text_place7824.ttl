@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/28ead7b6-c9d4-5804-8276-5abae8d4a4a0> a rdf:Statement ;
+    silk:L18 "0.958453"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/2510769/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/d9641c43-1b96-3098-ab64-e06351c986a9> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/28ead7b6-c9d4-5804-8276-5abae8d4a4a0> .
+
+<http://data.silknow.org/activity/28ead7b6-c9d4-5804-8276-5abae8d4a4a0> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Donación González Abreu al Museo de Bellas Artes de Sevilla en 1928."@es,
+        "Estola realizada en terciopelo cincelado con efecto de reserva en seda de color granate burdeos con decoración a base de ramos florales con pequeños frutos que se suceden en bandas de manera alternada y contrapeada. En el centro de la banda aparece una cruz griega confeccionada con galón dorado de pasamanería de motivo geométrico con el que se contornea también el perímetro de las puntas. Coincidiendo con la zona en contacto con el cuello, presenta sobrepuesta una tira de refuerzo de tafetán de lino de baja densidad, rematada por la parte exterior con línea de vainica y estrecha puntilla de encaje de bolillos. Forro compuesto por tres piezas de tejido de lino de color parduzco ligeramente encerado."@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/d9641c43-1b96-3098-ab64-e06351c986a9> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/2510769/> .
+

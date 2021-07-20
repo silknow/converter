@@ -1,0 +1,24 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/138a240e-5cb5-5cc2-9125-1ab04590e112> a rdf:Statement ;
+    silk:L18 "0.453908"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/130758/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/3036a4e9-9bb0-36a7-a317-822fe9ecfdaf> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/138a240e-5cb5-5cc2-9125-1ab04590e112> .
+
+<http://data.silknow.org/activity/138a240e-5cb5-5cc2-9125-1ab04590e112> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Bodice worn by ballerina Marie Taglioni (1804-1884). Bodice of fine white silk taffeta lined in fine white cotton, with exaggerated point at centre front and a point at centre back; the upper edge of the front rises to a single point at centre and the back to three points; the upper edge is finished with a fine box pleated frill of white silk supported by a thin layer of buckram and the lower edge is finely double piped.  The bodice fastens down the side with lacing and fine hooks and eyes; there are three bones at centre front, one at the side, one from each peak at centre back and one either side of the lacing."@en,
+        "Bodice worn by ballerina Marie Taglioni (1804-1884). Silk with cotton lining and silk laceing."@en ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/3036a4e9-9bb0-36a7-a317-822fe9ecfdaf> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/130758/> .
+

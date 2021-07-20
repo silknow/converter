@@ -1,0 +1,35 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/269937a4-85e5-5f7d-a99c-05bc6055f525> a rdf:Statement ;
+    silk:L18 "0.648348"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/1dbbc083-c8dc-3387-8132-9cb7fa4e1cb4> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/269937a4-85e5-5f7d-a99c-05bc6055f525> .
+
+<http://data.silknow.org/activity/269937a4-85e5-5f7d-a99c-05bc6055f525> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """1 ordito; di fondo, organzino di seta, 2 capi, STA, colore rosa antico 
+Scalinatura: 4 fili 
+Riduzione: 76 fili al cm"""@it,
+        """5 trame; I di fondo, seta, x capi, STA, colore rosa e bordeaux binativi; II broccata, seta ondata, 2 capi, S, colore giallo e avorio binati; III broccata oro lamellare; IV di accompagnamento, seta, x capi, STA, colore bianco; V broccata, seta, 2 capi, S, colore bianco, celeste, verde chiaro, verde muschio, violetto, bordeaux, ciclamino, rosa, blu oltremare, azzurro, rosso vermiglio 
+Proporzione: 1/1/1/1/1 
+Scalinatura: 1 passata 
+Riduzione: 18 passate al cm"""@it,
+        """Parato costituito da quattro pianete, cinque stole, un manipolo, un velo di calice. Dimensioni cm 97 x 67; cm 204 x 20; cm 80 x 19; cm 53 x 53; cm 23 x 23. Il tessuto qui analizzato proietta la città di Termini Imerese in un ambito continentale, in quanto si tratta di un manufatto caratterizzato da un’organizzazione disegnativa operata soprattutto su stoffe di produzione francese.
+Il modulo ornamentale, a totale sviluppo verticale, attesta il passaggio da motivi distribuiti in rigide serie parallele verso continui percorsi di tralci e trine ondulati che nascono dalla sovrapposizione di doppie serpentine che attraversano per tutta la lunghezza il parato. Tali espedienti decorativi che si è soliti definire “a meandro”, sono ampiamente documentati sia nella nostra Isola, che in Italia, e in proposito si veda la pianeta dell’Abbazia di San Martino delle Scale (cfr. R Civiletto - M. Vitella, scheda n. 36, in L’eredità di..., 1997, pp. 231-232), il parato della chiesa di Santa Maria in Provenzano di Siena (cfr. R. Cappelli, scheda n. 123, in Drappi, velluti..., 1994, p. 196) e il velo da calice della Chiesa Collegiata di Santa Maria di Arena (cfr. E. Bazzani, scheda n. 19, in Tessuti antichi..., 1981, pp. 185-186). (R. Civiletto; M. Vitella)"""@it,
+        "cm 36 x ?; numero dei campi: non rilevabile; tipo di campo: seguente"@it,
+        "fondo in taffetas prodotto da tutti i fili di fondo e da tutte le trame di fondo. Opera creata da effetti di trame broccate in seta policroma e da oro lamellare che lavora con una trama di accompagnamento. Le trame policrome appaiono slegate sia al dritto, in corrispondenza del disegno, che al rovescio, mentre quella metallica con l’altra di accompagnamento sono fissate in taffetas."@it,
+        "motivo a sviluppo verticale sinuoso. Su nastri trinati, con porzioni di superficie campite a reticolo, si svolgono esili tralci fogliati intrecciandosi a otto. Tra le anse spuntano mazzi di rose, margherite, e piccoli fiori"@it,
+        "non rilevabile"@it ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/1dbbc083-c8dc-3387-8132-9cb7fa4e1cb4> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

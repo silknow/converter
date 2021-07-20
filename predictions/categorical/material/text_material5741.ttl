@@ -1,0 +1,34 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/91e56b0f-08b9-5964-9928-35c183f6b843> a rdf:Statement ;
+    silk:L18 "0.648348"^^xsd:float ;
+    rdf:object <http://data.silknow.org/vocabulary/210> ;
+    rdf:predicate ecrm:P126_employed ;
+    rdf:subject <http://data.silknow.org/production/8f0b9048-4811-348b-a05c-be581451e5ce> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/91e56b0f-08b9-5964-9928-35c183f6b843> .
+
+<http://data.silknow.org/activity/91e56b0f-08b9-5964-9928-35c183f6b843> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used """1 ordito; di fondo, organzino di seta, 2 capi, STA, rosa salmone 
+Scalinatura: 8 fili 
+Riduzione: 120 fili al cm"""@it,
+        """4 trame; I di fondo, seta, x capi, S, colore rosaceo e rosa salmone binati; II broccata, oro filato riant avvolto su anima in seta, x capi, STA, colore giallo, doppia; III broccata, argento filato riant avvolto su anima in seta, x capi, STA, colore bianco, doppia; IV broccata, oro riccio avvolto su anima in seta ondata, x capi, STA, colore bianco
+Proporzione: 1/1/1/1 
+Scalinatura: 1 passata 
+Riduzione: 15 passate al cm"""@it,
+        "Parato costituito da una pianeta, un manipolo, una stola. Dimensioni cm 94 x 60; cm 72 x 20; cm 180 x 20. Il tessuto bizarre con cui è stata confezionata la pianeta termitana è un ulteriore esempio della circolazione di manufatti serici lionesi o veneziani nella nostra Isola. Molto si è discusso sull’origine di questa fantasiosa soluzione disegnativa, sicuramente ripresa da stoffe orientali, ma di cui si sconosce il primitivo centro di produzione europeo che, considerati gli stretti rapporti commerciali con i paesi del Sol Levante, si propende ad identificare con la città lagunare (cfr. P. Peri, Tessuti..., in Drappi, velluti..., 1994, pp. 94 - 95). Questi manufatti tessili, caratterizzati da ornati difficilmente riconducibili a elementi naturalistici, ebbero molto successo e in Sicilia sono numerose le testimonianze che confermano la circolazione di queste tipologie seriche spesso utilizzate per la confezione di paramenti liturgici. Si vedano, in proposito, tutte le pianete censite dalla Ciolino Maugeri nell’area messinese (cfr. Lusso e..., II Sezione, 1984-85, pp. 123 - 151), il piviale della confraternita di Maria SS. della Mercede di via Maqueda di Palermo (cfr. M. Vitella, VI. 3, in Le Confraternite..., 1993, p. 284, tav. 58) e il paliotto dell’Abbazia di San Martino delle Scale (cfr. R. Civiletto, M. Vitella, scheda n. 13, in L’eredità di..., 1997, p. 217). L’opera esaminata è databile agli inizi del XVIII secolo, al massimo entro il primo trentennio, come del resto tutti i tessuti caratterizzati da ornati bizarre."@it,
+        "cm 37 x 24 ?; numero dei campi: non rilevabile; tipo di campo: seguente"@it,
+        "fondo in raso da 8 faccia ordito, diffalcamento 3, prodotto da tutti i fili di fondo e da tutte le trame di fondo. Opera creata da effetto natté di 2/2 (gros de Tours di 2 fili) e da tre trame broccate metalliche legate al dritto in diagonale 3 lega 1 direzione S da fili prelevati dall’ordito di fondo ."@it,
+        "impostazione a sviluppo verticale creato da una successione di motivi fantastici, concatenati, a orientamento contrapposto. Gli elementi decorativi suggeriscono forme di cornucopie da cui originano girali vegetali e tralci fioriti di ispirazione orientale. Gli effetti di controfondo sono creati da ombreggiature che profilano l’ornato."@it,
+        "non rilevabile"@it ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/8f0b9048-4811-348b-a05c-be581451e5ce> ecrm:P126_employed <http://data.silknow.org/vocabulary/210> .
+

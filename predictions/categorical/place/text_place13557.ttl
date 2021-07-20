@@ -1,0 +1,23 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/a9d04c0a-7698-58b2-aca8-30e2c743062e> a rdf:Statement ;
+    silk:L18 "0.343989"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3175395/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/a04656a2-ec9b-327f-bfc0-434bcfecd86c> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/a9d04c0a-7698-58b2-aca8-30e2c743062e> .
+
+<http://data.silknow.org/activity/a9d04c0a-7698-58b2-aca8-30e2c743062e> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Drawings by Titian are exceedingly rare, and this splendid study is one of the very few sheets that can plausibly be attributed to him. Although it has been trimmed (the fragment at the upper left has been interpreted in various ways but surely represents the lower half of the head of a bearded man), the sketch is a fine example of Titian's powerful and evocative drawing style. The poetic treatment of the landscape reflects the influence of Giorgione; the sheet may therefore date from relatively early in the artist's career, perhaps about 1511.Acquired by the Museum in 1991, the present sketch is a fairly recent discovery and constitutes an important addition to the small corpus of the artist's known drawings. The sheet is close in style to several others that may be among Titian’s earliest extant works: a \"Landscape with a Goat\" in the Musée du Louvre (Départment des Arts Graphiques, inv. no. 5539) and a sketch in the Gabinetto Disegni e Stampe degli Uffizi which depicts an alpine landscape with an eagle (Inv. no. 937), and a further, more problematic drawing in the same style known in at least four versions, of which the best is the \"Alpine Village with two Lovers\"at Chatsworth (Inv. no. 749 B). Each of these sheets is drawn in pen and ink, and each represents a pastoral landscape with rustic farm buildings of the kind with which Titian would have been familiar from the countryside surrounding his birthplace at Pieve di Cadore in the foothills of the Alps. In all of the related drawings, closely spaced vertical and horizontal strokes describe the architecture, while more vigorous, curvilinear pen work indicates the features of the landscape.Scholars concur that these sheets were drawn relatively early in Titian’s career, when he was profoundly influenced by Giorgione (ca. 1477/78-1510). The exact date, however, remains controversial. Chiara Moretto Wiel argues that they were executed during the first decade of the sixteenth century (see here ‘references’: Moretto Wiel 1988 and 1989); Oberhuber and Rearick date them about 1511-12 and Wethey proposes that they were made in 1512-15. Marked similarities between the treatment of the landscape and architecture in the present drawing and in Tizian's frescoes (documented 1510-11) in the Scuola del Santo, Padua as well as in the \"Noli me tangere\" of about 1512 in the National Gallery, London, suggest that the Metropolitan Museum's sheet may date from much the same period.The fragmentary sketch at the upper left margin of the drawing represents part of the head of a bearded man. Clearly, the drawing has been trimmed, and it has been suggested - albeit with scant evidence - that this sketch was formerly part of the same sheet as the \"Alpine Landscape with an Eagle\" in the Uffizi (Moretto Wiel 1988)."@en ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/a04656a2-ec9b-327f-bfc0-434bcfecd86c> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3175395/> .
+

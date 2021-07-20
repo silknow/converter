@@ -1,0 +1,32 @@
+@prefix ecrm: <http://erlangen-crm.org/current/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix silk: <http://data.silknow.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.silknow.org/statement/5a5791ae-bd43-55bc-a871-2cfb76d8373c> a rdf:Statement ;
+    silk:L18 "0.351471"^^xsd:float ;
+    rdf:object <https://sws.geonames.org/3017382/> ;
+    rdf:predicate ecrm:P8_took_place_on_or_within ;
+    rdf:subject <http://data.silknow.org/production/f01da5ff-008c-3de0-a0ee-3c30222e9f97> ;
+    prov:wasGeneratedBy <http://data.silknow.org/activity/5a5791ae-bd43-55bc-a871-2cfb76d8373c> .
+
+<http://data.silknow.org/activity/5a5791ae-bd43-55bc-a871-2cfb76d8373c> a prov:Activity ;
+    prov:atTime "2021-02-10T00:00:00"^^xsd:dateTime ;
+    prov:used "Barroco   Época Luis XIV   Edad Moderna"@es,
+        """Manípulo de color rosa con decoración vegetal y floral espolinada. Sobre un fondo rosa de damasco decorado con motivos vegetales discurre una decoración de motivos vegetales y florales de carácter fantástico realizada en seda de distintos colores e hilo metálico. En los extremos laterales conserva un remate de galón de plata probablemente original, en buen estado de conservación. El reverso conserva un forro de tafetán azul de seda. Carece de orillos. Las dimensiones de la pieza impiden conocer el tamaño del "rapport". El tejido es muy similar al de la casulla CE04778, aunque seguramente proceden de ornamentos litúrgicos distintos.  
+  
+Ligamentos:  
+-Damasco formado por raso de 3 por urdimbre [brillo] y tafetán [mate] [base]  
+-Siete tramas espolinadas que ligan en sarga de color verde claro, verde oscuro, amarillo, azul, blanco -seda en su color-, morado y malva [decoración]  
+-Tramas dobles de hilo metálico plateado arrollado a alma de seda que ligan en sarga [decoración]"""@es,
+        """Por las características que presenta a nivel técnico y decorativo se puede incluir en la serie de tejidos "bizarros". El término "sedas bizarras" hace referencia a los tejidos fabricados en Europa entre 1695 y 1720 que presentan una decoración compuesta por elementos fantásticos combinados con motivos exóticos, y que en ocasiones por su gran complejidad son casi indescriptibles. Los diseños, completamente originales respecto a las fórmulas compositivas utilizadas hasta entonces en las producciones europeas, se realizaban en su mayoría con una particular solución técnica consistente en combinar en el fondo el efecto lúcido-opaco del damasco, con decoraciones realizadas en hilo metálico dorado y plateado. Si bien la técnica no era nueva, en los tejidos bizarros se renovó al crear un doble plano de profundidad con la superposición de dos diseños diversos sólo en parte correlativos: uno de fondo obtenido a través del contraste de los efectos brillo-mate del damasco, y otro realizado con las tramas decorativas, con cuya combinación se buscaba conseguir distintos planos de profundidad. Además, en este tipo de tejido el uso de hilos metálicos dorados y plateados cambiaron en cierto sentido la idea tradicional de los tejidos ricos, evidenciando no tanto la cualidad de la materia, como la fineza técnica de su elaboración, y la fascinación misteriosa de su ornamentación. La renovación decorativa también implicó cambios en la gama cromática y en su combinación. Si el rojo se mantiene como el pigmento más valorado, que además estaba disponible en infinitos tonos, que iban del fucsia al coral y al rosa más tenue, los azules recuerdan a la porcelana y se empolvan, los amarillos se llenan de esfumaturas naranjas, y los verdes asumen tonos esmaltados. Los tejidos "bizarros" presentan una estructura decorativa en el interior de la cual generalmente es reconocible la distribución ordenada en filas, con los motivos contrapeados orientados a izquierda y derecha con un desarrollo vertical ondulado, en algunas ocasiones difícil de individualizar por la enorme riqueza de detalles. De hecho, las formas fantásticas, exóticas, geométricas o vagamente naturalistas, están dispuestas de manera libre, pero sobre todo adquieren dimensiones insólitas, aumentando notablemente la altura del "rapport". A la ambigüedad de las formas insólitas de la decoración principal hay que añadir la percepción del damasco, inquietante y nunca completo, visto y oculto por la incidencia de la luz sobre el tejido. A la hora de componer la decoración, los diseñadores también tenían en cuenta este factor estético que dependía del movimiento, por lo que en su mayoría estos tejidos estaban destinados a la indumentaria. La producción de estas telas fue característica de las manufacturas francesas, que inicialmente basaron sus diseños en los dibujos del arquitecto-decorador Daniel Marot, pero son también de gran calidad las producciones de centros italianos, como Venecia, Mesina o Palermo, que incorporaron las novedades decorativas y donde los tejidos se pueden reconocer también por algunas características técnicas. Por el carácter casi naturalista de los motivos que componen la decoración puede datarse entre 1710 y 1720.  
+  
+Esta pieza corresponde a la antigua ficha 3497 que describe: "Un manípulo". Esta ficha escrita a máquina está fechada en la década de 1930, y corresponde al periodo en el que Luis Pérez Bueno fue director del museo. El objeto procede de la colección personal de Luis Pérez Bueno."""@es ;
+    prov:wasAssociatedWith <http://data.silknow.org/actor/jsi-text-analysis/1> .
+
+<http://data.silknow.org/actor/jsi-text-analysis/1> a prov:SoftwareAgent ;
+    ecrm:P70_documents "Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score." .
+
+<http://data.silknow.org/production/f01da5ff-008c-3de0-a0ee-3c30222e9f97> ecrm:P8_took_place_on_or_within <https://sws.geonames.org/3017382/> .
+
