@@ -139,7 +139,8 @@ public class METConverter extends Converter {
     linkToRecord(obj.addObservation(s.get("description"), "Description", "en"));
 
     String acquisitionFrom = s.get("Credit Line:");
-    LegalBody museum = null; // FIXME ?
+    String museumName = "Victoria and Albert Museum";
+    LegalBody museum = new LegalBody(museumName);
 
 
     Acquisition acquisition = new Acquisition(regNum);

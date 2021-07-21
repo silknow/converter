@@ -19,3 +19,4 @@
     ./gradlew run --args="versailles '../crawler/data/versailles' -o ./output/versailles -g tschleider"
     ./gradlew run --args="artic '../crawler/data/artic' -o ./output/artic -g tschleider"
     ./gradlew run --args="ElTesoro '../crawler/data/el-tesoro' -o ./output/el-tesoro -g tschleider"
+    ./gradlew run --args="louvre '../crawler/data/louvre' -o ./output/louvre -g tschleider"

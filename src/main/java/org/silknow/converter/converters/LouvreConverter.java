@@ -7,6 +7,7 @@ import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
 
 import java.io.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -32,7 +33,6 @@ public class LouvreConverter extends Converter {
     String mainLang = "fr";
     this.DATASET_NAME = "louvre";
 
-    String museumName = "Musée du Louvre";
 
     // Parse JSON
     logger.trace("parsing json");
@@ -57,6 +57,7 @@ public class LouvreConverter extends Converter {
       regNum = s.getId();
     id = s.getId();
 
+    String museumName = s.get("Affectaire");
 
 
     ManMade_Object obj = new ManMade_Object(regNum);
@@ -87,8 +88,9 @@ public class LouvreConverter extends Converter {
 
     s.getMulti("Artiste / Auteur / Ecole / Centre artistique").forEach(author -> prod.addActivity(new Actor (author), "Artiste / Auteur / Ecole / Centre artistique"));
 
-    obj.addTitle(s.get("title"), mainLang);
-
+    if (s.getMulti("title").findAny() != null) {
+      obj.addTitle(s.getMulti("title").findFirst().orElse(null), mainLang);
+    }
 
 
     if (s.getMulti("Description / Décor").findFirst().orElse(null) != null) {
@@ -109,23 +111,7 @@ public class LouvreConverter extends Converter {
     s.getMulti("Lieu de création / fabrication / exécution").forEach(prod::addPlace);
 
 
-    LegalBody legalbody = new LegalBody(s.getMulti("Providing institution").findFirst().orElse(null));
 
-
-    Transfer transfer = new Transfer(regNum);
-    if (s.getMulti("Provider").findFirst().orElse(null) != null) {
-      String provider = s.getMulti("Provider").findFirst().orElse(null);
-      transfer.of(obj).by(legalbody).by(provider);
-    }
-    else {
-      transfer.of(obj).by(legalbody);
-    }
-
-    Right copyphoto = new Right(obj.getUri() + "/image/right");
-    s.getMulti("Rights statement for the media in this item (unless otherwise specified)")
-      .map(x -> x.replaceFirst("© ", ""))
-      .map(Actor::new)
-      .forEach(copyphoto::ownedBy);
 
     if (s.getMulti("Collection").findFirst().orElse(null) != null) {
       Collection collection = new Collection(regNum, s.getMulti("Collection").findFirst().orElse(null));
@@ -134,23 +120,48 @@ public class LouvreConverter extends Converter {
       linkToRecord(collection);
     }
 
-    String acquisitionFrom = s.get("Mode d’acquisition");
+    String acquisitionFrom = s.getMulti("Mode d’acquisition").findFirst().orElse(null);
     LegalBody museum = new LegalBody(museumName);
 
     Acquisition acquisition = new Acquisition(regNum);
+    acquisition.transfer(acquisitionFrom, obj, museum);
+    acquisition.addActor(new Actor(acquisitionFrom));
 
-    if (s.get("Bibliografía") != null) {
-      InformationObject bio = new InformationObject(regNum + "b");
-      bio.setType("Bibliografía", mainLang);
-      bio.isAbout(obj);
-      bio.addNote(s.get("Bibliografía"), mainLang);
-      linkToRecord(bio);
-    }
+
+    AtomicInteger Pcounter = new AtomicInteger();
+
+
+    if (s.getMulti("Bibliographie").findAny() != null) {
+
+      String finalRegNum1 = regNum;
+      s.getMulti("Bibliographie")
+        .forEach(x -> {
+
+          InformationObject pub = new InformationObject(finalRegNum1 + "_b_" + Pcounter.getAndIncrement());
+          pub.setType("Bibliographie", mainLang);
+          pub.isAbout(obj);
+          pub.addNote(x, mainLang);
+          linkToRecord(pub);
+        });}
+
+    AtomicInteger Ecounter = new AtomicInteger();
+
+    if (s.getMulti("Expositions").findAny() != null) {
+
+      String finalRegNum = regNum;
+      s.getMulti("Expositions")
+        .forEach(y -> {
+
+          InformationObject exh = new InformationObject(finalRegNum + "_e_" + Ecounter.getAndIncrement());
+          exh.setType("Expositions", mainLang);
+          exh.isAbout(obj);
+          exh.addNote(y, mainLang);
+          linkToRecord(exh);
+        });}
 
     linkToRecord(obj);
 
     linkToRecord(prod);
-    linkToRecord(transfer);
     return this.model;
   }
 

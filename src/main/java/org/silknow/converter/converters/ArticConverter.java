@@ -110,7 +110,7 @@ public class ArticConverter extends Converter {
       s.getMulti("publication-history")
         .forEach(x -> {
 
-                       InformationObject pub = new InformationObject(regNum + "p" + Pcounter.getAndIncrement());
+                       InformationObject pub = new InformationObject(regNum + "_p_" + Pcounter.getAndIncrement());
                        pub.setType("Publication History", mainLang);
                        pub.isAbout(obj);
                        pub.addNote(x, mainLang);
@@ -125,7 +125,7 @@ public class ArticConverter extends Converter {
       s.getMulti("exhibition-history")
         .forEach(y -> {
 
-          InformationObject exh = new InformationObject(regNum + "e" + Ecounter.getAndIncrement());
+          InformationObject exh = new InformationObject(regNum + "_e_" + Ecounter.getAndIncrement());
           exh.setType("Exhibition History", mainLang);
           exh.isAbout(obj);
           exh.addNote(y, mainLang);
