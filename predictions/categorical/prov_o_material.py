@@ -55,7 +55,6 @@ for file_name in glob.glob('material_group.tsv'):
         g = """
            ?activity a prov:Activity ;
            prov:atTime "2021-02-10"^^xsd:dateTime;
-           prov:used ?text .
            ?statement prov:wasGeneratedBy ?activity .
            
            ?actor a prov:SoftwareAgent ;
@@ -74,7 +73,7 @@ for file_name in glob.glob('material_group.tsv'):
            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/statement/"""
         n = str(uuid.uuid5(uuid.NAMESPACE_DNS, str(str(obj)+str(predicted)+str(score)+str(file_name))))
         o = """"), "object", "prediction", "i")) AS ?statement)
-            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/actor/jsi-text-analysis/1"""
+            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/actor/XGBoost-classifier/1"""
         r = """"), "object", "prediction", "i")) AS ?actor)
             BIND(URI(CONCAT("http://data.silknow.org", "/activity/"""
         s = str(uuid.uuid5(uuid.NAMESPACE_DNS, str(str(obj)+str(predicted)+str(score)+str(file_name))))
@@ -93,7 +92,7 @@ for file_name in glob.glob('material_group.tsv'):
 
         try:
             results = sparql.query().convert()
-            results.serialize(destination="./material/"+"text_material"+str(index)+".ttl", format="turtle")
+            results.serialize(destination="./material/"+"xgboost_material"+str(index)+".ttl", format="turtle")
         except:
             time.sleep(10)
             continue

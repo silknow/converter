@@ -41,6 +41,10 @@ hs_err_pid*
 /predictions/text/technique/*.ttl
 /predictions/text/place/*.ttl
 /predictions/text/time/*.ttl
+/predictions/categorical/material/*.ttl
+/predictions/categorical/technique/*.ttl
+/predictions/categorical/place/*.ttl
+/predictions/categorical/time/*.ttl
 
 /src/main/main.iml
 
