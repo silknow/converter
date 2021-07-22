@@ -54,7 +54,7 @@ for file_name in glob.glob('material_group.tsv'):
         f = '"'+str(score) +'"'+"^^xsd:float ."
         g = """
            ?activity a prov:Activity ;
-           prov:atTime "2021-02-10"^^xsd:dateTime;
+           prov:atTime "2021-02-10"^^xsd:dateTime .
            ?statement prov:wasGeneratedBy ?activity .
            
            ?actor a prov:SoftwareAgent ;
