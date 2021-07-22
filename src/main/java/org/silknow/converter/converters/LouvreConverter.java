@@ -57,7 +57,7 @@ public class LouvreConverter extends Converter {
       regNum = s.getId();
     id = s.getId();
 
-    String museumName = s.get("Affectaire");
+    String museumName = "Musée du Louvre";
 
 
     ManMade_Object obj = new ManMade_Object(regNum);
@@ -94,8 +94,12 @@ public class LouvreConverter extends Converter {
 
 
     if (s.getMulti("Description / Décor").findFirst().orElse(null) != null) {
-      linkToRecord(obj.addObservation(s.get("Description / Décor"), "Description / Décor", mainLang));
+      s.getMulti("Description / Décor")
+        .map(x -> obj.addObservation(x, "Description / Décor", mainLang))
+        .forEach(this::linkToRecord);
     }
+
+
 
     String dim = s.getMulti("Dimensions").findFirst().orElse(null);
     if (dim != null) {
@@ -107,7 +111,7 @@ public class LouvreConverter extends Converter {
 
     s.getMulti("Date de création / fabrication").forEach(time -> prod.addTimeAppellation(time.replaceAll("Epoque / période : ","").replaceAll("Date de création/fabrication : ","")));
 
-    s.getMulti("Matière et technique").forEach(material -> prod.addMaterial(material.replaceAll("Matériau/Technique : ","").replaceAll("Matériau : ",""), mainLang));
+    s.getMulti("Matière et technique").forEach(material -> prod.addMaterial(material.replaceAll("Matériau/Technique : ","").replaceAll("Matériau : ","").replaceAll("Technique :",""), mainLang));
     s.getMulti("Lieu de création / fabrication / exécution").forEach(prod::addPlace);
 
 
@@ -120,12 +124,15 @@ public class LouvreConverter extends Converter {
       linkToRecord(collection);
     }
 
-    String acquisitionFrom = s.getMulti("Mode d’acquisition").findFirst().orElse(null);
-    LegalBody museum = new LegalBody(museumName);
+    if (s.getMulti("Mode d’acquisition").findFirst().orElse(null) != null){
 
-    Acquisition acquisition = new Acquisition(regNum);
-    acquisition.transfer(acquisitionFrom, obj, museum);
-    acquisition.addActor(new Actor(acquisitionFrom));
+      String acquisitionFrom = s.getMulti("Mode d’acquisition").findFirst().orElse(null);
+      LegalBody museum = new LegalBody(museumName);
+
+      Acquisition acquisition = new Acquisition(regNum);
+      acquisition.transfer(acquisitionFrom, obj, museum);
+      acquisition.addActor(new Actor(acquisitionFrom));
+    }
 
 
     AtomicInteger Pcounter = new AtomicInteger();
