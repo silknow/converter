@@ -79,7 +79,6 @@ The `<suffix>` is taken from this table:
 | E54_Dimension | object | /dimension/{1 or 2} |
 | T24_Pattern_Unit | object | /pattern/{1 or 2} |
 | S4_Observation | object | observation/{progressive int} |
-| E15_Identifier_Assignment | object | id_assignment/{id from E42} |
 | E16_Measurement | object | dimension/measurement |
 | E3_Condition_State | object | assessment/{progressive int} |
 | E30_Right | object | /right/ |
