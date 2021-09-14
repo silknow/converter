@@ -145,7 +145,7 @@ public class VAMConverter extends Converter {
   private void parseDimensions(String dim, ManMade_Object obj) {
     if (StringUtils.isBlank(dim) || dim.length() < 2) return;
     String dimUri = obj.getUri() + "/dimension/";
-    String pattUri = dimUri + "/pattern/";
+    String pattUri = dimUri + "pattern/";
     String pattUri2 = "http://data.silknow.org/vocabulary/444";
 
     String unit = null;
