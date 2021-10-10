@@ -310,7 +310,7 @@ public abstract class Entity {
       return assignment;
     }
     if (type == null) {
-      Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)
+      Resource assignment = model.createResource(this.getUri() + "/type/" + ++typeAssignmentCount)
         .addProperty(RDF.type, CIDOC.E17_Type_Assignment)
         .addProperty(CIDOC.P41_classified, this.asResource())
         .addProperty(CIDOC.P42_assigned, r);
@@ -323,7 +323,7 @@ public abstract class Entity {
       // this.addProperty(CIDOC.P2_has_type, classification);
       return assignment;
     } else {
-      Resource assignment = model.createResource(this.getUri() + "/type_assignment/" + ++typeAssignmentCount)
+      Resource assignment = model.createResource(this.getUri() + "/type/" + ++typeAssignmentCount)
         .addProperty(RDF.type, CIDOC.E17_Type_Assignment)
         .addProperty(CIDOC.P41_classified, this.asResource())
         .addProperty(CIDOC.P2_has_type, type)

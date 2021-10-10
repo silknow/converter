@@ -79,9 +79,10 @@ public class PMConverter extends Converter {
     prod.add(obj);
 
     // Authors
-    s.getAuthors().map(this::toPerson)
-      .forEach(x-> prod.addActivity(x, "author"));
-
+    if (s.getAuthors()  != null) {
+      s.getAuthors().map(this::toPerson)
+        .forEach(x -> prod.addActivity(x, "author"));
+    }
     // Dates
     String startYear = s.get("fieldDateProduction.startYear");
     String endYear = s.get("fieldDateProduction.startYear");

@@ -55,8 +55,8 @@ for file_name in glob.glob('material_group.tsv'):
         g = """
            ?activity a prov:Activity ;
            prov:atTime "2021-02-10"^^xsd:dateTime .
+           prov:used ?dig .
            ?statement prov:wasGeneratedBy ?activity .
-           
            ?actor a prov:SoftwareAgent ;
            ecrm:P70_documents """
         j = '''"Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score."''' + " ."
@@ -69,11 +69,13 @@ for file_name in glob.glob('material_group.tsv'):
         m = """}
            ?production ecrm:P108_has_produced ?object .
            ?object rdfs:comment ?text .
+           ?dig a crmdig:D1_Digital_Object .
+           ?dig ecrm:P129_is_about ?object .
 
            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/statement/"""
         n = str(uuid.uuid5(uuid.NAMESPACE_DNS, str(str(obj)+str(predicted)+str(score)+str(file_name))))
         o = """"), "object", "prediction", "i")) AS ?statement)
-            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/actor/XGBoost-classifier/1"""
+            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/actor/XGBoost-classifier/"""
         r = """"), "object", "prediction", "i")) AS ?actor)
             BIND(URI(CONCAT("http://data.silknow.org", "/activity/"""
         s = str(uuid.uuid5(uuid.NAMESPACE_DNS, str(str(obj)+str(predicted)+str(score)+str(file_name))))
@@ -87,7 +89,6 @@ for file_name in glob.glob('material_group.tsv'):
         
         sparql.setQuery(q.strip())
         sparql.setReturnFormat(RDFXML)
-
 
 
         try:

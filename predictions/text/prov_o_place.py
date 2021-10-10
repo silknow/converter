@@ -107,7 +107,7 @@ for file_name in glob.glob('place.tsv'):
            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/statement/"""
         n = str(uuid.uuid5(uuid.NAMESPACE_DNS, str(str(obj)+str(predicted)+str(score)+str(file_name))))
         o = """"), "object", "prediction", "i")) AS ?statement)
-            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/actor/jsi-text-analysis/1"""
+            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/actor/jsi-text-analysis/"""
         r = """"), "object", "prediction", "i")) AS ?actor)
             BIND(URI(CONCAT("http://data.silknow.org", "/activity/"""
         s = str(uuid.uuid5(uuid.NAMESPACE_DNS, str(str(obj)+str(predicted)+str(score)+str(file_name))))

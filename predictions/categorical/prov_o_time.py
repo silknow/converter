@@ -63,6 +63,7 @@ for file_name in glob.glob('time_label.tsv'):
         g = """
            ?activity a prov:Activity ;
            prov:atTime "2021-02-10"^^xsd:dateTime .
+           prov:used ?dig .
            ?statement prov:wasGeneratedBy ?activity .
            
            ?actor a prov:SoftwareAgent ;
@@ -77,11 +78,13 @@ for file_name in glob.glob('time_label.tsv'):
         m = """}
            ?production ecrm:P108_has_produced ?object .
            ?object rdfs:comment ?text .
+           ?dig a crmdig:D1_Digital_Object .
+           ?dig ecrm:P129_is_about ?object .
 
            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/statement/"""
         n = str(uuid.uuid5(uuid.NAMESPACE_DNS, str(str(obj)+str(predicted)+str(score)+str(file_name))))
         o = """"), "object", "prediction", "i")) AS ?statement)
-            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/actor/XGBoost-classifier/1"""
+            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/actor/XGBoost-classifier/"""
         r = """"), "object", "prediction", "i")) AS ?actor)
             BIND(URI(CONCAT("http://data.silknow.org", "/activity/"""
         s = str(uuid.uuid5(uuid.NAMESPACE_DNS, str(str(obj)+str(predicted)+str(score)+str(file_name))))

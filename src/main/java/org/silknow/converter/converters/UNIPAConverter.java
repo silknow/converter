@@ -151,7 +151,7 @@ public class UNIPAConverter extends Converter {
       linkToRecord(obj.addProperty(CIDOC.P43_has_dimension, d));
       Pattern_Unit p = new Pattern_Unit(pattUri, d);
       linkToRecord(obj.addProperty(CIDOC.P58_has_section_definition, p));
-      linkToRecord(obj.addProperty(CIDOC.P58_has_section_definition, model.createResource(pattUri2)));
+      //linkToRecord(obj.addProperty(CIDOC.P58_has_section_definition, model.createResource(pattUri2)));
       }
 
 

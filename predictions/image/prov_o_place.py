@@ -15,6 +15,16 @@ for file_name in glob.glob('sys_integration_pred_place.csv'):
         obj = row['obj_uri'].strip()
         img = row[' image_name'].strip()
         museum = row[' museum'].strip()
+        if "met" in str(museum):
+           museum = "met-museum"
+        if "cer" in str(museum):
+           museum = "ceres-mcu"
+        if "garin" in str(museum):
+           museum = "ren_garin"
+        if "mfa" in str(museum):
+           museum = "mfa-boston"
+        if "paris-musees" in str(museum):
+           museum = "ParisMusees"
         image = "https://silknow.org/silknow/media/"+str(museum)+"/"+str(img)
         counter_pred = counter_pred + 1 
         counter_act = counter_act + 1
@@ -112,7 +122,7 @@ for file_name in glob.glob('sys_integration_pred_place.csv'):
            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/statement/"""
         n = str(uuid.uuid5(uuid.NAMESPACE_DNS, str(str(obj)+str(img)+str(predicted))))
         o = """"), "object", "prediction", "i")) AS ?statement)
-            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/actor/luh-image-analysis/1"""
+            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/actor/luh-image-analysis/"""
         r = """"), "object", "prediction", "i")) AS ?actor)
             BIND(URI(CONCAT("http://data.silknow.org", "/activity/"""
         s = str(uuid.uuid5(uuid.NAMESPACE_DNS, str(str(obj)+str(img)+str(predicted))))
