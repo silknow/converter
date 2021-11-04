@@ -20,5 +20,5 @@
     ./gradlew run --args="artic '../crawler/data/artic' -o ./output/artic -g tschleider"
     ./gradlew run --args="ElTesoro '../crawler/data/el-tesoro' -o ./output/el-tesoro -g tschleider"
     ./gradlew run --args="louvre '../crawler/data/louvre' -o ./output/louvre -g tschleider"
-    ./gradlew run --args="StEtienne '../crawler/data/musee-st-etienne' -o ./output/musee-st-etienne -g tschleider"
+    #./gradlew run --args="StEtienne '../crawler/data/musee-st-etienne' -o ./output/musee-st-etienne -g tschleider"
 

@@ -68,7 +68,7 @@ public class VAMConverter extends Converter {
     prod.add(obj);
     prod.addActivity(s.get("artist"), "author");
     prod.addNote(s.get("production_note"));
-
+    obj.addTitle(s.getMulti("title").findFirst().orElse(null), mainLang);
     s.getMulti("date_text").forEach(prod::addTimeAppellation);
     s.getMulti("materials_techniques").forEach(materials -> {
       String[] mats = materials.split(";");
