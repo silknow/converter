@@ -55,8 +55,8 @@ public class VAMConverter extends Converter {
 
     filename = file.getName();
 
-    String regNum = s.get("museum_number");
-    id = s.get("object_number");
+    String regNum = s.get("accessionNumber");
+    id = s.get("systemNumber");
 
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource("https://collections.vam.ac.uk/item/" + this.filename.replace(".json",""))));
@@ -68,7 +68,7 @@ public class VAMConverter extends Converter {
     prod.add(obj);
     prod.addActivity(s.get("artist"), "author");
     prod.addNote(s.get("production_note"));
-    obj.addTitle(s.getMulti("title").findFirst().orElse(null), mainLang);
+    //obj.addTitle(s.getMulti("title").findFirst().orElse(null), mainLang);
     s.getMulti("date_text").forEach(prod::addTimeAppellation);
     s.getMulti("materials_techniques").forEach(materials -> {
       String[] mats = materials.split(";");
