@@ -57,7 +57,7 @@ public class VAMConverter extends Converter {
 
     String regNum = s.get("accessionNumber");
     id = s.get("systemNumber");
-    if (regNum == "") {
+    if (regNum == null) {
       regNum = s.get("museum_number");
       id = s.get("object_number");
     }
