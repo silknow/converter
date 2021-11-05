@@ -115,11 +115,12 @@ public class VAMConverter extends Converter {
       move.of(obj).from(s.getMulti("location").findFirst().orElse(null)).to(s.getMulti("location").findFirst().orElse(null));
     }
 
+    if (s.getMulti("collections").findFirst().isPresent()) {
     Collection collection = new Collection(regNum, s.getMulti("collections").findFirst().orElse(null));
     collection.of(obj);
     collection.addAppellation(s.getMulti("collections").findFirst().orElse(null));
 
-    linkToRecord(collection);
+    linkToRecord(collection); }
 
     s.getImages().map(Image::fromCrawledJSON)
       .peek(image -> image.addInternalUrl("vam"))
@@ -136,6 +137,14 @@ public class VAMConverter extends Converter {
 
     Mark m = new Mark(s.get("mark"));
     m.carries(obj);
+
+    s.getMulti("contentPerson").forEach(subject -> obj.addSubject(subject, mainLang));
+    s.getMulti("contentPeople").forEach(subject -> obj.addSubject(subject, mainLang));
+    s.getMulti("contentEvents").forEach(subject -> obj.addSubject(subject, mainLang));
+    s.getMulti("contentOthers").forEach(subject -> obj.addSubject(subject, mainLang));
+    s.getMulti("contentOrganisations").forEach(subject -> obj.addSubject(subject, mainLang));
+    s.getMulti("contentConcepts").forEach(subject -> obj.addSubject(subject, mainLang));
+
 
     linkToRecord(obj);
     linkToRecord(prod);
