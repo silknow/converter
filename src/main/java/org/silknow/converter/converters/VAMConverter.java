@@ -57,6 +57,11 @@ public class VAMConverter extends Converter {
 
     String regNum = s.get("accessionNumber");
     id = s.get("systemNumber");
+    if (regNum == "") {
+      regNum = s.get("museum_number");
+      id = s.get("object_number");
+    }
+
 
     ManMade_Object obj = new ManMade_Object(regNum);
     linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource("https://collections.vam.ac.uk/item/" + this.filename.replace(".json",""))));
