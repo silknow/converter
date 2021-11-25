@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -34,7 +35,7 @@ public class ImatexConverter extends Converter {
     if (!this.canConvert(file))
       throw new RuntimeException("Imatex converter require files in JSON format.");
 
-    String mainLang = file.getName().replace(".json", "").split("-")[1];
+    String mainLang = file.getName().replace(".json", "").split("_")[1];
     this.DATASET_NAME = "imatex";
 
     // Parse JSON
@@ -52,9 +53,9 @@ public class ImatexConverter extends Converter {
     logger.trace("creating objects");
 
     String fullfilename = file.getName();
-    fullfilename = fullfilename.replace("-en", "");
-    fullfilename = fullfilename.replace("-es", "");
-    fullfilename = fullfilename.replace("-ca", "");
+    fullfilename = fullfilename.replace("_en", "");
+    fullfilename = fullfilename.replace("_es", "");
+    fullfilename = fullfilename.replace("_ca", "");
 
     filename = fullfilename;
 
@@ -200,12 +201,11 @@ public class ImatexConverter extends Converter {
     prod.addActivity(s.get("DESSIGNER"), "Designer");
     prod.addActivity(s.get("MANUFACTURER"), "Maker");
     // prod.addActivity(s.get("TAILOR/COUTURIER"), "Tailor/Couturier");
-    // Pierre explained that this field was not useful; for the period of interest to SILKNOW, there is no tailor/couturier
     prod.addActivity(s.get("AUTHOR"), "Author");
 
     Transfer transfer = new Transfer(regNum);
     transfer.of(obj).by(museum);
-
+/*
     if (s.get("BIBLIOGRAPHY") != null) {
       InformationObject bio = new InformationObject(regNum + "b");
       bio.setType("Bibliography", mainLang);
@@ -221,6 +221,39 @@ public class ImatexConverter extends Converter {
       bio.addNote(s.get("EXHIBITIONS"), mainLang);
       linkToRecord(bio);
     }
+*/
+    AtomicInteger Pcounter = new AtomicInteger();
+
+    if (s.getMulti("bibliography").findAny() != null) {
+
+      String finalRegNum = regNum;
+      s.getMulti("bibliography")
+        .forEach(x -> {
+
+          InformationObject bio = new InformationObject(finalRegNum + "_b_" + Pcounter.getAndIncrement());
+          bio.setType("bibliography", mainLang);
+          bio.isAbout(obj);
+          bio.addNote(x, mainLang);
+          linkToRecord(bio);
+        });}
+
+
+    AtomicInteger Ecounter = new AtomicInteger();
+
+    if (s.getMulti("expositions").findAny() != null) {
+
+      String finalRegNum1 = regNum;
+      s.getMulti("expositions")
+        .forEach(y -> {
+
+          InformationObject exh = new InformationObject(finalRegNum1 + "_e_" + Ecounter.getAndIncrement());
+          exh.setType("expositions", mainLang);
+          exh.isAbout(obj);
+          exh.addNote(y, mainLang);
+          linkToRecord(exh);
+        });}
+
+
 
     if (s.get("OTHER ITEMS") != null) {
       InformationObject bio = new InformationObject(regNum + "e");

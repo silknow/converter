@@ -82,72 +82,39 @@ public class StEtienneConverter extends Converter {
 
 
     s.getMulti("Matière").forEach(material -> prod.addMaterial(material, mainLang));
-    s.getMulti("Matière_2").forEach(material -> prod.addMaterial(material, mainLang));
-    s.getMulti("Matière_3").forEach(material -> prod.addMaterial(material, mainLang));
-    s.getMulti("Matière_4").forEach(material -> prod.addMaterial(material, mainLang));
 
     s.getMulti("Technique").forEach(technique -> prod.addTechnique(technique, mainLang));
-    s.getMulti("Technique_2").forEach(technique -> prod.addTechnique(technique, mainLang));
-    s.getMulti("Technique_3").forEach(technique -> prod.addTechnique(technique, mainLang));
-    s.getMulti("Technique_4").forEach(technique -> prod.addTechnique(technique, mainLang));
-
-
 
 
     s.getMulti("Désignation du bien")
       .forEach(x -> linkToRecord(obj.addClassification(x, "Désignation du bien", "fr")));
-    s.getMulti("Désignation du bien_2")
-      .forEach(x -> linkToRecord(obj.addClassification(x, "Désignation du bien_2", "fr")));
-    s.getMulti("Désignation du bien_3")
-      .forEach(x -> linkToRecord(obj.addClassification(x, "Désignation du bien_3", "fr")));
     s.getMulti("Domaine")
       .forEach(x -> linkToRecord(obj.addClassification(x, "Domaine", "fr")));
-    s.getMulti("Domaine_2")
-      .forEach(x -> linkToRecord(obj.addClassification(x, "Domaine_2", "fr")));
 
-    if (s.get("Transcription") != "") {
-      Inscription ins = new Inscription((s.get("Transcription")), "fr");
-      if (s.get("Type d'inscription") != "") {
-      ins.addNote(s.get("Type d'inscription"), "fr"); }
-      if (s.get("Type d'inscription_2") != "") {
-        ins.addNote(s.get("Type d'inscription_2"), "fr"); }
-      if (s.get("Type d'inscription_2_2") != "") {
-        ins.addNote(s.get("Type d'inscription_2_2"), "fr"); }
-      if (s.get("Type d'inscription_2_1") != "") {
-        ins.addNote(s.get("Type d'inscription_2_1"), "fr"); }
-      if (s.get("Description") != "") {
-        ins.addNote(s.get("Description"), "fr"); }
-      if (s.get("Emplacement") != "") {
-        ins.addNote(s.get("Emplacement"), "fr"); }
-      if ((s.get("Emplacement") != "") && s.get("Description") != "") {
-        ins.addNote((s.get("Emplacement") + ", " + s.get("Description")), "fr"); }
-      if (s.get("Description_2") != "") {
-        ins.addNote(s.get("Description_2"), "fr"); }
-      if (s.get("Emplacement_2") != "") {
-        ins.addNote(s.get("Emplacement_2"), "fr"); }
-      if ((s.get("Emplacement_2") != "") && s.get("Description_2") != "") {
-        ins.addNote((s.get("Emplacement_2") + ", " + s.get("Description_2")), "fr"); }
-      obj.add(ins);
-    }
 
-    if ((s.get("Fonction / Rôle_2") == "") && (s.get("Fonction / Rôle") != "") && (s.get("Personne") != "")) {
+    s.getMulti("Transcription")
+      .forEach(x -> linkToRecord(obj.addClassification(x, "Désignation du bien", "fr")));
+
+    if (s.getMulti("Transcription").findAny() != null) {
+    s.getMulti("Transcription")
+      .forEach(x -> {
+
+        Inscription ins = new Inscription(x, mainLang);
+        s.getMulti("Type d'inscription").forEach(y -> ins.addNote(y, mainLang));
+        s.getMulti("Description").forEach(z -> ins.addNote(z, mainLang));
+        s.getMulti("Emplacement").forEach(e -> ins.addNote(e, mainLang));
+
+        linkToRecord(ins);
+      });}
+
+
+    if ((s.get("Fonction / Rôle") != "") && (s.get("Personne") != "")) {
     s.getMulti("Personne").forEach(author -> prod.addActivity(new Actor(author), s.get("Fonction / Rôle")));}
-    if ((s.get("Fonction / Rôle_2") != "") && (s.get("Personne") != "")) {
-      s.getMulti("Personne").forEach(author -> prod.addActivity(new Actor(author), s.get("Fonction / Rôle") + ", " + s.get("Fonction / Rôle_2")));}
-    if ((s.get("Fonction / Rôle_3") != "") && (s.get("Personne") != "")){
-      s.getMulti("Personne").forEach(author -> prod.addActivity(new Actor(author), s.get("Fonction / Rôle") + ", " + s.get("Fonction / Rôle_2") + ", " + s.get("Fonction / Rôle_3")));}
-    if ((s.get("Fonction / Rôle_4") != "") && (s.get("Personne") != "")) {
-      s.getMulti("Personne").forEach(author -> prod.addActivity(new Actor(author), s.get("Fonction / Rôle") + ", " + s.get("Fonction / Rôle_2") + ", " + s.get("Fonction / Rôle_3") + ", " + s.get("Fonction / Rôle_4")));}
 
 
     s.getMulti("Epoque, datation").forEach(prod::addTimeAppellation);
-    if (s.get("Epoque, datation_2") != "") {
-    s.getMulti("Epoque, datation_2").forEach(prod::addTimeAppellation);}
 
     s.getMulti("Notes")
-      .map(x -> obj.addObservation(x, "Notes", mainLang))
-      .forEach(this::linkToRecord);
-    s.getMulti("Notes_2")
       .map(x -> obj.addObservation(x, "Notes", mainLang))
       .forEach(this::linkToRecord);
 
