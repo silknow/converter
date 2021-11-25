@@ -15,10 +15,11 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StEtienneConverter extends Converter {
 
-  private static final String DIMENSION_REGEX = "hauteur en cm : (\\d+?) largeur en cm : (\\d+?) ";
+  private static final String DIMENSION_REGEX = "hauteur (en cm) : (\\d+?), largeur (en cm) : (\\d+?) ";
   private static final Pattern DIMENSION_PATTERN = Pattern.compile(DIMENSION_REGEX);
   private static final String AUTHOR_ROLE_REGEX = "Author: (.+) - Role: (.+)";
   private static final Pattern AUTHOR_ROLE_PATTERN = Pattern.compile(AUTHOR_ROLE_REGEX);
@@ -84,6 +85,8 @@ public class StEtienneConverter extends Converter {
     s.getMulti("Matière").forEach(material -> prod.addMaterial(material, mainLang));
 
     s.getMulti("Technique").forEach(technique -> prod.addTechnique(technique, mainLang));
+    s.getMulti("Matière").forEach(material -> prod.addMaterial(material, mainLang));
+    s.getMulti("Lieu").forEach(prod::addPlace);
 
 
     s.getMulti("Désignation du bien")
@@ -118,16 +121,25 @@ public class StEtienneConverter extends Converter {
       .map(x -> obj.addObservation(x, "Notes", mainLang))
       .forEach(this::linkToRecord);
 
+    s.getMulti("Description analytique")
+      .map(x -> obj.addObservation(x, "Description analytique", mainLang))
+      .forEach(this::linkToRecord);
 
-    String dim = s.getMulti("Mesures").findFirst().orElse(null);
+    s.getMulti("Description analytique")
+      .map(x -> obj.addObservation(x, "Description analytique", mainLang))
+      .forEach(this::linkToRecord);
+
+
+    String dim = (s.getMulti("Mesures")).collect(Collectors.joining(","));
     if (dim != null) {
-      dim = dim.replace('\n', ' ');
-      dim = dim.replace("(en cm)", "en cm");
+      dim = dim.replace("longueur", "largeur");
       Matcher matcher = DIMENSION_PATTERN.matcher(dim);
       if (matcher.find()) {
         linkToRecord(obj.addMeasure(matcher.group(2), matcher.group(1)));
       }
     }
+
+    s.getMulti("Sujet / thème").forEach(subject -> obj.addSubject(subject, mainLang));
 
 
 
