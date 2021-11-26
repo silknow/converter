@@ -1,5 +1,7 @@
 package org.silknow.converter.entities;
 
+import org.apache.jena.rdf.model.Resource;
+import org.doremus.string2vocabulary.VocabularyManager;
 import org.silknow.converter.ontologies.CIDOC;
 
 public class Activity extends Entity {
@@ -22,4 +24,6 @@ public class Activity extends Entity {
   public void addActor(String actor) {
     this.addActor(new Actor(actor));
   }
+
+
 }

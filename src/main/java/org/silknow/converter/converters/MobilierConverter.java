@@ -107,7 +107,7 @@ public class MobilierConverter extends Converter {
 
     if (s.get("bibliography") != null) {
       InformationObject bio = new InformationObject(regNum + "b");
-      bio.setType("bibliography", mainLang);
+      bio.addInformationObjectType(s.get("bibliography"), mainLang);
       bio.isAbout(obj);
       bio.addNote(s.get("bibliography"), mainLang);
       linkToRecord(bio);

@@ -145,7 +145,7 @@ public class LouvreConverter extends Converter {
         .forEach(x -> {
 
           InformationObject pub = new InformationObject(finalRegNum1 + "_b_" + Pcounter.getAndIncrement());
-          pub.setType("Bibliographie", mainLang);
+          pub.addInformationObjectType(s.get("Bibliographie"), mainLang);
           pub.isAbout(obj);
           pub.addNote(x, mainLang);
           linkToRecord(pub);

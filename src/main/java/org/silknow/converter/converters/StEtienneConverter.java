@@ -111,7 +111,7 @@ public class StEtienneConverter extends Converter {
       });}
 
 
-    if ((s.get("Fonction / Rôle") != "") && (s.get("Personne") != "")) {
+    if ((s.get("Fonction / Rôle") != null) && (s.get("Personne") != null)) {
     s.getMulti("Personne").forEach(author -> prod.addActivity(new Actor(author), s.get("Fonction / Rôle")));}
 
 

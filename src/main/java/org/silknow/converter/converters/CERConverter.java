@@ -2,8 +2,13 @@ package org.silknow.converter.converters;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.vocabulary.RDF;
+import org.doremus.string2vocabulary.VocabularyManager;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.*;
+import org.silknow.converter.ontologies.CIDOC;
+import org.silknow.converter.ontologies.CRMsci;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -148,7 +153,8 @@ public class CERConverter extends Converter {
 
     if (s.get("Bibliografía") != null) {
       InformationObject bio = new InformationObject(regNum + "b");
-      bio.setType("Bibliografía", mainLang);
+
+      bio.addInformationObjectType(s.get("Bibliografía"), mainLang);
       bio.isAbout(obj);
       bio.addNote(s.get("Bibliografía"), mainLang);
       linkToRecord(bio);

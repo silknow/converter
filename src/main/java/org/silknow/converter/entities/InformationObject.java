@@ -1,5 +1,9 @@
 package org.silknow.converter.entities;
 
+import org.apache.jena.rdf.model.ResIterator;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.vocabulary.SKOS;
+import org.doremus.string2vocabulary.VocabularyManager;
 import org.jetbrains.annotations.NotNull;
 import org.silknow.converter.commons.CrawledJSONExhibitions;
 import org.silknow.converter.commons.CrawledJSONPublications;
@@ -52,4 +56,20 @@ public class InformationObject extends PropositionalObject {
         exhibition.addNote(exh.getDate());
         return exhibition;
     }
+
+  public void addInformationObjectType(String info_object, String lang) {
+    Resource result = VocabularyManager.searchInCategory(info_object, null, "information", false);
+    if (result != null) {
+
+      this.addProperty(CIDOC.P2_has_type, result);
+    }
+
+        else {
+      this.addProperty(CIDOC.P2_has_type, info_object, lang);
+        }
+      }
+
+
+
+
 }

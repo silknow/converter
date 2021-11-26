@@ -221,7 +221,7 @@ public class UNIPAConverter extends Converter {
 
     if (s.get("bibliography") != null) {
       InformationObject bio = new InformationObject(regNum + "l");
-      bio.setType("bibliography", "en");
+      bio.addInformationObjectType(s.get("bibliography"), "en");
       bio.isAbout(obj);
       bio.addNote(s.get("bibliography"), mainLang);
       linkToRecord(bio);

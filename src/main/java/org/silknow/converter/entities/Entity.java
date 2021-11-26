@@ -200,8 +200,20 @@ public abstract class Entity {
     Activity activity = new Activity(this.uri + "/activity/" + ++activityCount);
     activity.addActor(actor);
 
-    if (function != null) activity.addProperty(CIDOC.P2_has_type, function);
+    if (function != null) activity.addActivityType(function);
     this.addProperty(CIDOC.P9_consists_of, activity);
+  }
+
+  public void addActivityType(String activity_type) {
+    Resource result = VocabularyManager.searchInCategory(activity_type, null, "activity", false);
+    if (result != null) {
+
+      this.addProperty(CIDOC.P2_has_type, result);
+    }
+
+    else {
+      this.addProperty(CIDOC.P2_has_type, activity_type);
+    }
   }
 
   protected void addSimpleIdentifier(String id) {
@@ -258,6 +270,8 @@ public abstract class Entity {
   }
 
 
+
+
   public Resource addClassification(String classification, String type, String lang, LegalBody museum) {
     if (classification == null) return null;
     RDFNode r = VocabularyManager.searchInCategory(classification, null, "categories", false);
@@ -280,7 +294,7 @@ public abstract class Entity {
       Resource assignment = model.createResource(this.getUri() + "/category/" + ++objecttypeAssignmentCount)
         .addProperty(RDF.type, Silknow.T35)
         .addProperty(CIDOC.P41_classified, this.asResource())
-        .addProperty(CIDOC.P2_has_type, t)
+        //.addProperty(CIDOC.P2_has_type, t)
         .addProperty(Silknow.L1, r);
 
       if (museum != null) {
@@ -298,7 +312,7 @@ public abstract class Entity {
       Resource assignment = model.createResource(this.getUri() + "/domain/" + ++objectdomainAssignmentCount)
         .addProperty(RDF.type, Silknow.T19)
         .addProperty(CIDOC.P41_classified, this.asResource())
-        .addProperty(CIDOC.P2_has_type, t)
+        //.addProperty(CIDOC.P2_has_type, t)
         .addProperty(Silknow.L4, r);
 
       if (museum != null) {
@@ -350,6 +364,7 @@ public abstract class Entity {
       }
     }
      */
+
 
 
   }

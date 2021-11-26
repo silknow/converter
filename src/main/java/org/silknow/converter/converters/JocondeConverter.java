@@ -225,7 +225,7 @@ public class JocondeConverter extends Converter {
 
     if (s.get("BIBL") != null) {
       InformationObject bio = new InformationObject(id + "b");
-      bio.setType("Bibliographie", mainLang);
+      bio.addInformationObjectType(s.get("Bibliographie"), mainLang);
       bio.isAbout(obj);
       bio.addNote(s.get("BIBL"));
       linkToRecord(bio);

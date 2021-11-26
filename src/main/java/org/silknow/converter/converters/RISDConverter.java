@@ -118,7 +118,8 @@ public class RISDConverter extends Converter {
     linkToRecord(obj.addObservation(s.get("description"), "Description", mainLang));
 
     String acquisitionFrom = s.get("Credit");
-    LegalBody museum = null;
+    String museumname = "Rhode Island School of Design";
+    LegalBody museum = new LegalBody(museumname);
 
     Acquisition acquisition = new Acquisition(id);
     acquisition.transfer(acquisitionFrom, obj, museum);

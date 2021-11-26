@@ -1,0 +1,33 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix pav: <http://purl.org/pav/>.
+@prefix silk-activity: <http://data.silknow.org/activity/> .
+
+silk-activity:designer
+    a skos:Concept;
+    skos:altLabel
+        "author", "Author", "Designer", "dessinateur",
+        "Artist", "Artiste / Auteur / Ecole / Centre artistique";
+    skos:inScheme <http://data.silknow.org/activity/>;
+    skos:prefLabel
+        "Designer"@en;
+    skos:topConceptOf <http://data.silknow.org/activity/>.
+    
+
+
+
+<http://data.silknow.org/activity/>
+    a skos:ConceptScheme;
+    dct:created "2021-11-20"^^xsd:date;
+    dct:modified "2021-11-20"^^xsd:date;
+    pav:createdOn "2021-11-20"^^xsd:date;
+    pav:version "1.0";
+    rdfs:label
+    "Controlled vocabulary for P2_has_type of E7_Activity"@en;
+    skos:hasTopConcept 
+            silk-activity:designer.
+            
+    
+

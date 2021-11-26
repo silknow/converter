@@ -90,7 +90,7 @@ public class MTMADConverter extends Converter {
 
     if (s.get("Bibliographie :") != null) {
       InformationObject bio = new InformationObject(regNum + "b");
-      bio.setType("Bibliographie", mainLang);
+      bio.addInformationObjectType(s.get("Bibliographie"), mainLang);
       bio.isAbout(obj);
       bio.addNote(s.get("Bibliographie :"), mainLang);
       linkToRecord(bio);

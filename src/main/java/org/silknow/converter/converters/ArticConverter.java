@@ -99,10 +99,6 @@ public class ArticConverter extends Converter {
     //acquisition.setType(acquisitionType);
 
 
-    Transfer transfer = new Transfer(regNum);
-    transfer.of(obj).by(museum);
-
-
     AtomicInteger Pcounter = new AtomicInteger();
 
     if (s.getMulti("publication-history").findAny() != null) {
@@ -139,7 +135,6 @@ public class ArticConverter extends Converter {
     linkToRecord(obj);
     linkToRecord(acquisition);
     linkToRecord(prod);
-    linkToRecord(transfer);
     return this.model;
   }
 

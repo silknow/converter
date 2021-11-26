@@ -140,7 +140,8 @@ public class MADConverter extends Converter {
 
 
     String acquisitionFrom = s.getMulti("Acquisition/dépôt:").findFirst().orElse(null);
-    LegalBody museum = null;
+    String museumName = "Musée des arts décoratifs";
+    LegalBody museum = new LegalBody(museumName);
 
     Acquisition acquisition = new Acquisition(regNum);
     acquisition.transfer(acquisitionFrom, obj, museum);

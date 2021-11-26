@@ -102,7 +102,7 @@ public class VAMConverter extends Converter {
     linkToRecord(obj.addObservation(s.get("historical_context_note"), "Historical Context Note", mainLang));
 
 
-    LegalBody museum = null; // FIXME ?
+    LegalBody museum = new LegalBody("Victoria and Albert Museum");
 
 
     Acquisition acquisition = new Acquisition(regNum);
@@ -134,7 +134,7 @@ public class VAMConverter extends Converter {
 
     if (s.get("bibliography") != null) {
       InformationObject bio = new InformationObject(regNum + "b");
-      bio.setType("Bibliography", mainLang);
+      bio.addInformationObjectType(s.get("Bibliography"), mainLang);
       bio.isAbout(obj);
       bio.addNote(s.get("Bibliography"), mainLang);
       linkToRecord(bio);

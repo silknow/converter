@@ -231,7 +231,7 @@ public class ImatexConverter extends Converter {
         .forEach(x -> {
 
           InformationObject bio = new InformationObject(finalRegNum + "_b_" + Pcounter.getAndIncrement());
-          bio.setType("bibliography", mainLang);
+          bio.addInformationObjectType(s.get("bibliography"), mainLang);
           bio.isAbout(obj);
           bio.addNote(x, mainLang);
           linkToRecord(bio);

@@ -111,21 +111,21 @@ public class MFAConverter extends Converter {
 
 
 
-    LegalBody museum = null; // FIXME?
+    LegalBody legalbody = new LegalBody("MFA Boston");
 
 
 
     if (s.get("Provenance") != null) {
       Acquisition acquisition = new Acquisition(regNum);
       String acquisitionFrom = s.get("Provenance") + " / " + s.get("Credit Line");
-      acquisition.transfer(acquisitionFrom, obj, museum);
+      acquisition.transfer(acquisitionFrom, obj, legalbody);
       acquisition.addActor(new Actor(acquisitionFrom));
       linkToRecord(acquisition);
     }
 
 
     Transfer transfer = new Transfer(regNum);
-    transfer.of(obj).by(museum);
+    transfer.of(obj).by(legalbody);
 
     Collection collection = new Collection(regNum, s.getMulti("Collections").findFirst().orElse(null));
     collection.of(obj);
