@@ -69,6 +69,12 @@ Pattern if multiple instance per main entity are possible:
 # i.e. <http://data.silknow.org/object/0359045f-21e1-3488-8bfc-5620ab7ea6d7/type/3>
 ```
 
+Patterns specifically for the `E54_Dimension` class:
+
+- attached to the `E22_Man-Made_Object`: http://data.silknow.org/object/[UUID]/dimension/[int]
+- attached to the `T24_Pattern_Unit`: http://data.silknow.org/object/[UUID]/pattern/[int]/dimension/[int]
+ 
+
 The `<suffix>` is taken from this table:
 
 | Class | Group | Suffix |
