@@ -74,8 +74,8 @@ public class LouvreConverter extends Converter {
       .map(x -> obj.addClassification(x, "Type", mainLang))
       .forEach(this::linkToRecord);
 
-    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
-
+    if (s.getUrl() != null) {
+      linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl()))); }
 
     s.getImages().map(Image::fromCrawledJSON)
       .peek(image -> image.addInternalUrl("louvre"))
@@ -145,7 +145,7 @@ public class LouvreConverter extends Converter {
         .forEach(x -> {
 
           InformationObject pub = new InformationObject(finalRegNum1 + "_b_" + Pcounter.getAndIncrement());
-          pub.addInformationObjectType(s.get("Bibliographie"), mainLang);
+          pub.addInformationObjectType("Bibliographie", mainLang);
           pub.isAbout(obj);
           pub.addNote(x, mainLang);
           linkToRecord(pub);

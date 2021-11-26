@@ -62,7 +62,7 @@ for file_name in glob.glob('time_label.tsv'):
         f = '"'+str(score) +'"'+"^^xsd:float ."
         g = """
            ?activity a prov:Activity ;
-           prov:atTime "2021-02-10"^^xsd:dateTime .
+           prov:atTime "2021-02-10"^^xsd:dateTime ;
            prov:used ?dig .
            ?statement prov:wasGeneratedBy ?activity .
            

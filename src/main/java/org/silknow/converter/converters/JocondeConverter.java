@@ -89,8 +89,8 @@ public class JocondeConverter extends Converter {
             .forEach(x -> linkToRecord(obj.addClassification(x, "Dénomination", "fr")));
     linkToRecord(obj.addObservation(s.get("DESC"), "Description", mainLang));
     s.getMulti("REPR").forEach(subject -> obj.addSubject(subject, mainLang));
-    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
-
+    if (s.getUrl() != null) {
+      linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl()))); }
 
 
     String dim = s.get("DIMS");
@@ -225,7 +225,7 @@ public class JocondeConverter extends Converter {
 
     if (s.get("BIBL") != null) {
       InformationObject bio = new InformationObject(id + "b");
-      bio.addInformationObjectType(s.get("Bibliographie"), mainLang);
+      bio.addInformationObjectType("Bibliographie", mainLang);
       bio.isAbout(obj);
       bio.addNote(s.get("BIBL"));
       linkToRecord(bio);

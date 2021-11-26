@@ -95,8 +95,8 @@ public class METConverter extends Converter {
     s.getMulti("Object Type / Material").forEach(material -> prod.addMaterial(material.replaceAll(" *\\(.+?\\)", ""), mainLang));
 
     //s.getMulti("Object Type / Material").forEach(x -> obj.addClassification(x.replaceAll(" *\\(.+?\\)", ""), "Object Type / Material",  mainLang));
-    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
-
+    if (s.getUrl() != null) {
+      linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl()))); }
 
 
 

@@ -88,8 +88,8 @@ public class SmithsConverter extends Converter {
 
     s.getMulti("freetextdate").forEach(prod::addTimeAppellation);
     s.getMulti("made in").forEach(prod::addPlace);
-    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
-
+    if (s.getUrl() != null) {
+      linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl()))); }
 
     PropositionalObject record = new PropositionalObject(id + "r");
     record.setType("museum record", mainLang);

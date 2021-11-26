@@ -59,8 +59,8 @@ public class UNIPAConverter extends Converter {
     String regNum = s.getId();
     ManMade_Object obj = new ManMade_Object(regNum);
     //s.getMulti("title").forEach(obj::addTitle);
-    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
-
+    if (s.getUrl() != null) {
+      linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl()))); }
 
 
     final List<String> terms = new ArrayList<String>();
@@ -221,7 +221,7 @@ public class UNIPAConverter extends Converter {
 
     if (s.get("bibliography") != null) {
       InformationObject bio = new InformationObject(regNum + "l");
-      bio.addInformationObjectType(s.get("bibliography"), "en");
+      bio.addInformationObjectType("bibliography", "en");
       bio.isAbout(obj);
       bio.addNote(s.get("bibliography"), mainLang);
       linkToRecord(bio);

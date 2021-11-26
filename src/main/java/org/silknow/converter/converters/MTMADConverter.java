@@ -53,8 +53,8 @@ public class MTMADConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(regNum);
     obj.addTitle(s.getMulti("title").findFirst().orElse(null), mainLang);
-    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
-
+    if (s.getUrl() != null) {
+      linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl()))); }
     s.getImages().map(Image::fromCrawledJSON)
             .peek(image -> image.addInternalUrl("mtmad"))
             .peek(obj::add)
@@ -90,7 +90,7 @@ public class MTMADConverter extends Converter {
 
     if (s.get("Bibliographie :") != null) {
       InformationObject bio = new InformationObject(regNum + "b");
-      bio.addInformationObjectType(s.get("Bibliographie"), mainLang);
+      bio.addInformationObjectType("Bibliographie", mainLang);
       bio.isAbout(obj);
       bio.addNote(s.get("Bibliographie :"), mainLang);
       linkToRecord(bio);

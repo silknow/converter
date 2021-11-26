@@ -59,8 +59,8 @@ public class MobilierConverter extends Converter {
     s.getMulti("denomination")
             .map(x -> obj.addClassification(x, "denomination", mainLang))
             .forEach(this::linkToRecord);
-    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
-
+    if (s.getUrl() != null) {
+      linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl()))); }
     /*
     final List<String> terms = new ArrayList<String>();
     terms.add((s.getMulti("titleField").findFirst().orElse(null)));
@@ -107,7 +107,7 @@ public class MobilierConverter extends Converter {
 
     if (s.get("bibliography") != null) {
       InformationObject bio = new InformationObject(regNum + "b");
-      bio.addInformationObjectType(s.get("bibliography"), mainLang);
+      bio.addInformationObjectType("bibliography", mainLang);
       bio.isAbout(obj);
       bio.addNote(s.get("bibliography"), mainLang);
       linkToRecord(bio);

@@ -154,7 +154,7 @@ public class CERConverter extends Converter {
     if (s.get("Bibliografía") != null) {
       InformationObject bio = new InformationObject(regNum + "b");
 
-      bio.addInformationObjectType(s.get("Bibliografía"), mainLang);
+      bio.addInformationObjectType("Bibliografía", mainLang);
       bio.isAbout(obj);
       bio.addNote(s.get("Bibliografía"), mainLang);
       linkToRecord(bio);

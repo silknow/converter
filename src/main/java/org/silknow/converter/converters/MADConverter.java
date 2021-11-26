@@ -59,8 +59,8 @@ public class MADConverter extends Converter {
 
     ManMade_Object obj = new ManMade_Object(regNum);
     //obj.addTitle(s.getMulti("title").findFirst().orElse(null));
-    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
-
+    if (s.getUrl() != null) {
+      linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl()))); }
     List<String> creation_fields = s.getMulti("Création:").map(Object::toString).collect(Collectors.toList());
     List<String> creation_notes = creation_fields.stream()
       .map(x -> x.replaceAll(AUTHOR_ROLE_REGEX, "$1 ($2)")).collect(Collectors.toList());

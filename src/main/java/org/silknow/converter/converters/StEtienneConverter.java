@@ -59,7 +59,9 @@ public class StEtienneConverter extends Converter {
     id = regNum;
 
     ManMade_Object obj = new ManMade_Object(regNum);
-    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
+
+    if (s.getUrl() != null) {
+    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl()))); }
 
 
     final List<String> terms = new ArrayList<String>();
@@ -111,23 +113,22 @@ public class StEtienneConverter extends Converter {
       });}
 
 
-    if ((s.get("Fonction / Rôle") != null) && (s.get("Personne") != null)) {
-    s.getMulti("Personne").forEach(author -> prod.addActivity(new Actor(author), s.get("Fonction / Rôle")));}
-
+    //if ((s.getMulti("Fonction / Rôle").findAny() != null) && (s.getMulti("Personne").findAny() != null)) {
+      //s.getMulti("Personne").forEach(author -> prod.addActivity(new Actor(author), s.getMulti("Fonction / Rôle").forEach();)); } FIXME
 
     s.getMulti("Epoque, datation").forEach(prod::addTimeAppellation);
 
+    if (s.getMulti("Notes") != null) {
     s.getMulti("Notes")
       .map(x -> obj.addObservation(x, "Notes", mainLang))
-      .forEach(this::linkToRecord);
+      .forEach(this::linkToRecord); }
 
-    s.getMulti("Description analytique")
-      .map(x -> obj.addObservation(x, "Description analytique", mainLang))
-      .forEach(this::linkToRecord);
+    if (s.getMulti("Description analytique") != null) {
 
-    s.getMulti("Description analytique")
-      .map(x -> obj.addObservation(x, "Description analytique", mainLang))
-      .forEach(this::linkToRecord);
+      s.getMulti("Description analytique")
+        .map(x -> obj.addObservation(x, "Description analytique", mainLang))
+        .forEach(this::linkToRecord);
+    }
 
 
     String dim = (s.getMulti("Mesures")).collect(Collectors.joining(","));

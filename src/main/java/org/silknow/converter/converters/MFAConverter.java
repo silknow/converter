@@ -59,8 +59,8 @@ public class MFAConverter extends Converter {
     s.getMulti("titleField")
             .map(x -> obj.addClassification(x, "titleField", mainLang))
             .forEach(this::linkToRecord);
-    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
-
+    if (s.getUrl() != null) {
+      linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl()))); }
     /*
     final List<String> terms = new ArrayList<String>();
     terms.add((s.getMulti("titleField").findFirst().orElse(null)));

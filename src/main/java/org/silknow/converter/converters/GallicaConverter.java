@@ -52,8 +52,8 @@ public class GallicaConverter extends Converter {
       .map(x -> obj.addClassification(x, "typeDocument", mainLang))
       .forEach(this::linkToRecord);
     obj.addTitle(s.get("Titre"), mainLang);
-    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
-
+    if (s.getUrl() != null) {
+      linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl()))); }
 
     s.getImages().map(Image::fromCrawledJSON)
       .peek(image -> image.addInternalUrl("gallica"))

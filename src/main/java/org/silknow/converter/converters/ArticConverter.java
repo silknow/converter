@@ -75,7 +75,9 @@ public class ArticConverter extends Converter {
     s.getMulti("Date").forEach(prod::addTimeAppellation);
     s.getMulti("Origin").forEach(prod::addPlace);
     linkToRecord(obj.addObservation(s.get("Medium"), "Medium", mainLang));
-    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
+    if (s.getUrl() != null) {
+
+      linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl()))); }
 
 
     s.getMulti("Classification:").forEach(x -> obj.addClassification(x.replaceAll(" *\\(.+?\\)", ""), "Classification",  mainLang));

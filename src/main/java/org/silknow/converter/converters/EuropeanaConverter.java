@@ -67,7 +67,9 @@ public class EuropeanaConverter extends Converter {
     s.getMulti("Type of object")
       .map(x -> obj.addClassification(x, "Type of object", mainLang))
       .forEach(this::linkToRecord);
-    linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl())));
+
+    if (s.getUrl() != null) {
+      linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl()))); }
 
 
     s.getImages().map(Image::fromCrawledJSON)

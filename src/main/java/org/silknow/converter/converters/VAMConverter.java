@@ -134,7 +134,7 @@ public class VAMConverter extends Converter {
 
     if (s.get("bibliography") != null) {
       InformationObject bio = new InformationObject(regNum + "b");
-      bio.addInformationObjectType(s.get("Bibliography"), mainLang);
+      bio.addInformationObjectType("Bibliography", mainLang);
       bio.isAbout(obj);
       bio.addNote(s.get("Bibliography"), mainLang);
       linkToRecord(bio);
