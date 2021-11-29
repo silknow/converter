@@ -7,6 +7,7 @@ import org.silknow.converter.entities.*;
 
 import java.io.*;
 import java.util.List;
+import java.util.Objects;
 
 public class PMConverter extends Converter {
 
@@ -78,11 +79,17 @@ public class PMConverter extends Converter {
     Production prod = new Production(regNum);
     prod.add(obj);
 
+
     // Authors
-    if (s.getAuthors()  != null) {
-      s.getAuthors().map(this::toPerson)
+    if (s.getAuthors() != null)
+    {
+      s.getAuthors()
+        .filter(Objects::nonNull)
+        .map(this::toPerson)
         .forEach(x -> prod.addActivity(x, "author"));
+
     }
+
     // Dates
     String startYear = s.get("fieldDateProduction.startYear");
     String endYear = s.get("fieldDateProduction.startYear");

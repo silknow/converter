@@ -17,5 +17,6 @@ tar -czf versailles.tar.gz versailles/
 tar -czf artic.tar.gz artic/
 tar -czf el-tesoro.tar.gz el-tesoro/
 tar -czf louvre.tar.gz louvre/
+tar -czf stetienne.tar.gz musee-st-etienne/
 
 

@@ -19,9 +19,12 @@ public class PMRecord extends CrawledJSON {
 
   private List<String> parseAuteur(Auteur aut) {
     InnerEntity author = aut.entity.fieldAuteurAuteur.entity;
+    if ((author.name != null) && (author.fieldPipDateNaissance != null) && (author.fieldPipDateDeces != null)){
     return Arrays.asList(author.name,
       author.fieldPipDateNaissance.startYear.toString(),
-      author.fieldPipDateDeces.startYear.toString());
+      author.fieldPipDateDeces.startYear.toString()); }
+    else
+      return null;
   }
 
   private class PMRaw {
