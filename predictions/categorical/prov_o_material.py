@@ -57,6 +57,7 @@ for file_name in glob.glob('material_group.tsv'):
         g = """
            ?activity a prov:Activity ;
            prov:atTime "2021-05-21"^^xsd:dateTime ;
+           prov:used ?dig .
            ?statement prov:wasGeneratedBy ?activity .
 
            ?actor a prov:SoftwareAgent ;
@@ -71,6 +72,8 @@ for file_name in glob.glob('material_group.tsv'):
         m = """}
            ?production ecrm:P108_has_produced ?object .
            ?object rdfs:comment ?text .
+           ?dig a crmdig:D1_Digital_Object .
+           ?dig ecrm:P129_is_about ?object .
 
 
            BIND(URI(REPLACE(CONCAT("http://data.silknow.org", "/statement/"""
