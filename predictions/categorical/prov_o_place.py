@@ -90,6 +90,7 @@ for file_name in glob.glob('place_country_code.tsv'):
            prov:atTime "2021-02-10"^^xsd:dateTime ;
            prov:used ?dig .
            ?statement prov:wasGeneratedBy ?activity .
+
            ?actor a prov:SoftwareAgent ;
            ecrm:P70_documents """
         j = '''"Predictions made using a machine learning algorithm called Gradient Tree Boosting. The software predicts values for four properties, namely 'production timespan', 'production place', 'technique' and 'material'. The predictions are based on the values that are already present for these properties together with the museum name. It is therefore used to fill 'gaps', i.e. missing values for some properties, in the records of the Knowledge Graph and trained with data already present in it. This version of the models is trained on a snapshot of the Knowledge Graph from May 2021. The single task multi-class classification (mutually exclusive classes) models make use of a softmax function, the maximum value output of which corresponds to the provided prediction score."''' + " ."
@@ -123,9 +124,9 @@ for file_name in glob.glob('place_country_code.tsv'):
         sparql.setQuery(q.strip())
         sparql.setReturnFormat(RDFXML)
         
-        try:
-            results = sparql.query().convert()
-            results.serialize(destination="./place/"+"xgboost_place"+str(index)+".ttl", format="turtle")
-        except:
-            time.sleep(10)
-            continue
+        #try:
+        results = sparql.query().convert()
+        results.serialize(destination="./place/"+"xgboost_place"+str(index)+".ttl", format="turtle")
+        #except:
+        #    time.sleep(10)
+        #    continue

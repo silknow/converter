@@ -94,12 +94,12 @@ for file_name in glob.glob('material_group.tsv'):
         sparql.setQuery(q.strip())
         sparql.setReturnFormat(RDFXML)
 
-        results = sparql.query().convert()
-        results.serialize(destination="./material/"+"image_material"+str(index)+".ttl", format="turtle")
+        #results = sparql.query().convert()
+        #results.serialize(destination="./material/"+"image_material"+str(index)+".ttl", format="turtle")
         
-        ##try:
-        ##    results = sparql.query().convert()
-        ##    results.serialize(destination="./material/"+"xgboost_material"+str(index)+".ttl", format="turtle")
-        ##except:
-        ##    time.sleep(10)
-        ##    continue
+        try:
+            results = sparql.query().convert()
+            results.serialize(destination="./material/"+"xgboost_material"+str(index)+".ttl", format="turtle")
+        except:
+            time.sleep(10)
+            continue
