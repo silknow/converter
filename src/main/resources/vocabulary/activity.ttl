@@ -9,7 +9,7 @@ silk-activity:designer
     a skos:Concept;
     skos:altLabel
         "author", "Author", "Designer", "dessinateur",
-        "Artist", "Artiste / Auteur / Ecole / Centre artistique";
+        "Maker","Artist", "Artiste / Auteur / Ecole / Centre artistique";
     skos:inScheme <http://data.silknow.org/activity/>;
     skos:prefLabel
         "Designer"@en;

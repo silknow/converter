@@ -211,7 +211,7 @@ public abstract class Entity {
       this.addProperty(CIDOC.P2_has_type, result);
     }
 
-    else {
+    if (result == null) {
       this.addProperty(CIDOC.P2_has_type, activity_type);
     }
   }

@@ -2,7 +2,7 @@
     ./gradlew clean
     ./gradlew run --args="imatex ../crawler/data/imatex -o ./output/imatex -g tschleider"
     ./gradlew run --args="joconde ../crawler/data/joconde -o ./output/joconde -g tschleider"
-    ./gradlew run --args="garin '../crawler/data/garin' -o ./output/garin -g tschleider"
+    #./gradlew run --args="garin '../crawler/data/garin' -o ./output/garin -g tschleider"
     ./gradlew run --args="VAM '../crawler/data/vam' -o ./output/vam -g tschleider"
     ./gradlew run --args="MFA '../crawler/data/mfa-boston' -o ./output/mfa -g tschleider"
     ./gradlew run --args="MAD '../crawler/data/les-arts-decoratifs' -o ./output/mad -g tschleider"
