@@ -99,7 +99,7 @@ for file_name in glob.glob('place_country_code.tsv'):
             }
             WHERE {
             VALUES ?object { """
-        l = "<"+str(obj)+"/>"
+        l = "<"+str(obj)+">"
         m = """}
            ?production ecrm:P108_has_produced ?object .
            ?object rdfs:comment ?text .
