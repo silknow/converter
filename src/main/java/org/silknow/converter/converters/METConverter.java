@@ -2,18 +2,13 @@ package org.silknow.converter.converters;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.rdf.model.Model;
-
 import org.apache.jena.vocabulary.OWL;
 import org.silknow.converter.commons.ConstructURI;
 import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.commons.GeoNames;
 import org.silknow.converter.entities.*;
 
-
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;

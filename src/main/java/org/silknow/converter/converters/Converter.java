@@ -5,7 +5,6 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.vocabulary.*;
 import org.silknow.converter.commons.ConstructURI;
-import org.silknow.converter.commons.CrawledJSON;
 import org.silknow.converter.entities.Entity;
 import org.silknow.converter.ontologies.CIDOC;
 import org.silknow.converter.ontologies.CRMdig;
@@ -60,6 +59,7 @@ public abstract class Converter {
       String seed = this.filename + "$$$" + this.id + this.dataset;
       //System.out.println(seed);
       String recordUri = BASE_URI + "object/" + ConstructURI.generateUUID(seed);
+      //System.out.println(recordUri);
       if (filename != null) {
       String label = "Record " + id;
       this.record = model.createResource(recordUri)
