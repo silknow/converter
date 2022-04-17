@@ -44,8 +44,8 @@ Some queries have only a _partial_ answer or no answer at all since the modeling
 
 1. **[en]** What Valencian fabrics are located in the Spanish royal collections?
 
-1. **[en]** In which museums and collections around the world are Spanish textiles? (0 results)
-[query](./A8.rq) - [results](https://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj+%3Fcollection%0D%0AWHERE+%7B+GRAPH+%3Fcollection+%7B%0D%0A++++++%3Fs+a+ecrm%3AE12_Production+.%0D%0A++++++%3Fs+ecrm%3AP125_employed+%3Chttp%3A%2F%2Fdata.silknow.org%2Fvocabulary%2F857%3E+.%0D%0A++++++%3Fs+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A%0D%0A+%7B+%3Fs+ecrm%3AP8_took_place_on_or_within+%3Fl%0D%0A+++++%7B+SELECT+%3Fl+SAMPLE%28%3Floc%29+as+%3Fplace%0D%0A++++++++++WHERE+%7B+%3Fl+geonames%3AcountryCode+%3Floc%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fl%29%29%0D%0A+++++++++++%3Fl+geonames%3AcountryCode+%22ES%22+%7D%0D%0A%7D%7D&should-sponge=&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+)
+1. **[en]** In which museums and collections around the world are Spanish textiles?
+[query](./A8.rq) - [results](https://data.silknow.org/sparql?default-graph-uri=&query=SELECT+distinct+%3Fobj+%3Fcollection%0D%0AWHERE+%7B+GRAPH+%3Fcollection+%7B%0D%0A+++values+%3Fassignment+%7B+%3Chttp%3A%2F%2Fdata.silknow.org%2Fcategory%2F1%3E+%7D%0D%0A%0D%0A++++++%3Fs+a+ecrm%3AE12_Production+.%0D%0A++++++%3Fs+ecrm%3AP108_has_produced+%3Fobj+.%0D%0A%0D%0A+++++++++%7B%3Ftype+ecrm%3AP41_classified+%3Fobj+.%0D%0A+++++++++%3Ftype+silk%3AL1+%3Fassignment+.+%7D%0D%0A%0D%0A+%7B+%3Fs+ecrm%3AP8_took_place_on_or_within+%3Fl%0D%0A+++++%7B+SELECT+%3Fl+SAMPLE%28%3Floc%29+as+%3Fplace%0D%0A++++++++++WHERE+%7B+%3Fl+geonames%3AcountryCode+%3Floc%7D%0D%0A+++++++%7D+.+FILTER%28isIRI%28%3Fl%29%29%0D%0A+++++++++++%3Fl+geonames%3AcountryCode+%22ES%22+%7D%0D%0A%7D%7D&format=text%2Fhtml&should-sponge=&timeout=0&signal_void=on)
 
 1. **[en]** Give me a list of textile factories in a Florence 
 
