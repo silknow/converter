@@ -1,4 +1,4 @@
-SELECT distinct ?title  ?collection ?object ?visual_item ?assignment
+SELECT distinct ?title  ?collection ?object ?visual_item
 WHERE { graph ?collection{
 
      ?prod ecrm:P108_has_produced ?object .
@@ -11,7 +11,8 @@ WHERE { graph ?collection{
 
    
          {?type ecrm:P41_classified ?object .
-         ?type silk:L1 ?assignment . FILTER contains(str(?assignment), "/category") }
+         ?type silk:L1 ?assignment .
+         ?type_group skos:member ?assignment . FILTER contains(str(?type_group), "fabric")}
 
 {?object ecrm:P65_shows_visual_item ?vitem .
 ?vitem  skos:prefLabel ?visual_item FILTER(lang(str(?visual_item)) = "en")}
@@ -21,7 +22,6 @@ union
      
      
 }}
-
 
 
  
