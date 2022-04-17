@@ -1,4 +1,4 @@
-prefix silk:   <http://data.silknow.org/ontology/property/>
+prefix silk:   <http://data.silknow.org/ontology/>
 SELECT distinct  ?place ?title ?assignment ?description  ?collection  ?object
 WHERE { graph ?collection {          <http://data.silknow.org/vocabulary/facet/religious_attire> skos:member ?assignment . }
 
