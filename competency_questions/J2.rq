@@ -1,4 +1,4 @@
-prefix silk:   <http://data.silknow.org/ontology/property/>
+prefix silk:   <http://data.silknow.org/ontology/>
 SELECT distinct  ?title ?assignment ?description  ?collection  ?object
 WHERE { graph ?collection {
 
