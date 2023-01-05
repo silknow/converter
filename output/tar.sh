@@ -18,5 +18,4 @@ tar -czf artic.tar.gz artic/
 tar -czf el-tesoro.tar.gz el-tesoro/
 tar -czf louvre.tar.gz louvre/
 tar -czf musee-st-etienne.tar.gz musee-st-etienne/
-
-
+tar -czf europeana.tar.gz europeana/
