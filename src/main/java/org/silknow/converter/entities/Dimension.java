@@ -37,7 +37,9 @@ public class Dimension extends Entity {
 
     this.unit = getStandardUnit(unit);
     this.setClass(CIDOC.E54_Dimension);
-    this.addProperty(CIDOC.P90_has_value, convertInStandard(value, unit), XSDDatatype.XSDfloat);
+    String v = convertInStandard(value, unit);
+    if (isValidFloat(v)) this.addProperty(CIDOC.P90_has_value, v, XSDDatatype.XSDfloat);
+    else this.addProperty(CIDOC.P90_has_value, v);
     this.addProperty(CIDOC.P91_has_unit, this.unit);
   }
 
@@ -84,5 +86,14 @@ public class Dimension extends Entity {
 
   public String getUnit() {
     return this.unit;
+  }
+
+  private boolean isValidFloat(String value) {
+    try {
+      Float.parseFloat(value);
+      return true;
+    } catch (NumberFormatException | NullPointerException e) {
+      return false;
+    }
   }
 }
