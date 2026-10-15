@@ -91,7 +91,7 @@ public class METConverter extends Converter {
 
     //s.getMulti("Object Type / Material").forEach(x -> obj.addClassification(x.replaceAll(" *\\(.+?\\)", ""), "Object Type / Material",  mainLang));
     if (s.getUrl() != null) {
-      linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(s.getUrl()))); }
+      linkToRecord(obj.addProperty(OWL.sameAs, this.model.createResource(encodeIri(s.getUrl())))); }
 
 
 
@@ -178,6 +178,15 @@ public class METConverter extends Converter {
     linkToRecord(prod);
     linkToRecord(transfer);
     return this.model;
+  }
+
+  private static String encodeIri(String iri) {
+    StringBuilder sb = new StringBuilder();
+    for (char c : iri.toCharArray()) {
+      if (c < 33 || c == 127 || "\"<>\\{}|^`".indexOf(c) >= 0) sb.append(String.format("%%%02X", (int) c));
+      else sb.append(c);
+    }
+    return sb.toString();
   }
 
   private void write(String text, String file) throws IOException {
